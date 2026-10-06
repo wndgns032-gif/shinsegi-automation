@@ -24,9 +24,30 @@ QUOTE_INK = (58, 50, 40)    # 명언 본문 (조금 더 진하게)
 PANEL = (255, 252, 244, 208)  # 반투명 크림 패널
 SAGE = (122, 148, 124)      # 세이지 그린 배지
 FONT_CANDIDATES = {
-    "ko": ["C:/Windows/Fonts/malgunbd.ttf", "C:/Windows/Fonts/malgun.ttf"],
-    "zh-cn": ["C:/Windows/Fonts/msyhbd.ttc", "C:/Windows/Fonts/msyh.ttc", "C:/Windows/Fonts/simhei.ttf"],
-    "default": ["C:/Windows/Fonts/arialbd.ttf", "C:/Windows/Fonts/arial.ttf"],
+    "ko": [
+        # Windows
+        "C:/Windows/Fonts/malgunbd.ttf", "C:/Windows/Fonts/malgun.ttf",
+        # Linux (apt: fonts-nanum)
+        "/usr/share/fonts/truetype/nanum/NanumGothicBold.ttf",
+        "/usr/share/fonts/truetype/nanum/NanumGothic.ttf",
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+        "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+    ],
+    "zh-cn": [
+        # Windows
+        "C:/Windows/Fonts/msyhbd.ttc", "C:/Windows/Fonts/msyh.ttc", "C:/Windows/Fonts/simhei.ttf",
+        # Linux (apt: fonts-noto-cjk)
+        "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+        "/usr/share/fonts/noto-cjk/NotoSansCJK-Regular.ttc",
+        "/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc",
+    ],
+    "default": [
+        # Windows
+        "C:/Windows/Fonts/arialbd.ttf", "C:/Windows/Fonts/arial.ttf",
+        # Linux
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    ],
 }
 # 상단 배지 문구 (언어별) — 명언 카드뉴스
 TAGS = {

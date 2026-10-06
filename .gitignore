@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+!docs/.env.example
 
 # YouTube OAuth client JSON (client_id/secret 포함)
 data/youtube_client.json
@@ -37,6 +38,17 @@ data/videos/
 data/preview/
 data/tts_samples/
 data/voice_samples/
+
+# === assets (v5 릴스 전용 — PAUSE 됨, 필요시 scripts/build_sprites.py 로 재생성) ===
+assets/
+
+# === 루트 임시 파일 (백그라운드 디버그/프로브 산출물) ===
+_*.py
+_*.txt
+_*.png
+_*.jpg
+_*.mp3
+_*.wav
 
 # === Python ===
 __pycache__/

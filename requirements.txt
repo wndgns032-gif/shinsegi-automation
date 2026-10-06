@@ -1,0 +1,25 @@
+# shinsegi SNS 자동화 — Python 의존성
+# GitHub Actions Linux runner 용 (로컬 모델 Kokoro/Supertonic 은 제외)
+
+# ── 핵심 ──
+requests==2.34.2
+requests-oauthlib==2.0.0
+python-dotenv==1.2.3
+Pillow==12.3.0
+numpy==2.5.3
+openpyxl==3.1.5
+
+# ── 미디어 ──
+imageio-ffmpeg==0.6.0
+soundfile==0.14.0
+
+# ── TTS (클라우드만 — TTS_ENGINE=edge 로 강제) ──
+edge-tts==7.2.8
+
+# ── YouTube OAuth (google-auth + google-api-python-client) ──
+google-auth==2.40.3
+google-auth-oauthlib==1.2.2
+google-api-python-client==2.165.0
+
+# ── Python 3.13 호환 (runner 는 3.11 또는 3.13 사용) ──
+# kokoro-onnx/misaki/torch 는 로컬 전용이라 제외 — 클라우드에선 edge-tts 로 폴백

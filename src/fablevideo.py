@@ -41,11 +41,34 @@ ORANGE_ASS = "&H4DA9FF&"          # #FFA94D (ASS 는 BGR)
 GOLD_ASS = "&HB0D8E8&"            # #E8D8B0 — 아웃트로 화자 색
 
 _ASS_FONTS = {
-    "ko": "Malgun Gothic",
-    "zh-cn": "Microsoft YaHei",
-    "en": "Georgia",
-    "fr": "Georgia",
+    "ko": ["Malgun Gothic", "Noto Sans CJK KR", "Nanum Gothic"],
+    "zh-cn": ["Microsoft YaHei", "Noto Sans CJK SC", "WenQuanYi Zen Hei"],
+    "en": ["Georgia", "DejaVu Serif", "Liberation Serif"],
+    "fr": ["Georgia", "DejaVu Serif", "Liberation Serif"],
 }
+
+
+def _fontsdir() -> str:
+    """Linux runner 와 Windows 양쪽 폰트 경로 — 없으면 빈 문자열(fontconfig 에 위임)."""
+    cands = [
+        "/usr/share/fonts",                # Linux 표준
+        "/usr/local/share/fonts",          # Linux 로컬 설치
+        "C:/Windows/Fonts",                # Windows
+    ]
+    import os as _os
+    for c in cands:
+        if _os.path.isdir(c):
+            return c.replace("\\", "/")
+    return ""
+
+
+def _ass_font(lang: str) -> str:
+    """언어별 첫 번째 설치 폰트를 찾아 반환 — 못 찾으면 언어 기본값."""
+    try:
+        import fontconfig  # type: ignore
+    except Exception:  # noqa: BLE001
+        pass
+    return _ASS_FONTS.get(lang, ["DejaVu Sans"])[0]
 
 
 def _ffmpeg_exe() -> str:
@@ -294,7 +317,7 @@ def build_ass(lang: str, story: dict, starts: list[float], durs: list[float]) ->
       QUOTE — 아웃트로 중앙 교훈(moral) 카드
       CTA   — 아웃트로 하단 주황 CTA
     """
-    font = _ASS_FONTS.get(lang, "Arial")
+    font = _ass_font(lang)
     hook_lines, hook_size, bar_h = _hook_display_lines(lang, story["hook"])
     n = len(story["scenes"])
     total = starts[-1] + durs[-1]
@@ -476,11 +499,13 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
     if music:
         print(f"  [fable] BGM: {music.name} (볼륨 {bgm.volume():.2f}, 낭독 시 자동 덕킹)")
     final = out_dir / f"fable_{lang}.mp4"
-    fontsdir = "C\\:/Windows/Fonts"
+    # Linux runner 와 Windows 모두에서 동작 — fontsdir 생략 시 ffmpeg 가 fontconfig 로 시스템 폰트 검색
     ass_ref = str(ass_path.resolve()).replace("\\", "/").replace(":", "\\:")
+    fontsdir = _fontsdir()
+    fonts_arg = f":fontsdir='{fontsdir}'" if fontsdir else ""
     vf = (f"{_film_fx()},"
           f"drawbox=x=0:y=0:w=iw:h={bar_h}:color=black:t=fill,"
-          f"subtitles='{ass_ref}':fontsdir='{fontsdir}'")
+          f"subtitles='{ass_ref}'{fonts_arg}")
     # 원자적 기록 — 프로세스 사망 시 반쯤 쓴 mp4 가 '이미 렌더됨' 마커로 오인되는 사고 방지
     tmp = work / f"final_{lang}.tmp.mp4"
     if tmp.exists():

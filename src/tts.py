@@ -274,6 +274,10 @@ def synth(text: str, lang: str, out_path: Path, voice: str | None = None,
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
     chain = [dict(p) for p in profile_for(lang)]
+    # CI/클라우드 환경에서는 로컬 모델(Kokoro/Supertonic)을 강제로 건너뛴다
+    # — 모델 파일이 없고 설치 시간도 아깝다. TTS_ENGINE=edge 면 edge 만 사용.
+    if os.getenv("TTS_ENGINE", "").lower() == "edge":
+        chain = [p for p in chain if p.get("engine") == "edge"] or chain[-1:]
     if voice:  # 특정 음성 지정 시 해당 음성을 체인 맨 앞에
         for p in chain:
             if p["voice"] == voice:

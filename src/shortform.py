@@ -29,7 +29,12 @@ from pathlib import Path
 import requests
 from PIL import Image, ImageDraw, ImageFilter
 
-from . import aivideo, bgm, cards, tts
+from . import aivideo, bgm, cards, fablevideo, tts
+
+
+def _fontsdir() -> str:
+    """fablevideo._fontsdir 와 동일 — Linux/Windows 폰트 경로."""
+    return fablevideo._fontsdir()
 
 ROOT = Path(__file__).resolve().parent.parent
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
@@ -481,9 +486,10 @@ def build_clip(lang: str, scenes: list[dict], image_paths: list[Path], work_dir:
     # 5) 필름 마감 + 자막 + **배경음악(덕킹 믹스)**
     #    BGM 은 assets/bgm/ 음원 → 없으면 로컬 합성(저작권 0) → 그래도 없으면 생략.
     clip = work_dir / f"clip_{lang}.mp4"
-    fontsdir = "C\\:/Windows/Fonts"
     ass_ref = str(ass_path.resolve()).replace("\\", "/").replace(":", "\\:")
-    vf = f"{_film_fx()},subtitles='{ass_ref}':fontsdir='{fontsdir}'"
+    fontsdir = _fontsdir()
+    fonts_arg = f":fontsdir='{fontsdir}'" if fontsdir else ""
+    vf = f"{_film_fx()},subtitles='{ass_ref}'{fonts_arg}"
     music = bgm.track(seed=str(work_dir)) if bgm.enabled() else None
     if music:
         print(f"  [shortform] BGM: {music.name} (볼륨 {bgm.volume():.2f}, 낭독 시 자동 덕킹)")
