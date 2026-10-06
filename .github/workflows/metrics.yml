@@ -1,0 +1,68 @@
+# shinsegi 메트릭 수집 — 매일 KST 10:00 (UTC 01:00)
+# IG/Threads/Mastodon 등 계정 통계를 data/performance.xlsx 에 기록.
+name: Metrics Collection
+
+on:
+  schedule:
+    - cron: '0 1 * * *'   # KST 10:00 매일
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: metrics
+  cancel-in-progress: false
+
+jobs:
+  metrics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TTS_ENGINE: edge
+      PYTHONIOENCODING: utf-8
+      TZ: Asia/Seoul
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      IG_KO_TOKEN: ${{ secrets.IG_KO_TOKEN }}
+      IG_KO_USER_ID: ${{ secrets.IG_KO_USER_ID }}
+      IG_EN_TOKEN: ${{ secrets.IG_EN_TOKEN }}
+      IG_EN_USER_ID: ${{ secrets.IG_EN_USER_ID }}
+      IG_ZH_CN_TOKEN: ${{ secrets.IG_ZH_CN_TOKEN }}
+      IG_ZH_CN_USER_ID: ${{ secrets.IG_ZH_CN_USER_ID }}
+      IG_FR_TOKEN: ${{ secrets.IG_FR_TOKEN }}
+      IG_FR_USER_ID: ${{ secrets.IG_FR_USER_ID }}
+      MASTODON_EN_TOKEN: ${{ secrets.MASTODON_EN_TOKEN }}
+      MASTODON_KO_TOKEN: ${{ secrets.MASTODON_KO_TOKEN }}
+      MASTODON_ZH_CN_TOKEN: ${{ secrets.MASTODON_ZH_CN_TOKEN }}
+      MASTODON_FR_TOKEN: ${{ secrets.MASTODON_FR_TOKEN }}
+      MASTODON_EN_BASE_URL: ${{ secrets.MASTODON_EN_BASE_URL }}
+      MASTODON_KO_BASE_URL: ${{ secrets.MASTODON_KO_BASE_URL }}
+      MASTODON_ZH_CN_BASE_URL: ${{ secrets.MASTODON_ZH_CN_BASE_URL }}
+      MASTODON_FR_BASE_URL: ${{ secrets.MASTODON_FR_BASE_URL }}
+      IG_CARDS: off
+      YOUTUBE_SHORTS: on
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+
+      - name: Install Python deps
+        run: pip install -r requirements.txt
+
+      - name: Collect metrics
+        run: |
+          python -m src.main collect-metrics
+
+      - name: Commit metrics
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+          git add data/performance.xlsx 2>/dev/null || true
+          git diff --staged --quiet || git commit -m "chore(markers): metrics $(date +%Y-%m-%d) [skip ci]"
+          git push || echo "nothing to push"
