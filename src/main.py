@@ -332,8 +332,10 @@ def fable_video(lang: str | None = None, mock: bool = False, date: str | None = 
             out = fablevideo.make_fable(lg, story, DATA)
             print(f"[fable-video] {lg} 완료: {out.name} ({out.stat().st_size // 1024}KB)")
         except Exception as e:  # noqa: BLE001
+            import traceback
             log_error(DATA, f"fable-video:{lg}", str(e)[:400])
             print(f"[fable-video] {lg} 렌더 실패: {e}")
+            traceback.print_exc()
 
 
 def fable_publish(date: str | None = None) -> None:
