@@ -2,21 +2,21 @@
   "en": {
     "ig": "published",
     "yt": "skip(no-creds)",
-    "ts": "2026-10-06 20:02:30"
+    "ts": "2026-10-06 22:48:13"
   },
   "ko": {
     "ig": "published",
-    "yt": "error",
-    "ts": "2026-10-06 20:05:11"
+    "yt": "published",
+    "ts": "2026-10-06 22:48:44"
   },
   "zh-cn": {
     "ig": "published",
     "yt": "skip(no-creds)",
-    "ts": "2026-10-06 20:06:49"
+    "ts": "2026-10-06 22:48:44"
   },
   "fr": {
     "ig": "published",
-    "yt": "error",
-    "ts": "2026-10-06 20:09:14"
+    "yt": "published",
+    "ts": "2026-10-06 22:49:13"
   }
 }
