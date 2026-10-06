@@ -1,0 +1,78 @@
+﻿# 韥·毵?雽€靸?旎る雼堩嫲 氇╇ (氤搓磤鞖?
+#
+# 鈿狅笍 2026-09-22 攵€韯?旖橅厫旄?鞛電?旎る雼堩嫲 韥·毵侅澊 鞎勲媹霛?**氇呾柛 鞚€頄?config/quotes.yaml)** 鞐愳劀 雮橃槰雼?
+#    靹犾爼鞚€ src/quotes.py 臧€ 雼措嫻頃滊嫟. 鞎勲灅 靻岇姢電?霅橂弻毽?瓴届毎毳?雽€牍勴暣 雮波霊愱碃 鞝勲秬 旰?霊旊嫟(enabled: false).
+# 鞁れ牅 靷澊韸鸽獏/URL鞚€ 鞚?韺岇澕瓿?靻岇姢 Excel(雮峨秬 旮半)鞐愲 氤搓磤頃滊嫟. 瓿店皽 旖橅厫旄犾棎 雲胳稖 旮堨.
+hours_window: 24  # 斓滉芳 N鞁滉皠 瓴岇嫓氍茧 靾橃
+
+sources:
+  # 臧滊皽/瓴€歃濎毄 氇?靻岇姢 鈥?鞁れ偓鞚错姼 鞐半彊 鞕勲搿?牍勴櫆靹表檾
+  - name: mock-community
+    type: mock
+    enabled: false
+
+  # DC鞚胳偓鞚措摐 鞁れ嫓臧?氩犾姢韸?臧る煬毽?(臁绊殞靾?響滌嫓 O, 雽撽竴鞚€ JS 霠岆崝毵侅澊霛?靾橃 攵堦皜)
+  - name: dc-silbe
+    type: css
+    enabled: false
+    list_url: "https://gall.dcinside.com/board/lists/?id=dcbest"
+    item_selector: "tr.ub-content"
+    row_filter_attr: {name: "data-type", exclude: "icon_notice"}
+    title_selector: "td.gall_tit a"
+    link_selector: "td.gall_tit a"
+    views_selector: "td.gall_count"
+    time_selector: "td.gall_date"
+    detail:
+      content_selector: "div.write_div"
+      comment_selector: ""
+      max_comments: 0
+
+  # 雿旍繝 HOT (臁绊殞靾?響滌嫓 O, 雽撽竴 JS 霠岆崝毵?
+  - name: theqoo-hot
+    type: css
+    enabled: false
+    list_url: "https://theqoo.net/hot"
+    item_selector: "table.bd_lst tbody tr"
+    row_skip_class: "notice"
+    title_selector: "td.title a"
+    link_selector: "td.title a"
+    views_selector: "td.m_no"
+    time_selector: "td.time"
+    detail:
+      content_selector: "div.rhymix_content"
+      comment_selector: ""
+      max_comments: 0
+
+  # 耄Μ鞗?旆 氩犾姢韸?(臁绊殞靾?響滌嫓 O)
+  - name: ruliweb-best
+    type: css
+    enabled: false
+    list_url: "https://bbs.ruliweb.com/best/hobby"
+    item_selector: "tr.table_body"
+    row_skip_class: "notice"
+    title_selector: "td.subject a.subject_link strong"
+    link_selector: "td.subject a.subject_link"
+    views_selector: "td.hit"
+    time_selector: "td.time"
+    detail:
+      content_selector: "div.view_content"
+      comment_selector: ""
+      max_comments: 0
+
+  # 鞓る姌鞚橃湢毹?氩犾姢韸胳槫敫岆矤鞀ろ姼 鈥?臁绊殞靾?響滌嫓 O, **氤鸽鞚?鞁れ牅 鞚挫暭旮半 旮戈矊 霌れ柎鞛堨潓**
+  # (雿旍繝/DC電?鞚措歆€路毵來伂順曥澊霛?氤鸽鞚?瓯办潣 鞐嗢柎 旖橅厫旄犼皜 牍堨暯頃挫電?氍胳牅 頃搓舶鞖?
+  - name: todayhumor-best
+    type: css
+    enabled: false
+    list_url: "http://www.todayhumor.co.kr/board/list.php?table=bestofbest"
+    item_selector: "tr[class*=list_tr_]"
+    title_selector: "td.subject a"
+    link_selector: "td.subject a"
+    views_selector: "td.hits"
+    time_selector: "td.date"
+    detail:
+      content_selector: "div.viewContent"
+      comment_selector: ""
+      max_comments: 0
+    # 靹犾爼 臧€欷戩箻: 鞛(氤鸽) 頀堨鞚?膦嬱晞 旮半掣 鞝愳垬 氤挫爼
+    material_bonus: 1.6

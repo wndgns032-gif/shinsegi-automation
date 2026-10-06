@@ -1,0 +1,22 @@
+{
+  "en": {
+    "ig": "published",
+    "yt": "skip(no-creds)",
+    "ts": "2026-10-06 20:02:30"
+  },
+  "ko": {
+    "ig": "published",
+    "yt": "error",
+    "ts": "2026-10-06 20:05:11"
+  },
+  "zh-cn": {
+    "ig": "published",
+    "yt": "skip(no-creds)",
+    "ts": "2026-10-06 20:06:49"
+  },
+  "fr": {
+    "ig": "published",
+    "yt": "error",
+    "ts": "2026-10-06 20:09:14"
+  }
+}

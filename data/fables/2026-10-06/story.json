@@ -1,0 +1,233 @@
+{
+  "date": "2026-10-06",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "jobs-stay-hungry",
+    "author": {
+      "en": "Steve Jobs",
+      "ko": "스티브 잡스",
+      "zh-cn": "史蒂夫·乔布斯",
+      "fr": "Steve Jobs"
+    },
+    "text": {
+      "en": "Stay hungry. Stay foolish.",
+      "ko": "늘 갈망하고, 늘 우직하게.",
+      "zh-cn": "求知若饥，虚心若愚。",
+      "fr": "Reste affamé. Reste insensé."
+    }
+  },
+  "title": {
+    "ko": "우직한 거북이의 도전",
+    "en": "The Steadfast Turtle's Challenge",
+    "zh-cn": "笨拙乌龟的挑战",
+    "fr": "Le défi de la tortue obstinée"
+  },
+  "caption": {
+    "ko": "우직한 거북이의 도전\n두려움을 이기고 한 걸음 내디딘 거북이. 당신은 마지막 도전을 언제 했나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "The Steadfast Turtle's Challenge\nA turtle who overcame fear and took a step. When was your last challenge?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "笨拙乌龟的挑战\n一只克服恐惧、迈出一步的乌龟。你上一次挑战是什么时候？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Le défi de la tortue obstinée\nUne tortue qui a surmonté sa peur et fait un pas. Quand avez-vous relevé votre dernier défi ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "두려움에 멈춘 순간,",
+        "넌 이미 진 거야."
+      ],
+      "en": [
+        "The moment fear stops you,",
+        "you've already lost."
+      ],
+      "zh-cn": [
+        "恐惧让你停下的瞬间，",
+        "你就已经输了。"
+      ],
+      "fr": [
+        "L'instant où la peur t'arrête,",
+        "tu as déjà perdu."
+      ]
+    },
+    "highlight": {
+      "ko": "두려움",
+      "en": "fear",
+      "zh-cn": "恐惧",
+      "fr": "peur"
+    }
+  },
+  "moral": {
+    "ko": "우직함은 재능을 이긴다.",
+    "en": "Stubborn persistence beats talent.",
+    "zh-cn": "笨拙的坚持胜过天赋。",
+    "fr": "L'obstination bat le talent."
+  },
+  "characters": "a small green turtle with a tiny blue backpack",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, A calm misty sunrise over a vast mountain range, a small turtle silhouette standing on a rock at the edge of a cliff, looking toward the horizon, soft golden light, peaceful atmosphere, cinematic wide shot, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "늘 갈망하고, 늘 우직하게. — 스티브 잡스.",
+        "en": "Stay hungry. Stay foolish. — Steve Jobs.",
+        "zh-cn": "求知若饥，虚心若愚。. — 史蒂夫·乔布斯.",
+        "fr": "Reste affamé. Reste insensé. — Steve Jobs."
+      },
+      "subtitle": {
+        "ko": "늘 갈망하고, 늘 우직하게.",
+        "en": "Stay hungry. Stay foolish.",
+        "zh-cn": "求知若饥，虚心若愚。",
+        "fr": "Reste affamé. Reste insensé."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, A small turtle standing at the base of a towering, steep mountain, looking up with wide eyes, the mountain peak hidden in clouds, dramatic shadows, sense of overwhelming scale, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "두려움에 멈춘 순간, 넌 이미 진 거야.",
+        "en": "The moment fear stops you, you've already lost.",
+        "zh-cn": "恐惧让你停下的瞬间， 你就已经输了。",
+        "fr": "L'instant où la peur t'arrête, tu as déjà perdu."
+      },
+      "subtitle": {
+        "ko": "두려움에 멈춘 순간, 넌 이미 진 거야.",
+        "en": "The moment fear stops you, you've already lost.",
+        "zh-cn": "恐惧让你停下的瞬间，你就已经输了。",
+        "fr": "L'instant où la peur t'arrête, tu as déjà perdu."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, The small turtle taking its first step onto a rocky mountain trail, determination in its eyes, a few pebbles rolling down behind it, morning light filtering through pine trees, adventurous mood, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "한 거북이가 높은 산을 오르기로 했어. 모두가 미쳤다고 했지만, 꼭대기에서 보는 풍경이 궁금했거든.",
+        "en": "A turtle decided to climb a high mountain. Everyone said it was crazy, but it was curious about the view from the top.",
+        "zh-cn": "一只乌龟决定爬一座高山。大家都说它疯了，但它好奇山顶的风景。",
+        "fr": "Une tortue décida d'escalader une haute montagne. Tous la trouvaient folle, mais elle était curieuse de la vue au sommet."
+      },
+      "subtitle": {
+        "ko": "모두가 미쳤다고 했어",
+        "en": "Everyone said it was crazy",
+        "zh-cn": "大家都说它疯了",
+        "fr": "Tous la trouvaient folle"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, The small turtle slipping on a wet rock and tumbling backward, its tiny blue backpack opening and a few items scattering, rain starting to fall, rugged mountain path, dynamic action shot, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "첫 시도는 실패였어. 비에 젖은 바위에 미끄러져 굴러떨어졌지. 다리가 아프고, 자신감도 바닥이었어.",
+        "en": "The first attempt failed. It slipped on a wet rock and tumbled down. Its legs hurt, and its confidence hit rock bottom.",
+        "zh-cn": "第一次尝试失败了。它在湿滑的岩石上滑倒滚落。腿疼，自信心也跌到谷底。",
+        "fr": "La première tentative échoua. Elle glissa sur une roche mouillée et dégringola. Ses pattes lui faisaient mal, et sa confiance était au plus bas."
+      },
+      "subtitle": {
+        "ko": "첫 시도는 실패",
+        "en": "The first attempt failed",
+        "zh-cn": "第一次尝试失败了",
+        "fr": "La première tentative échoua"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, The small turtle sitting under a large mushroom, looking defeated, while a wise old owl with round glasses perched on a branch above, speaking to it, soft glow of fireflies around, evening forest setting, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "그때 부엉이 할아버지가 말했어. '거북아, 산은 한 번에 오르는 게 아니란다. 한 걸음씩, 우직하게.'",
+        "en": "Then Grandpa Owl said, 'Little turtle, you don't climb a mountain all at once. One step at a time, stubbornly.'",
+        "zh-cn": "这时猫头鹰爷爷说：'小乌龟，山不是一口气爬上去的。一步一步，笨拙地坚持。'",
+        "fr": "Alors Grand-Père Hibou dit : 'Petite tortue, on ne gravit pas une montagne d'un coup. Un pas à la fois, obstinément.'"
+      },
+      "subtitle": {
+        "ko": "한 걸음씩, 우직하게",
+        "en": "One step at a time, stubbornly",
+        "zh-cn": "一步一步，笨拙地坚持",
+        "fr": "Un pas à la fois, obstinément"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, The small turtle slowly climbing a steep section, using its tiny claws to grip the rock, sweat drops on its forehead, a determined smile, sun rays breaking through clouds above, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "거북이는 다시 일어났어. 매일 조금씩, 아주 느리게. 다른 동물들이 지나쳐도 괜찮았어. 자기만의 속도로 올랐거든.",
+        "en": "The turtle got up again. A little every day, very slowly. It was okay when other animals passed by. It climbed at its own pace.",
+        "zh-cn": "乌龟再次站了起来。每天一点点，非常缓慢。其他动物超过它也没关系。它按自己的速度爬。",
+        "fr": "La tortue se releva. Un peu chaque jour, très lentement. Ce n'était pas grave si d'autres animaux la dépassaient. Elle grimpait à son propre rythme."
+      },
+      "subtitle": {
+        "ko": "자기만의 속도로",
+        "en": "At its own pace",
+        "zh-cn": "按自己的速度",
+        "fr": "À son propre rythme"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, The small turtle finally reaching the mountain summit, standing proudly on a flat rock, arms raised, a breathtaking panoramic view of clouds and distant peaks, golden sunset, triumphant moment, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "마침내 정상에 섰어. 그 풍경은 상상 이상이었어. 우직하게 한 걸음씩 걸었기에 여기까지 온 거야.",
+        "en": "Finally, it stood at the summit. The view was beyond imagination. It had come this far by taking one stubborn step at a time.",
+        "zh-cn": "终于，它站在了山顶。那风景超乎想象。正是笨拙地一步一步走，才走到了这里。",
+        "fr": "Enfin, elle se tenait au sommet. La vue dépassait l'imagination. Elle était arrivée là en faisant un pas obstiné après l'autre."
+      },
+      "subtitle": {
+        "ko": "마침내 정상에",
+        "en": "Finally at the summit",
+        "zh-cn": "终于到达山顶",
+        "fr": "Enfin au sommet"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, A modern office worker sitting at a desk late at night, looking at a computer screen with tired eyes, but a small potted plant on the desk has a tiny turtle figurine on it, city lights through the window, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "우리도 마찬가지야. 새로운 일, 공부, 관계. 시작이 두렵고 실패가 무서워서 멈추고 싶을 때가 많지.",
+        "en": "It's the same for us. New jobs, studies, relationships. We often want to stop because starting is scary and failure is frightening.",
+        "zh-cn": "我们也一样。新工作、学习、关系。开始很可怕，失败很吓人，我们常常想停下。",
+        "fr": "C'est pareil pour nous. Nouveau travail, études, relations. On veut souvent arrêter parce que commencer fait peur et l'échec effraie."
+      },
+      "subtitle": {
+        "ko": "시작이 두렵고 실패가 무서워",
+        "en": "Starting is scary, failure is frightening",
+        "zh-cn": "开始很可怕，失败很吓人",
+        "fr": "Commencer fait peur, l'échec effraie"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, A close-up of a hand writing in a journal at a cozy cafe, a cup of coffee steaming, the journal page shows a small drawing of a turtle climbing a mountain, warm morning light, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "하지만 기억해. 완벽해서 시작하는 게 아니야. 시작했기에 완벽해지는 거야. 오늘, 딱 한 걸음만 내디뎌 봐.",
+        "en": "But remember. You don't start because you're perfect. You become perfect because you started. Today, just take one step.",
+        "zh-cn": "但记住。你不是因为完美才开始。而是因为开始了才变得完美。今天，就迈出一步吧。",
+        "fr": "Mais souviens-toi. On ne commence pas parce qu'on est parfait. On devient parfait parce qu'on a commencé. Aujourd'hui, fais juste un pas."
+      },
+      "subtitle": {
+        "ko": "오늘, 딱 한 걸음만",
+        "en": "Today, just take one step",
+        "zh-cn": "今天，就迈出一步",
+        "fr": "Aujourd'hui, fais juste un pas"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small green turtle with a tiny blue backpack, The small turtle standing on the summit at dawn, looking at the horizon with a peaceful smile, a soft glowing light surrounding it, minimalist and serene background, inspirational tone, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+      "narration": {
+        "ko": "우직함은 재능을 이긴다.",
+        "en": "Stubborn persistence beats talent.",
+        "zh-cn": "笨拙的坚持胜过天赋。",
+        "fr": "L'obstination bat le talent."
+      },
+      "subtitle": {
+        "ko": "우직함은 재능을 이긴다.",
+        "en": "Stubborn persistence beats talent.",
+        "zh-cn": "笨拙的坚持胜过天赋。",
+        "fr": "L'obstination bat le talent."
+      }
+    }
+  ]
+}

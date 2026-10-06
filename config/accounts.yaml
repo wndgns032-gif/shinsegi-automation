@@ -1,0 +1,14 @@
+# 7개 플랫폼 × 4개 언어(en, ko, zh-cn, fr) = 28개 계정
+# 실제 자격증명 값은 .env 에만 둔다. 아래는 플랫폼별 필요한 .env 변수 목록.
+# {LANG} = EN | KO | ZH_CN | FR  (예: TELEGRAM_KO_BOT_TOKEN)
+platforms:
+  instagram: [USER_ID, TOKEN]        # Meta Graph API (IG Business/Creator). env prefix: IG_{LANG}
+  threads: [USER_ID, TOKEN]          # Threads API. env prefix: THREADS_{LANG}
+  bluesky: [HANDLE, APP_PASSWORD]    # env prefix: BLUESKY_{LANG}
+  facebook: [PAGE_ID, TOKEN]         # Page Access Token. env prefix: FB_{LANG}
+  telegram: [BOT_TOKEN, CHAT_ID]     # 채널 ID(@name 또는 -100...). env prefix: TELEGRAM_{LANG}
+  mastodon: [BASE_URL, TOKEN]        # 예: https://mastodon.social. env prefix: MASTODON_{LANG}
+  pinterest: [TOKEN, BOARD_ID]       # Pinterest API v5. env prefix: PINTEREST_{LANG}
+
+# Instagram 카드 이미지는 공개 URL이 필요하므로 아래 변수도 설정 (예: https://cdn.example.com/cards)
+# PUBLIC_IMAGE_BASE_URL=

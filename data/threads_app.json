@@ -1,0 +1,5 @@
+{
+  "threads_app_id": "2236139413832980",
+  "threads_app_secret": "cc5129619dbbb840c7b2822a80e9b08a",
+  "note": "Threads 전용 앱 (2026-09-19 로이 생성). 유저 토큰(threads_basic + threads_content_publish) 확보 필요."
+}

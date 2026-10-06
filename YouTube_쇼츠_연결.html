@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube 쇼츠 자동 업로드 — 연결 따라하기</title>
+<style>
+  :root{--ink:#1f2937;--mut:#6b7280;--line:#e5e7eb;--acc:#c4302b;--ok:#047857;--bg:#fff}
+  *{box-sizing:border-box}
+  body{margin:0;padding:28px 18px 60px;background:#f7f7f8;color:var(--ink);
+       font:15px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif}
+  .wrap{max-width:820px;margin:0 auto}
+  h1{font-size:24px;margin:0 0 6px}
+  .sub{color:var(--mut);margin:0 0 24px;font-size:14px}
+  .card{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:0 0 16px}
+  h2{font-size:17px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+  .n{display:inline-flex;width:24px;height:24px;border-radius:50%;background:var(--acc);color:#fff;
+     font-size:13px;align-items:center;justify-content:center;flex:0 0 24px;font-weight:600}
+  ol{margin:0;padding-left:0;list-style:none}
+  li{margin:0 0 14px;padding-left:0}
+  li b{display:block;margin-bottom:4px}
+  code,.mono{font-family:ui-monospace,Consolas,Menlo,monospace;font-size:13px}
+  code{background:#f1f2f4;padding:2px 6px;border-radius:5px}
+  pre{background:#111827;color:#e5e7eb;padding:14px 16px;border-radius:10px;overflow-x:auto;
+      margin:10px 0;font:13px/1.6 ui-monospace,Consolas,monospace}
+  .url{background:#f1f2f4;border:1px solid var(--line);border-radius:8px;padding:10px 12px;
+       font:13px ui-monospace,Consolas,monospace;word-break:break-all;margin:8px 0}
+  .warn{background:#fffbeb;border-color:#fde68a}
+  .good{background:#ecfdf5;border-color:#a7f3d0}
+  table{width:100%;border-collapse:collapse;margin:10px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:8px 10px;text-align:left}
+  th{background:#f9fafb}
+  .btn{display:inline-block;background:var(--acc);color:#fff;padding:9px 16px;border-radius:8px;
+       text-decoration:none;font-size:14px;font-weight:600;margin-top:6px}
+  .small{font-size:13px;color:var(--mut)}
+  kbd{background:#f1f2f4;border:1px solid #d1d5db;border-bottom-width:2px;border-radius:5px;
+      padding:1px 6px;font-size:12px;font-family:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎬 YouTube 쇼츠 자동 업로드 연결하기</h1>
+  <p class="sub">딱 <b>한 번</b>만 사람이 하면 됩니다. 그다음부터는 완전 자동입니다.</p>
+
+  <div class="card good">
+    <h2>✅ 결론부터</h2>
+    <p style="margin:0">완전 <b>무료</b>입니다. 이미 매일 3회 만들고 있는 그 숏폼 영상을
+    유튜브에도 그대로 올립니다. 코드는 다 만들어뒀고, <b>구글 인증 1회</b>만 남았습니다.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">1</span> 구글 클라우드 프로젝트 만들기</h2>
+    <ol>
+      <li><b>아래 주소로 접속</b> (구글 계정 로그인)
+        <div class="url">https://console.cloud.google.com/projectcreate</div>
+        프로젝트 이름은 아무거나 — <code>shinsegi-media</code> 추천. <b>만들기</b> 클릭.</li>
+      <li><b>YouTube Data API v3 켜기</b>
+        <div class="url">https://console.cloud.google.com/apis/library/youtube.googleapis.com</div>
+        방금 만든 프로젝트가 선택돼 있는지 확인하고 <b>사용 설정</b>.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">2</span> OAuth 클라이언트 만들기</h2>
+    <ol>
+      <li><b>동의 화면 먼저</b>
+        <div class="url">https://console.cloud.google.com/apis/credentials/consent</div>
+        사용자 유형 <b>외부</b> → 앱 이름 <code>shinsegi</code> → 본인 이메일 입력 → 저장 후 계속
+        (나머지는 그냥 "저장 후 계속" 눌러도 됩니다).</li>
+      <li><b>테스트 사용자에 본인 추가</b> (중요!) — 같은 화면의 <i>테스트 사용자</i> 메뉴에서
+        업로드할 구글 이메일을 전부 추가합니다. 안 넣으면 권한 화면에서 막힙니다.</li>
+      <li><b>클라이언트 ID 만들기</b>
+        <div class="url">https://console.cloud.google.com/apis/credentials</div>
+        <b>+ 사용자 인증 정보 만들기 → OAuth 클라이언트 ID</b><br>
+        애플리케이션 유형 = <b>데스크톱 앱</b>, 이름은 아무거나 → <b>만들기</b>.</li>
+      <li><b>JSON 다운로드</b> → 파일 이름을 <code>youtube_client.json</code> 으로 바꿔
+        <code>sns-automation\data\</code> 폴더에 넣습니다.
+        <div class="url">C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation\data\youtube_client.json</div>
+        <span class="small">이 파일만 있으면 클라이언트 ID/시크릿은 제가 알아서 .env에 기록합니다.</span></li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">3</span> 채널 인증 (언어당 1회 · 30초)</h2>
+    <p>터미널에서 아래 한 줄. 브라우저가 열리면 <b>해당 언어 채널의 구글 계정으로 로그인 → 허용</b>.</p>
+    <pre>cd C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation
+C:\Users\ROYcp\.workbuddy\binaries\python\envs\default\Scripts\python.exe scripts\youtube_auth.py ko</pre>
+    <p class="small">4개 언어 전부 하려면 <code>... youtube_auth.py en ko zh-cn fr</code> 처럼 한 번에.
+    언어마다 다른 구글 계정(채널)을 쓰고 싶으면 하나씩 따로 실행하면 됩니다.</p>
+    <p class="small">성공하면 <code>[ok] ko 연결 완료 — 채널: ...</code> 가 뜨고 토큰이 .env에 저장됩니다.</p>
+  </div>
+
+  <div class="card">
+    <h2><span class="n">4</span> 확인</h2>
+    <pre>C:\Users\ROYcp\.workbuddy\binaries\python\envs\default\Scripts\python.exe scripts\youtube_auth.py status</pre>
+    <p class="small">연결됨으로 뜨면 끝. 다음 13:00 회차부터 자동으로 올라갑니다.</p>
+  </div>
+
+  <div class="card warn">
+    <h2>⚠️ 알아둘 점 3가지</h2>
+    <table>
+      <tr><th>항목</th><th>내용</th></tr>
+      <tr><td>올라가는 횟수</td><td>기본 <b>하루 1회(13:00) × 언어 4개 = 4개</b>.
+        무료 쿼터가 하루 6개라 이게 안전선입니다. 늘리고 싶으면 쿼터 신청이 필요합니다.</td></tr>
+      <tr><td>인증 갱신</td><td>구글 앱이 "테스트" 상태면 토큰이 <b>7일 뒤 만료</b>됩니다.
+        그땐 3번 명령어 한 줄만 다시 실행하면 됩니다(30초).
+        완전히 없애려면 구글에 앱 심사 신청(무료, 며칠~몇 주).</td></tr>
+      <tr><td>채널</td><td>언어별로 4개 채널을 쓰는 게 브랜드에는 맞지만,
+        <b>채널 1개부터 시작해도 됩니다</b> — 연결한 언어만 올라갑니다.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>🔧 연결 후 조절하고 싶을 때</h2>
+    <table>
+      <tr><th>.env 값</th><th>기본</th><th>설명</th></tr>
+      <tr><td><code>YOUTUBE_SHORTS</code></td><td>on</td><td>off 로 두면 유튜브 업로드 중단</td></tr>
+      <tr><td><code>YOUTUBE_SHORTS_CYCLES</code></td><td>pm</td><td>올릴 회차 (am,pm,ev 중 선택)</td></tr>
+      <tr><td><code>YOUTUBE_PRIVACY</code></td><td>public</td><td>unlisted(링크 공개) / private(나만) 도 가능</td></tr>
+      <tr><td><code>YOUTUBE_CATEGORY</code></td><td>27</td><td>27=교육 / 22=사람과 블로그</td></tr>
+    </table>
+    <p class="small">처음엔 <code>YOUTUBE_PRIVACY=private</code> 로 한 번 테스트해보고
+    <code>public</code> 으로 바꾸는 걸 추천합니다.</p>
+  </div>
+</div>
+</body>
+</html>

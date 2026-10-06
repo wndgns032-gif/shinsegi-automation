@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>HuggingFace 무료 가입 — 따라하기</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --ink:#1b1f24; --sub:#5b6472; --acc:#2563eb; --line:#e3e6ea; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+         font: 16px/1.6 -apple-system,"Malgun Gothic","Apple SD Gothic Neo",Segoe UI,sans-serif; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  h1 { font-size: 26px; margin: 0 0 6px; }
+  .lead { color: var(--sub); margin: 0 0 26px; font-size: 15px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+          padding: 20px 22px; margin-bottom: 18px; box-shadow: 0 1px 3px rgba(0,0,0,.04); }
+  h2 { font-size: 17px; margin: 0 0 12px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 9px 8px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  th { width: 110px; color: var(--sub); font-weight: 600; }
+  code, .mono { font-family: ui-monospace, Consolas, monospace; background: #eef1f5;
+                padding: 2px 6px; border-radius: 5px; font-size: 14px; word-break: break-all; }
+  ol { margin: 6px 0 0; padding-left: 22px; }
+  li { margin: 7px 0; }
+  .warn { background:#fff7e6; border:1px solid #f2d999; }
+  .ok { background:#eef7f0; border:1px solid #b9ddc4; }
+  .num { display:inline-block; width:22px; height:22px; line-height:22px; text-align:center;
+         background:var(--acc); color:#fff; border-radius:50%; font-size:13px; margin-right:6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>HuggingFace 무료 가입 (ZeroGPU → AI 영상 클립)</h1>
+  <p class="lead">브라우저 창이 이미 떠 있습니다. 아래 값을 그대로 복사해서 붙여넣기만 하면 됩니다.<br>
+  가입이 끝나면 토큰 발급과 <code>.env</code> 저장까지 자동으로 처리됩니다.</p>
+
+  <div class="card">
+    <h2>1. 가입 정보 (그대로 복사)</h2>
+    <table>
+      <tr><th>이메일</th><td class="mono">xkyb9964@agent.qq.com</td></tr>
+      <tr><th>사용자명</th><td class="mono">shinsegi-media-e754</td></tr>
+      <tr><th>이름</th><td class="mono">Shinsegi Media</td></tr>
+      <tr><th>비밀번호</th><td class="mono">^9wlDLDS@CpS5hbBF6</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>2. 순서</h2>
+    <ol>
+      <li><span class="num">1</span>창에서 <b>그림 CAPTCHA</b> 를 직접 풀고 가입 완료<br>
+          <span style="color:var(--sub);font-size:14px;">(봇이 대신 풀지 않습니다 — 사람만 가능)</span></li>
+      <li><span class="num">2</span>메일함(<span class="mono">agent.qq.com</span>)에서 <b>확인 메일의 링크 클릭</b></li>
+      <li><span class="num">3</span>브라우저로 <span class="mono">huggingface.co</span> 에 로그인된 상태가 되면
+          자동 감지 → <b>read 토큰 발급 → .env 저장</b></li>
+    </ol>
+    <p style="margin:14px 0 0;font-size:14px;color:var(--sub);">
+      최대 30분 기다립니다. 창만 열어두고 가입하시면 됩니다.</p>
+  </div>
+
+  <div class="card warn">
+    <h2>3. 혹시 자동으로 토큰을 못 가져왔다면</h2>
+    <p style="margin:0 0 8px;">창에 뜬 <code>hf_...</code> 값을 복사해서 아래 명령으로 직접 넣으면 됩니다.</p>
+    <p style="margin:0;"><code>python scripts/hf_setup.py save hf_xxxxxxxxxxxx</code></p>
+  </div>
+
+  <div class="card ok">
+    <h2>4. 완료 후 달라지는 것</h2>
+    <p style="margin:0;">숏폼(08:00 / 13:00 / 19:00) 첫 장면에 <b>MiniMax H3 AI 영상</b>이 붙습니다.
+    ZeroGPU 로그인 쿼터라 익명보다 훨씬 빠르고 안정적입니다. 실패 시에는 기존 이미지 모션으로 자동 대체되므로
+    업로드 자체는 끊기지 않습니다.</p>
+  </div>
+</div>
+</body>
+</html>

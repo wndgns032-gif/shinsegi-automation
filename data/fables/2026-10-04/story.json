@@ -1,0 +1,233 @@
+{
+ "date": "2026-10-04",
+ "theme": "hardship",
+ "theme_label": "고난과 역경",
+ "quote": {
+  "id": "keller-overcoming",
+  "author": {
+   "en": "Helen Keller",
+   "ko": "헬렌 켈러",
+   "zh-cn": "海伦·凯勒",
+   "fr": "Helen Keller"
+  },
+  "text": {
+   "en": "The world is full of suffering, but it is also full of the overcoming of it.",
+   "ko": "세상은 고통으로 가득하지만, 그것을 이겨내는 일로도 가득하다.",
+   "zh-cn": "世界充满苦难，也充满战胜苦难的人。",
+   "fr": "Le monde est plein de souffrances, mais il est aussi plein de gens qui les surmontent."
+  }
+ },
+ "title": {
+  "ko": "고통을 이겨내는 작은 새",
+  "en": "The Little Bird Who Overcame",
+  "zh-cn": "战胜苦难的小鸟",
+  "fr": "Le petit oiseau qui a surmonté"
+ },
+ "caption": {
+  "ko": "고통을 이겨내는 작은 새\n날개가 아파도 다시 날아오른 참새의 이야기. 당신의 고통은 무엇이며, 어떻게 이겨내고 있나요?\n\n#명언 #오늘의문장 #배움",
+  "en": "The Little Bird Who Overcame\nA sparrow with a broken wing learns to fly again. What is your suffering, and how are you overcoming it?\n\n#wisdom #quoteoftheday #lifelessons",
+  "zh-cn": "战胜苦难的小鸟\n一只翅膀受伤的麻雀重新学会飞翔。你的苦难是什么？你又是如何战胜它的？\n\n#名言 #今日一句 #感悟",
+  "fr": "Le petit oiseau qui a surmonté\nUn moineau à l'aile blessée apprend à voler de nouveau. Quelle est votre souffrance et comment la surmontez-vous ?\n\n#citation #sagesse #lecondevie"
+ },
+ "hook": {
+  "lines": {
+   "ko": [
+    "날개가 부러져도",
+    "다시 날 수 있을까?"
+   ],
+   "en": [
+    "Can a bird with a broken wing",
+    "ever fly again?"
+   ],
+   "zh-cn": [
+    "翅膀断了，",
+    "还能再飞翔吗？"
+   ],
+   "fr": [
+    "Un oiseau à l'aile brisée",
+    "peut-il encore voler ?"
+   ]
+  },
+  "highlight": {
+   "ko": "다시 날",
+   "en": "fly again",
+   "zh-cn": "再飞翔",
+   "fr": "encore voler"
+  }
+ },
+ "characters": "a small brown sparrow with a bandaged left wing and bright black eyes",
+ "cta": {
+  "en": "Follow @shinsegi.en — a new story every day",
+  "ko": "매일 새로운 이야기 @shinsegi.kr",
+  "zh-cn": "每天一个新故事 @shinsegi.zh",
+  "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+ },
+ "scenes": [
+  {
+   "act": "quote",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, a small brown sparrow perched quietly on a bare branch at dawn, watching the horizon, soft golden light, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "세상은 고통으로 가득하지만, 그것을 이겨내는 일로도 가득하다. — 헬렌 켈러.",
+    "en": "The world is full of suffering, but it is also full of the overcoming of it. — Helen Keller.",
+    "zh-cn": "世界充满苦难，也充满战胜苦难的人。 — 海伦·凯勒.",
+    "fr": "Le monde est plein de souffrances, mais il est aussi plein de gens qui les surmontent. — Helen Keller."
+   },
+   "subtitle": {
+    "en": "Helen Keller",
+    "ko": "헬렌 켈러",
+    "zh-cn": "海伦·凯勒",
+    "fr": "Helen Keller"
+   }
+  },
+  {
+   "act": "hook",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, A small brown sparrow with a bandaged left wing stands on a rocky cliff edge, looking down at a vast forest below, wind blowing, dramatic lighting, cinematic style, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "날개가 부러져도 다시 날 수 있을까?",
+    "en": "Can a bird with a broken wing ever fly again?",
+    "zh-cn": "翅膀断了， 还能再飞翔吗？",
+    "fr": "Un oiseau à l'aile brisée peut-il encore voler ?"
+   },
+   "subtitle": {
+    "ko": "다시 날 수 있을까?",
+    "en": "Could it fly again?",
+    "zh-cn": "还能再飞吗？",
+    "fr": "Pourrait-il voler ?"
+   }
+  },
+  {
+   "act": "fable",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, The sparrow tries to fly but falls onto the grass, feathers ruffled, looking determined, morning light, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "참새는 날개를 펼쳤지만, 금세 땅으로 떨어졌어요.",
+    "en": "The sparrow spread its wings but quickly fell to the ground.",
+    "zh-cn": "麻雀展开翅膀，却很快摔到地上。",
+    "fr": "Le moineau déploya ses ailes mais tomba rapidement au sol."
+   },
+   "subtitle": {
+    "ko": "또 떨어졌어",
+    "en": "Fell again",
+    "zh-cn": "又摔了",
+    "fr": "Tombé encore"
+   }
+  },
+  {
+   "act": "fable",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, The sparrow sits on a branch, watching an old owl with spectacles perched nearby, forest background, warm light, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "그때 부엉이 할아버지가 말했어요. '작은 날갯짓부터 다시 해보렴.'",
+    "en": "Then Grandpa Owl said, 'Start again with small flaps.'",
+    "zh-cn": "这时猫头鹰爷爷说：‘从小扇动翅膀开始吧。’",
+    "fr": "Alors Grand-père Hibou dit : « Recommence par de petits battements. »"
+   },
+   "subtitle": {
+    "ko": "작은 날갯짓부터",
+    "en": "Small flaps first",
+    "zh-cn": "从小扇动开始",
+    "fr": "Petits battements"
+   }
+  },
+  {
+   "act": "fable",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, The sparrow practices flapping its wings on a low branch, sweat drops, focused expression, sunrise, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "참새는 매일 조금씩 날갯짓을 연습했어요. 아프지만 포기하지 않았죠.",
+    "en": "The sparrow practiced flapping a little every day. It hurt, but it didn't give up.",
+    "zh-cn": "麻雀每天练习一点点扇动翅膀。虽然疼，但它没有放弃。",
+    "fr": "Le moineau s'exerçait un peu chaque jour. Cela faisait mal, mais il n'abandonnait pas."
+   },
+   "subtitle": {
+    "ko": "매일 조금씩",
+    "en": "A little every day",
+    "zh-cn": "每天一点点",
+    "fr": "Un peu chaque jour"
+   }
+  },
+  {
+   "act": "fable",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, The sparrow finally flies a short distance from one branch to another, wings spread wide, joyful expression, sunlight, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "그러던 어느 날, 참새는 짧은 거리를 날아갔어요. 스스로도 놀랐죠.",
+    "en": "Then one day, the sparrow flew a short distance. Even it was surprised.",
+    "zh-cn": "终于有一天，麻雀飞了一小段距离。它自己都惊讶了。",
+    "fr": "Puis un jour, le moineau vola sur une courte distance. Il en fut lui-même surpris."
+   },
+   "subtitle": {
+    "ko": "날았어!",
+    "en": "It flew!",
+    "zh-cn": "飞起来了！",
+    "fr": "Il a volé !"
+   }
+  },
+  {
+   "act": "fable",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, The sparrow soars high above the forest, wings strong, sunset sky, triumphant, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "참새는 이제 숲 위를 힘차게 날아다녀요. 고통을 이겨낸 거예요.",
+    "en": "Now the sparrow flies powerfully above the forest. It overcame its suffering.",
+    "zh-cn": "现在麻雀在森林上空有力飞翔。它战胜了苦难。",
+    "fr": "Maintenant le moineau vole puissamment au-dessus de la forêt. Il a surmonté sa souffrance."
+   },
+   "subtitle": {
+    "ko": "이겨냈어",
+    "en": "Overcame it",
+    "zh-cn": "战胜了",
+    "fr": "Surmonté"
+   }
+  },
+  {
+   "act": "real",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, A young person sitting at a desk at dawn, looking tired but determined, coffee cup, laptop, city lights outside, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "우리도 그래요. 새벽 출근길, 시험 공부, 힘든 관계 속에서 매일 조금씩 나아가면 돼요.",
+    "en": "We are the same. On early commutes, studying for exams, or in tough relationships, just move forward a little each day.",
+    "zh-cn": "我们也一样。清晨通勤、备考、艰难的关系中，每天前进一点点就好。",
+    "fr": "Nous sommes pareils. Dans les trajets matinaux, les études ou les relations difficiles, avançons un peu chaque jour."
+   },
+   "subtitle": {
+    "ko": "조금씩 나아가면 돼",
+    "en": "Move forward little by little",
+    "zh-cn": "每天前进一点点",
+    "fr": "Avancer petit à petit"
+   }
+  },
+  {
+   "act": "real",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, a tired student studying at a desk by warm lamp light before dawn, books and notes around, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "포기하고 싶은 순간에도, 작은 날갯짓 하나가 결국 당신을 날게 할 거예요.",
+    "en": "Even when you want to give up, one small flap will eventually make you fly.",
+    "zh-cn": "即使想放弃的时候，一次小小的扇动终将让你飞翔。",
+    "fr": "Même quand vous voulez abandonner, un petit battement finira par vous faire voler."
+   },
+   "subtitle": {
+    "ko": "포기하고 싶은 순간에도",
+    "en": "Even when you want to give up",
+    "zh-cn": "即使想放弃的时候",
+    "fr": "Même quand tu veux abandonner"
+   }
+  },
+  {
+   "act": "outro",
+   "image_prompt": "children's storybook watercolor illustration, soft warm muted colors, a small brown sparrow with a bandaged left wing and bright black eyes, A person standing on a rooftop at sunrise, arms raised in victory, cityscape below, hopeful, no text, gentle atmospheric light, cozy detailed background, no text, no letters, no watermark, no logo",
+   "narration": {
+    "ko": "작은 날갯짓이 쌓이면, 어느 날 그것이 비행이 됩니다.",
+    "en": "Small flaps, repeated daily, become flight.",
+    "zh-cn": "每天一次小小的振翅，终会成为飞翔。",
+    "fr": "De petits battements d'ailes, répétés chaque jour, deviennent un vol."
+   },
+   "subtitle": {
+    "ko": "작은 날갯짓이 널 날게 해",
+    "en": "Small flaps make you fly",
+    "zh-cn": "小扇动让你飞",
+    "fr": "Petits battements te font voler"
+   }
+  }
+ ],
+ "moral": {
+  "ko": "작은 날갯짓이 쌓이면, 어느 날 그것이 비행이 됩니다.",
+  "en": "Small flaps, repeated daily, become flight.",
+  "zh-cn": "每天一次小小的振翅，终会成为飞翔。",
+  "fr": "De petits battements d'ailes, répétés chaque jour, deviennent un vol."
+ }
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>계정 만들기 따라하기 가이드</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    background: #f5f6f8; color: #1a1a2e; line-height: 1.65; padding: 32px 16px;
+  }
+  .wrap { max-width: 780px; margin: 0 auto; }
+  h1 { font-size: 26px; margin-bottom: 6px; }
+  .sub { color: #667; margin-bottom: 24px; font-size: 15px; }
+  .card {
+    background: #fff; border: 1px solid #e3e5ea; border-radius: 14px;
+    padding: 24px; margin-bottom: 20px; box-shadow: 0 1px 3px rgba(0,0,0,.04);
+  }
+  .card h2 { font-size: 19px; margin-bottom: 4px; }
+  .meta { font-size: 13px; color: #888; margin-bottom: 14px; }
+  .step { display: flex; gap: 12px; padding: 10px 8px; border-radius: 8px; align-items: flex-start; }
+  .step:hover { background: #f7f8fa; }
+  .step input[type=checkbox] { width: 19px; height: 19px; margin-top: 4px; accent-color: #2563eb; cursor: pointer; flex-shrink: 0; }
+  .step .n { font-weight: 700; color: #2563eb; min-width: 20px; margin-top: 2px; }
+  .step .body { flex: 1; }
+  .step .body b { color: #111; }
+  .step .body .hint { font-size: 13.5px; color: #556; background: #f0f4ff; border-radius: 6px; padding: 6px 10px; margin-top: 6px; display: inline-block; }
+  .step.done .body { color: #99a; text-decoration: line-through; }
+  .step.done .body .hint { text-decoration: line-through; }
+  .send {
+    background: #fff8e6; border: 1px solid #f0d98c; border-radius: 10px;
+    padding: 14px 16px; margin-top: 16px; font-size: 14.5px;
+  }
+  .send b { color: #8a6d00; }
+  code {
+    background: #eef1f5; border-radius: 5px; padding: 2px 7px;
+    font-family: Consolas, monospace; font-size: 13.5px; color: #c0392b;
+  }
+  .warn {
+    background: #fdeeee; border: 1px solid #f2b8b8; border-radius: 10px;
+    padding: 12px 16px; font-size: 14px; margin: 12px 0;
+  }
+  .progress { position: sticky; top: 8px; background: #1a1a2e; color: #fff; border-radius: 20px; padding: 10px 18px; font-size: 14px; margin-bottom: 20px; display: flex; justify-content: space-between; z-index: 5; }
+  .bar { height: 6px; background: #3b3b5c; border-radius: 3px; margin-top: 8px; overflow: hidden; }
+  .bar > div { height: 100%; background: #5b8cff; width: 0%; transition: width .3s; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px; }
+  th, td { border: 1px solid #ddd; padding: 7px 10px; text-align: left; }
+  th { background: #f4f5f7; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>계정 만들기 — 따라하기 가이드</h1>
+<p class="sub">순서대로 체크하며 진행하세요. 앱 메뉴 이름은 버전에 따라 약간 다를 수 있어요.</p>
+
+<div class="progress">
+  <span id="ptext">진행률</span>
+  <span id="pbar-wrap" style="flex:1; margin-left:20px;"><div class="bar"><div id="pbar"></div></div></span>
+  <span id="pnum">0 / 0</span>
+</div>
+
+<div class="card">
+  <h2>STEP 0. 시작 전 준비물</h2>
+  <p class="meta">5분</p>
+  <label class="step"><input type="checkbox"><span class="body"><b>이메일 주소 4개</b> 확보 — 인스타 계정 4개가 각각 다른 이메일을 필요로 해요. 기존에 쓰는 것들이 있으면 그걸로 충분해요. (예: 개인용, 업무용, 예전에 만든 것…)</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>휴대전화</b> — 각 서비스의 인증 문자를 받기만 하면 돼요.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>브랜드명 확인</b> — 아래 예시는 <code>seoulwave</code> 기준이에요. 다른 이름으로 하면 그 단어만 바꿔서 똑같이 따라 하면 돼요.</span></label>
+  <div class="warn">앱 설치가 필요한 것: <b>Telegram, Instagram, Facebook</b> (폰에 미리 설치해두면 편해요)</div>
+</div>
+
+<div class="card">
+  <h2>STEP 1. 텔레그램 — 가장 쉽고, 끝나면 바로 자동 게시 시작</h2>
+  <p class="meta">15분 · 스마트폰</p>
+  <label class="step"><input type="checkbox"><span class="body"><b>Telegram 설치 → 가입</b> — 전화번호 입력 → 문자로 온 코드 입력.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>채널 4개 만들기</b> — 왼쪽 위 메뉴(≡) → <code>새 채널</code> → 채널 이름 <code>SeoulWave EN</code> → 만들기 → <b>공개 채널</b> 선택 → 링크에 <code>seoulwave_en</code> 입력. 같은 방식으로 <code>seoulwave_ko</code>, <code>seoulwave_zh</code>, <code>seoulwave_fr</code> 총 4개.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>봇 4개 만들기</b> — 검색창에 <code>@BotFather</code> 검색 → 대화 시작 → <code>/newbot</code> 입력 → 봇 이름 <code>SeoulWave EN Bot</code> → 봇 사용자명 <code>seoulwave_en_bot</code> (반드시 <b>bot</b>으로 끝나야 함) → 토큰 복사.<div class="hint">토큰 형태: 123456789:AAH3xq... — 이게 열쇠예요. 4개 언어分 반복.</div></span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>봇을 채널 관리자로 등록</b> — 채널 열기 → 상단 채널 이름 탭 → <code>관리자</code> → <code>관리자 추가</code> → 봇 사용자명 검색해서 추가 → <b>메시지 게시</b> 권한 켜짐 확인. 4쌍 모두.</span></label>
+  <div class="send"><b>봇 토큰 4개 + 채널 주소 4개</b>(@seoulwave_en 등)를 제네시스에게 보내면, 그날 바로 자동 게시가 시작돼요.</div>
+</div>
+
+<div class="card">
+  <h2>STEP 2. 인스타그램 4개 + 페이스북</h2>
+  <p class="meta">40분 · 스마트폰 + PC</p>
+  <div class="warn"><b>주의:</b> 한 기기에서 4개를 연달에 빠르게 만들면 스파 판정이 날 수 있어요. 계정 하나 만들고 2~3분 쉬었다가 다음 거 만드는 걸 추천. 프로필(사진·소개)도 채워두면 안전해요.</div>
+  <label class="step"><input type="checkbox"><span class="body"><b>인스타 가입</b> — 앱 → 가입 → 이메일 ① → 인증 코드 → 사용자명 <code>seoulwave.en</code> → 비밀번호.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>비즈니스 계정 전환</b> — 프로필 → 메뉴(☰) → <code>설정 및 개인정보</code> → <code>계정 유형 및 도구</code> → <code>프로페셔널 계정으로 전환</code> → <b>비즈니스</b> 선택 → 카테고리는 <code>디지털 크리에이터</code> 정도.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>3개 반복</b> — 이메일 ② ③ ④로 <code>seoulwave.ko</code> / <code>seoulwave.zh</code> / <code>seoulwave.fr</code> 생성 + 전환.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>페이스북 계정 1개</b> — 가입(전화 인증) 후 기본 프로필만 완성.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>페이스북 페이지 4개</b> — PC에서 <code>facebook.com/pages/create</code> → 이름 <code>SeoulWave EN</code> → 카테고리 <code>디지털 크리에이터</code> → 만들기. 4개 언어分 반복.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>인스타 ↔ 페이지 연결</b> — 각 인스타 앱 → 설정 → <code>비즈니스 도구</code> → <code>Facebook 페이지</code> → 같은 언어의 페이지 선택. 4쌍 모두.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>Meta 개발자 앱 만들기 (PC)</b> — <code>developers.facebook.com</code> 접속 → 페이스북 계정으로 로그인 → 상단 <code>내 앱</code> → <code>앱 만들기</code> → 유형 <b>비즈니스(Business)</b> → 앱 이름 <code>sns-automation</code>. 가벼운 용도 안내가 나오면 "본인 관리" 계정 선택.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>토큰 1개 뽑기</b> — <code>developers.facebook.com/tools/explorer</code> → 우측 상단에서 내 앱(<code>sns-automation</code>) 선택 → <code>액세스 토큰 생성</code> → 아래 권한 체크 후 생성:<br><code>instagram_basic, instagram_content_publish, pages_show_list, pages_read_engagement, pages_manage_posts, threads_basic, threads_content_publish</code><br>→ 생성된 토큰 복사.</span></label>
+  <div class="send"><b>그 토큰 하나만 보내주세요.</b> 장기 토큰 교환, 인스타/페이지/스레즈 계정 ID 조회, .env 등록까지는 전부 제네시스가 처리합니다. (토큰은 1시간 뒤 만료되니 뽑으면 바로 보내주세요.)</div>
+</div>
+
+<div class="card">
+  <h2>STEP 3. 블루스카이 4개</h2>
+  <p class="meta">20분 · 앱 또는 웹</p>
+  <label class="step"><input type="checkbox"><span class="body"><b>가입</b> — <code>bsky.social</code> (앱 'Bluesky' 또는 웹) → 이메일 + 비밀번호 → <b>전화번호 인증</b> 진행.<div class="hint">같은 번호로 여러 계정 인증이 안 되면 알려주세요 — 다른 방법을 찾을게요.</div></span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>핸들</b>은 <code>seoulwave-en.bsky.social</code> 형태로. 나머지 3개(<code>-ko</code>, <code>-zh</code>, <code>-fr</code>)도 동일하게.</span></label>
+  <label class="step"><input type="checkbox"><span class="body"><b>앱 비밀번호 발급</b> — 설정 → <code>고급</code> → <code>앱 비밀번호(App passwords)</code> → 새로 만들기 → 이름 <code>automation</code> → 생성된 비밀번호(4부자) 복사. 계정마다 반복.</span></label>
+  <div class="send"><b>핸들 4개 + 앱 비밀번호 4개</b>를 보내주세요. (앱 비밀번호는 게시 권한만 가진 별도 열쇠라, 본 비밀번호를 알려줄 필요가 없어요.)</div>
+</div>
+
+<div class="card">
+  <h2>STEP 4. 마스토돈 — 로이가 할 일 없음</h2>
+  <p class="meta">0분 · 자동</p>
+  <p>제네시스의 에이전트 메일함이 개설되면(API 가입 성공 + 이메일 인증까지 확인 완료된 프로세스) <b>계정 4개 생성을 전부 자동으로</b> 진행해요. WorkBuddy 상단 개설 패널 또는 <code>더보기 → 내 메일함</code>에서만 열어주면 됩니다.</p>
+</div>
+
+<div class="card">
+  <h2>STEP 5. 핀터레스트 — 나중에 해도 됨</h2>
+  <p class="meta">순서 마지막</p>
+  <p>계정 4개 → 각각 <code>developers.pinterest.com</code>에서 개발자 전환 → 앱 생성 → 토큰 발급. 위 4개가 다 돌아간 뒤 같이 하자.</p>
+</div>
+
+<div class="card">
+  <h2>완료 후 보낼 것 모음 (복붙용)</h2>
+  <p class="meta">채워서 제네시스에게 보내주면 .env에 반영합니다</p>
+  <table>
+    <tr><th>플랫폼</th><th>보낼 값</th></tr>
+    <tr><td>Telegram</td><td>봇 토큰 4개 + 채널 주소(@...) 4개</td></tr>
+    <tr><td>Instagram/FB/Threads</td><td>Graph API Explorer 토큰 1개 (나머지는 자동 조회)</td></tr>
+    <tr><td>Bluesky</td><td>핸들 4개 + 앱 비밀번호 4개</td></tr>
+    <tr><td>Mastodon</td><td>없음 (자동)</td></tr>
+    <tr><td>Pinterest</td><td>토큰 4개 + 보드 ID (나중에)</td></tr>
+  </table>
+</div>
+
+</div>
+<script>
+(function() {
+  var boxes = document.querySelectorAll('.step input[type=checkbox]');
+  var total = boxes.length;
+  var ptext = document.getElementById('ptext'), pnum = document.getElementById('pnum'), pbar = document.getElementById('pbar');
+  function update() {
+    var done = 0;
+    boxes.forEach(function(b){ if (b.checked) { done++; b.closest('.step').classList.add('done'); } else { b.closest('.step').classList.remove('done'); } });
+    pnum.textContent = done + ' / ' + total;
+    pbar.style.width = Math.round(done/total*100) + '%';
+    ptext.textContent = done === total ? '전체 완료! 제네시스에게 알려주세요' : '진행 중';
+  }
+  boxes.forEach(function(b){ b.addEventListener('change', update); });
+  update();
+})();
+</script>
+</body>
+</html>

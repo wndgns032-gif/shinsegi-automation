@@ -1,0 +1,269 @@
+# 명언 은행 — 콘텐츠 재료는 이 파일에서만 나온다. 커뮤니티 크롤링 없음.
+#
+# 필드
+#   id      : 고유 키 (사용 이력 기록용)
+#   theme   : growth(배움과 성장) / courage(도전과 용기) / hardship(고난과 역경) / attitude(인생의 철학과 태도)
+#   author  : 그 나라에서 통용되는 표기
+#   text    : 그 나라에서 통용되는 번역/원문 표현 (직역이 아니라 현지에서 쓰는 문장)
+#
+# 새로 추가할 때 지킬 것
+#   1) 실존 인물 + 널리 검증된 문장만. 확신 없으면 넣지 않는다.
+#   2) 언어별로 '그 나라 사람이 읽어도 자연스러운' 문장을 넣는다. 기계 번역 금지.
+#   3) 테마당 최소 6개 (7개면 1주일 로테이션이 안 겹친다).
+
+quotes:
+  # ───────────────────────── 배움과 성장 (growth)
+  - id: socrates-unexamined
+    theme: growth
+    author: {en: Socrates, ko: 소크라테스, zh-cn: 苏格拉底, fr: Socrate}
+    text:
+      en: "The unexamined life is not worth living."
+      ko: "반성하지 않는 삶은 살 가치가 없다."
+      zh-cn: "没有经过审视的人生，不值得过。"
+      fr: "Une vie sans examen ne vaut pas la peine d'être vécue."
+
+  - id: confucius-practice
+    theme: growth
+    author: {en: Confucius, ko: 공자, zh-cn: 孔子, fr: Confucius}
+    text:
+      en: "To learn and then to practice it in due time — is that not a pleasure?"
+      ko: "배우고 때때로 익히면, 또한 기쁘지 아니한가."
+      zh-cn: "学而时习之，不亦说乎。"
+      fr: "Apprendre, puis mettre en pratique au moment voulu : n'est-ce pas une joie ?"
+
+  - id: confucius-know
+    theme: growth
+    author: {en: Confucius, ko: 공자, zh-cn: 孔子, fr: Confucius}
+    text:
+      en: "To know what you know and to know what you do not know — that is knowledge."
+      ko: "아는 것을 안다 하고, 모르는 것을 모른다 하는 것, 그것이 아는 것이다."
+      zh-cn: "知之为知之，不知为不知，是知也。"
+      fr: "Savoir que l'on sait ce que l'on sait, et que l'on ignore ce que l'on ignore : voilà la vraie connaissance."
+
+  - id: aristotle-habit
+    theme: growth
+    author: {en: Aristotle, ko: 아리스토텔레스, zh-cn: 亚里士多德, fr: Aristote}
+    text:
+      en: "We are what we repeatedly do. Excellence, then, is not an act but a habit."
+      ko: "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다."
+      zh-cn: "重复做的事造就了我们。卓越不是一次行为，而是一种习惯。"
+      fr: "Nous sommes ce que nous faisons de façon répétée. L'excellence n'est pas un acte, mais une habitude."
+
+  - id: edison-10000ways
+    theme: growth
+    author: {en: "Thomas Edison", ko: 토마스 에디슨, zh-cn: 托马斯·爱迪生, fr: "Thomas Edison"}
+    text:
+      en: "I have not failed. I have just found ten thousand ways that will not work."
+      ko: "나는 실패한 게 아니다. 작동하지 않는 방법을 만 가지 찾았을 뿐이다."
+      zh-cn: "我没有失败，我只是发现了一万种行不通的方法。"
+      fr: "Je n'ai pas échoué. J'ai simplement trouvé dix mille façons qui ne fonctionnent pas."
+
+  - id: maya-angelou-better
+    theme: growth
+    author: {en: "Maya Angelou", ko: 마야 안젤루, zh-cn: 玛雅·安杰卢, fr: "Maya Angelou"}
+    text:
+      en: "Do the best you can until you know better. Then when you know better, do better."
+      ko: "아는 만큼 최선을 다하세요. 더 잘 알게 되면, 그때 더 잘하면 됩니다."
+      zh-cn: "尽全力做到最好，当你懂得更多时，再去做得更好。"
+      fr: "Fais de ton mieux avec ce que tu sais. Quand tu sauras mieux, tu feras mieux."
+
+  - id: seneca-learn-to-live
+    theme: growth
+    author: {en: Seneca, ko: 세네카, zh-cn: 塞涅卡, fr: Sénèque}
+    text:
+      en: "As long as you live, keep learning how to live."
+      ko: "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다."
+      zh-cn: "只要还活着，就要不断学习如何生活。"
+      fr: "Tant que tu vis, continue d'apprendre à vivre."
+
+  # ───────────────────────── 도전과 용기 (courage)
+  - id: laotzu-thousand-miles
+    theme: courage
+    author: {en: "Lao Tzu", ko: 노자, zh-cn: 老子, fr: "Lao Tseu"}
+    text:
+      en: "A journey of a thousand miles begins with a single step."
+      ko: "천 리 길도 한 걸음에서 시작된다."
+      zh-cn: "千里之行，始于足下。"
+      fr: "Un voyage de mille lieues commence toujours par un premier pas."
+
+  - id: goethe-boldness
+    theme: courage
+    author: {en: "Johann Wolfgang von Goethe", ko: 괴테, zh-cn: 歌德, fr: "Goethe"}
+    text:
+      en: "Whatever you can do, or dream you can, begin it. Boldness has genius, power and magic in it."
+      ko: "할 수 있겠다 싶거나 꿈꿀 수 있는 일이라면, 시작하세요. 대담함에는 천재성과 힘과 마법이 들어 있다."
+      zh-cn: "只要你能想到、能梦到的事，就去做吧。大胆之中自有天赋、力量与魔力。"
+      fr: "Tout ce que tu peux faire ou rêver de faire, commence-le. L'audace contient du génie, de la force et de la magie."
+
+  - id: mandela-impossible
+    theme: courage
+    author: {en: "Nelson Mandela", ko: 넬슨 만델라, zh-cn: 纳尔逊·曼德拉, fr: "Nelson Mandela"}
+    text:
+      en: "It always seems impossible until it is done."
+      ko: "이루어질 때까지는 언제나 불가능해 보인다."
+      zh-cn: "在事情完成之前，它看起来总是遥不可及。"
+      fr: "Cela paraît toujours impossible, jusqu'à ce que ce soit fait."
+
+  - id: roosevelt-where-you-are
+    theme: courage
+    author: {en: "Theodore Roosevelt", ko: 시어도어 루스벨트, zh-cn: 西奥多·罗斯福, fr: "Theodore Roosevelt"}
+    text:
+      en: "Do what you can, with what you have, where you are."
+      ko: "있는 자리에서, 가진 것으로, 할 수 있는 일을 하라."
+      zh-cn: "在你所在的地方，用你拥有的东西，做你力所能及的事。"
+      fr: "Fais ce que tu peux, avec ce que tu as, là où tu es."
+
+  - id: earhart-decision
+    theme: courage
+    author: {en: "Amelia Earhart", ko: 아멜리아 에어하트, zh-cn: 阿梅莉亚·埃尔哈特, fr: "Amelia Earhart"}
+    text:
+      en: "The most difficult thing is the decision to act. The rest is merely tenacity."
+      ko: "가장 어려운 건 행동하기로 결심하는 일이다. 그다음은 그저 버티는 것뿐이다."
+      zh-cn: "最难的是下定决心去行动，剩下的只是坚持。"
+      fr: "Le plus difficile, c'est de décider d'agir. Le reste n'est que persévérance."
+
+  - id: jordan-failed-again
+    theme: courage
+    author: {en: "Michael Jordan", ko: 마이클 조던, zh-cn: 迈克尔·乔丹, fr: "Michael Jordan"}
+    text:
+      en: "I have failed over and over and over again in my life. And that is why I succeed."
+      ko: "나는 평생 수없이 실패했다. 그리고 그래서 성공했다."
+      zh-cn: "我一生中一次又一次地失败，这正是我成功的原因。"
+      fr: "J'ai échoué encore et encore dans ma vie. Et c'est pour cela que je réussis."
+
+  - id: jobs-stay-hungry
+    theme: courage
+    author: {en: "Steve Jobs", ko: 스티브 잡스, zh-cn: 史蒂夫·乔布斯, fr: "Steve Jobs"}
+    text:
+      en: "Stay hungry. Stay foolish."
+      ko: "늘 갈망하고, 늘 우직하게."
+      zh-cn: "求知若饥，虚心若愚。"
+      fr: "Reste affamé. Reste insensé."
+
+  # ───────────────────────── 고난과 역경 (hardship)
+  - id: nietzsche-stronger
+    theme: hardship
+    author: {en: "Friedrich Nietzsche", ko: 프리드리히 니체, zh-cn: 尼采, fr: "Friedrich Nietzsche"}
+    text:
+      en: "What does not kill me makes me stronger."
+      ko: "나를 죽이지 못하는 것은 나를 더 강하게 만든다."
+      zh-cn: "凡杀不死我的，必使我更强大。"
+      fr: "Ce qui ne me tue pas me rend plus fort."
+
+  - id: aurelius-obstacle
+    theme: hardship
+    author: {en: "Marcus Aurelius", ko: 마르쿠스 아우렐리우스, zh-cn: 马可·奥勒留, fr: "Marc Aurèle"}
+    text:
+      en: "The obstacle in the path becomes the path. What stands in the way becomes the way."
+      ko: "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다."
+      zh-cn: "阻碍你的东西，会成为你的路；挡在前方的，就是前进的方向。"
+      fr: "L'obstacle devient le chemin. Ce qui barre la route devient la route."
+
+  - id: epictetus-not-things
+    theme: hardship
+    author: {en: Epictetus, ko: 에픽테토스, zh-cn: 爱比克泰德, fr: Épictète}
+    text:
+      en: "People are disturbed not by things, but by the views they take of them."
+      ko: "사람을 흔드는 것은 일이 아니라, 그 일을 보는 나의 판단이다."
+      zh-cn: "让人不安的不是事情本身，而是我们对它的看法。"
+      fr: "Ce qui trouble les hommes, ce ne sont pas les choses, mais le jugement qu'ils portent sur elles."
+
+  - id: keller-overcoming
+    theme: hardship
+    author: {en: "Helen Keller", ko: 헬렌 켈러, zh-cn: 海伦·凯勒, fr: "Helen Keller"}
+    text:
+      en: "The world is full of suffering, but it is also full of the overcoming of it."
+      ko: "세상은 고통으로 가득하지만, 그것을 이겨내는 일로도 가득하다."
+      zh-cn: "世界充满苦难，也充满战胜苦难的人。"
+      fr: "Le monde est plein de souffrances, mais il est aussi plein de gens qui les surmontent."
+
+  - id: hemingway-broken-places
+    theme: hardship
+    author: {en: "Ernest Hemingway", ko: 어니스트 헤밍웨이, zh-cn: 海明威, fr: "Ernest Hemingway"}
+    text:
+      en: "The world breaks everyone, and afterward many are strong at the broken places."
+      ko: "세상은 누구나 부러뜨린다. 그러나 부러진 자리는 더 단단해진다."
+      zh-cn: "生活总会击垮所有人，但之后，许多人在破碎处变得坚强。"
+      fr: "Le monde brise tout le monde, et ensuite beaucoup sont plus forts là où ils ont été brisés."
+
+  - id: frankl-the-space
+    theme: hardship
+    author: {en: "Viktor Frankl", ko: 빅터 프랭클, zh-cn: 维克多·弗兰克尔, fr: "Viktor Frankl"}
+    text:
+      en: "Between stimulus and response there is a space. In that space lies our freedom."
+      ko: "자극과 반응 사이에는 공간이 있다. 그 공간에 우리의 자유가 있다."
+      zh-cn: "在刺激与回应之间存在一段距离，成长与自由的关键正在那里。"
+      fr: "Entre la stimulation et la réponse, il y a un espace. Dans cet espace se trouve notre liberté."
+
+  - id: camus-invincible-summer
+    theme: hardship
+    author: {en: "Albert Camus", ko: 알베르 카뮈, zh-cn: 阿尔贝·加缪, fr: "Albert Camus"}
+    text:
+      en: "In the midst of winter, I found there was, within me, an invincible summer."
+      ko: "겨울 한가운데서, 나는 내 안에 이길 수 없는 여름이 있다는 걸 알았다."
+      zh-cn: "在隆冬，我终于知道，我身上有一个不可战胜的夏天。"
+      fr: "Au milieu de l'hiver, j'ai découvert en moi un invincible été."
+
+  # ───────────────────────── 인생의 철학과 태도 (attitude)
+  - id: seneca-not-short
+    theme: attitude
+    author: {en: Seneca, ko: 세네카, zh-cn: 塞涅卡, fr: Sénèque}
+    text:
+      en: "It is not that we have a short time to live, but that we waste much of it."
+      ko: "인생이 짧은 게 아니다. 우리가 많은 시간을 흘려보낼 뿐이다."
+      zh-cn: "并不是人生太短，而是我们浪费了太多。"
+      fr: "Ce n'est pas que la vie soit courte, c'est que nous en gaspillons une grande part."
+
+  - id: tolstoy-change-yourself
+    theme: attitude
+    author: {en: "Leo Tolstoy", ko: 톨스토이, zh-cn: 托尔斯泰, fr: "Léon Tolstoï"}
+    text:
+      en: "Everyone thinks of changing the world, but no one thinks of changing himself."
+      ko: "모두가 세상을 바꾸려고 하지만, 정작 자기 자신을 바꾸려는 사람은 없다."
+      zh-cn: "人人都想改变世界，却没人想着改变自己。"
+      fr: "Tout le monde veut changer le monde, mais personne ne songe à se changer lui-même."
+
+  - id: lennon-life-happens
+    theme: attitude
+    author: {en: "John Lennon", ko: 존 레논, zh-cn: 约翰·列侬, fr: "John Lennon"}
+    text:
+      en: "Life is what happens while you are busy making other plans."
+      ko: "삶은 우리가 다른 계획을 세우느라 바쁜 동안 일어나는 일이다."
+      zh-cn: "生活就是当你忙着制定其他计划时发生的事。"
+      fr: "La vie, c'est ce qui arrive pendant que tu es occupé à faire d'autres projets."
+
+  - id: jobs-limited-time
+    theme: attitude
+    author: {en: "Steve Jobs", ko: 스티브 잡스, zh-cn: 史蒂夫·乔布斯, fr: "Steve Jobs"}
+    text:
+      en: "Your time is limited, so do not waste it living someone else's life."
+      ko: "당신의 시간은 한정되어 있다. 남의 인생을 사느라 낭비하지 마라."
+      zh-cn: "你的时间有限，不要为别人而活。"
+      fr: "Ton temps est limité, ne le gaspille pas à vivre la vie de quelqu'un d'autre."
+
+  - id: exupery-essential
+    theme: attitude
+    author: {en: "Antoine de Saint-Exupéry", ko: 생텍쥐페리, zh-cn: 圣埃克苏佩里, fr: "Antoine de Saint-Exupéry"}
+    text:
+      en: "What is essential is invisible to the eye."
+      ko: "가장 중요한 것은 눈에 보이지 않는다."
+      zh-cn: "真正重要的东西，用眼睛是看不见的。"
+      fr: "L'essentiel est invisible pour les yeux."
+
+  - id: gandhi-be-the-change
+    theme: attitude
+    author: {en: "Mahatma Gandhi", ko: 간디, zh-cn: 圣雄甘地, fr: "Gandhi"}
+    text:
+      en: "Be the change you wish to see in the world."
+      ko: "당신이 세상에서 보고 싶은 변화가 되어라."
+      zh-cn: "欲变世界，先变其身。"
+      fr: "Sois le changement que tu veux voir dans le monde."
+
+  - id: teresa-small-things
+    theme: attitude
+    author: {en: "Mother Teresa", ko: 마더 테레사, zh-cn: 特蕾莎修女, fr: "Mère Teresa"}
+    text:
+      en: "We cannot all do great things, but we can do small things with great love."
+      ko: "우리는 위대한 일을 할 수 없다. 다만 작은 일을 위대한 사랑으로 할 수 있다."
+      zh-cn: "我们无法做伟大的事，只能用伟大的爱去做小事。"
+      fr: "Nous ne pouvons pas tous faire de grandes choses, mais nous pouvons faire de petites choses avec un grand amour."

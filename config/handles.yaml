@@ -1,0 +1,8 @@
+# 허브-스포크 전략 설정
+# IG = 허브(풀버전), 나머지 플랫폼 = 스포크(티저 + IG 유도 CTA)
+# 티저 CTA는 시스템이 이 핸들로 자동 생성하므로, 프롬프트/생성 텍스트에는 직접 넣지 않는다.
+ig_handles:
+  en: shinsegi.en
+  ko: shinsegi.kr
+  zh-cn: shinsegi.zh
+  fr: shinsegi.fr

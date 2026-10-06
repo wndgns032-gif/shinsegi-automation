@@ -1,0 +1,75 @@
+# === 시크릿 (절대 커밋 금지) ===
+.env
+.env.*
+!.env.example
+
+# YouTube OAuth client JSON (client_id/secret 포함)
+data/youtube_client.json
+data/youtube_account.txt
+data/*_creds.json
+data/mastodon_creds.json
+data/meta_creds.json
+data/hf_account.json
+data/hf_cookies.json
+data/_hfprofile/
+
+# === 대용량 바이너리 ===
+models/
+*.mp4
+*.mov
+*.webm
+
+# 렌더링 작업 캐시
+images/
+work_*/
+work_*/
+data/work_*/
+
+# 큰 데이터 하위 디렉토리
+data/bgm/*.wav
+data/bgm/*.mp3
+data/cards/
+data/fables/*/images/
+data/fables/*/work_*/
+data/fables/*/fable_*.mp4
+data/reels/
+data/videos/
+data/preview/
+data/tts_samples/
+data/voice_samples/
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+bin/
+lib/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# === IDE / OS ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# === 로그 / 런타임 ===
+*.log
+data/errors.log
+data/scheduler.log
+
+# === WorkBuddy 프로젝트 메타 (리포와 무관) ===
+.workbuddy/
+
+# === 임시 / 백업 ===
+*.tmp
+*.bak
+*.swp
+~$*
