@@ -85,3 +85,7 @@ data/scheduler.log
 *.bak
 *.swp
 ~$*
+
+# === 임시: workflow 파일은 PAT Workflows 권한 추가 후 push ===
+# (이 줄은 PAT 갱신 후 제거)
+.github/workflows/
