@@ -11,6 +11,14 @@ data/mastodon_creds.json
 data/*_creds.json
 data/*secret*.json
 
+# 인증 시도 중 생성되는 임시 산출물
+data/_yt_auth_*.url
+data/_yt_auth_*.log
+data/_yt_auth_*.err
+data/_ps_*.txt
+data/_yt_*.xml
+_t_ps_*.py
+
 # YouTube OAuth client JSON (client_id/secret 포함)
 data/youtube_client.json
 data/youtube_account.txt
