@@ -151,11 +151,18 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 
 ## 주인공
 동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
-**세 요소(종명 + 특징/의상 + 크기감)를 포함하되, 크기는 형용사나 비교 표현으로만 쓴다.**
-  ✅ "a small gray mole with tiny round glasses and a stubby shovel"
-  ✅ "a tiny old tortoise with a cracked shell"
-  ❌ "about the size of a teacup"  ← 비교 대상(찻잔·주걱 등)을 쓰면 모델이 그 물체를 그린다
+**종명 + 동물 특유의 신체 특징(코·눈·귀·털·발톱·꼬리 등)을 반드시 포함할 것.**
+  ✅ "a small gray mole with a pointed pink nose, tiny black eyes, short whiskers, sharp digging claws"
+  ✅ "a tiny old tortoise with a cracked shell and a wrinkled neck"
+  ❌ "about the size of a teacup"  ← 비교 대상(찻잔 등)을 쓰면 모델이 그 물체를 그린다
 이 묘사는 우화 장면의 이미지 프롬프트에 자동 삽입되므로 장면 묘사에 반복할 필요 없다.
+
+⚠️ **의류·안장(소품)은 쓰지 마라** (2026-10-07 실측 — 인물화 유발):
+  - "with round glasses" 같은 표현을 넣으면 flux 가 **사람(특히 여성)** 을 그린다.
+    실측: 두더지 캐릭터에 round glasses 를 넣었더니 여러 장면이 여성이 되어 나왔다.
+  - 동물은 복장 없이 **종에서 바로 연상되는 신체 특징**으로 구분한다.
+  - "wearing a hat" / "with glasses" / "in a scarf" 류는 위험 (피한다).
+  - 도구는 동물의 본질에서 나오는 것만 허용: "carrying a small shovel" 정도는 OK.
 
 ## 규칙
 - narration: 각 언어당 1~2문장, 낭독 6~8초 분량. **나레이션은 3인칭 기록체로 쓰지 않는다.**
@@ -466,6 +473,16 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
     # 2026-10-07 실측: 크기 비교 표현은 모델이 그 물체를 그린다
     # ("about the size of a teacup" → 사람 얼굴 나옴). 형용사만 남긴다.
     characters = re.sub(r",?\s*about the size of[^,]*", "", characters).strip(" ,")
+    # ⚠️ 의류/안장 표현 제거 — flux 가 사람을 그린다 (실측: round glasses → 여성 anthropomorph)
+    characters = re.sub(r"\s*(?:with| wearing| in)\s+(?:tiny |small |round |big )?"
+                        r"(?:round )?glasses\b", "", characters, flags=re.I)
+    characters = re.sub(r"\s*(?:with| wearing| in)\s+(?:a |an |the )?"
+                        r"(?:red |blue |green |yellow |white |black |striped |plaid )?"
+                        r"(?:scarf|hat|cap|helmet|gloves|boots|sweater|shirt|coat|robe|cloak)\b",
+                        "", characters, flags=re.I)
+    characters = " ".join(characters.split()).strip(" ,")
+    if not characters:
+        characters = "a small brown animal"
 
     # ── 코드 강제: 확정된 대사/프롬프트로 덮어쓴다 ──
     for i, sc in enumerate(scenes):
