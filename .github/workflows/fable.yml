@@ -5,7 +5,12 @@ name: Fable Production
 
 on:
   schedule:
-    - cron: '20 10 * * *'   # KST 19:20 매일 (제작 5-10분 + 발행 2-3분 → 19:30 전후 발행)
+    # KST 19:20 (UTC 10:20) 마다 실행.
+    # minute 를 20 → 17 로 바꾼 이유: GitHub Actions cron 스케줄러는
+    # ':00' / ':30' 이 사람이 몰려 스케줄이 대량 지연·폐기(drop)된다.
+    # 공식 권장: 17 / 23 / 37 / 43 같은 어중간한 분을 쓸 것.
+    # (2026-10-07 실측: 20분 슬롯이 하루종일 실행되지 않음 — private+무료 한계도 별도 원인)
+    - cron: '17 10 * * *'
   workflow_dispatch:
     inputs:
       no_publish:
@@ -16,6 +21,14 @@ on:
         options:
           - 'false'
           - 'true'
+  # private + 무료 계정 환경에서 schedule 이벤트가 비활성화될 때의 우회책.
+  # 로이 PC 의 자동화(WorkBuddy)가 KST 19:20 에 이걸 호출한다.
+  # →cron 안 돌아도 발행이 계속된다.
+  # 사용: curl -X POST -H "Authorization: token $PAT" -H "Accept: application/vnd.github+json" \
+  #        https://api.github.com/repos/wndgns032-gif/shinsegi-automation/dispatches \
+  #        -d '{"event_type":"daily-fable"}'
+  repository_dispatch:
+    types: [daily-fable, retry-fable]
 
 permissions:
   contents: write           # 마커 커밋/푸시용
@@ -78,9 +91,19 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Produce & publish today's fable
+        env:
+          # schedule / repository_dispatch 로 들어온 실행은 항상 발행.
+          # workflow_dispatch 는 no_publish 입력이 있을 때만 테스트로 본다.
+          NO_PUBLISH: ${{ github.event_name == 'workflow_dispatch' && inputs.no_publish == 'true' && 'yes' || '' }}
         run: |
-          # workflow_dispatch input no_publish=true 면 미발행(테스트), 아니면 발행
-          python -m src.main run-fable ${{ inputs.no_publish == 'true' && '--no-publish' || '' }}
+          # NO_PUBLISH=yes 면 제작만, 아니면 제작+발행
+          if [ -n "$NO_PUBLISH" ]; then
+            echo "mode: no-publish (테스트)"
+            python -m src.main run-fable --no-publish
+          else
+            echo "mode: produce + publish  (event=${{ github.event_name }})"
+            python -m src.main run-fable
+          fi
 
       - name: Commit markers
         run: |
