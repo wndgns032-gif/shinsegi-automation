@@ -174,6 +174,10 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
   - ❌ "an abstract symmetrical pattern, geometric texture" (절대 금지)
   - 동물이 작게 나오면 사라지므로 `full body visible` 또는 `wide shot` 을 반드시 포함.
   - **색은 지정하지 않는다** (색 단어 금지 — 장면마다 색이 갈라진다).
+  - ⚠️ **절대로 두 동물을 함께 그리지 말 것** (`two characters`, `talking to the mole` 등).
+    두 번째 동물이 있으면 flux 가 주인공 자리를 차지해 **캐릭터가 뒤섞인다**
+    (실측: 두더지 주인공인데 거북이가 단독으로 나옴). 조언이 필요한 장면도
+    **주인공의 표정/행동만으로 표현**한다(예: "the mole pausing, thinking, alone").
 - hook.lines: 각 언어 2줄. 한 줄당 ko/zh-cn 16자, en/fr 40자 이내.
   **각 줄은 끝에 마침표를 찍은 완전한 문장**으로 쓴다(나레이션에서 이어 읽는다).
 - hook.highlight: lines 안에 실제로 포함된 강조 단어 1개(주황색 표시용). 각 언어별.
@@ -339,6 +343,35 @@ def _sentence_sep(lang: str) -> str:
     return "。" if lang == "zh-cn" else ". "
 
 
+def _strip_second_character(p: str) -> str:
+    """두 번째 캐릭터 표현을 제거 — flux 가 주인공 자리를 빼앗는 것을 막는다.
+
+    실측(2026-10-07): "an old tortoise leaning down talking to the mole" 라는 장면이
+    'mole(두더지)' 프롬프트인데도 **거북이 단독으로** 렌더됐다. 두 동물이 있으면
+    flux 가 주인공 자리를 차지한다. 다른 동물 조언은 주인공의 표정/행동으로 표현한다.
+    제거 후 장면 묘사가 너무 짧아지면(빈 프롬프트) 주인공 기본 동작으로 대체한다.
+    """
+    import re as _re
+    ANIMAL = (r"(?:owl|squirrel|fox|rabbit|hare|tortoise|turtle|deer|badger|hedgehog|"
+              r"bird|crow|cat|dog|mouse|rat|wolf|fox|elk|deer)")
+    out = p
+    # "two characters" 류 지시
+    out = _re.sub(r",?\s*(?:two characters|both characters|with another (?:animal|character))",
+                  "", out, flags=_re.I)
+    # 다른 동물을 언급하는 절 전체 삭제 (수식어가 몇 개든)
+    out = _re.sub(rf"\b(?:an?|the)\s+(?:\w+\s+){{0,3}}{ANIMAL}\s+(?:\w+\s*){{0,5}}", " ", out, flags=_re.I)
+    # 상호작용 동사구 제거 (the mole 를 주어로 하는 경우)
+    out = _re.sub(rf"\b(?:talking to|speaking to|talking with|speaking with|telling|showing)\s+the\s+\w+",
+                  "", out, flags=_re.I)
+    out = " ".join(out.split()).strip().strip(",").strip()
+    # 주동물이 빠진 경우 — 주인공 기본 동작으로 대체 (빈 프롬프트 방지)
+    if len(out) < 30 or not re.search(r"\b(stand|sit|walk|look|rest|climb|dig|hold|"
+                                      r"reach|pause|watch|lean|sleep|step|lie)\w*\b", out, re.I):
+        out = ("the main character standing alone, thinking, looking ahead, "
+               "full body visible, side view")
+    return out.strip().strip(",").strip()
+
+
 def _strip_sentence_end(s: str) -> str:
     """문장 끝 구두점(마침표/물음표/느낌표/중국어 전갈점/조르간 dot) 제거.
 
@@ -465,6 +498,9 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
         #      (실측: 두더지인데 여우·사람이 나옴). **앞뒤로 중복 삽입**해
         #      정체성 강도를 올린다. + "same character as the other scenes" 힌트.
         p = _strip_sentence_end(str(sc["image_prompt"]))
+        # 두 동물 동시 등장 표현 제거 — 두 번째 동물이 주인공 자리를 차지한다
+        # (실측: 두더지 주인공인데 거북이 단독으로 나옴)
+        p = _strip_second_character(p)
         if sc["act"] in NO_CHARACTER_ACTS:
             sc["image_prompt"] = f"{STYLE_PREFIX}, {p}, {STYLE_SUFFIX}"
         else:

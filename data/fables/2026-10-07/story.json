@@ -71,7 +71,7 @@
   "scenes": [
     {
       "act": "quote",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, a quiet misty field at dawn, a narrow dirt path leading into distant fog, the mole small in the lower corner, full body visible, wide shot, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the main character standing alone, thinking, looking ahead, full body visible, side view, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
       "narration": {
         "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다. — 마르쿠스 아우렐리우스.",
         "en": "The obstacle in the path becomes the path. What stands in the way becomes the way. — Marcus Aurelius.",
@@ -135,7 +135,7 @@
     },
     {
       "act": "fable",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, an old tortoise leaning down talking to the mole on a mossy forest rock, side view, full body visible, two characters, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the main character standing alone, thinking, looking ahead, full body visible, side view, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
       "narration": {
         "ko": "그때 거북 한 마리가 지나가다가 말했어요. \"밑을 파면 돌이 안 움직여. 위로 올라가 봐.\"",
         "en": "Then an old tortoise passed by and said, \"Digging under won't move it. Try going over the top.\"",
@@ -183,7 +183,7 @@
     },
     {
       "act": "real",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man at a small desk late at night, laptop open, one hand on his forehead, notebooks stacked, warm lamp light, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
       "narration": {
         "ko": "당신에게도 그런 돌이 있어요. 안 풀리는 문제, 자꾸 막히는 그 일. 피하고 싶은 순간이 오죠.",
         "en": "You have a stone like that too. The problem that won't crack, the thing that keeps blocking you. You feel like turning away.",
