@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-07",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "aurelius-obstacle",
+    "author": {
+      "en": "Marcus Aurelius",
+      "ko": "마르쿠스 아우렐리우스",
+      "zh-cn": "马可·奥勒留",
+      "fr": "Marc Aurèle"
+    },
+    "text": {
+      "en": "The obstacle in the path becomes the path. What stands in the way becomes the way.",
+      "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다.",
+      "zh-cn": "阻碍你的东西，会成为你的路；挡在前方的，就是前进的方向。",
+      "fr": "L'obstacle devient le chemin. Ce qui barre la route devient la route."
+    }
+  },
+  "title": {
+    "ko": "걸림돌이 길이 된다",
+    "en": "The Obstacle Becomes the Path",
+    "zh-cn": "绊脚石就是路",
+    "fr": "L'obstacle devient le chemin"
+  },
+  "caption": {
+    "ko": "걸림돌이 길이 된다\n작은 두더지가 돌을 만나 길을 찾는 이야기. 당신 앞을 막는 그 돌, 피하고 있나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "The Obstacle Becomes the Path\nA tiny mole meets a stone and finds a way. The thing blocking you — are you avoiding it?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "绊脚石就是路\n一只小鼹鼠遇到石头，找到了自己的路。挡在你前面的那块石头，你还在绕吗？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "L'obstacle devient le chemin\nUne petite taupe rencontre un caillou et trouve sa route. Ce qui te bloque, tu l'évites encore ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "앞을 막는 돌을 봤어요",
+        "돌아가면 길은 사라져요"
+      ],
+      "en": [
+        "You saw the stone in your way",
+        "Go around, and the path disappears"
+      ],
+      "zh-cn": [
+        "你看到了挡路的石头",
+        "绕过去，路就没了"
+      ],
+      "fr": [
+        "Tu as vu le caillou sur ta route",
+        "Contourne-le et le chemin disparaît"
+      ]
+    },
+    "highlight": {
+      "ko": "돌",
+      "en": "stone",
+      "zh-cn": "石头",
+      "fr": "caillou"
+    }
+  },
+  "moral": {
+    "ko": "막힌 그 자리에서 돌을 밟고 올라가세요. 그게 당신의 길이에요.",
+    "en": "Climb on the thing that blocks you. That's your path.",
+    "zh-cn": "踩着挡你的那块石头往上走。那就是你的路。",
+    "fr": "Monte sur ce qui te bloque. C'est ça, ton chemin."
+  },
+  "characters": "a small gray mole with round glasses and a stubby shovel",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, a quiet misty field at dawn, a narrow dirt path leading into distant fog, the mole small in the lower corner, full body visible, wide shot, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다. — 마르쿠스 아우렐리우스.",
+        "en": "The obstacle in the path becomes the path. What stands in the way becomes the way. — Marcus Aurelius.",
+        "zh-cn": "阻碍你的东西，会成为你的路；挡在前方的，就是前进的方向. — 马可·奥勒留.",
+        "fr": "L'obstacle devient le chemin. Ce qui barre la route devient la route. — Marc Aurèle."
+      },
+      "subtitle": {
+        "ko": "걸림돌이 곧 길",
+        "en": "The obstacle is the way",
+        "zh-cn": "阻碍就是路",
+        "fr": "L'obstacle est la voie"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, a towering rocky mountain wall filling the frame, the mole tiny at its base looking up, low angle, full body visible, wide shot, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "앞을 막는 돌을 봤어요 돌아가면 길은 사라져요",
+        "en": "You saw the stone in your way Go around, and the path disappears",
+        "zh-cn": "你看到了挡路的石头 绕过去，路就没了",
+        "fr": "Tu as vu le caillou sur ta route Contourne-le et le chemin disparaît"
+      },
+      "subtitle": {
+        "ko": "돌아가면 길 사라짐",
+        "en": "Turn away, path gone",
+        "zh-cn": "绕过去 路就没了",
+        "fr": "Détour, chemin perdu"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the mole digging under a big boulder on a forest path, shovel in paws, ferns and bushes around, side view, full body visible, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지는 돌을 피하지 않았어요. 발톱으로 돌 밑을 파기 시작했죠. 하루 종일 팠는데, 돌은 꿈쩍도 안 했어요.",
+        "en": "The mole didn't dodge the stone. It started digging under it with tiny claws. Dug all day long. The stone didn't move an inch.",
+        "zh-cn": "鼹鼠没有躲开那块石头。它用小爪子开始往石头底下挖。挖了一整天，石头动都没动。",
+        "fr": "La taupe n'a pas esquivé le caillou. Elle a commencé à creuser dessous avec ses petites griffes. Toute la journée. Le caillou n'a pas bougé d'un poil."
+      },
+      "subtitle": {
+        "ko": "하루종일 파도 꿈쩍없음",
+        "en": "Dug all day, nothing moved",
+        "zh-cn": "挖了一整天 没动",
+        "fr": "Creusé toute la journée, rien"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the mole climbing a steep rock wall, paws gripping the rough stone, seen from behind, full body visible, low angle, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "해가 한가운데 오니까, 두더지는 지쳐서 주저앉았어요. 발톱은 다 닳았고, 돌은 여전히 그 자리에 있어요.",
+        "en": "By noon the mole just plopped down, worn out. Claws worn down to nothing. The stone was still there.",
+        "zh-cn": "到了正午，鼹鼠累得一屁股坐下。爪子磨平了，石头还在那儿。",
+        "fr": "À midi, la taupe s'est effondrée, épuisée. Les griffes usées jusqu'au bout. Le caillou, toujours là."
+      },
+      "subtitle": {
+        "ko": "지쳐서 주저앉음",
+        "en": "Worn out, gave up",
+        "zh-cn": "累瘫了 坐地上",
+        "fr": "Épuisée, à terre"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, an old tortoise leaning down talking to the mole on a mossy forest rock, side view, full body visible, two characters, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 거북 한 마리가 지나가다가 말했어요. \"밑을 파면 돌이 안 움직여. 위로 올라가 봐.\"",
+        "en": "Then an old tortoise passed by and said, \"Digging under won't move it. Try going over the top.\"",
+        "zh-cn": "这时一只老乌龟路过说：\"从下面挖不动的。你往上面爬试试。\"",
+        "fr": "Puis une vieille tortue est passée et a dit : \"Creuser dessous ne le bougera pas. Essaie par-dessus.\""
+      },
+      "subtitle": {
+        "ko": "위로 올라가 봐",
+        "en": "Try going over the top",
+        "zh-cn": "往上面爬试试",
+        "fr": "Essaie par-dessus"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the mole resting tired against a large boulder, lying on the ground, dust around, side view, full body visible, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지는 돌벽을 한 발 한 발 올라갔어요. 미끄러지고, 다시 붙잡고, 조금씩 위로.",
+        "en": "The mole started climbing the stone wall, one paw at a time. Slip, grab again, up a little more.",
+        "zh-cn": "鼹鼠一步一步往石头上爬。滑下来，再抓住，一点一点往上。",
+        "fr": "La taupe a grimpé la paroi, une patte après l'autre. Glissade, reprise, un peu plus haut."
+      },
+      "subtitle": {
+        "ko": "한발 한발 위로",
+        "en": "One paw at a time",
+        "zh-cn": "一步 一步 往上",
+        "fr": "Une patte après l'autre"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the mole standing on a hilltop with arms open, a wide valley stretching below, seen from behind, full body visible, wide shot, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "정상에 올라서니까, 돌 너머로 길이 쭉 펼쳐져 있었어요. 돌이 막은 게 아니라, 길을 열어준 거였죠.",
+        "en": "At the top, the path stretched wide beyond the stone. The stone hadn't blocked the way. It opened it.",
+        "zh-cn": "爬上去一看，石头后面那条路直直铺开。石头没挡住路，反而把路打开了。",
+        "fr": "Arrivée en haut, le chemin s'ouvrait à perte de vue derrière le caillou. Il ne bloquait pas la route. Il l'ouvrait."
+      },
+      "subtitle": {
+        "ko": "돌이 길을 열어줌",
+        "en": "The stone opened the path",
+        "zh-cn": "石头 把路打开",
+        "fr": "Le caillou ouvre la route"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man at a small desk late at night, laptop open, one hand on his forehead, notebooks stacked, warm lamp light, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신에게도 그런 돌이 있어요. 안 풀리는 문제, 자꾸 막히는 그 일. 피하고 싶은 순간이 오죠.",
+        "en": "You have a stone like that too. The problem that won't crack, the thing that keeps blocking you. You feel like turning away.",
+        "zh-cn": "你也有那样的石头。解不开的题，老是卡住的那件事。总有想躲开的那一下。",
+        "fr": "Toi aussi tu as un caillou comme ça. Le problème qui bloque, la chose qui coince. Ce moment où tu veux fuir."
+      },
+      "subtitle": {
+        "ko": "피하고 싶은 순간",
+        "en": "The urge to turn away",
+        "zh-cn": "想躲开的那一下",
+        "fr": "L'envie de fuir"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a person stepping up onto a low stone step, seen from a low angle, full body visible, morning light, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 돌을 밟고 올라가세요. 밟는 순간, 그게 당신의 길이 돼요.",
+        "en": "In that moment, step up onto it. The second you do, it becomes your path.",
+        "zh-cn": "就在那一刻，踩着它往上走。你踩上去的瞬间，它就是你的路。",
+        "fr": "À ce moment-là, monte dessus. Dès que tu le fais, ça devient ton chemin."
+      },
+      "subtitle": {
+        "ko": "밟으면 그게 길",
+        "en": "Step up, it's your path",
+        "zh-cn": "踩上去 就是路",
+        "fr": "Monte, c'est ton chemin"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a small gray mole with round glasses and a stubby shovel, the mole standing at a hilltop looking out over a wide valley at first light, seen from behind, full body visible, wide shot, a small gray mole with round glasses and a stubby shovel, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "막힌 그 자리에서 돌을 밟고 올라가세요. 그게 당신의 길이에요.",
+        "en": "Climb on the thing that blocks you. That's your path.",
+        "zh-cn": "踩着挡你的那块石头往上走。那就是你的路。",
+        "fr": "Monte sur ce qui te bloque. C'est ça, ton chemin."
+      },
+      "subtitle": {
+        "ko": "막힌 것이 길",
+        "en": "The block is the way",
+        "zh-cn": "挡你的就是路",
+        "fr": "Le blocage, c'est la voie"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
