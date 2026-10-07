@@ -2,36 +2,39 @@
 
 ## 현재 상태 (확인 완료)
 
-| 언어 | 채널 | 계정 | 영상수 |
-|---|---|---|---|
-| 한국어(ko) | `@shinsegi-kr` "shinsegi 한국어" | **shinsegimedia** | 3 |
-| 프랑스어(fr) | `@shinsegi-fr` "shinsegi Français" | **shinsegimedia** | 2 |
-| 영어(en) | — | 미생성/미인증 | 0 |
-| 중국어(zh) | — | 미생성/미인증 | 0 |
+| 언어 | 채널 | 계정 | 영상수 | 상태 |
+|---|---|---|---|---|
+| 한국어(ko) | ~~`@shinsegi-kr`~~ → **`@shinsegi-zh` 로 개명** | shinsegimedia | 0 | ⛔ **차단됨** |
+| 프랑스어(fr) | `@shinsegi-fr` "shinsegi Français" | shinsegimedia | 2 | ✅ 연결 |
+| 중국어(zh-cn) | `@shinsegi-zh` "shinsegi 中文" | shinsegimedia | 0 | 인증 필요 |
+| 영어(en) | — | 미생성 | 0 | 미연결 |
 
-**즉 한국어 채널은 이미 shinsegimedia 계정에 있다.** 원하는 상태로 바꾸려면
-한국어 토큰을 **개인 계정의 채널로 재인증**해야 한다.
+**2026-10-07 저녁 변경**: 로이가 기존 `@shinsegi-kr` 채널을
+"shinsegi 中文" / `@shinsegi-zh` 로 개명했다. 기존 한국어 영상 3개는 삭제된 상태.
+
+### ⚠️ 이 변경으로 생긴 위험 (코드에서 차단함)
+기존 `YOUTUBE_KO_REFRESH_TOKEN` 은 이제 **`@shinsegi-zh`(중국어) 를 가리킨다.**
+이 상태로 한국어 영상을 올리면 **중국어 채널에 한국어 영상이 게시**된다.
+→ `config/youtube_channels.yaml` 의 `blocked_languages: [ko]` 로 업로드를 막았다.
+→ `youtube_auth.py ko` 로 재인증하면 **자동으로 차단이 해제**된다.
 
 ---
 
-## ⚠️ 먼저 알아야 할 YouTube 구조 (중요)
+## ⚠️ 먼저 알아야 할 YouTube 구조
 
-### 1. 채널은 "계정"이 아니라 "계정 아래의 자식"이다
-Google 계정 1개 = YouTube 채널 N개를 가질 수 있다.
-예: 개인 Gmail → 채널 A, 채널 B
+### 1. 채널은 "계정"이 아니라 "계정 아래의 자식"
+Google 계정 1개 = YouTube 채널 N개
 
-### 2. 영상은 채널에 영구 귀속된다
-**채널을 다른 계정으로 옮기는 것은 불가능하다.** (YouTube 정책)
-→ 원하는 결과를 얻으려면 **새로 만들어야 한다**
+### 2. 영상은 채널에 영구 귀속
+**채널을 다른 계정으로 옮기는 것은 불가능.** → 새 채널을 만들어야 한다.
 
-### 3. 그래서 선택지는 둘뿐
-
-| 방법 | 결과 |代价 |
+### 3. 목표 상태达成 방법
+| 언어 | 목표 채널 | 방법 |
 |---|---|---|
-| **A. 새 채널 생성** (권장) | 개인 계정에 `@shinsegi-ko` 새 채널 생성 → 한국어 업로드 | 기존 한국어 영상 3개는 그대로 방치 |
-| **B. 그대로 유지** | 한국어=shinsegimedia, 프랑스어=zh=shinsegimedia | 요청하신 분리 미실현 |
-
-→ 영상 3개밖에 없으므로 **A가 현실적**이다. 새 채널이 더 깨끗하다.
+| 한국어 | 개인 계정의 새 채널 | 개인 계정에서 생성 후 ko 재인증 |
+| 영어 | 개인 계정의 새 채널 | 개인 계정에서 생성 후 en 재인증 |
+| 프랑스어 | shinsegimedia (현재 그대로) | ✅ 완료 |
+| 중국어 | `@shinsegi-zh` (현재 그대로) | zh-cn 만 재인증 |
 
 ---
 
@@ -39,42 +42,32 @@ Google 계정 1개 = YouTube 채널 N개를 가질 수 있다.
 
 ### Step 1. 로이가 먼저 할 일 (브라우저)
 
-1. **개인 Google 계정**으로 YouTube 로그인
-2. 우측 상단 프로필 → **"채널 만들기"**
-3. 이름 입력 (예: `shinsegi 한국어`)
-4. 핸들 지정 (예: `@shinsegi-ko-personal`)
-   - YouTube가 사용 가능 여부를 알려준다
+**A) 개인 계정에서 한국어·영어 채널 생성**
+1. 개인 Google 계정으로 YouTube 로그인
+2. 우측 상��� 프로필 → **"채널 만들기"**
+3. 한국어 채널: 이름 `shinsegi 한국어`, 핸들 `@shinsegi-ko`
+4. 영어 채널: 이름 `shinsegi English`, 핸들 `@shinsegi-en`
 5. 생성 완료
 
-> 브랜드 계정(shinsegimedia)에서는 아직 fr, zh 채널만 있으면 된다.
-> 한국어/영어는 개인 계정 아래에 둔다.
+**B) shinsegimedia 중국어 채널은 이미 있음** (`@shinsegi-zh`) → 추가 작업 없음
 
 ### Step 2. 핸들을 config 에 기록
-새 채널 핸들이 확정되면 `config/youtube_channels.yaml` 의 `expected_handles` 를 채운다.
+새 핸들이 확정되면 `config/youtube_channels.yaml` 의 `expected_handles.ko` /
+`.en` 을 채운다. (빈 값이어도 인증은 되지만, 다른 채널에 실수로 묶일 수 있음)
 
-### Step 3. 인증 (로이 또는 내가 실행)
+### Step 3. 인증 (1개씩 — 동시에 여러 언어 인증하면 계정이 섞인다)
 ```bash
-python scripts/youtube_auth.py ko
+python scripts/youtube_auth.py zh-cn   # shinsegimedia 로그인 → @shinsegi-zh 선택
+python scripts/youtube_auth.py ko      # 개인 계정 로그인 → 한국어 채널 선택
+python scripts/youtube_auth.py en      # 개인 계정 로그인 → 영어 채널 선택
 ```
-브라우저가 열리면:
-1. **개인 계정**으로 로그인
-2. 계정 선택 화면에서 **개인 계정** 선택
-3. Step 1에서 만든 **한국어 채널** 선택
-4. "권한 허용"
-
-→ `YOUTUBE_KO_REFRESH_TOKEN` 이 해당 채널로 저장됨
-
-같은 방식:
-```bash
-python scripts/youtube_auth.py en      # 개인 계정 영어 채널
-python scripts/youtube_auth.py zh-cn   # shinsegimedia 중국어 채널
-```
+인증 성공 시 `blocked_languages` 에서 해당 언어가 **자동 제거**된다.
 
 ### Step 4. 확인
 ```bash
 python scripts/youtube_auth.py status
 ```
-각 언어가 어떤 채널에 붙었는지 표시된다.
+각 언어가 어느 채널에 붙었는지 표시된다.
 
 ---
 
@@ -95,12 +88,10 @@ python scripts/youtube_auth.py status
 3. 인증 재실행 → 계정 선택 화면이 반드시 뜬다
 
 ### ⚠️ 채널명이 모두 'shinsegi' 라 구분은 핸들로만 된다
-그래서 `expected_handles` 검증이 있다. 다른 채널에 실수로 묶이면
-**토큰 저장을 거부**한다.
+`expected_handles` 검증이 있다. 다른 채널에 실수로 묶이면 **토큰 저장을 거부**한다.
 
 ### ⚠️ 개인 계정 채널의 공개 설정
 `videos.insert` 는 채널이 **공개(Public)** 상태여야 한다.
-기본값이 Public 인지 확인한다.
 
 ---
 
@@ -113,3 +104,7 @@ python scripts/youtube_auth.py status    # 현재 토큰 → 채널 상태
 ## 변경 이력
 - 2026-10-07: config/youtube_channels.yaml 신설. 채널 매핑을 하드코딩에서
   config 기반으로 분리. `plan` / `status` 명령 추가.
+- 2026-10-07 저녁: 한국어 채널을 중국어로 개명함에 따라
+  - `expected_handles.zh-cn = "@shinsegi-zh"` 확정
+  - `blocked_languages = [ko]` 추가 (토큰이 중국어 채널을 가리키므로 차단)
+  - 재인증 성공 시 자동 차단 해제 로직 추가

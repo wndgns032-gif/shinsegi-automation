@@ -66,6 +66,52 @@ def expected_handle(lang: str) -> str:
     return (channels_config().get("expected_handles") or {}).get(lang, "") or ""
 
 
+def _is_blocked(lang: str) -> bool:
+    """채널 재배치로 업로드가 차단된 언어인지."""
+    return lang in ((channels_config().get("blocked_languages")) or [])
+
+
+def _unblock(lang: str) -> bool:
+    """재인증 완료된 언어를 blocked_languages 에서 제거. 실제로 제거했으면 True.
+
+    채널을 개명/재배치하면 옛 토큰이 다른 채널을 가리켜 업로드가 위험해진다.
+    blocked_languages 로 막아 두었다가, 재인증이 성공하면 자동으로 해제한다.
+    (로이가 config 을 손으로 고치지 않아도 되도록)
+    """
+    global _cfg_cache
+    cfg = channels_config()
+    blocked = list(cfg.get("blocked_languages") or [])
+    if lang not in blocked:
+        return False
+    blocked.remove(lang)
+    cfg["blocked_languages"] = blocked
+    try:
+        text = CHANNELS_YAML.read_text(encoding="utf-8")
+        out, in_block = [], False
+        for line in text.splitlines():
+            if line.strip().startswith("blocked_languages:"):
+                in_block = True
+                out.append(line)
+                continue
+            if in_block:
+                # 목록 항목( "- ko") 은 통째로 건너뛴다
+                if re.match(r"^\s*-\s", line):
+                    continue
+                in_block = False
+            out.append(line)
+        # 빈 목록으로 재작성
+        result = "\n".join(out)
+        result = re.sub(r"(blocked_languages:\n)(?:\s*#.*\n)*",
+                        lambda m: m.group(1), result, count=1)
+        CHANNELS_YAML.write_text(result.rstrip() + "\n", encoding="utf-8")
+        _cfg_cache = None
+        return True
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] blocked_languages 제거 실패: {e}")
+        _cfg_cache = None
+        return False
+
+
 def load_client() -> dict | None:
     """(client_id, client_secret) — data/youtube_client.json 우선, 없으면 .env."""
     if CLIENT_JSON.exists():
@@ -108,7 +154,17 @@ def auth(lang: str, client: dict) -> bool:
         "redirect_uris": ["http://localhost"],
     }}
     print(f"\n=== {lang} 채널 인증 ===")
+    grp = group_of(lang)
+    exp = expected_handle(lang)
+    label = ((channels_config().get("channels") or {}).get(grp) or {}).get("label", grp or "미지정")
+    print(f"목표 그룹: {label}")
+    print(f"기대 핸들: {exp or '(미설정 — 아무 채널이나 매칭됨)'}")
+    if _is_blocked(lang):
+        print(f"⚠ 현재 {lang} 는 blocked_languages 에 있습니다(재배치로 토큰이 다른 채널을 가리킴).")
+        print(f"  이 언어의 인증을 마치면 자동으로 차단이 해제되도록 하겠습니다.")
     print("브라우저가 열립니다. **업로드할 YouTube 계정으로 로그인**하고 허용을 누르세요.")
+    if exp:
+        print(f"  계정 선택 화면에서 핸들이 '{exp}' 인 채널을 고르세요.")
     flow = InstalledAppFlow.from_client_config(cfg, SCOPES)
     creds = flow.run_local_server(port=0, prompt="consent select_account",
                                   access_type="offline", open_browser=True)
@@ -125,8 +181,9 @@ def auth(lang: str, client: dict) -> bool:
         if not items:
             # 채널 없는 신분(개인 계정 등)의 토큰은 업로드 시 youtubeSignupRequired 401
             print("[fail] 이 토큰에는 YouTube 채널이 없습니다!")
-            print("       shinsegimedia@gmail.com 으로 로그인 후 언어별 브랜드 채널을")
-            print("       계정 선택 화면에서 골라야 합니다. 토큰을 저장하지 않습니다.")
+            print("       로그인한 Google 계정 아래에 YouTube 채널이 있어야 합니다.")
+            print("       YouTube 접속 → '채널 만들기'로 먼저 만든 뒤 다시 인증하세요.")
+            print("       토큰을 저장하지 않습니다.")
             return False
         name = items[0]["snippet"]["title"]
         handle = items[0]["snippet"].get("customUrl", "")
@@ -152,6 +209,9 @@ def auth(lang: str, client: dict) -> bool:
         _set_env(key, creds.refresh_token)
         print(f"[ok] {lang} 연결 완료 — 채널: {name} ({handle})")
         print(f"     {key} 저장됨")
+        # 차단이 있었다면 이제 재인증이 끝났으니 해제
+        if _unblock(lang):
+            print(f"     ⛔→✅ blocked_languages 에서 {lang} 제거됨 (재인증 완료)")
     except Exception as e:  # noqa: BLE001
         print(f"[fail] 채널 조회 실패 (토큰 미저장): {str(e)[:150]}")
         return False

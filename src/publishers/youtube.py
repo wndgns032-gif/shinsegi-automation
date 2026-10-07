@@ -32,6 +32,8 @@ from pathlib import Path
 
 from .base import Publisher
 
+ROOT = Path(__file__).resolve().parents[2]
+
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 TITLE_MAX = 100          # YouTube 제목 상한
@@ -81,6 +83,34 @@ def _tags(caption: str, lang: str) -> list[str]:
     return out
 
 
+# ── 채널 매핑 설정 (config/youtube_channels.yaml) ────────────────────
+# 채널을 개명/재배치하면 기존 토큰이 다른 채널을 가리키게 된다.
+# 그 상태로 업로드하면 다른 언어 채널에 영상이 올라가므로 config 로 차단한다.
+_CHANNELS_YAML = ROOT / "config" / "youtube_channels.yaml"
+_channels_cfg: dict | None = None
+
+
+def _channels_config() -> dict:
+    global _channels_cfg
+    if _channels_cfg is not None:
+        return _channels_cfg
+    _channels_cfg = {}
+    if _CHANNELS_YAML.exists():
+        try:
+            import yaml
+            _channels_cfg = yaml.safe_load(
+                _CHANNELS_YAML.read_text(encoding="utf-8")) or {}
+        except Exception as e:  # noqa: BLE001
+            print(f"  [youtube] youtube_channels.yaml 파싱 실패 — 차단 판정 생략: {e}")
+            _channels_cfg = {}
+    return _channels_cfg
+
+
+def _is_blocked(lang: str) -> bool:
+    """채널 재배치로 업로드가 위험한 언어인지 판정."""
+    return lang in ((_channels_config().get("blocked_languages")) or [])
+
+
 class YouTubePublisher(Publisher):
     name = "youtube"
     env_suffixes = ["REFRESH_TOKEN"]
@@ -125,6 +155,17 @@ class YouTubePublisher(Publisher):
     # ── 업로드 ──────────────────────────────────────────────────────────
     def publish_reel(self, lang: str, caption: str, video_path: Path, creds: dict) -> dict:
         tag = f"{self.name}_shorts"
+
+        # ⚠️ 위험 차단: 채널이 개명/재배치된 상태에서 옛 토큰으로 업로드하면
+        #    다른 언어 채널에 영상이 올라간다.
+        #    예: 2026-10-07 한국어 채널을 중국어로 바꾸면서, ko 토큰이
+        #        @shinsegi-zh 를 가리키게 됨 → 한국어 영상이 중국어 채널에 게시.
+        # config/youtube_channels.yaml 의 blocked_languages 로 명시 차단한다.
+        if _is_blocked(lang):
+            print(f"  [youtube:{lang}] ⛔ 업로드 차단 — config blocked_languages "
+                  f"(채널 재배치 후 재인증 필요)")
+            return {"platform": tag, "lang": lang, "status": "blocked",
+                    "detail": "채널 재배치로 토큰이 다른 채널을 가리킴 — 재인증 필요"}
         try:
             from googleapiclient.http import MediaFileUpload
         except ImportError as e:  # noqa: BLE001
