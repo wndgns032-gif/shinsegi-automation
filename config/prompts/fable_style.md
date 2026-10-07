@@ -21,30 +21,43 @@
 
 ## 2. 스타일 블록 (모든 장면에 동일 삽입)
 
-`STYLE_PREFIX` — 모든 장면 프롬프트 맨 앞에 붙는다:
+> ⚠️ **2026-10-07 실측에서 정정된 중요 원칙**
+>
+> **프롬프트가 길어질수록 flux 가 "무엇을 그릴지"를 희생한다.**
+> 스타일 설명을 길게 쓰면 실제 장면 대신 **추상 패턴·기하학**이 나온다
+> (실측: "거북이" → 등껍질 무늬만, "바위 벽을 오르는 두더지" → 타원만).
+>
+> → **스타일 토큰은 짧게 유지한다. 흑백 통일은 프롬프트가 아니라 후처리가 보장한다.**
+
+`STYLE_PREFIX` — 모든 장면 프롬프트 맨 앞에 붙인다:
 
 ```
-black and white pencil sketch illustration, monochrome, grayscale only,
-hand-drawn graphite line art with soft crosshatching shading, vintage
-storybook etching print, consistent medium and line weight across the
-whole series
+black and white pencil drawing, monochrome, graphite sketch,
+hand-drawn line art, no color, no border, no frame, no text
 ```
 
-`STYLE_SUFFIX` — 모든 장면 프롬프트 맨 뒤에 붙는다:
+`STYLE_SUFFIX` — 모든 장면 프롬프트 맨 뒤에 붙인다:
 
 ```
-strictly monochrome, no color, no hue, no tint, desaturated, grayscale,
-soft even diffused light, gentle vignette darkening at the corners,
-simple uncluttered background, subject centered, medium shot,
-no text, no letters, no numbers, no watermark, no logo, no signature
+monochrome, grayscale, no color, no frame, no border, no text,
+no watermark, simple background, subject clearly visible,
+full-bleed scene, edge to edge
 ```
 
-### 왜 이런 단어들을 쓰는가
-- `pencil sketch` + `graphite` + `etching print` → **재질(매체)** 을 하나로 고정
-- `monochrome / grayscale only / no color / no hue` → **색을 차단**
-- `consistent line weight` → 선 굵기가 달라서 생기는 "다른 만화 같은 느낌" 제거
-- `soft even diffused light` → 조명 방향이 매 장면 바뀌는 문제 제거
-- `medium shot, subject centered` → 원거리/근거리/사면이 제각각인 문제 제거
+### 조립 순서 — 이것도 중요하다 (실측)
+```
+STYLE_PREFIX , <장면 묘사> , <characters> , STYLE_SUFFIX
+                  ↑ 먼저        ↑ 뒤에
+```
+`characters`(주인물 묘사)를 **앞에** 넣으면 flux 가 클로즈업 얼굴에 고정돼
+장면이 사라진다(바위만 꽉 찬 화면이 실제로 나왔음). **장면 묘사가 먼저, 캐릭터는 뒤.**
+
+### 왜 짧게만 쓰나 — 각 어휘의 역할
+- `pencil drawing` / `graphite sketch` → **재질(매체)** 을 하나로 고정
+- `monochrome / grayscale / no color` → **색을 차단** (백업: 후처리)
+- `no border / no frame` → 액자 방지 (백업: 9% 크롭)
+- `subject clearly visible` → 클로즈업 과다 방지
+- 긴 형용사 나열(`soft crosshatching shading, vintage etching print, ...`)은 **역효과** — 제거함
 
 ---
 
@@ -52,13 +65,23 @@ no text, no letters, no numbers, no watermark, no logo, no signature
 
 - 주인공은 **영어 외형 한 줄**로만 (`characters`) 정의하고 모든 장면에 동일 문자열로 삽입.
 - 模型이 매번 다른 동물을 그리면 안 되므로, 묘사는 **구체적 3요소**로 적는다:
-  - `종명` (a small green turtle)
-  - `의상/특징` (with a tiny blue backpack)
-  - `크기감` (tiny, chubby, elderly …)
+  - `종명` (a small gray mole)
+  - `의상/특징` (with tiny round glasses and a stubby shovel)
+  - `크기감` (tiny / small / chubby / elderly …) — **형용사로만**
+- ⚠️ **크기를 비교 표현으로 쓰지 말 것** — `about the size of a teacup` 처럼 비교 대상을 넣으면
+  모델이 **그 물체를 그린다** (실제로 두더지 프롬프트에서 사람 얼굴이 나왔던 사례).
 - **장르를 넘지 않는다.** 예: "an old wise owl" 라고 썼는데 우유곰이 나오면 안 된다.
 - `real` 장면(현실 대입)은 **동물을 쓰지 않는다.** 이때는 `characters` 삽입을 건너뛴다.
   - 지금 코드가 모든 장면에 동물을 넣어서 "회사원 + 거북이" 같은 화면이 나온다.
   - **개정: `characters`는 quote/hook/fable/outro 에만 삽입, real 은 제외.**
+
+## 3-1. 액자 테두리 함정 (2026-10-07 실측)
+
+- `vintage etching print` / `storybook print` 같은 표현을 넣으면 모델이 **액자·매트·벽화 액자**를 그리며
+  화면 가장자리를_frames 로 감싼다. 프롬프트에 `no frame` 을 넣어도 효과가 제한적이라
+  **후처리 크롭(`_to_monochrome` 의 9% each edge crop) 으로 제거**한다.
+- 액자를 유발하는 단어는 프롬프트에서 빼는 게 좋다: `etching print`, `framed`, `portrait print`.
+- 대신 형태/재질 어휘로 통일: `hand-drawn graphite line art with soft crosshatching shading`.
 
 ---
 
@@ -78,15 +101,20 @@ no text, no letters, no numbers, no watermark, no logo, no signature
 ## 5. 후처리(`_to_monochrome`)가 하는 일
 
 `fablevideo.py` 에서 Pollinations 이미지를 받은 직후, 저장 직전에 실행한다.
+**이 단계가 "통일성"의 최종 보장**이다. 프롬프트는 그림을 유도할 뿐, 통일은 여기서 한다.
 
-1. `ImageOps.grayscale()` — 완전한 흑백.
-2. `ImageEnhance.Contrast(1.08)` — 평평해진 회색 방지.
+1. **액자/매트 9% 크롭** — 모델이 'vintage etching' 을 요구하면 액자·테두리·점형 여백을
+   그리므로 가장자리 9%씩 잘라낸다(576x1024 → 474x840).
+2. `ImageOps.grayscale()` — 완전한 흑백.
 3. `ImageOps.autocontrast(cutoff=1)` — 장면별 명도 차이 흡수(어두운 장면/밝은 장면 격차 축소).
-4. 미세한 **세피아 톤**(R=G+8, B=G−6 정도) — 완전히 기계적인 그레이가 아니라
+4. `ImageEnhance.Contrast(1.08)` — 평평해진 회색 방지.
+5. 미세한 **세피아 톤**(R=G+6, B=G−6 정도) — 완전히 기계적인 그레이가 아니라
    "양피지 같은 따뜻한 흑백" 느낌. **흑백 느낌** 요구를 만족시키면서 인쇄물의 질감을 살린다.
-5. 크롭은 기존대로.
+6. 크롭은 기존대로.
 
 > 이 덕분에 ① 프롬프트를 무시하는 모델이거나 폴백 이미지도 최종적으로 같은 톤이 된다.
+> **주의**: 1번 크롭은 idempotent 하지 않다(적용할 때마다 9%씩 줄어든다).
+> 캐시된 이미지에 재적용하지 말 것 — 신규 생성분에만 적용.
 
 ---
 

@@ -157,13 +157,26 @@ def _to_monochrome(path: Path) -> None:
     렌더 직전에 PIL로 반드시 그레이스케일 변환한다.** 전체 10장면이 같은 톤이 되고,
     텍스트(자막·명언카드)와 그림 사이의 대비도 일정해져 가독성이 올라간다.
 
-    1) 완전 그레이스케일
-    2) autocontrast — 장면별 명도 차이 흡수(어두운 장면/밝은 장면 격차 축소)
-    3) 대비 소폭 강화 — 평평한 회색 방지
-    4) 아주 미세한 세피아 톤 — 기계적 그레이가 아니라 "양피지 같은" 인쇄물 질감
+    1) 액자/매트 여백 제거 — 모델이 'vintage etching' 을 요구하면 액자·테두리·점형 여백을
+       자꾸 그린다. 가장자리 9%씩 잘라내면 사라진다.
+    2) 완전 그레이스케일
+    3) autocontrast — 장면별 명도 차이 흡수(어두운 장면/밝은 장면 격차 축소)
+    4) 대비 소폭 강화 — 평평한 회색 방지
+    5) 아주 미세한 세피아 톤 — 기계적 그레이가 아니라 "양피지 같은" 인쇄물 질감
+
+    ⚠️ **1번 크롭은 멱등(idempotent)하지 않다** — 호출할 때마다 9%씩 계속 줄어든다.
+       Pollinations 로 **새로 받은 이미지에만** 적용할 것.
+       이미 처리된 캐시 이미지에 재적용 금지(해상도 손실).
+       `gen_images()` 는 캐시 히트 분기에서 이 함수를 호출하지 않도록 주의할 것.
     """
     try:
-        img = Image.open(path)
+        img = Image.open(path).convert("RGB")
+        # ── 액자/테두리 제거 (중앙 영역만 유지) ──
+        # 모델이 그리는 액자는 대부분 가장자리 6~10% + 상하 매트. 9%씩 잘라내면 사라진다.
+        w, h = img.size
+        mx, my = int(w * 0.09), int(h * 0.09)
+        if mx > 4 and my > 4:
+            img = img.crop((mx, my, w - mx, h - my))
         img = ImageOps.grayscale(img)
         img = ImageOps.autocontrast(img, cutoff=1)
         img = ImageEnhance.Contrast(img).enhance(1.08)
@@ -184,8 +197,13 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Pa
     paths: list[Path] = []
     for i, p in enumerate(prompts):
         dest = out_dir / f"scene{i + 1}.jpg"
+        # 후처리 이력 마커 — 크롭은 멱등하지 않아 캐시 히트 시 재적용하면 해상도가 계속 깎인다
+        mark = out_dir / f"scene{i + 1}.mono"
         if dest.exists() and dest.stat().st_size > 20000:
-            _to_monochrome(dest)  # 캐시 이미지도 흑백 통일 적용
+            if not mark.exists():
+                # 이전 버전(마커 없는) 캐시 — 1회만 처리
+                _to_monochrome(dest)
+                mark.write_text("1", encoding="utf-8")
             paths.append(dest)
             continue
         url = ("https://image.pollinations.ai/prompt/"
@@ -200,6 +218,7 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Pa
                 if r.ok and "image" in ct and len(r.content) > 20000:
                     dest.write_bytes(r.content)
                     _to_monochrome(dest)  # ← 흑백 통일 (프롬프트 무시 대비)
+                    mark.write_text("1", encoding="utf-8")
                     print(f"  [fable] 이미지 {i + 1}/{len(prompts)} OK ({len(r.content) // 1024}KB, 흑백)")
                     ok = True
                     break
@@ -213,6 +232,7 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Pa
         if not ok:
             _fallback_image(dest, i)
             _to_monochrome(dest)  # 폴백도 흑백으로
+            mark.write_text("1", encoding="utf-8")
             print(f"  [fable] 이미지 {i + 1} 로컬 폴백 (Pollinations 쿼터, 흑백)")
         paths.append(dest)
         time.sleep(1)  # 무료 레이트리밋 예의

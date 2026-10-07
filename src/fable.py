@@ -55,17 +55,27 @@ THEMES_BY_WEEKDAY = ["growth", "courage", "hardship", "attitude"]
 # (2026-10-07 로이 지시: "이미지가 통일적이지 않다, 흑백 느낌으로 통일")
 # 상세 규칙 = config/prompts/fable_style.md
 # 주의: 여기서 "색 지정" 단어(golden light 등)는 절대 넣지 않는다 — 결과가 그림마다 갈라진다.
-STYLE_PREFIX = ("black and white pencil sketch illustration, monochrome, grayscale only, "
-                "hand-drawn graphite line art with soft crosshatching shading, "
-                "vintage storybook etching print, consistent medium and line weight, "
-                "full-bleed image filling the entire frame, no border, no frame, "
-                "no white margin, edge-to-edge artwork")
-STYLE_SUFFIX = ("strictly monochrome, no color, no hue, no tint, desaturated, grayscale, "
-                "soft even diffused light, gentle vignette darkening at the corners, "
-                "simple uncluttered background, subject centered, medium shot, "
-                "no text, no letters, no numbers, no signature, no caption, no caption box, "
-                "no artist signature, no handwriting, no watermark, no logo, "
-                "no decorative border, no picture frame, no matting, plain artwork only")
+# 이미지 프롬프트 일관성 — 모든 장면에 공통으로 들어가는 스타일 토큰.
+# (2026-10-07 로이 지시: "이미지가 통일적이지 않다, 흑백 느낌으로 통일")
+# 상세 규칙 = config/prompts/fable_style.md
+#
+# ⚠️ 두 가지 실측 함정 (이 주석을 지우지 말 것):
+#
+# 1) **프롬프트가 길어지면 flux 가 장면 내용을 희생한다.**
+#    스타일 설명을 길게 쓰면 실제 장면 대신 추상 패턴·기하학이 나온다
+#    (실측: "거북이" → 등껍질 무늬만 / "바위 벽을 오르는 두더지" → 타원만).
+#    → 스타일 토큰은 **짧게** 유지한다. 흑백 통일은 프롬프트가 아니라
+#      **후처리(fablevideo._to_monochrome)** 가 확실히 보장한다.
+#
+# 2) **characters 를 앞에 넣으면 클로즈업에 고정돼 장면이 사라진다.**
+#    실측: "바위 벽을 오르는 두더지" → 바위만 꽉 찬 화면.
+#    → 조립 순서는 반드시 STYLE_PREFIX + **장면 묘사 먼저** + characters 뒤.
+#      (아래 `_validate()` 의 이미지 프롬프트 조립부 참고)
+STYLE_PREFIX = ("black and white pencil drawing, monochrome, graphite sketch, "
+                "hand-drawn line art, no color, no border, no frame, no text")
+STYLE_SUFFIX = ("monochrome, grayscale, no color, no frame, no border, no text, "
+                "no watermark, simple background, subject clearly visible, "
+                "full-bleed scene, edge to edge")
 
 # 주인공 동물을 넣지 않는 장면 — 현실 대입(real)은 사람이 중심이다.
 # (2026-10-07: 예전엔 real 에도 거북이가 삽입돼 "회사원 + 거북이" 화면이 나왔음)
@@ -141,7 +151,10 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 
 ## 주인공
 동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
-세 요소(종명 + 특징/의상 + 크기감)를 모두 포함할 것. 예: "a small green turtle with a tiny blue backpack".
+**세 요소(종명 + 특징/의상 + 크기감)를 포함하되, 크기는 형용사나 비교 표현으로만 쓴다.**
+  ✅ "a small gray mole with tiny round glasses and a stubby shovel"
+  ✅ "a tiny old tortoise with a cracked shell"
+  ❌ "about the size of a teacup"  ← 비교 대상(찻잔·주걱 등)을 쓰면 모델이 그 물체를 그린다
 이 묘사는 우화 장면의 이미지 프롬프트에 자동 삽입되므로 장면 묘사에 반복할 필요 없다.
 
 ## 규칙
@@ -150,7 +163,11 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
   을 Throw in 하거나, 동작만 던지고 감정은 뉘앙스로 남긴다. 단 real·outro 장면은 반드시 2인칭으로 끝낸다.
 - subtitle: 화면 하단 자막. ko/zh-cn 16자 이내, en/fr 42자 이내. 조사를 붙이지 않는다(명사형).
 - image_prompt: 영문. 해당 장면의 상황을 그림으로. **색을 지정하지 않는다** (색 단어 금지 —
-  지정하면 장면마다 색이 갈라진다. 전부 흑백 연필 스케치로 그려지도록 묘사할 것).
+  지정하면 장면마다 색이 갈라진다). **장면 묘사가 스타일보다 우선이다**: "누가 무엇을 하고 있는 장면"을
+  먼저 구체적으로 쓰고(인물/동물 + 동작 + 배경 + 카메라 각도), 금지어는 뒤에 붙인다.
+  - ✅ "a small mole with round glasses, digging under a big boulder on a forest path, "
+     "seen from the side, bushes and ferns around, morning light"
+  - ❌ "an abstract symmetrical pattern, geometric texture" (그런 건 절대 금지 — 실수로 나온 사례)
 - hook.lines: 각 언어 2줄. 한 줄당 ko/zh-cn 16자, en/fr 40자 이내.
   **각 줄은 끝에 마침표를 찍은 완전한 문장**으로 쓴다(나레이션에서 이어 읽는다).
 - hook.highlight: lines 안에 실제로 포함된 강조 단어 1개(주황색 표시용). 각 언어별.
@@ -430,9 +447,12 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
                 sc["narration"][lang] = moral[lang]
         # 4) 이미지 프롬프트 일관성 — 흑백 스타일 강제 삽입 (로이 지시 2026-10-07)
         #    real 장면은 사람이 중심이므로 동물을 넣지 않는다.
+        #    ⚠️ 순서 주의 (2026-10-07 실측): characters( 주인공 묘사)를 앞에 넣으면
+        #    flux 가 클로즈업 얼굴에 고정돼 장면이 사라진다(바위만 꽉 찬 화면).
+        #    → **장면 묘사를 먼저, 캐릭터는 뒤에** 둔다.
         p = _strip_sentence_end(str(sc["image_prompt"]))
         sc["image_prompt"] = (f"{STYLE_PREFIX}, {p}, {STYLE_SUFFIX}" if sc["act"] in NO_CHARACTER_ACTS
-                              else f"{STYLE_PREFIX}, {characters}, {p}, {STYLE_SUFFIX}")
+                              else f"{STYLE_PREFIX}, {p}, {characters}, {STYLE_SUFFIX}")
 
     story = {
         "date": datetime.now(quotes.KST).date().isoformat(),
