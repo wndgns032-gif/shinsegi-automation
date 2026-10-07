@@ -162,12 +162,18 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
   3인칭 서술("The turtle got up again")은 유튜브 요약 채널처럼 들린다. 2인칭("누구/당신/you/tu/你")
   을 Throw in 하거나, 동작만 던지고 감정은 뉘앙스로 남긴다. 단 real·outro 장면은 반드시 2인칭으로 끝낸다.
 - subtitle: 화면 하단 자막. ko/zh-cn 16자 이내, en/fr 42자 이내. 조사를 붙이지 않는다(명사형).
-- image_prompt: 영문. 해당 장면의 상황을 그림으로. **색을 지정하지 않는다** (색 단어 금지 —
-  지정하면 장면마다 색이 갈라진다). **장면 묘사가 스타일보다 우선이다**: "누가 무엇을 하고 있는 장면"을
-  먼저 구체적으로 쓰고(인물/동물 + 동작 + 배경 + 카메라 각도), 금지어는 뒤에 붙인다.
-  - ✅ "a small mole with round glasses, digging under a big boulder on a forest path, "
-     "seen from the side, bushes and ferns around, morning light"
-  - ❌ "an abstract symmetrical pattern, geometric texture" (그런 건 절대 금지 — 실수로 나온 사례)
+- image_prompt: **영문. 주격 명사구(fragment)로 쓴다** — 완전한 서술문("Morning light. The mole
+  stands...")이나 문장으로 쓰면 flux 가 개념을 못 잡고 추상 형태를 그린다(실측 사례).
+  **"누가 + 무엇을 + 하는 장면"** 을 명사구로 압축하고, 서술/서사 없이 시각 정보만.
+  - ✅ "a small mole with round glasses digging under a big boulder on a forest path,
+     ferns and bushes around, side view, full body visible"
+  - ✅ "a young man at a small desk late at night, laptop open, one hand on his forehead,
+     notebooks stacked, pencil sketch portrait, waist up"
+  - ❌ "Morning light. The small mole stands at the base of the boulder, shovel tiny in
+     its paws, digging at the rock's edge. Wide shot showing..."  → 추상 타원 출력됨
+  - ❌ "an abstract symmetrical pattern, geometric texture" (절대 금지)
+  - 동물이 작게 나오면 사라지므로 `full body visible` 또는 `wide shot` 을 반드시 포함.
+  - **색은 지정하지 않는다** (색 단어 금지 — 장면마다 색이 갈라진다).
 - hook.lines: 각 언어 2줄. 한 줄당 ko/zh-cn 16자, en/fr 40자 이내.
   **각 줄은 끝에 마침표를 찍은 완전한 문장**으로 쓴다(나레이션에서 이어 읽는다).
 - hook.highlight: lines 안에 실제로 포함된 강조 단어 1개(주황색 표시용). 각 언어별.
@@ -424,6 +430,9 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
         data["caption"][lang] = body + "\n\n" + FABLE_TAGS[lang]
 
     characters = str(data["characters"]).strip()
+    # 2026-10-07 실측: 크기 비교 표현은 모델이 그 물체를 그린다
+    # ("about the size of a teacup" → 사람 얼굴 나옴). 형용사만 남긴다.
+    characters = re.sub(r",?\s*about the size of[^,]*", "", characters).strip(" ,")
 
     # ── 코드 강제: 확정된 대사/프롬프트로 덮어쓴다 ──
     for i, sc in enumerate(scenes):
