@@ -19,6 +19,7 @@ from __future__ import annotations
 import json
 import os
 import random
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -51,10 +52,24 @@ SCENE_ACTS = ["quote", "hook", "fable", "fable", "fable", "fable", "fable", "rea
 THEMES_BY_WEEKDAY = ["growth", "courage", "hardship", "attitude"]
 
 # 이미지 프롬프트 일관성 — 모든 장면에 공통으로 들어가는 스타일 토큰.
-# 주인공 동물 외형(characters)도 코드에서 강제 삽입한다 (모델 망각 방지).
-STYLE_PREFIX = "children's storybook watercolor illustration, soft warm muted colors"
-STYLE_SUFFIX = ("gentle atmospheric light, cozy detailed background, "
-               "no text, no letters, no watermark, no logo")
+# (2026-10-07 로이 지시: "이미지가 통일적이지 않다, 흑백 느낌으로 통일")
+# 상세 규칙 = config/prompts/fable_style.md
+# 주의: 여기서 "색 지정" 단어(golden light 등)는 절대 넣지 않는다 — 결과가 그림마다 갈라진다.
+STYLE_PREFIX = ("black and white pencil sketch illustration, monochrome, grayscale only, "
+                "hand-drawn graphite line art with soft crosshatching shading, "
+                "vintage storybook etching print, consistent medium and line weight, "
+                "full-bleed image filling the entire frame, no border, no frame, "
+                "no white margin, edge-to-edge artwork")
+STYLE_SUFFIX = ("strictly monochrome, no color, no hue, no tint, desaturated, grayscale, "
+                "soft even diffused light, gentle vignette darkening at the corners, "
+                "simple uncluttered background, subject centered, medium shot, "
+                "no text, no letters, no numbers, no signature, no caption, no caption box, "
+                "no artist signature, no handwriting, no watermark, no logo, "
+                "no decorative border, no picture frame, no matting, plain artwork only")
+
+# 주인공 동물을 넣지 않는 장면 — 현실 대입(real)은 사람이 중심이다.
+# (2026-10-07: 예전엔 real 에도 거북이가 삽입돼 "회사원 + 거북이" 화면이 나왔음)
+NO_CHARACTER_ACTS = {"real"}
 
 # 화면에 크게 띄우는 CTA (아웃트로 하단, 주황색). 언어별 문구.
 CTA_TEXTS = {
@@ -89,14 +104,25 @@ def load_story(data_dir: Path, date: str | None = None) -> dict | None:
 # ─────────────────────────────────────────────────────────────
 # DeepSeek 호출
 # ─────────────────────────────────────────────────────────────
-def _build_messages(quote: Quote, theme: str) -> list[dict]:
+def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None) -> list[dict]:
     quote_block = "\n".join(
         f"- {l}: {quote.text_of(l)} ({quote.author_of(l)})" for l in LANGS)
+    voice = _load_voice_rules()
+    # 직전 시도에서 검출된 문제 — 다음 시도에서 교정하도록 명시적으로 feedback
+    fb = ""
+    if feedback:
+        items = "\n".join(f"- {f}" for f in feedback)
+        fb = ("## ⚠️ 직전 시도에서 아래 문제가 검출됨 — 반드시 고쳐서 다시 써라\n"
+              f"{items}\n"
+              "같은 실수를 반복하지 말고, 해당 언어로 **원어민이 실제로 쓰는 표현**으로 "
+              "처음부터 다시 작성하라. 특히 '번역한 티'가 나는 문장은 통째로 삭제하고 새로 써라.\n\n")
     system = (
         "당신은 자기계발 우화 숏츠 채널의 작가다. "
         "동물 우화로 인생의 교훈을 전달하고, 마지막에 명언으로 마무리하는 "
-        "60~75초 세로 영상 대본을 쓴다. 어떤 언어로 대답하든 JSON 값은 "
-        "각 언어에 맞는 자연스러운 문장으로 작성한다(기계번역투 금지)."
+        "60~75초 세로 영상 대본을 쓴다. "
+        "가장 중요한 것: **각 언어의 narration/subtitle 은 그 언어 원어민이 실제로 입으로 "
+        "말하는 문장이어야 한다. 문법이 맞아도 원어민이 쓰지 않는 표현이면 실패다.** "
+        "다른 언어에서 통역한 흔적이 있으면 반드시 처음부터 다시 써라."
     )
     user = f"""## 오늘의 명언 (이 교훈을 우화로 풀 것)
 {quote_block}
@@ -105,30 +131,53 @@ def _build_messages(quote: Quote, theme: str) -> list[dict]:
 
 ## 구조 (총 10장면 — 명언이 영상을 연다)
 1장면 quote: 명언 원문을 화면 가운데 크게 보여주며 낭독. (낭독은 시스템이 명언 원문으로 자동 교체 — image_prompt만 작성: 명언의 분위기를 상징하는 고요한 장면, 주인공 동물 등장 가능)
-2장면 hook: 시청자를 붙잡는 문장 2줄. 도발적 질문이나 반전 예고. (낭독은 이 2줄을 읽는다)
-3~7장면 fable: 주인공 동물이 목표를 갖고 → 실패와 시행착오 → 다른 동물의 조언이나 사건 → 깨달음. 이야기가 흐르게.
-8~9장면 real: 우화의 교훈을 현대인의 일상(출근, 공부, 관계, 새벽 루틴, 포기하고 싶은 순간)에 대입.
+2장면 hook: 시청자를 붙잡는 문장 2줄. 도발적 질문이나 반전 예고.
+  - **각 줄은 그 자체로 완전한 문장**이어야 한다 (끝에 마침표를 찍어라).
+  - 나레이션은 이 2줄을 이어서 읽으므로, 두 줄이 이어져도 의미가 통해야 한다.
+  (예: "A stone blocked the road. Go around it, and the road disappears.")
+3~7장면 fable: 주인공 동물이 목표를 갖고 → 실패와 시행착오 → 다른 동물의 조언이나 사건 → 깨달음. 이 5장은 **하나의 연속된 이야기**다. 시간대(아침→저녁)와 카메라 각도는 5장 안에서 고정하고, 주인공의 위치와 감정만 변하게 한다.
+8~9장면 real: 우화의 교훈을 현대인의 일상(출근, 공부, 관계, 새벽 루틴, 포기하고 싶은 순간)에 대입. 여기서 주인공은 **사람**이다 (동물 캐릭터는 쓰지 않는다).
 10장면 outro: 교훈 한 문장 낭독으로 마무리. (낭독은 시스템이 moral로 자동 교체 — image_prompt만 작성)
 
 ## 주인공
 동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
-(예: "a small white rabbit with a red scarf"). 이 묘사는 모든 이미지 프롬프트에
-자동 삽입되므로 장면 묘사에 반복할 필요 없다.
+세 요소(종명 + 특징/의상 + 크기감)를 모두 포함할 것. 예: "a small green turtle with a tiny blue backpack".
+이 묘사는 우화 장면의 이미지 프롬프트에 자동 삽입되므로 장면 묘사에 반복할 필요 없다.
 
 ## 규칙
-- narration: 각 언어당 1~2문장, 낭독 6~8초 분량(짧고 아주 자연스럽게). 구어체.
-- subtitle: 화면 하단 자막. ko/zh-cn 16자 이내, en/fr 42자 이내.
-- image_prompt: 영문. 해당 장면의 상황을 그림으로. 주인공 동물이 등장하는 행동 묘사. 텍스트·글자 없는 그림.
+- narration: 각 언어당 1~2문장, 낭독 6~8초 분량. **나레이션은 3인칭 기록체로 쓰지 않는다.**
+  3인칭 서술("The turtle got up again")은 유튜브 요약 채널처럼 들린다. 2인칭("누구/당신/you/tu/你")
+  을 Throw in 하거나, 동작만 던지고 감정은 뉘앙스로 남긴다. 단 real·outro 장면은 반드시 2인칭으로 끝낸다.
+- subtitle: 화면 하단 자막. ko/zh-cn 16자 이내, en/fr 42자 이내. 조사를 붙이지 않는다(명사형).
+- image_prompt: 영문. 해당 장면의 상황을 그림으로. **색을 지정하지 않는다** (색 단어 금지 —
+  지정하면 장면마다 색이 갈라진다. 전부 흑백 연필 스케치로 그려지도록 묘사할 것).
 - hook.lines: 각 언어 2줄. 한 줄당 ko/zh-cn 16자, en/fr 40자 이내.
+  **각 줄은 끝에 마침표를 찍은 완전한 문장**으로 쓴다(나레이션에서 이어 읽는다).
 - hook.highlight: lines 안에 실제로 포함된 강조 단어 1개(주황색 표시용). 각 언어별.
-- moral: 아웃트로 카드에 크게 띄울 교훈 문장. 각 언어 1문장, 낭독 5~7초.
+- moral: 아웃트로 카드에 크게 띄울 교훈 문장. 각 언어 1문장, 낭독 5~7초. **2인칭으로 끝낸다.**
 - title: 각 언어 짧은 제목.
 - caption: 각 언어 게시 캡션 — 첫 줄은 제목(유튜브 제목으로 쓰임), 이어서 우화 한 줄 요약 + 질문. 해시태그는 넣지 마라(자동 추가됨).
 
-순수 JSON 하나만 반환하라:
+{voice}
+
+{fb}순수 JSON 하나만 반환하라:
 """ + _SCHEMA_EXAMPLE
 
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
+
+
+def _load_voice_rules() -> str:
+    """config/prompts/fable_voice.md — 언어별 필사 규칙(자연스러운 표현용).
+
+    파일이 없으면 빈 문자열(파이프라인 중단 금지). 프롬프트에 통째로 주입한다.
+    """
+    p = ROOT / "config" / "prompts" / "fable_voice.md"
+    if not p.exists():
+        return ""
+    try:
+        return p.read_text(encoding="utf-8")
+    except OSError:
+        return ""
 
 
 # 스키마 예시 — f-string 이 아닌 일반 문자열 (이중 중괄호 처리 불필요)
@@ -169,18 +218,24 @@ def _extract_json(text: str) -> dict:
 
 
 def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
-    """명언 → 우화 스토리 JSON. mock=True 면 고정 샘플(파이프라인 점검용)."""
+    """명언 → 우화 스토리 JSON. mock=True 면 고정 샘플(파이프라인 점검용).
+
+    자연스름 문제가 검출되면(예: ko '자신감도 바닥이었어요', fr 성 수일치)
+    문제 목록을 피드백으로 넣고 최대 max_attempts 회까지 다시 생성한다.
+    """
     if mock or not os.getenv("DEEPSEEK_API_KEY"):
         return _validate(_mock_story(quote, theme), quote, theme)
     last_err: Exception = RuntimeError("생성 실패")
-    for attempt in (1, 2, 3):
+    max_attempts = 3
+    feedback: list[str] = []
+    for attempt in range(1, max_attempts + 1):
         resp = requests.post(
             DEEPSEEK_URL,
             headers={"Authorization": f"Bearer {os.getenv('DEEPSEEK_API_KEY')}",
                      "Content-Type": "application/json"},
             json={
                 "model": MODEL,
-                "messages": _build_messages(quote, theme),
+                "messages": _build_messages(quote, theme, feedback),
                 "response_format": {"type": "json_object"},
                 "temperature": 0.9,
                 "max_tokens": 5000,
@@ -190,16 +245,118 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
         resp.raise_for_status()
         try:
             data = _extract_json(resp.json()["choices"][0]["message"]["content"])
-            return _validate(data, quote, theme)
+            story = _validate(data, quote, theme)
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             last_err = e
-            print(f"  [fable] 스토리 파싱 실패 (시도 {attempt}/3): {e}")
-    raise last_err
+            print(f"  [fable] 스토리 파싱 실패 (시도 {attempt}/{max_attempts}): {e}")
+            continue
+        issues = story.get("naturalness_issues") or []
+        if not issues:
+            return story
+        # 문제가 있으면 피드백으로 만들어 다음 시도에서 교정시킨다
+        last_err = ValueError("자연스름 검사 미통과: " + "; ".join(issues[:5]))
+        feedback = issues[:12]
+        print(f"  [fable] 자연스름 미통과 (시도 {attempt}/{max_attempts}):")
+        for p in feedback:
+            print(f"    - {p}")
+        if attempt < max_attempts:
+            print("       → 해당 표현을 고쳐 다시 생성합니다")
+    # 최종 시도 결과라도 반환(파이프라인 중단 방지) — issues 남아 있을 수 있음
+    try:
+        return story
+    except NameError:
+        raise last_err
 
 
 # ─────────────────────────────────────────────────────────────
 # 검증 + 코드 강제 사항
 # ─────────────────────────────────────────────────────────────
+# ─────────────────────────────────────────────────────────────
+# 언어별 자연스름 검증 — AI가 "그럴듯하게" 넘겨도 걸러낸다
+# ─────────────────────────────────────────────────────────────
+# 각 항목 = (언어, 금지 패턴, 사유). 검출 시 해당 필드를 재생성하도록 강제한다.
+# 상세 근거는 config/prompts/fable_voice.md 참조.
+_BAD_PHRASES: dict[str, list[tuple[str, str]]] = {
+    "ko": [
+        ("바닥에 닿", "영하식 직역 관용구(구어체에 없음)"),
+        ("바닥이었", "영하식 직역 관용구(구어체에 없음)"),
+        ("바닥에 닿았", "영하식 직역 관용구(구어체에 없음)"),
+        ("읽어보", "해설/서술 톤"),
+        ("말이다", "해설 톤"),
+    ],
+    "en": [
+        (" In conclusion", "서술형 결론 문구"),
+        (" is known as", "문서체"),
+        (" is considered", "문서체 수동형"),
+        ("Let that sink in", "클리셰"),
+        ("In today's world", "클리셰 도입"),
+    ],
+    "zh-cn": [
+        ("锲而不舍", "书面语成語 — 쇼츠에 부적합"),
+        ("持之以恒", "书面语成語 — 쇼츠에 부적합"),
+        ("总而言之", "书面语总结"),
+        ("请大家", "높임 표현"),
+    ],
+    "fr": [
+        ("Ce n'était", "과도한 접속 구조"),
+        ("Il est important de noter", "문서체"),
+        ("En conclusion", "서술형 결론"),
+        ("il est à noter", "문서체"),
+    ],
+}
+
+
+def _ends_with_cjk(s: str) -> bool:
+    """끝글자가 CJK(한/중/일)인지 — 한글이면 ' '(스페이스)로 잇지 않는다."""
+    return bool(s) and ord(s[-1]) > 0x2E80
+
+
+def _sentence_sep(lang: str) -> str:
+    """언어별 문장 구분자. 한국어는 '. '(영문 마침표), 중국어만 '。'를 쓴다."""
+    return "。" if lang == "zh-cn" else ". "
+
+
+def _strip_sentence_end(s: str) -> str:
+    """문장 끝 구두점(마침표/물음표/느낌표/중국어 전갈점/조르간 dot) 제거.
+
+    2026-10-07: '求知若饥，虚心若愚。. — 史蒂夫·乔布斯' 처럼 마침표가 중복되던 문제 해결.
+    """
+    s = str(s).strip()
+    return s.rstrip(".?!。．！…· ")
+
+
+def _check_naturalness(story: dict) -> list[str]:
+    """부자연스러운 표현 검출. 발견한 문제를 문자열 리스트로 반환(빈 리스트 = 통과)."""
+    problems: list[str] = []
+    scenes = story.get("scenes", [])
+    for si, sc in enumerate(scenes):
+        for lang in LANGS:
+            narr = str(sc.get("narration", {}).get(lang, ""))
+            sub = str(sc.get("subtitle", {}).get(lang, ""))
+            for text, kind in ((narr, "narration"), (sub, "subtitle")):
+                for pat, why in _BAD_PHRASES.get(lang, []):
+                    if pat in text:
+                        problems.append(f"scene{si + 1}.{kind}[{lang}]: '{pat.strip()}' — {why}")
+    # 프렌치 성 수일치: 3인칭 여성 주어 + 남성 동사 어간 (la +Verb 어간+s 형태)
+    for si, sc in enumerate(scenes):
+        fr_narr = str(sc.get("narration", {}).get("fr", ""))
+        # 'trouvaient' 류 실수: 주어가 'la/une' 인데 동사가 남성 복수/남성 단수 꼬리
+        for stem in ("trouvaient", "était", "allait", "voulait", "savait", "pouvait"):
+            if re.search(rf"\b(?:la|une|tortue|lapin) {stem}\b", fr_narr):
+                problems.append(
+                    f"scene{si + 1}.narration[fr]: '{stem}' 성 수일치 의심 — "
+                    f"주어의 수(성/복수)에 맞춰 어간을 확인 필요")
+    # 中文 어미 중복 (。. / 。。/ ！！)
+    for si, sc in enumerate(scenes):
+        for lang in ("zh-cn",):
+            narr = str(sc.get("narration", {}).get(lang, ""))
+            sub = str(sc.get("subtitle", {}).get(lang, ""))
+            for text, kind in ((narr, "narration"), (sub, "subtitle")):
+                if re.search(r"[。．.！!]{2,}", text):
+                    problems.append(f"scene{si + 1}.{kind}[{lang}]: 구두점 중복")
+    return problems
+
+
 def _validate(data: dict, quote: Quote, theme: str) -> dict:
     handles = load_handles(ROOT / "config")
 
@@ -257,19 +414,25 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
         if sc["act"] == "quote":
             for lang in LANGS:
                 author = quote.author_of(lang)
-                qt = quote.text_of(lang).strip().rstrip(".")   # 마침표 중복 방지
+                qt = _strip_sentence_end(quote.text_of(lang))
                 sc["narration"][lang] = (f"{qt}. — {author}." if author else f"{qt}.")
-        # 2) 훅 장면 낭독 = 훅 2줄 그대로 읽기 (화면 텍스트·음성 일치 보장)
+        # 2) 훅 장면 낭독 = 훅 2줄을 완전한 문장으로 이어 읽는다.
+        #    (예: "앞을 막는 돌을 봤어요. 돌아가면 길은 사라져요")
         if sc["act"] == "hook":
             for lang in LANGS:
-                sc["narration"][lang] = " ".join(hook["lines"][lang])
+                parts = [_strip_sentence_end(x) for x in hook["lines"][lang] if str(x).strip()]
+                if not parts:
+                    continue
+                sc["narration"][lang] = _sentence_sep(lang).join(parts)
         # 3) 아웃트로 낭독 = 교훈 문장 (quote 는 이미 오프닝에서 낭독됨)
         if sc["act"] == "outro":
             for lang in LANGS:
                 sc["narration"][lang] = moral[lang]
-        # 4) 이미지 프롬프트 일관성 — 스타일 + 주인공 외형 강제 삽입
-        p = str(sc["image_prompt"]).strip().rstrip(".")
-        sc["image_prompt"] = f"{STYLE_PREFIX}, {characters}, {p}, {STYLE_SUFFIX}"
+        # 4) 이미지 프롬프트 일관성 — 흑백 스타일 강제 삽입 (로이 지시 2026-10-07)
+        #    real 장면은 사람이 중심이므로 동물을 넣지 않는다.
+        p = _strip_sentence_end(str(sc["image_prompt"]))
+        sc["image_prompt"] = (f"{STYLE_PREFIX}, {p}, {STYLE_SUFFIX}" if sc["act"] in NO_CHARACTER_ACTS
+                              else f"{STYLE_PREFIX}, {characters}, {p}, {STYLE_SUFFIX}")
 
     story = {
         "date": datetime.now(quotes.KST).date().isoformat(),
@@ -284,6 +447,8 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
         "cta": {lang: CTA_TEXTS[lang].format(h=handles[lang]) for lang in LANGS},
         "scenes": scenes,
     }
+    # 자연스름 검증 결과 기록 (로이 검수용 — 문제가 있어도 파이프라인은 계속 진행)
+    story["naturalness_issues"] = _check_naturalness(story)
     return story
 
 
@@ -302,82 +467,84 @@ def _mock_story(quote: Quote, theme: str) -> dict:
         "ko": {
             "h1": "토끼는 언덕 위 해돋이를", "h2": "매일 포기하며 꿈만 꿨어요",
             "hl": "포기",
-            "n1": "작은 토끼 한 마리가 언덕 위 해돋이를 보고 싶었어요.",
-            "n2": "첫날은 씩씩하게 뛰어 올라갔지만, 곧 숨이 차서 주저앉고 말았죠.",
-            "n3": "다람쥐가 말했어요. 한 번에 다 오르려 하지 말고, 아침마다 조금씩만 가보라고.",
-            "n4": "토끼는 사흘간 비를 맞으며, 포기하고 싶은 마음과 싸웠어요.",
-            "n5": "그리고 어느 새벽, 문득 정상이 눈앞에 있었어요.",
-            "n6": "언덕 위에서 본 해돋이는, 상상보다 훨씬 컸답니다.",
-            "n7": "당신의 언덕도 마찬가지예요. 오늘 딱 한 걸음만 더 디디면 돼요.",
-            "n8": "큰 성공은 결국, 작은 걸음이 쌓인 날 옵니다.",
+            "n1": "작은 토끼 한 마리가 언덕 위 해돋이를 보고 싶어했어요.",
+            "n2": "첫날엔 씩씩 뛰어 올랐는데, 금방 숨이 차서 주저앉았어요.",
+            "n3": "다람쥐가 그러더라고요. 한 번에 다 오르려 하지 말고, 아침마다 조금씩만 가보라고요.",
+            "n4": "사흘 동안 비를 맞으면서, 그만두고 싶은 마음을 이겨냈어요.",
+            "n5": "그리고 어느 새벽, 정상이 눈앞에 그냥 서 있었어요.",
+            "n6": "언덕 위에서 본 해돋이는, 상상했던 것보다 훨씬 컸어요.",
+            "n7": "우리 모두 저런 언덕이 있어요. 오늘 딱 한 걸음만 더 디디면 돼요.",
+            "n8": "정상에 도착하는 날은 결국, 작은 걸음이 쌓여서 오는 거예요.",
             "n9": "outro",
             "t": "토끼와 높은 언덕",
-            "s": ["오늘의 명언", "해돋이를 보고 싶었어", "숨이 차서 주저앉고 말았죠", "조금씩만 가보라고",
-                  "포기하고 싶은 마음과 싸웠어요", "정상이 눈앞에 있었어요", "해돋이는 더 컸어요",
-                  "한 걸음만 더", "작은 걸음이 쌓여요", "매일 한 걸음씩"],
+            "s": ["오늘의 명언", "언덕 위 해돋이", "숨이 차서 주저앉음", "조금씩만 가보라고",
+                  "그만두지 않는 마음", "정상이 눈앞에", "상상보다 컸음",
+                  "한 걸음만 더", "작은 걸음의 힘", "오늘 한 걸음"],
         },
         "en": {
-            "h1": "The rabbit dreamed of the sunrise", "h2": "but gave up halfway, every single day",
+            "h1": "The rabbit dreamed of the sunrise.", "h2": "It gave up halfway, every single day.",
             "hl": "gave up",
-            "n1": "A little rabbit wanted to see the sunrise from the top of the hill.",
-            "n2": "On day one she sprinted up — and collapsed, out of breath.",
-            "n3": "A squirrel told her: don't climb it all at once. Just a little, every morning.",
+            "n1": "A little rabbit really wanted to see the sunrise from the top of that hill.",
+            "n2": "She sprinted up on the first day — and collapsed a minute later, out of breath.",
+            "n3": "A squirrel told her something. Don't try to do it all at once. Just a little, every morning.",
             "n4": "For three rainy days she fought the urge to quit.",
-            "n5": "Then one dawn, the summit was suddenly right there.",
-            "n6": "The sunrise from the top was bigger than she had imagined.",
-            "n7": "Your hill is the same. Just one more small step today.",
-            "n8": "Big wins arrive on the day small steps pile up.",
+            "n5": "And then, one dawn, the summit was just there.",
+            "n6": "The sunrise from up there was bigger than she'd ever pictured it.",
+            "n7": "You've got a hill too. Just take one more step today.",
+            "n8": "You reach the top on the day your small steps add up.",
             "n9": "outro",
             "t": "The Rabbit and the Tall Hill",
-            "s": ["TODAY'S QUOTE", "She wanted the sunrise", "She collapsed, out of breath", "A little, every morning",
-                  "Fighting the urge to quit", "The summit, suddenly near", "Bigger than imagined",
-                  "One more step", "Small steps pile up", "One step a day"],
+            "s": ["TODAY'S QUOTE", "Wanted that sunrise", "Collapsed, out of breath", "A little, every morning",
+                  "Fighting the urge to quit", "The summit, just there", "Bigger than pictured",
+                  "One more step", "Small steps add up", "Your one step today"],
         },
         "zh-cn": {
             "h1": "兔子每天都梦想着山上的日出", "h2": "却每次都在半路放弃",
             "hl": "放弃",
-            "n1": "一只小兔子想看山坡上的日出。",
-            "n2": "第一天它猛地往上冲，很快就喘得坐在了地上。",
-            "n3": "松鼠告诉它：别想一次登顶，每天早上只走一点点。",
-            "n4": "连着三个雨天，它和想放弃的念头搏斗着。",
-            "n5": "然后某个清晨，山顶忽然就在眼前了。",
-            "n6": "山顶的日出，比它想象的还要大。",
-            "n7": "你的山坡也一样。今天只要再多走一步。",
-            "n8": "大的成功，是小步子垒起来的那天到来的。",
+            "n1": "一只小兔子，特别想看看山顶上的日出。",
+            "n2": "第一天它一口气往上冲，很快就喘得坐在地上起不来了。",
+            "n3": "松鼠跟它说：别想着一口气就登顶，每天早上只走一点点就行。",
+            "n4": "连着下了三天雨，它一直在跟想放弃的念头较劲。",
+            "n5": "然后某个清晨，山顶忽然就出现在眼前了。",
+            "n6": "从山顶看到的日出，比它想象的还要大。",
+            "n7": "你也有这样一座山。今天就多走一步吧。",
+            "n8": "走到山顶的那一天，就是这些小步子攒够的那一天。",
             "n9": "outro",
             "t": "兔子与高高的山坡",
-            "s": ["今日名言", "想看日出的兔子", "喘得坐在地上", "每天只走一点点",
-                  "和放弃的念头搏斗", "山顶就在眼前", "比想象更大",
-                  "再多走一步", "小步子垒起来", "每天一小步"],
+            "s": ["今日名言", "想看山顶日出", "喘得坐在地上", "每天只走一点点",
+                  "跟放弃较劲", "山顶忽然出现", "比想象更大",
+                  "再多走一步", "小步子攒够了", "今天你的一步"],
         },
         "fr": {
-            "h1": "Le lapin rêvait du lever de soleil", "h2": "mais abandonnait à mi-chemin, chaque jour",
+            "h1": "Le lapin rêvait du lever de soleil.", "h2": "Il abandonnait à mi-chemin, chaque jour.",
             "hl": "abandonnait",
-            "n1": "Un petit lapin voulait voir le lever du soleil du haut de la colline.",
-            "n2": "Le premier jour, il grimpa à toute vitesse — et s'effondra, essoufflé.",
-            "n3": "Un écureuil lui dit : n'essaie pas tout d'un coup. Un peu, chaque matin.",
-            "n4": "Pendant trois jours de pluie, il lutta contre l'envie d'abandonner.",
-            "n5": "Puis un matin, le sommet était soudain juste là.",
-            "n6": "Le lever de soleil vu d'en haut était plus grand qu'il ne l'avait imaginé.",
-            "n7": "Ta colline est pareille. Juste un petit pas de plus, aujourd'hui.",
-            "n8": "Les grandes victoires arrivent le jour où les petits pas s'additionnent.",
+            "n1": "Un petit lapin rêvait vraiment de voir le lever du soleil depuis le sommet de la colline.",
+            "n2": "Premier jour, il est parti à toute vitesse — et s'écroule au bout d'une minute.",
+            "n3": "Un écureuil lui a dit un truc : n'essaie pas tout d'un coup. Juste un peu, chaque matin.",
+            "n4": "Trois jours de pluie, il a lutté contre l'envie de s'arrêter.",
+            "n5": "Et puis, un matin, le sommet était juste là.",
+            "n6": "Le lever de soleil vu d'en haut dépassait tout ce qu'il avait imaginé.",
+            "n7": "Toi aussi, tu as ta colline à gravir. Fais juste un pas de plus aujourd'hui.",
+            "n8": "On arrive en haut le jour où les petits pas se sont additionnés.",
             "n9": "outro",
             "t": "Le Lapin et la Grande Colline",
-            "s": ["CITATION DU JOUR", "Il voulait le lever du soleil", "Essoufflé, il s'effondre", "Un peu, chaque matin",
-                  "Lutter contre l'envie d'abandonner", "Le sommet, soudain proche", "Plus grand qu'imaginé",
-                  "Un pas de plus", "Les petits pas s'additionnent", "Un pas par jour"],
+            "s": ["CITATION DU JOUR", "Rêvait de ce lever de soleil", "Essoufflé, il s'écroule", "Juste un peu, chaque matin",
+                  "Lutter pour ne pas arrêter", "Le sommet, juste là", "Plus grand que prévu",
+                  "Un pas de plus", "Les petits pas s'additionnent", "Ton pas d'aujourd'hui"],
         },
     }
     prompts = [
-        "a small white rabbit with a red scarf sitting quietly on a mossy stone at dawn, watching the horizon, soft golden light",
-        "the rabbit sprinting up the hillside, determined, morning light",
-        "the rabbit sitting exhausted halfway up the path, catching breath",
-        "a friendly squirrel talking to the rabbit on a tree branch",
-        "the rabbit walking slowly in the rain, holding a big leaf over the head",
-        "the rabbit reaching the hilltop at first light, arms open",
-        "a vast golden sunrise seen from the hilltop, the rabbit small in the frame",
-        "a quiet modern desk at dawn, notebook and a cup of tea, city lights outside the window",
-        "a person silhouette climbing stairs at sunrise, warm light from above",
+        "a small white rabbit with a red scarf sitting quietly on a mossy stone at dawn, "
+        "watching the quiet horizon",
+        "the rabbit standing at the base of a tall hill, looking up, seen from a low angle",
+        "the rabbit sprinting up the hillside, determined, seen from the side",
+        "the rabbit sitting exhausted halfway up the path, catching breath, head lowered",
+        "a friendly squirrel leaning down to talk to the rabbit on a mossy rock",
+        "the rabbit walking slowly upward, clinging to the cliff edge, small in the frame",
+        "the rabbit reaching the hilltop, arms open, seen from behind",
+        "a quiet modern desk beside a window, notebook and a cup, a person sitting down",
+        "a person silhouette climbing stairs, seen from behind, early morning",
+        "the rabbit standing at the hilltop looking out at the horizon, calm and still",
     ]
     scenes = []
     for i, act in enumerate(SCENE_ACTS):
@@ -398,10 +565,10 @@ def _mock_story(quote: Quote, theme: str) -> dict:
         "hook": {"lines": {l: [T[l]["h1"], T[l]["h2"]] for l in LANGS},
                  "highlight": {l: T[l]["hl"] for l in LANGS}},
         "moral": {
-            "ko": "매일 한 걸음씩 오른 사람만, 정상의 아침을 봅니다.",
-            "en": "Only those who climb a little every day see the morning at the top.",
-            "zh-cn": "每天多走一步的人，才能看到山顶的早晨。",
-            "fr": "Seuls ceux qui grimpent un peu chaque jour voient le matin au sommet.",
+            "ko": "조금씩이라도 매일 오른 사람은, 꼭대기의 아침을 봅니다.",
+            "en": "If you climb a little every day, you'll see the morning up there.",
+            "zh-cn": "每天往上走一点的人，终会看到山顶的早晨。",
+            "fr": "Si tu grimpes un peu chaque jour, tu verras le matin tout en haut.",
         },
         "characters": "a small white rabbit with a red scarf",
         "scenes": scenes,

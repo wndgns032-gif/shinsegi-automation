@@ -18,7 +18,7 @@ import time
 from pathlib import Path
 
 import requests
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 
 from . import bgm, cards, tts
 
@@ -124,9 +124,14 @@ def _motion(i: int, frames: int) -> str:
 
 
 def _film_fx() -> str:
-    """필름 마감 체인 (ffmpeg 내장 — 무료)."""
+    """필름 마감 체인 (ffmpeg 내장 — 무료).
+
+    2026-10-07: 장면 이미지를 흑백 통일했으므로 saturation 은 1.0(무변경)으로 둔다.
+    (예전 saturation=1.07 은 컬러 이미지용이었고, 흑백에 쓰면 색만 muddied 된다)
+    대신 contrast 를 살짝 올려 흑백 톤을 더 또렷하게 만든다.
+    """
     return ("unsharp=5:5:0.45:5:5:0.0,"
-            "eq=contrast=1.04:saturation=1.07:brightness=0.008,"
+            "eq=contrast=1.06:saturation=1.0:brightness=0.008,"
             "vignette=0.4,"
             "noise=alls=2.5:allf=t")
 
@@ -134,12 +139,42 @@ def _film_fx() -> str:
 # ─────────────────────────────────────────────────────────────
 # 1) 장면 이미지 — Pollinations (무료·키 불필요) + 로컬 폴백
 # ─────────────────────────────────────────────────────────────
+def _to_monochrome(path: Path) -> None:
+    """장면 이미지를 흑백으로 통일 (2026-10-07 로이 지시: "흑백 느낌으로 통일").
+
+    프롬프트만으로는 모델이 장면마다 다른 색/밝기를 뽑아내므로, **최종 보장을 위해
+    렌더 직전에 PIL로 반드시 그레이스케일 변환한다.** 전체 10장면이 같은 톤이 되고,
+    텍스트(자막·명언카드)와 그림 사이의 대비도 일정해져 가독성이 올라간다.
+
+    1) 완전 그레이스케일
+    2) autocontrast — 장면별 명도 차이 흡수(어두운 장면/밝은 장면 격차 축소)
+    3) 대비 소폭 강화 — 평평한 회색 방지
+    4) 아주 미세한 세피아 톤 — 기계적 그레이가 아니라 "양피지 같은" 인쇄물 질감
+    """
+    try:
+        img = Image.open(path)
+        img = ImageOps.grayscale(img)
+        img = ImageOps.autocontrast(img, cutoff=1)
+        img = ImageEnhance.Contrast(img).enhance(1.08)
+        # 세피아 미세 톤 (R > G > B) — 살짝 따뜻한 흑백
+        # (grayscale() 결과는 L 모드라 split()이 1채널 → RGB 변환 후 분리해야 한다)
+        img = img.convert("RGB")
+        r, g, b = img.split()
+        r = r.point(lambda v: min(255, v + 6))
+        b = b.point(lambda v: max(0, v - 6))
+        img = Image.merge("RGB", (r, g, b))
+        img.save(path, "JPEG", quality=90)
+    except Exception as e:  # noqa: BLE001
+        print(f"  [fable] 흑백 변환 실패 (원본 유지): {type(e).__name__}")
+
+
 def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     paths: list[Path] = []
     for i, p in enumerate(prompts):
         dest = out_dir / f"scene{i + 1}.jpg"
         if dest.exists() and dest.stat().st_size > 20000:
+            _to_monochrome(dest)  # 캐시 이미지도 흑백 통일 적용
             paths.append(dest)
             continue
         url = ("https://image.pollinations.ai/prompt/"
@@ -153,7 +188,8 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Pa
                 ct = r.headers.get("content-type", "")
                 if r.ok and "image" in ct and len(r.content) > 20000:
                     dest.write_bytes(r.content)
-                    print(f"  [fable] 이미지 {i + 1}/{len(prompts)} OK ({len(r.content) // 1024}KB)")
+                    _to_monochrome(dest)  # ← 흑백 통일 (프롬프트 무시 대비)
+                    print(f"  [fable] 이미지 {i + 1}/{len(prompts)} OK ({len(r.content) // 1024}KB, 흑백)")
                     ok = True
                     break
                 print(f"  [fable] 이미지 {i + 1} 시도{attempt} 실패 HTTP {r.status_code}")
@@ -165,7 +201,8 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Pa
                 time.sleep(backoff)
         if not ok:
             _fallback_image(dest, i)
-            print(f"  [fable] 이미지 {i + 1} 로컬 폴백 (Pollinations 쿼터)")
+            _to_monochrome(dest)  # 폴백도 흑백으로
+            print(f"  [fable] 이미지 {i + 1} 로컬 폴백 (Pollinations 쿼터, 흑백)")
         paths.append(dest)
         time.sleep(1)  # 무료 레이트리밋 예의
     return paths
@@ -219,10 +256,15 @@ def _ass_time(sec: float) -> str:
 
 
 def _hook_display_lines(lang: str, hook: dict) -> tuple[list[str], int, int]:
-    """훅 2줄을 PIL로 측정해 표시 줄로 나눈다. 반환: (표시줄, 폰트크기, 바높이)."""
+    """훅 2줄을 PIL로 측정해 표시 줄로 나눈다. 반환: (표시줄, 폰트크기, 바높이).
+
+    2026-10-07: 프롬프트가 "각 줄은 완전한 문장(마침표 포함)"을 요구하므로
+    story 의 hook.lines 에 구두점이 붙는다. 화면 상단 훅 바는 구두점 없이 보여야
+    깔끔하므로 여기서 제거한다(음성용 narration 은 fable.py 가 이미 만들어둠).
+    """
     img = Image.new("RGB", (10, 10))
     d = ImageDraw.Draw(img)
-    src = hook["lines"][lang]
+    src = [(str(x).strip().rstrip(".?!。．！ ").strip()) for x in hook["lines"][lang]]
     size = 58 if lang in ("ko", "zh-cn") else 54
     out: list[str] = []
     while size >= 42:
