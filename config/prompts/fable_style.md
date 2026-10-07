@@ -63,17 +63,32 @@ STYLE_PREFIX , <장면 묘사> , <characters> , STYLE_SUFFIX
 
 ## 3. 주인공 일관성
 
-- 주인공은 **영어 외형 한 줄**로만 (`characters`) 정의하고 모든 장면에 동일 문자열로 삽입.
-- 模型이 매번 다른 동물을 그리면 안 되므로, 묘사는 **구체적 3요소**로 적는다:
-  - `종명` (a small gray mole)
-  - `의상/특징` (with tiny round glasses and a stubby shovel)
-  - `크기감` (tiny / small / chubby / elderly …) — **형용사로만**
-- ⚠️ **크기를 비교 표현으로 쓰지 말 것** — `about the size of a teacup` 처럼 비교 대상을 넣으면
+### 3-0. characters 작성 형식 (실측 확정)
+
+**형식: `<종명>, <분류>, <신체특징1>, <신체특징2>, <신체특징3>`**
+
+| 검증 | characters | 결과 |
+|---|---|---|
+| 1안 | `a small gray mole with round glasses` | ❌ **사람(여성)** |
+| 2안 | 1안 + `not a cat not a dog not a person` | ❌ **고양이** |
+| 3안 | `a mole, a small subterranean mammal, pointed snout, long whiskers, tiny eyes, wide paws` | ✅ **두더지** |
+
+**flux 규칙 4가지 (모두 실측):**
+1. **분류어**가 종을 고정한다 — `subterranean mammal` / `shelled reptile` / `small wild bird`
+   → 종명만("a mole")은 고양이·여우로 새는 경우 있음
+2. **신체 특징 3개 이상** 필수 — 코·눈·수염·발톱·귀·딱딱한 껍질
+3. **의류·안장 금지** — `with round glasses` / `in a scarf` → **사람화**
+   (안경은 "사람을 그려야 한다"는 강한 신호)
+4. **부정 표현 금지** — `not a cat` 을 넣으면 **고양이가 나온다**
+   → flux 는 `not X` 를 `X` 로 읽는다. 긍정형 묘사만 쓸 것.
+
+- ⚠️ **크기 비교 표현 금지** — `about the size of a teacup` 처럼 비교 대상을 넣으면
   모델이 **그 물체를 그린다** (실제로 두더지 프롬프트에서 사람 얼굴이 나왔던 사례).
-- **장르를 넘지 않는다.** 예: "an old wise owl" 라고 썼는데 우유곰이 나오면 안 된다.
 - `real` 장면(현실 대입)은 **동물을 쓰지 않는다.** 이때는 `characters` 삽입을 건너뛴다.
-  - 지금 코드가 모든 장면에 동물을 넣어서 "회사원 + 거북이" 같은 화면이 나온다.
-  - **개정: `characters`는 quote/hook/fable/outro 에만 삽입, real 은 제외.**
+- **전면/후면 중복 삽입**으로 정체성 강화:
+  ```
+  PREFIX, <characters>, <장면>, <characters>, STYLE_SUFFIX
+  ```
 
 ## 3-2. 캐릭터 일관성 (2026-10-07 실측 + 로이 승인)
 
