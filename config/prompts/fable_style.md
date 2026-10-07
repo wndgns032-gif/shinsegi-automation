@@ -75,7 +75,27 @@ STYLE_PREFIX , <장면 묘사> , <characters> , STYLE_SUFFIX
   - 지금 코드가 모든 장면에 동물을 넣어서 "회사원 + 거북이" 같은 화면이 나온다.
   - **개정: `characters`는 quote/hook/fable/outro 에만 삽입, real 은 제외.**
 
-## 3-1. 액자 테두리 함정 (2026-10-07 실측)
+## 3-2. 캐릭터 일관성 (2026-10-07 실측 + 로이 승인)
+
+flux(stable)는 **캐릭터를 한 번만 언급하면 다른 동물/사람으로 그린다.**
+실측: 두더지 우화 10장면 중 몇 장이 여우·사람으로 나옴. 프롬프트 단독으로는 100% 불가.
+
+### 코드 측 대응 (구현됨)
+1. `characters` 를 **프롬프트 앞뒤로 중복 삽입**:
+   ```
+   STYLE_PREFIX, <characters>, <장면 묘사>, <characters>,
+   same character as every other scene, STYLE_SUFFIX
+   ```
+   캐릭터 중요도를 flux 가 무시하지 못하게 한다.
+2. **자동 검수 후 재생성** (`scripts/check_fable_images.py --regen`)
+   - 해상도/크기 편차 · 채도 · 휘도(자막 가독성) · 파일 크기를 **코드로 판정**
+   - 실패 장면만 **다른 seed** 로 재생성 (같은 seed = 같은 그림이라 반드시 seed 변경)
+   - `fablevideo.make_fable()` 에 자동 연결 — 첫 언어(ko)에서 1회만, 4개 언어가 이미지 공유
+
+> 남는 한계: 장면의 "내용 부적합"(예:主角이 사람으로 나옴)은 픽셀 통계로 검출되지 않는다.
+> 완전 자동 판정은 불가능하며, 검수는 색/크기/밝기 같은 **물리적 부조절**만 잡는다.
+
+## 3-3. 액자 테두리 함정 (2026-10-07 실측)
 
 - `vintage etching print` / `storybook print` 같은 표현을 넣으면 모델이 **액자·매트·벽화 액자**를 그리며
   화면 가장자리를_frames 로 감싼다. 프롬프트에 `no frame` 을 넣어도 효과가 제한적이라
