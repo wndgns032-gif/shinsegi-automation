@@ -95,6 +95,23 @@ flux(stable)는 **캐릭터를 한 번만 언급하면 다른 동물/사람으�
 > 남는 한계: 장면의 "내용 부적합"(예:主角이 사람으로 나옴)은 픽셀 통계로 검출되지 않는다.
 > 완전 자동 판정은 불가능하며, 검수는 색/크기/밝기 같은 **물리적 부조절**만 잡는다.
 
+### ⚠️ 두 동물 동시 장면 금지 (2026-10-07 실측 — 가장 중요한 함정)
+캐릭터 중복 삽입만으로는 **두 동물이 함께 나오는 장면**에서 주인공이 밀린다.
+
+실측: `characters = "a small gray mole"` 인데, 조언자 장면 프롬프트
+`"an old tortoise leaning down talking to the mole, two characters"` 에서
+**거북이가 단독으로** 렌더됐다. flux 는 두 동물이 있으면 더 크거나 중앙에 있는
+개체를 주인공으로 뽑는다.
+
+**대처 (구현됨):**
+1. 프롬프트 규칙: `two characters` / `talking to X` 류 표현 금지
+2. 다른 동물의 조언은 **주인공의 표정·행동만으로** 표현
+   - ✅ `the mole pausing, thinking, alone, looking up`
+   - ❌ `a wise old owl telling the rabbit something`
+3. 코드 강제 `_strip_second_character()` — 정규식으로 다른 동물 절/상호작용 표현 제거,
+   너무 짧아지면 `the main character standing alone, thinking, looking ahead` 로 폴백
+   (빈 프롬프트를 주면 flux 가 임의로 뭔가를 그린다)
+
 ## 3-3. 액자 테두리 함정 (2026-10-07 실측)
 
 - `vintage etching print` / `storybook print` 같은 표현을 넣으면 모델이 **액자·매트·벽화 액자**를 그리며
