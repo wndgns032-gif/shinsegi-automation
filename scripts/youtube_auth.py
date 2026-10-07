@@ -166,8 +166,73 @@ def auth(lang: str, client: dict) -> bool:
     if exp:
         print(f"  계정 선택 화면에서 핸들이 '{exp}' 인 채널을 고르세요.")
     flow = InstalledAppFlow.from_client_config(cfg, SCOPES)
-    creds = flow.run_local_server(port=0, prompt="consent select_account",
-                                  access_type="offline", open_browser=True)
+
+    # 샌드박스/헤드리스 환경에서는 브라우저를 띄울 수 없다.
+    # → 인증 URL 을 stdout 에 찍고 로이가 직접 열어 pasting 하도록 안내한다.
+    # 주의: 콜백 서버를 **URL 생성 전에** 먼저 띄워야 한다
+    #       (OAuth 는 state 에 redirect_uri 를 포함하므로 순서가 중요).
+    import socket
+    import webbrowser
+    from google_auth_oauthlib.flow import Flow
+    from wsgiref.simple_server import make_server, WSGIRequestHandler
+
+    def _free_port() -> int:
+        s = socket.socket()
+        s.bind(("127.0.0.1", 0))
+        port = s.getsockname()[1]
+        s.close()
+        return port
+
+    class _Quiet(WSGIRequestHandler):
+        def log_message(self, *a):  # noqa: D102
+            pass
+
+    try:
+        can_open = webbrowser.get() is not None
+    except Exception:  # noqa: BLE001
+        can_open = False
+
+    if not can_open or os.getenv("YT_NO_BROWSER") == "1":
+        port = _free_port()
+        # 콜백 서버를 URL 생성 전에 먼저 띄운다.
+        # redirect_uri 를 authorization_url() 에만 넘기고
+        # flow.redirect_uri 는 OAuth 가 사용할 값으로만 설정한다
+        # (양쪽에 넘기면 'multiple values for keyword argument' 오류).
+        server = make_server("127.0.0.1", port, _Quiet)
+        import threading
+        t = threading.Thread(target=server.handle_request, daemon=True)
+        t.start()
+
+        redirect_uri = f"http://127.0.0.1:{port}"
+        # flow.redirect_uri 만 설정하면 authorization_url() 이 알아서 사용한다
+        # (redirect_uri 를 직접 넘기면 내부 값과 충돌해 'multiple values' 오류)
+        flow.redirect_uri = redirect_uri
+        auth_url, _ = flow.authorization_url(
+            access_type="offline", prompt="consent select_account")
+        print("\n" + "=" * 74)
+        print("아래 URL 을 **브라우저 주소창에 붙여넣으세요**:")
+        print("=" * 74)
+        print(auth_url)
+        print("=" * 74)
+        print("① 로그인할 Google 계정 선택")
+        print(f"② '{exp}' 채널 선택" if exp else "② 사용할 채널 선택")
+        print("③ '권한 허용' 클릭")
+        print(f"④ '액세스 거부(Access blocked)' 화면이 뜨는 게 정상입니다.")
+        print(f"   (로컬 콜백이 127.0.0.1:{port} 에서 대기 중 — 이 창을 닫지 마세요)")
+        print("=" * 74 + "\n")
+        try:
+            t.join(timeout=240)   # 최대 4분 대기
+        except Exception:  # noqa: BLE001
+            pass
+        server.server_close()
+        if not getattr(flow, "credentials", None):
+            print("[fail] 콜백을 받지 못했습니다 (시간 초과).")
+            return False
+        creds = flow.credentials
+    else:
+        creds = flow.run_local_server(port=_free_port(),
+                                      prompt="consent select_account",
+                                      access_type="offline", open_browser=True)
     if not creds.refresh_token:
         print("[fail] refresh token 을 받지 못했습니다. 'consent' 화면에서 허용을 눌렀는지 확인.")
         return False
