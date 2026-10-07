@@ -36,6 +36,11 @@ def _fontsdir() -> str:
     """fablevideo._fontsdir 와 동일 — Linux/Windows 폰트 경로."""
     return fablevideo._fontsdir()
 
+
+def _ffpath(p: str) -> str:
+    """fablevideo._ffpath 와 동일 — ffmpeg 필터 인자용 경로 이스케이프."""
+    return fablevideo._ffpath(p)
+
 ROOT = Path(__file__).resolve().parent.parent
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
 MODEL = "deepseek-chat"
@@ -486,9 +491,11 @@ def build_clip(lang: str, scenes: list[dict], image_paths: list[Path], work_dir:
     # 5) 필름 마감 + 자막 + **배경음악(덕킹 믹스)**
     #    BGM 은 assets/bgm/ 음원 → 없으면 로컬 합성(저작권 0) → 그래도 없으면 생략.
     clip = work_dir / f"clip_{lang}.mp4"
-    ass_ref = str(ass_path.resolve()).replace("\\", "/").replace(":", "\\:")
+    # (2026-10-07 버그픽스) fontsdir 의 드라이브 콜론도 이스케이프해야 렌더가 안 깨진다.
+    #   미이스케이프 시 "Error opening output file ... Invalid argument" → BGM/자막 없이 조용히 실패
+    ass_ref = _ffpath(str(ass_path.resolve()))
     fontsdir = _fontsdir()
-    fonts_arg = f":fontsdir='{fontsdir}'" if fontsdir else ""
+    fonts_arg = f":fontsdir='{_ffpath(fontsdir)}'" if fontsdir else ""
     vf = f"{_film_fx()},subtitles='{ass_ref}'{fonts_arg}"
     music = bgm.track(seed=str(work_dir)) if bgm.enabled() else None
     if music:

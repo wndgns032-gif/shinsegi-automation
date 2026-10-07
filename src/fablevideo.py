@@ -62,6 +62,17 @@ def _fontsdir() -> str:
     return ""
 
 
+def _ffpath(p: str) -> str:
+    """ffmpeg 필터 인자용 경로 이스케이프 (2026-10-07 추가).
+
+    `subtitles=` / `fontsdir=` 같은 필터 옵션 안에서는 ':' 가 구분자로 파싱되므로
+    Windows 드라이브 문자까지 이스케이프(\\:)해야 한다. 안 하면
+    `Error opening output file ... Invalid argument` 로 전체 렌더가 실패한다.
+    역슬래시도 ffmpeg 의 escape 문자이므로 함께 정리한다.
+    """
+    return str(p).replace("\\", "/").replace(":", r"\:").replace("'", r"\'")
+
+
 def _ass_font(lang: str) -> str:
     """언어별 첫 번째 설치 폰트를 찾아 반환 — 못 찾으면 언어 기본값."""
     try:
@@ -542,9 +553,12 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
         print(f"  [fable] BGM: {music.name} (볼륨 {bgm.volume():.2f}, 낭독 시 자동 덕킹)")
     final = out_dir / f"fable_{lang}.mp4"
     # Linux runner 와 Windows 모두에서 동작 — fontsdir 생략 시 ffmpeg 가 fontconfig 로 시스템 폰트 검색
-    ass_ref = str(ass_path.resolve()).replace("\\", "/").replace(":", "\\:")
+    # (2026-10-07 버그픽스) 드라이브 콜론까지 이스케이프해야 한다.
+    #   subtitles='C\:/path/x.ass':fontsdir='C:/Windows/Fonts'  →  "Error ... Invalid argument"
+    #   ':' 가 필터 옵션 구분자로 파싱돼 깨진다. 반드시 '\:' 로 바꾼다.
+    ass_ref = _ffpath(str(ass_path.resolve()))
     fontsdir = _fontsdir()
-    fonts_arg = f":fontsdir='{fontsdir}'" if fontsdir else ""
+    fonts_arg = f":fontsdir='{_ffpath(fontsdir)}'" if fontsdir else ""
     vf = (f"{_film_fx()},"
           f"drawbox=x=0:y=0:w=iw:h={bar_h}:color=black:t=fill,"
           f"subtitles='{ass_ref}'{fonts_arg}")
