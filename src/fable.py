@@ -456,12 +456,21 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
                 sc["narration"][lang] = moral[lang]
         # 4) 이미지 프롬프트 일관성 — 흑백 스타일 강제 삽입 (로이 지시 2026-10-07)
         #    real 장면은 사람이 중심이므로 동물을 넣지 않는다.
-        #    ⚠️ 순서 주의 (2026-10-07 실측): characters( 주인공 묘사)를 앞에 넣으면
-        #    flux 가 클로즈업 얼굴에 고정돼 장면이 사라진다(바위만 꽉 찬 화면).
-        #    → **장면 묘사를 먼저, 캐릭터는 뒤에** 둔다.
+        #
+        #    ⚠️ 조립 순서 (2026-10-07 실측):
+        #      - 스타일은 짧게 유지 (길면 flux 가 장면 내용을 버린다)
+        #      - **장면 묘사가 characters 보다 먼저** (캐릭터가 앞이면 클로즈업에 고정)
+        #    ⚠️ 캐릭터 일관성 (2026-10-07 실측):
+        #      characters 를 한 번만 넣으면 flux 가 다른 동물/사람으로 그린다
+        #      (실측: 두더지인데 여우·사람이 나옴). **앞뒤로 중복 삽입**해
+        #      정체성 강도를 올린다. + "same character as the other scenes" 힌트.
         p = _strip_sentence_end(str(sc["image_prompt"]))
-        sc["image_prompt"] = (f"{STYLE_PREFIX}, {p}, {STYLE_SUFFIX}" if sc["act"] in NO_CHARACTER_ACTS
-                              else f"{STYLE_PREFIX}, {p}, {characters}, {STYLE_SUFFIX}")
+        if sc["act"] in NO_CHARACTER_ACTS:
+            sc["image_prompt"] = f"{STYLE_PREFIX}, {p}, {STYLE_SUFFIX}"
+        else:
+            sc["image_prompt"] = (
+                f"{STYLE_PREFIX}, {characters}, {p}, {characters}, "
+                f"same character as every other scene, {STYLE_SUFFIX}")
 
     story = {
         "date": datetime.now(quotes.KST).date().isoformat(),

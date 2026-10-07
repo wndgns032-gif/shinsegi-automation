@@ -14,6 +14,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 import time
 from pathlib import Path
 
@@ -592,6 +593,38 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
     return final
 
 
+def _verify_images(images_dir: Path, story: dict, seed_base: int) -> None:
+    """생성된 장면 이미지 자동 검수 + 실패 장면 재생성 (2026-10-07).
+
+    flux 는 같은 프롬프트라도 다른 동물을 그린다(실측: 두더지 우화에 여우·사람 혼입).
+    프롬프트만으로는 막을 수 없으므로 **검출 후 해당 장면만 다른 seed 로 재생성**한다.
+    검수 스크립트(check_fable_images)를 재사용하되, 어떤 실패든 파이프라인은 계속된다.
+    """
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+        from scripts.check_fable_images import inspect, regenerate
+    except Exception as e:  # noqa: BLE001
+        print(f"  [check] 검수 모듈 로드 실패 — 건너뜀 ({type(e).__name__})")
+        return
+    try:
+        results, fails = inspect(images_dir)
+        if not results:
+            return
+        if not fails:
+            print(f"  [check] 이미지 검수 {len(results)}/{len(results)} 통과")
+            return
+        print(f"  [check] 검수 실패 {len(fails)}개 (scene {fails}) → 재생성 시도")
+        story_path = images_dir.parent / "story.json"
+        still = regenerate(images_dir, fails, story_path, seed_base)
+        results2, fails2 = inspect(images_dir)
+        msg = f"  [check] 재생성 후 {len(results2) - len(fails2)}/{len(results2)} 통과"
+        if fails2:
+            msg += f" (잔여 실패 {fails2} — 기존 이미지 유지)"
+        print(msg)
+    except Exception as e:  # noqa: BLE001
+        print(f"  [check] 검수 오류 — 렌더 계속 ({type(e).__name__}: {e})")
+
+
 def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
     """한 언어 전체 — 이미지(공용 캐시) → 렌더. 최종 mp4 경로 반환."""
     from .fable import story_dir
@@ -599,5 +632,12 @@ def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
     images = sdir / "images"
     prompts = [sc["image_prompt"] for sc in story["scenes"]]
     seed_base = int(story["date"].replace("-", "")) % 10000
-    image_paths = gen_images(prompts, images, seed_base=seed_base)
+    # 첫 언어(ko)일 때만 이미지 생성 — 4개 언어가 1벌을 공유한다.
+    # 이미 있으면 캐시 히트라 다 건너뛴다.
+    first_lang = lang == LANGS[0]
+    if first_lang or not images.exists():
+        image_paths = gen_images(prompts, images, seed_base=seed_base)
+        _verify_images(images, story, seed_base)
+    else:
+        image_paths = [images / f"scene{i + 1}.jpg" for i in range(len(prompts))]
     return render_language(lang, story, image_paths, sdir)
