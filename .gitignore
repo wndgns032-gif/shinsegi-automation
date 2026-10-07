@@ -4,6 +4,13 @@
 !.env.example
 !docs/.env.example
 
+# 앱 자격증명 (시크릿) — public 저장소 전환 시 노출되므로 반드시 제외
+data/threads_app.json
+data/youtube_client.json
+data/mastodon_creds.json
+data/*_creds.json
+data/*secret*.json
+
 # YouTube OAuth client JSON (client_id/secret 포함)
 data/youtube_client.json
 data/youtube_account.txt
