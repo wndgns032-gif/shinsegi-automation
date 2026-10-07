@@ -1,0 +1,66 @@
+# YouTube 채널 매핑 설정 (2026-10-07 로이 확정)
+#
+# ─────────────────────────────────────────────────────────────
+# 핵심 원리
+# ─────────────────────────────────────────────────────────────
+# 이 프로젝트는 **언어별로 refresh token 이 분리**되어 있고,
+# 각 token 은 **인증 시 선택한 채널에 고정(바인딩)** 된다.
+# videos.insert 는 그 token 이 물려있는 채널에 업로드한다.
+#
+# → 즉 "어떤 언어를 어떤 채널에 올릴지"는 .env 의 토큰에 이미 반영되어 있다.
+# → 채널을 바꾸려면 **해당 언어만 재인증**하면 된다. 코드를 바꿀 필요 없음.
+#
+# 이 파일은 그 매핑을 사람이 관리하기 쉽게 문서화하고,
+# 인증 스크립트가 기대 채널을 여기서 읽는다 (하드코딩 금지).
+
+# 채널 그룹 정의 — 계정 이메일이 아니라 '채널 핸들' 로 구분한다.
+# 여러 언어가 같은 채널을 공유할 수 있다.
+channels:
+  brand:
+    label: "shinsegimedia (브랜드 계정)"
+    email: "shinsegimedia@gmail.com"
+    # 이 계정이 소유한 채널 핸들들 (인증 시 이 중 하나를 선택해야 함)
+    handles:
+      - "@shinsegi-fr"
+      - "@shinsegi-zh"
+      # 필요 시 추가: "@shinsegi-en" 등
+  personal:
+    label: "로이 개인 계정"
+    email: "(로이 개인 Gmail)"
+    handles:
+      - "@shinsegi-kr"
+      - "@shinsegi-en-personal"
+    # 위 핸들이 실제 채널 핸들로 바뀌면 여기만 수정하면 된다
+
+# 언어 → 채널 그룹 매핑 (로이 확정: 2026-10-07)
+# brand   = shinsegimedia → 프랑스어, 중국어
+# personal= 개인 계정    → 한국어, 영어
+language_to_group:
+  ko: personal      # 한국어 → 개인 채널
+  en: personal      # 영어   → 개인 채널
+  fr: brand         # 프랑스어 → shinsegimedia
+  zh-cn: brand      # 중국어   → shinsegimedia
+
+# 언어별 기대 핸들 (선택) — 인증 시 이 핸들이 아니면 토큰 저장을 거부한다.
+# 채널을 아직 확정하지 않았다면 빈 문자열로 두거나 주석 처리한다.
+expected_handles:
+  ko: ""            # TODO: 로이가 개인 채널 핸들 확정 후 입력 (예: "@shinsegi-ko")
+  en: ""            # TODO: 로이가 개인 채널 핸들 확정 후 입력
+  fr: "@shinsegi-fr"
+  zh-cn: ""         # TODO: 로이가 shinsegimedia 의 zh 채널 핸들 확정 후 입력
+
+# 알려진 제약
+# ─────────────────────────────────────────────────────────────
+# 1. OAuth 토큰은 'Google 계정 + 채널' 조합에 묶인다.
+#    같은 Google 계정이 여러 채널을 소유해도, 인증 시 어떤 채널인지 선택해야
+#    그 채널의 token 이 나온다. Google 이 직전 선택을 재사용하는 경우가 있어
+#    script 는 prompt=consent + select_account 로 강제한다.
+#
+# 2. 채널명이 모두 'shinsegi' 로 같으면 핸들로만 구분된다.
+#    그래서 expected_handles 로 최종 검증한다.
+#
+# 3. 계정 단위 revoke 를 하면 그 계정의 모든 언어 토큰이 죽는다.
+#    한 언어만 바꾸려면 revoke 하지 말고 그 언어만 재인증한다.
+#
+# 4. 개인 계정의 채널은 public 업로드가 가능해야 videos.insert 가 된다
+#    (기본 설정에서 '공개' 체크 필요).

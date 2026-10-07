@@ -32,6 +32,40 @@ def _env_key(lang: str) -> str:
     return f"YOUTUBE_{ENV_LANG[lang]}_REFRESH_TOKEN"
 
 
+# ─────────────────────────────────────────────────────────────
+# 채널 매핑 설정 (config/youtube_channels.yaml)
+#   채널 재배치 시 코드를 고치지 말고 이 파일만 바꾼다.
+# ─────────────────────────────────────────────────────────────
+CHANNELS_YAML = BASE / "config" / "youtube_channels.yaml"
+_cfg_cache: dict | None = None
+
+
+def channels_config() -> dict:
+    global _cfg_cache
+    if _cfg_cache is not None:
+        return _cfg_cache
+    empty = {"language_to_group": {}, "expected_handles": {}, "channels": {}}
+    if not CHANNELS_YAML.exists():
+        return empty
+    try:
+        import yaml
+        _cfg_cache = yaml.safe_load(CHANNELS_YAML.read_text(encoding="utf-8")) or empty
+    except Exception as e:  # noqa: BLE001
+        print(f"[warn] youtube_channels.yaml 파싱 실패: {e}")
+        _cfg_cache = empty
+    return _cfg_cache
+
+
+def group_of(lang: str) -> str:
+    """언어가 속한 채널 그룹 ('brand' / 'personal')"""
+    return (channels_config().get("language_to_group") or {}).get(lang, "")
+
+
+def expected_handle(lang: str) -> str:
+    """언어의 기대 채널 핸들. 미설정이면 빈 문자열(=검증 안 함)."""
+    return (channels_config().get("expected_handles") or {}).get(lang, "") or ""
+
+
 def load_client() -> dict | None:
     """(client_id, client_secret) — data/youtube_client.json 우선, 없으면 .env."""
     if CLIENT_JSON.exists():
@@ -96,13 +130,22 @@ def auth(lang: str, client: dict) -> bool:
             return False
         name = items[0]["snippet"]["title"]
         handle = items[0]["snippet"].get("customUrl", "")
-        # 언어별 예상 핸들(알려진 것만 강제 검증) — 채널명이 전부 'shinsegi'라
-        # 구분은 핸들로만 가능. 틀린 채널에 묶이면 저장 자체를 거부한다.
-        EXPECTED = {"ko": "@shinsegi-kr", "fr": "@shinsegi-fr"}
-        if lang in EXPECTED and handle != EXPECTED[lang]:
-            print(f"[fail] {lang} 토큰이 {handle} 채널에 묶였습니다 (기대: {EXPECTED[lang]})")
+        # 채널 검증 — config/youtube_channels.yaml 의 expected_handles 를 따른다.
+        #   (예전엔 ko/fr 을 하드코딩했으나, 채널 재배치 때마다 코드를 수정해야 했다)
+        # 채널명은 전부 'shinsegi' 라 구분은 핸들로만 가능.
+        expected = expected_handle(lang)
+        if expected and handle != expected:
+            grp = group_of(lang)
+            print(f"[fail] {lang} 토큰이 {handle} 채널에 묶였습니다 (기대: {expected})")
+            print(f"       '{grp}' 그룹 소속이어야 합니다. config/youtube_channels.yaml 확인.")
             print("       계정 선택 화면에서 올바른 채널을 골라야 합니다. 토큰을 저장하지 않습니다.")
             return False
+        if not expected:
+            grp = group_of(lang)
+            print(f"[warn] {lang} 기대 핸들이 미설정이라 채널을 확정 검증하지 못했습니다.")
+            print(f"       현재: {name} ({handle}) · 그룹: {grp}")
+            print(f"       → config/youtube_channels.yaml 의 expected_handles.{lang} 을 채우면")
+            print(f"         앞으로 다른 채널에 실수로 묶이는 것을 막을 수 있습니다.")
         # 검증 통과 후에만 저장 — 실패한 토큰이 .env 에 남는 사고 방지
         _set_env("YOUTUBE_CLIENT_ID", client["client_id"])
         _set_env("YOUTUBE_CLIENT_SECRET", client["client_secret"])
@@ -116,20 +159,108 @@ def auth(lang: str, client: dict) -> bool:
 
 
 def status() -> None:
+    """현재 언어별 토큰 연결 상태 + 실제 묶인 채널 조회."""
     from dotenv import load_dotenv
     load_dotenv(ENV_PATH, override=True)
     client = load_client()
     print("OAuth 클라이언트:", "준비됨" if client else "없음 (data/youtube_client.json 필요)")
+
+    # 채널 매핑 요약
+    print("\n=== 채널 매핑 (config/youtube_channels.yaml) ===")
+    cfg = channels_config()
+    groups = cfg.get("channels") or {}
+    for lang in LANGS:
+        grp = group_of(lang)
+        label = (groups.get(grp) or {}).get("label", grp or "(미지정)")
+        exp = expected_handle(lang)
+        print(f"  {lang:6s} → {label:28s} 기대핸들 {exp or '(미설정)'}")
+
+    print("\n=== 토큰 상태 ===")
+    if not client:
+        return
+    try:
+        from google.oauth2.credentials import Credentials
+        from googleapiclient.discovery import build
+    except ImportError:
+        print("  (google-api-python-client 미설치)")
+        return
+
+    scopes = ["https://www.googleapis.com/auth/youtube.upload",
+              "https://www.googleapis.com/auth/youtube.readonly"]
     for lang in LANGS:
         tok = os.getenv(_env_key(lang))
-        print(f"  {lang:6s}: {'연결됨' if tok else '미연결'}")
+        if not tok:
+            print(f"  {lang:6s}: 미연결")
+            continue
+        try:
+            c = Credentials(token=None, refresh_token=tok,
+                            token_uri="https://oauth2.googleapis.com/token",
+                            client_id=client["client_id"],
+                            client_secret=client["client_secret"], scopes=scopes)
+            yt = build("youtube", "v3", credentials=c, cache_discovery=False)
+            items = yt.channels().list(part="snippet", mine=True).execute().get("items") or []
+            if not items:
+                print(f"  {lang:6s}: ⚠ 채널 없는 신분 (업로드 시 401)")
+                continue
+            s = items[0]["snippet"]
+            got = s.get("customUrl", "")
+            exp = expected_handle(lang)
+            mark = "OK " if (not exp or got == exp) else "≠ "
+            print(f"  {lang:6s}: {mark} {s['title']} ({got})")
+        except Exception as e:  # noqa: BLE001
+            print(f"  {lang:6s}: 조회 실패 — {type(e).__name__}: {str(e)[:70]}")
+
+
+def plan() -> None:
+    """재인증 플랜 출력 — 로이에게 '무엇을 무엇에 붙이는지' 확인용.
+
+    채널 재배치(언어 → 계정)를 실제 인증 없이 먼저 검토한다.
+    """
+    cfg = channels_config()
+    groups = cfg.get("channels") or {}
+    mapping = cfg.get("language_to_group") or {}
+    handles = cfg.get("expected_handles") or {}
+
+    print("=== 인증 플랜 (config/youtube_channels.yaml 기준) ===\n")
+    by_group: dict[str, list[str]] = {}
+    for lang in LANGS:
+        by_group.setdefault(mapping.get(lang, "(미지정)"), []).append(lang)
+
+    for grp, langs in by_group.items():
+        meta = groups.get(grp) or {}
+        label = meta.get("label", grp)
+        email = meta.get("email", "")
+        print(f"[{label}]  계정: {email}")
+        for lang in langs:
+            exp = handles.get(lang) or "(핸들 미설정)"
+            print(f"    {lang:6s} → {exp}")
+        print()
+
+    print("=== 실행 순서 (인증은 반드시 1개씩) ===")
+    print("  python scripts/youtube_auth.py ko")
+    print("    → 브라우저에서 [개인 계정] 로그인 → 계정 선택 화면에서")
+    print("      한국어 채널 선택 → '권한 허용'")
+    print("")
+    print("계정 단위 revoke 를 쓰면 그 계정의 모든 토큰이 죽으므로 금지.")
+    print("언어 하나만 바꾸려면 그 언어만 재인증한다.")
+    print("""
+주의: Google 이 직전 선택 신분을 재사용하는 경우가 있다. 그럴 때:
+  1) https://myaccount.google.com/connections 접속
+  2) 해당 앱(YouTube Data API 클라이언트) 권한 삭제
+  3) youtube_auth.py 를 다시 실행 → 계정 선택 화면이 반드시 뜬다""")
 
 
 def main() -> None:
     args = [a for a in sys.argv[1:] if not a.startswith("-")]
     if not args or args[0] == "status":
         status()
-        print("\n사용법: python scripts/youtube_auth.py ko")
+        print("\n사용법:")
+        print("  python scripts/youtube_auth.py status   # 현재 상태")
+        print("  python scripts/youtube_auth.py plan     # 재인증 플랜(계정·채널 매핑 확인)")
+        print("  python scripts/youtube_auth.py ko en    # 해당 언어만 인증")
+        return
+    if args[0] == "plan":
+        plan()
         return
 
     client = load_client()
