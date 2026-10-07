@@ -151,18 +151,19 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 
 ## 주인공
 동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
-**종명 + 동물 특유의 신체 특징(코·눈·귀·털·발톱·꼬리 등)을 반드시 포함할 것.**
-  ✅ "a small gray mole with a pointed pink nose, tiny black eyes, short whiskers, sharp digging claws"
-  ✅ "a tiny old tortoise with a cracked shell and a wrinkled neck"
+**형식: "<종명>, <분류>, <신체 특징1>, <신체 특징2>, <신체 특징3>"** (최대 6개 단어)
+  ✅ "a mole, a small subterranean mammal, pointed snout, long whiskers, tiny eyes, wide paws"
+  ✅ "a tortoise, a slow shelled reptile, wrinkled neck, cracked shell, thick legs"
   ❌ "about the size of a teacup"  ← 비교 대상(찻잔 등)을 쓰면 모델이 그 물체를 그린다
 이 묘사는 우화 장면의 이미지 프롬프트에 자동 삽입되므로 장면 묘사에 반복할 필요 없다.
 
-⚠️ **의류·안장(소품)은 쓰지 마라** (2026-10-07 실측 — 인물화 유발):
-  - "with round glasses" 같은 표현을 넣으면 flux 가 **사람(특히 여성)** 을 그린다.
-    실측: 두더지 캐릭터에 round glasses 를 넣었더니 여러 장면이 여성이 되어 나왔다.
-  - 동물은 복장 없이 **종에서 바로 연상되는 신체 특징**으로 구분한다.
-  - "wearing a hat" / "with glasses" / "in a scarf" 류는 위험 (피한다).
-  - 도구는 동물의 본질에서 나오는 것만 허용: "carrying a small shovel" 정도는 OK.
+⚠️ 실측으로 확인된 flux 규칙 3가지 (2026-10-07):
+1. **분류어**(subterranean mammal / shelled reptile)가 종을 확실히 고정한다.
+   종명만 ("a mole") 은 고양이/여우로 새는 경우가 있다.
+2. **신체 특징 3개 이상**(코·눈·수염·발톱·귀)을 반드시 넣는다. 세부가 종 신호를 강화한다.
+3. **의류·안장 금지** — "with round glasses" 를 넣으면 **사람(여성)** 이 나온다.
+4. **부정 표현 금지** — "not a cat" 처럼 쓰면 오히려 그 단어를 반영해 고양이가 나온다.
+  flux 는 'not X' 를 'X' 로 읽는 경향이 있다. 긍정형 묘사만 쓸 것.
 
 ## 규칙
 - narration: 각 언어당 1~2문장, 낭독 6~8초 분량. **나레이션은 3인칭 기록체로 쓰지 않는다.**
@@ -481,8 +482,11 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
                         r"(?:scarf|hat|cap|helmet|gloves|boots|sweater|shirt|coat|robe|cloak)\b",
                         "", characters, flags=re.I)
     characters = " ".join(characters.split()).strip(" ,")
+    # ⚠️ 부정 표현 제거 — flux 는 'not a cat' 을 'cat' 으로 읽는다 (실측: 고양이 유도됨)
+    characters = re.sub(r",?\s*not\s+(?:a|an|the)\s+\w+", "", characters, flags=re.I)
+    characters = " ".join(characters.split()).strip(" ,")
     if not characters:
-        characters = "a small brown animal"
+        characters = "a small furry animal"
 
     # ── 코드 강제: 확정된 대사/프롬프트로 덮어쓴다 ──
     for i, sc in enumerate(scenes):
