@@ -15,6 +15,7 @@ import json
 import os
 import re
 import sys
+import time
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
@@ -219,14 +220,30 @@ def auth(lang: str, client: dict) -> bool:
         print("③ '권한 허용' 클릭")
         print(f"④ '액세스 거부(Access blocked)' 화면이 뜨는 게 정상입니다.")
         print(f"   (로컬 콜백이 127.0.0.1:{port} 에서 대기 중 — 이 창을 닫지 마세요)")
-        print("=" * 74 + "\n")
+        print("=" * 74)
+        # URL 을 파일에도 저장 — 복사 실수 방지 및 재확인용
         try:
-            t.join(timeout=240)   # 최대 4분 대기
+            url_file = BASE / "data" / f"_yt_auth_{lang}.url"
+            url_file.parent.mkdir(parents=True, exist_ok=True)
+            url_file.write_text(auth_url, encoding="utf-8")
+            print(f"📄 URL 사본: {url_file}")
+        except Exception:  # noqa: BLE001
+            pass
+        print()
+        try:
+            # 로이가 URL 을 복사·붙여넣고 로그인하는 동안 충분히 기다린다.
+            # 기본 4분은 짧아서 실패했다 (2026-10-07 실측).
+            wait = int(os.getenv("YT_AUTH_TIMEOUT", "1200"))   # 20분
+            deadline = time.time() + wait
+            print(f"\n⏳ 최대 {wait // 60}분 대기합니다. 창을 닫지 마세요.")
+            while time.time() < deadline and t.is_alive():
+                t.join(timeout=1)
         except Exception:  # noqa: BLE001
             pass
         server.server_close()
         if not getattr(flow, "credentials", None):
-            print("[fail] 콜백을 받지 못했습니다 (시간 초과).")
+            print(f"[fail] 콜백을 받지 못했습니다 (시간 초과, {wait // 60}분).")
+            print("        다시 실행해 새 URL 을 받아주세요.")
             return False
         creds = flow.credentials
     else:
