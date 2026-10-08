@@ -1,35 +1,18 @@
-fix(yt): 핸들 비교를 대소문자 무시로 — YouTube 는 case-insensitive
+docs(yt): 채널 분리 완료 문서로 갱신 (4/4 인증 성공)
 
-## 증상
-```
-[fail] ko 토큰이 @wisdompathroad 채널에 묶였습니다 (기대: @WisdomPathroad)
-```
-**개인 계정 인증은 성공했는데** 검증이 대소문자 차이로 거부했다.
-→ 토큰이 저장되지 않아 재인증이 필요해졌다.
+## 최종 상태
+| 언어 | 채널명 | 핸들 | 계정 |
+|---|---|---|---|
+| 한국어 | 지혜의 길 | @wisdompathroad | 개인 |
+| 영어 | wisdompath | @wisdompath-en | 개인 |
+| 중국어 | shinsegi 中文 | @shinsegi-zh | shinsegimedia |
+| 프랑스어 | shinsegi Français | @shinsegi-fr | shinsegimedia |
 
-## 원인
-YouTube 채널 핸들은 **대소문자를 구분하지 않는다.**
-실측: 로이가 `@WisdomPathroad` 로 만들었는데 channels.list 는
-`@wisdompathroad` 로 반환했다. 우리 비교는 원본 문자열 그대로였으므로
-동일한 핸들인데 불일치로 판정했다.
+한국어 채널에 기존 영상 72개가 있다 (기존 채널을 계정 이관 없이 재활용).
 
-## 수정
-`_norm_handle()` 도입 — @ 제거 + 소문자화 후 비교.
-- auth() 의 채널 검증
-- status() 의 OK/≠ 표시
-양쪽 모두 적용.
-
-## 안전성
-다른 채널로 잘못 묶이는 것은 여전히 막는다:
-| got | expected | 결과 |
-|---|---|---|
-| @WisdomPathroad | @WisdomPathroad | True |
-| @wisdompathroad | @WisdomPathroad | True (고쳐짐) |
-| @SHINSEGI-ZH | @shinsegi-zh | True |
-| @shinsegi-zh | @WisdomPathroad | **False** (차단 유지) |
-
-6개 케이스 전부 통과.
-
-## 참고
-이 검증을 통과했다는 것은 **개인 계정으로 인증에 성공했다**는 뜻이다.
-로그인이 shinsegimedia 로 되어 있었다면 @shinsegi-zh 로 잡혔을 것이다.
+## 문서 정리
+- 상태 표를 완료 상태로 갱신
+- 과정 중 해결한 문제 5건을 표로 기록 (재발 방지)
+- 안전장치 3종(채널 자동 차단 / 핸들 검증 / config 클라우드 공유) 설명 추가
+- 재인증 절차 + 주의사항 정리
+- 진단 도구 3종 안내

@@ -1,110 +1,101 @@
-# YouTube 채널 재배치 — 로이 행동 가이드 (2026-10-07)
+# YouTube 채널 분리 — 완료 (2026-10-08)
 
-## 현재 상태 (확인 완료)
+## 최종 상태 (4/4 인증 완료, 검증 통과)
 
-| 언어 | 채널 | 계정 | 영상수 | 상태 |
+| 언어 | 채널명 | 핸들 | 계정 | 영상수 |
 |---|---|---|---|---|
-| 한국어(ko) | ~~`@shinsegi-kr`~~ → **`@shinsegi-zh` 로 개명** | shinsegimedia | 0 | ⛔ **차단됨** |
-| 프랑스어(fr) | `@shinsegi-fr` "shinsegi Français" | shinsegimedia | 2 | ✅ 연결 |
-| 중국어(zh-cn) | `@shinsegi-zh` "shinsegi 中文" | shinsegimedia | 0 | 인증 필요 |
-| 영어(en) | — | 미생성 | 0 | 미연결 |
+| 한국어 | 지혜의 길 | `@wisdompathroad` | 로이 개인 | 72 |
+| 영어 | wisdompath | `@wisdompath-en` | 로이 개인 | 0 |
+| 중국어 | shinsegi 中文 | `@shinsegi-zh` | shinsegimedia | 0 |
+| 프랑스어 | shinsegi Français | `@shinsegi-fr` | shinsegimedia | 3 |
 
-**2026-10-07 저녁 변경**: 로이가 기존 `@shinsegi-kr` 채널을
-"shinsegi 中文" / `@shinsegi-zh` 로 개명했다. 기존 한국어 영상 3개는 삭제된 상태.
+## 변경 내용
 
-### ⚠️ 이 변경으로 생긴 위험 (코드에서 차단함)
-기존 `YOUTUBE_KO_REFRESH_TOKEN` 은 이제 **`@shinsegi-zh`(중국어) 를 가리킨다.**
-이 상태로 한국어 영상을 올리면 **중국어 채널에 한국어 영상이 게시**된다.
-→ `config/youtube_channels.yaml` 의 `blocked_languages: [ko]` 로 업로드를 막았다.
-→ `youtube_auth.py ko` 로 재인증하면 **자동으로 차단이 해제**된다.
+### 계정 분리
+```
+shinsegimedia@gmail.com  →  중국어(@shinsegi-zh), 프랑스어(@shinsegi-fr)
+로이 개인 Gmail          →  한국어(@wisdompathroad), 영어(@wisdompath-en)
+```
 
----
+### GitHub
+- 저장소를 **public** 으로 전환 → GitHub Actions cron 활성화
+- 시크릿 점검 완료 (시크릿 4개 모두 차단 확인)
+- `data/threads_app.json` 시크릿 커밋 이력에서 제거 (git 추적 제외)
+- GitHub Secrets **29개 갱신** (EN / ZH_CN 토큰 포함)
 
-## ⚠️ 먼저 알아야 할 YouTube 구조
+### 워크플로
+- `fable.yml` cron: `20 10 * * *` → `17 10 * * *`
+  (GitHub 스케줄러는 `:00` / `:30` 이 혼잡해 실행이 대량 폐기됨)
+- `repository_dispatch` 추가 — private 한계 우회용
+  (현재는 public 이라 cron 이 동작하지만, private 로 되돌리면 필요)
+- env 블록에 `YOUTUBE_ZH_CN_REFRESH_TOKEN` / `YOUTUBE_EN_REFRESH_TOKEN` 추가
+  (secret 을 등록해도 env 로 전달하지 않으면 쓸 수 없었음)
 
-### 1. 채널은 "계정"이 아니라 "계정 아래의 자식"
-Google 계정 1개 = YouTube 채널 N개
+## 과정 중 해결한 문제들
 
-### 2. 영상은 채널에 영구 귀속
-**채널을 다른 계정으로 옮기는 것은 불가능.** → 새 채널을 만들어야 한다.
-
-### 3. 목표 상태达成 방법
-| 언어 | 목표 채널 | 방법 |
+| 문제 | 원인 | 해결 |
 |---|---|---|
-| 한국어 | 개인 계정의 새 채널 | 개인 계정에서 생성 후 ko 재인증 |
-| 영어 | 개인 계정의 새 채널 | 개인 계정에서 생성 후 en 재인증 |
-| 프랑스어 | shinsegimedia (현재 그대로) | ✅ 완료 |
-| 중국어 | `@shinsegi-zh` (현재 그대로) | zh-cn 만 재인증 |
+| cron 이 안 돌았음 | **무료 계정 + private 저장소** 는 schedule 비활성화 | public 전환 |
+| 403 access_denied | OAuth 동의 화면이 테스트 상태 | 테스트 사용자에 계정 추가 |
+| 127.0.0.1 안 됨 | IPv6(::1) 우선 + `HTTP_PROXY=127.0.0.1:6222` 가 콜백을 빼앗아감 | 프록시 제거 + `run_local_server(host="localhost")` |
+| 채널 검증 실패 | YouTube 핸들은 **대소문자를 구분하지 않음** | `_norm_handle()` 로 정규화 |
+| 한국어가 계속 중국어로 감 | Google 이 직전 계정(shinsegimedia) 재사용 | 재인증 시 개인 계정 선택 |
 
----
+## 안전장치 (앞으로 유용)
 
-## 실행 절차
+### 1. 채널 자동 차단
+`config/youtube_channels.yaml` 의 `blocked_languages` 로 언어를 차단할 수 있다.
+토큰이 다른 채널을 가리킬 때 publisher 가 업로드를 건너뛴다.
 
-### Step 1. 로이가 먼저 할 일 (브라우저)
-
-**A) 개인 계정에서 한국어·영어 채널 생성**
-1. 개인 Google 계정으로 YouTube 로그인
-2. 우측 상��� 프로필 → **"채널 만들기"**
-3. 한국어 채널: 이름 `shinsegi 한국어`, 핸들 `@shinsegi-ko`
-4. 영어 채널: 이름 `shinsegi English`, 핸들 `@shinsegi-en`
-5. 생성 완료
-
-**B) shinsegimedia 중국어 채널은 이미 있음** (`@shinsegi-zh`) → 추가 작업 없음
-
-### Step 2. 핸들을 config 에 기록
-새 핸들이 확정되면 `config/youtube_channels.yaml` 의 `expected_handles.ko` /
-`.en` 을 채운다. (빈 값이어도 인증은 되지만, 다른 채널에 실수로 묶일 수 있음)
-
-### Step 3. 인증 (1개씩 — 동시에 여러 언어 인증하면 계정이 섞인다)
-```bash
-python scripts/youtube_auth.py zh-cn   # shinsegimedia 로그인 → @shinsegi-zh 선택
-python scripts/youtube_auth.py ko      # 개인 계정 로그인 → 한국어 채널 선택
-python scripts/youtube_auth.py en      # 개인 계정 로그인 → 영어 채널 선택
+```yaml
+blocked_languages:
+  - ko
 ```
-인증 성공 시 `blocked_languages` 에서 해당 언어가 **자동 제거**된다.
+→ 재인증 성공 시 `youtube_auth.py` 가 자동으로 제거한다.
 
-### Step 4. 확인
-```bash
-python scripts/youtube_auth.py status
+### 2. 핸들 검증
+`expected_handles` 로 채널을 고정한다. 다른 채널에 묶이면 **토큰 저장을 거부**한다.
+대소문자는 무시한다 (YouTube 특성).
+
+### 3. config 는 클라우드에서도 읽힌다
+`config/youtube_channels.yaml` 가 git 추적 상태라
+GitHub Actions runner 도 같은 config 를 읽는다.
+→ 차단/검증 로직이 로컬과 클라우드에서 **동일하게** 동작한다.
+
+## 재인증 방법
+
+```powershell
+cd "C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation"
+.\scripts\youtube_auth.cmd ko        # 또는 en / zh-cn / fr
 ```
-각 언어가 어느 채널에 붙었는지 표시된다.
 
----
+또는 `scripts\youtube_auth.cmd` 더블클릭 (기본값 ko).
 
-## 주의사항 (실제 겪은 함정)
+### 주의
+1. **인자를 안 넣으면 ko** 로 실행된다.
+2. Google 이 직전 계정을 자동 선택할 수 있다 → **Gmail 주소부터 확인**
+3. 계정 선택 화면이 안 뜨면:
+   - https://myaccount.google.com/connections 에서 이 앱 권한 삭제
+   - 다시 실행 → 반드시 선택 화면이 뜬다
+4. **계정 단위 revoke 금지** — 그 계정의 모든 언어 토큰이 죽는다
 
-### ❌ 계정 단위 revoke 금지
-`myaccount.google.com/connections` 에서 앱 권한을 삭제하면
-**그 계정의 모든 언어 토큰이 한꺼번에 죽는다.**
-언어 하나만 바꾸려면 **그 언어만 재인증**한다.
+### 인증 후 반드시
+```powershell
+python scripts\setup_github_secrets.py
+```
+새 토큰이 GitHub Secrets 에 올라가지 않으면 클라우드가 옛 토큰으로 업로드한다.
 
-### ⚠️ Google 이 직전 계정을 재사용한다
-`prompt=consent select_account` 를 넣어도 Google 이
-마지막으로 쓴 신분을 자동 선택할 때가 있다.
+## 진단 도구
 
-그럴 때:
-1. https://myaccount.google.com/connections
-2. 해당 앱 권한 삭제
-3. 인증 재실행 → 계정 선택 화면이 반드시 뜬다
-
-### ⚠️ 채널명이 모두 'shinsegi' 라 구분은 핸들로만 된다
-`expected_handles` 검증이 있다. 다른 채널에 실수로 묶이면 **토큰 저장을 거부**한다.
-
-### ⚠️ 개인 계정 채널의 공개 설정
-`videos.insert` 는 채널이 **공개(Public)** 상태여야 한다.
-
----
-
-## 즉시 확인
-```bash
-python scripts/youtube_auth.py plan      # 채널 매핑 확인
-python scripts/youtube_auth.py status    # 현재 토큰 → 채널 상태
+```powershell
+python scripts\youtube_auth.py status   # 채널 매핑 + 토큰 상태
+python scripts\youtube_auth.py plan     # 재인증 플랜
+python scripts\diag_localhost.py        # localhost/IPv6/프록시 진단
 ```
 
 ## 변경 이력
-- 2026-10-07: config/youtube_channels.yaml 신설. 채널 매핑을 하드코딩에서
-  config 기반으로 분리. `plan` / `status` 명령 추가.
-- 2026-10-07 저녁: 한국어 채널을 중국어로 개명함에 따라
-  - `expected_handles.zh-cn = "@shinsegi-zh"` 확정
-  - `blocked_languages = [ko]` 추가 (토큰이 중국어 채널을 가리키므로 차단)
-  - 재인증 성공 시 자동 차단 해제 로직 추가
+- 2026-10-07 20:00 — 채널 재배치 요청, config 분리
+- 2026-10-07 21:00 — public 전환 + cron 분기
+- 2026-10-08 12:00 — OAuth 403 해결 (테스트 사용자)
+- 2026-10-08 12:45 — zh/en/fr 인증 성공
+- 2026-10-08 13:55 — ko 인증 성공, **4/4 완료**
