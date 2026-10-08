@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-09",
+  "theme": "attitude",
+  "theme_label": "인생의 철학과 태도",
+  "quote": {
+    "id": "jobs-limited-time",
+    "author": {
+      "en": "Steve Jobs",
+      "ko": "스티브 잡스",
+      "zh-cn": "史蒂夫·乔布斯",
+      "fr": "Steve Jobs"
+    },
+    "text": {
+      "en": "Your time is limited, so do not waste it living someone else's life.",
+      "ko": "당신의 시간은 한정되어 있다. 남의 인생을 사느라 낭비하지 마라.",
+      "zh-cn": "你的时间有限，不要为别人而活。",
+      "fr": "Ton temps est limité, ne le gaspille pas à vivre la vie de quelqu'un d'autre."
+    }
+  },
+  "title": {
+    "ko": "네 인생을 살아라",
+    "en": "Stop Living Someone Else's Life",
+    "zh-cn": "别再为别人而活",
+    "fr": "Vis ta propre vie"
+  },
+  "caption": {
+    "ko": "네 인생을 살아라\n새를 따라 하늘을 나려던 두더지는 매일 굴렀어요. 결국 발밑의 흙을 파고 자기 길을 열었죠. 당신은 오늘 누구의 시간표대로 살고 있나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "Stop Living Someone Else's Life\nThe mole kept trying to fly like the birds until it looked down and dug its own path. Whose schedule are you living on today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "别再为别人而活\n小鼹鼠天天想学鸟飞，摔了很多次，最后低下头，挖出了自己的路。你今天活在谁的时间表里？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Vis ta propre vie\nLa taupe voulait voler comme les oiseaux, jusqu'au jour où elle a creusé son propre chemin. Tu vis sur l'emploi du temps de qui, aujourd'hui ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "남의 인생을 따라 하지 마라.",
+        "지금 하고 싶은 걸 적어라."
+      ],
+      "en": [
+        "Stop living someone else's life.",
+        "Write down what you truly want now."
+      ],
+      "zh-cn": [
+        "别再照别人的样子活了。",
+        "现在就写下你真正想要的。"
+      ],
+      "fr": [
+        "Arrête de copier les autres.",
+        "Écris ce que tu veux vraiment."
+      ]
+    },
+    "highlight": {
+      "ko": "적어라",
+      "en": "Stop",
+      "zh-cn": "写下",
+      "fr": "Écris"
+    }
+  },
+  "moral": {
+    "ko": "남의 인생 말고, 오늘부터 네 인생을 살아라.",
+    "en": "Quit living someone else's life and start living yours.",
+    "zh-cn": "别再为别人而活，从今天起过你自己的人生。",
+    "fr": "Arrête de vivre la vie des autres et vis la tienne, aujourd'hui."
+  },
+  "characters": "a mole, a small subterranean mammal, long snout, tiny eyes, wide paws",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole sitting alone on a bare hilltop at dawn, quiet open field behind it, side view, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신의 시간은 한정되어 있다. 남의 인생을 사느라 낭비하지 마라. — 스티브 잡스.",
+        "en": "Your time is limited, so do not waste it living someone else's life. — Steve Jobs.",
+        "zh-cn": "你的时间有限，不要为别人而活. — 史蒂夫·乔布斯.",
+        "fr": "Ton temps est limité, ne le gaspille pas à vivre la vie de quelqu'un d'autre. — Steve Jobs."
+      },
+      "subtitle": {
+        "ko": "시간은 한정되어 있다",
+        "en": "Your time is limited",
+        "zh-cn": "你的时间有限",
+        "fr": "Ton temps est limité"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole standing on a wide dirt path at dawn, one wide paw lifted toward the sky, side view, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "남의 인생을 따라 하지 마라. 지금 하고 싶은 걸 적어라",
+        "en": "Stop living someone else's life. Write down what you truly want now",
+        "zh-cn": "别再照别人的样子活了。现在就写下你真正想要的",
+        "fr": "Arrête de copier les autres. Écris ce que tu veux vraiment"
+      },
+      "subtitle": {
+        "ko": "남의 인생 따라 하지 마라",
+        "en": "Stop copying others",
+        "zh-cn": "别再照着别人活",
+        "fr": "Arrête de copier les autres"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지가 매일 아침 언덕에 올랐어요. 새들처럼 하늘을 나는 게 자기 꿈이라고 믿었죠.",
+        "en": "Every morning the mole climbed the hill. He was sure the sky was where he belonged.",
+        "zh-cn": "每天清晨，小鼹鼠都爬上小山坡。它以为天上才是自己该待的地方。",
+        "fr": "Chaque matin, la taupe montait sur la colline. Elle croyait que sa place était dans le ciel."
+      },
+      "subtitle": {
+        "ko": "새처럼 살고 싶었다",
+        "en": "He wanted to be a bird",
+        "zh-cn": "它想变成一只鸟",
+        "fr": "Elle voulait être un oiseau"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "낮은 바위에서 뛰어내렸어요. 당연히 그대로 굴렀죠.",
+        "en": "So he jumped off a low rock. And of course, he tumbled right down.",
+        "zh-cn": "它从一块矮石头上跳了下去。结果直接摔了下来。",
+        "fr": "Alors elle a sauté d'un petit rocher. Et, forcément, elle a dévalé la pente."
+      },
+      "subtitle": {
+        "ko": "뛰어내리면 굴렀다",
+        "en": "He jumped. He fell.",
+        "zh-cn": "跳下去，摔下来",
+        "fr": "Elle saute, elle tombe"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole standing in soft dirt at dawn, wide paws raised, dirt on its long snout, side view, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "며칠 동안 날갯짓을 흉내 냈어요. 온몸이 흙투성이가 됐죠.",
+        "en": "He kept flapping his wide paws for days. He ended up covered in dirt.",
+        "zh-cn": "它学了好几天，满身都是泥。",
+        "fr": "Elle a imité le battement des ailes pendant des jours. Elle a fini couverte de terre."
+      },
+      "subtitle": {
+        "ko": "날갯짓 연습, 흙투성이",
+        "en": "Days of flapping, all in dirt",
+        "zh-cn": "天天学飞，满身是泥",
+        "fr": "Des jours à battre des ailes"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "어느 날 아침, 발밑 흙이 부드럽게 느껴졌어요. 그래서 멈춰 섰죠.",
+        "en": "Then one morning, the soil under his paws felt soft. He stopped right there.",
+        "zh-cn": "那天早上，脚下的泥土特别松软。它停了下来。",
+        "fr": "Puis un matin, la terre sous ses pattes était douce. Elle s'est arrêtée."
+      },
+      "subtitle": {
+        "ko": "발밑 흙이 부드러웠다",
+        "en": "The soil felt soft",
+        "zh-cn": "脚下的土变软了",
+        "fr": "La terre était douce"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole digging into a hillside at dawn, dirt scattered behind it, side view, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "하늘은 새들의 것이었어요. 땅은 두더지의 것이었고, 파기 시작하자 길이 열렸어요.",
+        "en": "The sky belonged to the birds. The ground was his, and the moment he dug, a path opened.",
+        "zh-cn": "天空是鸟的，土地才是它的。它一挖，路就出来了。",
+        "fr": "Le ciel était aux oiseaux. Le sol était à elle, et dès qu'elle a creusé, un chemin s'est ouvert."
+      },
+      "subtitle": {
+        "ko": "하늘은 새의 것",
+        "en": "The sky was theirs",
+        "zh-cn": "天空是鸟的",
+        "fr": "Le ciel était aux oiseaux"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "서른여섯에 안정된 직장을 그만둔 사람이 있어요. 삼 년 동안 매일 새벽 다섯 시에 일어나 자기 일을 두 시간씩 했죠. 당신 시간도 똑같이 한정돼 있어요.",
+        "en": "A woman quit her safe job at thirty-six. For three years she got up at five and worked on her own thing. Your time is just as limited as hers.",
+        "zh-cn": "有个女人三十六岁辞掉了稳定的工作。三年里，她每天早上五点起床，把两个小时留给自己的事。你的时间也一样有限。",
+        "fr": "Une femme a quitté son poste à trente-six ans. Pendant trois ans, elle s'est levée à cinq heures pour son propre projet. Ton temps est aussi limité que le sien."
+      },
+      "subtitle": {
+        "ko": "새벽 다섯 시, 삼 년",
+        "en": "Five a.m., three years straight",
+        "zh-cn": "三年，每天五点起床",
+        "fr": "Cinq heures, pendant trois ans"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man at a kitchen table at night, phone face down beside a blank notebook, hand holding a pen, pencil sketch portrait, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "오늘 밤 십 분을 비워라. 네 일의 첫 단계 하나를 적어라.",
+        "en": "Block ten minutes tonight. Write the first small step of your own thing.",
+        "zh-cn": "今晚空出十分钟。写下你自己那件事的第一步。",
+        "fr": "Bloque dix minutes ce soir. Écris la première petite étape de ton projet."
+      },
+      "subtitle": {
+        "ko": "오늘 밤 십 분을 비워라",
+        "en": "Block ten minutes tonight",
+        "zh-cn": "今晚空出十分钟",
+        "fr": "Bloque dix minutes ce soir"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "남의 인생 말고, 오늘부터 네 인생을 살아라.",
+        "en": "Quit living someone else's life and start living yours.",
+        "zh-cn": "别再为别人而活，从今天起过你自己的人生。",
+        "fr": "Arrête de vivre la vie des autres et vis la tienne, aujourd'hui."
+      },
+      "subtitle": {
+        "ko": "네 인생을 살아라",
+        "en": "Live your own life",
+        "zh-cn": "过自己的人生",
+        "fr": "Vis ta vie"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
