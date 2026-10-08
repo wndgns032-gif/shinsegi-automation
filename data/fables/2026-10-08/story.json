@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-08",
+  "theme": "attitude",
+  "theme_label": "인생의 철학과 태도",
+  "quote": {
+    "id": "seneca-not-short",
+    "author": {
+      "en": "Seneca",
+      "ko": "세네카",
+      "zh-cn": "塞涅卡",
+      "fr": "Sénèque"
+    },
+    "text": {
+      "en": "It is not that we have a short time to live, but that we waste much of it.",
+      "ko": "인생이 짧은 게 아니다. 우리가 많은 시간을 흘려보낼 뿐이다.",
+      "zh-cn": "并不是人生太短，而是我们浪费了太多。",
+      "fr": "Ce n'est pas que la vie soit courte, c'est que nous en gaspillons une grande part."
+    }
+  },
+  "title": {
+    "ko": "시간이 없는 게 아니야",
+    "en": "Time Isn't Short",
+    "zh-cn": "不是时间不够",
+    "fr": "Le temps n'est pas court"
+  },
+  "caption": {
+    "ko": "시간이 없는 게 아니라, 우리가 흘려보내는 거예요.\n느림보 나무늘보가 알려준 시간의 진실.\n당신은 오늘 시간을 어디에 썼나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "It's not that time is short. It's that we let it slip.\nA slow sloth teaches us where our hours really go.\nWhere did your time go today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "不是时间太短，是我们让它溜走了。\n一只慢吞吞的树懒，教会我们时间到底去了哪里。\n今天，你的时间花在哪儿了？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Ce n'est pas que le temps soit court. C'est qu'on le laisse filer.\nUn paresseux très lent nous montre où passent nos heures.\nAujourd'hui, ton temps est passé où ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "매일 바빴는데, 아무것도 남지 않았어요.",
+        "시간이 없어서가 아니에요."
+      ],
+      "en": [
+        "You were busy every day, yet nothing stayed.",
+        "It's not that you had no time."
+      ],
+      "zh-cn": [
+        "每天都忙，却什么都没留下。",
+        "不是你没时间。"
+      ],
+      "fr": [
+        "Tu étais occupé chaque jour, et rien n'est resté.",
+        "Ce n'est pas que tu manquais de temps."
+      ]
+    },
+    "highlight": {
+      "ko": "바빴는데",
+      "en": "busy",
+      "zh-cn": "忙",
+      "fr": "occupé"
+    }
+  },
+  "moral": {
+    "ko": "시간을 아껴 쓰는 게 아니라, 흘려보내지 마세요.",
+    "en": "Don't save your time. Just stop letting it slip.",
+    "zh-cn": "不是要省时间，是别让它溜走。",
+    "fr": "Ne cherche pas à gagner du temps. Arrête juste de le laisser filer."
+  },
+  "characters": "a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, the main character standing alone, thinking, looking ahead, full body visible, side view, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "인생이 짧은 게 아니다. 우리가 많은 시간을 흘려보낼 뿐이다. — 세네카.",
+        "en": "It is not that we have a short time to live, but that we waste much of it. — Seneca.",
+        "zh-cn": "并不是人生太短，而是我们浪费了太多. — 塞涅卡.",
+        "fr": "Ce n'est pas que la vie soit courte, c'est que nous en gaspillons une grande part. — Sénèque."
+      },
+      "subtitle": {
+        "ko": "인생이 짧은 게 아니다",
+        "en": "Life isn't short",
+        "zh-cn": "人生并不短",
+        "fr": "La vie n'est pas courte"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, the main character standing alone, thinking, looking ahead, full body visible, side view, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "매일 바빴는데, 아무것도 남지 않았어요. 시간이 없어서가 아니에요",
+        "en": "You were busy every day, yet nothing stayed. It's not that you had no time",
+        "zh-cn": "每天都忙，却什么都没留下。不是你没时间",
+        "fr": "Tu étais occupé chaque jour, et rien n'est resté. Ce n'est pas que tu manquais de temps"
+      },
+      "subtitle": {
+        "ko": "매일 바빴는데",
+        "en": "busy every day",
+        "zh-cn": "每天都忙",
+        "fr": "occupé chaque jour"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, a sloth on a branch at morning, reaching for a single leaf with one claw, forest below, side view, full body visible, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "느림보 나무늘보가 아침마다 나뭇잎 하나를 향해 팔을 뻗었어요.",
+        "en": "Every morning, the sloth reached one arm toward a single leaf.",
+        "zh-cn": "每天早晨，树懒伸出一只手，去够一片叶子。",
+        "fr": "Chaque matin, le paresseux tendait un bras vers une seule feuille."
+      },
+      "subtitle": {
+        "ko": "나뭇잎 하나",
+        "en": "one leaf",
+        "zh-cn": "一片叶子",
+        "fr": "une feuille"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, a sloth on a branch at midday, arm still reaching the same leaf, other animals blurred far below, side view, full body visible, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "다른 동물들은 벌써 나무를 다 돌았는데, 나무늘보는 그 자리 그대로였어요.",
+        "en": "The other animals had already circled the whole tree. The sloth was still right there.",
+        "zh-cn": "别的动物早就绕完了整棵树。树懒还在原地。",
+        "fr": "Les autres animaux avaient déjà fait le tour de l'arbre. Le paresseux, lui, n'avait pas bougé."
+      },
+      "subtitle": {
+        "ko": "그 자리 그대로",
+        "en": "still right there",
+        "zh-cn": "还在原地",
+        "fr": "toujours là"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, the main character standing alone, thinking, looking ahead, full body visible, side view, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "지친 나무늘보는 팔을 내려놓고 눈을 감았어요. 하루가 다 갔는데 아무것도 못 했거든요.",
+        "en": "Tired, the sloth let its arms drop and closed its eyes. The day was gone, and nothing had been done.",
+        "zh-cn": "累了的树懒放下手臂，闭上了眼。一天过去了，什么都没做成。",
+        "fr": "Fatigué, le paresseux baissa les bras et ferma les yeux. La journée était finie, et rien n'avait été fait."
+      },
+      "subtitle": {
+        "ko": "하루가 다 갔어요",
+        "en": "the day was gone",
+        "zh-cn": "一天过去了",
+        "fr": "la journée finie"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, the main character standing alone, thinking, looking ahead, full body visible, side view, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그런데 해가 지기 직전, 나뭇잎 하나가 손끝에 닿았어요. 하루를 다 쓴 게 아니라, 하루를 다 쓴 거예요.",
+        "en": "Then, just before sunset, one leaf touched its claw. It hadn't lost the day. It had spent it.",
+        "zh-cn": "可就在太阳下山前，一片叶子碰到了它的指尖。它没有丢掉这一天，是它把这一天用掉了。",
+        "fr": "Puis, juste avant le coucher du soleil, une feuille toucha sa griffe. Il n'avait pas perdu sa journée. Il l'avait dépensée."
+      },
+      "subtitle": {
+        "ko": "하루를 쓴 거예요",
+        "en": "spent, not lost",
+        "zh-cn": "是用掉了",
+        "fr": "dépensée"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, a sloth on a branch at night, holding the leaf close to its face, eyes open and calm, moonlit forest, side view, full body visible, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그제야 알았어요. 시간은 모자란 게 아니라, 어디로 갔는지 몰랐던 거였어요.",
+        "en": "That's when it understood. Time wasn't missing. It just didn't know where it had gone.",
+        "zh-cn": "它这才明白。时间不是不够，是它不知道时间去了哪儿。",
+        "fr": "C'est là qu'il a compris. Le temps ne manquait pas. Il ne savait juste pas où il était passé."
+      },
+      "subtitle": {
+        "ko": "어디로 갔는지 몰랐어요",
+        "en": "where it had gone",
+        "zh-cn": "不知道去了哪儿",
+        "fr": "où il était passé"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신도 그래요. 하루 종일 바빴는데, 저녁에 앉으면 오늘 뭘 했는지 기억이 안 나요.",
+        "en": "You're the same. Busy all day, then you sit down at night and can't remember what you did.",
+        "zh-cn": "你也一样。忙了一整天，晚上坐下来，却想不起今天干了什么。",
+        "fr": "Toi aussi. Occupé toute la journée, et le soir, tu t'assois sans savoir ce que tu as fait."
+      },
+      "subtitle": {
+        "ko": "오늘 뭘 했는지",
+        "en": "what did you do",
+        "zh-cn": "今天干了什么",
+        "fr": "ce que tu as fait"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man sitting by a window in early morning, phone face down on the table, coffee untouched, soft light on his face, pencil sketch portrait, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "시간을 아껴 쓰려고 하지 마세요. 그냥 흘려보내지 마세요. 오늘 하나만 정해서, 끝까지 해보세요.",
+        "en": "Don't try to save your time. Just stop letting it slip. Pick one thing today and see it through.",
+        "zh-cn": "别想着省时间。只要别让它溜走。今天就挑一件事，做完它。",
+        "fr": "N'essaie pas de gagner du temps. Arrête juste de le laisser filer. Choisis une chose aujourd'hui et tiens jusqu'au bout."
+      },
+      "subtitle": {
+        "ko": "하나만, 끝까지",
+        "en": "one thing, all the way",
+        "zh-cn": "挑一件，做完它",
+        "fr": "une chose, jusqu'au bout"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, a sloth on a branch at sunrise, holding a single leaf, calm forest around, wide shot, full body visible, a sloth, a slow tree-dwelling mammal, round face, long curved claws, shaggy fur, sleepy eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "시간을 아껴 쓰는 게 아니라, 흘려보내지 마세요.",
+        "en": "Don't save your time. Just stop letting it slip.",
+        "zh-cn": "不是要省时间，是别让它溜走。",
+        "fr": "Ne cherche pas à gagner du temps. Arrête juste de le laisser filer."
+      },
+      "subtitle": {
+        "ko": "흘려보내지 마세요",
+        "en": "stop letting it slip",
+        "zh-cn": "别让它溜走",
+        "fr": "ne le laisse pas filer"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
