@@ -318,7 +318,7 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
     if mock or not os.getenv("DEEPSEEK_API_KEY"):
         return _validate(_mock_story(quote, theme), quote, theme)
     last_err: Exception = RuntimeError("생성 실패")
-    max_attempts = 6      # 지시형 규칙이 엄격해 재생성 횟수를 늘림 (3 → 6)
+    max_attempts = 8      # 지시형 규칙이 엄격해 재생성 횟수를 늘림 (3 → 6 → 8)
     feedback: list[str] = []
     for attempt in range(1, max_attempts + 1):
         resp = requests.post(
@@ -538,7 +538,9 @@ _IMPERATIVE_MARKS: dict[str, tuple[str, ...]] = {
               "就", "开", "走", "写", "读", "挖", "关上", "翻开", "合上",
               "别再", "停止", "放弃", "拿起", "扔掉", "关掉", "定好",
               "倒", "拿", "跟", "做", "学", "问", "看", "听", "想",
-              "空出", "划出", "留出", "定", "设", "排"),
+              "空出", "划出", "留出", "定", "设", "排",
+              # 把/将 = "…해라" 의 뉘앙스 (실측 2026-10-08: 大量 실패)
+              "把", "将", "给", "让", "用", "从", "向", "跟"),
 }
 
 
@@ -580,6 +582,14 @@ def _is_imperative(text: str, lang: str) -> bool:
         parts = [s.strip() for s in re.split(r"[.!?。！？]\s*", t) if s.strip()]
         words_all = [w.strip(",.?!") for w in t.split()]
         for p in parts:
+            if lang == "zh-cn":
+                # 중국어는 어절 사이에 공백이 없어 문장 첫 단어만 보면 놓친다.
+                # ("今晚，把手机扣在桌上" → 把 가 두 번째 어절)
+                # → 문장 안의 **어느 어절이든** 지시 동사면 참.
+                for mark in marks:
+                    if mark in p:
+                        return True
+                continue
             low = p.lower()
             for mark in marks:
                 if low.startswith(mark.lower()):
@@ -617,24 +627,23 @@ def _is_imperative(text: str, lang: str) -> bool:
     # 어미가 문장 끝에 오는 형태: "…써라" "…적어라" "…가라" "…오라"
     # → 마지막 3단어 안에 어미가 있으면 명령형이다.
     #   ("지금 당장 종이에 네가 원하는 걸 써라." → 끝에 '써라')
-    for w in t.rstrip(" .!?。！？").split()[-3:]:
+    # 2026-10-08 실측 실패: "한 줄 써라." 처럼 마침표가 붙으면 마지막 3어절만
+    # 봐도 어미를 놓친다 → **문장 전체 어절**에서 검사한다.
+    for w in t.replace(",", " ").replace("、", " ").split():
+        w = w.rstrip(".,!?。！？")
+        if len(w) < 2:
+            continue
         for suf in ("해라", "하라", "어라", "으라", "가라", "오라", "서라",
                     "마라", "세요", "떠라", "찍어라", "만들어", "해봐",
-                    "해 보라", "밀어라", "불어라", "쌓아라", "끝내라",
-                    "펴라", "입라", "벼라", "늘라", "줄여라", "끊어라",
-                    "지우라", "버려라", "잊어라", "기억해", "도전해"):
+                    "해 보라", "밀어라", "끝내라", "펴라", "입라", "벼라",
+                    "늘라", "줄여라", "끊어라", "지우라", "버려라", "잊어라",
+                    "기억해", "도전해"):
             if w.endswith(suf):
                 return True
-        # 한국어 명령형의 최종 형태: 동사 + '라'(해라/하라/서라/펴라/떠라 …).
-        # 어미 종류가 많아 열거로 다 못 잡으므로 **'라' 로 끝나면** 참으로 본다.
-        # 단, 서술형(~라던/~라 했다)을 걸러내기 위해 앞 글자가 모음이면 제외.
-        if w.endswith("라") and len(w) >= 2 and w[-2] not in "다나":
-            return True
-        # ㅆ 불규칙: 써라 · 적어라 ·收货하다 류 — "써라" "싸라" 는 어미가 붙어도 그대로
-        if w.endswith(("써라", "싸라", "싸.", "써")) and len(w) >= 2:
-            return True
-        # 띄어쓰기 없이 붙는 어미: "파라" "떠라" "씌라" (파내라 → 파라)
-        if len(w) >= 2 and w[-2:] in ("파라", "떠라", "써라", "라라"):
+        # 한국어 명령형의 본질은 "동사 + 라" (해라·써라·파라·펴라·떠라 …).
+        # 어미 종류가 많아 열거로 다 못 잡으므로 '라' 로 끝나면 참으로 본다.
+        # 서술형(갔다·됐다·끝났다)을 걸러내기 위해 바로 앞 글자가 '다/나' 면 제외.
+        if w.endswith("라") and w[-2] not in "다나":
             return True
     return False
 
