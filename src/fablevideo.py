@@ -33,6 +33,10 @@ XFADE = 0.55                      # 장면 전환 크로스페이드(초)
 WATERMARK_CROP = 0.92             # 하단 워터마크 잘라내기 (상위 92%)
 SCENE_PAD = 0.35                  # 장면당 낭독 뒤 여유(초)
 HOOK_LEAD = 0.9                   # 훅 장면 앞 여유(초) — 텍스트 인지 시간
+# 2026-10-08 로이 요청: 쇼츠 길이는 40초 이상 1분 이하로 맞춘다.
+#   짧으면 장면 여유를 늘리고, 길면 낭독을 살짝 빠르게(atempo) 압축한다.
+MIN_TOTAL = 40.0
+MAX_TOTAL = 60.0
 OUTRO_TAIL = 0.7                  # 아웃트로 끝 여유(초)
 
 # 낭독 배속 (2026-10-04 로이 피드밚: 1.2배속) — TTS 후 ffmpeg atempo 로 처리
@@ -550,24 +554,54 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
     scenes = story["scenes"]
 
     # 1) 장면별 낭독 (TTS) → 배속 적용 (atempo — 피치 유지)
+    #    로이 요청(2026-10-08): 영상 길이 **40초 이상 1분 이하**.
+    #    → 낭독 총 길이를 목표 구간에 맞게 atempo 로 압축/복잡调控한 뒤,
+    #      그래도 짧으면 장면 여유(SCENE_PAD)를 늘려 40초를 채운다.
     audios: list[Path] = []
+    raws: list[Path] = []
     for i, sc in enumerate(scenes):
         raw = work / f"voiceraw_{i + 1}.mp3"
-        mp3 = work / f"voice_{i + 1}.mp3"
         if not raw.exists():
             tts.synth(sc["narration"][lang], lang, raw)
+        raws.append(raw)
+
+    # 1-1) 길이 조절 — 1분 초과면 낭독을 살짝 빠르게, 40초 미만이면 여유를 넓힘
+    overhead = (HOOK_LEAD + OUTRO_TAIL + SCENE_PAD * len(scenes)
+                - XFADE * (len(scenes) - 1))
+    raw_total = sum(_audio_duration(r) for r in raws)
+    tempo = VOICE_SPEED
+    if raw_total + overhead > MAX_TOTAL:
+        # 1분 안에 들어가도록 속도up (자연스러운 범위는1.0~1.35, 그 이상은 강제하지 않음)
+        need = raw_total + overhead - MAX_TOTAL
+        tempo = min(1.35, max(VOICE_SPEED, VOICE_SPEED + need / max(raw_total, 1.0)))
+
+    for i, (sc, raw) in enumerate(zip(scenes, raws)):
+        mp3 = work / f"voice_{i + 1}.mp3"
         if not mp3.exists():
-            if abs(VOICE_SPEED - 1.0) < 0.01:
+            if abs(tempo - 1.0) < 0.01:
                 mp3.write_bytes(raw.read_bytes())
             else:
                 _run([ffmpeg, "-y", "-i", str(raw),
-                      "-filter:a", f"atempo={VOICE_SPEED:.3f}",
+                      "-filter:a", f"atempo={tempo:.3f}",
                       "-c:a", "libmp3lame", "-b:a", "128k", str(mp3)],
                      f"atempo{i + 1}")
         audios.append(mp3)
+
     durs = [_audio_duration(a) + SCENE_PAD for a in audios]
     durs[0] += HOOK_LEAD           # 훅: 텍스트 인지 시간
     durs[-1] += OUTRO_TAIL         # 아웃트로: 여운
+
+    # 1-2) 40초 미만이면 장면 여유를 균등 분배해 채운다 (무음 구간 없이 화면 유지)
+    est = sum(durs) - XFADE * (len(scenes) - 1)
+    if est < MIN_TOTAL:
+        add = (MIN_TOTAL - est) / len(durs)
+        durs = [d + add for d in durs]
+        print(f"  [fable-video] {lang}: {est:.1f}초 → {MIN_TOTAL:.0f}초로 확장 "
+              f"(장면당 +{add:.2f}초)")
+    elif est > MAX_TOTAL:
+        print(f"  [fable-video] {lang}: {est:.1f}초 — 1분 초과(atempo {tempo:.2f} 적용됨)")
+    else:
+        print(f"  [fable-video] {lang}: {est:.1f}초 (목표 40~60초 적정)")
 
     # 2) 장면별 세그먼트 — 워터마크 크롭 → 9:16 보정 → 켄번스
     ratio = W / H
