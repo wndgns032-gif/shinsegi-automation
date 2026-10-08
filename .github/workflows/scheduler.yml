@@ -1,0 +1,96 @@
+name: Fable Scheduler (self-sustaining)
+# ─────────────────────────────────────────────────────────────
+# 왜 이게 있나 (2026-10-08 실측)
+# ─────────────────────────────────────────────────────────────
+# GitHub 의 schedule(cron) 트리거가 **전 세계적으로 동작하지 않는** 플랫폼
+# 장애가 있다 (2026-08 起). 공개 저장소·유료 계정·분 슬롯을 가리지 않고
+# "run 이 아예 생성되지 않음" 이 보고되고 있으며, githubstatus.com 은
+# Actions 를 정상(operational) 으로 표시한다. → 우리 cron 설정 문제가 아니다.
+#
+# 공식 권장 해결책 = "외부 스케줄러가 workflow_dispatch API 를 호출".
+# 여기서는 그 외부 스케줄러 역할을 **GitHub Actions 자신**이 맡는다.
+#   public 저장소는 러너 제한시간이 5일(무료 무제한)이므로,
+#   긴 sleeps 로 자기 자신을 유지하다가 정해진 시각에 fable.yml 을dispatch 한다.
+#   종료 직전에 자기 자신을 다시 dispatch 해서 사슬을 이어간다(무한 재생).
+#
+# 이 스케줄러는 1회 수동 실행하면 이후 자동 유지된다.
+#   POST /actions/workflows/scheduler.yml/dispatches {"ref":"main"}
+#
+# 안전장치
+#   - fable.yml 쪽에 날짜별 마커(story.json / published.json) 가 있어
+#     같은 날짜로 중복 dispatch 되어도 중복 발행되지 않는다.
+#   - 슬롯을 이미 처리했으면(상태 파일) 그날은 건너뛴다.
+#   - runner 시간은 UTC. KST = UTC+9.
+# ─────────────────────────────────────────────────────────────
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [start-scheduler]
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  loop:
+    # public 저장소 러너는 최대 5일 실행 가능(무료). 재시작 시能耗을 줄이기 위해
+    # 4일 20시간만 돌고 남은 시간은 다음 체인으로 넘긴다.
+    runs-on: ubuntu-latest
+    timeout-minutes: 7080          # 4일 19시간
+    steps:
+      - name: Run the clock
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -u
+          STATE=/tmp/slots.txt
+          touch "$STATE"
+
+          # 슬롯 정의 (UTC 기준) — KST = UTC+9
+          #   am : KST 08:07 -> UTC 23:07 (전날)
+          #   pm : KST 18:13 -> UTC 09:13
+          slot_for_now() {
+            H=$(date -u +%-H); M=$(date -u +%-M)
+            # 트리거 윈도: 정해진 분부터 +35분까지 (지연/루프 드리프트 흡수)
+            if [ "$H" = "23" ] && [ "$M" -ge 7 ]  && [ "$M" -le 42 ]; then echo "am"; return; fi
+            if [ "$H" = "09" ] && [ "$M" -ge 13 ] && [ "$M" -le 48 ]; then echo "pm"; return; fi
+            echo ""
+          }
+          slot_key() { date -u +%Y-%m-%d_$1; }
+
+          fire() {
+            SLOT="$1"
+            echo ">>> [scheduler] 슬롯 $SLOT 트리거 — fable.yml 로 dispatch"
+            curl -sS -o /tmp/disp.json -w "  HTTP %{http_code}\n" \
+              -X POST \
+              -H "Accept: application/vnd.github+json" \
+              -H "Authorization: Bearer $GH_TOKEN" \
+              "https://api.github.com/repos/$REPO/actions/workflows/fable.yml/dispatches" \
+              -d '{"ref":"main","inputs":{"no_publish":"false"}}' || true
+            echo "am" >> "$STATE"; echo "pm" >> "$STATE"
+          }
+
+          START=$(date -u +%s)
+          LIMIT=$((START + 7080*60 - 1800))   # 30분 남겨두고 종료
+          echo "[scheduler] 시작 $(date -u) (KST $(( ($(date -u +%-H)+9)%24 ))시)"
+
+          while [ "$(date -u +%s)" -lt "$LIMIT" ]; do
+            S=$(slot_for_now)
+            K=$(slot_key "$S")
+            if [ -n "$S" ] && ! grep -qxF "$K" "$STATE"; then
+              fire "$S"
+            fi
+            sleep 60
+          done
+
+          # 다음 체인: 자기 자신을 다시 dispatch (무한 재생)
+          echo "[scheduler] 종료 임박 — 다음 체인 dispatch"
+          curl -sS -o /dev/null -w "  HTTP %{http_code}\n" \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            "https://api.github.com/repos/$REPO/actions/workflows/scheduler.yml/dispatches" \
+            -d '{"ref":"main"}' || true
+          echo "[scheduler] 종료 $(date -u)"
