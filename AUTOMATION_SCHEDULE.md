@@ -1,26 +1,90 @@
-# 우화 쇼츠 자동 발행 — 하루 2회 (2026-10-08 변경)
+# 우화 쇼츠 자동 발행 — 하루 2회
 
 ## 발행 시각
 
-| 시간 (KST) | cron (UTC) | 비고 |
-|---|---|---|
-| **08:07** | `7 23 * * *` | 오전편 |
-| **18:13** | `13 9 * * *` | 오후편 |
+| 시간 (KST) | 내용 |
+|---|---|
+| **08:07** | 오전편 |
+| **18:13** | 오후편 |
 
-> minute 을 0 이 아닌 7 / 13 으로 둔 이유:
-> GitHub Actions 스케줄러는 `:00` / `:30` 이 사람이 몰려
-> 실행이 대량 지연·폐기(drop)된다. 공식 권장값은 17 / 23 / 37 / 43.
+PC를 꺼도 발행됩니다 — GitHub 서버에서 실행됩니다.
 
-GitHub cron 은 **UTC** 기준이다. KST = UTC+9 이므로 위 변환이 성립한다.
+---
 
-## 동작
+## ⚠️ GitHub cron 장애와 우회 방식
+
+### 무슨 일이 있나
+
+GitHub의 `schedule`(cron) 트리거가 **전 세계적으로 동작하지 않는** 플랫폼
+장애가 있습니다 (2026년 8월부터 worldwide 이슈).
+
+- 공개 저장소 / 유료 계정 / 분 슬롯(17분·43분) **모두 무관**
+- 결과: `run` 이 아예 생성되지 않음
+- 수동 `workflow_dispatch` 는 즉시 실행 → **스케줄러 내부 문제**로 확정
+- githubstatus.com 은 Actions 를 정상(operational) 으로 표시 중
+
+우리 저장소의 실측 (`event=schedule` 조회):
+```
+total_count = 0← public 저장소로 전환 후에도 여전히 0
+```
+
+### 해결: 자기 유지형 스케줄러
+
+`.github/workflows/scheduler.yml` — **GitHub Actions 자신이 외부 스케줄러
+역할을 맡습니다.** 공식 권장 해결책("외부 스케줄러가 dispatch API 호출")을
+GitHub 안에서 구현한 것입니다.
+
+**동작 원리**
+1. public 저장소 러너는 최대 **5일** 실행 가능(무료)
+2. 60초 간격으로 UTC 시각을 확인하며 루프
+3. 슬롯 시각이 되면 `fable.yml` 을 API 로 dispatch
+4. 4일 19시간 뒤 **자기 자신을 다시 dispatch** → 무한 재생
+
+**슬롯 정의** (UTC 기준, KST = UTC+9)
+
+| 슬롯 | KST | UTC | 트리거 윈도 |
+|---|---|---|---|
+| `am` | 08:07 | 23:07 (전날) | 07~42분 |
+| `pm` | 18:13 | 09:13 | 13~48분 |
+
+윈도가 35분인 이유: 지연·루프 드리프트를 흡수합니다.
+
+### 중복 발행 방지 (2중 안전장치)
+
+1. 슬롯 처리 이력을 `/tmp/slots.txt` 에 기록 → 당일 재트리거 차단
+2. `fable.yml` 의 날짜별 마커(`story.json` / `published.json`) →
+   같은 날짜로 중복 dispatch 되어도 중복 발행되지 않음
+
+### 수동으로 스케줄러 켜기 (최초 1회)
+
+GitHub Actions 탭 → **Fable Scheduler** → **Run workflow**
+
+또는 API:
+```bash
+curl -X POST -H "Accept: application/vnd.github+json" \
+  -H "Authorization: token <PAT>" \
+  https://api.github.com/repos/wndgns032-gif/shinsegi-automation/actions/workflows/scheduler.yml/dispatches \
+  -d '{"ref":"main"}'
+```
+
+> 스케줄러는 최대 5일 지속되므로 **5일에 한 번** 위 명령을 반복하면 됩니다.
+> (자동 재생이므로 보통은 필요 없습니다)
+
+### `fable.yml` 의 cron 은 남겨둔다
+
+GitHub이 cron을 복구하면 그쪽이 더 단순하게 동작합니다.
+둘 다 있어도 **중복 발행되지 않으므로** 그대로 둡니다.
+
+---
+
+## 동작 흐름
 
 ```
-story.json (명언 → 동물 우화 대본)
+story.json (명언 → 동물 우화 대본, 지시형 톤)
     ↓
 이미지 10장 (Pollinations flux, 4개 언어 공용)
     ↓
-mp4 4개 렌더 (fable_ko / en / zh-cn / fr)
+mp4 4개 렌더 (fable_ko / en / zh-cn / fr) — 40~60초
     ↓
 IG 릴스 + YouTube 쇼츠 동시 발행
 ```
@@ -28,20 +92,24 @@ IG 릴스 + YouTube 쇼츠 동시 발행
 ### 채널 매핑
 | 언어 | YouTube 채널 | 계정 | IG |
 |---|---|---|---|
-| 한국어 | 지혜의 길 @wisdompathroad | 개인 | shinsegi.kr |
-| 영어 | wisdompath @wisdompath-en | 개인 | shinsegi.en |
-| 중국어 | shinsegi 中文 @shinsegi-zh | shinsegimedia | shinsegi.zh |
-| 프랑스어 | shinsegi Français @shinsegi-fr | shinsegimedia | shinsegi.fr |
+| 한국어 | 지혜의 길 `@wisdompathroad` | 개인 | shinsegi.kr |
+| 영어 | wisdompath `@wisdompath-en` | 개인 | shinsegi.en |
+| 중국어 | shinsegi 中文 `@shinsegi-zh` | shinsegimedia | shinsegi.zh |
+| 프랑스어 | shinsegi Français `@shinsegi-fr` | shinsegimedia | shinsegi.fr |
 
-## PC 를 꺼도 되는 이유
+---
 
-발행은 **GitHub Actions runner(리눅스 컨테이너)** 에서 실행된다.
-로이 PC 는 저장소의 코드만 읽어갈 뿐, 실행에 관여하지 않는다.
+## 영상 사양 (확정)
 
-실행 환경:
-- `TTS_ENGINE=edge` (로컬 모델 없으므로 클라우드 edge-tts 사용)
-- ffmpeg + CJK 폰트 자동 설치
-- 모든 자격증명은 GitHub Secrets 로 주입
+| 항목 | 값 |
+|---|---|
+| 길이 | **40초 ~ 60초** (자동 조절) |
+| 크기 | 1080×1920 (9:16) |
+| 스타일 | 애니메이션 흑백 (curves + colorbalance + unsharp) |
+| BGM | Pixabay License 무료음원 (낭독 시 자동 덕킹) |
+| 자막 | 하단 92px / 명언 96px / 훅 76px |
+
+---
 
 ## 재실행해도 중복되지 않는다
 
@@ -54,13 +122,15 @@ IG 릴스 + YouTube 쇼츠 동시 발행
 | `published.json` | 해당 언어 발행 완료 |
 
 그래서 **어제 것이 안 됐을 때 같은 커밋을 다시 돌려도**
-미발행분만 자동으로 발행된다 (보강 발행).
+미발행분만 자동으로 발행됩니다 (보강 발행).
 
-### 미발행 보강 발행
+### 보강 발행
 ```bash
-python -m src.main run-fable --date 2026-10-07      # 특정 날짜
-python -m src.main fable-publish --date 2026-10-07  # 발행만
+python -m src.main run-fable --date 2026-10-09      # 특정 날짜
+python -m src.main fable-publish --date 2026-10-09  # 발행만
 ```
+
+---
 
 ## 수동 발행
 
@@ -71,40 +141,32 @@ GitHub 저장소 → **Actions** → **Fable Production** → **Run workflow**
 | `no_publish` | `false` / `true` | `true` 면 제작만(테스트) |
 | `date` | `YYYY-MM-DD` | 비우면 오늘(KST) |
 
-API 로도 가능:
-```bash
-curl -X POST -H "Authorization: token $PAT" \
-  -H "Accept: application/vnd.github+json" \
-  -H "Content-Type: application/json" \
-  https://api.github.com/repos/wndgns032-gif/shinsegi-automation/actions/workflows/fable.yml/dispatches \
-  -d '{"ref":"main","inputs":{"no_publish":"false","date":"2026-10-08"}}'
-```
+---
 
-## cron 이 안 돌아도 우회 가능 (repository_dispatch)
+## 자주 나는 문제
 
-private 저장소로 되돌리거나 cron 이 비활성화되면 로이 PC 자동화가
-이걸 호출하면 된다. **배치 스케줄러를 거치지 않아 즉시 시작**된다.
+### Q. cron 이 안 도는 것 같아요
+→ **정상입니다.** GitHub 플랫폼 장애입니다 (위 참조).
+self-sustaining scheduler 가 대신 처리합니다.
 
-```bash
-curl -X POST -H "Authorization: token $PAT" \
-  -H "Accept: application/vnd.github+json" \
-  -H "Content-Type: application/json" \
-  https://api.github.com/repos/wndgns032-gif/shinsegi-automation/dispatches \
-  -d '{"event_type":"daily-fable"}'
-```
+### Q. 스케줄러가 멈췄어요 (5일 경과)
+→ Actions 탭 → **Fable Scheduler** → **Run workflow** 한 번 클릭.
 
-## 알아둘 것
+### Q. 실행이 오래 멈춰 있어요 (20분+)
+→ GitHub runner 의 apt 가 느릴 때가 있습니다.
+`Install system deps` 단계에서 멈추면 취소 후 다시 실행하세요.
+이후에는 timeout 보호 덕분에 길게 정체되지 않습니다.
 
-- **GitHub 스케줄러는 지연한다.** 5~30분 밀릴 수 있고, 시차의 성수기에는
-  더 밀릴 수 있다. SLA 는 없다. 08:07 이라면 실제로는 08:07~08:40 사이.
-- **오전편이 실패해도 오후편은 돈다.** 두 cron 은 독립적이다.
-- **`concurrency` 로 동시 실행을 막는다.** 두 편이 겹쳐도 하나는 대기한다.
-- **타임아웃 40분.** 이미지 10장 + 렌더 4개가 오래 걸릴 수 있다.
+### Q. 이미지가 평범한 그라디언트예요
+→ Pollinations 익명 쿼터(402) 초과입니다. 몇 시간 지나면 회복됩니다.
+파이프라인은 폴백 이미지로 계속 진행됩니다.
+
+---
 
 ## 변경 이력
 - 2026-10-05 — 하루 1편(19:20) 발행 구축
 - 2026-10-06 — fable-publish.yml 을 fable.yml 로 통합
-- 2026-10-07 — cron 을 20분 → 17분으로 변경 (스케줄러 혼잡 회피),
-  `repository_dispatch` 추가
-- 2026-10-08 — **하루 2회(08:07 / 18:13)로 변경** (로이 요청),
-  `run-fable --date` 추가
+- 2026-10-07 — cron 분을 20→17으로 변경, `repository_dispatch` 추가
+- 2026-10-08 — 하루 2회(08:07 / 18:13)로 변경, `run-fable --date` 추가
+- 2026-10-08 — **GitHub cron 플랫폼 장애 확인** → self-sustaining scheduler 도입,
+  영상 길이 40~60초 강제, 지시형 대본톤 적용
