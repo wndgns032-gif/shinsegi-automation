@@ -103,3 +103,4 @@ data/scheduler.log
 *.bak
 *.swp
 ~$*
+.git_commit_msg.txt
