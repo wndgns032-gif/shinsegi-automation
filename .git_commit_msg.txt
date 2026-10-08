@@ -1,23 +1,35 @@
-fix(yt): 인증 배치를 경로 무관하게 + 인자 생략 시 ko 기본값
+fix(yt): 핸들 비교를 대소문자 무시로 — YouTube 는 case-insensitive
 
-## 문제
-로이가 C:\WINDOWS\system32 에서 .\scripts\youtube_auth.cmd ko 를 실행 →
-"項을 인식할 수 없습니다" (파일을 찾지 못함)
-그리고 ko 인자를 빠뜨리는 경우도 있었다.
+## 증상
+```
+[fail] ko 토큰이 @wisdompathroad 채널에 묶였습니다 (기대: @WisdomPathroad)
+```
+**개인 계정 인증은 성공했는데** 검증이 대소문자 차이로 거부했다.
+→ 토큰이 저장되지 않아 재인증이 필요해졌다.
+
+## 원인
+YouTube 채널 핸들은 **대소문자를 구분하지 않는다.**
+실측: 로이가 `@WisdomPathroad` 로 만들었는데 channels.list 는
+`@wisdompathroad` 로 반환했다. 우리 비교는 원본 문자열 그대로였으므로
+동일한 핸들인데 불일치로 판정했다.
 
 ## 수정
-1.Usage 주석 명확화 — 이 스크립트는 **어디서 실행해도** 동작한다
-   (내부에서 cd /d 로 프로젝트 폴더로 이동)
-2. 인자가 없으면 ko 로 기본값 처리
-   ```
-   if "%1"=="" set LANG=ko
-   if not "%1"=="" set LANG=%1
-   ```
-3. python 호출과 안내 문구에 %LANG% 적용
-4. 종료 화면에 (lang=...) 표시 — 어떤 언어로 실행됐는지 확인 가능
+`_norm_handle()` 도입 — @ 제거 + 소문자화 후 비교.
+- auth() 의 채널 검증
+- status() 의 OK/≠ 표시
+양쪽 모두 적용.
 
-## 실행 방법 (3가지 중 아무거나)
-- 파일 더블클릭 (인자 없음 → ko)
-- 어디서든 전체 경로:
-  "C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation\scripts\youtube_auth.cmd" ko
-- 프로젝트 폴더에서: .\scripts\youtube_auth.cmd ko
+## 안전성
+다른 채널로 잘못 묶이는 것은 여전히 막는다:
+| got | expected | 결과 |
+|---|---|---|
+| @WisdomPathroad | @WisdomPathroad | True |
+| @wisdompathroad | @WisdomPathroad | True (고쳐짐) |
+| @SHINSEGI-ZH | @shinsegi-zh | True |
+| @shinsegi-zh | @WisdomPathroad | **False** (차단 유지) |
+
+6개 케이스 전부 통과.
+
+## 참고
+이 검증을 통과했다는 것은 **개인 계정으로 인증에 성공했다**는 뜻이다.
+로그인이 shinsegimedia 로 되어 있었다면 @shinsegi-zh 로 잡혔을 것이다.

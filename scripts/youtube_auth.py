@@ -66,6 +66,17 @@ def expected_handle(lang: str) -> str:
     return (channels_config().get("expected_handles") or {}).get(lang, "") or ""
 
 
+def _norm_handle(h: str) -> str:
+    """YouTube 채널 핸들 비교용 정규화.
+
+    YouTube 는 핸들의 대소문자를 구분하지 않는다.
+    실측(2026-10-08): 로이가 `@WisdomPathroad` 로 만들었는데
+    channels.list 는 `@wisdompathroad` 로 반환했다.
+    → @ 를 제거하고 소문자로 낮춰서 비교해야 한다.
+    """
+    return (h or "").strip().lstrip("@").lower()
+
+
 def _is_blocked(lang: str) -> bool:
     """채널 재배치로 업로드가 차단된 언어인지."""
     return lang in ((channels_config().get("blocked_languages")) or [])
@@ -246,7 +257,10 @@ def auth(lang: str, client: dict) -> bool:
         #   (예전엔 ko/fr 을 하드코딩했으나, 채널 재배치 때마다 코드를 수정해야 했다)
         # 채널명은 전부 'shinsegi' 라 구분은 핸들로만 가능.
         expected = expected_handle(lang)
-        if expected and handle != expected:
+        # YouTube 핸들은 대소문자를 구분하지 않는다 (실측 2026-10-08).
+        #   로이가 @WisdomPathroad 로 만들었는데 API 는 @wisdompathroad 로 준다.
+        # → 대소문자/@ 를 무시하고 비교한다.
+        if expected and _norm_handle(handle) != _norm_handle(expected):
             grp = group_of(lang)
             print(f"[fail] {lang} 토큰이 {handle} 채널에 묶였습니다 (기대: {expected})")
             print(f"       '{grp}' 그룹 소속이어야 합니다. config/youtube_channels.yaml 확인.")
@@ -320,7 +334,8 @@ def status() -> None:
             s = items[0]["snippet"]
             got = s.get("customUrl", "")
             exp = expected_handle(lang)
-            mark = "OK " if (not exp or got == exp) else "≠ "
+            # 핸들은 대소문자를 구분하지 않는다 (2026-10-08 실측)
+            mark = "OK " if (not exp or _norm_handle(got) == _norm_handle(exp)) else "≠ "
             print(f"  {lang:6s}: {mark} {s['title']} ({got})")
         except Exception as e:  # noqa: BLE001
             print(f"  {lang:6s}: 조회 실패 — {type(e).__name__}: {str(e)[:70]}")
