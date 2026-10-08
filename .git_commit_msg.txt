@@ -1,36 +1,25 @@
-feat(yt): 재인증 준비 완료 — Secrets 목록에 EN/ZH_CN 추가
+feat(yt): 클라우드 안전 가드 추가 — EN/ZH_CN 토큰 + 빈 토큰 방어
 
 ## 변경
-1. scripts/setup_github_secrets.py 의 SECRET_NAMES 에
-   YOUTUBE_ZH_CN_REFRESH_TOKEN / YOUTUBE_EN_REFRESH_TOKEN 추가
-   (채널 재배치로 새 토큰이 생겼지만 목록에 없어 GitHub 로 안 올라가고 있었다)
+1. .github/workflows/fable.yml env 블록에 토큰 2개 추가
+   - YOUTUBE_ZH_CN_REFRESH_TOKEN
+   - YOUTUBE_EN_REFRESH_TOKEN
+   (secret 이 등록돼 있어도 env 로 전달하지 않으면 쓸 수 없다)
 
-2. publisher 의 blocked_languages 차단은 GitHub Actions 에서도 자동 동작함
-   - config/youtube_channels.yaml 가 git 추적 상태라
-     클라우드 runner 도 같은 config 를 읽는다
-   - 즉 ko 재인증 전까지 클라우드도 자동으로 한국어 업로드를 건너뛴다
-   - 별도 워크플로 수정이 필요 없어 안전하다
+2. scripts/setup_github_secrets.py SECRET_NAMES 에 위 2개 추가
 
-## 현재 상태 (테스트 사용자 추가 후, 아직 재인증 전)
-| 언어 | 채널 | 상태 |
-|---|---|---|
-| fr | @shinsegi-fr | OK (영상 2) |
-| ko | 옛(@shinsegi-zh) | blocked_languages — 재인증 대기 |
-| zh-cn | @shinsegi-zh | 미연결 |
-| en | @wisdompath-en | 미연결 |
+3. src/publishers/youtube.py — 빈 토큰 가드
+   - creds['REFRESH_TOKEN'] 이 None/빈 문자열이면 client() 가 AttributeError 를
+     내며 실패했다. 조용히 skipped 로 넘어가도록 수정.
+   - 로그에 인증 방법 안내 포함
+   - secret 이 아직 없는 상태에서 클라우드가 크래시하지 않는다.
 
-## 로이 다음 단계
-```
-cd "C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation"
-.\scripts\youtube_auth.cmd zh-cn   # shinsegimedia -> @shinsegi-zh
-.\scripts\youtube_auth.cmd ko      # 개인 -> @WisdomPathroad
-.\scripts\youtube_auth.cmd en      # 개인 -> @wisdompath-en
-```
-Console 에 테스트 사용자 추가했으니 이제 403 이 통과될 应该.
+## 검증
+- 빈 토큰  -> skipped  (인증 필요 메시지)
+- None 토큰 -> skipped
+- ko      -> blocked  (config blocked_languages)
+- blocked 로직은 클라우드에서도 자동 동작
+  (config/youtube_channels.yaml 가 git 추적 상태라 runner 도 같은 config 를 읽음)
 
-성공 후:
-```bash
-python scripts/setup_github_secrets.py   # 새 토큰 GitHub Secrets 업로드
-```
-fable.yml env 블록에 ZH_CN/EN 항목은 아직 없음 — 인증 성공 후 추가한다.
-(비어 있으면 secret 이 주입되어도 env 로 전달되지 않으므로)
+## 안전 상태
+인증이 끝나기 전까지 어떤 언어도 잘못된 채널에 올라가지 않는다.

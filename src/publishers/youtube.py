@@ -173,6 +173,13 @@ class YouTubePublisher(Publisher):
                     "detail": f"google-api-python-client 미설치: {e}"}
 
         title = _title(caption)
+        # 토큰 자체가 없으면 조용히 넘어간다 (클라우드에서 secret 이 아직 없을 수 있음).
+        # None 으로 client() 를 부르면 AttributeError 가 나므로 여기서 막는다.
+        if not (creds.get("REFRESH_TOKEN") or "").strip():
+            print(f"  [youtube:{lang}] 토큰 미설정 — 건너뜀 "
+                  f"(인증 필요: scripts\\youtube_auth.cmd {lang})")
+            return {"platform": tag, "lang": lang, "status": "skipped",
+                    "detail": "refresh token 미설정 — 채널 인증 필요"}
         if self._already(lang, title):
             print(f"  [youtube:{lang}] 동일 제목 업로드 이력 있음 — 중복 방지로 건너뜀")
             return {"platform": tag, "lang": lang, "status": "skipped",

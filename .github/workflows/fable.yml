@@ -68,6 +68,9 @@ jobs:
       YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
       YOUTUBE_KO_REFRESH_TOKEN: ${{ secrets.YOUTUBE_KO_REFRESH_TOKEN }}
       YOUTUBE_FR_REFRESH_TOKEN: ${{ secrets.YOUTUBE_FR_REFRESH_TOKEN }}
+      # 2026-10-07 채널 재배치로 추가 (개인 계정 = ko/en, shinsegimedia = fr/zh)
+      YOUTUBE_ZH_CN_REFRESH_TOKEN: ${{ secrets.YOUTUBE_ZH_CN_REFRESH_TOKEN }}
+      YOUTUBE_EN_REFRESH_TOKEN: ${{ secrets.YOUTUBE_EN_REFRESH_TOKEN }}
       IG_CARDS: off
       YOUTUBE_SHORTS: on
 
