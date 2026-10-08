@@ -123,12 +123,15 @@ def track(seed: int | str = 0) -> Path | None:
 
 
 def track_for(seed: int | str = 0) -> Path | None:
-    """fable v6용 트랙 선택 — **참고 영상 BGM 재현(v6) 고정**.
+    """fable v6용 트랙 선택 — 순서: 로컬 파일 → 원격 자유 음원 → 합성.
 
-    2026-10-04 로이 피드백: "BGM은 유튜브에서 썼던걸로" — 참고 영상의 실제 음원을
-    그대로 쓰면 저작권·Content ID 문제로 채널이 위험해지므로, 분석 결과
-    (A minor · 92bpm · 피아노계 앰비언트)를 합성으로 재현한 v6 을 고정 사용한다.
-    FABLE_BGM_VARIANT 로 다른 변형 선택 가능.
+    2026-10-04: 참고 영상 BGM(진격의 거인 call of silence)을 재현하려 했으나
+        저작권·Content ID 위험이 있어 합성(v6)으로 대체했었다.
+    2026-10-08 로이 요청: "가사 뺴고 음악만, 인기 많은 무료 BGM 으로"
+        → **Pixabay License 원음**을 쓴다. 무료·상업 사용·출처 표기 불필요.
+        실제 곡이 로컬 합성보다 훨씬 고급스럽다.
+
+    assets/bgm/ 에 파일을 직접 넣으면 그것을 우선한다(기존 동작 유지).
     """
     if not enabled():
         return None
@@ -137,6 +140,13 @@ def track_for(seed: int | str = 0) -> Path | None:
         key = hashlib.md5(str(seed).encode("utf-8")).hexdigest()
         idx = int(key[:8], 16)
         return files[idx % len(files)]
+
+    # 2) 원격 자유 음원 (Pixabay 등) — 검증된 URL 만 들어있다
+    remote = _remote_track(seed)
+    if remote is not None:
+        return remote
+
+    # 3) 로컬 합성 (마지막 폴백)
     try:
         variant = int(os.getenv("FABLE_BGM_VARIANT", "6"))
     except ValueError:
@@ -151,6 +161,35 @@ def track_for(seed: int | str = 0) -> Path | None:
     except Exception as e:  # noqa: BLE001
         print(f"  [bgm] 합성 실패 → BGM 생략 ({type(e).__name__}: {str(e)[:80]})")
         return None
+
+
+def _remote_track(seed: int | str = 0) -> Path | None:
+    """assets/bgm_sources.json 의 URL 중 하나를 내려받아 캐시한다.
+
+    2026-10-08: Pixabay 는 웹 페이지를 봇 차단(403)하므로 검색으로 URL 을 찾지 않는다.
+    → **실제 다운로드로 검증된 URL 만** json 에 넣어둔다.
+    실패하면 조용히 None 을 돌려줘서 다음 폴백(합성)으로 넘어간다.
+    """
+    urls = _remote_sources()
+    if not urls:
+        return None
+    key = hashlib.md5(str(seed).encode("utf-8")).hexdigest()
+    idx = int(key[:8], 16)
+    u = urls[idx % len(urls)]
+    dest = CACHE_DIR / (hashlib.md5(u.encode("utf-8")).hexdigest()[:12] + ".mp3")
+    if dest.exists() and dest.stat().st_size > 50000:
+        return dest
+    try:
+        import requests
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        r = requests.get(u, headers={"User-Agent": "Mozilla/5.0"}, timeout=90)
+        if r.ok and len(r.content) > 50000:
+            dest.write_bytes(r.content)
+            return dest
+        print(f"  [bgm] 원격 음원 실패 HTTP {r.status_code} → 합성으로 폴백")
+    except Exception as e:  # noqa: BLE001
+        print(f"  [bgm] 원격 음원 오류 ({type(e).__name__}) → 합성으로 폴백")
+    return None
 
 
 # ────────────────────────────── 믹스 ──────────────────────────────

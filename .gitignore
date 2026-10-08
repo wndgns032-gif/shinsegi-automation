@@ -56,6 +56,9 @@ data/voice_samples/
 
 # === assets (v5 릴스 전용 — PAUSE 됨, 필요시 scripts/build_sprites.py 로 재생성) ===
 assets/
+# BGM 원격 소스 설정은 클라우드 렌더에 필요하므로 예외로 커밋한다.
+# (음원 파일 자체는 예외가 아니므로 커밋되지 않는다 — URL 만 등록)
+!assets/bgm_sources.json
 
 # === 루트 임시 파일 (백그라운드 디버그/프로브 산출물) ===
 _*.py

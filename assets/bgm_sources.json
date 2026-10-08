@@ -1,0 +1,10 @@
+{
+  "_comment": "무료 BGM 원격 소스. Pixabay License — 무료·상업 사용·출처 표기 불필요.",
+  "_license": "Pixabay License (https://pixabay.com/service/license-summary/) — 무료, 상업적 사용 가능, 출처 표기 불필요. 음원 파일 자체를 재판매/재업로드하는 것만 금지.",
+  "_usage": "쇼츠 배경음악. 나레이션이 겹칠 때 사이체인 덕킹으로 자동으로 음량 조절된다.",
+  "_note": "이 URL 은 2026-10-08 실제 다운로드(200) 로 검증된 것만 넣는다. 검증되지 않은 URL 은 403 이 되어 BGM 이 조용히 빠진다.",
+
+  "urls": [
+    "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3"
+  ]
+}

@@ -112,40 +112,64 @@ def _audio_duration(path: Path) -> float:
 # 켄번스 — 세로 화면용 6종 로테이션
 # ─────────────────────────────────────────────────────────────
 def _motion(i: int, frames: int) -> str:
+    """장면 카메라 무빙 — Ken Burns.
+
+    2026-10-08: 로이 요청 "애니메이션 느낌" 적용.
+    실사 영상처럼 보이지 않게 하려면:
+      - 줌 범위를 좁게 (예전 1.14 → 1.10) — 과한 줌은 '짧은 영상 티'
+      - 속도를 느리게 (0.00040 → 0.00028)
+      - 이동은 한 방향으로 부드럽게 (컷 단위 점프를 줄임)
+    """
     k = i % 6
-    if k == 0:      # 중앙 푸시인
-        z, x, y = "min(1+0.00040*on,1.14)", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
-    elif k == 1:    # 풀아웃
-        z, x, y = "max(1.14-0.00040*on,1.001)", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
-    elif k == 2:    # 위→아래 팬 (내려다보는 느낌)
-        z = "1.12"
+    if k == 0:      # 천천히 푸시인 (또박또박 확대)
+        z, x, y = "min(1+0.00028*on,1.10)", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
+    elif k == 1:    # 천천히 풀아웃
+        z, x, y = "max(1.10-0.00028*on,1.001)", "iw/2-(iw/zoom/2)", "ih/2-(ih/zoom/2)"
+    elif k == 2:    # 위→아래 천천히 팬
+        z = "1.09"
         x, y = "iw/2-(iw/zoom/2)", "(ih-ih/zoom)*(on/{f})".format(f=frames)
-    elif k == 3:    # 아래→위 팬 (올려다보는 느낌)
-        z = "1.12"
+    elif k == 3:    # 아래→위 천천히 팬
+        z = "1.09"
         x, y = "iw/2-(iw/zoom/2)", "(ih-ih/zoom)*(1-on/{f})".format(f=frames)
-    elif k == 4:    # 대각선 우상향
-        z = "min(1+0.00035*on,1.12)"
+    elif k == 4:    # 아주 느린 대각선 우상향
+        z = "min(1+0.00024*on,1.09)"
         x, y = ("(iw-iw/zoom)*(on/{f})".format(f=frames),
                 "(ih-ih/zoom)*(1-on/{f})".format(f=frames))
-    else:           # 대각선 좌하향
-        z = "min(1+0.00035*on,1.12)"
+    else:           # 아주 느린 대각선 좌하향
+        z = "min(1+0.00024*on,1.09)"
         x, y = ("(iw-iw/zoom)*(1-on/{f})".format(f=frames),
                 "(ih-ih/zoom)*(on/{f})".format(f=frames))
     return (f"zoompan=z='{z}':x='{x}':y='{y}':d={frames}:"
-            f"s={W}x{H}:fps={FPS}")
+            f"s={W}x{H}:fps={FPS}:dither=0")
 
 
 def _film_fx() -> str:
-    """필름 마감 체인 (ffmpeg 내장 — 무료).
+    """필름 마감 체인 — 애니메이션 흑백 느낌 (ffmpeg 내장 · 무료).
 
-    2026-10-07: 장면 이미지를 흑백 통일했으므로 saturation 은 1.0(무변경)으로 둔다.
-    (예전 saturation=1.07 은 컬러 이미지용이었고, 흑백에 쓰면 색만 muddied 된다)
-    대신 contrast 를 살짝 올려 흑백 톤을 더 또렷하게 만든다.
+    2026-10-07: 장면 이미지를 흑백 통일 → saturation 1.0.
+    2026-10-08: 로이 요청 "애니메이션 흑백 느낌" 적용.
+
+    애니메이션처럼 보이게 하는 핵심:
+      1) curves — 하이라이트/섀도를 눌러 평평한 사진 대비를 제거 (만화 특유)
+      2) lut-ish 톤 — 그림자 쪽에 약한 청록, 하이라이트에 약한 세피아
+         (실사 재 촬영과 다른 '붓으로 그린' 인상)
+      3)线条 강조 — unsharp 강하게 + convolution sharpen
+      4) 필름 그레인 + 비네테 (기존)
     """
-    return ("unsharp=5:5:0.45:5:5:0.0,"
-            "eq=contrast=1.06:saturation=1.0:brightness=0.008,"
-            "vignette=0.4,"
-            "noise=alls=2.5:allf=t")
+    return (
+        # 선화: 가장자리 선을 날카롭게 (만화는 윤곽이 또렷하다)
+        "unsharp=7:7:0.75:7:7:0.0,"
+        # 톤 곡선: 하이라이트를 살리고 그림자를 눌러 그라데이션에 깊이를 만든다
+        "curves=all='0/0.045 0.25/0.20 0.5/0.52 0.75/0.84 1/0.965',"
+        # 채도 미세 감소 + 대비 (만화는 채도가 낮고 명암이 강하다)
+        "eq=contrast=1.14:saturation=0.92:brightness=0.012:gamma=1.02,"
+        # 그림자에 약한 냉색, 하이라이트에 약한 온색 — 종이 질감 느낌
+        "colorbalance=rs=-0.02:gs=0:bs=0.045:rm=0.018:gm=0.006:bm=-0.012:"
+        "rh=0.022:gh=0.010:bh=-0.020,"
+        # 필름 마감
+        "vignette=0.42,"
+        "noise=alls=3.2:allf=t"
+    )
 
 
 # ─────────────────────────────────────────────────────────────
@@ -325,9 +349,10 @@ def _hook_display_lines(lang: str, hook: dict) -> tuple[list[str], int, int]:
     img = Image.new("RGB", (10, 10))
     d = ImageDraw.Draw(img)
     src = [(str(x).strip().rstrip(".?!。．！ ").strip()) for x in hook["lines"][lang]]
-    size = 58 if lang in ("ko", "zh-cn") else 54
+    # 2026-10-08: 58 → 76 확대 (피드에서 안 읽혔다)
+    size = 76 if lang in ("ko", "zh-cn") else 70
     out: list[str] = []
-    while size >= 42:
+    while size >= 52:
         font = cards._font(lang, size)
         out = []
         for ln in src:
@@ -335,8 +360,8 @@ def _hook_display_lines(lang: str, hook: dict) -> tuple[list[str], int, int]:
         if len(out) <= 3:
             break
         size -= 4
-    line_h = 78
-    bar_h = 60 + len(out) * line_h + 36
+    line_h = 96
+    bar_h = 72 + len(out) * line_h + 42
     return out, size, bar_h
 
 
@@ -403,10 +428,15 @@ def _wrap_card_text(text: str, fs: int, max_px: float = 860.0) -> list[str]:
 
 
 def _card_font_size(text: str, max_lines: int = 3) -> int:
-    """카드 폰트 크기 — 기본 76, max_lines 줄 안에 안 들어가면 12%씩 축소."""
-    fs = 76
-    while fs > 48 and len(_wrap_card_text(text, fs)) > max_lines:
-        fs = max(48, int(fs * 0.88))
+    """카드 폰트 크기 — 기본 96, max_lines 줄 안에 안 들어가면 12%씩 축소.
+
+    2026-10-08: 76 → 96 으로 확대.
+    피드 그리드(썸네일)에서 카드가 너무 작아 안 읽혔다.
+    쇼츠 피드는 손가락 거리에서 보므로 폰트 크기가 임팩트를 만든다.
+    """
+    fs = 96
+    while fs > 62 and len(_wrap_card_text(text, fs)) > max_lines:
+        fs = max(62, int(fs * 0.88))
     return fs
 
 
@@ -434,14 +464,16 @@ def build_ass(lang: str, story: dict, starts: list[float], durs: list[float]) ->
         f"Style: HOOK,{font},{hook_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
         "-1,0,0,0,100,100,0,0,1,2.2,0,8,60,60,0,129",
         # CAP: 하단 중앙 (alignment 2) — 흰 글씨 검정 테두리
-        f"Style: CAP,{font},74,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,"
-        "-1,0,0,0,100,100,0,0,1,3.6,1.0,2,80,80,120,129",
+        # 2026-10-08: 74 → 92 확대 (피드에서 읽히지 않던 크기)
+        f"Style: CAP,{font},92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,"
+        "-1,0,0,0,100,100,0,0,1,4.4,1.2,2,80,80,110,129",
         # QUOTE: 화면 중앙 (alignment 5) — 명언/교훈 카드
-        f"Style: QUOTE,{font},76,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,"
-        "-1,0,0,0,100,100,0,0,1,4.2,1.4,5,90,90,0,129",
+        # 2026-10-08: 76 → 96 확대 (실제 크기는 _card_font_size 가 결정)
+        f"Style: QUOTE,{font},96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,"
+        "-1,0,0,0,100,100,0,0,1,5.0,1.6,5,90,90,0,129",
         # CTA: 하단 중앙 주황 (alignment 2)
-        f"Style: CTA,{font},44,&H004DA9FF,&H004DA9FF,&H00000000,&H00000000,"
-        "-1,0,0,0,100,100,0,0,1,2.0,0.6,2,70,70,150,129",
+        f"Style: CTA,{font},56,&H004DA9FF,&H004DA9FF,&H00000000,&H00000000,"
+        "-1,0,0,0,100,100,0,0,1,2.4,0.6,2,70,70,140,129",
         "",
         "[Events]",
         "Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text",
