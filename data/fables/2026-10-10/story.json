@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-10",
+  "theme": "attitude",
+  "theme_label": "인생의 철학과 태도",
+  "quote": {
+    "id": "teresa-small-things",
+    "author": {
+      "en": "Mother Teresa",
+      "ko": "마더 테레사",
+      "zh-cn": "特蕾莎修女",
+      "fr": "Mère Teresa"
+    },
+    "text": {
+      "en": "We cannot all do great things, but we can do small things with great love.",
+      "ko": "우리는 위대한 일을 할 수 없다. 다만 작은 일을 위대한 사랑으로 할 수 있다.",
+      "zh-cn": "我们无法做伟大的事，只能用伟大的爱去做小事。",
+      "fr": "Nous ne pouvons pas tous faire de grandes choses, mais nous pouvons faire de petites choses avec un grand amour."
+    }
+  },
+  "title": {
+    "ko": "작은 일, 큰 사랑",
+    "en": "Small Things, Great Love",
+    "zh-cn": "小事，大爱",
+    "fr": "Les petites choses, avec amour"
+  },
+  "caption": {
+    "ko": "작은 일, 큰 사랑\n제일 긴 굴을 파려던 두더지는 무너진 굴 앞에서 무엇을 알았을까요? 오늘 당신이 사랑으로 할 수 있는 작은 일 하나는 무엇인가요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "Small Things, Great Love\nA mole tried to dig the longest tunnel in the forest and lost it in the rain. What small thing will you do with love today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "小事，大爱\n一只想挖出森林最长地道的鼹鼠，在一场雨里全塌了。今天你能带着爱做的那件小事是什么？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Les petites choses, avec amour\nUne taupe voulait creuser le plus long tunnel de la forêt, et la pluie a tout emporté. Quelle petite chose feras-tu avec amour aujourd'hui ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "위대한 일만 기다리지 마라.",
+        "지금 작은 일 하나를 해라."
+      ],
+      "en": [
+        "Stop waiting for something great.",
+        "Pick one small thing and do it now."
+      ],
+      "zh-cn": [
+        "别再等大事了。",
+        "现在就做一件小事。"
+      ],
+      "fr": [
+        "Arrête d'attendre les grandes choses.",
+        "Fais une petite chose, maintenant."
+      ]
+    },
+    "highlight": {
+      "ko": "작은 일",
+      "en": "small thing",
+      "zh-cn": "小事",
+      "fr": "petite chose"
+    }
+  },
+  "moral": {
+    "ko": "위대한 일을 기다리지 마라. 오늘, 작은 일 하나를 사랑으로 해라.",
+    "en": "Don't wait for something great. Do one small thing today, and do it with love.",
+    "zh-cn": "别等大事了。今天就带着爱，做一件小事。",
+    "fr": "N'attends pas les grandes choses. Fais une petite chose aujourd'hui, avec amour."
+  },
+  "characters": "a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole sitting quietly at the edge of a forest path at dawn, looking up at the tall trees, mist drifting between trunks, wide shot, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "우리는 위대한 일을 할 수 없다. 다만 작은 일을 위대한 사랑으로 할 수 있다. — 마더 테레사.",
+        "en": "We cannot all do great things, but we can do small things with great love. — Mother Teresa.",
+        "zh-cn": "我们无法做伟大的事，只能用伟大的爱去做小事. — 特蕾莎修女.",
+        "fr": "Nous ne pouvons pas tous faire de grandes choses, mais nous pouvons faire de petites choses avec un grand amour. — Mère Teresa."
+      },
+      "subtitle": {
+        "ko": "작은 일을 위대한 사랑으로",
+        "en": "Small things, great love",
+        "zh-cn": "用伟大的爱做小事",
+        "fr": "De petites choses, avec un grand amour"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole standing still at the mouth of a small tunnel, facing forward, forest path and ferns behind, morning light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "위대한 일만 기다리지 마라. 지금 작은 일 하나를 해라",
+        "en": "Stop waiting for something great. Pick one small thing and do it now",
+        "zh-cn": "别再等大事了。现在就做一件小事",
+        "fr": "Arrête d'attendre les grandes choses. Fais une petite chose, maintenant"
+      },
+      "subtitle": {
+        "ko": "작은 일 하나를 해라",
+        "en": "Do one small thing now.",
+        "zh-cn": "现在做一件小事",
+        "fr": "Fais une petite chose, maintenant."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole digging fast at the base of a big boulder on a forest path, soil flying behind him, ferns and moss around, morning light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지가 마음을 먹었어요. 숲에서 제일 긴 굴을 혼자 파겠다고요.",
+        "en": "The mole made up his mind. He'd dig the longest tunnel in the whole forest.",
+        "zh-cn": "这只鼹鼠下定决心。要一个人挖出森林里最长的一条地道。",
+        "fr": "La taupe a décidé un truc. Elle creuserait le plus long tunnel de toute la forêt."
+      },
+      "subtitle": {
+        "ko": "제일 긴 굴을 파겠다",
+        "en": "The longest tunnel. Alone.",
+        "zh-cn": "挖最长的一条道",
+        "fr": "Le plus long tunnel"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole sitting in a pile of loose dirt beside a collapsed tunnel entrance, shoulders low, paws resting on the ground, late morning light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "하루 종일 파 봤지만 굴은 무너졌어요. 두더지는 흙더미에 주저앉았죠.",
+        "en": "He dug all day, and the tunnel caved in. He sat down in the dirt, paws aching.",
+        "zh-cn": "挖了一整天，地道还是塌了。他一屁股坐在土堆上，爪子也疼。",
+        "fr": "Elle a creusé toute la journée, et le tunnel s'est effondré. Elle s'est assise dans la terre, les pattes douloureuses."
+      },
+      "subtitle": {
+        "ko": "굴이 무너졌다",
+        "en": "The tunnel caved in.",
+        "zh-cn": "地道塌了",
+        "fr": "Le tunnel s'effondre"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole sitting alone at the mouth of a caved-in tunnel in the rain, wet fur, head lowered, overcast afternoon, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "비가 내렸어요. 두더지는 무너진 입구에 앉아 한참 아무 말도 못 했죠.",
+        "en": "Then the rain came. He sat at the mouth of the broken tunnel and said nothing.",
+        "zh-cn": "后来下起了雨。他坐在塌掉的洞口，一句话也没说。",
+        "fr": "Puis la pluie est arrivée. Elle est restée assise devant le tunnel, sans rien dire."
+      },
+      "subtitle": {
+        "ko": "비가 내렸다",
+        "en": "Then the rain came.",
+        "zh-cn": "雨落下来",
+        "fr": "Puis la pluie est arrivée"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole looking down at a narrow side tunnel where rainwater drains away, a tiny sprout beside the opening, overcast light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 발밑을 봤어요. 예전에 조그맣게 파 둔 길이 빗물을 빼 주고 있었어요.",
+        "en": "Then he looked down. The little side tunnels he'd dug long ago were draining the water away.",
+        "zh-cn": "这时他低头看了看。很久以前挖的那些小岔道，正把雨水引走。",
+        "fr": "C'est là qu'elle a baissé les yeux. Les petits tunnels creusés longtemps avant évacuaient l'eau."
+      },
+      "subtitle": {
+        "ko": "작은 굴이 물을 뺐다",
+        "en": "The small tunnels held.",
+        "zh-cn": "小地道挡住了水",
+        "fr": "Les petits tunnels tenaient"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole digging slowly and carefully in soft soil, one pawful at a time, a neat small tunnel behind him, evening light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지는 다시 팠어요. 이번엔 아주 느리게, 한 줌씩 정성껏요.",
+        "en": "So he started again. Slow this time, one careful pawful at a time.",
+        "zh-cn": "于是他又开始挖。这次很慢，一小捧一小捧，很认真。",
+        "fr": "Alors elle a recommencé. Doucement, cette fois, une poignée de terre après l'autre."
+      },
+      "subtitle": {
+        "ko": "느리게, 정성껏",
+        "en": "Slow. Careful. Again.",
+        "zh-cn": "慢慢地，认真地",
+        "fr": "Lentement, avec soin"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "한 여자가 매주 일요일마다 국을 끓여 옆집 어른 문 앞에 놓아두었어요. 9년 동안 한 번도 안 거렸죠.",
+        "en": "One woman made soup every Sunday and left it at the door of the old man next door. Nine years, not one skipped week.",
+        "zh-cn": "有位女人每个星期天都煮一锅汤，放在隔壁老人门口。九年，一次没落下。",
+        "fr": "Une femme faisait une soupe chaque dimanche et la laissait devant la porte du vieux voisin. Neuf ans, sans en manquer une."
+      },
+      "subtitle": {
+        "ko": "9년, 한 번도 안 거름",
+        "en": "Nine years. Not one miss.",
+        "zh-cn": "九年，一次没落",
+        "fr": "Neuf ans, jamais raté"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man sitting on the floor of a small room at night, writing on a notepad on his knees, one lamp on the floor beside him, quiet, side view, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신에게도 오늘 밤 10분이 있어요. 그 10분을 비워 두고, 작은 일 하나를 정성껏 해라.",
+        "en": "You've got ten minutes tonight. Put them aside and go do one small thing with real care.",
+        "zh-cn": "你今晚也有十分钟。把它空出来，认真做一件小事。",
+        "fr": "Toi aussi, tu as dix minutes ce soir. Réserve-les, et fais une petite chose avec tout ton cœur."
+      },
+      "subtitle": {
+        "ko": "10분, 작은 일 하나",
+        "en": "Ten minutes. One small thing.",
+        "zh-cn": "十分钟，一件事",
+        "fr": "Dix minutes, une chose"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "위대한 일을 기다리지 마라. 오늘, 작은 일 하나를 사랑으로 해라.",
+        "en": "Don't wait for something great. Do one small thing today, and do it with love.",
+        "zh-cn": "别等大事了。今天就带着爱，做一件小事。",
+        "fr": "N'attends pas les grandes choses. Fais une petite chose aujourd'hui, avec amour."
+      },
+      "subtitle": {
+        "ko": "작은 일, 큰 사랑",
+        "en": "Small things, great love.",
+        "zh-cn": "小事，大爱",
+        "fr": "Petites choses, grand amour"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
