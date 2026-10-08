@@ -193,51 +193,79 @@ def _to_monochrome(path: Path) -> None:
         print(f"  [fable] 흑백 변환 실패 (원본 유지): {type(e).__name__}")
 
 
-def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Path]:
-    out_dir.mkdir(parents=True, exist_ok=True)
-    paths: list[Path] = []
-    for i, p in enumerate(prompts):
-        dest = out_dir / f"scene{i + 1}.jpg"
-        # 후처리 이력 마커 — 크롭은 멱등하지 않아 캐시 히트 시 재적용하면 해상도가 계속 깎인다
-        mark = out_dir / f"scene{i + 1}.mono"
-        if dest.exists() and dest.stat().st_size > 20000:
-            if not mark.exists():
-                # 이전 버전(마커 없는) 캐시 — 1회만 처리
-                _to_monochrome(dest)
-                mark.write_text("1", encoding="utf-8")
-            paths.append(dest)
-            continue
-        url = ("https://image.pollinations.ai/prompt/"
-               + requests.utils.quote(p)
-               + f"?width={IMG_W}&height={IMG_H}&nologo=true&seed={seed_base + i * 37 + 1000}&model=flux")
-        ok = False
-        backoffs = (10, 30, 60, 90)   # 402/429 = 익명 쿼터 — 시간 지나면 회복
-        for attempt, backoff in enumerate(backoffs, start=1):
-            try:
-                r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=150)
-                ct = r.headers.get("content-type", "")
-                if r.ok and "image" in ct and len(r.content) > 20000:
-                    dest.write_bytes(r.content)
-                    _to_monochrome(dest)  # ← 흑백 통일 (프롬프트 무시 대비)
-                    mark.write_text("1", encoding="utf-8")
-                    print(f"  [fable] 이미지 {i + 1}/{len(prompts)} OK ({len(r.content) // 1024}KB, 흑백)")
-                    ok = True
-                    break
-                print(f"  [fable] 이미지 {i + 1} 시도{attempt} 실패 HTTP {r.status_code}")
-                if r.status_code not in (402, 429, 500, 503):
-                    break
-            except Exception as e:  # noqa: BLE001
-                print(f"  [fable] 이미지 {i + 1} 시도{attempt} 오류 {type(e).__name__}")
-            if attempt < len(backoffs):
-                time.sleep(backoff)
-        if not ok:
-            _fallback_image(dest, i)
-            _to_monochrome(dest)  # 폴백도 흑백으로
+def _fetch_one(i: int, p: str, out_dir: Path, total: int,
+               seed_base: int) -> Path:
+    """이미지 1장 생성 — 캐시 확인 → 폴inations 조회 → 실패 시 로컬 폴백."""
+    dest = out_dir / f"scene{i + 1}.jpg"
+    # 후처리 이력 마커 — 크롭은 멱등하지 않아 캐시 히트 시 재적용하면 해상도가 계속 깎인다
+    mark = out_dir / f"scene{i + 1}.mono"
+    if dest.exists() and dest.stat().st_size > 20000:
+        if not mark.exists():
+            _to_monochrome(dest)
             mark.write_text("1", encoding="utf-8")
-            print(f"  [fable] 이미지 {i + 1} 로컬 폴백 (Pollinations 쿼터, 흑백)")
-        paths.append(dest)
-        time.sleep(1)  # 무료 레이트리밋 예의
-    return paths
+        print(f"  [fable] 이미지 {i + 1}/{total} 캐시")
+        return dest
+
+    url = ("https://image.pollinations.ai/prompt/"
+           + requests.utils.quote(p)
+           + f"?width={IMG_W}&height={IMG_H}&nologo=true&seed={seed_base + i * 37 + 1000}&model=flux")
+    ok = False
+    # 402/429 = 익명 쿼터. GitHub Actions 는 매번 새 IP 라 쿼터가 이어져
+    # 긴 백오프가 오히려 전체 시간을 늘린다 (2026-10-08 실측: 25분 소요).
+    # → 짧게 두 번 시도하고 로컬 폴백으로 넘어간다. 다음 실행에 캐시가 남는다.
+    for attempt, backoff in enumerate((5, 20), start=1):
+        try:
+            r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=150)
+            ct = r.headers.get("content-type", "")
+            if r.ok and "image" in ct and len(r.content) > 20000:
+                dest.write_bytes(r.content)
+                _to_monochrome(dest)  # ← 흑백 통일 (프롬프트 무시 대비)
+                mark.write_text("1", encoding="utf-8")
+                print(f"  [fable] 이미지 {i + 1}/{total} OK ({len(r.content) // 1024}KB, 흑백)")
+                ok = True
+                break
+            print(f"  [fable] 이미지 {i + 1} 시도{attempt} 실패 HTTP {r.status_code}")
+            if r.status_code not in (402, 429, 500, 503):
+                break
+        except Exception as e:  # noqa: BLE001
+            print(f"  [fable] 이미지 {i + 1} 시도{attempt} 오류 {type(e).__name__}")
+        if attempt < 2:
+            time.sleep(backoff)
+    if not ok:
+        _fallback_image(dest, i)
+        _to_monochrome(dest)  # 폴백도 흑백으로
+        mark.write_text("1", encoding="utf-8")
+        print(f"  [fable] 이미지 {i + 1} 로컬 폴백 (Pollinations 쿼터, 흑백)")
+    return dest
+
+
+def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Path]:
+    """장면 이미지 생성 — 4장씩 병렬로 요청해 시간을 단축한다.
+
+    순차 호출은 10장에 25분까지 걸렸다 (2026-10-08 실측: Pollinations 402 쿼터).
+    4장씩 묶어 동시 요청하면 같은 시간을 1/4 로 줄일 수 있다.
+    """
+    out_dir.mkdir(parents=True, exist_ok=True)
+    from concurrent.futures import ThreadPoolExecutor
+
+    total = len(prompts)
+    paths: list[Path] = [None] * total  # type: ignore[list-item]
+    # 4장씩 병렬 처리
+    with ThreadPoolExecutor(max_workers=4) as ex:
+        futs = {ex.submit(_fetch_one, i, p, out_dir, total, seed_base): i
+                for i, p in enumerate(prompts)}
+        for fut in futs:
+            i = futs[fut]
+            try:
+                paths[i] = fut.result()
+            except Exception as e:  # noqa: BLE001
+                print(f"  [fable] 이미지 {i + 1} 예외: {type(e).__name__}")
+                dest = out_dir / f"scene{i + 1}.jpg"
+                _fallback_image(dest, i)
+                _to_monochrome(dest)
+                (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
+                paths[i] = dest
+    return [p for p in paths if p is not None]
 
 
 def _fallback_image(dest: Path, idx: int) -> None:
