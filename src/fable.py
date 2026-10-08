@@ -40,7 +40,7 @@ from .quotes import Quote, THEME_LABELS
 
 LANGS = ["en", "ko", "zh-cn", "fr"]
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
-MODEL = "deepseek-chat"
+MODEL = "deepseek-flash"   # 2026-10-08: deepseek-chat 은 404, flash/pro 만 제공됨
 
 ROOT = Path(__file__).resolve().parent.parent
 

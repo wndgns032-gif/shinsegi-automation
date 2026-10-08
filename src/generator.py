@@ -12,7 +12,7 @@ from .quotes import Quote, THEME_LABELS
 
 LANGS = ["en", "ko", "zh-cn", "fr"]
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
-MODEL = "deepseek-chat"
+MODEL = "deepseek-flash"   # 2026-10-08: deepseek-chat 은 404, flash/pro 만 제공됨
 THREADS_LIMIT = 300  # Bluesky 기준(3개 텍스트 플랫폼 중 가장 짧은 제한)
 DEFAULT_TAGS = {
     "en": "#wisdom #quoteoftheday #lifelessons",

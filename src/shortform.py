@@ -43,7 +43,7 @@ def _ffpath(p: str) -> str:
 
 ROOT = Path(__file__).resolve().parent.parent
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
-MODEL = "deepseek-chat"
+MODEL = "deepseek-flash"   # 2026-10-08: deepseek-chat 은 404, flash/pro 만 제공됨
 
 # 템플릿 위 가로 영상 위치/크기 — (x, y, w, h). 2026-09-21 v3 (사용자 지시):
 #   세로 높이 +50% (480→720). 밴드 y 520~1240 는 명언 박스(y≤480)와
