@@ -15,7 +15,6 @@ import json
 import os
 import re
 import sys
-import time
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parents[1]
@@ -172,21 +171,11 @@ def auth(lang: str, client: dict) -> bool:
     # → 인증 URL 을 stdout 에 찍고 로이가 직접 열어 pasting 하도록 안내한다.
     # 주의: 콜백 서버를 **URL 생성 전에** 먼저 띄워야 한다
     #       (OAuth 는 state 에 redirect_uri 를 포함하므로 순서가 중요).
-    import socket
     import webbrowser
-    from google_auth_oauthlib.flow import Flow
-    from wsgiref.simple_server import make_server, WSGIRequestHandler
 
     def _free_port() -> int:
-        s = socket.socket()
-        s.bind(("127.0.0.1", 0))
-        port = s.getsockname()[1]
-        s.close()
-        return port
-
-    class _Quiet(WSGIRequestHandler):
-        def log_message(self, *a):  # noqa: D102
-            pass
+        """임의의 로컬 포트. 0 을 주면 OS 가 비어 있는 포트를 배정한다."""
+        return 0
 
     try:
         can_open = webbrowser.get() is not None
@@ -194,60 +183,44 @@ def auth(lang: str, client: dict) -> bool:
         can_open = False
 
     if not can_open or os.getenv("YT_NO_BROWSER") == "1":
-        port = _free_port()
-        # 콜백 서버를 URL 생성 전에 먼저 띄운다.
-        # redirect_uri 를 authorization_url() 에만 넘기고
-        # flow.redirect_uri 는 OAuth 가 사용할 값으로만 설정한다
-        # (양쪽에 넘기면 'multiple values for keyword argument' 오류).
-        server = make_server("127.0.0.1", port, _Quiet)
-        import threading
-        t = threading.Thread(target=server.handle_request, daemon=True)
-        t.start()
+        # ── 프록시 무력화 ────────────────────────────────────────────
+        # 이 PC 에는 HTTP_PROXY=http://127.0.0.1:6222 가 설정돼 있고,
+        # 그 상태면 Google 이 127.0.0.1 로 보내는 **콜백까지 프록시로 빠져나간다.**
+        # → 콜백이 절대 돌아오지 않는다. (scripts/diag_localhost.py 로 실측 확인)
+        for k in ("HTTP_PROXY", "http_proxy", "HTTPS_PROXY", "https_proxy",
+                  "ALL_PROXY", "all_proxy"):
+            os.environ.pop(k, None)
+        os.environ["NO_PROXY"] = "127.0.0.1,localhost,::1"
+        os.environ["no_proxy"] = "127.0.0.1,localhost,::1"
 
-        redirect_uri = f"http://127.0.0.1:{port}"
-        # flow.redirect_uri 만 설정하면 authorization_url() 이 알아서 사용한다
-        # (redirect_uri 를 직접 넘기면 내부 값과 충돌해 'multiple values' 오류)
-        flow.redirect_uri = redirect_uri
-        auth_url, _ = flow.authorization_url(
-            access_type="offline", prompt="consent select_account")
-        print("\n" + "=" * 74)
-        print("아래 URL 을 **브라우저 주소창에 붙여넣으세요**:")
-        print("=" * 74)
-        print(auth_url)
-        print("=" * 74)
-        print("① 로그인할 Google 계정 선택")
-        print(f"② '{exp}' 채널 선택" if exp else "② 사용할 채널 선택")
-        print("③ '권한 허용' 클릭")
-        print(f"④ '액세스 거부(Access blocked)' 화면이 뜨는 게 정상입니다.")
-        print(f"   (로컬 콜백이 127.0.0.1:{port} 에서 대기 중 — 이 창을 닫지 마세요)")
-        print("=" * 74)
-        # URL 을 파일에도 저장 — 복사 실수 방지 및 재확인용
-        try:
-            url_file = BASE / "data" / f"_yt_auth_{lang}.url"
-            url_file.parent.mkdir(parents=True, exist_ok=True)
-            url_file.write_text(auth_url, encoding="utf-8")
-            print(f"📄 URL 사본: {url_file}")
-        except Exception:  # noqa: BLE001
-            pass
-        print()
-        try:
-            # 로이가 URL 을 복사·붙여넣고 로그인하는 동안 충분히 기다린다.
-            # 기본 4분은 짧아서 실패했다 (2026-10-07 실측).
-            wait = int(os.getenv("YT_AUTH_TIMEOUT", "1200"))   # 20분
-            deadline = time.time() + wait
-            print(f"\n⏳ 최대 {wait // 60}분 대기합니다. 창을 닫지 마세요.")
-            while time.time() < deadline and t.is_alive():
-                t.join(timeout=1)
-        except Exception:  # noqa: BLE001
-            pass
-        server.server_close()
-        if not getattr(flow, "credentials", None):
-            print(f"[fail] 콜백을 받지 못했습니다 (시간 초과, {wait // 60}분).")
-            print("        다시 실행해 새 URL 을 받아주세요.")
-            return False
-        creds = flow.credentials
+        # ── Google 공식 구현을 그대로 사용 ──────────────────────────
+        # InstalledAppFlow.run_local_server(open_browser=False) 는
+        #  1) 콜백 서버를 띄우고
+        #  2) authorization_url 을 stdout 에 찍으며
+        #  3) handle_request() 로 콜백을 받고 fetch_token() 을 부른다.
+        # 우리가 직접 만들면 이 중 하나를 놓쳐서 콜백을 못 받는다.
+        # open_browser=False 면 URL 만 출력되므로 로이가 붙여넣을 수 있다.
+        # host="localhost" 로 지정해 IPv6(::1) 해석 문제도 함께 해결한다
+        # — 이 PC 에선 localhost 가 ::1(IPv6) 이 먼저 나온다.
+        creds = flow.run_local_server(
+            host="localhost", port=0, prompt="consent select_account",
+            access_type="offline", open_browser=False,
+            timeout_seconds=int(os.getenv("YT_AUTH_TIMEOUT", "1200")),
+            authorization_prompt_message=(
+                "\n" + "=" * 74 + "\n"
+                "아래 URL 을 브라우저 주소창에 붙여넣으세요:\n"
+                + "=" * 74 + "\n{url}\n" + "=" * 74 + "\n"
+                "① 로그인할 Google 계정 선택"
+                f"\n② '{exp}' 채널 선택" if exp else "② 사용할 채널 선택"
+                "\n③ '권한 허용' 클릭"
+                "\n④ '액세스 거부' 화면이 뜨는 게 정상입니다 (성공)."
+                "\n" + "=" * 74
+            ),
+        )
     else:
-        creds = flow.run_local_server(port=_free_port(),
+        # 브라우저를 자동 띄울 수 있는 환경 — 그래도 host 를 localhost 로 통일한다
+        # (IPv6 우선 해석 문제 회피)
+        creds = flow.run_local_server(host="localhost", port=0,
                                       prompt="consent select_account",
                                       access_type="offline", open_browser=True)
     if not creds.refresh_token:
