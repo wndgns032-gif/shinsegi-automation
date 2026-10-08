@@ -287,13 +287,13 @@ def collect_metrics(mock: bool = False) -> None:
 #   스토리(명언→동물우화 대본) → 이미지(공용) → 4개 언어 렌더 → IG+YT 발행.
 #   각 단계는 파일 마커로 멱등: story.json / fable_<lang>.mp4 / published.json
 # ─────────────────────────────────────────────────────────────
-def fable_story(mock: bool = False) -> None:
-    """우화 스토리 생성 — 오늘자 story.json 이 이미 있으면 스킵(중복 방지)."""
+def fable_story(mock: bool = False, date: str | None = None) -> None:
+    """우화 스토리 생성 — 해당 날짜 story.json 이 이미 있으면 스킵(중복 방지)."""
     from src import fable, quotes
     from src.error_log import log_error
 
-    if fable.load_story(DATA):
-        print("[fable-story] 오늘자 story.json 이미 있음 — 생성 생략")
+    if fable.load_story(DATA, date):
+        print(f"[fable-story] {date or '오늘'}자 story.json 이미 있음 — 생성 생략")
         return
     try:
         quote, theme = fable.pick_quote(DATA)
@@ -393,12 +393,16 @@ def fable_publish(date: str | None = None) -> None:
     print(f"[fable-publish] 마커: {marker}")
 
 
-def run_fable(mock: bool = False, no_publish: bool = False) -> None:
-    """우화 쇼츠 전체 파이프라인 — 각 단계 마커로 재실행 안전."""
-    fable_story(mock=mock)
-    fable_video(mock=mock)
+def run_fable(mock: bool = False, no_publish: bool = False,
+              date: str | None = None) -> None:
+    """우화 쇼츠 전체 파이프라인 — 각 단계 마커로 재실행 안전.
+
+    date 를 주면 그 날짜의 우화를 다룬다 (보강 발행용).
+    """
+    fable_story(mock=mock, date=date)
+    fable_video(mock=mock, date=date)
     if not no_publish and not mock:
-        fable_publish()
+        fable_publish(date=date)
     elif mock:
         print("[run-fable] mock 모드 — 발행 생략 (mock 금지 규칙)")
 
@@ -448,6 +452,8 @@ def main() -> None:
     p_fable = sub.add_parser("run-fable", help="우화 쇼츠 전체 파이프라인")
     p_fable.add_argument("--mock", action="store_true")
     p_fable.add_argument("--no-publish", action="store_true")
+    p_fable.add_argument("--date", default=None,
+                         help="스토리 날짜(YYYY-MM-DD) — 기본은 오늘(KST)")
 
     sub.add_parser("schedule")
     args = ap.parse_args()
@@ -468,7 +474,7 @@ def main() -> None:
     elif args.cmd == "fable-publish":
         fable_publish(date=args.date)
     elif args.cmd == "run-fable":
-        run_fable(mock=args.mock, no_publish=args.no_publish)
+        run_fable(mock=args.mock, no_publish=args.no_publish, date=args.date)
     elif args.cmd == "schedule":
         from src import scheduler
         scheduler.start(lambda c: run_cycle(c), lambda: collect_metrics(),

@@ -1,30 +1,37 @@
-# shinsegi 우화 쇼츠 — 매일 KST 19:20 (UTC 10:20) 제작+발행
-# 로이 PC 가 꺼져도 GitHub runner 에서 자동 실행.
-# 2026-10-06: fable-publish.yml 을 합침 — 같은 runner 에서 mp4 를 그대로 발행에 써야 함(.gitignore 로 인해 mp4 가 커밋되지 않으므로 분리 불가).
+# shinsegi 우화 쇼츠 — 하루 2회 발행 (KST 08:00 / 18:00)
+#
+# 로이 PC 가 꺼져도 GitHub runner 에서 자동 실행된다.
+# 2026-10-08: 하루 1회(19:20) → 하루 2회(08:00, 18:00)로 변경 (로이 요청)
+#
+# 시간 계산 (GitHub cron 은 UTC):
+#   KST 08:00 = UTC 23:00 (전날)
+#   KST 18:00 = UTC 09:00
+# minute 는 0 을 피한다 — ':00' 은 GitHub 스케줄러가 가장 혼잡해
+# 실행이 대량 폐기(drop)된다. 공식 권장: 17 / 23 / 37 / 43.
 name: Fable Production
 
 on:
   schedule:
-    # KST 19:20 (UTC 10:20) 마다 실행.
-    # minute 를 20 → 17 로 바꾼 이유: GitHub Actions cron 스케줄러는
-    # ':00' / ':30' 이 사람이 몰려 스케줄이 대량 지연·폐기(drop)된다.
-    # 공식 권장: 17 / 23 / 37 / 43 같은 어중간한 분을 쓸 것.
-    # (2026-10-07 실측: 20분 슬롯이 하루종일 실행되지 않음 — private+무료 한계도 별도 원인)
-    - cron: '17 10 * * *'
+    # KST 08:00 (UTC 23:00 전날)
+    - cron: '7 23 * * *'
+    # KST 18:00 (UTC 09:00)
+    - cron: '13 9 * * *'
   workflow_dispatch:
     inputs:
       no_publish:
-        description: 'true 면 제작만(미발행) — 테스트용. 기본 false(정시=발행).'
+        description: 'true 면 제작만(미발행) — 테스트용. 기본 false(발행).'
         required: false
         default: 'false'
         type: choice
         options:
           - 'false'
           - 'true'
-  # private + 무료 계정 환경에서 schedule 이벤트가 비활성화될 때의 우회책.
-  # 로이 PC 의 자동화(WorkBuddy)가 KST 19:20 에 이걸 호출한다.
-  # →cron 안 돌아도 발행이 계속된다.
-  # 사용: curl -X POST -H "Authorization: token $PAT" -H "Accept: application/vnd.github+json" \
+      date:
+        description: '대상 날짜(YYYY-MM-DD). 비우면 오늘(KST).'
+        required: false
+  # private + 무료 계정 환경에서 schedule 이 비활성화될 때의 우회책.
+  #   curl -X POST -H "Authorization: token $PAT" \
+  #        -H "Accept: application/vnd.github+json" \
   #        https://api.github.com/repos/wndgns032-gif/shinsegi-automation/dispatches \
   #        -d '{"event_type":"daily-fable"}'
   repository_dispatch:
@@ -40,12 +47,11 @@ concurrency:
 jobs:
   produce:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
     env:
       TTS_ENGINE: edge       # 로컬 모델 없음 → 클라우드 edge-tts 강제
       PYTHONIOENCODING: utf-8
       TZ: Asia/Seoul
-      # 시크릿 (Secrets 로 주입)
       DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
       HF_TOKEN: ${{ secrets.HF_TOKEN }}
       IG_KO_TOKEN: ${{ secrets.IG_KO_TOKEN }}
@@ -79,7 +85,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: setup-python@v5
         with:
           python-version: '3.13'
           cache: 'pip'
@@ -93,19 +99,37 @@ jobs:
       - name: Install Python deps
         run: pip install -r requirements.txt
 
-      - name: Produce & publish today's fable
-        env:
-          # schedule / repository_dispatch 로 들어온 실행은 항상 발행.
-          # workflow_dispatch 는 no_publish 입력이 있을 때만 테스트로 본다.
-          NO_PUBLISH: ${{ github.event_name == 'workflow_dispatch' && inputs.no_publish == 'true' && 'yes' || '' }}
+      - name: Decide target date and mode
+        id: plan
         run: |
-          # NO_PUBLISH=yes 면 제작만, 아니면 제작+발행
-          if [ -n "$NO_PUBLISH" ]; then
-            echo "mode: no-publish (테스트)"
-            python -m src.main run-fable --no-publish
+          # TZ=Asia/Seoul 이므로 date 는 KST 기준
+          TODAY="$(date +%Y-%m-%d)"
+          TARGET="${{ inputs.date }}"
+          [ -z "$TARGET" ] && TARGET="$TODAY"
+          # workflow_dispatch + no_publish=true 면 제작만
+          MODE="publish"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] \
+             && [ "${{ inputs.no_publish }}" = "true" ]; then
+            MODE="no-publish"
+          fi
+          echo "today=$TODAY"    >> "$GITHUB_OUTPUT"
+          echo "target=$TARGET"  >> "$GITHUB_OUTPUT"
+          echo "mode=$MODE"      >> "$GITHUB_OUTPUT"
+          echo "event=${{ github.event_name }}" >> "$GITHUB_OUTPUT"
+          echo "---"
+          echo "KST today : $TODAY"
+          echo "target    : $TARGET"
+          echo "mode      : $MODE"
+          echo "event     : ${{ github.event_name }}"
+
+      - name: Produce & publish fable
+        run: |
+          if [ "${{ steps.plan.outputs.mode }}" = "no-publish" ]; then
+            echo "mode: produce only (test)"
+            python -m src.main run-fable --date "${{ steps.plan.outputs.target }}" --no-publish
           else
-            echo "mode: produce + publish  (event=${{ github.event_name }})"
-            python -m src.main run-fable
+            echo "mode: produce + publish"
+            python -m src.main run-fable --date "${{ steps.plan.outputs.target }}"
           fi
 
       - name: Commit markers
@@ -113,7 +137,8 @@ jobs:
           git config user.email "actions@github.com"
           git config user.name "github-actions[bot]"
           git add data/quotes_used.json data/youtube_uploads.json data/performance.xlsx 2>/dev/null || true
-          git add "data/fables/$(date +%Y-%m-%d)/story.json" 2>/dev/null || true
-          git add "data/fables/$(date +%Y-%m-%d)/published.json" 2>/dev/null || true
-          git diff --staged --quiet || git commit -m "chore(markers): fable production $(date +%Y-%m-%d) [skip ci]"
+          git add data/source_log.xlsx data/error_log.jsonl 2>/dev/null || true
+          git add "data/fables/${{ steps.plan.outputs.target }}/" 2>/dev/null || true
+          git diff --staged --quiet \
+            || git commit -m "chore(markers): fable ${{ steps.plan.outputs.target }} [skip ci]"
           git push || echo "nothing to push"
