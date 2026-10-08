@@ -139,8 +139,10 @@ def _motion(i: int, frames: int) -> str:
         z = "min(1+0.00024*on,1.09)"
         x, y = ("(iw-iw/zoom)*(1-on/{f})".format(f=frames),
                 "(ih-ih/zoom)*(on/{f})".format(f=frames))
+    # ⚠️ zoompan 은 d:x:y:z:s:d:fps 옵션만 받는다 (실측 2026-10-08).
+    #    'dither' 같은 옵션을 넣으면 `filter 'zoompan': Option not found` 로 죽는다.
     return (f"zoompan=z='{z}':x='{x}':y='{y}':d={frames}:"
-            f"s={W}x{H}:fps={FPS}:dither=0")
+            f"s={W}x{H}:fps={FPS}")
 
 
 def _film_fx() -> str:
