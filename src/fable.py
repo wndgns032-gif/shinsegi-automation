@@ -803,7 +803,15 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
     return story
 
 
-def save_story(story: dict, data_dir: Path) -> Path:
+def save_story(story: dict, data_dir: Path, date: str | None = None) -> Path:
+    """스토리 저장.
+
+    2026-10-08 수정: 모델이 story['date'] 를 오늘 날짜로 채워 넣는 경우가 있어
+    --date 로 지정한 날짜(예: 2026-10-09)가 무시되었다.
+    → date 인자를 명시하면 그것을 강제로 쓴다.
+    """
+    if date:
+        story["date"] = date
     out = story_dir(data_dir, story["date"]) / "story.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(story, ensure_ascii=False, indent=2), encoding="utf-8")

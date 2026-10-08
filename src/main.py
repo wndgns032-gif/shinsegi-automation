@@ -300,7 +300,7 @@ def fable_story(mock: bool = False, date: str | None = None) -> None:
         print(f"[fable-story] 테마: {quotes.THEME_LABELS.get(theme, theme)} (요일 로테이션)")
         print(f"[fable-story] 오늘의 명언: [{quote.id}] {quote.author_of('ko')} — {quote.text_of('ko')}")
         story = fable.generate(quote, theme, mock=mock)
-        path = fable.save_story(story, DATA)
+        path = fable.save_story(story, DATA, date=date)
         print(f"[fable-story] 저장: {path} (장면 {len(story['scenes'])}개)")
         if not mock:  # mock 은 로테이션 이력을 더럽히지 않는다 (기존 규칙과 동일)
             quotes.mark_used(DATA, quote.id)
