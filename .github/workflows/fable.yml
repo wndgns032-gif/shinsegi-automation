@@ -141,4 +141,7 @@ jobs:
           git add "data/fables/${{ steps.plan.outputs.target }}/" 2>/dev/null || true
           git diff --staged --quiet \
             || git commit -m "chore(markers): fable ${{ steps.plan.outputs.target }} [skip ci]"
-          git push || echo "nothing to push"
+          # 2026-10-08 실측: 수동 실행 중 로이가 push 하면 non-fast-forward 로 실패한다.
+          # → 로컬 커밋을 먼저 받아 합친 뒤 push 한다(rebase).
+          git pull --rebase --autostash origin main || true
+          git push origin HEAD:main || echo "nothing to push"
