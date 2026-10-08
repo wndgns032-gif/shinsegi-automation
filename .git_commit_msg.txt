@@ -1,16 +1,34 @@
-feat(yt): 로이 PC 직접 실행용 인증 배치 + 실행 문서
+docs(yt): OAuth 403 access_denied 진단 — 테스트 사용자 미등록
 
-## 문제 (실측)
-샌드박스에서 OAuth 콜백이 로이의 브라우저에 닿지 않는다.
-- 샌드박스 안 서버는 정상 동작 (자기 자신 접속 200)
-- 그런데 로이 브라우저 -> 127.0.0.1 콜백이 오지 않음 (20분 대기 후 타임아웃)
-- 샌드박스 경유 실행 시도는 보안 정책에 의해 전부 차단됨
+## 증상
+한국어 인증 시 아래 에러:
+  403 access_denied
+  "shinsegi은(는) Google 인증 절차를 완료하지 않았습니다.
+   앱은 현재 테스트 중이며 개발자가 승인한 테스터만 앱에 액세스할 수 있습니다"
 
-## 해결
-scripts/youtube_auth.cmd - 로이 PC 에서 직접 실행.
-- cmd 는 UTF-8 한글을 깨뜨리므로 ASCII 로 작성
-- 어느 계정/채널을 골라야 하는지 창에 안내 표시
-- YT_AUTH_TIMEOUT=1800 (30분) 대기
+## 원인
+Google Cloud 프로젝트 `shinsegi` 의 OAuth 동의 화면이 **테스트 중(Testing)** 상태.
+테스트 상태에서는 **테스트 사용자에 등록된 계정만** 접근 가능하다.
+shinsegimedia@gmail.com 과 로이 개인 Gmail 모두 미등록 → 차단.
 
-YOUTUBE_AUTH_HOWTO.md - 실행 절차 + 계정 선택 요약표 + revoke 금지 주의.
-.gitignore - 인증 시도 산출물(_yt_auth_*.url 등) 제외.
+(fr 채널은 이전에 성공했으나, 그때 우연히 등록돼 있었거나 앱 상태가 달랐을 것)
+
+## 해결 (로이가 Console 에서 직접)
+https://console.cloud.google.com/ → 프로젝트 shinsegi
+→ API 및 서비스 → OAuth 동의 화면
+
+둘 중 하나:
+A) 게시 상태(Publishing status) → "운영 중(In production)" 으로 변경
+B) 테스트 사용자 추가: shinsegimedia@gmail.com + 로이 개인 Gmail
+
+그리고 YouTube Data API v3 사용 설정 확인.
+
+## 변경
+1. YOUTUBE_403_FIX.md — 403 vs 다른 에러 구분표 포함
+2. scripts/youtube_auth.cmd — 창에 403 해결 절차 안내 추가
+   (테스트 중 상태면 Console 에서 무엇을 해야 하는지 그대로 표시)
+3. ERR_CONNECTION_REFUSED 도 안내 추가 (콜백 서버가 죽은 경우)
+
+## 참고
+fr 토큰은 정상(@shinsegi-fr). ko 토큰은 옛 상태로 @shinsegi-zh 를 가리키며
+blocked_languages 로 차단되어 있음 — zh-cn 과 ko 모두 재인증 필요.

@@ -39,8 +39,26 @@ echo    fr      shinsegimedia account  ->  @shinsegi-fr
 echo.
 echo  - Pick the Google account FIRST, then the channel.
 echo  - Google may preselect the wrong account. Check carefully.
-echo  - "Access blocked" at the end is NORMAL - it means success.
-echo  - Do not close this window. Waits up to 30 minutes.
+echo.
+echo  IF YOU SEE "403 access_denied / app is testing":
+echo    The OAuth consent screen is in TESTING mode.
+echo    Fix it here (one time, about 1 min):
+echo    https://console.cloud.google.com/
+echo      -> project "shinsegi"
+echo      -> APIs and Services ^> OAuth consent screen
+echo      -> either
+echo         (a) Publishing status  ->  "In production"
+echo         (b) Test users         ->  add these accounts:
+echo               shinsegimedia@gmail.com
+echo               + your personal Gmail
+echo    Then run this file again.
+echo.
+echo  IF YOU SEE "ERR_CONNECTION_REFUSED":
+echo    This window is already closed. Re-run it, then open the
+echo    new URL within 30 minutes.
+echo.
+echo  "Access blocked" at the very end is NORMAL - it means success.
+echo  Do not close this window. Waits up to 30 minutes.
 echo.
 
 "%PY%" -u scripts\youtube_auth.py %1
