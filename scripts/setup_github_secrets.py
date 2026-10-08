@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import os
 import sys
+import time
 from base64 import b64decode, b64encode
 
 import requests
@@ -87,14 +88,28 @@ def main() -> int:
             "encrypted_value": b64encode(enc).decode(),
             "key_id": pk["key_id"],
         }
-        r = requests.put(
-            f"https://api.github.com/repos/{repo}/actions/secrets/{name}",
-            headers=H, json=body, timeout=30)
-        if r.status_code in (201, 204):
+        # 이 PC 는 네트워크가 느려 30초 로는 ReadTimeout 이 난다 (2026-10-08 실측).
+        # 실패해도 전체를 죽이지 않고 재시도한다 — 시크릿은 서로 독립적이다.
+        resp = None
+        for attempt, wait in enumerate((0, 3, 8), start=1):
+            if wait:
+                time.sleep(wait)
+            try:
+                resp = requests.put(
+                    f"https://api.github.com/repos/{repo}/actions/secrets/{name}",
+                    headers=H, json=body, timeout=90)
+                break
+            except requests.RequestException as e:
+                print(f"  .. {name} 시도{attempt} 실패 ({type(e).__name__})")
+                resp = None
+        if resp is None:
+            print(f"  [FAIL] {name}: 네트워크 오류 (3회 시도)")
+            failed += 1
+        elif resp.status_code in (201, 204):
             print(f"  [ok]   {name}")
             ok += 1
         else:
-            print(f"  [FAIL] {name}: {r.status_code} {r.text[:120]}")
+            print(f"  [FAIL] {name}: {resp.status_code} {resp.text[:120]}")
             failed += 1
 
     print()
