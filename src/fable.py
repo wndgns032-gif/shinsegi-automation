@@ -141,13 +141,60 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 
 ## 구조 (총 10장면 — 명언이 영상을 연다)
 1장면 quote: 명언 원문을 화면 가운데 크게 보여주며 낭독. (낭독은 시스템이 명언 원문으로 자동 교체 — image_prompt만 작성: 명언의 분위기를 상징하는 고요한 장면, 주인공 동물 등장 가능)
-2장면 hook: 시청자를 붙잡는 문장 2줄. 도발적 질문이나 반전 예고.
+2장면 hook: **명령형 2줄 — 시청자에게 직접 지시한다.**
+  - 첫 줄은 반드시 **명령형(~하라 / ~해라 / ~하세요)** 으로 시작한다. 질문 금지.
+  - 두 번째 줄은 **지금 당장 무엇을 할지** 구체적인 행동을 지시한다.
+  - "바쁘면 좋겠어" 같은 관찰이 아니라 "~하라" 로 끝나야 한다.
   - **각 줄은 그 자체로 완전한 문장**이어야 한다 (끝에 마침표를 찍어라).
-  - 나레이션은 이 2줄을 이어서 읽으므로, 두 줄이 이어져도 의미가 통해야 한다.
-  (예: "A stone blocked the road. Go around it, and the road disappears.")
+  (예: "시간을 아끼지 마라. 지금 당장 폰을 집어 들고 밖으로 나가라.")
 3~7장면 fable: 주인공 동물이 목표를 갖고 → 실패와 시행착오 → 다른 동물의 조언이나 사건 → 깨달음. 이 5장은 **하나의 연속된 이야기**다. 시간대(아침→저녁)와 카메라 각도는 5장 안에서 고정하고, 주인공의 위치와 감정만 변하게 한다.
 8~9장면 real: 우화의 교훈을 현대인의 일상(출근, 공부, 관계, 새벽 루틴, 포기하고 싶은 순간)에 대입. 여기서 주인공은 **사람**이다 (동물 캐릭터는 쓰지 않는다).
-10장면 outro: 교훈 한 문장 낭독으로 마무리. (낭독은 시스템이 moral로 자동 교체 — image_prompt만 작성)
+  - **8장면은 '성공한 사람'의 실제 사례**로 시작한다. 구체적으로 서술하라.
+  - **9장면은 '당신이 지금 할 일'** — 여기서도 명령형(~해라) 으로 끝낸다.
+10장면 outro: **명령형 한 문장.** (낭독은 시스템이 moral로 자동 교체 — image_prompt만 작성)
+  - 교훈을 "배우면 됩니다" 로 끝내지 말고 **"~해라" / "~하라"** 로 끝낸다.
+  - 이 한 문장이 시청자가 그대로 따라 할 행동 지시가 되어야 한다.
+
+## 🔥 톤 — 반드시 지시형으로
+이 영상은 **설명하는 것이 아니라 지시하는 짧편**이다.
+
+- **시청자를 '당신'으로 불러라.** "사람들은" "누군가" 같은 3인칭 금지.
+  → "~해라" 로 직접 명령한다.
+- **명령형(~하라 / ~해라 / ~하세요) 을 최소 3회.** 2장면·9장면·10장면.
+- **모호한 동사 금지.** "정리해라" "노력해라" 처럼 애매하면 실패다.
+  → "하루 중 한 시간을 그 일에 몰아라" 처럼 **구체적으로 무엇을** 명시하라.
+- **성공 사례를 넣어라.** 8장면에서 실제로 그렇게 한 사람을 서술하면
+  시청자가 "나도 할 수 있겠다" 는 느낌을 갖는다.
+
+## ❌ 금지 표현
+- "배우면 좋습니다" / "알아두면 유용합니다" — 교훈 상담식
+- "어쩌면" / "아마" — 흐리게 만드는 표현
+- "여러분" / "우리 모두" — 시청자와 거리를 두는 표현
+- 질문으로 끝나는 문장 — 질문은 답을 주지 않으므로 행동을 만들지 못한다
+
+## ✅ 좋은 예시
+**한국어**
+- 2장면: "미루지 마라. 지금 당장 손을 펴서 첫 줄을 써라."
+- 2장면: "하루를 버리지 마라. 지금 서서 5분만 걸어라."
+- 8장면: "그 여자는 매일 아침 6시에 일어났다. 3년 동안 한 번도 안 틀렸어."
+- 9장면: "당신도 오늘 밤에 그 시간을 비워라."
+- 10장면: "오늘 당장 시작해라."
+
+**English** (반드시 이 형태를 따를 것)
+- 2장면: "Stop copying others. Write down what you actually want right now."
+- 8장면: "She woke at 6 every morning. Three years, not one missed day."
+- 9장면: "Block one hour for yourself tonight."
+- 10장면: "Start today."
+- ⚠️ "Your time is yours." 같은 **서술형**으로 끝내면 안 된다.
+  반드시 "Start / Write / Block / Quit" 같은 **동사 시작**으로 끝낸다.
+
+**中文** (반드시 이 형태를 따를 것)
+- 2장면: "别再模仿别人了。现在就写下你真正想要的。"
+- 10장면: "今天就开始。"
+
+**Français** (반드시 이 형태를 따를 것)
+- 2장면: "Arrête de copier les autres. Écris ce que tu veux vraiment."
+- 10장면: "Commence aujourd'hui."
 
 ## 주인공
 동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
@@ -174,6 +221,9 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 
 ## 규칙
 - narration: 각 언어당 1~2문장, 낭독 6~8초 분량. **나레이션은 3인칭 기록체로 쓰지 않는다.**
+- **narration 도 지시형으로 쓴다.** 2·9·10장면은 반드시 명령형(~해라/~하라)으로 끝난다.
+  관찰이나 설명으로 끝내지 않는다.
+  (예: "시간을 아끼지 마라. 지금 당장 폰을 집어 들고 나가라.")
   3인칭 서술("The turtle got up again")은 유튜브 요약 채널처럼 들린다. 2인칭("누구/당신/you/tu/你")
   을 Throw in 하거나, 동작만 던지고 감정은 뉘앙스로 남긴다. 단 real·outro 장면은 반드시 2인칭으로 끝낸다.
 - subtitle: 화면 하단 자막. ko/zh-cn 16자 이내, en/fr 42자 이내. 조사를 붙이지 않는다(명사형).
@@ -268,7 +318,7 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
     if mock or not os.getenv("DEEPSEEK_API_KEY"):
         return _validate(_mock_story(quote, theme), quote, theme)
     last_err: Exception = RuntimeError("생성 실패")
-    max_attempts = 3
+    max_attempts = 6      # 지시형 규칙이 엄격해 재생성 횟수를 늘림 (3 → 6)
     feedback: list[str] = []
     for attempt in range(1, max_attempts + 1):
         resp = requests.post(
@@ -291,6 +341,10 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             last_err = e
             print(f"  [fable] 스토리 파싱 실패 (시도 {attempt}/{max_attempts}): {e}")
+            # 검증 실패 내용을 다음 시도 피드백에 넣는다.
+            # (지시형 톤 같은 규칙은 모델이 실수하기 쉬우므로 반복해서 알려줘야 함)
+            msg = str(e).strip().splitlines()[0][:180]
+            feedback = [f"직전 시도 검증 실패: {msg}"] + feedback[:5]
             continue
         issues = story.get("naturalness_issues") or []
         if not issues:
@@ -428,6 +482,163 @@ def _check_naturalness(story: dict) -> list[str]:
     return problems
 
 
+# ─────────────────────────────────────────────────────────────
+# 지시형(命令형) 검사 — 2026-10-08 로이 요청
+#
+# "설명" 이 아니라 "지시" 하는 톤을 강제한다.
+# 2장면 hook / 9장면 real / 10장면 moral(→outro) 가 대상.
+# ─────────────────────────────────────────────────────────────
+# 각 언어의 명령형 어미/형식. 앞쪽에 오면 명령형이다.
+_IMPERATIVE_MARKS: dict[str, tuple[str, ...]] = {
+    # 한국어: 어미가 앞쪽에 온다
+    "ko": ("해라", "하라", "하거라", "하세요", "마라",
+           "해", "해.", "서라", "어라", "으라", "가라", "오라", "누구나",
+           "떠올려라", "시작해", "만들어", "실행해"),
+    # 영어: imperative 는 두 번째 문장에 오는 경우가 많다
+    #   ("Your time is yours. Start living your own life today.")
+    # → 한 문장이라도 명령형이면 통과시킨다.
+    "en": ("do not", "don't", "stop", "start", "go ", "take ", "put ", "make ",
+           "keep ", "begin", "open ", "close ", "write ", "read ", "walk ",
+           "run ", "turn ", "give up", "quit", "block ", "clear ", "set ",
+           "pick ", "choose", "build", "cut ", "spend ", "protect", "guard ",
+           "say no", "say yes", "spend", "prioritize", "commit", "protect",
+           # 2인칭 주격 + 동사 (You block / You start) — 영어 imperatives 의 흔한 형태
+           "you block", "you start", "you stop", "you take", "you put",
+           "you make", "you keep", "you begin", "you open", "you write",
+           "you read", "you walk", "you run", "you turn", "you spend",
+           "you pick", "you choose", "you build", "you set", "you clear",
+           "you cut", "you quit", "you give", "you protect", "you guard",
+           "you say", "you must", "you need", "you should", "you can",
+           "your first", "your next"),
+    # 中文: 서술 + 지시의 2문장 형태가 많다.
+    #   "过你自己的人生。今天就开始。" → 두 번째 문장이 지시형이다.
+    #   문장을 나눠 **어느 하나라도** 명령형이면 참으로 본다.
+    "zh-cn": ("不要", "别", "请", "要", "立刻", "马上", "现在", "去", "做",
+              "开始", "记住", "放下", "拿起", "今天就", "从今天",
+              "就", "开", "走", "写", "读", "挖", "拿起", "关上", "翻开",
+              "别再", "停止", "放弃"),
+    # 프랑스어: imperative (ne...pas + verbe, ou verbe direct)
+    "fr": ("ne perds", "ne laisse", "arrête", "commence", "prends", "lâche",
+           "fais", "va ", "pense", "choisis", "note", "ouvre", "ferme",
+           "leve", "pose", "avance", "essaie", "n'hésite",
+           # 1인칭 명령형 (tu 接尾)
+           "écris", "écris ce", "lis", "écoute", "regarde", "sors",
+           "marche", "travaille", "construis", "choisis", "réserve",
+           "protège", "lance", "essaie", "arrête", "commence", "prends",
+           "donne", "trouve", "gagne", "perds", "change", "nets",
+           # 해동사 (sois / fais / prends / écris …)
+           "sois", "fais", "prends", "écris", "lis", "écoute", "regarde",
+           "sors", "marche", "travaille", "construis", "choisis",
+           "réserve", "protège", "lance", "nets", "reprends", "creuse",
+           "efface", "avance", "reviens", "continue", "cesse", "deviens",
+           "reste", "vis", "gagne", "visse", "trace", "écris"),
+           # 중국어 동사 (2자어)
+    "zh-cn": ("不要", "别", "请", "要", "立刻", "马上", "现在", "去", "做",
+              "开始", "记住", "放下", "拿起", "今天就", "从今天",
+              "就", "开", "走", "写", "读", "挖", "关上", "翻开", "合上",
+              "别再", "停止", "放弃", "拿起", "扔掉", "关掉", "定好",
+              "倒", "拿", "跟", "做", "学", "问", "看", "听", "想",
+              "空出", "划出", "留出", "定", "设", "排"),
+}
+
+
+# 영어에서 부사/전치사 뒤에 명령형 동사가 오는 형태:
+#   "Right now, write down what you want."
+#   ("today" 같은 부사 + write/stop/start …)
+_EN_LEADIN = {"right", "now", "today", "tonight", "tomorrow", "instead",
+              "first", "please", "just", "go", "and"}
+# 명령형으로 쓰이는 대표 동사 (앞에 부사가 있어도, 단독으로도 쓰인다)
+_EN_VERBS = ("write", "stop", "start", "read", "take", "put", "make", "keep",
+             "begin", "open", "close", "walk", "run", "turn", "block", "clear",
+             "set", "pick", "choose", "build", "cut", "spend", "quit",
+"protect", "guard", "commit", "do", "give", "say", "dig",
+           "stand", "sit", "call", "send", "ask", "try", "learn",
+           "plan", "track", "review", "focus", "finish", "start",
+           "accept", "refuse", "ignore", "finish", "move", "act",
+           # 절 imperative: "Look down at your own feet"
+           "look", "listen", "check", "measure", "count", "compare",
+           "remember", "notice", "watch", "face", "step", "reach",
+           "grab", "hold", "pull", "push", "fill", "empty", "save",
+           "throw", "drop", "lift", "carry", "leave", "return",
+           "flip", "shut", "silence", "mute", "postpone", "delay",
+           "schedule", "block", "cancel", "undo", "redo")
+
+
+def _is_imperative(text: str, lang: str) -> bool:
+    """문장이 명령형인지 판정 — 4개 언어 지원.
+
+    영어/중문/프랑스어는 명령형이 **두 번째 문장**에 오는 경우가 많다
+    ("Your time is yours. Start living your own life today.").
+    → 여러 문장으로 나눠 **어느 하나라도** 명령형이면 참으로 본다.
+    """
+    t = (text or "").strip()
+    if not t:
+        return False
+    marks = _IMPERATIVE_MARKS.get(lang, ())
+    # 문장 단위로 검사 (영어/중문/프랑스어)
+    if lang != "ko":
+        parts = [s.strip() for s in re.split(r"[.!?。！？]\s*", t) if s.strip()]
+        words_all = [w.strip(",.?!") for w in t.split()]
+        for p in parts:
+            low = p.lower()
+            for mark in marks:
+                if low.startswith(mark.lower()):
+                    return True
+            # "Right now, write down what you want" — 부사/전치사 뒤에 동사
+            first = low.split(" ", 1)[0].strip(",.")
+            if first in _EN_LEADIN and any(
+                    f" {v}" in low[:26] or low.startswith(v) for v in _EN_VERBS):
+                return True
+            # "Dig your own path today." — 첫 단어가 곧 명령형 동사
+            if first in _EN_VERBS:
+                return True
+            # "You block / You start / You must" — 2인칭 주격 + 동사
+            if first == "you":
+                second = low.split(" ")[1] if len(low.split(" ")) > 1 else ""
+                if second in _EN_VERBS or second in ("must", "should", "need",
+                                                     "can", "will", "have"):
+                    return True
+            # 3) **두 번째 단어가 동사** ("Erase their path…", "Reprends ta vie")
+            words = low.replace(",", " ").split()
+            if len(words) > 1 and words[1] in _EN_VERBS:
+                return True
+        # 4) **마지막 단어가 명령형 동사** ("…翻开你自己的。" / "…take your first step.")
+        tail_words = [w.strip(",.?!") for w in words_all]
+        if len(tail_words) > 1 and tail_words[-2] in _EN_VERBS:
+            return True
+        return False
+    # 한국어는 어미가 앞쪽에 온다
+    low = t.lower()
+    for mark in marks:
+        if low.startswith(mark.lower()):
+            return True
+        if mark.lower() in low[:24]:
+            return True
+    # 어미가 문장 끝에 오는 형태: "…써라" "…적어라" "…가라" "…오라"
+    # → 마지막 3단어 안에 어미가 있으면 명령형이다.
+    #   ("지금 당장 종이에 네가 원하는 걸 써라." → 끝에 '써라')
+    for w in t.rstrip(" .!?。！？").split()[-3:]:
+        for suf in ("해라", "하라", "어라", "으라", "가라", "오라", "서라",
+                    "마라", "세요", "떠라", "찍어라", "만들어", "해봐",
+                    "해 보라", "밀어라", "불어라", "쌓아라", "끝내라",
+                    "펴라", "입라", "벼라", "늘라", "줄여라", "끊어라",
+                    "지우라", "버려라", "잊어라", "기억해", "도전해"):
+            if w.endswith(suf):
+                return True
+        # 한국어 명령형의 최종 형태: 동사 + '라'(해라/하라/서라/펴라/떠라 …).
+        # 어미 종류가 많아 열거로 다 못 잡으므로 **'라' 로 끝나면** 참으로 본다.
+        # 단, 서술형(~라던/~라 했다)을 걸러내기 위해 앞 글자가 모음이면 제외.
+        if w.endswith("라") and len(w) >= 2 and w[-2] not in "다나":
+            return True
+        # ㅆ 불규칙: 써라 · 적어라 ·收货하다 류 — "써라" "싸라" 는 어미가 붙어도 그대로
+        if w.endswith(("써라", "싸라", "싸.", "써")) and len(w) >= 2:
+            return True
+        # 띄어쓰기 없이 붙는 어미: "파라" "떠라" "씌라" (파내라 → 파라)
+        if len(w) >= 2 and w[-2:] in ("파라", "떠라", "써라", "라라"):
+            return True
+    return False
+
+
 def _validate(data: dict, quote: Quote, theme: str) -> dict:
     handles = load_handles(ROOT / "config")
 
@@ -464,6 +675,35 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
             hook["highlight"][lang] = ""
             hl = ""
         hook.setdefault("highlight", {})[lang] = hl
+
+    # ── 지시형 강제 (2026-10-08 로이 요청) ─────────────────────────────
+    # "설명" 이 아니라 "지시" 하는 톤. 2·9·10장면은 명령형으로 끝나야 한다.
+    for lang in LANGS:
+        lines = hook["lines"].get(lang) or []
+        if not any(_is_imperative(lines[0], lang) for _ in (0,)):
+            raise ValueError(
+                f"hook.lines[{lang}] 첫 줄이 명령형이 아닙니다: '{lines[0][:60]}'\n"
+                f"  → 반드시 '~해라' / '~하라' / '~하세요' 로 시작해야 합니다."
+            )
+        if not _is_imperative(lines[-1], lang):
+            raise ValueError(
+                f"hook.lines[{lang}] 마지막 줄이 명령형이 아닙니다: '{lines[-1][:60]}'\n"
+                f"  → '지금 무엇을 해야 하는지' 지시형으로 끝나야 합니다."
+            )
+        # 10장면(outro)은 moral 이 대체되므로 moral 자체를 검사한다
+        m = str(moral.get(lang, "")).strip()
+        if not _is_imperative(m, lang):
+            raise ValueError(
+                f"moral[{lang}] 가 지시형으로 끝나지 않습니다: '{m[:60]}'\n"
+                f"  → 교훈 설명이 아니라 '~해라' 형태의 행동 지시여야 합니다."
+            )
+        # 9장면(real 교훈 대입)도 명령형이어야 한다
+        n9 = str(scenes[8].get("narration", {}).get(lang, "")).strip()
+        if not _is_imperative(n9, lang):
+            raise ValueError(
+                f"scenes[8](real) narration[{lang}] 가 지시형이 아닙니다: '{n9[:60]}'\n"
+                f"  → 9장면은 '당신이 지금 할 일' 이므로 명령형이어야 합니다."
+            )
 
     for lang in LANGS:
         if not str(data["title"].get(lang, "")).strip():
