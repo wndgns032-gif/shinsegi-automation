@@ -1,16 +1,20 @@
 @echo off
 REM ============================================================
-REM  YouTube channel auth  -  run on YOUR PC
+REM  YouTube channel auth
 REM
-REM  Why: the sandboxed agent runs in an isolated network, so
-REM       Google's OAuth callback (127.0.0.1) never reaches it.
-REM       This script runs on your real machine, so it works.
+REM  This script changes to the project folder itself,
+REM  so you can run it from ANY directory.
 REM
-REM  Usage:  double-click, or run from PowerShell:
-REM      .\scripts\youtube_auth.cmd ko
+REM  Easiest: double-click this file.
+REM  From PowerShell / CMD, full path works too:
+REM    "C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation\scripts\youtube_auth.cmd" ko
 REM ============================================================
 
 cd /d "C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation"
+
+REM 인자가 없으면 ko 로 간주 (가장 자주 쓰는 언어)
+if "%1"=="" set LANG=ko
+if not "%1"=="" set LANG=%1
 
 set YT_NO_BROWSER=1
 set YT_AUTH_TIMEOUT=1800
@@ -40,7 +44,7 @@ if not exist "%PY%" (
 )
 
 echo ============================================================
-echo  YouTube channel auth : %1
+echo  YouTube channel auth : %LANG%
 echo ============================================================
 echo.
 echo  A URL will appear below in a few seconds.
@@ -82,11 +86,11 @@ echo  "Access blocked" at the very end is NORMAL - it means success.
 echo  Do not close this window. Waits up to 30 minutes.
 echo.
 
-"%PY%" -u scripts\youtube_auth.py %1
+"%PY%" -u scripts\youtube_auth.py %LANG%
 
 echo.
 echo ============================================================
-echo  exit code: %ERRORLEVEL%
+echo  exit code: %ERRORLEVEL%   (lang=%LANG%)
 echo  Check the result above. Then tell your agent.
 echo ============================================================
 pause

@@ -1,22 +1,23 @@
-fix(yt): setup_github_secrets 네트워크 재시도 — 느린 환경에서 전체 실패 방지
+fix(yt): 인증 배치를 경로 무관하게 + 인자 생략 시 ko 기본값
 
-## 증상
-이 PC 에서 `python scripts/setup_github_secrets.py` 실행 시
-`requests.exceptions.ReadTimeout: api.github.com` 로 즉시 죽었다.
-timeout=30 이 이 환경에 너무 짧았고, 예외가未被 처리되어
-29개 시크릿 중 아무것도 등록되지 않았다.
+## 문제
+로이가 C:\WINDOWS\system32 에서 .\scripts\youtube_auth.cmd ko 를 실행 →
+"項을 인식할 수 없습니다" (파일을 찾지 못함)
+그리고 ko 인자를 빠뜨리는 경우도 있었다.
 
 ## 수정
-1. timeout 30 → 90 초
-2. 3회 재시도 (간격 0 / 3 / 8 초)
-3. RequestException 을 잡아 시크릿 단위로 실패 처리
-   → 한 건이 실패해도 나머지는 계속 등록된다
-4. import time 추가
+1.Usage 주석 명확화 — 이 스크립트는 **어디서 실행해도** 동작한다
+   (내부에서 cd /d 로 프로젝트 폴더로 이동)
+2. 인자가 없으면 ko 로 기본값 처리
+   ```
+   if "%1"=="" set LANG=ko
+   if not "%1"=="" set LANG=%1
+   ```
+3. python 호출과 안내 문구에 %LANG% 적용
+4. 종료 화면에 (lang=...) 표시 — 어떤 언어로 실행됐는지 확인 가능
 
-## 결과
-29 등록, 0 누락, 0 실패.
-
-## 참고
-인증 완료 후 이 스크립트를 반드시 다시 돌려야 한다.
-새로 발급된 refresh token 이 GitHub Secrets 에 반영되지 않으면
-클라우드가 옛 토큰(구 채널)으로 업로드한다.
+## 실행 방법 (3가지 중 아무거나)
+- 파일 더블클릭 (인자 없음 → ko)
+- 어디서든 전체 경로:
+  "C:\Users\ROYcp\WorkBuddy\2026-09-18-20-03-59\sns-automation\scripts\youtube_auth.cmd" ko
+- 프로젝트 폴더에서: .\scripts\youtube_auth.cmd ko
