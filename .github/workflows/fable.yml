@@ -92,20 +92,23 @@ jobs:
 
       - name: Install system deps
         run: |
-          # 2026-10-08 실측: apt-get 이 30분간 멈춰 타임아웃 된 사례가 있었다.
-          # → 캐시된 이미지(from ubuntu:24.04) 를 쓰고, 실패해도 다음 단계로 진행한다.
+          # 2026-10-08 실측 2건:
+          #   1) apt-get 이 30분 이상 멈췄다 (runner 저장소 지연)
+          #   2) 20분째 여전히 같은 단계
+          # → **timeout 을 걸어** 정체를 무한 대기로 만들지 않는다.
+          # → ubuntu:24.04 에는 ffmpeg 가 기본 설치돼 있어 apt 실패해도 진행 가능.
           set +e
-          sudo apt-get update -qq 2>/dev/null
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq --no-install-recommends \
-            ffmpeg fonts-noto-cjk fonts-nanum fonts-wqy-zenhei fonts-dejavu-core 2>/dev/null
+          timeout 180 sudo apt-get update -qq 2>/dev/null
+          timeout 240 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
+            --no-install-recommends \
+            fonts-noto-cjk fonts-nanum fonts-wqy-zenhei fonts-dejavu-core 2>/dev/null
           RC=$?
           set -e
           if ! command -v ffmpeg >/dev/null 2>&1; then
-            echo "[warn] apt 설치 실패(rc=$RC) — 미설치 ffmpeg 재시도 (snapshot 경로)"
-            # ubuntu:24.04 는 ffmpeg 가 미리 들어 있다. apt 실패 시에도 대체 경로 확보
-            sudo apt-get install -y ffmpeg || true
+            echo "[warn] ffmpeg 미설치 (apt rc=$RC) — 2차 시도"
+            timeout 180 sudo apt-get install -y ffmpeg 2>/dev/null || true
           fi
-          ffmpeg -version | head -1 || echo "[warn] ffmpeg 없음"
+          ffmpeg -version 2>/dev/null | head -1 || echo "[warn] ffmpeg 없음 (렌더 불가)"
 
       - name: Install Python deps
         run: pip install -r requirements.txt
