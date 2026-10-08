@@ -330,13 +330,21 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
                 "messages": _build_messages(quote, theme, feedback),
                 "response_format": {"type": "json_object"},
                 "temperature": 0.9,
-                "max_tokens": 5000,
+                # 2026-10-08 실측: flash/pro 는 추론 토큰(reasoning_tokens)에
+                # 예산을 먼저 쓴다. 5000 이면 긴 프롬프트에서 본문이 빈 응답이 된다
+                # (reasoning 1561 + completion 2085 = 3646 중 대부분이 추론).
+                "max_tokens": 16000,
             },
             timeout=240,
         )
         resp.raise_for_status()
         try:
-            data = _extract_json(resp.json()["choices"][0]["message"]["content"])
+            raw_content = resp.json()["choices"][0]["message"]["content"]
+            # 2026-10-08 실측: 추론 모델은 본문이 빈 문자열로 오는 경우가 있다.
+            # → JSONDecodeError 의 원인이 되므로 조용히 넘어가지 않게 한다.
+            if not str(raw_content or "").strip():
+                raise ValueError("빈 응답 (reasoning 토큰이 예산을 소진했을 수 있음)")
+            data = _extract_json(raw_content)
             story = _validate(data, quote, theme)
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             last_err = e

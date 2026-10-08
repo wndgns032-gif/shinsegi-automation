@@ -1,24 +1,39 @@
-fix(fable): --date 가 스토리 저장에 반영되도록 수정
+fix(fable): max_tokens 5000 → 16000 — 추론 모델이 빈 응답을 내는 문제
 
 ## 증상
-클라우드 렌더에서 `run-fable --date 2026-10-09` 를 실행했는데
-10-09 가 아니라 **10-08 story.json 이 덮어써졌다.**
-로그: `[fable-story] 저장: .../data/fables/2026-10-08/story.json`
+클라우드에서 8회 모두 재생성 실패:
+```
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+```
+응답 content 가 빈 문자열이었다.
 
-## 원인
-`save_story()` 가 `story["date"]` 를 사용하는데, 이 값은 **모델이 채워 넣은 값**이다.
-클라우드에서 모델이 오늘 날짜(10-08)로 채워 넣었고,
-`--date` 인자가 `save_story()` 까지 전달되지 않아 무시되었다.
-결과적으로 fable_video(date=2026-10-09) 가 10-09 스토리를 찾지 못했다.
+## 원인 (실측)
+`deepseek-flash` / `deepseek-v4-pro` 는 **추론(reasoning) 모델**이라
+`max_tokens` 예산을 reasoning 에 먼저 쓴다.
 
-## 수정
-1. `save_story(story, data_dir, date=None)` — date 를 명시하면 그것을 강제한다.
-2. `fable_story()` 가 `date` 를 `save_story()` 에 넘긴다.
+직접 측정한 사용량:
+```
+completion_tokens: 2085
+  └ reasoning_tokens: 1561   ← 예산의 75%가 추론에 소모
+```
+긴 프롬프트(지시형 규칙이 길어진)에서 5000 예산이 추론으로 소진되면
+**본문이 빈 응답**이 된다.
 
-## 참고
-프롬프트에 날짜를 지정해도 모델이 무시할 수 있다.
-파일 경로 결정은 **코드**가 해야 한다 (모델 출력에 의존하면 안 됨).
+## 해결
+1. `max_tokens` 5000 → **16000**
+   (실측 재현: 짧은 프롬프트로는 flash/pro 둘 다 정상 동작 확인)
+2. 빈 응답을 명시적으로 잡아 재시도 유도:
+   ```python
+   if not str(raw_content or "").strip():
+       raise ValueError("빈 응답 (reasoning 토큰이 예산을 소진했을 수 있음)")
+   ```
+
+## 참고: 모델 이름
+`GET /v1/models` → `deepseek-flash`, `deepseek-v4-pro` 만 제공.
+`deepseek-chat` 은 404 다 (코드 3곳에서 교체).
 
 ## 검증
-클라우드 렌더 run 37749574299 → success
-(style_compare.png / anime_final.png 으로 애니메이션 톤 확인 완료)
+로컬 실제 생성 1/1 통과 (40초)
+- hook: "남의 굴을 따라가지 마라." / "别再跟着别人的洞走了。"
+- 9장면: "당신도 오늘 밤 십 분을 비워라. 남이 시킨 일 말고…"
+- moral: "오늘 당장, 당신 발로 시작해라." / "今天就用你自己的爪子开始挖。"
