@@ -773,4 +773,15 @@ def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
         _verify_images(images, story, seed_base)
     else:
         image_paths = [images / f"scene{i + 1}.jpg" for i in range(len(prompts))]
+
+    # ⚠️ 2026-10-09 실측 버그: 재생성이 실패하면 이미지 파일이 사라진 채로 남아
+    #   렌더 단계가 FileNotFoundError 로 죽었다.
+    #   → 렌더 전에 **반드시 존재·크기 확인**하고, 없으면 폴백을 만든다.
+    for i, p in enumerate(image_paths):
+        if p.exists() and p.stat().st_size > 20_000:
+            continue
+        print(f"  [fable] {lang}: scene{i + 1} 이미지 없음/손상 → 폴백 생성")
+        _fallback_image(p, i)
+        _to_monochrome(p)
+        (p.parent / f"{p.stem}.mono").write_text("1", encoding="utf-8")
     return render_language(lang, story, image_paths, sdir)

@@ -198,14 +198,22 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
                         break
                     reason = f"채도 초과 ({st['sat']:.1f})" if st["sat"] > SAT_MAX else f"폴백 ({fb})"
                     print(f"  [regen] scene {n} 재생성됐으나 {reason} → 재시도")
-                    # 실패한 이미지는 남겨두지 않는다 (다음 판정이 오염됨)
-                    dest.unlink(missing_ok=True)
+                    # ⚠️ 2026-10-09 실측 버픽: 여기서 unlink 하면
+                    #   3회 모두 실패했을 때 파일이 사라진 채로 남아
+                    #   렌더 단계가 FileNotFoundError 로 죽었다.
+                    #   → 지우지 말고 **표시만** 해둔다(아래에서 폴백 생성).
                     mark.unlink(missing_ok=True)
             except Exception as e:  # noqa: BLE001
                 print(f"  [regen] scene {n} 시도 {attempt} 오류 {type(e).__name__}")
             if attempt < per_scene:
                 time.sleep(30)   # 402 쿼터 회복 대기 (2026-10-09 실측 반영)
         if not ok:
+            # 재생성 실패 → 폴백 그라디언트로 대체 (파일이 없으면 생성)
+            if not dest.exists() or dest.stat().st_size < SIZE_MIN_BYTES:
+                from src.fablevideo import _fallback_image, _to_monochrome
+                _fallback_image(dest, n - 1)
+                _to_monochrome(dest)
+                mark.write_text("1", encoding="utf-8")
             print(f"  [regen] scene {n} 재생성 실패 — 폴백 그라디언트로 대체")
             still_bad.append(n)
     return still_bad
