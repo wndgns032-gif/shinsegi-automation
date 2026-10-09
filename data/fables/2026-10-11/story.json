@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-11",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "confucius-know",
+    "author": {
+      "en": "Confucius",
+      "ko": "공자",
+      "zh-cn": "孔子",
+      "fr": "Confucius"
+    },
+    "text": {
+      "en": "To know what you know and to know what you do not know — that is knowledge.",
+      "ko": "아는 것을 안다 하고, 모르는 것을 모른다 하는 것, 그것이 아는 것이다.",
+      "zh-cn": "知之为知之，不知为不知，是知也。",
+      "fr": "Savoir que l'on sait ce que l'on sait, et que l'on ignore ce que l'on ignore : voilà la vraie connaissance."
+    }
+  },
+  "title": {
+    "ko": "모른다고 말한 두더지",
+    "en": "The Mole Who Said I Don't Know",
+    "zh-cn": "说自己不知道的鼹鼠",
+    "fr": "La taupe qui a dit je ne sais pas"
+  },
+  "caption": {
+    "ko": "모른다고 말한 두더지\n두더지는 하루 종일 파면서 같은 돌 밑으로만 돌아왔어요. 당신은 모르는 걸 모른다고 말할 수 있나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "The Mole Who Said I Don't Know\nThe mole dug all day and kept coming back under the same stone. Can you say out loud what you don't know?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "说自己不知道的鼹鼠\n小鼹鼠挖了整整一天，总是绕回同一块石头下面。你敢说出自己不懂什么吗？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "La taupe qui a dit je ne sais pas\nLa taupe a creusé toute la journée et revenait toujours sous la même pierre. Tu arrives à dire ce que tu ignores ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "아는 척하지 마라.",
+        "지금 노트를 펴고 모르는 것 하나를 적어라."
+      ],
+      "en": [
+        "Stop pretending you know it all.",
+        "Write down one thing you don't understand right now."
+      ],
+      "zh-cn": [
+        "别再不懂装懂了。",
+        "写下一件你现在还不懂的事。"
+      ],
+      "fr": [
+        "Arrête de cacher ce que tu ne sais pas.",
+        "Écris maintenant une chose que tu ne comprends pas."
+      ]
+    },
+    "highlight": {
+      "ko": "적어라",
+      "en": "Write",
+      "zh-cn": "不懂",
+      "fr": "Écris"
+    }
+  },
+  "moral": {
+    "ko": "모른다고 말해라. 하나를 골라 끝까지 파헤쳐라.",
+    "en": "Say out loud what you don't know. Learn one thing tonight.",
+    "zh-cn": "承认你不知道。去弄懂一件事。",
+    "fr": "Dis tout haut ce que tu ne sais pas. Va apprendre une chose ce soir."
+  },
+  "characters": "a mole, a small subterranean mammal, long snout, tiny eyes, wide paws",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole sitting alone on a mossy stone in a still forest clearing, head raised, ferns around, wide shot, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "아는 것을 안다 하고, 모르는 것을 모른다 하는 것, 그것이 아는 것이다. — 공자.",
+        "en": "To know what you know and to know what you do not know — that is knowledge. — Confucius.",
+        "zh-cn": "知之为知之，不知为不知，是知也. — 孔子.",
+        "fr": "Savoir que l'on sait ce que l'on sait, et que l'on ignore ce que l'on ignore : voilà la vraie connaissance. — Confucius."
+      },
+      "subtitle": {
+        "ko": "아는 것과 모르는 것",
+        "en": "Know what you know",
+        "zh-cn": "知与不知",
+        "fr": "Savoir et ignorer"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole at the mouth of a dark tunnel, looking down at its own paws, forest floor, wide shot, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "아는 척하지 마라. 지금 노트를 펴고 모르는 것 하나를 적어라",
+        "en": "Stop pretending you know it all. Write down one thing you don't understand right now",
+        "zh-cn": "别再不懂装懂了。写下一件你现在还不懂的事",
+        "fr": "Arrête de cacher ce que tu ne sais pas. Écris maintenant une chose que tu ne comprends pas"
+      },
+      "subtitle": {
+        "ko": "모르는 걸 적어라",
+        "en": "Write down what you don't know",
+        "zh-cn": "写下你不懂的",
+        "fr": "Écris ce que tu ignores"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole standing at the edge of a forest path beside a big flat stone, ferns and bushes around, side view, wide shot, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지 한 마리가 제일 달콤한 뿌리가 있는 들판을 찾아 나섰어요. 길은 자기 혼자 다 안다고 믿었죠.",
+        "en": "A mole set off to find the meadow with the sweetest roots. He was sure he knew the way.",
+        "zh-cn": "一只小鼹鼠出发去找那块有最甜草根的草地。他觉得自己认路。",
+        "fr": "Une taupe est partie chercher le pré aux racines sucrées. Elle était sûre de connaître le chemin."
+      },
+      "subtitle": {
+        "ko": "뿌리 찾아 나선 두더지",
+        "en": "He knew the way",
+        "zh-cn": "他觉得自己认路",
+        "fr": "Elle connaît le chemin"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole digging in loose soil beside a big flat stone on a forest path, dirt flying, ferns around, side view, wide shot, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "하루 종일 파고 또 팠어요. 그런데 어느새 같은 돌 밑으로 돌아와 있었죠.",
+        "en": "He dug all day long. And he ended up right back under the same stone.",
+        "zh-cn": "他挖了整整一天。绕来绕去，又回到了那块石头下面。",
+        "fr": "Elle a creusé toute la journée. Au bout du compte, elle est revenue sous la même pierre."
+      },
+      "subtitle": {
+        "ko": "같은 돌 밑으로",
+        "en": "Back to the same stone",
+        "zh-cn": "又回到那块石头",
+        "fr": "Retour sous la pierre"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 비가 쏟아졌어요. 굴이 물에 잠기고, 두더지는 흙투성이가 되어 겨우 빠져나왔죠.",
+        "en": "Then the rain came. The tunnel filled with water and he crawled out covered in mud.",
+        "zh-cn": "后来下了雨，洞里灌满了水。他一身泥，爬了出来。",
+        "fr": "Puis la pluie est arrivée et le tunnel s'est rempli d'eau. Elle est ressortie couverte de boue."
+      },
+      "subtitle": {
+        "ko": "비, 굴이 잠겼다",
+        "en": "Rain filled the tunnel",
+        "zh-cn": "雨灌满了洞",
+        "fr": "La pluie inonde tout"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, a small mole sitting still in front of a big flat stone, head low, alone on a forest path, side view, wide shot, full body visible, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "돌 옆에 앉아서 처음으로 솔직하게 말했어요. 나는 여기가 어딘지 몰라.",
+        "en": "Sitting by the stone, he said the first honest thing. I don't know where I am.",
+        "zh-cn": "他坐在石头边上，说了第一句实话。我不知道自己在哪儿。",
+        "fr": "Assise près de la pierre, elle a dit la première chose vraie. Je ne sais pas où je suis."
+      },
+      "subtitle": {
+        "ko": "몰라, 라고 말했다",
+        "en": "I don't know where I am",
+        "zh-cn": "我不知道自己在哪儿",
+        "fr": "Je ne sais pas où je suis"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그래서 조금 파고, 멈춰서 흙을 확인했어요. 그렇게 해서야 달콤한 뿌리를 찾았죠.",
+        "en": "So he dug a little, then stopped and checked the soil. That's how he found the sweet roots.",
+        "zh-cn": "于是他挖一点，就停下来看看土。这才找到了甜草根。",
+        "fr": "Alors elle a creusé un peu, puis elle s'est arrêtée pour sentir la terre. C'est comme ça qu'elle a trouvé les racines sucrées."
+      },
+      "subtitle": {
+        "ko": "확인하며 판 끝에",
+        "en": "Check, then dig",
+        "zh-cn": "挖一点，停一下",
+        "fr": "Creuser, vérifier, encore"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "어떤 사람은 매일 밤 모르는 것 세 가지를 노트에 적었어요. 삼 년 동안 하루도 안 빠졌죠.",
+        "en": "One woman wrote down three things she didn't understand, every night. Three years, not one missed night.",
+        "zh-cn": "有个人每天晚上写下三件自己没搞懂的事。三年，一晚都没落下。",
+        "fr": "Une femme notait chaque soir trois choses qu'elle ne comprenait pas. Trois ans, pas une seule nuit manquée."
+      },
+      "subtitle": {
+        "ko": "매일 밤 세 가지",
+        "en": "Three things every night",
+        "zh-cn": "每晚写下三件事",
+        "fr": "Trois choses chaque soir"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young woman sitting on the edge of a bed at night, notebook on her knees, pen in hand, small room, side view, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신도 오늘 밤 그렇게 해라. 노트를 펴고 모르는 것 하나를 적어라.",
+        "en": "You do the same tonight. Open a notebook and write down one thing you don't know.",
+        "zh-cn": "今晚你也这么做。翻开本子，写下一件你不懂的事。",
+        "fr": "Ouvre un carnet ce soir. Écris une chose que tu ne comprends pas."
+      },
+      "subtitle": {
+        "ko": "오늘 밤 하나 적어라",
+        "en": "One thing tonight",
+        "zh-cn": "今晚写下一件事",
+        "fr": "Une chose ce soir"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small subterranean mammal, long snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "모른다고 말해라. 하나를 골라 끝까지 파헤쳐라.",
+        "en": "Say out loud what you don't know. Learn one thing tonight.",
+        "zh-cn": "承认你不知道。去弄懂一件事。",
+        "fr": "Dis tout haut ce que tu ne sais pas. Va apprendre une chose ce soir."
+      },
+      "subtitle": {
+        "ko": "모른다고 말해라",
+        "en": "Say you don't know",
+        "zh-cn": "承认你不知道",
+        "fr": "Dis que tu ne sais pas"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
