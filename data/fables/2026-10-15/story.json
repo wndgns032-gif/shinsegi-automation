@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-15",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "maya-angelou-better",
+    "author": {
+      "en": "Maya Angelou",
+      "ko": "마야 안젤루",
+      "zh-cn": "玛雅·安杰卢",
+      "fr": "Maya Angelou"
+    },
+    "text": {
+      "en": "Do the best you can until you know better. Then when you know better, do better.",
+      "ko": "아는 만큼 최선을 다하세요. 더 잘 알게 되면, 그때 더 잘하면 됩니다.",
+      "zh-cn": "尽全力做到最好，当你懂得更多时，再去做得更好。",
+      "fr": "Fais de ton mieux avec ce que tu sais. Quand tu sauras mieux, tu feras mieux."
+    }
+  },
+  "title": {
+    "ko": "한 뼘 더 깊이",
+    "en": "One Paw Deeper",
+    "zh-cn": "再挖深一点",
+    "fr": "Un peu plus profond"
+  },
+  "caption": {
+    "ko": "한 뼘 더 깊이\n두더지는 매일 같은 자리를 얕게만 팠어요. 돌 아래에 뭐가 있는지 알기 전까지는요. 당신은 오늘 어디서 멈춰 있나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "One Paw Deeper\nThe mole dug shallow every morning, until the day it went past the rock. Where did you stop today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "再挖深一点\n鼹鼠每天早上都只挖浅浅一层，直到它挖过了那块石头。你今天停在哪里了？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Un peu plus profond\nLa taupe creusait toujours au même endroit, jusqu'au jour où elle est passée sous la pierre. Toi, tu t'es arrêté où ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "완벽을 기다리지 마세요.",
+        "그 일에 한 시간을 쏟으세요."
+      ],
+      "en": [
+        "Stop waiting to be perfect.",
+        "Put one hour into it right now."
+      ],
+      "zh-cn": [
+        "别再等完美了。",
+        "现在就拿出一小时。"
+      ],
+      "fr": [
+        "Arrête d'attendre d'être prêt.",
+        "Mets une heure dessus, maintenant."
+      ]
+    },
+    "highlight": {
+      "ko": "완벽",
+      "en": "perfect",
+      "zh-cn": "完美",
+      "fr": "prêt"
+    }
+  },
+  "moral": {
+    "ko": "오늘 할 수 있는 만큼 해라. 내일은 오늘보다 더 해라.",
+    "en": "Do your best today. Then do better tomorrow.",
+    "zh-cn": "今天做到最好，明天做得更好。",
+    "fr": "Fais de ton mieux aujourd'hui. Fais mieux demain."
+  },
+  "characters": "a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole sitting still at the mouth of a tunnel, soft evening light, quiet forest floor, wide shot, full body visible, side view, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "아는 만큼 최선을 다하세요. 더 잘 알게 되면, 그때 더 잘하면 됩니다. — 마야 안젤루.",
+        "en": "Do the best you can until you know better. Then when you know better, do better. — Maya Angelou.",
+        "zh-cn": "尽全力做到最好，当你懂得更多时，再去做得更好. — 玛雅·安杰卢.",
+        "fr": "Fais de ton mieux avec ce que tu sais. Quand tu sauras mieux, tu feras mieux. — Maya Angelou."
+      },
+      "subtitle": {
+        "ko": "아는 만큼 최선",
+        "en": "Do the best you can",
+        "zh-cn": "尽全力做到最好",
+        "fr": "Fais de ton mieux"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole standing at the edge of a deep dark hole, looking down into it, roots and soil around, wide shot, full body visible, side view, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "완벽을 기다리지 마세요. 그 일에 한 시간을 쏟으세요",
+        "en": "Stop waiting to be perfect. Put one hour into it right now",
+        "zh-cn": "别再等完美了。现在就拿出一小时",
+        "fr": "Arrête d'attendre d'être prêt. Mets une heure dessus, maintenant"
+      },
+      "subtitle": {
+        "ko": "완벽 대신 시작",
+        "en": "One hour, right now",
+        "zh-cn": "现在拿出一小时",
+        "fr": "Une heure, maintenant"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole digging a shallow tunnel at dawn, soil flying, tunnel opening light behind it, side view, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지는 아침마다 땅을 팠어요. 얕게, 빠르게. 그런데 발에 남는 건 흙뿐이었어요.",
+        "en": "The mole dug every morning. Shallow and fast. Nothing but dirt in its paws.",
+        "zh-cn": "鼹鼠每天早上都挖。挖得浅，挖得快。爪子里只有土。",
+        "fr": "La taupe creusait chaque matin. Vite, et pas profond. Dans ses pattes, rien que de la terre."
+      },
+      "subtitle": {
+        "ko": "새벽마다 얕게",
+        "en": "Shallow every dawn",
+        "zh-cn": "每天挖得很浅",
+        "fr": "Toujours trop peu profond"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole digging in the same spot again, tired expression, small pile of dirt, side view, full body visible, wide shot, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "다음 날도 같은 자리를 팠어요. 더 빨라졌는데, 발에는 아무것도 없었어요.",
+        "en": "Next morning, same spot. Faster paws, still empty.",
+        "zh-cn": "第二天，还是那个地方。挖得更快了，爪子里还是空的。",
+        "fr": "Le lendemain, même endroit. Plus vite, mais toujours rien."
+      },
+      "subtitle": {
+        "ko": "같은 자리, 같은 결과",
+        "en": "Same spot, still empty",
+        "zh-cn": "原地，还是空的",
+        "fr": "Même endroit, même vide"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole pausing alone in the tunnel, one paw resting on a flat rock, thinking, side view, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 두더지가 멈췄어요. 발밑에 단단한 돌이 있었어요. 늘 여기서 그만뒀던 거예요.",
+        "en": "Then it stopped. A hard rock right under its paws. That's where it always quit.",
+        "zh-cn": "这时它停了下来。爪子底下有块硬石头。每次都是到这儿就不挖了。",
+        "fr": "Puis la taupe s'est arrêtée. Une pierre dure, juste sous ses pattes. C'est toujours là qu'elle abandonnait."
+      },
+      "subtitle": {
+        "ko": "돌에서 멈추던 습관",
+        "en": "The rock it always quit at",
+        "zh-cn": "每次都停在石头前",
+        "fr": "La pierre qui l'arrêtait"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole digging hard past a flat rock layer, soil flying, deeper tunnel, side view, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지는 돌을 피해 옆으로 갔어요. 느리고 발은 아팠지만, 계속 팠어요.",
+        "en": "It went around the rock. Slower this time, paws aching. Kept digging.",
+        "zh-cn": "它绕过石头，往旁边挖。慢，爪子疼，可它没停。",
+        "fr": "Elle est passée à côté de la pierre. Plus lentement, les pattes douloureuses. Elle a continué."
+      },
+      "subtitle": {
+        "ko": "돌 옆으로 돌아가기",
+        "en": "Around the rock",
+        "zh-cn": "绕过那块石头",
+        "fr": "Contourner la pierre"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole in a deep chamber full of earthworms and roots, looking up toward the tunnel opening, side view, full body visible, wide shot, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "돌 아래는 완전히 달랐어요. 벌레가 가득한 방이 나왔어요.",
+        "en": "Under the rock, everything was different. A whole chamber full of worms.",
+        "zh-cn": "石头底下，满满的都是虫子。",
+        "fr": "Sous la pierre, tout était différent. Une chambre pleine de vers."
+      },
+      "subtitle": {
+        "ko": "돌 아래의 방",
+        "en": "A chamber under the rock",
+        "zh-cn": "石头下面",
+        "fr": "La chambre sous la pierre"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "한 여자는 매일 아침 여섯 시에 일어났어요. 삼 년 동안, 하루도 안 빠졌어요.",
+        "en": "One woman got up at six every morning. Three years. Not one missed day.",
+        "zh-cn": "有个女人每天早上六点起床。整整三年，一天没落下。",
+        "fr": "Une femme se levait à six heures chaque matin. Trois ans. Pas un seul jour raté."
+      },
+      "subtitle": {
+        "ko": "매일 아침 여섯 시",
+        "en": "Six a.m., three years",
+        "zh-cn": "三年，每天六点",
+        "fr": "Six heures, trois ans"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man sitting on the edge of his bed at night, phone face down on the table, notebook in his hands, lamp light, sketch portrait, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "오늘 밤 폰을 꺼 두세요. 그 일에 한 시간을 쓰세요.",
+        "en": "Turn your phone off tonight. Give one hour to the thing you keep avoiding.",
+        "zh-cn": "今晚把手机翻过去。给那件事一个小时。",
+        "fr": "Éteins ton téléphone ce soir. Travaille une heure."
+      },
+      "subtitle": {
+        "ko": "오늘 밤 한 시간",
+        "en": "One hour, phone off",
+        "zh-cn": "今晚，一小时",
+        "fr": "Une heure, téléphone éteint"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, a small mole looking up toward a bright opening at the top of a tunnel, wide shot, full body visible, side view, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, wide front paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "오늘 할 수 있는 만큼 해라. 내일은 오늘보다 더 해라.",
+        "en": "Do your best today. Then do better tomorrow.",
+        "zh-cn": "今天做到最好，明天做得更好。",
+        "fr": "Fais de ton mieux aujourd'hui. Fais mieux demain."
+      },
+      "subtitle": {
+        "ko": "내일은 더",
+        "en": "Do better tomorrow",
+        "zh-cn": "明天做得更好",
+        "fr": "Fais mieux demain"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
