@@ -245,9 +245,9 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
         return dest
 
     # 모델 후보 순서 — 앞의 것이 실패하면 다음으로 넘긴다.
-    # (flux 가 가장 품질 좋지만 슬롯 경쟁이 치열해 turbo 로 물러나는 경우가 많다)
-    # 실측(2026-10-09): turbo 가 오히려 더 자주 성공했다(쿼터 슬롯이 여유).
-    models = ("turbo", "flux", "turbo")
+    # (flux 가 품질 좋지만 turbo 도 결과가 좋아서 순환 사용)
+    # 4회 시도 × 20초 백오프 = 최대 60초. 10장이면 최악에도 10분 안이다.
+    models = ("turbo", "flux", "turbo", "flux")
     ok = False
     for attempt, model in enumerate(models, start=1):
         url = ("https://image.pollinations.ai/prompt/"
@@ -270,10 +270,13 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
         except Exception as e:  # noqa: BLE001
             print(f"  [fable] 이미지 {i + 1} 시도{attempt}({model}) "
                   f"오류 {type(e).__name__}")
-        # 402 = 쿼터. 짧게 재시도하면 전부 실패하므로 충분히 기다린다.
-        # (실측: 3회 시도 후 2/4 장 성공 — 백오프를 25초로 늘려 회복률을 높였다)
+        # ⚠️ 2026-10-09 실측 쿼터 회복 속도:
+        #   성공 직후 연속 요청 → 402 (1.1초 만에 실패)
+        #   20초 대기 후 → 200 복구
+        #   즉 402 는 '쿼터 소진' 이고 **20초만 기다리면 회복**된다.
+        #   모델을 바꿔도 쿼터는 회복되지 않으므로 시간만 쓴다.
         if attempt < len(models):
-            time.sleep(25)
+            time.sleep(20)
     if not ok:
         _fallback_image(dest, i)
         _to_monochrome(dest)  # 폴백도 흑백으로

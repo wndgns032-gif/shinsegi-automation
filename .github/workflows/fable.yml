@@ -47,7 +47,11 @@ concurrency:
 jobs:
   produce:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    # 2026-10-09 실측: 이미지 10장 생성에 최대 14분(851초) 걸린다.
+    #   Pollinations 402 쿼터 회복 대기(20초×4회)가 반복되기 때문.
+    #   + TTS 4개 언어 + 렌더 4개가 더해지면 40분은 부족할 수 있다.
+    #   → 90분으로 여유를 둔다.
+    timeout-minutes: 90
     env:
       TTS_ENGINE: edge       # 로컬 모델 없음 → 클라우드 edge-tts 강제
       PYTHONIOENCODING: utf-8
