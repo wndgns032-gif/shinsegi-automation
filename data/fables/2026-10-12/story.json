@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-12",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "confucius-practice",
+    "author": {
+      "en": "Confucius",
+      "ko": "공자",
+      "zh-cn": "孔子",
+      "fr": "Confucius"
+    },
+    "text": {
+      "en": "To learn and then to practice it in due time — is that not a pleasure?",
+      "ko": "배우고 때때로 익히면, 또한 기쁘지 아니한가.",
+      "zh-cn": "学而时习之，不亦说乎。",
+      "fr": "Apprendre, puis mettre en pratique au moment voulu : n'est-ce pas une joie ?"
+    }
+  },
+  "title": {
+    "ko": "배우고 익히는 기쁨",
+    "en": "Learn, Then Practice",
+    "zh-cn": "学而时习之",
+    "fr": "Apprendre, puis pratiquer"
+  },
+  "caption": {
+    "ko": "배우고 익히는 기쁨\n두더지는 하루에 한 줌씩만 팠어요. 그 작은 반복이 굴을 뚫었죠. 당신은 오늘 배운 걸 언제 써볼 건가요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "Learn, Then Practice\nA mole dug one handful at a time, and that's how the tunnel reached the river. When will you use what you learned today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "学而时习之\n一只鼹鼠每天只挖一把土，就这样挖到了河边。你今天学到的东西，打算什么时候用一次？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Apprendre, puis pratiquer\nUne taupe creusait une poignée à la fois, et c'est comme ça que le tunnel a atteint la rivière. Quand vas-tu utiliser ce que tu as appris aujourd'hui ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "남들 하는 것만 보지 마라.",
+        "지금 노트 펴고 한 줄 써라."
+      ],
+      "en": [
+        "Stop saving tutorials for later.",
+        "Write one line you learned today."
+      ],
+      "zh-cn": [
+        "别光看别人怎么做。",
+        "现在就写下你学到的一句。"
+      ],
+      "fr": [
+        "Arrête de regarder les autres.",
+        "Écris une ligne de ce que tu as appris."
+      ]
+    },
+    "highlight": {
+      "ko": "한 줄",
+      "en": "Write",
+      "zh-cn": "写下",
+      "fr": "Écris"
+    }
+  },
+  "moral": {
+    "ko": "오늘 배운 걸 오늘 한 번 써라.",
+    "en": "Start today with one small repetition.",
+    "zh-cn": "今天就把学到的东西练一遍。",
+    "fr": "Commence aujourd'hui par une seule répétition."
+  },
+  "characters": "a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, a small mole sitting still at the mouth of a dirt burrow at dawn, forest floor, roots and ferns around, wide shot, side view, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "배우고 때때로 익히면, 또한 기쁘지 아니한가. — 공자.",
+        "en": "To learn and then to practice it in due time — is that not a pleasure. — Confucius.",
+        "zh-cn": "学而时习之，不亦说乎. — 孔子.",
+        "fr": "Apprendre, puis mettre en pratique au moment voulu : n'est-ce pas une joie. — Confucius."
+      },
+      "subtitle": {
+        "ko": "배우고 익히는 기쁨",
+        "en": "Learn, then practice",
+        "zh-cn": "学而时习之",
+        "fr": "Apprendre et pratiquer"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, a small mole standing on packed dirt at the edge of a forest path, looking straight ahead, wide shot, front view, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "남들 하는 것만 보지 마라. 지금 노트 펴고 한 줄 써라",
+        "en": "Stop saving tutorials for later. Write one line you learned today",
+        "zh-cn": "别光看别人怎么做。现在就写下你学到的一句",
+        "fr": "Arrête de regarder les autres. Écris une ligne de ce que tu as appris"
+      },
+      "subtitle": {
+        "ko": "지금 노트 펴고 써라",
+        "en": "Write one line now",
+        "zh-cn": "现在就写一句",
+        "fr": "Écris une ligne maintenant"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, a small mole digging into a dirt wall inside a tunnel, loose soil flying, side view, wide shot, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지 한 마리가 강까지 굴을 파기로 했어요. 첫날부터 흙을 마구 파헤쳤죠.",
+        "en": "A little mole set out to dig a tunnel all the way to the river. On day one, he tore into the dirt.",
+        "zh-cn": "一只小鼹鼠想挖一条通到河边的地道。第一天，他就拼命地挖。",
+        "fr": "Une petite taupe voulait creuser un tunnel jusqu'à la rivière. Le premier jour, elle a creusé sans réfléchir."
+      },
+      "subtitle": {
+        "ko": "강까지 굴 파기",
+        "en": "Tunnel to the river",
+        "zh-cn": "挖到河边",
+        "fr": "Un tunnel jusqu'à la rivière"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그런데 판 흙이 와르르 무너져 내렸어요. 애써 판 길이 그대로 막혀버렸죠.",
+        "en": "But the walls caved in behind him. Everything he dug fell right back down.",
+        "zh-cn": "可是土塌了下来。他挖好的路，一下子全堵死了。",
+        "fr": "Mais la terre s'est effondrée derrière elle. Tout ce qu'elle avait creusé s'est refermé."
+      },
+      "subtitle": {
+        "ko": "무너진 굴",
+        "en": "Walls caved in",
+        "zh-cn": "土全塌了",
+        "fr": "Tout s'effondre"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, a small mole sitting alone in a dark dirt tunnel, head lowered, side view, wide shot, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지는 어두운 굴 속에 혼자 앉아 있었어요. 예전에 어른 두더지가 하던 말이 떠올랐죠.",
+        "en": "He sat alone in the dark tunnel. Then he remembered what an old mole used to say.",
+        "zh-cn": "他一个人坐在黑黑的地道里。忽然想起老鼹鼠说过的话。",
+        "fr": "Elle est restée seule dans le tunnel noir. Elle s'est souvenue de ce que disait une vieille taupe."
+      },
+      "subtitle": {
+        "ko": "혼자 남은 굴",
+        "en": "Alone in the dark",
+        "zh-cn": "一个人在黑里",
+        "fr": "Seule dans le noir"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "다음 날부터 조금씩만 팠어요. 한 줌 파고, 벽을 다지고, 또 한 줌. 같은 동작을 매일 반복했죠.",
+        "en": "So he dug a little at a time. One handful, then he packed the wall. Then one more. Same motion, every day.",
+        "zh-cn": "从第二天起，他只挖一点点。挖一把，把墙拍实，再挖一把。一样的动作，每天重复。",
+        "fr": "Alors elle a creusé un peu à la fois. Une poignée, puis elle tassait la paroi. Puis encore une. Le même geste, chaque jour."
+      },
+      "subtitle": {
+        "ko": "한 줌씩 반복",
+        "en": "Same motion daily",
+        "zh-cn": "每天一样的动作",
+        "fr": "Le même geste"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, a small mole stepping out into the light at the end of a tunnel, riverbank ahead, side view, wide shot, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그리고 어느 아침, 마지막 흙이 툭 떨어졌어요. 강물 소리가 들리고, 굴 끝으로 빛이 들어왔죠.",
+        "en": "Then one morning the last of the dirt dropped away. He heard the river, and light came in at the end.",
+        "zh-cn": "然后有一天早上，最后一块土掉了下来。他听见了河水，洞口透进了光。",
+        "fr": "Puis un matin, la dernière poignée de terre est tombée. Elle a entendu la rivière, et la lumière est entrée."
+      },
+      "subtitle": {
+        "ko": "굴 끝의 빛",
+        "en": "Light at the end",
+        "zh-cn": "洞口的光",
+        "fr": "La lumière au bout"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "한 남자는 매일 밤 30분씩 기타를 쳤어요. 2년 동안 하루도 안 빠졌고, 처음엔 당신처럼 서툴렀어요.",
+        "en": "One guy played guitar thirty minutes every night. Two years, not one day off. At the start he was as clumsy as you.",
+        "zh-cn": "有个人每天晚上弹三十分钟吉他。两年没断过一天。刚开始，他也和你一样笨。",
+        "fr": "Un type a joué de la guitare trente minutes chaque soir. Deux ans, pas un jour sans. Au début, il était aussi maladroit que toi."
+      },
+      "subtitle": {
+        "ko": "매일 밤 30분",
+        "en": "30 minutes a night",
+        "zh-cn": "每晚三十分钟",
+        "fr": "Trente minutes par soir"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man sitting at a kitchen table at night, phone turned face down, notebook open, pencil in hand, wide shot, pencil sketch portrait, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신도 오늘 밤 30분을 비워라. 그 시간에 오늘 배운 것 하나를 꺼내서 해봐라.",
+        "en": "Block thirty minutes tonight. Start with the one thing you learned today.",
+        "zh-cn": "今晚空出三十分钟。把今天学到的那一样拿出来，做一遍。",
+        "fr": "Bloque trente minutes ce soir. Commence par la chose que tu as apprise aujourd'hui."
+      },
+      "subtitle": {
+        "ko": "오늘 밤 30분",
+        "en": "Block 30 minutes",
+        "zh-cn": "今晚空出三十分钟",
+        "fr": "Bloque trente minutes"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, a small mole standing on a riverbank in the morning light, tall grass around, side view, wide shot, full body visible, a mole, a small burrowing mammal, pointed snout, long whiskers, tiny eyes, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "오늘 배운 걸 오늘 한 번 써라.",
+        "en": "Start today with one small repetition.",
+        "zh-cn": "今天就把学到的东西练一遍。",
+        "fr": "Commence aujourd'hui par une seule répétition."
+      },
+      "subtitle": {
+        "ko": "오늘 한 번 써라",
+        "en": "Start today",
+        "zh-cn": "今天就开始",
+        "fr": "Commence aujourd'hui"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
