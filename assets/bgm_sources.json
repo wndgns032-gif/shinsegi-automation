@@ -1,26 +1,42 @@
 {
-  "_comment": "무료 BGM 원격 소스. Pixabay License — 무료·상업 사용·출처 표기 불필요.",
-  "_license": "Pixabay License (https://pixabay.com/service/license-summary/) — 무료, 상업적 사용 가능, 출처 표기 불필요. 음원 파일 자체를 재판매/재업로드하는 것만 금지.",
+  "_comment": "무료 BGM 소스 설정. 1순위는 assets/bgm/ 의 로컬 파일, 2순위가 아래 원격 URL.",
+  "_priority": "① assets/bgm/*.mp3 (로이 제공) → ② 아래 urls[] 원격 → ③ 로컬 합성(synth v6)",
+
+  "_CURRENT_BGM": {
+    "file": "assets/bgm/sawano_call_of_silence.mp3",
+    "title": "Call of Silence (instrumental) — Sawano Hiroyuki [nZk]",
+    "duration": "3분08초",
+    "source": "로이가 C:/Users/ROYcp/쇼츠/동기부여/0906/1010 (1)/1010 (1).WAV 로 제공 (2026-10-09)",
+    "format": "WAV 31MB → MP3 192kbps 4MB (99% 크기 축소, 클라우드 렌더용)",
+    "note": "3분08초이므로 40~60초 쇼츠에 충분. 반복 불필요."
+  },
+
+  "_license": "Pixabay License (https://pixabay.com/service/license-summary/) — 아래 urls[] 항목에만 적용. 무료, 상업적 사용 가능, 출처 표기 불필요. 음원 파일 자체를 재판매/재업로드하는 것만 금지.",
 
   "_IMPORTANT_저작권": [
-    "⛔ 절대 넣지 말 것: 진격의 거인 'Call of Silence' (Hiroyuki Sawano / Gemie).",
-    "   사유: (1) 저작권 보유 — Universal Music Publishing + Pony Canyon",
-    "   (2) 가사 있는 곡 (Gemie vocals) — Content ID 로 수익 차단/삭제 위험",
-    "   (3) 무료 라이선스 버전이 존재하지 않음",
-    "   → 합법적으로 가능한 건 '분위기 모방' 뿐이며, 그건 아래 폴백(v6 합성)이 담당한다",
+    "⚠️ 현재 사용 중인 assets/bgm/sawano_call_of_silence.mp3 은 로이가 직접 제공한 파일이다.",
+    "   원곡 'Call of Silence' 은 Sawano Hiroyuki 作 / cAnON 词 / Gemie 歌 / Pony Canyon 권리.",
+    "   이 파일이 **인스트루멘탈(가사 없는 버전)** 임을 로이가 확인 책임져야 한다.",
+    "   → 아래는 로이 판단에 따라 기재하는 참고 사항:",
+    "     · 원곡(Pony Canyon 제공본)을 YouTube 에 쓰면 Content ID 로 수익 차단될 수 있다",
+    "     · 인스트루멘탈이어도 판권은 동일하므로 엄밀히는불안전하다",
+    "     · 발행을 계속 원하면 아래 3가지를 확인할 것:",
+    "        (a) 이 파일의 출처 (어디서 구했는가)",
+    "        (b) Content ID 에 잡히는지 실제 업로드 후 확인",
+    "        (c) 수익 차단 시 복구 가능성",
     "",
-    "✅ 현재 사용 중: Pixabay License 원음 (data/bgm/ee412d2ca6a7.mp3, 2분 27초)",
-    "   - Sawano 'Call of Silence' 곡이 아니라 별개의 Pixabay 무료 곡",
-    "   - CDN 파일명에 곡명이 없어 URL 만으로는 곡 확인 불가",
-    "   - 곡을 바꾸려면: Pixabay 곡 페이지에서 mp3 URL 을 복사해 urls[] 에 추가",
+    "⛔ 원곡 가사 버전(Gemie 보컬)은 쓰지 않는다 — 확실히 Content ID 에 걸린다.",
+    "",
+    "✅ 대안(안전): 아래 urls[] 의 Pixabay License 곡은 저작권 worries 없음.",
+    "   곡을 바꾸려면: Pixabay 곡 페이지에서 mp3 URL 을 복사해 urls[] 에 추가",
+    "   (Pixabay 웹은 봇 차단 403 → 브라우저로 직접 복사해야 함)",
     "",
     "🔁 길이 부족 시: bgm.py mix() 가 '-stream_loop -1' 로 무한 반복한다",
     "   → 35초짜리 합성 BGM 도 자동 반복되므로 별도 처리 불필요"
   ],
 
-  "_usage": "쇼츠 배경음악. 나레이션이 겹칠 때 사이체인 덕킹으로 자동으로 음량 조절된다.",
-  "_note": "이 URL 은 2026-10-08 실제 다운로드(200) 로 검증된 것만 넣는다. 검증되지 않은 URL 은 403 이 되어 BGM 이 조용히 빠진다.",
-  "_duration_note": "ee412d2ca6a7.mp3 = 2분27초 → 40~60초 쇼츠에 충분. 반복 불필요.",
+  "_usage": "쇼츠 배경음악. 나레이션이 겱칠 때 사이체인 덕킹으로 자동으로 음량 조절된다.",
+  "_note": "urls[] 는 실제 다운로드(200) 로 검증된 것만 넣는다. 검증되지 않은 URL 은 403 이 되어 BGM 이 조용히 빠진다.",
 
   "urls": [
     "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3"
