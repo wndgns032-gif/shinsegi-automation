@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-14",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "aristotle-habit",
+    "author": {
+      "en": "Aristotle",
+      "ko": "아리스토텔레스",
+      "zh-cn": "亚里士多德",
+      "fr": "Aristote"
+    },
+    "text": {
+      "en": "We are what we repeatedly do. Excellence, then, is not an act but a habit.",
+      "ko": "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다.",
+      "zh-cn": "重复做的事造就了我们。卓越不是一次行为，而是一种习惯。",
+      "fr": "Nous sommes ce que nous faisons de façon répétée. L'excellence n'est pas un acte, mais une habitude."
+    }
+  },
+  "title": {
+    "ko": "매일 하나씩 쌓은 비버",
+    "en": "The Beaver Who Built It One Stick a Day",
+    "zh-cn": "每天一根树枝的河狸",
+    "fr": "Le castor qui posait une brindille par jour"
+  },
+  "caption": {
+    "ko": "매일 하나씩 쌓은 비버\n큰 통나무는 매번 굴러떨어졌지만, 나뭇가지 하나씩은 강을 막았습니다. 당신은 오늘 무엇을 하나 반복할 건가요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "The Beaver Who Built It One Stick a Day\nThe biggest log rolled back every time. One small stick a day stopped the river. What will you repeat today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "每天一根树枝的河狸\n最大的木头每次都滚回水里，一根小树枝却拦住了整条河。今天你打算重复哪一件小事？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Le castor qui posait une brindille par jour\nLe plus gros tronc roulait toujours dans l'eau. Une brindille par jour a barré la rivière. Qu'est-ce que tu vas répéter aujourd'hui ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "완벽을 기다리지 마라.",
+        "지금 당장 첫 줄을 써라."
+      ],
+      "en": [
+        "Stop waiting to feel ready.",
+        "Write the first line right now."
+      ],
+      "zh-cn": [
+        "别再等状态好了。",
+        "现在就写下第一行。"
+      ],
+      "fr": [
+        "Arrête d'attendre le bon moment.",
+        "Prends une feuille et écris."
+      ]
+    },
+    "highlight": {
+      "ko": "지금 당장",
+      "en": "right now",
+      "zh-cn": "现在",
+      "fr": "écris"
+    }
+  },
+  "moral": {
+    "ko": "탁월함은 한 번의 행동이 아니라 매일의 반복이다. 오늘부터 반복해라.",
+    "en": "Excellence isn't one big act, it's what you repeat. Start today.",
+    "zh-cn": "卓越不是一次行动，而是每天重复。今天就开始。",
+    "fr": "Ce n'est pas un grand acte, c'est ce que tu répètes. Commence aujourd'hui."
+  },
+  "characters": "a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, a beaver sitting still on a rock at the edge of a quiet river at dawn, mist over the water, tall grass around, side view, full body visible, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다. — 아리스토텔레스.",
+        "en": "We are what we repeatedly do. Excellence, then, is not an act but a habit. — Aristotle.",
+        "zh-cn": "重复做的事造就了我们。卓越不是一次行为，而是一种习惯. — 亚里士多德.",
+        "fr": "Nous sommes ce que nous faisons de façon répétée. L'excellence n'est pas un acte, mais une habitude. — Aristote."
+      },
+      "subtitle": {
+        "ko": "반복이 곧 나다",
+        "en": "You are what you repeat",
+        "zh-cn": "重复造就我们",
+        "fr": "Tu es tes habitudes"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, a beaver standing upright on a riverbank path at dawn, a single small stick held in its front paws, wide shot, full body visible, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "완벽을 기다리지 마라. 지금 당장 첫 줄을 써라",
+        "en": "Stop waiting to feel ready. Write the first line right now",
+        "zh-cn": "别再等状态好了。现在就写下第一行",
+        "fr": "Arrête d'attendre le bon moment. Prends une feuille et écris"
+      },
+      "subtitle": {
+        "ko": "첫 줄부터",
+        "en": "First line, now",
+        "zh-cn": "先写第一行",
+        "fr": "Écris la première ligne"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "비버는 겨울이 오기 전에 강을 막기로 했어요. 그래서 제일 큰 통나무 하나를 골랐어요.",
+        "en": "The beaver wanted to block the river before winter. So it picked the biggest log it could find.",
+        "zh-cn": "河狸要在冬天前把河拦住。它挑了最大的一根木头。",
+        "fr": "Le castor voulait barrer la rivière avant l'hiver. Il a choisi le plus gros tronc."
+      },
+      "subtitle": {
+        "ko": "가장 큰 통나무",
+        "en": "The biggest log",
+        "zh-cn": "最大的木头",
+        "fr": "Le plus gros tronc"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, a beaver standing in shallow water in early morning, a huge log rolling away behind it, splashing water, side view, wide shot, full body visible, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "통나무는 굴러떨어져 다시 물속으로 들어갔어요. 세 번을 밀었는데 매번 똑같았어요.",
+        "en": "The log rolled back into the water. Three tries, three times the same.",
+        "zh-cn": "木头滚回水里。推了三次，每次都一样。",
+        "fr": "Le tronc a roulé dans l'eau. Trois fois, le même résultat."
+      },
+      "subtitle": {
+        "ko": "세 번 다 실패",
+        "en": "Three tries, same end",
+        "zh-cn": "木头又滚回去",
+        "fr": "Trois fois, pareil"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, a beaver sitting alone on a muddy riverbank in early morning, head lowered, small twigs catching on a rock in the water, side view, wide shot, full body visible, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "비버는 진흙 위에 주저앉았어요. 그때 물속 바위에 작은 나뭇가지가 하나씩 걸리는 게 보였어요.",
+        "en": "It sat down in the mud. Then it saw small twigs catching on a rock, one after another.",
+        "zh-cn": "它坐在泥里。它看见小树枝一根一根卡在石头上。",
+        "fr": "Il s'est assis dans la boue. Et là, il a vu des brindilles se coincer sur un caillou, une par une."
+      },
+      "subtitle": {
+        "ko": "작은 가지 하나",
+        "en": "One small twig",
+        "zh-cn": "树枝卡住了",
+        "fr": "Une brindille"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그날부터 비버는 아침마다 나뭇가지 하나씩 강가에 놓았어요. 크게 하려고 하지 않았어요.",
+        "en": "From that day on, it set one stick in the water every morning. Nothing bigger than that.",
+        "zh-cn": "从那天起，它每天早上只往河边放一根树枝。不多放。",
+        "fr": "À partir de ce jour-là, il posait une brindille chaque matin. Jamais plus."
+      },
+      "subtitle": {
+        "ko": "매일 하나씩",
+        "en": "One stick a day",
+        "zh-cn": "每天一根",
+        "fr": "Une par jour"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, a beaver standing on top of a finished dam of sticks and mud across a river in early morning, still water behind it, side view, wide shot, full body visible, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "겨울이 오기 전에 강이 막혔어요. 만든 건 큰 한 번이 아니라 아침 수십 번이었어요.",
+        "en": "Before winter, the river was blocked. Not by one big push, but by a hundred small mornings.",
+        "zh-cn": "冬天来之前，河被拦住了。靠的不是一次猛干，是几十个早晨。",
+        "fr": "Avant l'hiver, la rivière était barrée. Pas par un grand coup, mais par des dizaines de matins."
+      },
+      "subtitle": {
+        "ko": "강이 막혔다",
+        "en": "The dam held",
+        "zh-cn": "河拦住了",
+        "fr": "Le barrage tient"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "한 여자는 삼 년 동안 아침마다 한 쪽을 썼어요. 당신도 오늘 한 쪽을 써라.",
+        "en": "A woman wrote one page every morning for three years. Write yours today.",
+        "zh-cn": "一位女士三年里每天早上写一页。现在轮到你写一页。",
+        "fr": "Une femme écrivait une page chaque matin, trois ans de suite. Écris la tienne aujourd'hui."
+      },
+      "subtitle": {
+        "ko": "삼 년, 매일 한 쪽",
+        "en": "One page a morning",
+        "zh-cn": "三年，每天一页",
+        "fr": "Une page par matin"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "오늘 밤, 폰을 다른 방에 두고 노트를 펴라. 십 분만 써라.",
+        "en": "Tonight, put your phone in another room. Write for ten minutes.",
+        "zh-cn": "今晚把手机放到另一个房间。写十分钟。",
+        "fr": "Ce soir, mets ton téléphone dans une autre pièce. Prends dix minutes et écris."
+      },
+      "subtitle": {
+        "ko": "폰은 다른 방에",
+        "en": "Phone in another room",
+        "zh-cn": "手机放到别的房间",
+        "fr": "Téléphone, autre pièce"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a beaver, a large semiaquatic rodent, flat scaly tail, chisel-like front teeth, small round ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "탁월함은 한 번의 행동이 아니라 매일의 반복이다. 오늘부터 반복해라.",
+        "en": "Excellence isn't one big act, it's what you repeat. Start today.",
+        "zh-cn": "卓越不是一次行动，而是每天重复。今天就开始。",
+        "fr": "Ce n'est pas un grand acte, c'est ce que tu répètes. Commence aujourd'hui."
+      },
+      "subtitle": {
+        "ko": "오늘 한 번 더",
+        "en": "Repeat today",
+        "zh-cn": "今天就开始",
+        "fr": "Commence aujourd'hui"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
