@@ -125,11 +125,20 @@ def track(seed: int | str = 0) -> Path | None:
 def track_for(seed: int | str = 0) -> Path | None:
     """fable v6용 트랙 선택 — 순서: 로컬 파일 → 원격 자유 음원 → 합성.
 
-    2026-10-04: 참고 영상 BGM(진격의 거인 call of silence)을 재현하려 했으나
+    2026-10-04: 참고 영상 BGM(진격의 거인 Call of Silence)을 재현하려 했으나
         저작권·Content ID 위험이 있어 합성(v6)으로 대체했었다.
     2026-10-08 로이 요청: "가사 뺴고 음악만, 인기 많은 무료 BGM 으로"
         → **Pixabay License 원음**을 쓴다. 무료·상업 사용·출처 표기 불필요.
         실제 곡이 로컬 합성보다 훨씬 고급스럽다.
+
+    ⚠️ 2026-10-09 로이 확인 질문에 대한 정답:
+        **현재 쓰이는 BGM 은 'Call of Silence' 가 아니다.**
+        Call of Silence 은 Hiroyuki Sawano 작/ Gemie 가사짜리 copyrighted 곡이라
+        (Universal Music Publishing + Pony Canyon) 무료 라이선스 버전이 없다.
+        가사까지 있어 YouTube Content ID 에 걸리면 수익이 차단되거나 영상이 삭제된다.
+        → 합법적으로 할 수 있는 건 '분위기 모방' 뿐이며, 그건 아래 폴백(v6 합성)이 담당한다.
+
+    길이: mix() 가 '-stream_loop -1' 로 무한 반복하므로 BGM 이 짧아도 자동으로 이어진다.
 
     assets/bgm/ 에 파일을 직접 넣으면 그것을 우선한다(기존 동작 유지).
     """

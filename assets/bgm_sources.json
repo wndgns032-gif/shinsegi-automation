@@ -1,8 +1,26 @@
 {
   "_comment": "무료 BGM 원격 소스. Pixabay License — 무료·상업 사용·출처 표기 불필요.",
   "_license": "Pixabay License (https://pixabay.com/service/license-summary/) — 무료, 상업적 사용 가능, 출처 표기 불필요. 음원 파일 자체를 재판매/재업로드하는 것만 금지.",
+
+  "_IMPORTANT_저작권": [
+    "⛔ 절대 넣지 말 것: 진격의 거인 'Call of Silence' (Hiroyuki Sawano / Gemie).",
+    "   사유: (1) 저작권 보유 — Universal Music Publishing + Pony Canyon",
+    "   (2) 가사 있는 곡 (Gemie vocals) — Content ID 로 수익 차단/삭제 위험",
+    "   (3) 무료 라이선스 버전이 존재하지 않음",
+    "   → 합법적으로 가능한 건 '분위기 모방' 뿐이며, 그건 아래 폴백(v6 합성)이 담당한다",
+    "",
+    "✅ 현재 사용 중: Pixabay License 원음 (data/bgm/ee412d2ca6a7.mp3, 2분 27초)",
+    "   - Sawano 'Call of Silence' 곡이 아니라 별개의 Pixabay 무료 곡",
+    "   - CDN 파일명에 곡명이 없어 URL 만으로는 곡 확인 불가",
+    "   - 곡을 바꾸려면: Pixabay 곡 페이지에서 mp3 URL 을 복사해 urls[] 에 추가",
+    "",
+    "🔁 길이 부족 시: bgm.py mix() 가 '-stream_loop -1' 로 무한 반복한다",
+    "   → 35초짜리 합성 BGM 도 자동 반복되므로 별도 처리 불필요"
+  ],
+
   "_usage": "쇼츠 배경음악. 나레이션이 겹칠 때 사이체인 덕킹으로 자동으로 음량 조절된다.",
   "_note": "이 URL 은 2026-10-08 실제 다운로드(200) 로 검증된 것만 넣는다. 검증되지 않은 URL 은 403 이 되어 BGM 이 조용히 빠진다.",
+  "_duration_note": "ee412d2ca6a7.mp3 = 2분27초 → 40~60초 쇼츠에 충분. 반복 불필요.",
 
   "urls": [
     "https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3"
