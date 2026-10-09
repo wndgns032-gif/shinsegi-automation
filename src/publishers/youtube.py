@@ -34,7 +34,10 @@ from .base import Publisher
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
+          # 업로드 후 영상 정리(빈 영상 삭제·비공개 전환)에 필요.
+          # 이게 없으면 videos.delete/update 가 403 Insufficient Permission.
+          "https://www.googleapis.com/auth/youtube.force-ssl"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 TITLE_MAX = 100          # YouTube 제목 상한
 TAG_MAX = 15
@@ -141,6 +144,45 @@ class YouTubePublisher(Publisher):
         return title in {h.get("title") for h in hist.get(lang, [])}
 
     @staticmethod
+    def _verify_upload(yt, lang: str, video_id: str, tries: int = 3) -> None:
+        """업로드 직후 상태를 확인하고, 실패본이면 삭제한다.
+
+        2026-10-09 실측 사고:
+          videos().insert 는 렌더 실패(0바이트 mp4)에도 HTTP 200 + id 를 준다.
+          그 결과 채널에 `uploaded / P0D` 상태의 빈 영상이 남았고,
+          같은 제목의 정상 영상이 1분 뒤에 별도로 올라가 중복이 생겼다.
+          (YouTube 는 0바이트 영상을 '실패'로 간주하지 않는다)
+
+        → 여기서 contentDetails.duration 이 0 이거나 uploadStatus 가 done 이 아니면
+          삭제 시도한다. force-ssl 스코프가 없으면 삭제는 실패하므로 경고만 남긴다.
+        """
+        import time as _t
+        for _ in range(tries):
+            try:
+                v = yt.videos().list(part="contentDetails,status",
+                                     id=video_id).execute()["items"][0]
+            except Exception:  # noqa: BLE001
+                return
+            dur = (v.get("contentDetails") or {}).get("duration", "")
+            status = (v.get("status") or {}).get("uploadStatus", "")
+            if dur in ("P0D", "PT0S", "") or status != "processed":
+                # 아직 처리 중일 수 있으므로 한 번 더 확인
+                if _ < tries - 1:
+                    _t.sleep(8)
+                    continue
+                print(f"  [youtube:{lang}] ⚠ 빈/미처리 영상 감지 (duration={dur or '?'}, "
+                      f"status={status}) — 삭제 시도")
+                try:
+                    yt.videos().delete(id=video_id).execute()
+                    print(f"  [youtube:{lang}] 삭제 완료: {video_id}")
+                except Exception as e:  # noqa: BLE001
+                    print(f"  [youtube:{lang}] 삭제 실패 (force-ssl 스코프 필요): "
+                          f"{str(e)[:120]}")
+                return
+            print(f"  [youtube:{lang}] 업로드 확인 OK (duration={dur}, status={status})")
+            return
+
+    @staticmethod
     def _record(lang: str, title: str, video_id: str) -> None:
         try:
             hist = json.loads(HISTORY.read_text(encoding="utf-8")) if HISTORY.exists() else {}
@@ -185,6 +227,21 @@ class YouTubePublisher(Publisher):
             return {"platform": tag, "lang": lang, "status": "skipped",
                     "detail": "동일 제목 업로드 이력 존재"}
 
+        # ⚠️ 2026-10-09 실측 사고: 렌더가 실패해 mp4 가 0바이트여도
+        #    videos().insert 가 HTTP 200 을 주고 실패로 간주되지 않는다.
+        #    → 'uploaded / P0D' 상태의 빈 영상이 채널에 남았다(ko 채널 1건).
+        #    업로드 전에 반드시 파일 크기를 검증한다.
+        try:
+            size = Path(video_path).stat().st_size
+        except OSError as e:
+            return {"platform": tag, "lang": lang, "status": "error",
+                    "detail": f"영상 파일 없음: {e}"}
+        if size < 500_000:
+            # 500KB 미만은 사실상 빈 파일이다 (정상 쇼츠는 40MB 이상).
+            return {"platform": tag, "lang": lang, "status": "error",
+                    "detail": f"영상 파일이 너무 작음 ({size}B) — 렌더 실패 또는 빈 파일. "
+                              f"업로드하지 않음."}
+
         body = {
             "snippet": {
                 "title": title,
@@ -216,6 +273,13 @@ class YouTubePublisher(Publisher):
                 vid = (resp or {}).get("id")
                 if not vid:
                     raise RuntimeError(f"응답에 id 없음: {str(resp)[:200]}")
+
+                # ⚠️ 업로드 직후 0초/미처리를 확인한다.
+                #    YouTube 는 실패한 업로드도 200 + id 를 돌려주며,
+                #    상태가 'uploaded'(처리 대기) 또는 길이가 P0D 인채널에 남는다.
+                #    (2026-10-09 ko 채널에 P0D 빈 영상 1건이 그렇게 생겼다)
+                self._verify_upload(yt, lang, vid)
+
                 self._record(lang, title, vid)
                 return {"platform": tag, "lang": lang, "status": "published", "id": vid}
             except Exception as e:  # noqa: BLE001 - 3회 재시도 후 실패 처리

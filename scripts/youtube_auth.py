@@ -22,8 +22,12 @@ sys.path.insert(0, str(BASE))
 
 ENV_PATH = BASE / ".env"
 CLIENT_JSON = BASE / "data" / "youtube_client.json"
+# 2026-10-09 실측: force-ssl 이 없으면 videos.delete / videos.update 가
+#   "Insufficient Permission" (403) 로 실패한다.
+#   → 업로드 후 영상 정리(빈 영상 삭제·비공개 전환·제목 수정)를 위해 필수.
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
-          "https://www.googleapis.com/auth/youtube.readonly"]
+          "https://www.googleapis.com/auth/youtube.readonly",
+          "https://www.googleapis.com/auth/youtube.force-ssl"]
 LANGS = ["en", "ko", "zh-cn", "fr"]
 ENV_LANG = {"en": "EN", "ko": "KO", "zh-cn": "ZH_CN", "fr": "FR"}
 
