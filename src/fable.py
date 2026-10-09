@@ -366,10 +366,15 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
         if attempt < max_attempts:
             print("       → 해당 표현을 고쳐 다시 생성합니다")
     # 최종 시도 결과라도 반환(파이프라인 중단 방지) — issues 남아 있을 수 있음
+    # ⚠️ 2026-10-09 실측 버그: 8회 전부 실패하면 `story` 가 아직 바인딩되지 않은
+    #    상태여서 `return story` 에서 UnboundLocalError 가 났다.
+    #    (except NameError 로 잡으려 했지만 그 자체가 NameError 라 실행 전 실패)
     try:
         return story
     except NameError:
-        raise last_err
+        pass
+    print(f"  [fable] {max_attempts}회 모두 실패 — 마지막 오류: {last_err}")
+    raise last_err
 
 
 # ─────────────────────────────────────────────────────────────
@@ -497,6 +502,25 @@ def _check_naturalness(story: dict) -> list[str]:
 # 2장면 hook / 9장면 real / 10장면 moral(→outro) 가 대상.
 # ─────────────────────────────────────────────────────────────
 # 각 언어의 명령형 어미/형식. 앞쪽에 오면 명령형이다.
+# 검증된 프랑스어 2인칭 단수 명령형 (2026-10-09 실측 보충)
+# 규칙 생성은 오판이 많아(과거형·서술형을 명령형으로 오인) 검증된 것만 넣는다.
+_FR_IMPERATIVES = {
+    # 실측 실패 케이스 (2026-10-09 배포 로그에서 8회 전부 탈락)
+    "assieds", "assied", "programme", "bloque", "recommence",
+    # 반사동사 (-toi) 원형
+    "lance", "lance-toi",
+    # 자주 쓰이는 2인칭 단수
+    "fais", "prends", "écris", "lis", "écoute", "regarde", "sors",
+    "avance", "creuse", "reprends", "efface", "continue", "cesse",
+    "deviens", "reviens", "reste", "vis", "gagne", "trace",
+    "ouvre", "ferme", "pose", "lève", "essaie", "choisis", "note",
+    "donne", "trouve", "change", "commence", "arrête", "lâche",
+    "pense", "sois", "pars", "travaille", "construis", "protège",
+    "réserve", "mets", "cale", "range", "écris-toi", "force-toi",
+    "concentre", "concentre-toi", "récupère", "dépêche", "simplifie",
+    "commence", "sais", "saisis", "choisis", "opte", "assume",
+}
+
 _IMPERATIVE_MARKS: dict[str, tuple[str, ...]] = {
     # 한국어: 어미가 앞쪽에 온다
     "ko": ("해라", "하라", "하거라", "하세요", "마라",
@@ -571,7 +595,21 @@ _EN_VERBS = ("write", "stop", "start", "read", "take", "put", "make", "keep",
            "grab", "hold", "pull", "push", "fill", "empty", "save",
            "throw", "drop", "lift", "carry", "leave", "return",
            "flip", "shut", "silence", "mute", "postpone", "delay",
-           "schedule", "block", "cancel", "undo", "redo")
+           "schedule", "block", "cancel", "undo", "redo",
+           # 2026-10-09 실측 보충 (영어 대본에서 탈락한 기본 동사)
+           "come", "go", "see", "use", "help", "work", "play", "live",
+           "believe", "need", "feel", "become", "stay", "grow", "learn")
+
+
+    # 2026-10-09 실측 실패 기록 — 열거 방식으로는 이들을 못 잡는다:
+    #   'Assieds-toi'(asseoir), 'Programme'(programmer), 'Bloque'(bloquer),
+    #   'Recommence'(recommencer), 'Come back'(영어)
+    #   → 반사동사·3군 불규칙·영어 불규칙이 복잡해 규칙 생성은 오판이 많다.
+    #   (시도 결과: 'Elle a mangé' 같은 과거형을 명령형으로 오판했다)
+    #   → **검증된 실제 실패 케이스만** 사전에 보충하는 접근을 쓴다.
+    #   여기 없으면 다음 실행에서 같은 문장으로 또 탈락하므로
+#   실제 대본에서 반복 탈락한 단어를 여기에 계속 추가한다.
+
 
 
 def _is_imperative(text: str, lang: str) -> bool:
@@ -624,6 +662,33 @@ def _is_imperative(text: str, lang: str) -> bool:
         tail_words = [w.strip(",.?!") for w in words_all]
         if len(tail_words) > 1 and tail_words[-2] in _EN_VERBS:
             return True
+
+        # 5) ⭐ 2026-10-09 추가 — 접미사 규칙 (열거 방식의 한계 overcomes)
+        #    실측 실패: 'Assieds-toi'(앉아라), 'Programme'(계획해라), 'Bloque'(막아라)
+        #    → 동사 사전에 없는데 접미사가 규칙적이라 판정 불가.
+        #    → **어간+접미사** 패턴으로 판정한다.
+        if lang == "fr":
+            # ⭐ 문장 **첫 단어**만 검사한다.
+            #   (2026-10-09 실측: 'reste' 나중에 등장하는 'rien ne reste' 가
+            #    명령형으로 오판됐다. 명령형은 항상 문장 머리에 온다.)
+            #   하이픈은 어근을 분리: 'assieds-toi' → 'assieds'
+            for p in parts:
+                head = p.lower().split(" ", 1)[0].strip(".,?!;:'\u2019")
+                cands = [head]
+                if "-" in head:            # 반사동사 (assieds-toi)
+                    cands.append(head.split("-", 1)[0])
+                for c in cands:
+                    if len(c) >= 3 and c in _FR_IMPERATIVES:
+                        return True
+        elif lang == "en":
+            # 영어: 3인칭 단수(-s/-es)와 어간 변화를 사전 대조로 처리
+            for w in words_all:
+                lw = w.lower().strip(".,?!;:'\u2019")
+                if len(lw) < 3:
+                    continue
+                for c in (lw, lw.rstrip("s"), lw.rstrip("es"), lw[:-2] if lw.endswith("es") else ""):
+                    if c and c in _EN_VERBS:
+                        return True
         return False
     # 한국어는 어미가 앞쪽에 온다
     low = t.lower()
