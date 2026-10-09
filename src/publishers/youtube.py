@@ -34,10 +34,15 @@ from .base import Publisher
 
 ROOT = Path(__file__).resolve().parents[2]
 
-SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
-          # 업로드 후 영상 정리(빈 영상 삭제·비공개 전환)에 필요.
-          # 이게 없으면 videos.delete/update 가 403 Insufficient Permission.
-          "https://www.googleapis.com/auth/youtube.force-ssl"]
+# ⚠️ 2026-10-09 실측 사고: 스코프를 늘리면 기존 refresh token 으로는 죽는다.
+#   refresh token 의 스코프는 **발급 시 고정**이라서, 새로 추가한 스코프는
+#   재인증 전까지 refresh 단계에서 `invalid_scope` 로 실패한다.
+#   → youtube.upload 만 요구한다 (이 스코프는 모든 기존 토큰에 있다).
+#   → force-ssl(영상 삭제/비공개 전환)이 필요한 코드는 그때그때
+#     "없으면 조용히 넘어간다" 로 처리한다.
+SCOPES = ["https://www.googleapis.com/auth/youtube.upload"]
+# force-ssl 을 쓰고 싶은 곳에서만 선택적으로 사용:
+SCOPES_ADMIN = SCOPES + ["https://www.googleapis.com/auth/youtube.force-ssl"]
 TOKEN_URI = "https://oauth2.googleapis.com/token"
 TITLE_MAX = 100          # YouTube 제목 상한
 TAG_MAX = 15
@@ -154,7 +159,9 @@ class YouTubePublisher(Publisher):
           (YouTube 는 0바이트 영상을 '실패'로 간주하지 않는다)
 
         → 여기서 contentDetails.duration 이 0 이거나 uploadStatus 가 done 이 아니면
-          삭제 시도한다. force-ssl 스코프가 없으면 삭제는 실패하므로 경고만 남긴다.
+          **비공개(private)로 전환**한다. 삭제는 force-ssl 스코프가 필요해
+          기존 토큰으로는 불가하므로, 비공개가 안전한 대안이다.
+          (그래도 videos.update 도 같은 스코프가 필요해서 실패할 수 있다)
         """
         import time as _t
         for _ in range(tries):
@@ -171,13 +178,26 @@ class YouTubePublisher(Publisher):
                     _t.sleep(8)
                     continue
                 print(f"  [youtube:{lang}] ⚠ 빈/미처리 영상 감지 (duration={dur or '?'}, "
-                      f"status={status}) — 삭제 시도")
-                try:
-                    yt.videos().delete(id=video_id).execute()
-                    print(f"  [youtube:{lang}] 삭제 완료: {video_id}")
-                except Exception as e:  # noqa: BLE001
-                    print(f"  [youtube:{lang}] 삭제 실패 (force-ssl 스코프 필요): "
-                          f"{str(e)[:120]}")
+                      f"status={status}) — 숨김/삭제 시도")
+                #1) 비공개 전환(조회 스코프로는 가능할 수도, 아닐 수도 있다)
+                for act, kw in (("private", {"privacyStatus": "private"}),
+                                 ("삭제", None)):
+                    try:
+                        if kw is None:
+                            yt.videos().delete(id=video_id).execute()
+                        else:
+                            yt.videos().update(part="status", id=video_id,
+                                               body={"status": kw}).execute()
+                        print(f"  [youtube:{lang}] {act} 처리 완료: {video_id}")
+                        return
+                    except Exception as e:  # noqa: BLE001
+                        msg = str(e).lower()
+                        if "scope" in msg or "insufficient" in msg:
+                            print(f"  [youtube:{lang}] {act} 실패 — force-ssl 스코프 필요")
+                            continue
+                        print(f"  [youtube:{lang}] {act} 실패: {str(e)[:90]}")
+                print(f"  [youtube:{lang}] 수동 정리 필요: "
+                      f"scripts\\youtube_cleanup.py --delete")
                 return
             print(f"  [youtube:{lang}] 업로드 확인 OK (duration={dur}, status={status})")
             return

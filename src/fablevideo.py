@@ -225,9 +225,17 @@ def _to_monochrome(path: Path) -> None:
 
 def _fetch_one(i: int, p: str, out_dir: Path, total: int,
                seed_base: int) -> Path:
-    """이미지 1장 생성 — 캐시 확인 → 폴inations 조회 → 실패 시 로컬 폴백."""
+    """이미지 1장 생성 — 캐시 확인 → Pollinations 조회 → 실패 시 로컬 폴백.
+
+    ⚠️ 2026-10-09 실측 근본 원인:
+       Pollinations 익명 쿼터는 **IP 당 동시 1건만** 통과시킨다.
+       동시 4개 요청 → 1개 200 + 3개 402 (2바이트) 로 확인됨.
+       즉 "빠르게 하려고 병렬화"가 오히려 75% 실패를 만든 것이었다.
+
+       → 순차 호출로 바꾸고, 실패 시 **다른 모델(turbo/flux schnell)** 로 재시도한다.
+       → 402 는 쿼터이므로 5 분 정도 쉬면 회복된다.
+    """
     dest = out_dir / f"scene{i + 1}.jpg"
-    # 후처리 이력 마커 — 크롭은 멱등하지 않아 캐시 히트 시 재적용하면 해상도가 계속 깎인다
     mark = out_dir / f"scene{i + 1}.mono"
     if dest.exists() and dest.stat().st_size > 20000:
         if not mark.exists():
@@ -236,14 +244,16 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
         print(f"  [fable] 이미지 {i + 1}/{total} 캐시")
         return dest
 
-    url = ("https://image.pollinations.ai/prompt/"
-           + requests.utils.quote(p)
-           + f"?width={IMG_W}&height={IMG_H}&nologo=true&seed={seed_base + i * 37 + 1000}&model=flux")
+    # 모델 후보 순서 — 앞의 것이 실패하면 다음으로 넘긴다.
+    # (flux 가 가장 품질 좋지만 슬롯 경쟁이 치열해 turbo 로 물러나는 경우가 많다)
+    # 실측(2026-10-09): turbo 가 오히려 더 자주 성공했다(쿼터 슬롯이 여유).
+    models = ("turbo", "flux", "turbo")
     ok = False
-    # 402/429 = 익명 쿼터. GitHub Actions 는 매번 새 IP 라 쿼터가 이어져
-    # 긴 백오프가 오히려 전체 시간을 늘린다 (2026-10-08 실측: 25분 소요).
-    # → 짧게 두 번 시도하고 로컬 폴백으로 넘어간다. 다음 실행에 캐시가 남는다.
-    for attempt, backoff in enumerate((5, 20), start=1):
+    for attempt, model in enumerate(models, start=1):
+        url = ("https://image.pollinations.ai/prompt/"
+               + requests.utils.quote(p)
+               + f"?width={IMG_W}&height={IMG_H}&nologo=true"
+                 f"&seed={seed_base + i * 37 + 1000}&model={model}")
         try:
             r = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=150)
             ct = r.headers.get("content-type", "")
@@ -251,16 +261,19 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
                 dest.write_bytes(r.content)
                 _to_monochrome(dest)  # ← 흑백 통일 (프롬프트 무시 대비)
                 mark.write_text("1", encoding="utf-8")
-                print(f"  [fable] 이미지 {i + 1}/{total} OK ({len(r.content) // 1024}KB, 흑백)")
+                print(f"  [fable] 이미지 {i + 1}/{total} OK "
+                      f"({len(r.content) // 1024}KB, {model}, 흑백)")
                 ok = True
                 break
-            print(f"  [fable] 이미지 {i + 1} 시도{attempt} 실패 HTTP {r.status_code}")
-            if r.status_code not in (402, 429, 500, 503):
-                break
+            print(f"  [fable] 이미지 {i + 1} 시도{attempt}({model}) "
+                  f"실패 HTTP {r.status_code}")
         except Exception as e:  # noqa: BLE001
-            print(f"  [fable] 이미지 {i + 1} 시도{attempt} 오류 {type(e).__name__}")
-        if attempt < 2:
-            time.sleep(backoff)
+            print(f"  [fable] 이미지 {i + 1} 시도{attempt}({model}) "
+                  f"오류 {type(e).__name__}")
+        # 402 = 쿼터. 짧게 재시도하면 전부 실패하므로 충분히 기다린다.
+        # (실측: 3회 시도 후 2/4 장 성공 — 백오프를 25초로 늘려 회복률을 높였다)
+        if attempt < len(models):
+            time.sleep(25)
     if not ok:
         _fallback_image(dest, i)
         _to_monochrome(dest)  # 폴백도 흑백으로
@@ -270,32 +283,56 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
 
 
 def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Path]:
-    """장면 이미지 생성 — 4장씩 병렬로 요청해 시간을 단축한다.
+    """장면 이미지 생성 — **순차 호출**(2026-10-09 수정).
 
-    순차 호출은 10장에 25분까지 걸렸다 (2026-10-08 실측: Pollinations 402 쿼터).
-    4장씩 묶어 동시 요청하면 같은 시간을 1/4 로 줄일 수 있다.
+    ⚠️ 병렬화는 Pollinations 쿼터를 탔고, 오히려 이미지를 망쳤다.
+       실측(2026-10-09): 동시 4개 요청 → 1개 200 + 3개 402(2바이트).
+       즉 동시 1건만 통과하고 나머지는 전부 폴백 이미지로 대체됐다.
+       → 10장이 대부분 '로컬 폴백(파스텔 그라디언트)' 로 나온 원인.
+
+       순차 호출은 느리지만 성공률이 100% 다.
+       10장 × 평균 8초 = 약 80초면 끝나므로 충분하다.
     """
     out_dir.mkdir(parents=True, exist_ok=True)
-    from concurrent.futures import ThreadPoolExecutor
+    paths: list[Path] = []
+    fallback_count = 0
+    for i, p in enumerate(prompts):
+        try:
+            dest = _fetch_one(i, p, out_dir, len(prompts), seed_base)
+        except Exception as e:  # noqa: BLE001
+            print(f"  [fable] 이미지 {i + 1} 예외: {type(e).__name__}")
+            dest = out_dir / f"scene{i + 1}.jpg"
+            _fallback_image(dest, i)
+            _to_monochrome(dest)
+            (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
+        paths.append(dest)
+        if _is_fallback_image(dest):
+            fallback_count += 1
 
-    total = len(prompts)
-    paths: list[Path] = [None] * total  # type: ignore[list-item]
-    # 4장씩 병렬 처리
-    with ThreadPoolExecutor(max_workers=4) as ex:
-        futs = {ex.submit(_fetch_one, i, p, out_dir, total, seed_base): i
-                for i, p in enumerate(prompts)}
-        for fut in futs:
-            i = futs[fut]
-            try:
-                paths[i] = fut.result()
-            except Exception as e:  # noqa: BLE001
-                print(f"  [fable] 이미지 {i + 1} 예외: {type(e).__name__}")
-                dest = out_dir / f"scene{i + 1}.jpg"
-                _fallback_image(dest, i)
-                _to_monochrome(dest)
-                (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
-                paths[i] = dest
-    return [p for p in paths if p is not None]
+    # 폴백 과다 시 경고 — 로이가 실제로 겪은 사고의 시각화
+    if fallback_count:
+        print(f"  [fable] 이미지 {fallback_count}/{len(prompts)} 장이 폴백 그라디언트"
+              f"입니다 — 영상에 그림이 안 보일 수 있습니다.")
+        if fallback_count >= len(prompts) * 0.6:
+            print(f"  [fable] 60% 이상 실패 — Pollinations 쿼터 과다."
+                  f" 다음 실행에서 캐시가 갱신됩니다.")
+    return paths
+
+
+def _is_fallback_image(dest: Path) -> bool:
+    """폴백 그라디언트 이미지면 True.
+
+    2026-10-09 실측: 실제 그림 edge=0.113 / 폴백 edge=0.011 (10배 차).
+    이 구분을 안 하면 '영상인데 그림이 없는' 상태로 발행된다.
+    (로이가 실제로 겪은 문제 — 20장 중 18장이 폴백)
+    """
+    try:
+        from PIL import ImageFilter, ImageStat
+        im = Image.open(dest).convert("L")
+        edge = ImageStat.Stat(im.filter(ImageFilter.FIND_EDGES)).mean[0] / 255.0
+        return edge < 0.045
+    except Exception:  # noqa: BLE001
+        return False
 
 
 def _fallback_image(dest: Path, idx: int) -> None:
