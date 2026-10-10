@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-16",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "goethe-boldness",
+    "author": {
+      "en": "Johann Wolfgang von Goethe",
+      "ko": "괴테",
+      "zh-cn": "歌德",
+      "fr": "Goethe"
+    },
+    "text": {
+      "en": "Whatever you can do, or dream you can, begin it. Boldness has genius, power and magic in it.",
+      "ko": "할 수 있겠다 싶거나 꿈꿀 수 있는 일이라면, 시작하세요. 대담함에는 천재성과 힘과 마법이 들어 있다.",
+      "zh-cn": "只要你能想到、能梦到的事，就去做吧。大胆之中自有天赋、力量与魔力。",
+      "fr": "Tout ce que tu peux faire ou rêver de faire, commence-le. L'audace contient du génie, de la force et de la magie."
+    }
+  },
+  "title": {
+    "ko": "대담하게 시작하는 법",
+    "en": "Start Before You're Ready",
+    "zh-cn": "大胆开始的人",
+    "fr": "Commence, et le chemin s'ouvre"
+  },
+  "caption": {
+    "ko": "대담하게 시작하는 법\n안개 낀 언덕을 한 걸음씩 오른 고슴도치 이야기. 완벽해질 때까지 기다리고 있나요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "Start Before You're Ready\nA hedgehog climbs a misty hill one step at a time. What are you still waiting to begin?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "大胆开始的人\n一只刺猬一步步爬上雾里的山坡。你还在等什么才肯开始？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Commence, et le chemin s'ouvre\nUn hérisson gravit une colline dans la brume, pas à pas. Qu'attends-tu pour commencer ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "남들 눈치 보지 마라.",
+        "지금 당장 첫 걸음을 떼라."
+      ],
+      "en": [
+        "Stop waiting to feel ready.",
+        "Take the first step right now."
+      ],
+      "zh-cn": [
+        "别再等准备好。",
+        "现在就走第一步。"
+      ],
+      "fr": [
+        "Arrête d'attendre d'être prêt.",
+        "Fais le premier pas maintenant."
+      ]
+    },
+    "highlight": {
+      "ko": "첫 걸음",
+      "en": "first step",
+      "zh-cn": "第一步",
+      "fr": "premier pas"
+    }
+  },
+  "moral": {
+    "ko": "완벽해지길 기다리지 말고, 오늘 당장 시작해라.",
+    "en": "Don't wait to feel ready. Start today, right where you are.",
+    "zh-cn": "别等到准备好。今天就开始。",
+    "fr": "N'attends pas d'être prêt. Commence aujourd'hui, là où tu es."
+  },
+  "characters": "a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, misty hill at first light, looking up, ferns and wet grass, side view, full body visible, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "할 수 있겠다 싶거나 꿈꿀 수 있는 일이라면, 시작하세요. 대담함에는 천재성과 힘과 마법이 들어 있다. — 괴테.",
+        "en": "Whatever you can do, or dream you can, begin it. Boldness has genius, power and magic in it. — Johann Wolfgang von Goethe.",
+        "zh-cn": "只要你能想到、能梦到的事，就去做吧。大胆之中自有天赋、力量与魔力. — 歌德.",
+        "fr": "Tout ce que tu peux faire ou rêver de faire, commence-le. L'audace contient du génie, de la force et de la magie. — Goethe."
+      },
+      "subtitle": {
+        "ko": "대담함의 마법",
+        "en": "Boldness has magic",
+        "zh-cn": "大胆的魔力",
+        "fr": "L'audace a sa magie"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "남들 눈치 보지 마라. 지금 당장 첫 걸음을 떼라",
+        "en": "Stop waiting to feel ready. Take the first step right now",
+        "zh-cn": "别再等准备好。现在就走第一步",
+        "fr": "Arrête d'attendre d'être prêt. Fais le premier pas maintenant"
+      },
+      "subtitle": {
+        "ko": "지금 첫 걸음",
+        "en": "First step now",
+        "zh-cn": "现在就迈第一步",
+        "fr": "Premier pas maintenant"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "새벽 안개가 언덕을 덮었어요. 고슴도치는 저 위가 궁금해서 한 발씩 올라가기 시작했죠.",
+        "en": "Mist covered the hill at dawn. The hedgehog wanted to know what was up there, so it started climbing, one step at a time.",
+        "zh-cn": "天刚亮，雾气盖住了山坡。刺猬想知道上面有什么，就一步一步往上爬。",
+        "fr": "Au petit matin, la brume couvrait la colline. Le hérisson voulait voir ce qu'il y avait là-haut, alors il a commencé à monter, pas à pas."
+      },
+      "subtitle": {
+        "ko": "안개 낀 언덕",
+        "en": "Mist on the hill",
+        "zh-cn": "雾里的山坡",
+        "fr": "La colline dans la brume"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "절반쯤 올랐을 때 미끄러졌어요. 젖은 풀잎에 발이 걸려 데굴데굴 굴러떨어졌죠.",
+        "en": "Halfway up, it slipped. Wet grass, one bad step, and it rolled all the way back down.",
+        "zh-cn": "爬到一半就滑倒了。湿草一滑，一路滚回了山脚。",
+        "fr": "À mi-chemin, il a glissé. L'herbe mouillée, un faux pas, et il a dévalé la pente."
+      },
+      "subtitle": {
+        "ko": "미끄러진 오르막",
+        "en": "One slip, all the way down",
+        "zh-cn": "滑倒，滚回山脚",
+        "fr": "Une glissade, tout en bas"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "풀밭에 주저앉아 한참 움직이지 않았어요. 다시 오를 자신이 없었거든요.",
+        "en": "It sat down in the grass and didn't move. It didn't think it could climb again.",
+        "zh-cn": "它在草里坐了很久，一动没动。觉得自己爬不上去了。",
+        "fr": "Il s'est assis dans l'herbe sans bouger. Il ne se croyait plus capable de remonter."
+      },
+      "subtitle": {
+        "ko": "주저앉은 새벽",
+        "en": "Sitting in the grass",
+        "zh-cn": "坐在草里不动",
+        "fr": "Assis dans l'herbe"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 문득, 정상은 안 보고 발밑만 보기로 했어요. 다음 한 걸음만.",
+        "en": "Then it stopped looking at the top. Just the next step. That was all.",
+        "zh-cn": "后来它不再看山顶，只看脚下。只管下一步。",
+        "fr": "Alors il a arrêté de regarder le sommet. Juste le pas suivant. C'est tout."
+      },
+      "subtitle": {
+        "ko": "다음 한 걸음",
+        "en": "Just the next step",
+        "zh-cn": "只管下一步",
+        "fr": "Juste le pas suivant"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "안개가 발밑에 깔렸어요. 정상이었죠.",
+        "en": "The mist was under its feet now. It had made it.",
+        "zh-cn": "雾气已经在脚下了。它到顶了。",
+        "fr": "La brume était sous ses pattes. Il était arrivé."
+      },
+      "subtitle": {
+        "ko": "정상 도착",
+        "en": "Top of the hill",
+        "zh-cn": "到了山顶",
+        "fr": "Au sommet"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "매일 아침 다섯 시에 일어나 한 시간을 글에 쏟은 여자가 있었어요. 3년 동안 하루도 안 빠졌죠.",
+        "en": "A woman woke at five every morning and gave one hour to her writing. Three years, not one day missed.",
+        "zh-cn": "有个女人每天早上五点起床，写一个小时。三年，一天都没落下。",
+        "fr": "Une femme se levait à cinq heures chaque matin et écrivait pendant une heure. Trois ans, sans un seul jour d'absence."
+      },
+      "subtitle": {
+        "ko": "3년 하루도 안 빠짐",
+        "en": "Three years, not one missed day",
+        "zh-cn": "三年，一天没落下",
+        "fr": "Trois ans, pas un jour manqué"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "오늘 밤 폰을 뒤집어 놓고 30분을 비워라. 그 시간에 첫 줄을 써라.",
+        "en": "Tonight, turn your phone face down and clear thirty minutes. Use it to write the first line.",
+        "zh-cn": "今晚把手机扣过来，空出三十分钟。写下第一行。",
+        "fr": "Ce soir, retourne ton téléphone et libère trente minutes. Écris la première ligne."
+      },
+      "subtitle": {
+        "ko": "폰 뒤집고 30분",
+        "en": "Phone down, thirty minutes",
+        "zh-cn": "手机扣过来，三十分钟",
+        "fr": "Téléphone retourné, trente minutes"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, the main character standing alone, thinking, looking ahead, full body visible, side view, a hedgehog, a small spiny mammal, round body, pointed snout, short legs, tiny ears, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "완벽해지길 기다리지 말고, 오늘 당장 시작해라.",
+        "en": "Don't wait to feel ready. Start today, right where you are.",
+        "zh-cn": "别等到准备好。今天就开始。",
+        "fr": "N'attends pas d'être prêt. Commence aujourd'hui, là où tu es."
+      },
+      "subtitle": {
+        "ko": "오늘 시작",
+        "en": "Start today",
+        "zh-cn": "今天就开始",
+        "fr": "Commence aujourd'hui"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
