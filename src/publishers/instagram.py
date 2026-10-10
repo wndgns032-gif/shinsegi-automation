@@ -242,12 +242,21 @@ class InstagramPublisher(Publisher):
 
         # 비디오도 호스트 폴백 체인 적용 (2026-10-03: catbox는 Meta측 릴스 처리 실패 유발 → uguu 우선)
         video_url, last = None, None
-        for host in [_uguu, _catbox, _mastodon_media]:
-            try:
-                video_url = host(Path(video_path), "video/mp4")
+        # 2026-10-10 실측: uguu가 간헐적으로 실패하면 아래 호스트로 넘어간다.
+        #   영어 계정 1건이 이 경로에서 ig=error 로 기록됐으나 실제로는 게시돼 있었다
+        #   (Graph API 응답 지연). → 각 호스트를 2회씩 재시도해 흡수한다.
+        for host in (_uguu, _catbox, _mastodon_media):
+            for attempt in (1, 2):
+                try:
+                    video_url = host(Path(video_path), "video/mp4")
+                    break
+                except Exception as e:  # noqa: BLE001
+                    last = e
+                    if attempt == 1:
+                        import time as _t
+                        _t.sleep(3)
+            if video_url:
                 break
-            except Exception as e:  # noqa: BLE001
-                last = e
         if not video_url:
             return {"platform": f"{self.name}_reels", "lang": lang, "status": "error",
                     "detail": f"비디오 업로드 실패: {last}"}
