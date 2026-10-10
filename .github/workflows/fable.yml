@@ -12,12 +12,25 @@ name: Fable Production
 
 on:
   schedule:
-    # KST 08:00 (UTC 23:00 전날)
-    - cron: '7 23 * * *'
-    # KST 18:00 (UTC 09:00)
-    - cron: '13 9 * * *'
+    # 하루 3편 (2026-10-10 로이 확정) — KST 00:07 / 08:07 / 16:07
+    # kind 로 어떤 편인지 구분한다.
+    #   midnight → 명언 우화 (기존)
+    #   morning  → 나스닥 시총 TOP 10 성공이유
+    #   afternoon→ 사업가 마인드
+    - cron: '7 16 * * *'   # KST 00:07 (UTC 16:07 전날)
+    - cron: '7 23 * * *'   # KST 08:07 (UTC 23:07 전날)
+    - cron: '7 7 * * *'    # KST 16:07 (UTC 07:07)
   workflow_dispatch:
     inputs:
+      kind:
+        description: 'fable=명언우화 / stocks=나스닥TOP10 / biz=사업가마인드'
+        required: false
+        default: 'fable'
+        type: choice
+        options:
+          - 'fable'
+          - 'stocks'
+          - 'biz'
       no_publish:
         description: 'true 면 제작만(미발행) — 테스트용. 기본 false(발행).'
         required: false
@@ -41,7 +54,9 @@ permissions:
   contents: write           # 마커 커밋/푸시용
 
 concurrency:
-  group: fable-production
+  # 하루 3편이므로 슬롯별로 분리해 서로 대기시키지 않게 한다.
+  # (직렬로 쌓이면 하루치 작업이 다음 슬롯에 밀려 연쇄 지연이 난다)
+  group: fable-production-${{ github.event.inputs.kind || github.run_id }}
   cancel-in-progress: false
 
 jobs:
@@ -124,6 +139,22 @@ jobs:
           TODAY="$(date +%Y-%m-%d)"
           TARGET="${{ inputs.date }}"
           [ -z "$TARGET" ] && TARGET="$TODAY"
+
+          # 장르 판별 (2026-10-10) — dispatch 의 inputs.kind 우선,
+          # cron 이면 현재 KST 시각으로 슬롯을 판단한다.
+          KIND="${{ inputs.kind }}"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            [ -z "$KIND" ] && KIND="fable"
+          else
+            # cron 지연이 최대 수 시간 있어 ±3시간 창으로 판별한다.
+            H=$(date +%-H)
+            case "$H" in
+              21|22|23|0|1) KIND="fable" ;;      # KST 00:07 슬롯
+              6|7|8|9|10)   KIND="stocks" ;;     # KST 08:07 슬롯
+              *)            KIND="biz" ;;        # KST 16:07 슬롯
+            esac
+          fi
+
           # workflow_dispatch + no_publish=true 면 제작만
           MODE="publish"
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] \
@@ -133,21 +164,30 @@ jobs:
           echo "today=$TODAY"    >> "$GITHUB_OUTPUT"
           echo "target=$TARGET"  >> "$GITHUB_OUTPUT"
           echo "mode=$MODE"      >> "$GITHUB_OUTPUT"
+          echo "kind=$KIND"      >> "$GITHUB_OUTPUT"
           echo "event=${{ github.event_name }}" >> "$GITHUB_OUTPUT"
           echo "---"
           echo "KST today : $TODAY"
           echo "target    : $TARGET"
+          echo "kind      : $KIND"
           echo "mode      : $MODE"
           echo "event     : ${{ github.event_name }}"
 
       - name: Produce & publish fable
         run: |
+          KIND="${{ steps.plan.outputs.kind }}"
+          KIND_ARG=""
+          if [ "$KIND" != "fable" ]; then
+            KIND_ARG="--kind $KIND"
+          fi
           if [ "${{ steps.plan.outputs.mode }}" = "no-publish" ]; then
-            echo "mode: produce only (test)"
-            python -m src.main run-fable --date "${{ steps.plan.outputs.target }}" --no-publish
+            echo "mode: produce only (test), kind=$KIND"
+            python -m src.main run-fable --date "${{ steps.plan.outputs.target }}" \
+              --no-publish $KIND_ARG
           else
-            echo "mode: produce + publish"
-            python -m src.main run-fable --date "${{ steps.plan.outputs.target }}"
+            echo "mode: produce + publish, kind=$KIND"
+            python -m src.main run-fable --date "${{ steps.plan.outputs.target }}" \
+              $KIND_ARG
           fi
 
       - name: Commit markers
@@ -157,8 +197,16 @@ jobs:
           git add data/quotes_used.json data/youtube_uploads.json data/performance.xlsx 2>/dev/null || true
           git add data/source_log.xlsx data/error_log.jsonl 2>/dev/null || true
           git add "data/fables/${{ steps.plan.outputs.target }}/" 2>/dev/null || true
+          # 장르가 붙으면 날짜 폴더에 suffix 가 붙는다 (예: 2026-10-17-stocks)
+          K="${{ steps.plan.outputs.kind }}"
+          if [ "$K" != "fable" ]; then
+            git add "data/fables/${{ steps.plan.outputs.target }}-$K/" 2>/dev/null || true
+            git add -f "data/fables/${{ steps.plan.outputs.target }}-$K/credits.jsonl" 2>/dev/null || true
+          else
+            git add -f "data/fables/${{ steps.plan.outputs.target }}/credits.jsonl" 2>/dev/null || true
+          fi
           git diff --staged --quiet \
-            || git commit -m "chore(markers): fable ${{ steps.plan.outputs.target }} [skip ci]"
+            || git commit -m "chore(markers): fable ${{ steps.plan.outputs.target }} ($K) [skip ci]"
           # 2026-10-08 실측: 수동 실행 중 로이가 push 하면 non-fast-forward 로 실패한다.
           # → 로컬 커밋을 먼저 받아 합친 뒤 push 한다(rebase).
           git pull --rebase --autostash origin main || true

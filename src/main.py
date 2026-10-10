@@ -393,12 +393,80 @@ def fable_publish(date: str | None = None) -> None:
     print(f"[fable-publish] 마커: {marker}")
 
 
+def _run_fable_kind(kind: str, mock: bool = False,
+                    no_publish: bool = False,
+                    date: str | None = None) -> None:
+    """장르별 파이프라인 (stocks / biz) — story 생성 → 렌더 → 발행.
+
+    ⚠️ 폴더 규칙: `fable.story_dir()` 는 `data/fables/<date>` 만 만든다.
+    장르별로 날짜 폴더를 분리하려면 story['date'] 에 suffix 를 넣어야
+    렌더/발행 경로가 일치한다 (예: '2026-10-17' → '2026-10-17-stocks').
+    """
+    from src import fable, fablevideo
+    from src.error_log import log_error
+
+    today = date or datetime.now().strftime("%Y-%m-%d")
+    suffix = f"-{kind}"
+    sdate = today if today.endswith(suffix) else f"{today}{suffix}"
+
+    print(f"[run-fable] 장르={kind} 날짜={sdate}")
+
+    # 1) 대본 생성
+    story_path = fable.story_dir(DATA, sdate) / "story.json"
+    if story_path.exists():
+        print(f"[run-fable] story.json 존재 — 생성 생략")
+        story = json.loads(story_path.read_text(encoding="utf-8"))
+    elif kind == "stocks":
+        from src import stock_story
+        story = stock_story.generate(date=sdate, mock=mock)
+    elif kind == "biz":
+        from src import biz_story
+        story = biz_story.generate(date=sdate, mock=mock)
+    else:
+        print(f"[run-fable] 알 수 없는 kind='{kind}' — 기본 우화로 처리")
+        run_fable(mock=mock, no_publish=no_publish, date=date)
+        return
+
+    sdir = fable.story_dir(DATA, sdate)
+    sdir.mkdir(parents=True, exist_ok=True)
+    story_path.write_text(json.dumps(story, ensure_ascii=False, indent=1),
+                          encoding="utf-8")
+
+    # 2) 렌더 (4개 언어)
+    for lg in fable.LANGS:
+        mp4 = sdir / f"fable_{lg}.mp4"
+        if mp4.exists() and mp4.stat().st_size > 100000:
+            print(f"[run-fable] {lg} 이미 렌더됨 — 스킵")
+            continue
+        try:
+            out = fablevideo.make_fable(lg, story, DATA)
+            print(f"[run-fable] {lg} 렌더 완료: {out.name}")
+        except Exception as e:  # noqa: BLE001
+            log_error(DATA, f"fable-video:{kind}:{lg}", str(e)[:400])
+            print(f"[run-fable] {lg} 렌더 실패: {e}")
+
+    # 3) 발행 — 기존 fable_publish 를 date=sdate 로 재사용한다.
+    #    (IG/YT 토큰·중복 방지·크레딧 삽입 로직이 이미 전부 들어 있다)
+    if no_publish or mock:
+        print("[run-fable] 발행 생략 (no-publish / mock)")
+        return
+    fable_publish(date=sdate)
+    print(f"[run-fable] 장르={kind} 파이프라인 종료")
+
+
 def run_fable(mock: bool = False, no_publish: bool = False,
-              date: str | None = None) -> None:
+              date: str | None = None, kind: str = "fable") -> None:
     """우화 쇼츠 전체 파이프라인 — 각 단계 마커로 재실행 안전.
 
-    date 를 주면 그 날짜의 우화를 다룬다 (보강 발행용).
+    date 를 주면 그날의 우화를 다룬다 (보강 발행용).
+    kind (2026-10-10 추가):
+      fable  — 명언 기반 우화 (기본값, 기존 동작)
+      stocks — 나스닥 시총 TOP 10 의 성공 이유
+      biz    — 사업가 마인드
     """
+    if kind and kind != "fable":
+        _run_fable_kind(kind, mock=mock, no_publish=no_publish, date=date)
+        return
     fable_story(mock=mock, date=date)
     fable_video(mock=mock, date=date)
     if not no_publish and not mock:
@@ -454,6 +522,9 @@ def main() -> None:
     p_fable.add_argument("--no-publish", action="store_true")
     p_fable.add_argument("--date", default=None,
                          help="스토리 날짜(YYYY-MM-DD) — 기본은 오늘(KST)")
+    p_fable.add_argument("--kind", default="fable",
+                         choices=["fable", "stocks", "biz"],
+                         help="fable=명언우화 / stocks=나스닥TOP10 / biz=사업가마인드")
 
     sub.add_parser("schedule")
     args = ap.parse_args()
@@ -474,7 +545,8 @@ def main() -> None:
     elif args.cmd == "fable-publish":
         fable_publish(date=args.date)
     elif args.cmd == "run-fable":
-        run_fable(mock=args.mock, no_publish=args.no_publish, date=args.date)
+        run_fable(mock=args.mock, no_publish=args.no_publish,
+                  date=args.date, kind=args.kind)
     elif args.cmd == "schedule":
         from src import scheduler
         scheduler.start(lambda c: run_cycle(c), lambda: collect_metrics(),
