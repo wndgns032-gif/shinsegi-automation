@@ -36,6 +36,8 @@ sys.path.insert(0, str(ROOT))
 
 from src import fable  # noqa: E402
 from src.fablevideo import IMG_H, IMG_W, _to_monochrome  # noqa: E402
+from src import photostock as ps  # noqa: E402  (2026-10-10)
+import random  # noqa: E402
 
 # 검사 임계값
 SAT_MAX = 8.0          # RGB 채널 평균 편차 — 흑백이면 < 8 (세피아톤6~7)
@@ -180,10 +182,13 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
         #   Pollinations 만 쓰면 쿼터(402)로 재생성 실패하고,
         #   이미지 출처가 어긋나 폴백으로 대체돼 있었다(실측 4/10 실패).
         #   → 먼저 photostock.fetch_photo 로 시도하고, 실패하면 아래로 fallback.
+        #
+        # ⚠️ import 를 함수 안에서 하면 파이썬이 같은 이름의 전역 임포트
+        #    (_to_monochrome 등) 를 **지역 변수** 로 취급해
+        #    UnboundLocalError 가 난다(2026-10-10 실측).
+        #    → 모듈 상단으로 import 를 모두 올려 여기선 참조만 한다.
         if story.get("stock_company") or os.getenv("FABLE_IMG_STOCK", "on").lower() != "off":
             try:
-                import random as _rnd
-                from src import photostock as ps
                 cr = images_dir.parent / "credits.jsonl"
                 used = set()
                 if cr.exists():
@@ -194,7 +199,7 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
                             pass
                 tmp = images_dir / f"_regen{n}.jpg"
                 credit = ps.fetch_photo(
-                    base, tmp, rng=_rnd.Random(seed_base + n * 137),
+                    base, tmp, rng=random.Random(seed_base + n * 137),
                     exclude_titles=used)
                 if credit:
                     ps.photo_to_sketch(tmp, dest, target_w=IMG_W,
