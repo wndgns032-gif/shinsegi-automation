@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-17",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "laotzu-thousand-miles",
+    "author": {
+      "en": "Lao Tzu",
+      "ko": "노자",
+      "zh-cn": "老子",
+      "fr": "Lao Tseu"
+    },
+    "text": {
+      "en": "A journey of a thousand miles begins with a single step.",
+      "ko": "천 리 길도 한 걸음에서 시작된다.",
+      "zh-cn": "千里之行，始于足下。",
+      "fr": "Un voyage de mille lieues commence toujours par un premier pas."
+    }
+  },
+  "title": {
+    "ko": "천 리 길도 한 걸음부터",
+    "en": "A Thousand Miles Starts With One Step",
+    "zh-cn": "千里之行，始于足下",
+    "fr": "Mille lieues, un seul pas"
+  },
+  "caption": {
+    "ko": "천 리 길도 한 걸음부터\n두더지가 언덕을 뚫고 빛을 만나기까지, 매일 한 줌씩 팠습니다. 당신의 첫 한 걸음은 무엇인가요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "A Thousand Miles Starts With One Step\nA mole dug through a hill one pawful at a time. What's your first step today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "千里之行，始于足下\n一只鼹鼠每天挖一点，终于挖穿了土坡。你今天的第一步是什么？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "Mille lieues, un seul pas\nUne taupe a creusé la colline poignée par poignée. Et ton premier pas, c'est quoi ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "계획만 세우지 마라.",
+        "지금 당장 첫 한 걸음을 떼라."
+      ],
+      "en": [
+        "Stop making plans you never start.",
+        "Take the first step right now."
+      ],
+      "zh-cn": [
+        "别再只做计划了。",
+        "现在就走第一步。"
+      ],
+      "fr": [
+        "Arrête de faire des plans.",
+        "Fais le premier pas maintenant."
+      ]
+    },
+    "highlight": {
+      "ko": "첫 한 걸음",
+      "en": "first step",
+      "zh-cn": "第一步",
+      "fr": "premier pas"
+    }
+  },
+  "moral": {
+    "ko": "준비될 때까지 기다리지 말고, 오늘 한 걸음만 떼세요.",
+    "en": "Stop waiting until you're ready, and take one step today.",
+    "zh-cn": "别等准备好了，今天就走出第一步。",
+    "fr": "Arrête d'attendre d'être prêt, et fais un pas aujourd'hui."
+  },
+  "characters": "a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole standing alone at the mouth of a dirt tunnel on a hillside, side view, wide shot, full body visible, empty sky ahead, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "천 리 길도 한 걸음에서 시작된다. — 노자.",
+        "en": "A journey of a thousand miles begins with a single step. — Lao Tzu.",
+        "zh-cn": "千里之行，始于足下. — 老子.",
+        "fr": "Un voyage de mille lieues commence toujours par un premier pas. — Lao Tseu."
+      },
+      "subtitle": {
+        "ko": "천 리 길도 한 걸음부터",
+        "en": "A thousand miles starts with one step",
+        "zh-cn": "千里之行，始于足下",
+        "fr": "Mille lieues commencent par un pas"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole standing at the start of a long dirt path, looking forward, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "계획만 세우지 마라. 지금 당장 첫 한 걸음을 떼라",
+        "en": "Stop making plans you never start. Take the first step right now",
+        "zh-cn": "别再只做计划了。现在就走第一步",
+        "fr": "Arrête de faire des plans. Fais le premier pas maintenant"
+      },
+      "subtitle": {
+        "ko": "지금 첫 걸음",
+        "en": "First step, now",
+        "zh-cn": "现在就走",
+        "fr": "Premier pas, maintenant"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole digging into the base of a grassy hill, front paws pushing dirt, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "두더지 한 마리가 마음먹었어요. 언덕을 뚫고 저쪽을 보기로요.",
+        "en": "A mole made up its mind. It would dig through the hill and see the other side.",
+        "zh-cn": "一只鼹鼠下定了决心。要挖穿这座土坡，去看看另一头。",
+        "fr": "Une taupe s'est mise en tête de creuser la colline. Pour voir de l'autre côté."
+      },
+      "subtitle": {
+        "ko": "언덕 너머로",
+        "en": "Through the hill",
+        "zh-cn": "挖穿土坡",
+        "fr": "Creuser la colline"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole sitting in a dirt tunnel facing a big round boulder, paws resting on the ground, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "사흘째, 앞을 막는 돌을 만났어요. 발이 아프고, 그만두고 싶었죠.",
+        "en": "Three days in, a boulder blocked the way. Its paws ached. It wanted to quit.",
+        "zh-cn": "第三天，一块大石头挡住了路。爪子疼，它想放弃。",
+        "fr": "Trois jours après, un gros caillou a bloqué le chemin. Les pattes lui faisaient mal. Elle voulait arrêter."
+      },
+      "subtitle": {
+        "ko": "가로막힌 돌",
+        "en": "A rock in the way",
+        "zh-cn": "石头挡路",
+        "fr": "Un caillou bloque"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole in a dirt tunnel looking at a narrow gap beside a big boulder, water dripping through the gap, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그때 비가 내렸어요. 돌 옆 틈으로 물이 스며들었죠.",
+        "en": "Then it rained. Water seeped through a gap beside the rock.",
+        "zh-cn": "后来下了一场雨。水从石头旁边的缝里渗进来。",
+        "fr": "Puis la pluie est arrivée. L'eau est passée par une fente, à côté du caillou."
+      },
+      "subtitle": {
+        "ko": "돌 옆의 틈",
+        "en": "Water finds a gap",
+        "zh-cn": "石缝渗水",
+        "fr": "L'eau passe à côté"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole digging inside a dirt tunnel, one pawful of soil at a time, small pile of dirt behind it, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그래서 한 줌씩 팠어요. 하루도 빠짐없이, 아주 조금씩.",
+        "en": "So it dug one pawful at a time. Every day, no matter how small.",
+        "zh-cn": "那就一爪一爪地挖。每天都挖，再少也算。",
+        "fr": "Alors elle a creusé, une poignée à la fois. Tous les jours, même un tout petit peu."
+      },
+      "subtitle": {
+        "ko": "하루 한 줌",
+        "en": "One pawful a day",
+        "zh-cn": "每天一爪",
+        "fr": "Une poignée par jour"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole stepping out of a tunnel opening into an open meadow, tall grass ahead, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "어느 날, 발끝으로 빛이 들어왔어요. 두더지가 언덕 너머에 섰죠.",
+        "en": "Then light came through. The mole stepped out on the other side.",
+        "zh-cn": "有一天，光透了进来。鼹鼠从另一头钻了出去。",
+        "fr": "Un matin, la lumière est entrée. La taupe est sortie de l'autre côté."
+      },
+      "subtitle": {
+        "ko": "언덕 너머 도착",
+        "en": "Light breaks through",
+        "zh-cn": "光透进来了",
+        "fr": "La lumière entre"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "한 여자는 매일 새벽 다섯 시에 일어나 한 페이지를 썼어요. 삼 년 뒤 그 책이 서점에 놓였죠. 그 여자도 첫날엔 당신과 같았어요.",
+        "en": "One woman got up at five every morning and wrote one page before work. Three years later, her book was in stores. She started out just like you.",
+        "zh-cn": "有个女人每天早上五点起床，上班前写一页。三年后，她的书摆进了书店。她刚开始时，和你一样。",
+        "fr": "Une femme se levait à cinq heures chaque matin et écrivait une page avant le boulot. Trois ans après, son livre est sorti en librairie. Elle a commencé comme toi."
+      },
+      "subtitle": {
+        "ko": "새벽 5시, 한 페이지",
+        "en": "5 a.m., one page, three years",
+        "zh-cn": "五点起床，一页",
+        "fr": "5 h, une page, trois ans"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man sitting on the edge of a bed at night, phone face down on a nightstand, notebook on his knees, pen in hand, side view, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "당신도 오늘 밤 30분을 비워라. 핸드폰을 엎어 두고 한 줄만 써라.",
+        "en": "Block thirty minutes tonight. Flip your phone over and write one line.",
+        "zh-cn": "今晚你也腾出三十分钟。把手机扣过去，写下第一行。",
+        "fr": "Bloque trente minutes ce soir. Retourne ton téléphone et écris une ligne."
+      },
+      "subtitle": {
+        "ko": "오늘 밤 30분",
+        "en": "30 minutes tonight",
+        "zh-cn": "今晚腾出三十分钟",
+        "fr": "Trente minutes ce soir"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, a small mole standing at the top of a hill at the end of a long dirt path, open sky ahead, side view, wide shot, full body visible, a mole, a small burrowing mammal, long pointed snout, tiny eyes, wide paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "준비될 때까지 기다리지 말고, 오늘 한 걸음만 떼세요.",
+        "en": "Stop waiting until you're ready, and take one step today.",
+        "zh-cn": "别等准备好了，今天就走出第一步。",
+        "fr": "Arrête d'attendre d'être prêt, et fais un pas aujourd'hui."
+      },
+      "subtitle": {
+        "ko": "오늘 한 걸음",
+        "en": "One step today",
+        "zh-cn": "今天就走出第一步",
+        "fr": "Un pas aujourd'hui"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
