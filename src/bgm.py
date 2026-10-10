@@ -228,14 +228,22 @@ def mix(src: Path, dst: Path, duration: float, bgm: Path | None,
     out_st = t - 0.05
 
     vpart = f"[0:v]{video_vf}[vout]" if video_vf else "[0:v]null[vout]"
+    # ⭐ 2026-10-10 로이 피드백 ("사진 퀄리티와 TTS 소리가 달라"):
+    #   참고 채널(인생지혜) 대비 우리 피크 볼륨이 0.071 → 12배 작았다.
+    #   원인은 로컬 TTS(Supertonic/Kokoro) 출력이 조용하고,
+    #   BGM(0.18) 앞에 묻혀 낭독이 들리지 않았다.
+    # → loudnorm 으로 **낭독 트랙을 EBU R128 기준(-16 LUFS)으로 정규화**한다.
+    #   normalize=0 (amix) 이라 BGM 볼륨은 그대로 두고 voice 만 올린다.
     fc = (
-        f"[0:a]aformat=fltp,aresample={SR},asplit=2[vo][sc];"
+        f"[0:a]aformat=fltp,aresample={SR},"
+        f"loudnorm=I=-16:TP=-1.5:LRA=11,asplit=2[vo][sc];"
         f"[1:a]aformat=fltp,aresample={SR},atrim=0:{t:.2f},"
         f"volume={vol:.3f},highpass=f=110,lowpass=f=7200,"
         f"afade=t=in:st=0:d=1.2,afade=t=out:st={fade_out_st:.2f}:d=1.6[bg];"
         f"[bg][sc]sidechaincompress=threshold=0.030:ratio=8:attack=20:"
         f"release=350:makeup=1[bgd];"
-        f"[vo][bgd]amix=inputs=2:duration=first:normalize=0[aout]"
+        f"[vo][bgd]amix=inputs=2:duration=first:normalize=0,"
+        f"loudnorm=I=-14:TP=-1.0:LRA=11[aout]"
     )
     cmd = [_ffmpeg_exe(), "-y", "-i", str(src), "-stream_loop", "-1", "-i", str(bgm),
            "-filter_complex", f"{vpart};{fc}",

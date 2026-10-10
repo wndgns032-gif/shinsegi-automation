@@ -29,6 +29,8 @@ W, H = 1080, 1920                 # 최종 출력
 FPS = 30
 RENDER_W, RENDER_H = 2160, 3840    # 켄번스 소스 배율 (2x)
 IMG_W, IMG_H = 1152, 2048          # Pollinations 요청 크기 (9:16)
+# 3분할 포스터 레아웃 (2026-10-10 참고 채널 분석)
+FG_RENDER_W = 1360         # 3분할 레아웃 중앙 영역(2160의 63%)
 XFADE = 0.55                      # 장면 전환 크로스페이드(초)
 WATERMARK_CROP = 0.92             # 하단 워터마크 잘라내기 (상위 92%)
 SCENE_PAD = 0.35                  # 장면당 낭독 뒤 여유(초)
@@ -707,10 +709,33 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
         ch2 = min(ch, int(iw / ratio))
         cw = min(iw, int(ch2 * ratio))
         x_off = (iw - cw) // 2
-        vf = (f"crop={cw}:{ch2}:{x_off}:0,"
-              f"scale={RENDER_W}:{RENDER_H}:force_original_aspect_ratio=increase,"
-              f"crop={RENDER_W}:{RENDER_H},"
-              f"{_motion(i, frames)},format=yuv420p")
+        # ⭐ 2026-10-10: 참고 채널 분석 결과 반영.
+        #   FABLE_POSTER=on 이면 좌우를 흐린 크롭으로 채우는 3분할 레아웃.
+        #   흰 여백이 큰 실사 사진에서 화면이 비어 보이는 문제를 해결한다.
+        poster = os.getenv("FABLE_POSTER", "on").lower() != "off"
+        if poster:
+            # 좌우 블러 배경 + 중앙 원본
+            # ⭐ hstack 을 쓴다. overlay 는 입력이 2개라 3분할 불가
+            #   ("Too many inputs specified for the overlay filter" — 실측).
+            post = (
+                f"split=3[bA][bB][fg];"
+                f"[bA]scale={RENDER_W}:{RENDER_H}:force_original_aspect_ratio=increase,"
+                f"crop={RENDER_W}:{RENDER_H},gblur=sigma=40,"
+                f"eq=brightness=-0.08[b1];"
+                f"[bB]scale={RENDER_W}:{RENDER_H}:force_original_aspect_ratio=increase,"
+                f"crop={RENDER_W}:{RENDER_H},gblur=sigma=40,"
+                f"eq=brightness=-0.20[b2];"
+                f"[fg]crop={cw}:{ch2}:{x_off}:0,"
+                f"scale={FG_RENDER_W}:{RENDER_H},setsar=1[fgc];"
+                f"[b1][fgc][b2]hstack=inputs=3,"
+                f"{_motion(i, frames)},format=yuv420p"
+            )
+            vf = post
+        else:
+            vf = (f"crop={cw}:{ch2}:{x_off}:0,"
+                  f"scale={RENDER_W}:{RENDER_H}:force_original_aspect_ratio=increase,"
+                  f"crop={RENDER_W}:{RENDER_H},"
+                  f"{_motion(i, frames)},format=yuv420p")
         _run([ffmpeg, "-y", "-loop", "1", "-framerate", str(FPS), "-i", str(img),
               "-i", str(mp3), "-filter_complex",
               f"[0:v]{vf}[v];[1:a]apad=whole_dur={dur:.2f}[a]",
