@@ -1,234 +1,214 @@
 {
-  "date": "2026-10-10",
-  "theme": "attitude",
-  "theme_label": "인생의 철학과 태도",
-  "quote": {
-    "id": "teresa-small-things",
-    "author": {
-      "en": "Mother Teresa",
-      "ko": "마더 테레사",
-      "zh-cn": "特蕾莎修女",
-      "fr": "Mère Teresa"
-    },
-    "text": {
-      "en": "We cannot all do great things, but we can do small things with great love.",
-      "ko": "우리는 위대한 일을 할 수 없다. 다만 작은 일을 위대한 사랑으로 할 수 있다.",
-      "zh-cn": "我们无法做伟大的事，只能用伟大的爱去做小事。",
-      "fr": "Nous ne pouvons pas tous faire de grandes choses, mais nous pouvons faire de petites choses avec un grand amour."
-    }
+ "type": "json_object",
+ "title": {
+  "ko": "아마존은 왜 이겼나 — 쇼핑·구독·클라우드 3중 엔진",
+  "en": "Why Amazon Won — The Three-Engine Machine",
+  "zh-cn": "亚马逊为什么赢 —— 购物、订阅、云的三重引擎",
+  "fr": "Pourquoi Amazon gagne — la machine à trois moteurs"
+ },
+ "caption": {
+  "ko": "시총 2.83조 달러, 나스닥 6위. 아마존의 성공 공식을 9장면으로 뜯어봤다.",
+  "en": "2.83 trillion dollars in market cap, sixth on the Nasdaq. Amazon's success formula in 9 scenes.",
+  "zh-cn": "市值2.83万亿美元，纳斯达克第六。用9个画面拆解亚马逊的成功公式。",
+  "fr": "2 830 milliards de dollars de capitalisation, sixième du Nasdaq. La formule Amazon en 9 scènes."
+ },
+ "hook": {
+  "lines": {
+   "ko": [
+    "쇼핑몰 회사가 시총 2.83조 달러다.",
+    "아마존은 어떻게 여기까지 왔나."
+   ],
+   "en": [
+    "A shopping site worth 2.83 trillion dollars.",
+    "How did Amazon get here?"
+   ],
+   "zh-cn": [
+    "一家购物网站，市值2.83万亿美元。",
+    "亚马逊是怎么走到今天的？"
+   ],
+   "fr": [
+    "Un site de shopping à 2 830 milliards de dollars.",
+    "Comment Amazon en est-il arrivé là ?"
+   ]
   },
-  "title": {
-    "ko": "작은 일, 큰 사랑",
-    "en": "Small Things, Great Love",
-    "zh-cn": "小事，大爱",
-    "fr": "Les petites choses, avec amour"
+  "highlight": {
+   "ko": "2.83조 달러",
+   "en": "2.83 trillion dollars",
+   "zh-cn": "2.83万亿美元",
+   "fr": "2 830 milliards de dollars"
+  }
+ },
+ "moral": {
+  "ko": "성공은 한 번의 판매가 아니라 서로를 키우는 구조에서 나온다.",
+  "en": "Success comes not from one sale, but from a structure that feeds itself.",
+  "zh-cn": "成功不来自一次成交，而来自互相喂养的结构。",
+  "fr": "Le succès ne vient pas d'une vente, mais d'une structure qui se nourrit elle-même."
+ },
+ "cta": {
+  "ko": "오늘 아마존의 부문별 매출 비중을 직접 찾아봐라.",
+  "en": "Go look up Amazon's revenue split by segment today.",
+  "zh-cn": "今天就去查亚马逊各分部的营收占比。",
+  "fr": "Cherchez dès aujourd'hui la répartition du chiffre d'affaires d'Amazon par segment."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "ko": "오늘의 회사, 아마존",
+    "en": "Today's company: Amazon",
+    "zh-cn": "今天的公司：亚马逊",
+    "fr": "La société du jour : Amazon"
+   },
+   "narration": {
+    "ko": "오늘 다룰 회사는 아마존이다. 티커는 AMZN, 나스닥에서 시총 6위에 올라 있는 회사다.",
+    "en": "Today's company is Amazon. Ticker AMZN, and it sits at number six on the Nasdaq by market cap.",
+    "zh-cn": "今天讲的是亚马逊。代码AMZN，市值排在纳斯达克第六。",
+    "fr": "La société du jour, c'est Amazon. Ticker AMZN, sixième capitalisation du Nasdaq."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, corporate headquarters building exterior"
   },
-  "caption": {
-    "ko": "작은 일, 큰 사랑\n제일 긴 굴을 파려던 두더지는 무너진 굴 앞에서 무엇을 알았을까요? 오늘 당신이 사랑으로 할 수 있는 작은 일 하나는 무엇인가요?\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
-    "en": "Small Things, Great Love\nA mole tried to dig the longest tunnel in the forest and lost it in the rain. What small thing will you do with love today?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
-    "zh-cn": "小事，大爱\n一只想挖出森林最长地道的鼹鼠，在一场雨里全塌了。今天你能带着爱做的那件小事是什么？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
-    "fr": "Les petites choses, avec amour\nUne taupe voulait creuser le plus long tunnel de la forêt, et la pluie a tout emporté. Quelle petite chose feras-tu avec amour aujourd'hui ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  {
+   "act": "scale",
+   "subtitle": {
+    "ko": "숫자로 본 크기",
+    "en": "The size in numbers",
+    "zh-cn": "用数字看体量",
+    "fr": "La taille en chiffres"
+   },
+   "narration": {
+    "ko": "시총은 2.83조 달러다. 나스닥 전체 6위, 현재 주가는 262.43달러. 3년 동안 주가는 80% 올랐다.",
+    "en": "Market cap is 2.83 trillion dollars, sixth on the Nasdaq. The stock trades at 262.43 dollars, up 80% over three years.",
+    "zh-cn": "市值2.83万亿美元，纳斯达克第六。股价262.43美元，三年上涨80%。",
+    "fr": "2 830 milliards de dollars de capitalisation, sixième du Nasdaq. L'action vaut 262,43 dollars, en hausse de 80% sur trois ans."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, aerial view city skyline skyscrapers"
   },
-  "hook": {
-    "lines": {
-      "ko": [
-        "위대한 일만 기다리지 마라.",
-        "지금 작은 일 하나를 해라."
-      ],
-      "en": [
-        "Stop waiting for something great.",
-        "Pick one small thing and do it now."
-      ],
-      "zh-cn": [
-        "别再等大事了。",
-        "现在就做一件小事。"
-      ],
-      "fr": [
-        "Arrête d'attendre les grandes choses.",
-        "Fais une petite chose, maintenant."
-      ]
-    },
-    "highlight": {
-      "ko": "작은 일",
-      "en": "small thing",
-      "zh-cn": "小事",
-      "fr": "petite chose"
-    }
+  {
+   "act": "what",
+   "subtitle": {
+    "ko": "무엇을 파는가",
+    "en": "What it actually sells",
+    "zh-cn": "到底卖什么",
+    "fr": "Ce qu'elle vend vraiment"
+   },
+   "narration": {
+    "ko": "아마존이 파는 것은 세 가지다. 온라인 쇼핑몰과 클라우드 사업, 그리고 Prime 구독이다. 이 셋이 회사의 뼈대다.",
+    "en": "Amazon sells three things. An online store, a cloud business, and a Prime subscription. Those three are the skeleton of the company.",
+    "zh-cn": "亚马逊卖三样东西。线上商城、云计算，还有Prime订阅。这三样就是公司的骨架。",
+    "fr": "Amazon vend trois choses. Une boutique en ligne, le cloud, et l'abonnement Prime. Ces trois-là forment la structure."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, modern factory production line"
   },
-  "moral": {
-    "ko": "위대한 일을 기다리지 마라. 오늘, 작은 일 하나를 사랑으로 해라.",
-    "en": "Don't wait for something great. Do one small thing today, and do it with love.",
-    "zh-cn": "别等大事了。今天就带着爱，做一件小事。",
-    "fr": "N'attends pas les grandes choses. Fais une petite chose aujourd'hui, avec amour."
+  {
+   "act": "why",
+   "subtitle": {
+    "ko": "왜 잘 팔렸나",
+    "en": "Why it sold",
+    "zh-cn": "为什么卖得动",
+    "fr": "Pourquoi ça a marché"
+   },
+   "narration": {
+    "ko": "Prime 구독이 반복 소비를 만들었다. 배송과 콘텐츠를 묶어 고객을 붙잡았고, 그 반복이 매출을 키웠다.",
+    "en": "Prime turned one purchase into a habit. Bundling shipping and content locked customers in, and that repetition built the revenue.",
+    "zh-cn": "Prime把一次性购买变成了习惯。配送和内容绑在一起锁住用户，重复消费撑起营收。",
+    "fr": "Prime a transformé l'achat en habitude. Livraison et contenus retiennent le client, et cette répétition fait le chiffre d'affaires."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, retail store customers shopping"
   },
-  "characters": "a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws",
-  "cta": {
-    "en": "Follow @shinsegi.en — a new story every day",
-    "ko": "매일 새로운 이야기 @shinsegi.kr",
-    "zh-cn": "每天一个新故事 @shinsegi.zh",
-    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  {
+   "act": "risk",
+   "subtitle": {
+    "ko": "흔들린 시간",
+    "en": "The shaky stretch",
+    "zh-cn": "动摇的时期",
+    "fr": "La période de doute"
+   },
+   "narration": {
+    "ko": "성장이 멈춘 것처럼 보인 구간도 있었다. 3년 +80%라는 숫자 안에도 흔들린 시간이 들어 있다.",
+    "en": "There were stretches when growth looked stalled. Inside that 80% gain sit years of doubt.",
+    "zh-cn": "也有过看起来停滞的阶段。那80%的涨幅里，藏着怀疑的年份。",
+    "fr": "Il y a eu des périodes où la croissance semblait à l'arrêt. Dans ces 80%, il y a des années de doute."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, empty industrial warehouse interior"
   },
-  "scenes": [
-    {
-      "act": "quote",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole sitting quietly at the edge of a forest path at dawn, looking up at the tall trees, mist drifting between trunks, wide shot, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "우리는 위대한 일을 할 수 없다. 다만 작은 일을 위대한 사랑으로 할 수 있다. — 마더 테레사.",
-        "en": "We cannot all do great things, but we can do small things with great love. — Mother Teresa.",
-        "zh-cn": "我们无法做伟大的事，只能用伟大的爱去做小事. — 特蕾莎修女.",
-        "fr": "Nous ne pouvons pas tous faire de grandes choses, mais nous pouvons faire de petites choses avec un grand amour. — Mère Teresa."
-      },
-      "subtitle": {
-        "ko": "작은 일을 위대한 사랑으로",
-        "en": "Small things, great love",
-        "zh-cn": "用伟大的爱做小事",
-        "fr": "De petites choses, avec un grand amour"
-      }
-    },
-    {
-      "act": "hook",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole standing still at the mouth of a small tunnel, facing forward, forest path and ferns behind, morning light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "위대한 일만 기다리지 마라. 지금 작은 일 하나를 해라",
-        "en": "Stop waiting for something great. Pick one small thing and do it now",
-        "zh-cn": "别再等大事了。现在就做一件小事",
-        "fr": "Arrête d'attendre les grandes choses. Fais une petite chose, maintenant"
-      },
-      "subtitle": {
-        "ko": "작은 일 하나를 해라",
-        "en": "Do one small thing now.",
-        "zh-cn": "现在做一件小事",
-        "fr": "Fais une petite chose, maintenant."
-      }
-    },
-    {
-      "act": "fable",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole digging fast at the base of a big boulder on a forest path, soil flying behind him, ferns and moss around, morning light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "두더지가 마음을 먹었어요. 숲에서 제일 긴 굴을 혼자 파겠다고요.",
-        "en": "The mole made up his mind. He'd dig the longest tunnel in the whole forest.",
-        "zh-cn": "这只鼹鼠下定决心。要一个人挖出森林里最长的一条地道。",
-        "fr": "La taupe a décidé un truc. Elle creuserait le plus long tunnel de toute la forêt."
-      },
-      "subtitle": {
-        "ko": "제일 긴 굴을 파겠다",
-        "en": "The longest tunnel. Alone.",
-        "zh-cn": "挖最长的一条道",
-        "fr": "Le plus long tunnel"
-      }
-    },
-    {
-      "act": "fable",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole sitting in a pile of loose dirt beside a collapsed tunnel entrance, shoulders low, paws resting on the ground, late morning light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "하루 종일 파 봤지만 굴은 무너졌어요. 두더지는 흙더미에 주저앉았죠.",
-        "en": "He dug all day, and the tunnel caved in. He sat down in the dirt, paws aching.",
-        "zh-cn": "挖了一整天，地道还是塌了。他一屁股坐在土堆上，爪子也疼。",
-        "fr": "Elle a creusé toute la journée, et le tunnel s'est effondré. Elle s'est assise dans la terre, les pattes douloureuses."
-      },
-      "subtitle": {
-        "ko": "굴이 무너졌다",
-        "en": "The tunnel caved in.",
-        "zh-cn": "地道塌了",
-        "fr": "Le tunnel s'effondre"
-      }
-    },
-    {
-      "act": "fable",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole sitting alone at the mouth of a caved-in tunnel in the rain, wet fur, head lowered, overcast afternoon, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "비가 내렸어요. 두더지는 무너진 입구에 앉아 한참 아무 말도 못 했죠.",
-        "en": "Then the rain came. He sat at the mouth of the broken tunnel and said nothing.",
-        "zh-cn": "后来下起了雨。他坐在塌掉的洞口，一句话也没说。",
-        "fr": "Puis la pluie est arrivée. Elle est restée assise devant le tunnel, sans rien dire."
-      },
-      "subtitle": {
-        "ko": "비가 내렸다",
-        "en": "Then the rain came.",
-        "zh-cn": "雨落下来",
-        "fr": "Puis la pluie est arrivée"
-      }
-    },
-    {
-      "act": "fable",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole looking down at a narrow side tunnel where rainwater drains away, a tiny sprout beside the opening, overcast light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "그때 발밑을 봤어요. 예전에 조그맣게 파 둔 길이 빗물을 빼 주고 있었어요.",
-        "en": "Then he looked down. The little side tunnels he'd dug long ago were draining the water away.",
-        "zh-cn": "这时他低头看了看。很久以前挖的那些小岔道，正把雨水引走。",
-        "fr": "C'est là qu'elle a baissé les yeux. Les petits tunnels creusés longtemps avant évacuaient l'eau."
-      },
-      "subtitle": {
-        "ko": "작은 굴이 물을 뺐다",
-        "en": "The small tunnels held.",
-        "zh-cn": "小地道挡住了水",
-        "fr": "Les petits tunnels tenaient"
-      }
-    },
-    {
-      "act": "fable",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, a mole digging slowly and carefully in soft soil, one pawful at a time, a neat small tunnel behind him, evening light, side view, full body visible, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "두더지는 다시 팠어요. 이번엔 아주 느리게, 한 줌씩 정성껏요.",
-        "en": "So he started again. Slow this time, one careful pawful at a time.",
-        "zh-cn": "于是他又开始挖。这次很慢，一小捧一小捧，很认真。",
-        "fr": "Alors elle a recommencé. Doucement, cette fois, une poignée de terre après l'autre."
-      },
-      "subtitle": {
-        "ko": "느리게, 정성껏",
-        "en": "Slow. Careful. Again.",
-        "zh-cn": "慢慢地，认真地",
-        "fr": "Lentement, avec soin"
-      }
-    },
-    {
-      "act": "real",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "한 여자가 매주 일요일마다 국을 끓여 옆집 어른 문 앞에 놓아두었어요. 9년 동안 한 번도 안 거렸죠.",
-        "en": "One woman made soup every Sunday and left it at the door of the old man next door. Nine years, not one skipped week.",
-        "zh-cn": "有位女人每个星期天都煮一锅汤，放在隔壁老人门口。九年，一次没落下。",
-        "fr": "Une femme faisait une soupe chaque dimanche et la laissait devant la porte du vieux voisin. Neuf ans, sans en manquer une."
-      },
-      "subtitle": {
-        "ko": "9년, 한 번도 안 거름",
-        "en": "Nine years. Not one miss.",
-        "zh-cn": "九年，一次没落",
-        "fr": "Neuf ans, jamais raté"
-      }
-    },
-    {
-      "act": "real",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a young man sitting on the floor of a small room at night, writing on a notepad on his knees, one lamp on the floor beside him, quiet, side view, waist up, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "당신에게도 오늘 밤 10분이 있어요. 그 10분을 비워 두고, 작은 일 하나를 정성껏 해라.",
-        "en": "You've got ten minutes tonight. Put them aside and go do one small thing with real care.",
-        "zh-cn": "你今晚也有十分钟。把它空出来，认真做一件小事。",
-        "fr": "Toi aussi, tu as dix minutes ce soir. Réserve-les, et fais une petite chose avec tout ton cœur."
-      },
-      "subtitle": {
-        "ko": "10분, 작은 일 하나",
-        "en": "Ten minutes. One small thing.",
-        "zh-cn": "十分钟，一件事",
-        "fr": "Dix minutes, une chose"
-      }
-    },
-    {
-      "act": "outro",
-      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, the main character standing alone, thinking, looking ahead, full body visible, side view, a mole, a small burrowing mammal, pointed snout, tiny eyes, wide shovel paws, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
-      "narration": {
-        "ko": "위대한 일을 기다리지 마라. 오늘, 작은 일 하나를 사랑으로 해라.",
-        "en": "Don't wait for something great. Do one small thing today, and do it with love.",
-        "zh-cn": "别等大事了。今天就带着爱，做一件小事。",
-        "fr": "N'attends pas les grandes choses. Fais une petite chose aujourd'hui, avec amour."
-      },
-      "subtitle": {
-        "ko": "작은 일, 큰 사랑",
-        "en": "Small things, great love.",
-        "zh-cn": "小事，大爱",
-        "fr": "Petites choses, grand amour"
-      }
-    }
-  ],
-  "naturalness_issues": []
+  {
+   "act": "turn",
+   "subtitle": {
+    "ko": "전환점",
+    "en": "The turning point",
+    "zh-cn": "转折点",
+    "fr": "Le tournant"
+   },
+   "narration": {
+    "ko": "전환점은 클라우드였다. AWS가 이익을 만들고, 그 이익이 다시 소매와 물류를 지탱했다.",
+    "en": "The turning point was the cloud. AWS generated the profit, and that profit carried retail and logistics.",
+    "zh-cn": "转折点是云。AWS赚钱，利润再反哺零售和物流。",
+    "fr": "Le tournant, c'est le cloud. AWS génère le profit, et ce profit porte le commerce et la logistique."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, server room data center corridor"
+  },
+  {
+   "act": "moat",
+   "subtitle": {
+    "ko": "복잡한 경쟁우위",
+    "en": "The complicated moat",
+    "zh-cn": "复杂的护城河",
+    "fr": "Le fossé compliqué"
+   },
+   "narration": {
+    "ko": "쇼핑이 구독을 부르고, 구독이 소비를 늘린다. 그 규모가 다시 클라우드 투자를 감당하는 구조다.",
+    "en": "Shopping feeds the subscription, the subscription feeds more spending. That scale pays for the cloud in turn.",
+    "zh-cn": "购物带来订阅，订阅带来更多消费。规模又养得起云。",
+    "fr": "Le commerce nourrit l'abonnement, l'abonnement nourrit la dépense. Cette échelle finance le cloud."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, network cables connection technology"
+  },
+  {
+   "act": "lesson",
+   "subtitle": {
+    "ko": "배울 교훈",
+    "en": "The lesson",
+    "zh-cn": "教训",
+    "fr": "La leçon"
+   },
+   "narration": {
+    "ko": "교훈은 하나다. 한 개의 사업이 아니라, 서로를 키우는 여러 개의 엔진을 만들어라.",
+    "en": "One lesson. Build several engines that feed each other, not a single business.",
+    "zh-cn": "教训只有一个。不要只做一个生意，要做互相喂养的多个引擎。",
+    "fr": "Une leçon. Bâtissez plusieurs moteurs qui se nourrissent l'un l'autre, pas une seule activité."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, old notebook handwritten planning desk"
+  },
+  {
+   "act": "act",
+   "subtitle": {
+    "ko": "오늘 할 일",
+    "en": "What to do today",
+    "zh-cn": "今天该做的事",
+    "fr": "À faire aujourd'hui"
+   },
+   "narration": {
+    "ko": "오늘 아마존의 부문별 매출 비중을 직접 찾아봐라. 숫자가 이 구조를 그대로 증명한다.",
+    "en": "Go find Amazon's revenue split by segment today. The numbers prove this structure on their own.",
+    "zh-cn": "今天就去查亚马逊各分部的营收占比。数字会直接证明这个结构。",
+    "fr": "Cherchez aujourd'hui la répartition du chiffre d'affaires d'Amazon par segment. Les chiffres prouvent la structure."
+   },
+   "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, person writing notes notebook desk"
+  }
+ ],
+ "date": "2026-10-10",
+ "theme": "stocks",
+ "theme_label": "나스닥 시총 TOP 10",
+ "quote": {
+  "text": "AMZN — Amazon.com, Inc.",
+  "author": "NASDAQ TOP 10"
+ },
+ "characters": "Amazon.com, Inc.",
+ "stock_company": "AMZN",
+ "stock_company_name": "Amazon.com, Inc.",
+ "stock_market_cap": 2830652145664,
+ "stock_price": 262.43,
+ "stock_growth_3y": 79.6,
+ "stock_rank": 6,
+ "naturalness_issues": []
 }
