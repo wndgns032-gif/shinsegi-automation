@@ -20,6 +20,7 @@
 from __future__ import annotations
 
 import asyncio
+import shutil
 import os
 import re
 import subprocess
@@ -65,7 +66,19 @@ ALT_VOICES: dict[str, list[str]] = {
 
 _ALIAS = {"zh_cn": "zh-cn", "zh-CN": "zh-cn", "zh": "zh-cn"}
 _SENT_END = "。．.．!?！？"
-_PAD_MS = 300
+# 문장 사이 정적 길이. 로이 요청(2026-10-10): "한 문장이 끝나고 0.5초 뒤에 다음 문장".
+# 기존 300ms 는 여운이 부족했고, 실측 무음 편차(80~780ms)가 컸다.
+# 앞뒤 무음은 _silence_edges() 로 실측 제거하므로 여기 남는 값 = 최종 간격.
+# 실측 결과 500ms 설정 시 600~700ms 가 나왔음(측정 임계가 잔여 잡음 포함) →
+# 요청값 0.5초에 맞춰 380ms 로 보정. (2026-10-10 실측 반영)
+_PAD_MS = 380
+# 엔진이 합성 결과 앞뒤에 붙이는 고정 무음 — 언어별 실측값(2026-10-10).
+#   Supertonic 계열(ko/fr) : 앞 0.46~0.68초 + 뒤 0.64~0.76초 → 길다
+#   Kokoro 계열(en/zh)   : 앞 0.04초     + 뒤 0.08~0.14초   → 거의 없다
+# 이걸 그대로 두면 문장 간격이 500ms + 엔진값(1.1~1.4초) = 2초까지 벌어진다.
+# → 언어별로 잘라낸 뒤 pad(500ms) 만 남겨 간격을 정확히 맞춘다.
+_TRIM_HEAD = {"supertonic": 0.62, "kokoro": 0.05, "edge": 0.0}
+_TRIM_TAIL = {"supertonic": 0.68, "kokoro": 0.12, "edge": 0.0}
 
 _kokoro = None
 _supertonic = None
@@ -240,19 +253,149 @@ def _synth_edge(text: str, prof: dict, out: Path, paced: bool = True) -> Path:
         return out
 
 
-def _concat_with_pauses(parts: list[Path], out: Path, pad_ms: int = _PAD_MS) -> Path:
-    """문장 오디오를 pad_ms 만큼의 정적 사이에 두고 이어 붙인다 (edge 폴백용)."""
+def _ffprobe_exe() -> str | None:
+    """ffprobe 경로. 없으면 None (기능이 그때는 조용히 비활성)."""
+    ff = Path(_ffmpeg_exe())
+    cand = ff.with_name("ffprobe.exe" if os.name == "nt" else "ffprobe")
+    if cand.exists():
+        return str(cand)
+    try:
+        import imageio_ffmpeg
+        c2 = Path(imageio_ffmpeg.get_ffmpeg_exe())
+        c2 = c2.with_name("ffprobe.exe" if os.name == "nt" else "ffprobe")
+        if c2.exists():
+            return str(c2)
+    except Exception:  # noqa: BLE001
+        pass
+    found = shutil.which("ffprobe")
+    return found
+
+
+def _audio_duration(path: Path) -> float:
+    """오디오 파일 길이(초). 못 구하면 0.0."""
+    fp = _ffprobe_exe()
+    try:
+        if fp:
+            r = subprocess.run(
+                [fp, "-v", "error", "-show_entries", "format=duration",
+                 "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+                capture_output=True, text=True, errors="ignore")
+            v = (r.stdout or "").strip()
+            if v and v != "N/A":
+                return float(v)
+        r = subprocess.run([_ffmpeg_exe(), "-hide_banner", "-i", str(path)],
+                           capture_output=True, text=True, errors="ignore")
+        for line in r.stderr.splitlines():
+            if "Duration:" in line:
+                hms = line.split("Duration:")[1].split(",")[0].strip()
+                h, m, s = hms.split(":")
+                return int(h) * 3600 + int(m) * 60 + float(s)
+    except Exception:  # noqa: BLE001
+        return 0.0
+    return 0.0
+
+
+def _silence_edges(path: Path) -> tuple[float, float]:
+    """오디오 앞/뒤 무음 길이(초) 실측.
+
+    엔진마다 붙이는 앞뒤 무음 길이가 다르고(Supertonic 앞 0.46~0.68초,
+    Kokoro 0.04초) 문장 길이에도 영향을 받는다 → 고정 상수로는 맞지 않는다.
+    25ms 블록의 최대 절댓값으로 '연속 무음' 구간을 찾는다.
+    """
+    dur = _audio_duration(path)
+    if dur <= 0:
+        return (0.0, 0.0)
+    sr = 8000
+    try:
+        rr = subprocess.run(
+            [_ffmpeg_exe(), "-hide_banner", "-v", "error", "-i", str(path),
+             "-ac", "1", "-ar", str(sr), "-f", "s16le", "-"],
+            capture_output=True)
+        raw = rr.stdout
+    except Exception:  # noqa: BLE001
+        return (0.0, 0.0)
+    blk = int(sr * 0.025)
+    n = len(raw) // (blk * 2)
+    if n == 0:
+        return (0.0, 0.0)
+    import array
+    peaks: list[int] = []
+    for i in range(n):
+        a = array.array("h")
+        a.frombytes(raw[i * blk * 2:(i + 1) * blk * 2])
+        peaks.append(max(abs(v) for v in a) if len(a) else 0)
+    top = max(peaks)
+    if top <= 0:
+        return (dur, 0.0)
+    thr = top * 0.02
+    head = 0
+    while head < n and peaks[head] < thr:
+        head += 1
+    tail = 0
+    while tail < n and peaks[n - 1 - tail] < thr:
+        tail += 1
+    return (round(head * 0.025, 3), round(min(tail * 0.025, dur), 3))
+
+
+def _concat_with_pauses(parts: list[Path], out: Path, pad_ms: int = _PAD_MS,
+                        trim_parts: bool = False, prof: dict | None = None) -> Path:
+    """문장 오디오를 pad_ms 만큼의 정적 사이에 두고 이어 붙인다 (edge 폴백용).
+
+    trim_parts=True 면 각 조각의 앞/뒤 무음을 미리 잘라낸다.
+    Supertonic/Kokoro 은 마침표에서 자체적으로~1.1초 쉰다. 그대로concat 하면
+    정적 500ms 가 더해져 총 1.6초 간격이 되어 "잘린 느낌"이 든다.
+    → 조각 끝의 무음을 silenceremove 로 제거해 pad 만 남긴다.
+    """
     ffmpeg = _ffmpeg_exe()
     pad = pad_ms / 1000.0
+
+    # 1단계: (선택) 각 조각의 앞/뒤 무음 제거 → 중간 wav 로
+    #    Supertonic/Kokoro 은 합성 결과마다 앞 0.58초 + 뒤 0.50초 의
+    #    고정 무음을 붙인다(2026-10-10 실측). 이걸 그대로 concat 하면
+    #    정적 500ms + 무음 1.08초 = 1.6초 간격이 되어 "잘린 느낌"이 든다.
+    #    → areverse/atrim 으로 앞뒤를 정확한 길이만큼 잘라낸다.
+    #    (silenceremove 는 임계값 의존이라 잔여 무음이 남아 목표를 못 맞췄다)
+    prepared = list(parts)
+    if trim_parts:
+        tmp = out.parent / "_trim"
+        tmp.mkdir(parents=True, exist_ok=True)
+        prepared = []
+        for i, p in enumerate(parts):
+            w = tmp / f"t{i}.wav"
+            if not w.exists() or w.stat().st_size < 1000:
+                dur = _audio_duration(p)
+                # 앞뒤 무음을 **실측**해서 그것만 정확히 잘라낸다.
+                # (엔진·언어·문장 길이마다 값이 달라 고정 상수로는 맞지 않는다)
+                fh, ft = _silence_edges(p)
+                head = min(max(fh - 0.02, 0.0), max(0.0, dur * 0.35))
+                tail = min(max(ft - 0.02, 0.0), max(0.0, dur - head - 0.30))
+                if tail > 0.01 and dur - head - tail > 0.15:
+                    filt = f"atrim=start={head:.3f}:end={dur - tail:.3f},asetpts=N/SR/TB"
+                elif head > 0.01:
+                    filt = f"atrim=start={head:.3f},asetpts=N/SR/TB"
+                else:
+                    filt = "anull"
+                rr = subprocess.run(
+                    [ffmpeg, "-y", "-i", str(p), "-af", filt,
+                     "-c:a", "pcm_s16le", "-ar", "24000", "-ac", "1", str(w)],
+                    capture_output=True, text=True, errors="ignore")
+                if rr.returncode != 0 or not w.exists() or w.stat().st_size == 0:
+                    print(f"  [tts] 조각 {i + 1} 앞뒤 자르기 실패 → 원본 그대로 사용")
+                    prepared.append(p)
+                    continue
+            prepared.append(w)
+
+    # 2단계: 정적 패드를 사이에 넣어 concat
+    # (ffmpeg 는 -i 를 순서대로 읽으므로 lavfi 입력과 옵션이 섞이면 안 된다)
     inputs: list[str] = []
     labels: list[str] = []
     idx = 0
-    for i, p in enumerate(parts):
+    for i, p in enumerate(prepared):
         inputs += ["-i", str(p)]
         labels.append(f"[{idx}:a]")
         idx += 1
-        if i < len(parts) - 1:
-            inputs += ["-f", "lavfi", "-t", f"{pad:.3f}", "-i", "anullsrc=r=24000:cl=mono"]
+        if i < len(prepared) - 1:
+            inputs += ["-f", "lavfi", "-i", f"anullsrc=r=24000:cl=mono:d={pad:.3f}"]
             labels.append(f"[{idx}:a]")
             idx += 1
     filt = f"{''.join(labels)}concat=n={len(labels)}:v=0:a=1[out]"
@@ -298,12 +441,41 @@ def synth(text: str, lang: str, out_path: Path, voice: str | None = None,
         engine = prof["engine"]
         try:
             if engine == "kokoro":
-                return _synth_kokoro(text, prof, out_path)
+                return _paced_synth(text, prof, out_path, _synth_kokoro, paced)
             if engine == "supertonic":
-                return _synth_supertonic(text, prof, out_path)
+                return _paced_synth(text, prof, out_path, _synth_supertonic, paced)
             return _synth_edge(text, prof, out_path, paced=paced)
         except Exception as e:  # noqa: BLE001 - 다음 엔진으로 폴백
             errors.append(f"{engine}/{prof['voice']}: {type(e).__name__}: {str(e)[:120]}")
             print(f"  [tts] {engine} 실패 → 다음 엔진 시도 ({type(e).__name__}: {str(e)[:80]})")
 
     raise RuntimeError("TTS 전 엔진 실패: " + " | ".join(errors))
+
+
+def _paced_synth(text: str, prof: dict, out: Path, engine_fn, paced: bool) -> Path:
+    """로컬 엔진(Kokoro/Supertonic)을 문장 단위로 합성해 일정한 pause 를 넣는다.
+
+    2026-10-10 실측: 한 번에 합성하면 문장 사이 무음이 80ms ~ 780ms 로 제각각이다.
+    짧은 간격(80ms)에서는 앞 문장의 여운이 끊겨 "듣기 불편"이라는 지적이 나왔다.
+    → 문장별로 따로 합성하고 `_PAD_MS` 만큼의 정적을 정확히 삽입한다.
+    """
+    sentences = split_sentences(text) if paced else [text.strip()]
+    if len(sentences) <= 1:
+        return engine_fn(text, prof, out)
+
+    tmp_dir = out.parent / "_parts"
+    tmp_dir.mkdir(parents=True, exist_ok=True)
+    parts: list[Path] = []
+    try:
+        for i, s in enumerate(sentences):
+            p = tmp_dir / f"p{i}.mp3"
+            if not p.exists() or p.stat().st_size < 1000:
+                engine_fn(s, prof, p)
+            parts.append(p)
+        # 각 조각의 앞머리/뒤머리 무음은 컷한다 (없으면 concat 뒤 총 정적이
+        # 500ms + 엔진 자체 마침표 쉼(~1.1초) = 1.6초 로 늘어 "잘 끊어 들린다").
+        return _concat_with_pauses(parts, out, trim_parts=True, prof=prof)
+    except Exception as e:  # noqa: BLE001
+        # 문장별 합성이 실패하면 원문 통째로 한 번 더 시도 (파이프라인 중단 방지)
+        print(f"  [tts] 문장별 합성 실패({type(e).__name__}) → 통째로 합성")
+        return engine_fn(text, prof, out)
