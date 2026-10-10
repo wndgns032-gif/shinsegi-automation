@@ -73,6 +73,28 @@ def _title(caption: str) -> str:
     return head[:TITLE_MAX]
 
 
+def _append_credits(caption: str, video_path: Path) -> str:
+    """영상 설명에 이미지 크레딧을 덧붙인다.
+
+    2026-10-10 추가: 실사 사진(Openverse, CC-BY/CC-BY-SA/CC0) 을 쓰면서
+    **출처 표기가 라이선스 조건**이 됐다. AI 생성(Pollinations) 일 때는
+    credits.jsonl 이 없어 아무것도 붙지 않는다.
+    """
+    try:
+        from src.photostock import credits_text
+        p = Path(video_path).resolve()
+        # data/fables/<date>/fable_ko.mp4 → data/fables/<date>/credits.jsonl
+        cr = p.parent / "credits.jsonl"
+        if not cr.exists():
+            return caption
+        txt = credits_text(cr, limit=10)
+        if not txt:
+            return caption
+        return f"{caption}\n\n---\n{txt}"
+    except Exception:  # noqa: BLE001
+        return caption
+
+
 def _tags(caption: str, lang: str) -> list[str]:
     found = re.findall(r"#([^\s#]{1,30})", caption or "")
     extra = {"en": ["wisdom", "quote", "shorts", "motivation"],
@@ -265,7 +287,9 @@ class YouTubePublisher(Publisher):
         body = {
             "snippet": {
                 "title": title,
-                "description": _clean(caption),
+                # 실사 사진(CC-BY 등) 사용 시 출처 표기가 라이선스 조건이다.
+                # → credits.jsonl 의 크레딧을 설명 하단에 덧붙인다.
+                "description": _clean(_append_credits(caption, video_path)),
                 "tags": _tags(caption, lang),
                 "categoryId": os.getenv("YOUTUBE_CATEGORY", CATEGORY_DEFAULT),
                 "defaultLanguage": _LANG_TAG.get(lang, "en"),

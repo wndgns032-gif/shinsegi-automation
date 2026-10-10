@@ -285,7 +285,8 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
     return dest
 
 
-def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Path]:
+def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0,
+               stock: bool = False, company: str | None = None) -> list[Path]:
     """장면 이미지 생성 — **순차 호출**(2026-10-09 수정).
 
     ⚠️ 병렬화는 Pollinations 쿼터를 탔고, 오히려 이미지를 망쳤다.
@@ -293,48 +294,96 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0) -> list[Pa
        즉 동시 1건만 통과하고 나머지는 전부 폴백 이미지로 대체됐다.
        → 10장이 대부분 '로컬 폴백(파스텔 그라디언트)' 로 나온 원인.
 
-       순차 호출은 느리지만 성공률이 100% 다.
-       10장 × 평균 8초 = 약 80초면 끝나므로 충분하다.
+    stock=True 면 **무료 실사 사진(Openverse) + 선화 변환** 경로를 쓴다.
+      (2026-10-10 로이 요청: "좀 더 고퀄리티의 무료 사진")
+      Pollinations AI 생성의 한계 — 해상도 1024x576 강제 캡 + 56KB 저품질.
+      실사 사진은 원본 1024~12288px + 실제 질감이라 선명도가 훨씬 좋다.
+      실패 시 Pollinations 로 자동 폴백한다(단일 실패점 방지).
     """
     out_dir.mkdir(parents=True, exist_ok=True)
     paths: list[Path] = []
     fallback_count = 0
+    stock_count = 0
+    credits_path = out_dir.parent / "credits.jsonl"
+    used_titles: set[str] = set()
     for i, p in enumerate(prompts):
-        try:
-            dest = _fetch_one(i, p, out_dir, len(prompts), seed_base)
-        except Exception as e:  # noqa: BLE001
-            print(f"  [fable] 이미지 {i + 1} 예외: {type(e).__name__}")
-            dest = out_dir / f"scene{i + 1}.jpg"
-            _fallback_image(dest, i)
-            _to_monochrome(dest)
-            (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
+        dest = out_dir / f"scene{i + 1}.jpg"
+        got = False
+        if stock:
+            try:
+                from src import photostock as ps
+                import random as _rnd
+                tmp_photo = out_dir / f"_src{i + 1}.jpg"
+                r = ps.search_for_scene(
+                    p, company=company, rng=_rnd.Random(seed_base + i * 37),
+                    dest=tmp_photo, used_titles=used_titles)
+                if r:
+                    ps.photo_to_sketch(tmp_photo, dest, target_w=IMG_W,
+                                       target_h=IMG_H, style="pencil")
+                    (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
+                    got = True
+                    stock_count += 1
+                    ps.record_credit(credits_path, r["credit"])
+                    print(f"  [fable] 이미지 {i + 1} 실사 사진 선화 OK "
+                          f"({r['query'][:26]}, {r['credit']['license'].upper()})")
+                tmp_photo.unlink(missing_ok=True)
+            except Exception as e:  # noqa: BLE001
+                print(f"  [fable] 이미지 {i + 1} 실사 실패({type(e).__name__})"
+                      f" → AI 생성으로 폴백")
+                got = False
+        if not got:
+            try:
+                dest = _fetch_one(i, p, out_dir, len(prompts), seed_base)
+            except Exception as e:  # noqa: BLE001
+                print(f"  [fable] 이미지 {i + 1} 예외: {type(e).__name__}")
+                _fallback_image(dest, i)
+                _to_monochrome(dest)
+                (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
         paths.append(dest)
         if _is_fallback_image(dest):
             fallback_count += 1
 
+    if stock and stock_count:
+        print(f"  [fable] 실사 사진 {stock_count}/{len(prompts)} 장 "
+              f"(나머지는 AI 생성) — 크레딧: {credits_path.name}")
     # 폴백 과다 시 경고 — 로이가 실제로 겪은 사고의 시각화
     if fallback_count:
         print(f"  [fable] 이미지 {fallback_count}/{len(prompts)} 장이 폴백 그라디언트"
               f"입니다 — 영상에 그림이 안 보일 수 있습니다.")
         if fallback_count >= len(prompts) * 0.6:
-            print(f"  [fable] 60% 이상 실패 — Pollinations 쿼터 과다."
-                  f" 다음 실행에서 캐시가 갱신됩니다.")
+            print(f"  [fable] 60% 이상 실패 — 이미지 소스 전체 장애.")
     return paths
 
 
 def _is_fallback_image(dest: Path) -> bool:
     """폴백 그라디언트 이미지면 True.
 
-    2026-10-09 실측: 실제 그림 edge=0.113 / 폴백 edge=0.011 (10배 차).
-    이 구분을 안 하면 '영상인데 그림이 없는' 상태로 발행된다.
-    (로이가 실제로 겪은 문제 — 20장 중 18장이 폴백)
+    2026-10-09: edge<0.045 단일 조건 (실화 0.113 / 폴백 0.011)
+    2026-10-10 보정1: 실사 사진(어두운 장면)이 edge 0.030~0.046 →
+        정상 사진을 폴백으로 오판 (10장 중 3장)
+    2026-10-10 보정2: distinct 그레이레벨 수는 JPEG 노이즈 때문에
+        폴백도 247개 → 구별 불가. **라플라시안 분산**으로 대체.
+        실측: 폴백 19~29 / 실사 104~4889 (17배 이상 분리)
+
+    라플라시안(2차 미분)은 평활한 그라디언트에서 거의 0 이고
+    실제 촬영물은 윤곽·질감 때문에 값이 크다.
     """
     try:
         from PIL import ImageFilter, ImageStat
+        import numpy as np
+
         im = Image.open(dest).convert("L")
         edge = ImageStat.Stat(im.filter(ImageFilter.FIND_EDGES)).mean[0] / 255.0
-        return edge < 0.045
+        if edge >= 0.045:
+            return False
+        a = np.asarray(im, dtype=np.float32)
+        if a.shape[0] < 8 or a.shape[1] < 8:
+            return False
+        lap = (a[:-2, 1:-1] + a[2:, 1:-1]
+               + a[1:-1, :-2] + a[1:-1, 2:] - 4 * a[1:-1, 1:-1])
+        return float(lap.var()) < 60.0
     except Exception:  # noqa: BLE001
+        return False
         return False
 
 
@@ -772,7 +821,12 @@ def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
     # 이미 있으면 캐시 히트라 다 건너뛴다.
     first_lang = lang == LANGS[0]
     if first_lang or not images.exists():
-        image_paths = gen_images(prompts, images, seed_base=seed_base)
+        # 실사 사진 경로 사용 여부 (2026-10-10 로이 요청, 기본 on)
+        use_stock = os.getenv("FABLE_IMG_STOCK", "on").lower() != "off"
+        company = (story.get("stock_company")
+                   or os.getenv("FABLE_STOCK_COMPANY") or None)
+        image_paths = gen_images(prompts, images, seed_base=seed_base,
+                                 stock=use_stock, company=company)
         _verify_images(images, story, seed_base)
     else:
         image_paths = [images / f"scene{i + 1}.jpg" for i in range(len(prompts))]
