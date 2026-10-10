@@ -1,0 +1,234 @@
+{
+  "date": "2026-10-21",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "camus-invincible-summer",
+    "author": {
+      "en": "Albert Camus",
+      "ko": "알베르 카뮈",
+      "zh-cn": "阿尔贝·加缪",
+      "fr": "Albert Camus"
+    },
+    "text": {
+      "en": "In the midst of winter, I found there was, within me, an invincible summer.",
+      "ko": "겨울 한가운데서, 나는 내 안에 이길 수 없는 여름이 있다는 걸 알았다.",
+      "zh-cn": "在隆冬，我终于知道，我身上有一个不可战胜的夏天。",
+      "fr": "Au milieu de l'hiver, j'ai découvert en moi un invincible été."
+    }
+  },
+  "title": {
+    "ko": "겨울 한가운데, 내 안의 여름",
+    "en": "The Summer Inside",
+    "zh-cn": "隆冬里的夏天",
+    "fr": "L'été en moi"
+  },
+  "caption": {
+    "ko": "겨울 한가운데, 내 안의 여름\n그해 겨울 나는 같은 자리에 앉아 한 줄씩 썼다. 서랍에 종이가 쌓였을 때, 그 안에 남아 있던 건 무엇이었을까.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "en": "The Summer Inside\nThat winter I sat in the same chair and wrote one line at a time. When the drawer was finally full, what was actually in it?\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "zh-cn": "隆冬里的夏天\n那年冬天我坐在同一个位子上，一次只写一行。抽屉堆满的时候，里面到底是什么？\n\n#名言 #寓言 #治愈 #正能量 #每日一句",
+    "fr": "L'été en moi\nCet hiver-là, je m'asseyais à la même place et j'écrivais une ligne. Le tiroir plein, il contenait quoi au fond ?\n\n#citation #fable #sagesse #proverbe #motivation"
+  },
+  "hook": {
+    "lines": {
+      "ko": [
+        "내일부터. 백 번 들었다.",
+        "그동안 겨울이 갔다."
+      ],
+      "en": [
+        "Tomorrow. Again tomorrow.",
+        "Winter left without me."
+      ],
+      "zh-cn": [
+        "明天。又是明天。",
+        "冬天就这样过去了。"
+      ],
+      "fr": [
+        "Demain. Encore demain.",
+        "L'hiver est passé."
+      ]
+    },
+    "highlight": {
+      "ko": "겨울",
+      "en": "Winter",
+      "zh-cn": "冬天",
+      "fr": "hiver"
+    }
+  },
+  "moral": {
+    "ko": "겨울을 이기려 하지 않아도 된다. 그 안에 여름이 있었다.",
+    "en": "You don't beat winter. Summer's already in you.",
+    "zh-cn": "冬天不必战胜。你身上就有夏天。",
+    "fr": "On ne bat pas l'hiver. L'été est déjà en toi."
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr",
+    "zh-cn": "每天一个新故事 @shinsegi.zh",
+    "fr": "Une nouvelle histoire chaque jour @shinsegi.fr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, a man in his 30s standing at a window at night, snow falling outside, one hand on the glass, seen from behind, quiet empty room, wide shot, japanese anime film still, cel shaded, clean line art, flat color shading, soft lighting, melancholic, horizontal composition, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "겨울 한가운데서, 나는 내 안에 이길 수 없는 여름이 있다는 걸 알았다. — 알베르 카뮈.",
+        "en": "In the midst of winter, I found there was, within me, an invincible summer. — Albert Camus.",
+        "zh-cn": "在隆冬，我终于知道，我身上有一个不可战胜的夏天. — 阿尔贝·加缪.",
+        "fr": "Au milieu de l'hiver, j'ai découvert en moi un invincible été. — Albert Camus."
+      },
+      "subtitle": {
+        "ko": "이길 수 없는 여름",
+        "en": "invincible summer",
+        "zh-cn": "不可战胜的夏天",
+        "fr": "un été invincible"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, the main character standing alone, thinking, looking ahead, full body visible, side view, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "내일부터. 백 번 들었다. 그동안 겨울이 갔다",
+        "en": "Tomorrow. Again tomorrow. Winter left without me",
+        "zh-cn": "明天。又是明天。冬天就这样过去了",
+        "fr": "Demain. Encore demain. L'hiver est passé"
+      },
+      "subtitle": {
+        "ko": "백 번 들은 말",
+        "en": "tomorrow, again",
+        "zh-cn": "又是明天",
+        "fr": "encore demain"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, a man in his 30s sitting at a bare desk by a window at night, empty notebook open in front of him, hands in his lap, side view, full body visible, japanese anime film still, cel shaded, clean line art, flat color shading, soft lighting, quiet, horizontal composition, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "그 겨울, 같은 자리. 아무것도 안 했다.",
+        "en": "That winter, same chair. I did nothing.",
+        "zh-cn": "那年冬天，同一个位子。什么都没做。",
+        "fr": "Cet hiver, même chaise. Je ne fais rien."
+      },
+      "subtitle": {
+        "ko": "같은 자리",
+        "en": "same chair",
+        "zh-cn": "同一个位子",
+        "fr": "même chaise"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, the main character standing alone, thinking, looking ahead, full body visible, side view, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "손이 얼었다. 펜도 못 잡았다.",
+        "en": "My hands were too cold. I stayed anyway.",
+        "zh-cn": "手冻僵了。笔都握不住。",
+        "fr": "Mes mains sont gelées. Je reste assis."
+      },
+      "subtitle": {
+        "ko": "얼어붙은 손",
+        "en": "cold hands",
+        "zh-cn": "冻僵的手",
+        "fr": "mains gelées"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, a man in his 30s at the desk, head lowered, looking at his own hands, empty room, no one else around, side view, full body visible, japanese anime film still, cel shaded, clean line art, flat color shading, soft lighting, melancholic, horizontal composition, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "누가 물었다. 대답을 못 했다.",
+        "en": "Someone asked me why. I had no answer.",
+        "zh-cn": "有人问我为什么。我答不上来。",
+        "fr": "On m'a demandé pourquoi. Je n'ai rien dit."
+      },
+      "subtitle": {
+        "ko": "대답 없음",
+        "en": "no answer",
+        "zh-cn": "答不上来",
+        "fr": "sans réponse"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, the main character standing alone, thinking, looking ahead, full body visible, side view, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "종이 한 장을 꺼냈다. 한 줄만 썼다.",
+        "en": "I pulled out one sheet. I wrote one line.",
+        "zh-cn": "我抽出一张纸。只写了一行。",
+        "fr": "J'ai pris une feuille. Une seule ligne."
+      },
+      "subtitle": {
+        "ko": "한 장, 한 줄",
+        "en": "one line",
+        "zh-cn": "一张纸一行",
+        "fr": "une ligne"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, the main character standing alone, thinking, looking ahead, full body visible, side view, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "다음 날 또 한 장. 겨울이 지나갔다.",
+        "en": "Next day, another sheet. The winter ended.",
+        "zh-cn": "第二天，又一张。冬天过去了。",
+        "fr": "Le lendemain, une autre. L'hiver est fini."
+      },
+      "subtitle": {
+        "ko": "지나간 겨울",
+        "en": "winter ended",
+        "zh-cn": "冬天过去了",
+        "fr": "l'hiver fini"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "몇 해 뒤, 서랍을 열었다. 종이가 한 뭉치였다.",
+        "en": "I opened the drawer. Paper was stacked high.",
+        "zh-cn": "后来我拉开抽屉。纸堆得很高。",
+        "fr": "J'ai ouvert le tiroir. Du papier empilé."
+      },
+      "subtitle": {
+        "ko": "쌓인 종이",
+        "en": "a stack of paper",
+        "zh-cn": "堆起的纸",
+        "fr": "papier empilé"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, the main character standing alone, thinking, looking ahead, full body visible, side view, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "지금도 그 자리에 앉는다. 종이는 계속 쌓인다.",
+        "en": "I still sit there. The paper keeps piling.",
+        "zh-cn": "现在我还坐在那儿。纸一直在堆。",
+        "fr": "Je m'assois encore là. Le papier s'empile."
+      },
+      "subtitle": {
+        "ko": "지금도 쌓인다",
+        "en": "still piling",
+        "zh-cn": "纸还在堆",
+        "fr": "ça s'empile"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "black and white pencil drawing, monochrome, graphite sketch, hand-drawn line art, no color, no border, no frame, no text, a man in his 30s, short black hair, tired eyes, plain grey shirt, a man in his 30s standing on a quiet morning street, coat collar up, hands in pockets, small in frame, wide shot, japanese anime film still, cel shaded, clean line art, flat color shading, soft lighting, calm, horizontal composition, a man in his 30s, short black hair, tired eyes, plain grey shirt, same character as every other scene, monochrome, grayscale, no color, no frame, no border, no text, no watermark, simple background, subject clearly visible, full-bleed scene, edge to edge",
+      "narration": {
+        "ko": "겨울을 이기려 하지 않아도 된다. 그 안에 여름이 있었다.",
+        "en": "You don't beat winter. Summer's already in you.",
+        "zh-cn": "冬天不必战胜。你身上就有夏天。",
+        "fr": "On ne bat pas l'hiver. L'été est déjà en toi."
+      },
+      "subtitle": {
+        "ko": "안에 여름",
+        "en": "summer inside",
+        "zh-cn": "身上的夏天",
+        "fr": "l'été en toi"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
