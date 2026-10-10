@@ -64,20 +64,59 @@ COMPANY_QUERIES: dict[str, list[str]] = {
 
 
 def _clean_words(prompt: str) -> list[str]:
-    """이미지 프롬프트에서 검색에 쓸 핵심 명사만 뽑는다."""
-    # 스타일/품질 수식어 제거 (실사 사진 검색에 무의미)
+    """이미지 프롬프트에서 검색에 쓸 핵심 명사만 뽑는다.
+
+    ⚠️ 실사 사진 검색에서는 **동물의 이름이 핵심**이다.
+    프롬프트가 "hand-drawn line art" 같은 스타일 수식어로 가득하면
+    검색어에 회로판·기계 같은 엉뚱한 것이 섞인다
+    (2026-10-10 실측: 비버 우화인데 "stock image" → 회로판 이미지).
+    → 명언 우화에서는 `characters` 의 종명(beaver, mole 등)을 우선 추출한다.
+    """
     drop = re.compile(
-        r"black and white|pencil drawing|monochrome|graphite|sketch|line art|"
-        r"hand-drawn|no color|no frame|no border|no text|cross-hatching|etching|"
-        r"high detail|dramatic composition|shading|grayscale|woodcut|engraving",
+        r"black and white|pencil drawing|pencil sketch|monochrome|graphite|sketch|"
+        r"line art|hand-drawn|no color|no frame|no border|no text|cross-hatching|"
+        r"etching|high detail|dramatic composition|shading|grayscale|woodcut|"
+        r"engraving|full body visible|wide shot|side view|waist up|stock image|"
+        r"pencil sketch portrait|quiet|soft light|close up",
         re.IGNORECASE)
     t = drop.sub(" ", prompt)
     t = re.sub(r"[^a-zA-Z0-9\s,']", " ", t)
     words = [w.strip().strip(",'") for w in t.split()]
     words = [w for w in words if len(w) > 2]
-    # 고유명사/긴 단어를 우선, 최대 4개
     words.sort(key=len, reverse=True)
     return words[:4] or ["nature landscape"]
+
+
+# 동물 종명 → 실사 사진 검색 키워드 (Openverse 에서 결과가 실제로 나오는 것)
+ANIMAL_QUERIES: dict[str, list[str]] = {
+    "beaver":  ["beaver animal water", "beaver dam river", "beaver wildlife nature"],
+    "mole":    ["mole animal burrow", "molehill meadow closeup", "mole wildlife"],
+    "tortoise": ["tortoise shell closeup", "tortoise walking grass", "turtle reptile"],
+    "rabbit":  ["rabbit animal grass", "hare wildlife meadow", "rabbit closeup nature"],
+    "ant":     ["ant insect macro", "ants colony closeup", "ant nest soil"],
+    "crab":    ["crab seashore closeup", "crab walking sand", "crab animal"],
+    "squirrel": ["squirrel animal branch", "squirrel wildlife park", "squirrel closeup"],
+    "owl":     ["owl bird closeup", "owl wildlife night", "owl feathers detail"],
+    "turtle":  ["turtle reptile closeup", "turtle shell texture", "turtle nature"],
+    "snail":   ["snail macro shell", "snail nature closeup", "snail wet leaf"],
+    "fish":    ["fish underwater closeup", "school of fish", "fish scales detail"],
+    "bird":    ["bird feathers macro", "bird wildlife branch", "bird closeup nature"],
+    "elephant": ["elephant wildlife", "elephant trunk closeup", "elephant herd"],
+    "fox":     ["fox wildlife forest", "fox closeup nature", "red fox snow"],
+    "bear":    ["bear wildlife forest", "bear closeup nature", "brown bear mountains"],
+    "wolf":    ["wolf wildlife snow", "wolf closeup forest", "wolf pack"],
+    "owl ":    ["owl bird closeup", "owl wildlife", "owl feathers"],
+}
+
+
+def _animal_query(prompt: str) -> str | None:
+    """프롬프트에서 동물 종명을 찾아 검색어로 만든다."""
+    low = prompt.lower()
+    for name, qs in ANIMAL_QUERIES.items():
+        key = name.strip()
+        if re.search(rf"\b{re.escape(key)}\b", low):
+            return qs[0]
+    return None
 
 
 def openverse_search(query: str, n: int = 12,
@@ -228,10 +267,22 @@ def search_for_scene(scene_prompt: str, company: str | None = None,
     dest = dest or _TMP_PHOTO
     used_titles = used_titles if used_titles is not None else set()
 
-    # 1) 장면 프롬프트에서 뽑은 키워드가 가장 정확하다 → 먼저 시도
-    words = _clean_words(scene_prompt)
-    queries: list[str] = [" ".join(words)]
-    # 2) 기업 티커 전용 폴 (맥락 일치 보조)
+    # 1) ⭐ 동물 종명이 있으면 그걸 최우선으로 쓴다
+    #    (우화 채널의 주역. 스타일 수식어만으로는 검색이 산으로 간다)
+    animal = _animal_query(scene_prompt)
+    queries: list[str] = []
+    if animal:
+        key = None
+        low = scene_prompt.lower()
+        for name in ANIMAL_QUERIES:
+            if re.search(rf"\b{re.escape(name.strip())}\b", low):
+                key = name
+                break
+        if key:
+            queries += ANIMAL_QUERIES[key]
+    # 2) 프롬프트에서 뽑은 키워드
+    queries.append(" ".join(_clean_words(scene_prompt)))
+    # 3) 기업 티커 전용 풀
     if company and company in COMPANY_QUERIES:
         queries += COMPANY_QUERIES[company]
 

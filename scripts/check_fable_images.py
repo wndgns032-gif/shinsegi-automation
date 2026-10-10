@@ -27,6 +27,7 @@ import sys
 import time
 from pathlib import Path
 
+import os
 import requests
 from PIL import Image, ImageStat
 
@@ -174,7 +175,44 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
         dest = images_dir / f"scene{n}.jpg"
         mark = images_dir / f"scene{n}.mono"
         ok = False
+
+        # ⭐ 2026-10-10: 실사 사진 경로(Openverse) 가 기본이다.
+        #   Pollinations 만 쓰면 쿼터(402)로 재생성 실패하고,
+        #   이미지 출처가 어긋나 폴백으로 대체돼 있었다(실측 4/10 실패).
+        #   → 먼저 photostock.fetch_photo 로 시도하고, 실패하면 아래로 fallback.
+        if story.get("stock_company") or os.getenv("FABLE_IMG_STOCK", "on").lower() != "off":
+            try:
+                import random as _rnd
+                from src import photostock as ps
+                cr = images_dir.parent / "credits.jsonl"
+                used = set()
+                if cr.exists():
+                    for _l in cr.read_text(encoding="utf-8").splitlines():
+                        try:
+                            used.add(json.loads(_l)["title"])
+                        except Exception:  # noqa: BLE001
+                            pass
+                tmp = images_dir / f"_regen{n}.jpg"
+                credit = ps.fetch_photo(
+                    base, tmp, rng=_rnd.Random(seed_base + n * 137),
+                    exclude_titles=used)
+                if credit:
+                    ps.photo_to_sketch(tmp, dest, target_w=IMG_W,
+                                       target_h=IMG_H, style="pencil")
+                    mark.write_text("1", encoding="utf-8")
+                    tmp.unlink(missing_ok=True)
+                    ps.record_credit(cr, credit)
+                    print(f"  [regen] scene {n} 실사 재생성 OK ({credit['license'].upper()})")
+                    ok = True
+                    break
+                tmp.unlink(missing_ok=True)
+            except Exception as e:  # noqa: BLE001
+                print(f"  [regen] scene {n} 실사 재생성 오류 {type(e).__name__}"
+                      f" → AI 생성으로 폴백")
+
         for attempt in range(1, per_scene + 1):
+            if ok:
+                break
             seed = seed_base + n * 137 + attempt * 9001
             model = "turbo" if attempt % 2 == 1 else "flux"
             url = ("https://image.pollinations.ai/prompt/"
