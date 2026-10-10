@@ -26,6 +26,7 @@ from __future__ import annotations
 
 import json
 import os
+import shutil
 import re
 import time
 from pathlib import Path
@@ -169,6 +170,64 @@ class YouTubePublisher(Publisher):
         except Exception:  # noqa: BLE001
             hist = {}
         return title in {h.get("title") for h in hist.get(lang, [])}
+
+    @staticmethod
+    def _set_thumbnail(yt, lang: str, video_id: str, video_path: Path) -> None:
+        """커스텀 썸네일 업로드 (2026-10-10 로이 요청).
+
+        YouTube 기본 썸네일은 알고리즘이 임의로 고르므로 검은 화면이나
+        전환 프레임이 될 때가 있다. → 영상 앞 15% 구간을 1초 간격으로 훑어
+        **가장 밝고 선명한 프레임**을 jpg 로 뽑아 지정한다.
+
+        실패해도 영상 발행 자체는 성공이므로 조용히 넘어간다.
+        """
+        import subprocess
+        import tempfile
+        from PIL import Image, ImageStat
+
+        tmpdir = Path(tempfile.mkdtemp())
+        thumb = tmpdir / "thumb.jpg"
+        try:
+            ff = shutil.which("ffmpeg") or "ffmpeg"
+            dur = yt.videos().list(part="contentDetails",
+                                   id=video_id).execute()["items"][0]
+            d = dur.get("contentDetails", {}).get("duration", "")
+            total = 0
+            if d.startswith("PT"):
+                total = int(d[2:].split("M")[0]) * 60 + int(d[2:].split("M")[-1].rstrip("S")) \
+                    if "M" in d else int(d[2:].rstrip("S"))
+            if total <= 2:
+                return
+            best, best_score = None, -1.0
+            # 앞 15% 구간만 훑는다 (첫 프레임의 페이드 회피 + 장면 전환 회피)
+            step = 0.5
+            t = 0.6
+            while t < max(total * 0.15, 1.5):
+                cand = tmpdir / f"c{int(t * 10)}.jpg"
+                r = subprocess.run(
+                    [ff, "-y", "-ss", str(t), "-i", str(video_path),
+                     "-frames:v", "1", "-q:v", "2", str(cand)],
+                    capture_output=True)
+                if r.returncode == 0 and cand.exists():
+                    try:
+                        im = Image.open(cand).convert("L")
+                        # 밝기 + 대비 = "눈에 잘 띄는" 프레임
+                        st = ImageStat.Stat(im)
+                        score = st.mean[0] + st.stddev[0] * 0.6
+                        if score > best_score:
+                            best_score, best = score, cand
+                    except Exception:  # noqa: BLE001
+                        pass
+                t += step
+            if best is None:
+                return
+            yt.thumbnails().set(videoId=video_id, media_body=best).execute()
+            print(f"  [youtube:{lang}] 커스텀 썸네일 설정 완료 "
+                  f"(score={best_score:.0f})")
+        except Exception as e:  # noqa: BLE001
+            print(f"  [youtube:{lang}] 썸네일 설정 실패(무시): {type(e).__name__}")
+        finally:
+            shutil.rmtree(tmpdir, ignore_errors=True)
 
     @staticmethod
     def _verify_upload(yt, lang: str, video_id: str, tries: int = 3) -> None:
@@ -323,6 +382,12 @@ class YouTubePublisher(Publisher):
                 #    상태가 'uploaded'(처리 대기) 또는 길이가 P0D 인채널에 남는다.
                 #    (2026-10-09 ko 채널에 P0D 빈 영상 1건이 그렇게 생겼다)
                 self._verify_upload(yt, lang, vid)
+
+                # 커스텀 썸네일 (2026-10-10 로이 요청)
+                # 기본 썸네일은 YouTube 알고리즘이 임의로 뽑은 프레임이라
+                # 검은 화면이나 조판 프레임이 될 때가 있다.
+                # → 영상 앞쪽에서 정보가 가득한 프레임을 골라 지정한다.
+                self._set_thumbnail(yt, lang, vid, video_path)
 
                 self._record(lang, title, vid)
                 return {"platform": tag, "lang": lang, "status": "published", "id": vid}

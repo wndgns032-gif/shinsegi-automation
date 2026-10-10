@@ -738,9 +738,14 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
                   f"offset={starts[i]:.3f}{vout}")
         fc.append(f"{aprev}[{i}:a]acrossfade=d={XFADE}:c1=tri:c2=tri{aout}")
         vprev, aprev = vout, aout
-    fc.append(f"{vprev}fade=t=in:st=0:d=0.45,"
+    # ⚠️ 2026-10-10 로이 지적: "쇼츠를 보면 기본 값 사진이 검은색 화면이다"
+    # 원인은 여기의 fade=t=in — 영상 시작 0.45초를 검게 페이드인한다.
+    # IG/YouTube 피드 썸네일은 **첫 프레임**을 쓰므로 전부 검은 화면이 된다.
+    # → 시작 페이드를 제거한다 (끝 페이드는 유지 — 필로우 아이 유인은 필요).
+    #    짧은 페이드는 첫 프레임을 밝게 유지하는 쪽이 알고리즘에도 유리하다.
+    fc.append(f"{vprev}"
               f"fade=t=out:st={max(total - 0.8, 0.1):.3f}:d=0.8,format=yuv420p[vfin]")
-    fc.append(f"{aprev}afade=t=in:st=0:d=0.35,"
+    fc.append(f"{aprev}"
               f"afade=t=out:st={max(total - 0.8, 0.1):.3f}:d=0.8[afin]")
     joined = work / "joined.mp4"
     _run(cmd + ["-filter_complex", ";".join(fc),
