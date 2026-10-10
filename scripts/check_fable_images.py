@@ -55,6 +55,13 @@ SIZE_TOLERANCE = 40    # 장면 간 크기 허용 편차(px)
 #      → 색상 통계로는 구분이 안 되므로 **디테일(선화·에지) 양**을 본다.
 #      실화는 선·명암이丰富하지만 그라디언트는几乎是노이즈/패치가 적다.
 FALLBACK_EDGE_MAX = 0.045  # 에지 밀도 상한 (0~1)
+# ⭐ 2026-10-11: 애니메이션 만화는 edge 가 낮다(0.012~0.057) 정상.
+#   라플라시안 분산(곡률)으로 폴백을 판정해야 한다.
+#   실측: 폴백 19~53 / 애니메이션 103~688 / 실사 선화 100+
+FALLBACK_LAPVAR_MAX = 70.0
+# ⭐ 애니메이션 만화는 edge 가 0.005~0.06 까지 내려온다(정상).
+#   아래는 애니메이션 모드용 완화 임계값.
+ANIME_EDGE_MIN = 0.004
                           # 실측 2026-10-09: 실제 그림 0.113 / 폴백 0.011 (10배 차)
                           # → 0.045 로 두면 어느 쪽도 오판하지 않는다.
 FALLBACK_UNIQ_MAX = 26      # 고유 그레이레벨 수 (실화 254 / 폴백 237 — 보조 지표)
@@ -72,12 +79,36 @@ def _detail_metrics(p: Path) -> tuple[float, int]:
     return edge, uniq
 
 
+def _lapvar(p: Path) -> float:
+    """라플라시안 분산 — 2차 미분(곡률)의 분산.
+    평활한 그라디언트는 0 에 가깝고, 실제 그림은 윤곽/질감으로 크다.
+    애니메이션 만화는 edge 가 낮아도 이 값은 크다(실측 103~688)."""
+    import numpy as np
+    a = np.asarray(Image.open(p).convert("L"), dtype=np.float32)
+    if a.shape[0] < 8 or a.shape[1] < 8:
+        return 0.0
+    lap = (a[:-2, 1:-1] + a[2:, 1:-1]
+           + a[1:-1, :-2] + a[1:-1, 2:] - 4 * a[1:-1, 1:-1])
+    return float(lap.var())
+
+
 def _is_fallback(p: Path) -> str | None:
     """폴백 그라디언트면 이유 문자열, 정상 그림이면 None."""
     try:
         edge, uniq = _detail_metrics(p)
     except Exception:  # noqa: BLE001
         return None
+    # ⭐ 판정 기준을 **lapvar(라플라시안 분산)** 로 통일한다.
+    #   edge 는 애니메이션 만화에서 0.005~0.06 까지 내려와
+    #   실사 선화(0.09~0.25)와 완전히 겹치지 않는다. 판정 근거로 쓸 수 없다.
+    #   실측: 폴백 19~53 / 애니메이션 103~688 / 실사 선화 100+
+    #   → 분산이 크면(임계 초과) 무조건 정상 그림으로 본다.
+    try:
+        lv = _lapvar(p)
+        if lv > FALLBACK_LAPVAR_MAX:
+            return None
+    except Exception:  # noqa: BLE001
+        pass
     reasons = []
     if edge < FALLBACK_EDGE_MAX:
         reasons.append(f"선화 약함(edge={edge:.3f})")

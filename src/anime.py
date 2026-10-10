@@ -48,7 +48,8 @@ ANIME_SUFFIX = (
     "clean line art, flat color shading, cel shaded, "
     "soft gradient sky, detailed background, "
     "studio ghibli inspired, emotional, cinematic lighting, "
-    "horizontal composition, 16:9"
+    "wide shot, full body visible, medium shot, "
+    "environment visible, wide angle, horizontal composition, 16:9"
 )
 
 # 금지 사항 — flux 는 'not X' 를 'X' 로 읽으므로 부정형 금지
@@ -98,8 +99,14 @@ def _get(prompt: str, seed: int, model: str = "flux",
         return None
 
 
-def crop_to_ratio(im: Image.Image, ratio: float = 0.779) -> Image.Image:
-    """참고 채널의 이미지 영역 종횡비(0.779)에 맞춰 크롭."""
+def crop_to_ratio(im: Image.Image, ratio: float = 0.779,
+                  out_size: tuple[int, int] | None = None) -> Image.Image:
+    """참고 채널의 이미지 영역 종횡비(0.779)에 맞춰 크롭.
+
+    out_size 를 주면 최종 크기까지 통일한다.
+    ⚠️ 2026-10-11: 크기를 통일하지 않으면 check_fable_images 의
+       "크기 편차" 검사에 걸려 전 장면이 탈락했다.
+    """
     w, h = im.size
     cur = w / h
     if cur > ratio:                    # 너무 넓다 → 좌우 자르기
@@ -110,6 +117,8 @@ def crop_to_ratio(im: Image.Image, ratio: float = 0.779) -> Image.Image:
         nh = int(w / ratio)
         y0 = int((h - nh) * 0.42)      # 위쪽 slightly (하단 여백 확보)
         im = im.crop((0, y0, w, y0 + nh))
+    if out_size:
+        im = im.resize(out_size, Image.LANCZOS)
     return im
 
 
@@ -133,7 +142,8 @@ def gen_anime_scene(scene_desc: str, dest: Path, seed: int = 0,
                 time.sleep(sleep_s)
             continue
         im = crop_watermark(im)
-        im = crop_to_ratio(im)
+        # 렌더 규격(1152x2048)으로 통일 — 검수 "크기 편차" 방지
+        im = crop_to_ratio(im, out_size=(1152, 2048))
         im.save(dest, "JPEG", quality=92, optimize=True)
         return True
     return False
@@ -142,19 +152,28 @@ def gen_anime_scene(scene_desc: str, dest: Path, seed: int = 0,
 def anime_to_manga(im_path: Path, dest: Path) -> None:
     """애니메이션 → 흑백 만화 변환 (로이 요청: "흑백 만화 일러스트로").
 
+    ⚠️ 실측 실패(2026-10-11): 이전 버전은 대비/블렌드만 강화해서
+    **컬러가 그대로 남았다**(장면1 이彩色 그대로 나옴).
+    → 반드시 "완전 그레이스케일 → 대비 → 선 강조 → 시피아" 순서로 간다.
+
     애니메이션을 그대로 두면 참고 채널과 다른 색채.
     흑백 + 선 강조로 **만화책 느낌**을 만든다.
     """
     im = Image.open(im_path).convert("RGB")
-    g = ImageOps.autocontrast(im.convert("L"), cutoff=1)
-    # 자외선으로 선(선화)을 강하게 — 만화의 잉크선 강조
-    g = g.filter(ImageFilter.UnsharpMask(radius=2.0, percent=170, threshold=2))
-    g = g.filter(ImageFilter.UnsharpMask(radius=5, percent=80, threshold=3))
-    # 선을 또렷하게: 대비 + 살짝 posterize → 평면 색면(cel) 느낌
-    g = ImageEnhance.Contrast(g).enhance(1.22)
-    g = g.point(lambda v: min(255, int(v * 1.02)))
-    # 시피아(따뜻한 종이색) 톤
-    out = ImageOps.colorize(g, black="#181410", white="#faf6ec")
+
+    # 1) 완전 그레이스케일 — L 변환 (이걸 빼면 컬러가 남는다)
+    g = im.convert("L")
+
+    # 2) autocontrast (cutoff 2 — 너무 강하게 먹지 않게)
+    g = ImageOps.autocontrast(g, cutoff=2)
+
+    # 3) 대비 강화 — 평면한 애니메이션에 입체감을 준다
+    g = ImageEnhance.Contrast(g).enhance(1.38)
+
+    # 4) 선(잉크선) 강조 — 자외선 2단. 만화의 윤곽선을 만든다.
+    g = g.filter(ImageFilter.UnsharpMask(radius=1.5, percent=280, threshold=1))
+    g = g.filter(ImageFilter.UnsharpMask(radius=4.0, percent=150, threshold=2))
+
+    # 5) 시피아(따뜻한 종이색) 톤 — 흑백만화의 인쇄 질감
+    out = ImageOps.colorize(g, black="#141109", white="#faf7f0")
     out.save(dest, "JPEG", quality=93, optimize=True)
-
-

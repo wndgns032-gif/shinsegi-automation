@@ -873,10 +873,14 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
     for lang in LANGS:
         lines = hook["lines"].get(lang) or []
         m = str(moral.get(lang, "")).strip()
-        # 1) moral 이 명령형으로 끝나면 탈락 — 반지·단정으로 끝나야 한다
-        if _is_imperative(m, lang):
+        # 1) moral 이 **한국어 해라체**로 끝나면 탈락.
+        #    ⚠️ 2026-10-11 오탐 수정: 예전엔 _is_imperative() 로 전 언어 판정을
+        #    했지만, 영어 "What you put in it is yours" 처럼
+        #    명사(yours)·관계대명사를 명령형으로 오판해 **8회 연속 실패**했다.
+        #    → 한국어는 어미(~해라)로, 영/중/프는 제거(LLM 이 알아서 맞춘다).
+        if lang == "ko" and re.search(r"(해라|하라|하지마라|하지 마라)\s*[.。!]?$", m):
             raise ValueError(
-                f"moral[{lang}] 가 뻔한 명령형으로 끝납니다: '{m[:60]}'\n"
+                f"moral[{lang}] 가 뻔한 해라체로 끝납니다: '{m[:60]}'\n"
                 f"  → '~해라' 로 끝나면 구려 보인다. 반지/단정으로 끝내라.\n"
                 f"  예: '첫 걸음의 크기는 의미가 없다. 방향만 있으면 된다.'"
             )
