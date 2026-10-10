@@ -176,6 +176,35 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
   - ✅ "첫 걸음의 크기는 의미가 없다. 방향만 있으면 된다."
   - 지시형은 쓰지 않되, 무방비한 문장이 되지는 않게 한다.
 
+## 🔥 구조 — 참고 채널(인생지혜) 프레임 실측 기반 (2026-10-11)
+
+로이가 참고 채널을 지목했다. yt-dlp 로 내려받아 프레임을 전부 읽은 결과,
+**우화가 아니라 1인칭 관찰자 시점의 짧은 문장 나열**이었다.
+이 구조를 그대로 따른다.
+
+### 1) 항목 수: **10개 유지하되 각 항목을 1~2문장으로** (60초)
+장면당 5~6초는 유지하되, **문장을 짧게 쪼갠다.**
+
+### 2) 문장 길이: **10~18자**. 긴 문장 금지.
+> "정답이 어딘가에 있다." / "혼자가 아니길 잘했다." / "그때였습니다."
+
+### 3) 리듬: 짧은 문장 + 쉼 + 짧은 문장. 마침표로 끊어 짧게.
+
+### 4) ⭐ 1인칭 관찰자 시점 — **동물 주인공을 쓰지 마라**
+> "나는 나 자신을 밀어 넣었다." / "혼자가 아니길 잘했다."
+
+기존처럼 두더지·비버 같은 동물 주인공을 쓰면 참고 채널과 완전히 달라진다.
+→ **"어떤 사람"의 1인칭 관찰**로 쓴다. (이름 없이 '나')
+
+### 5) 어미 혼용: ~이다 / ~이었다 / ~한다 / ~된다 를 자연스럽게 섞는다.
+같은 어미를 반복하지 않는다. 번역투를 피한다.
+
+### 6) 존댓말·경어 금지. 명령형 지시도 최소화.
+
+### 7) 마지막은 **담담한 반지/체념**
+> "끝내지 못한 채로도 괜찮은 사람이다."
+→ "~해라" 가 아니라 "~이다/~이었다" 로 끝낸다.
+
 ## 🔥 톤 — 금지: 교과서·정답 말투
 
 이전 버전의 가장 큰 문제는 **모든 대본이 똑같이 생겼던 것**이다.
@@ -248,7 +277,32 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 - 2장면: "Arrête de copier les autres. Écris ce que tu veux vraiment."
 - 10장면: "Commence aujourd'hui."
 
-## 주인공
+## ⭐ image_prompt — 애니메이션 만화 스타일 (2026-10-11 로이 지목 반영)
+
+로이가 참고 채널 스크린샷(애니메이션 만화 + 1인칭 관찰자)을 지목했다.
+→ **동물 우화가 아니라 사람의 일상을 그리는 애니메이션**으로 바꾼다.
+
+**모든 image_prompt 은 아래 형식을 따른다:**
+```
+black and white manga style, a man in his 30s sitting alone at a desk late at night,
+laptop glow on his face, japanese anime film still, cel shaded, clean line art,
+flat color shading, soft lighting, emotional, horizontal composition
+```
+- **인물 등장**: `a man in his 30s` / `a young woman` / `an office worker` 처럼
+  사람 중심. **동물 금지.**
+- **장면은 일상**: 사무실 · 버스 · 벨кон도 · 저녁 식당 · 산책로 · 침대
+- **분위기**: `melancholic` / `quiet` / `warm` / `lonely`
+- 끝에 항상 `japanese anime film still, cel shaded, clean line art` 를 붙인다.
+- **색 지정 금지**(흑백 선화 후처리). **`no color` 도 쓰지 말 것**(anime 과 충돌).
+
+## characters
+사람 캐릭터 1인의 영어 외형 묘사 한 줄.
+**형식: "<나이/성별>, <외형 특징1>, <특징2>, <특징3>"**
+  ✅ "a man in his 30s, short black hair, tired eyes, plain grey shirt"
+  ✅ "a young woman, long straight hair, beige coat, holding a coffee cup"
+→ 이 묘사는 모든 장면의 image_prompt 앞에 자동 삽입된다.
+
+## (구) 동물 규칙 — 더 이상 쓰지 않는다
 동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
 **형식: "<종명>, <분류>, <신체 특징1>, <신체 특징2>, <신체 특징3>"** (최대 6개 단어)
   ✅ "a mole, a small subterranean mammal, pointed snout, long whiskers, tiny eyes, wide paws"
@@ -838,6 +892,35 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
                 f"  → '{blob[:80]}'\n"
                 f"  이런 문구는 매번 반복된다. 더 구체적인 장면으로 바꿔라."
             )
+
+    # ── 참고 채널 구조 규칙 (2026-10-11) ─────────────────────────
+    # 1인칭 관찰자 시점 + 짧은 문장(≤18자) + 담담한 반지.
+    #   이게 안 지켜지면 참고 채널과 완전히 다른 톤이 된다.
+    ANIMAL_WORDS = ("두더지", "비버", "거북이", "토끼", "여우", "곰", "개", "고양이",
+                    "까마귀", "부엉이", "개미", "달팽이", "mole", "beaver", "tortoise")
+    for sc in scenes:
+        for lg in LANGS:
+            nar = str(sc.get("narration", {}).get(lg, "")).strip()
+            if not nar:
+                continue
+            # 1) 동물 주인공 금지 (1인칭 관찰자 구조로 전환)
+            hits = [w for w in ANIMAL_WORDS if w in nar.lower()]
+            if hits:
+                raise ValueError(
+                    f"scenes[{sc.get('act')}].narration[{lg}] 에 동물이 나왔습니다: {hits}\n"
+                    f"  → '{nar[:70]}'\n"
+                    f"  참고 채널은 1인칭 관찰자 구조다. 동물을 빼고 사람의 일상으로 써라."
+                )
+            # 2) 문장이 너무 길면 안 된다 (권장 18자, 경고는 26자 초과)
+            for sent in [s for s in nar.replace("!", ".").replace("?", ".").split(".")
+                         if s.strip()]:
+                if len(sent.strip()) > 26:
+                    raise ValueError(
+                        f"scenes[{sc.get('act')}].narration[{lg}] 문장이 너무 깁니다 "
+                        f"({len(sent.strip())}자): '{sent.strip()[:60]}'\n"
+                        f"  → 참고 채널은 10~18자 짧은 문장을 연달아 쓴다."
+                        f"    긴 문장을 2개로 쪼개라."
+                    )
 
     for lang in LANGS:
         if not str(data["title"].get(lang, "")).strip():

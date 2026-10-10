@@ -287,8 +287,23 @@ def _fetch_one(i: int, p: str, out_dir: Path, total: int,
     return dest
 
 
+def _mood_for_scene(prompt: str) -> str:
+    """장면 프롬프트에서 분위기 키워드를 뽑아 애니메이션 무드 결정."""
+    s = (prompt or "").lower()
+    if any(k in s for k in ("night", "dark", "star", "moon", "lamp")):
+        return "night"
+    if any(k in s for k in ("storm", "rain", "cloud", "grey sky", "overcast", "snow")):
+        return "tense"
+    if any(k in s for k in ("sunset", "dawn", "golden", "warm", "fire", "candle", "autumn")):
+        return "warm"
+    if any(k in s for k in ("bright", "morning", "sunny", "clear sky", "spring", "child")):
+        return "bright"
+    return "quiet"
+
+
 def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0,
-               stock: bool = False, company: str | None = None) -> list[Path]:
+               stock: bool = False, company: str | None = None,
+               anime_mode: bool = False, character: str = "") -> list[Path]:
     """장면 이미지 생성 — **순차 호출**(2026-10-09 수정).
 
     ⚠️ 병렬화는 Pollinations 쿼터를 탔고, 오히려 이미지를 망쳤다.
@@ -311,7 +326,26 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0,
     for i, p in enumerate(prompts):
         dest = out_dir / f"scene{i + 1}.jpg"
         got = False
-        if stock:
+        # ⭐ 2026-10-11: 애니메이션 만화 모드 (참고 채널 대응)
+        #   로이가 스크린샷을 지목하며 "흑백 만화 일러스트"를 요청.
+        #   실사 사진으로는 애니메이션 장면을 만들 수 없어 AI 생성이 유일한 경로.
+        if anime_mode:
+            try:
+                from src import anime as _anime
+                mood = _mood_for_scene(p)
+                if _anime.gen_anime_scene(p, dest, seed=seed_base + i * 313,
+                                          mood=mood, character=character):
+                    _anime.anime_to_manga(dest, dest)
+                    (out_dir / f"scene{i + 1}.mono").write_text("1", encoding="utf-8")
+                    got = True
+                    stock_count += 1
+                    print(f"  [fable] 이미지 {i + 1} AI 애니메이션 만화 OK ({mood})")
+                else:
+                    print(f"  [fable] 이미지 {i + 1} 애니메이션 생성 실패 → 실사로 폴백")
+            except Exception as e:  # noqa: BLE001
+                print(f"  [fable] 이미지 {i + 1} 애니메이션 오류({type(e).__name__})"
+                      f" → 실사로 폴백")
+        if not got and stock:
             try:
                 from src import photostock as ps
                 import random as _rnd
@@ -557,17 +591,27 @@ def build_ass(lang: str, story: dict, starts: list[float], durs: list[float]) ->
         "WrapStyle: 2", "ScaledBorderAndShadow: yes", "",
         "[V4+ Styles]",
         "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding",
-        # HOOK: 상단 중앙 (alignment 8) — 검정 바 위 흰 글씨
-        f"Style: HOOK,{font},{hook_size},&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,"
-        "-1,0,0,0,100,100,0,0,1,2.2,0,8,60,60,0,129",
-        # CAP: 하단 중앙 (alignment 2) — 흰 글씨 검정 테두리
-        # 2026-10-08: 74 → 92 확대 (피드에서 읽히지 않던 크기)
-        f"Style: CAP,{font},92,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,"
-        "-1,0,0,0,100,100,0,0,1,4.4,1.2,2,80,80,110,129",
+        # ⭐ 2026-10-11 참고 채널(인생지혜) 프레임 실측 기반 전면 개편.
+        #   실측: 상단 검은바 7.8% / 이미지 영역 72.2% / 하단 검은바 19.8%
+        #        노란 픽셀 7.18%(제목) + 흰 픽셀 1.87%(본문 자막)
+        #
+        # TITLE: 상단 고정 제목. **노란 굵은 글씨 + 두꺼운 검정 외곽선**
+        #        (참고 채널의 시그니처 — 흰색이 아니라 노랑)
+        f"Style: TITLE,{font},{hook_size},&H0046E3FF,&H0046E3FF,&H00000000,&H00000000,"
+        "-1,0,0,0,100,100,0.5,0,1,3.6,1.4,8,54,54,4,129",
+        # CAP: 이미지 **중앙** 자막. 흰 글씨 + 검정 외곽선
+        #        참고 채널은 하단 바가 아니라 이미지 위에 직접 얹는다.
+        f"Style: CAP,{font},88,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,"
+        "-1,0,0,0,100,100,0,0,1,4.0,1.2,5,70,70,0,129",
+        # ACC: 강조 단어 (노랑) — 참고 채널은 본문에서도 키워드를 노랑으로 칠한다
+        f"Style: ACC,{font},88,&H0046E3FF,&H0046E3FF,&H00000000,&H00000000,"
+        "-1,0,0,0,100,100,0,0,1,4.0,1.2,5,70,70,0,129",
         # QUOTE: 화면 중앙 (alignment 5) — 명언/교훈 카드
-        # 2026-10-08: 76 → 96 확대 (실제 크기는 _card_font_size 가 결정)
         f"Style: QUOTE,{font},96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H96000000,"
         "-1,0,0,0,100,100,0,0,1,5.0,1.6,5,90,90,0,129",
+        # HOOK: 하위 호환 (기존 이벤트에서 사용 중)
+        f"Style: HOOK,{font},{hook_size},&H0046E3FF,&H0046E3FF,&H00000000,&H00000000,"
+        "-1,0,0,0,100,100,0.5,0,1,3.2,1.2,8,54,54,4,129",
         # CTA: 하단 중앙 주황 (alignment 2)
         f"Style: CTA,{font},56,&H004DA9FF,&H004DA9FF,&H00000000,&H00000000,"
         "-1,0,0,0,100,100,0,0,1,2.4,0.6,2,70,70,140,129",
@@ -712,7 +756,7 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
         # ⭐ 2026-10-10: 참고 채널 분석 결과 반영.
         #   FABLE_POSTER=on 이면 좌우를 흐린 크롭으로 채우는 3분할 레아웃.
         #   흰 여백이 큰 실사 사진에서 화면이 비어 보이는 문제를 해결한다.
-        poster = os.getenv("FABLE_POSTER", "on").lower() != "off"
+        poster = os.getenv("FABLE_POSTER", "off").lower() == "on"
         if poster:
             # 좌우 블러 배경 + 중앙 원본
             # ⭐ hstack 을 쓴다. overlay 는 입력이 2개라 3분할 불가
@@ -853,10 +897,15 @@ def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
     if first_lang or not images.exists():
         # 실사 사진 경로 사용 여부 (2026-10-10 로이 요청, 기본 on)
         use_stock = os.getenv("FABLE_IMG_STOCK", "on").lower() != "off"
+        # ⭐ 2026-10-11: 애니메이션 만화 모드 (로이가 참고 채널로 지목)
+        #   기본 on. 실패 시 stock(실사) → AI 생성 순으로 폴백.
+        use_anime = os.getenv("FABLE_IMG_ANIME", "on").lower() != "off"
         company = (story.get("stock_company")
                    or os.getenv("FABLE_STOCK_COMPANY") or None)
         image_paths = gen_images(prompts, images, seed_base=seed_base,
-                                 stock=use_stock, company=company)
+                                 stock=use_stock, company=company,
+                                 anime_mode=use_anime,
+                                 character=str(story.get("characters") or ""))
         _verify_images(images, story, seed_base)
     else:
         image_paths = [images / f"scene{i + 1}.jpg" for i in range(len(prompts))]
