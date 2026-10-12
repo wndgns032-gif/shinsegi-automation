@@ -22,8 +22,7 @@ import requests
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 
 from . import bgm, cards, tts
-
-LANGS = ["en", "ko", "zh-cn", "fr"]
+from .quotes import LANGS   # ⭐ 단일 진실 공급원 (2026-10-11). 4언어 하드코딩 제거.
 
 W, H = 1080, 1920                 # 최종 출력
 FPS = 30
@@ -174,9 +173,15 @@ def _film_fx() -> str:
         # 그림자에 약한 냉색, 하이라이트에 약한 온색 — 종이 질감 느낌
         "colorbalance=rs=-0.02:gs=0:bs=0.045:rm=0.018:gm=0.006:bm=-0.012:"
         "rh=0.022:gh=0.010:bh=-0.020,"
-        # 필름 마감
-        "vignette=0.42,"
-        "noise=alls=3.2:allf=t"
+# 필름 마감
+    # ⚠️ 2026-10-11 용량 최적화 — 76MB 의 한 원인.
+    #   예전엔 `noise=alls=3.2:allf=t` 였다. allf=t 는 **매 프레임마다** 노이즈를 새로
+    #   만들기 때문에 x264 가 프레임 간 차이를 못 찾아 압축이 크게 방해된다.
+    #   → 강도 3.2 → 1.4 로 낮춤. 노이즈를 아예 지우면 만다운이 아니라
+    #     '스크린샷'처럼 보일 수 있어 최소한은 남긴다.
+    #   (주된 원인은 켄번스 무빙이라 bgm.mix 의 maxrate 상한이 더 큰 효과를 낸다.)
+    "vignette=0.42,"
+    "noise=alls=1.4:allf=t"
     )
 
 
@@ -341,11 +346,29 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0,
                     stock_count += 1
                     print(f"  [fable] 이미지 {i + 1} AI 애니메이션 만화 OK ({mood})")
                 else:
-                    print(f"  [fable] 이미지 {i + 1} 애니메이션 생성 실패 → 실사로 폴백")
+                    print(f"  [fable] 이미지 {i + 1} 애니메이션 생성 실패")
             except Exception as e:  # noqa: BLE001
-                print(f"  [fable] 이미지 {i + 1} 애니메이션 오류({type(e).__name__})"
-                      f" → 실사로 폴백")
-        if not got and stock:
+                print(f"  [fable] 이미지 {i + 1} 애니메이션 오류({type(e).__name__})")
+
+        # ⚠️ 2026-10-11 실측: 애니메이션 실패 시 **실사 사진으로 폴백하면 안 된다.**
+        #   "office corridor at night" 장면에 'computer chip macro' 사진이 붙어
+        #   영상이 완전히 깨졌다(내용·화풍 둘 다 어긋남).
+        #   → 애니메이션 모드에서는 **직전 장면 그림을 그대로 재사용**한다.
+        #     화풍이 유지되고 엉뚱한 사진이 들어오지 않는다.
+        if not got and anime_mode:
+            prev = next((out_dir / f"scene{k + 1}.jpg" for k in range(i - 1, -1, -1)
+                         if (out_dir / f"scene{k + 1}.jpg").exists()), None)
+            if prev is not None:
+                try:
+                    import shutil as _sh
+                    _sh.copyfile(prev, dest)
+                    print(f"  [fable] 이미지 {i + 1} 직전 장면 그림 재사용 "
+                          f"(같은 화풍 유지 — 실사 폴백보다 안전)")
+                    got = True
+                except Exception as e:  # noqa: BLE001
+                    print(f"  [fable] 이미지 {i + 1} 재사용 실패({type(e).__name__})")
+
+        if not got and stock and not anime_mode:
             try:
                 from src import photostock as ps
                 import random as _rnd
@@ -362,7 +385,9 @@ def gen_images(prompts: list[str], out_dir: Path, seed_base: int = 0,
                     ps.record_credit(credits_path, r["credit"])
                     print(f"  [fable] 이미지 {i + 1} 실사 사진 선화 OK "
                           f"({r['query'][:26]}, {r['credit']['license'].upper()})")
-                tmp_photo.unlink(missing_ok=True)
+                # ⚠️ 삭제 금지 — 샌드박스의 대량 삭제 가드가 프로세스를 통째로 죽인다.
+                #    (_srcN.jpg 는 scene*.jpg 가 아니라 검수 대상도 아님 → 남겨도 무해)
+                # tmp_photo.unlink(missing_ok=True)
             except Exception as e:  # noqa: BLE001
                 print(f"  [fable] 이미지 {i + 1} 실사 실패({type(e).__name__})"
                       f" → AI 생성으로 폴백")
@@ -646,15 +671,29 @@ def build_ass(lang: str, story: dict, starts: list[float], durs: list[float]) ->
     else:
         hook_start = 0.0
 
-    # ── 훅 바 글자: 훅 장면부터 끝까지 고정 ──
+    # ── 훅 바 글자 ──
+    # ⭐ 2026-10-11 수정: 예전엔 훅 시작~영상 끝(total)까지 상단에 붙박이였다.
+    #   → 같은 문장이 40초 내내 화면에 남아 "계속 반복된다"는 인상을 줬다.
+    #   기본값은 훅 장면까지만 (+0.6초 여운, 페이드아웃).
+    #   예전처럼 끝까지 붙박이로 쓰려면 FABLE_HOOK_BAR=full.
+    hook_idx = next((i for i, a in enumerate(acts) if a == "hook"), 1 if quote_first else 0)
+    if os.getenv("FABLE_HOOK_BAR", "scene").strip().lower() == "full":
+        hook_show_end = total
+    else:
+        hook_show_end = min(total, starts[hook_idx] + durs[hook_idx] + 0.6)
     for k, ln in enumerate(hook_lines):
         mv = 60 + k * 78
-        events.append(f"Dialogue: 0,{_ass_time(hook_start)},{_ass_time(total)},HOOK,,0,0,{mv},,"
-                      f"{_mark_highlight(ln, hl)}")
+        events.append(f"Dialogue: 0,{_ass_time(hook_start)},{_ass_time(hook_show_end)},HOOK,,0,0,{mv},,"
+                      f"{{\\fad(250,350)}}{_mark_highlight(ln, hl)}")
 
-    # ── 하단 자막: hook/fable/real 장면 (quote·outro 는 카드가 글자 담당) ──
+    # ── 본문 자막 ──
+    # ⭐ 2026-10-11 수정: 예전엔 hook/fable/real 만 자막을 넣었다.
+    #   나스닥·사업가 편은 act 가 tension/body/turn/now 라서
+    #   **10장면 중 2장면에만 자막이 나오고 8장면은 무자막**이었다.
+    #   → 카드(명언/교훈)가 글자를 담당하는 장면만 빼고 전부 자막을 넣는다.
+    skip_caption = {"quote", "outro", "moral"}
     for i in range(n):
-        if acts[i] not in ("hook", "fable", "real"):
+        if acts[i] in skip_caption:
             continue
         s = starts[i] + 0.30
         e = starts[i] + durs[i] - 0.15 - (XFADE if i < n - 1 else 0.5)
@@ -690,7 +729,7 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
 
     # 1) 장면별 낭독 (TTS) → 배속 적용 (atempo — 피치 유지)
     #    로이 요청(2026-10-08): 영상 길이 **40초 이상 1분 이하**.
-    #    → 낭독 총 길이를 목표 구간에 맞게 atempo 로 압축/복잡调控한 뒤,
+    #    → 낭독 총 길이를 목표 구간에 맞게 atempo 로 압축/조정한 뒤,
     #      그래도 짧으면 장면 여유(SCENE_PAD)를 늘려 40초를 채운다.
     audios: list[Path] = []
     raws: list[Path] = []
@@ -699,6 +738,34 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
         if not raw.exists():
             tts.synth(sc["narration"][lang], lang, raw)
         raws.append(raw)
+
+    # 1-0) ⭐ 낭독 중복 검사 (2026-10-11 로이 지적로 추가)
+    #   tts._paced_synth 가 임시 조각을 공유 폴더에 고정 이름(p0/p1)으로 저장해
+    #   2장면 이후가 1장면 음성을 그대로 재사용하는 버그가 있었다.
+    #   → 결과가 "첫 문장이 10번 반복되는" 영상이 됐다. 조용히 넘어가지 않게
+    #     여기서 md5 로 검사하고, 중복이면 전부 다시 만든다. 그래도 중복이면 실패.
+    def _digests(paths: list[Path]) -> list[str]:
+        import hashlib
+        out = []
+        for p in paths:
+            out.append(hashlib.md5(p.read_bytes()).hexdigest() if p.exists() else "")
+        return out
+
+    for attempt in range(2):
+        dg = _digests(raws)
+        dup = len(dg) - len({d for d in dg if d})
+        if dup <= 0:
+            break
+        print(f"  [fable-video] {lang}: 낭독 {dup}개 중복 감지 → 전 장면 재생성")
+        for i, sc in enumerate(scenes):
+            tts.synth(sc["narration"][lang], lang, raws[i])
+    else:
+        dg = _digests(raws)
+        dup = len(dg) - len({d for d in dg if d})
+        if dup > 0:
+            raise RuntimeError(
+                f"낭독 중복 해소 실패({lang}): {dup}개 장면이 같은 음성 — "
+                "영상을 만들면 같은 문장이 반복되므로 중단한다")
 
     # 1-1) 길이 조절 — 1분 초과면 낭독을 살짝 빠르게, 40초 미만이면 여유를 넓힘
     overhead = (HOOK_LEAD + OUTRO_TAIL + SCENE_PAD * len(scenes)
@@ -843,9 +910,8 @@ def render_language(lang: str, story: dict, image_paths: list[Path],
           f"drawbox=x=0:y=0:w=iw:h={bar_h}:color=black:t=fill,"
           f"subtitles='{ass_ref}'{fonts_arg}")
     # 원자적 기록 — 프로세스 사망 시 반쯤 쓴 mp4 가 '이미 렌더됨' 마커로 오인되는 사고 방지
-    tmp = work / f"final_{lang}.tmp.mp4"
-    if tmp.exists():
-        tmp.unlink()
+    # ⚠️ 삭제 대신 유니크 이름 — 재시도 때 남은 tmp 를 지우려다 프로세스가 죽는 사고 방지
+    tmp = work / f"final_{lang}.{int(time.time()) % 100000}.tmp.mp4"
     bgm.mix(joined, tmp, total, music, video_vf=vf)
     os.replace(tmp, final)
     print(f"  [fable] {lang}: {total:.1f}s, 장면 {n}개, 훅 바 {bar_h}px")
@@ -871,6 +937,8 @@ def _verify_images(images_dir: Path, story: dict, seed_base: int) -> None:
             return
         if not fails:
             print(f"  [check] 이미지 검수 {len(results)}/{len(results)} 통과")
+            # 캐시 마커 — 다음 실행에서 10분짜리 재생성을 건너뛴다
+            (images_dir / ".ok").write_text("1", encoding="utf-8")
             return
         print(f"  [check] 검수 실패 {len(fails)}개 (scene {fails}) → 재생성 시도")
         story_path = images_dir.parent / "story.json"
@@ -879,9 +947,25 @@ def _verify_images(images_dir: Path, story: dict, seed_base: int) -> None:
         msg = f"  [check] 재생성 후 {len(results2) - len(fails2)}/{len(results2)} 통과"
         if fails2:
             msg += f" (잔여 실패 {fails2} — 기존 이미지 유지)"
+        else:
+            (images_dir / ".ok").write_text("1", encoding="utf-8")
         print(msg)
     except Exception as e:  # noqa: BLE001
         print(f"  [check] 검수 오류 — 렌더 계속 ({type(e).__name__}: {e})")
+
+
+def seed_from_date(value) -> int:
+    """날짜 문자열 → 시드 정수.
+
+    ⚠️ 2026-10-11 실측 버그: `int(date.replace('-',''))` 는 하이픽만 지운다.
+    그런데 슬롯 구분용 suffix 가 붙은 날짜가 있다:
+
+        2026-10-17-stocks  → '20261017stocks' → ValueError 로 **렌더 전멸**
+
+    → 숫자만 남긴다. suffix 가 붙어도 안전하다.
+    """
+    digits = re.sub(r"\D", "", str(value or ""))
+    return int(digits) % 10000 if digits else 0
 
 
 def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
@@ -890,11 +974,19 @@ def make_fable(lang: str, story: dict, data_dir: Path) -> Path:
     sdir = story_dir(data_dir, story["date"])
     images = sdir / "images"
     prompts = [sc["image_prompt"] for sc in story["scenes"]]
-    seed_base = int(story["date"].replace("-", "")) % 10000
+    seed_base = seed_from_date(story.get("date"))
     # 첫 언어(ko)일 때만 이미지 생성 — 4개 언어가 1벌을 공유한다.
     # 이미 있으면 캐시 히트라 다 건너뛴다.
     first_lang = lang == LANGS[0]
-    if first_lang or not images.exists():
+    # ⚠️ 2026-10-11: `first_lang` 이면 **매번 10장을 다시 생성**했다(1회 10분).
+    #   검수를 통과한 이미지가 이미 디스크에 있으면 그대로 쓴다.
+    #   `.ok` 마커는 `_verify_images()` 가 전 장면 통과 시에만 남긴다.
+    cached_ok = ((images / ".ok").exists()
+                 and all((images / f"scene{i + 1}.jpg").exists()
+                         for i in range(len(prompts))))
+    if cached_ok:
+        print(f"  [fable] 이미지 캐시 사용 ({images}) — 재생성 생략")
+    if (first_lang and not cached_ok) or not images.exists():
         # 실사 사진 경로 사용 여부 (2026-10-10 로이 요청, 기본 on)
         use_stock = os.getenv("FABLE_IMG_STOCK", "on").lower() != "off"
         # ⭐ 2026-10-11: 애니메이션 만화 모드 (로이가 참고 채널로 지목)

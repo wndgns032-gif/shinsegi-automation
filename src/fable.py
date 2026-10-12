@@ -38,7 +38,12 @@ FABLE_TAGS = {
 }
 from .quotes import Quote, THEME_LABELS
 
-LANGS = ["en", "ko", "zh-cn", "fr"]
+# ⭐ 언어 목록의 단일 진실 공급원 = quotes.LANGS
+# 2026-10-11 전까지 여기에도 ["en","ko","zh-cn","fr"] 를 하드코딩해서
+# quotes.LANGS 를 줄여도 fable 쪽은 여전히 4언어를 만들었다.
+# → 언어 수가 바뀌면 이 세 곳만 고치면 되도록 통합했다.
+# 되돌리기: quotes.py 의 LANGS 에 "zh-cn","fr" 를 다시 추가하면 끝.
+from .quotes import LANGS
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
 MODEL = "deepseek-flash"   # 2026-10-08: deepseek-chat 은 404, flash/pro 만 제공됨
 
@@ -154,22 +159,22 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 테마: {THEME_LABELS.get(theme, theme)}
 
 ## 구조 (총 10장면 — 명언이 영상을 연다)
-1장면 quote: 명언 원문을 화면 가운데 크게 보여주며 낭독. (낭독은 시스템이 명언 원문으로 자동 교체 — image_prompt만 작성: 명언의 분위기를 상징하는 고요한 장면, 주인공 동물 등장 가능)
+1장면 quote: 명언 원문을 화면 가운데 크게 보여주며 낭독. (낭독은 시스템이 명언 원문으로 자동 교체 — image_prompt만 작성: 명언의 분위기를 상징하는 고요한 장소 장면, 인물은 넣지 않아도 된다)
 2장면 hook: **화법 4가지 중 하나를 골라 2줄로 쓴다.** (아래 표 참고)
-  - 첫 줄은 그 화법의 첫 문장. 두 번째 줄은 뒤집거나的具体한 장면으로 이어진다.
+  - 첫 줄은 그 화법의 첫 문장. 두 번째 줄은 뒤집거나 구체적인 장면으로 이어진다.
   - **"당신도" 로 시작 금지.** **"지금 당장" 을 매번 쓰지 말 것.**
   - 각 줄은 그 자체로 완전한 문장(끝에 마침표).
-  (예 A 단정형: "준비는 언젠가 끝나지 않는다. 지금 손을 펴라.")
-  (예 D 관찰후 찌르기: "내일 또 내일부터 하겠다. 그 말, 이미 백 번 들었다.")
-3~7장면 fable: 주인공 동물이 목표를 갖고 → 실패와 시행착오 → 다른 동물의 조언이나 사건 → 깨달음. 이 5장은 **하나의 연속된 이야기**다. 시간대(아침→저녁)와 카메라 각도는 5장 안에서 고정하고, 주인공의 위치와 감정만 변하게 한다.
+  (예 A 단정형: "준비는 언젠가 끝나지 않는다. 나는 오늘도 미뤘다.")
+  (예 D 관찰후 찌르기: "내일부터 하겠다. 그 말을 나는 백 번 했다.")
+3~7장면 fable: '나'가 어떤 일을 시작하고 → 어긋나고 → 다시 손대는 과정. 이 5장은 **하나의 연속된 이야기**다. 시간대는 아침→밤으로 흐르게 하고, **장소는 매 장면 다르게** 한다(골목 / 책상 / 계단 / 정류장 / 부엌). 같은 방이 반복되면 영상이 멈춘 것처럼 보인다.
 8~9장면 real: 우화의 교훈을 현대인의 구체적 장면으로 옮긴다.
   - **8장면**: 한 사람의 **구체적인 순간 하나**를 보여준다.
     숫자 나열("3년간 365번") 금지 — **장면으로 보여라.**
-    ⭐ "그 여자의 책상 구석에 같은 종이가 매일 한 장씩 쌓여 있었다.
+    ⭐ "내 책상 구석에 같은 종이가 매일 한 장씩 쌓였다.
        어느 순간 그것이 책 한 권이 되어 있었다." (이렇게 써라)
   - **9장면**: 8장면과 **다른 결**로 마무리. 8이 과거면 9는 지금.
     "당신도…~해라" 패턴 금지. 화법을 유지한 채로 장면만 전환한다.
-    ⭐ "지금 당신의 책상 구석에 쌓인 건 뭔가. 그것이 곧 답이다."
+    ⭐ "지금 내 책상 구석에 쌓인 것을 나는 알고 있다."
 10장면 outro: ⭐ **명령형으로 끝내지 마라.** (낭독은 moral로 자동 교체 — image_prompt만 작성)
   - **반지(en)·구체성 있는 단정** 으로 끝낸다.
   - ❌ "오늘 당장 첫 한 걸음을 떼세요."
@@ -185,7 +190,8 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 ### 1) 항목 수: **10개 유지하되 각 항목을 1~2문장으로** (60초)
 장면당 5~6초는 유지하되, **문장을 짧게 쪼갠다.**
 
-### 2) 문장 길이: **10~18자**. 긴 문장 금지.
+### 2) 문장 길이: ko/zh-cn **10~18자** · en/fr **6~12단어**. 긴 문장 금지.
+(같은 뜻이라도 영어·프랑스어는 글자수가 2배다 — 글자수로 맞추려 하지 말고 **단어 수**로 맞춘다)
 > "정답이 어딘가에 있다." / "혼자가 아니길 잘했다." / "그때였습니다."
 
 ### 3) 리듬: 짧은 문장 + 쉼 + 짧은 문장. 마침표로 끊어 짧게.
@@ -238,8 +244,8 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
   - 금지: "한 여자가 매일 새벽 5시에 일어났다. 3년 동안…"
   - 대신: **구체적 장면 하나.** 숫자 나열을 멈추고 **장면을 보여쳐라.**
     - ❌ "매일 5시에 일어서 3년간 1000번 썼다"
-    - ✅ "그 여자의 책상에는 매일 같은 각도로 놓인 종이 한 장이 있었다.
-      1년째捨既された 종이, 2년째, 3년째… 그 한 장이 책이 됐다."
+    - ✅ "책상 구석에 종이가 한 장씩 쌓여 있었다.
+      1년째 종이, 2년째 종이, 3년째 종이… 그게 책이 됐다."
 - **10장면(moral)**: ⭐ **명령형으로 끝내지 마라.**
   - ❌ "오늘 당장 첫 한 걸음을 떼세요."
   - ✅ "첫 걸음의 크기는 아무 의미가 없다. 방향만 있으면 된다."
@@ -282,79 +288,72 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
 로이가 참고 채널 스크린샷(애니메이션 만화 + 1인칭 관찰자)을 지목했다.
 → **동물 우화가 아니라 사람의 일상을 그리는 애니메이션**으로 바꾼다.
 
-**모든 image_prompt 은 아래 형식을 따른다:**
+**모든 image_prompt 의 골격:**
 ```
-black and white manga style, a man in his 30s sitting alone at a desk late at night,
-laptop glow on his face, japanese anime film still, cel shaded, clean line art,
-flat color shading, soft lighting, emotional, horizontal composition
+<장소·사물·시간>, <사람이 그곳에서 하는 동작 — 뒷모습/멀리>
 ```
-- **인물 등장**: `a man in his 30s` / `a young woman` / `an office worker` 처럼
-  사람 중심. **동물 금지.**
-- **장면은 일상**: 사무실 · 버스 · 벨кон도 · 저녁 식당 · 산책로 · 침대
-- **분위기**: `melancholic` / `quiet` / `warm` / `lonely`
-- 끝에 항상 `japanese anime film still, cel shaded, clean line art` 를 붙인다.
-- **색 지정 금지**(흑백 선화 후처리). **`no color` 도 쓰지 말 것**(anime 과 충돌).
+예) `empty subway platform at dawn, one person waiting, seen from behind, long shot`
+
+- **장소가 문장의 주인공이다.** 사무실 · 지하철 · 골목 · 부엌 · 다리 위 · 버스 정류장 ·
+  도서관 · 계단 — 장면마다 반드시 다른 장소를 고른다.
+- **매 장면에 사람 1명을 넣는다** (1장면 quote 만 예외).
+  사람이 없으면 빈 방 사진처럼 나와서 영상이 죽는다(실측).
+- **인물은 뒤에, 작게, 뒷모습 위주로.** `seen from behind` / `distant small figure` /
+  `small figure in the middle distance`
+- **스타일 토큰은 쓰지 않는다.** 시스템이 붙인다(흑백 만화 후처리).
+  `black and white` / `manga` / `japanese anime` 같은 단어를 image_prompt 에 넣지 마라.
+- **색 지정 금지**(흑백 후처리). **`no color` 도 쓰지 말 것.**
+- 초상 금지: `close-up` / `portrait` / `face` / `over the shoulder` / `upper body` /
+  `medium shot` / `looking at the camera` — 넣으면 열 장이 전부 얼굴만 나온다(실측).
 
 ## characters
 사람 캐릭터 1인의 영어 외형 묘사 한 줄.
 **형식: "<나이/성별>, <외형 특징1>, <특징2>, <특징3>"**
   ✅ "a man in his 30s, short black hair, tired eyes, plain grey shirt"
   ✅ "a young woman, long straight hair, beige coat, holding a coffee cup"
-→ 이 묘사는 모든 장면의 image_prompt 앞에 자동 삽입된다.
+→ 이 묘사는 모든 장면의 image_prompt 뒤에 자동 삽입된다(뒤에 둬야 클로즈업이 안 된다).
 
-## (구) 동물 규칙 — 더 이상 쓰지 않는다
-동물 1마리를 창의적으로 정하고 `characters`에 영어 외형 묘사를 한 줄로 쓴다.
-**형식: "<종명>, <분류>, <신체 특징1>, <신체 특징2>, <신체 특징3>"** (최대 6개 단어)
-  ✅ "a mole, a small subterranean mammal, pointed snout, long whiskers, tiny eyes, wide paws"
-  ✅ "a tortoise, a slow shelled reptile, wrinkled neck, cracked shell, thick legs"
-  ❌ "about the size of a teacup"  ← 비교 대상(찻잔 등)을 쓰면 모델이 그 물체를 그린다
-이 묘사는 우화 장면의 이미지 프롬프트에 자동 삽입되므로 장면 묘사에 반복할 필요 없다.
-
-⚠️ 실측으로 확인된 flux 규칙 (2026-10-07, 5차례 시행):
-1. **분류어**(subterranean mammal / shelled reptile)가 종을 확실히 고정한다.
-   종명만 ("a mole") 은 고양이/여우로 새는 경우가 있다.
-2. **신체 특징은 3~5개가 한계.** 그 이상(코 방석·귀 없음 등) 쓰면 잡음이 되어
-   오히려 토끼/여우처럼 그린다. 간결하게 유지한다.
-3. **의류·안장 금지** — "with round glasses" 를 넣으면 **사람(여성)** 이 나온다.
-4. **부정 표현 금지** — "not a cat" 를 넣으면 **고양이** 가 나온다.
-   flux 는 'not X' 를 'X' 로 읽는 경향이 있다. 긍정형 묘사만 쓸 것.
-5. **얼굴이 종을 결정한다** — 몸(털·크기)이 맞아도 얼굴이 여우면 여우로 보인다.
-   얼굴 특징이 헷갈리지 않을 종을 고른다
-   (예: 두더지=긴 주둥이·작은 눈 / 토끼=긴 귀 / 거북이=딱딱한 껍질).
-
-→ flux(stable) 로는 100% 종 고정 불가. 위 규칙으로 "대부분이 같은 동물" 수준까지 확보하고,
-   종이 흔들리는 장면은 자동 검수 재생성으로 걸러낸다.
+⚠️ 실측으로 확인된 flux 규칙:
+1. **부정 표현 금지** — "not a cat" 을 넣으면 **고양이** 가 나온다.
+   flux 는 'not X' 를 'X' 로 읽는다. 긍정형 묘사만 쓴다.
+2. **초상 단어 하나가 열 장을 지배한다** — `face` / `close-up` 이 한 장면에만 있어도
+   이후 장면까지 얼굴 중심으로 고정된다. 철저히 배제한다.
+3. **문장형 금지** — 완전한 서사문을 넣으면 flux 가 개념을 못 잡고 추상 도형을 그린다.
+   콤마로 이은 명사구만 쓴다.
+4. **색 단어 금지** — 장면마다 색이 갈라진다.
+5. **프롬프트가 길면 장면이 밀린다.** 콤마 기준 10토큰 이내로 유지한다.
 
 ## 규칙
-- narration: 각 언어당 1~2문장, 낭독 6~8초 분량. **나레이션은 3인칭 기록체로 쓰지 않는다.**
-- **narration 도 지시형으로 쓴다.** 2·9·10장면은 반드시 명령형(~해라/~하라)으로 끝난다.
-  관찰이나 설명으로 끝내지 않는다.
-  (예: "시간을 아끼지 마라. 지금 당장 폰을 집어 들고 나가라.")
-  3인칭 서술("The turtle got up again")은 유튜브 요약 채널처럼 들린다. 2인칭("누구/당신/you/tu/你")
-  을 Throw in 하거나, 동작만 던지고 감정은 뉘앙스로 남긴다. 단 real·outro 장면은 반드시 2인칭으로 끝낸다.
+- narration: 각 언어당 1문장, **10~18자(ko/zh-cn) · 6~12단어(en/fr)**.
+  **1인칭 관찰자 시점**으로 쓴다 — 내가 본 장면을 담담하게 기록한다.
+  - ✅ "나는 그 앞을 오래 지났다." / "그 틈은 늘 거기 있었다." / "I passed it for years."
+  - ❌ "시간을 아끼지 마라. 지금 당장 나가라." (명령형 — 절대 금지)
+  - ❌ "The turtle got up again." (3인칭 요약체 — 금지)
+  - ❌ "누구나 알 것이다." (설교조 — 금지)
+- **명령형·훈계조·설교조를 쓰지 않는다.** `~해라/~하라/~하지 마라/~해야 한다`,
+  영어 `you must / do this / never`, 중국어 `你应该/必须`, 프랑스어 `tu dois / il faut` 금지.
+  교훈은 **관찰과 사실로만** 남긴다. 독자가 스스로 깨닫게 둔다.
+- **모든 장면의 장소가 달라야 한다.** 같은 방·같은 의자가 반복되면 영상이 멈춘 것처럼 보인다.
 - subtitle: 화면 하단 자막. ko/zh-cn 16자 이내, en/fr 42자 이내. 조사를 붙이지 않는다(명사형).
-- image_prompt: **영문. 주격 명사구(fragment)로 쓴다** — 완전한 서술문("Morning light. The mole
-  stands...")이나 문장으로 쓰면 flux 가 개념을 못 잡고 추상 형태를 그린다(실측 사례).
-  **"누가 + 무엇을 + 하는 장면"** 을 명사구로 압축하고, 서술/서사 없이 시각 정보만.
-  - ✅ "a small mole with round glasses digging under a big boulder on a forest path,
-     ferns and bushes around, side view, full body visible"
-  - ✅ "a young man at a small desk late at night, laptop open, one hand on his forehead,
-     notebooks stacked, pencil sketch portrait, waist up"
-  - ❌ "Morning light. The small mole stands at the base of the boulder, shovel tiny in
-     its paws, digging at the rock's edge. Wide shot showing..."  → 추상 타원 출력됨
+- image_prompt: **영문. 장소(환경)를 먼저, 인물은 마지막에 작게.**
+  완전한 문장이 아니라 콤마로 이어붙인 명사구로 쓴다.
+  - ✅ "empty subway platform at dawn, vending machine glowing, distant figure waiting, long shot"
+  - ✅ "cluttered desk by a window at night, stacked papers, cold coffee, seen from behind"
+  - ❌ "a man in his 30s looking at the camera, over the shoulder, close-up" (초상 금지)
+  - ❌ "Morning light. The man stands at the desk..." (문장형 — flux 가 추상 도형을 그린다)
   - ❌ "an abstract symmetrical pattern, geometric texture" (절대 금지)
-  - 동물이 작게 나오면 사라지므로 `full body visible` 또는 `wide shot` 을 반드시 포함.
-  - **색은 지정하지 않는다** (색 단어 금지 — 장면마다 색이 갈라진다).
-  - ⚠️ **절대로 두 동물을 함께 그리지 말 것** (`two characters`, `talking to the mole` 등).
-    두 번째 동물이 있으면 flux 가 주인공 자리를 차지해 **캐릭터가 뒤섞인다**
-    (실측: 두더지 주인공인데 거북이가 단독으로 나옴). 조언이 필요한 장면도
-    **주인공의 표정/행동만으로 표현**한다(예: "the mole pausing, thinking, alone").
+  - **매 장면 반드시 아래 중 하나를 포함**: `long shot` / `wide shot` / `full body visible` /
+    `seen from behind` / `distant small figure`
+  - **금지 토큰**: `close-up`, `portrait`, `face`, `over the shoulder`, `upper body`,
+    `medium shot`, `looking at the camera` — 넣으면 열 장이 전부 얼굴만 나온다(실측).
+  - **색은 지정하지 않는다** (흑백 후처리). `no color` 도 쓰지 말 것.
+  - ⚠️ **인물은 한 명만.** 두 사람을 함께 그리라고 쓰면 캐릭터가 뒤섞인다.
 - hook.lines: 각 언어 2줄. 한 줄당 ko/zh-cn 16자, en/fr 40자 이내.
   **각 줄은 끝에 마침표를 찍은 완전한 문장**으로 쓴다(나레이션에서 이어 읽는다).
 - hook.highlight: lines 안에 실제로 포함된 강조 단어 1개(주황색 표시용). 각 언어별.
-- moral: 아웃트로 카드에 크게 띄울 교훈 문장. 각 언어 1문장, 낭독 5~7초. **2인칭으로 끝낸다.**
+- moral: 마지막 카드에 크게 띄울 문장. 각 언어 1문장, 낭독 5~7초.
+  **명령형이 아니라 관찰문으로 끝낸다.** (예: "가장 큰 문은 늘 조용한 쪽에 있었다.")
 - title: 각 언어 짧은 제목.
-- caption: 각 언어 게시 캡션 — 첫 줄은 제목(유튜브 제목으로 쓰임), 이어서 우화 한 줄 요약 + 질문. 해시태그는 넣지 마라(자동 추가됨).
 
 {voice}
 
@@ -532,32 +531,27 @@ def _sentence_sep(lang: str) -> str:
 
 
 def _strip_second_character(p: str) -> str:
-    """두 번째 캐릭터 표현을 제거 — flux 가 주인공 자리를 빼앗는 것을 막는다.
+    """두 번째 인물 표현만 제거 — flux 가 주인공 자리를 빼앗는 것을 막는다.
 
-    실측(2026-10-07): "an old tortoise leaning down talking to the mole" 라는 장면이
-    'mole(두더지)' 프롬프트인데도 **거북이 단독으로** 렌더됐다. 두 동물이 있으면
-    flux 가 주인공 자리를 차지한다. 다른 동물 조언은 주인공의 표정/행동으로 표현한다.
-    제거 후 장면 묘사가 너무 짧아지면(빈 프롬프트) 주인공 기본 동작으로 대체한다.
+    ⚠️ 2026-10-11 치명 버그 (실측):
+      이 함수가 **동사 목록에 없는 묘사를 전부 폐기**하고
+      `"the main character standing alone, thinking, looking ahead, full body visible,
+      side view"` 로 바꿔버렸다. 그래서 10장 중 8장이 **똑같은 프롬프트**가 되어
+      전부 같은 구도의 인물 사진이 나왔다.
+      (예: "quiet kitchen at night, one person at the table" → 동사 없음 → 폐기)
+
+    지금은 동물 우화를 쓰지 않으므로 동물 제거 정규식도 필요 없다.
+    **정말 비었을 때만** 폴백한다(12자 미만). 구도·장소는 절대 건드리지 않는다.
     """
-    import re as _re
-    ANIMAL = (r"(?:owl|squirrel|fox|rabbit|hare|tortoise|turtle|deer|badger|hedgehog|"
-              r"bird|crow|cat|dog|mouse|rat|wolf|fox|elk|deer)")
-    out = p
-    # "two characters" 류 지시
-    out = _re.sub(r",?\s*(?:two characters|both characters|with another (?:animal|character))",
-                  "", out, flags=_re.I)
-    # 다른 동물을 언급하는 절 전체 삭제 (수식어가 몇 개든)
-    out = _re.sub(rf"\b(?:an?|the)\s+(?:\w+\s+){{0,3}}{ANIMAL}\s+(?:\w+\s*){{0,5}}", " ", out, flags=_re.I)
-    # 상호작용 동사구 제거 (the mole 를 주어로 하는 경우)
-    out = _re.sub(rf"\b(?:talking to|speaking to|talking with|speaking with|telling|showing)\s+the\s+\w+",
-                  "", out, flags=_re.I)
+    out = " ".join(str(p or "").split()).strip().strip(",").strip()
+    # "두 사람" 류 지시만 제거 (캐릭터가 뒤섞이는 것을 방지)
+    out = re.sub(r",?\s*(?:two characters|both characters|with another (?:animal|character))",
+                  "", out, flags=re.I)
     out = " ".join(out.split()).strip().strip(",").strip()
-    # 주동물이 빠진 경우 — 주인공 기본 동작으로 대체 (빈 프롬프트 방지)
-    if len(out) < 30 or not re.search(r"\b(stand|sit|walk|look|rest|climb|dig|hold|"
-                                      r"reach|pause|watch|lean|sleep|step|lie)\w*\b", out, re.I):
-        out = ("the main character standing alone, thinking, looking ahead, "
-               "full body visible, side view")
-    return out.strip().strip(",").strip()
+    if len(out) < 12:
+        # 장소 기반 폴백 — 인물 클로즈업이 나오지 않도록 환경을 먼저 둔다
+        out = "quiet everyday place, one person seen from behind in the middle distance"
+    return out
 
 
 def _strip_sentence_end(s: str) -> str:
@@ -915,13 +909,28 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
                     f"  → '{nar[:70]}'\n"
                     f"  참고 채널은 1인칭 관찰자 구조다. 동물을 빼고 사람의 일상으로 써라."
                 )
-            # 2) 문장이 너무 길면 안 된다 (권장 18자, 경고는 26자 초과)
+            # 2) 문장 길이 — **언어별로 기준이 다르다.**
+            #    ⚠️ 2026-10-11 실측: 전 언어에 26자를 적용해서 영어·프랑스어가
+            #       매번 걸렸다("The obstacle in the path becomes the path" = 41자).
+            #       같은 뜻이라도 영어는 글자수가 2배다. → 단어 수로 판정한다.
+            #    ⚠️ 1장면(quote)은 낭독이 명언 원문으로 **자동 교체**되므로 검사 제외.
+            if sc.get("act") == "quote":
+                continue
             for sent in [s for s in nar.replace("!", ".").replace("?", ".").split(".")
                          if s.strip()]:
-                if len(sent.strip()) > 26:
+                st = sent.strip()
+                if lg in ("en", "fr"):
+                    nwords = len(st.split())
+                    if nwords > 18:
+                        raise ValueError(
+                            f"scenes[{sc.get('act')}].narration[{lg}] 문장이 너무 깁니다 "
+                            f"({nwords}단어): '{st[:60]}'\n"
+                            f"  → 6~12단어로 줄여라. 두 문장으로 쪼개도 된다."
+                        )
+                elif len(st) > 26:
                     raise ValueError(
                         f"scenes[{sc.get('act')}].narration[{lg}] 문장이 너무 깁니다 "
-                        f"({len(sent.strip())}자): '{sent.strip()[:60]}'\n"
+                        f"({len(st)}자): '{st[:60]}'\n"
                         f"  → 참고 채널은 10~18자 짧은 문장을 연달아 쓴다."
                         f"    긴 문장을 2개로 쪼개라."
                     )
@@ -988,14 +997,13 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
         #      정체성 강도를 올린다. + "same character as the other scenes" 힌트.
         p = _strip_sentence_end(str(sc["image_prompt"]))
         # 두 동물 동시 등장 표현 제거 — 두 번째 동물이 주인공 자리를 차지한다
-        # (실측: 두더지 주인공인데 거북이 단독으로 나옴)
         p = _strip_second_character(p)
-        if sc["act"] in NO_CHARACTER_ACTS:
-            sc["image_prompt"] = f"{STYLE_PREFIX}, {p}, {STYLE_SUFFIX}"
-        else:
-            sc["image_prompt"] = (
-                f"{STYLE_PREFIX}, {characters}, {p}, {characters}, "
-                f"same character as every other scene, {STYLE_SUFFIX}")
+        # ⚠️ 2026-10-11 핵심 수정: 스타일 토큰을 **붙이지 않는다.**
+        #   `anime.build_anime_prompt()` 가 콤마 기준 앞부분만 취하기 때문에
+        #   STYLE_PREFIX 를 앞에 붙이면 **정작 장면 묘사가 잘려나갔다**
+        #   → 열 장면이 전부 같은 얼굴 클로즈업으로 생성됨.
+        #   스타일은 anime(ANIME_SUFFIX) / 실사검색(명사구)이 각자 붙인다.
+        sc["image_prompt"] = p
 
     story = {
         "date": datetime.now(quotes.KST).date().isoformat(),

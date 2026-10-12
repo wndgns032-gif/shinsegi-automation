@@ -14,10 +14,23 @@ from pathlib import Path
 import yaml
 
 KST = timezone(timedelta(hours=9))
-LANGS = ["en", "ko", "zh-cn", "fr"]
+# ⚠️ 2026-10-11 로이 확정 — 언어 축소를 ko + en 2개로.
+#   근거 (YouTube 공개 통계 실측, data/youtube_public_stats.json):
+#     ko   48편  합계 26,844  중앙값 581  100회+ 43편(90%)
+#     en    6편  합계    990  중앙값 250  100회+  4편(67%)
+#     zh-cn 9편  합계    135  중앙값   2  100회+  0편( 0%)  ← 큐레이션 실패
+#     fr    9편  합계     29  중앙값   0  100회+  0편( 0%)  ← 큐레이션 실패
+#   ko+en 이 전체 조회수의 99.4%. zh-cn·fr 은 18편 올려서 164회.
+#   하루 3편 × 2언어 = 6편. (2026-06-01 기준 videos.insert 独立버킷은 100회/일
+#   이므로 6편은 제약 아님 — 축소는 순수하게 시장 성과 판단이다.)
+#
+#   되돌리기: 여기에 "zh-cn", "fr" 를 다시 넣으면 된다.
+#   TTS 프로필(tts.py VOICE_PROFILES)과 채널 토큰(.env)은 그대로 살아 있어
+#   재개 시 코드 수정 없이 되살아난다. 채널도 삭제되지 않고 동결된다.
+LANGS = ["en", "ko"]
 BANK = Path(__file__).resolve().parent.parent / "config" / "quotes.yaml"
 HISTORY_NAME = "quotes_used.json"
-NO_REPEAT_DAYS = 7  # 같은 명언은 7일以内 재사용하지 않는다
+NO_REPEAT_DAYS = 7  # 같은 명언은 7일 이내 재사용하지 않는다
 
 THEME_LABELS = {
     "growth": "배움과 성장",

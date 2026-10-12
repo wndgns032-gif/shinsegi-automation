@@ -111,14 +111,60 @@ def _content_publishers() -> list:
 def _shortform_youtube(cycle: str):
     """숏폼 회차에 YouTube 업로드를 붙일지 결정.
 
-    무료 쿼터가 하루 6건(videos.insert 1,600 units / 일 10,000 units)이라
-    기본값은 **13:00 회차 1회만** 올린다. 늘리려면 .env 의 YOUTUBE_SHORTS_CYCLES
-    를 `am,pm,ev` 처럼 바꾸면 된다(단 4개 언어 × 3회 = 12건은 쿼터 초과).
+    ⚠️ 2026-10-11 정정 — 예전注释의 "하루 6건" 은 폐기된 규칙이다.
+    videos.insert 는 2026-06-01 부터 독립 버킷(하루 100회, 1회당 1 unit).
+    → 하루 3편 × 4언어 = 12건은 제한 안이므로 기본값은 **모든 회차를 올린다**.
+    그래도 개별 채널에 몰아주지 않도록 .env 의 YOUTUBE_SHORTS_CYCLES 를
+    `am,pm,ev,night` 처럼 지정할 수 있다(기본값은 기존 `pm` 유지).
     """
     if os.getenv("YOUTUBE_SHORTS", "on").strip().lower() not in ("1", "on", "true", "yes"):
         return None
     cycles = [c.strip() for c in os.getenv("YOUTUBE_SHORTS_CYCLES", "pm").split(",") if c.strip()]
     return YouTubePublisher() if cycle in cycles else None
+
+
+_YT_QUOTA_FILE = "youtube_quota.json"
+
+
+def youtube_daily_budget() -> tuple[int, int]:
+    """오늘 YouTube 업로드 사용/상한을 돌려준다.
+
+    ⚠️⚠️ 2026-10-11 정정 — 예전의 "하루 6건" 은 **폐기된 규칙**이다.
+    Google 이 규칙을 두 번 바꿨다(YouTube Data API 공식 변경 기록):
+      · 2025-12-04 : videos.insert 비용 1,600 units → 약 100 units 로 인하
+      · 2026-06-01 : videos.insert / search.list 가 **독립 쿼터 버킷**으로 분리.
+                      videos.insert 기본 한도 = **하루 100회, 1회당 1 unit**
+    → 하루 3편 × 4언어 = 12건은 100건 한도 안에서 아무 문제 없다.
+    → 상한은 100(기본). 더 필요하면 Google Cloud 콘솔에서 증액 신청(무료).
+    그래도 가드는 남긴다 — 실제 403 quotaExceeded 를 만나면 멈추도록.
+
+    주의: 쿼터는 **계정/채널이 아니라 Google Cloud 프로젝트 단위**다.
+    4개 언어 채널이 같은 프로젝트를 쓰면 하나의 100회 버킷을 나눠 쓴다.
+    """
+    from src import quotes
+    limit = int(os.getenv("YOUTUBE_DAILY_LIMIT", "100"))
+    today = datetime.now(quotes.KST).date().isoformat()
+    path = DATA / _YT_QUOTA_FILE
+    used = 0
+    if path.exists():
+        try:
+            rec = _json.loads(path.read_text(encoding="utf-8"))
+            if rec.get("date") == today:
+                used = int(rec.get("count", 0))
+        except Exception:  # noqa: BLE001
+            used = 0
+    return used, limit
+
+
+def youtube_quota_consume(n: int = 1) -> None:
+    """업로드 성공분을 기록한다(다음 슬롯이 이어서 계산)."""
+    from src import quotes
+    today = datetime.now(quotes.KST).date().isoformat()
+    used, _ = youtube_daily_budget()
+    path = DATA / _YT_QUOTA_FILE
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(_json.dumps({"date": today, "count": used + n},
+                                ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def _load_cycle_archive(cycle: str):
@@ -171,7 +217,7 @@ def _prep_shortform(cycle: str, with_clips: bool = True):
                           encoding="utf-8")
         images = shortform.gen_images(
             board["image_prompts"], vdir / "images",
-            seed_base=int(today.replace("-", "")) % 10000)
+            seed_base=fablevideo.seed_from_date(today))
     except Exception as e:  # noqa: BLE001
         log_error(DATA, f"shortform:{cycle}", f"storyboard/images: {str(e)[:300]}")
         print(f"스토리보드/이미지 실패: {e}")
@@ -184,7 +230,7 @@ def _prep_shortform(cycle: str, with_clips: bool = True):
         try:
             ai_clips = shortform.gen_ai_clips(
                 board["image_prompts"], vdir / "ai",
-                seed_base=int(today.replace("-", "")) % 10000)
+                seed_base=fablevideo.seed_from_date(today))
         except Exception as e:  # noqa: BLE001 - AI 클립 실패가 영상 생성을 막으면 안 됨
             print(f"AI 클립 단계 오류 → 이미지 켄번스로 진행: {e}")
     else:
@@ -375,9 +421,20 @@ def fable_publish(date: str | None = None) -> None:
                     lang, caption, mp4, ig.credentials(lang))["status"]
             elif ig.missing(lang):
                 rec["ig"] = "skip(no-creds)"
+            # YouTube 업로드 쿼터는 2026-06-01 부터 독립 버킷(하루 100회).
+            # 하루 3편 × 4언어 = 12건은 한도 안이므로 사실상 항상 올라간다.
+            # 100회짜리 여유는 "만약을 위한" 안전선일 뿐이다.
+            used, limit = youtube_daily_budget()
             if rec.get("yt") != "published" and not yt.missing(lang):
-                rec["yt"] = yt.publish_reel(
-                    lang, caption, mp4, yt.credentials(lang))["status"]
+                if used >= limit:
+                    rec["yt"] = f"skip(quota {used}/{limit})"
+                    print(f"[fable-publish] {lang}: YouTube 일일 쿼터 소진 "
+                          f"({used}/{limit}) — IG 만 발행")
+                else:
+                    rec["yt"] = yt.publish_reel(
+                        lang, caption, mp4, yt.credentials(lang))["status"]
+                    if str(rec["yt"]).startswith("published"):
+                        youtube_quota_consume()
             elif yt.missing(lang):
                 rec["yt"] = "skip(no-creds)"
             rec["ts"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -415,7 +472,7 @@ def _run_fable_kind(kind: str, mock: bool = False,
     story_path = fable.story_dir(DATA, sdate) / "story.json"
     if story_path.exists():
         print(f"[run-fable] story.json 존재 — 생성 생략")
-        story = json.loads(story_path.read_text(encoding="utf-8"))
+        story = _json.loads(story_path.read_text(encoding="utf-8"))
     elif kind == "stocks":
         from src import stock_story
         story = stock_story.generate(date=sdate, mock=mock)
@@ -429,7 +486,11 @@ def _run_fable_kind(kind: str, mock: bool = False,
 
     sdir = fable.story_dir(DATA, sdate)
     sdir.mkdir(parents=True, exist_ok=True)
-    story_path.write_text(json.dumps(story, ensure_ascii=False, indent=1),
+    # ⚠️ 2026-10-11 실측: 여기서 `json.dumps` 로 쓰면 NameError.
+    # main.py 는 모듈 상단에서 `import json as _json` 으로 가져온다.
+    # 이 한 줄 때문에 08시(stocks)·16시(biz) 슬롯이 story.json 을 못 써서
+    # **한 번도 산출되지 않았다** — cron 은 3개인데 실제론 하루 1편만 나갔던 이유.
+    story_path.write_text(_json.dumps(story, ensure_ascii=False, indent=1),
                           encoding="utf-8")
 
     # 2) 렌더 (4개 언어)
@@ -473,6 +534,47 @@ def run_fable(mock: bool = False, no_publish: bool = False,
         fable_publish(date=date)
     elif mock:
         print("[run-fable] mock 모드 — 발행 생략 (mock 금지 규칙)")
+
+
+SLOTS = ["fable", "stocks", "biz"]   # KST 00:07 / 08:07 / 16:07
+
+SLOT_LABEL = {"fable": "명언 우화 (00:07)",
+              "stocks": "나스닥 TOP10 (08:07)",
+              "biz": "사업가 마인드 (16:07)"}
+
+
+def run_three(mock: bool = False, no_publish: bool = False,
+              date: str | None = None, skip: set[str] | None = None) -> dict:
+    """하루 3편 일괄 제작 — 2026-10-11 추가.
+
+    왜 필요한가: 슬롯별로 따로 실행하면 3편 중 하나가 조용히 실패해도
+    눈치채기 어렵다. 실제로 16시 biz 편이 한 번도 산출되지 않은 채
+    며칠이 지나갔다(실측). → 묶어서 돌리고 결과를 한눈에 보고한다.
+
+    ⚠️ 한 편이 실패해도 나머지는 계속된다 (목표는 하루 3편 완주).
+    """
+    skip = skip or set()
+    today = date or datetime.now().strftime("%Y-%m-%d")
+    from src.error_log import log_error        # 함수 내 import — 모듈 상단 오염 방지
+    report: dict[str, str] = {}
+
+    for kind in SLOTS:
+        if kind in skip:
+            report[kind] = "SKIP"
+            continue
+        print(f"\n{'='*56}\n▶ {SLOT_LABEL.get(kind, kind)}\n{'='*56}")
+        try:
+            run_fable(mock=mock, no_publish=no_publish, date=today, kind=kind)
+            report[kind] = "OK"
+        except Exception as e:  # noqa: BLE001
+            log_error(DATA, f"run-three:{kind}", str(e)[:400])
+            report[kind] = f"FAIL: {str(e)[:120]}"
+            print(f"[run-three] {kind} 실패: {e}")
+
+    print(f"\n{'='*56}\n[run-three] 결과 ({today})\n{'='*56}")
+    for kind in SLOTS:
+        print(f"  {SLOT_LABEL.get(kind, kind):<26} : {report.get(kind, '-')}")
+    return report
 
 
 def _auto_cycle() -> str:
@@ -526,6 +628,15 @@ def main() -> None:
                          choices=["fable", "stocks", "biz"],
                          help="fable=명언우화 / stocks=나스닥TOP10 / biz=사업가마인드")
 
+    # 2026-10-11 추가 — 하루 3편을 한 번에. 우리 목표는 "하루 3편 × 4개 언어"다.
+    # 슬롯별로 따로 실행하면 어느 한 편이 조용히 빠지는 걸 눈치채기 어렵다.
+    p_three = sub.add_parser("run-three", help="하루 3편 일괄 제작 (명언/증권/사업가)")
+    p_three.add_argument("--mock", action="store_true")
+    p_three.add_argument("--no-publish", action="store_true")
+    p_three.add_argument("--date", default=None, help="스토리 날짜(YYYY-MM-DD)")
+    p_three.add_argument("--skip", default="",
+                         help="제외할 장르 (쉼표 구분). 예: --skip stocks,biz")
+
     sub.add_parser("schedule")
     args = ap.parse_args()
 
@@ -547,6 +658,10 @@ def main() -> None:
     elif args.cmd == "run-fable":
         run_fable(mock=args.mock, no_publish=args.no_publish,
                   date=args.date, kind=args.kind)
+    elif args.cmd == "run-three":
+        skip = {s.strip() for s in (args.skip or "").split(",") if s.strip()}
+        run_three(mock=args.mock, no_publish=args.no_publish,
+                  date=args.date, skip=skip)
     elif args.cmd == "schedule":
         from src import scheduler
         scheduler.start(lambda c: run_cycle(c), lambda: collect_metrics(),

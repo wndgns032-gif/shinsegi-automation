@@ -219,6 +219,22 @@ def _synth_supertonic(text: str, prof: dict, out: Path) -> Path:
     return _to_mp3(wav, out)
 
 
+def _scratch_dir(out: Path, name: str) -> Path:
+    """산출물별 전용 스크래치 폴더.
+
+    ⚠️ 2026-10-11 치명적 버그 수정.
+    예전에는 `_parts` / `_trim` 을 out.parent 바로 아래에 두고
+    `p0.mp3`, `p1.mp3` 같은 고정 이름을 썼다. render_language() 는
+    10개 장면 모두 같은 work_<lang>/ 폴더에 음성을 만들기 때문에
+    → 1장면이 만든 p0/p1 을 2~10장면이 "이미 있네?" 하고 재사용해
+    **10개 장면이 1장면과 똑같은 목소리(첫 문장)로 나왔다**.
+    (로이 지적: "왜 처음 그 손은 떨렸다를 계속 반복해?")
+    → out.stem(예: voiceraw_7) 별로 하위 폴더를 나눠 절대 공유되지 않게 한다.
+    """
+    out = Path(out)
+    return out.parent / name / out.stem
+
+
 def _synth_edge(text: str, prof: dict, out: Path, paced: bool = True) -> Path:
     import edge_tts
 
@@ -234,7 +250,7 @@ def _synth_edge(text: str, prof: dict, out: Path, paced: bool = True) -> Path:
         asyncio.run(_one())
         return out
 
-    tmp_dir = out.parent / "_parts"
+    tmp_dir = _scratch_dir(out, "_parts")
     tmp_dir.mkdir(parents=True, exist_ok=True)
     parts: list[Path] = []
     try:
@@ -357,7 +373,7 @@ def _concat_with_pauses(parts: list[Path], out: Path, pad_ms: int = _PAD_MS,
     #    (silenceremove 는 임계값 의존이라 잔여 무음이 남아 목표를 못 맞췄다)
     prepared = list(parts)
     if trim_parts:
-        tmp = out.parent / "_trim"
+        tmp = _scratch_dir(out, "_trim")
         tmp.mkdir(parents=True, exist_ok=True)
         prepared = []
         for i, p in enumerate(parts):
@@ -463,7 +479,7 @@ def _paced_synth(text: str, prof: dict, out: Path, engine_fn, paced: bool) -> Pa
     if len(sentences) <= 1:
         return engine_fn(text, prof, out)
 
-    tmp_dir = out.parent / "_parts"
+    tmp_dir = _scratch_dir(out, "_parts")
     tmp_dir.mkdir(parents=True, exist_ok=True)
     parts: list[Path] = []
     try:

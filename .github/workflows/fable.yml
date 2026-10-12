@@ -1,7 +1,7 @@
-# shinsegi 우화 쇼츠 — 하루 2회 발행 (KST 08:00 / 18:00)
+# shinsegi 우화 쇼츠 — 하루 3편 발행 (KST 00:07 / 08:07 / 16:07)
 #
 # 로이 PC 가 꺼져도 GitHub runner 에서 자동 실행된다.
-# 2026-10-08: 하루 1회(19:20) → 하루 2회(08:00, 18:00)로 변경 (로이 요청)
+# 2026-10-10: 하루 3편 확정 (명언/나스닥/사업가)
 #
 # 시간 계산 (GitHub cron 은 UTC):
 #   KST 08:00 = UTC 23:00 (전날)
@@ -140,20 +140,20 @@ jobs:
           TARGET="${{ inputs.date }}"
           [ -z "$TARGET" ] && TARGET="$TODAY"
 
-          # 장르 판별 (2026-10-10) — dispatch 의 inputs.kind 우선,
-          # cron 이면 현재 KST 시각으로 슬롯을 판단한다.
+          # 장르 판별 — 2026-10-12 교체: KST 시각 추정 **폐기**.
+          # GitHub cron 은 2~7시간 지연이 예사라 시각 기반 판별이 계속 틀렸다.
+          # (10-12 실측: 자정/아침 슬롯이 전부 'biz'로 오분류 → 전부 즉사)
+          # schedule 이벤트는 github.event.schedule 에 발사된 cron 식이
+          # 그대로 들어오므로 이걸로 **정적**으로 결정한다.
           KIND="${{ inputs.kind }}"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            [ -z "$KIND" ] && KIND="fable"
-          else
-            # cron 지연이 최대 수 시간 있어 ±3시간 창으로 판별한다.
-            H=$(date +%-H)
-            case "$H" in
-              21|22|23|0|1) KIND="fable" ;;      # KST 00:07 슬롯
-              6|7|8|9|10)   KIND="stocks" ;;     # KST 08:07 슬롯
-              *)            KIND="biz" ;;        # KST 16:07 슬롯
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            case "${{ github.event.schedule }}" in
+              '7 16 * * *') KIND="fable" ;;    # KST 00:07 명언 우화
+              '7 23 * * *') KIND="stocks" ;;   # KST 08:07 나스닥 TOP10
+              *)             KIND="biz" ;;      # KST 16:07 사업가 마인드
             esac
           fi
+          [ -z "$KIND" ] && KIND="fable"
 
           # workflow_dispatch + no_publish=true 면 제작만
           MODE="publish"

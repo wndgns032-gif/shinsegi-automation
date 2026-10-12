@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import time
 from pathlib import Path
@@ -35,7 +36,8 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from src import fable  # noqa: E402
-from src.fablevideo import IMG_H, IMG_W, _to_monochrome  # noqa: E402
+from src.fablevideo import (IMG_H, IMG_W, _fallback_image,  # noqa: E402
+                            _to_monochrome)
 from src import photostock as ps  # noqa: E402  (2026-10-10)
 import random  # noqa: E402
 
@@ -50,10 +52,10 @@ SIZE_TOLERANCE = 40    # 장면 간 크기 허용 편차(px)
 # 폴백(파스텔 그라디언트) 이미지 전용 감지 (2026-10-09 추가)
 # ─────────────────────────────────────────────────────────────
 # 문제: Pollinations 402 로 실패하면 _fallback_image() 가 파스텔 그라디언트를
-#      만들어 넣는다. 이 이미지는黑白 변환 후에도 통과해 버려서
+#      만들어 넣는다. 이 이미지는 흑백 변환 후에도 통과해 버려서
 #      "영상인데 그림이 없는" 상태가 된다. (실측: 20장 중 18장이 폴백)
 #      → 색상 통계로는 구분이 안 되므로 **디테일(선화·에지) 양**을 본다.
-#      실화는 선·명암이丰富하지만 그라디언트는几乎是노이즈/패치가 적다.
+#      실화는 선·명암이 풍부하지만 그라디언트는 거의 노이즈/패치가 적다.
 FALLBACK_EDGE_MAX = 0.045  # 에지 밀도 상한 (0~1)
 # ⭐ 2026-10-11: 애니메이션 만화는 edge 가 낮다(0.012~0.057) 정상.
 #   라플라시안 분산(곡률)으로 폴백을 판정해야 한다.
@@ -119,6 +121,25 @@ def _is_fallback(p: Path) -> str | None:
     return " → ".join(reasons)
 
 
+def _looks_empty(p: Path) -> str | None:
+    """빈 공간(인물 없는 장면) 경고 — **판정 근거가 부족해 항상 None 을 돌려준다.**
+
+    ⚠️ 2026-10-11: 이 함수를 넣으려다 실측에서 **판별이 불가능**함을 확인했다.
+      "밝은 배경 + 검은 실루엣" 과 "어두운 배경 + 밝은 인물" 의 특징량이
+      완전히 반대편(0.0 vs 0.4)으로 뛰어서 방향조차 잡을 수 없다.
+      → 좋은 장면까지 재생성으로 날아가는 사고가 더 나쁘다.
+      → **의도적으로 아무것도 판정하지 않는다.** (호출부는 경고만 출력)
+
+    진짜 방어선은 프롬프트다 — `src/anime.py` 의 `_FIG`
+    ("small distant silhouetted figure ... occupying only 10% of the frame height").
+    실측 4장면 중 3장에 인물이 들어왔고, 실패한 1장은
+    프롬프트에 "empty room" 이 들어간 케이스였다(정확히 맞는 그림이 나옴).
+
+    정지를 원하면 여기 대신 LLM 판정(Vision)을 넣는 것이 맞다.
+    """
+    return None
+
+
 def _stats(p: Path) -> dict:
     im = Image.open(p).convert("RGB")
     r, g, b = ImageStat.Stat(im).mean
@@ -140,11 +161,19 @@ def inspect(images_dir: Path) -> tuple[list[dict], list[int]]:
         print(f"  [check] 이미지 없음: {images_dir}")
         return results, fails
 
-    ref_w, ref_h = files[0].width if hasattr(files[0], "width") else None, None
-    try:
-        ref_size = Image.open(files[0]).size
-    except Exception:  # noqa: BLE001
-        ref_size = (IMG_W, IMG_H)
+    # ⚠️ 2026-10-11 실측: 기준 크기를 files[0] (1장면) 으로 잡았더니
+    #   1장면이 폴백 그라디언트(576x1024)일 때 **나머지 9장이 전부 탈락**했다
+    #   ("크기 편차 1152x2048 (기준 576x1024)"). 기준이 오염된 것.
+    #   → **가장 많이 나온 크기**(최빈값)를 기준으로 삼는다.
+    from collections import Counter
+    sizes = []
+    for f in files:
+        try:
+            sizes.append(Image.open(f).size)
+        except Exception:  # noqa: BLE001
+            pass
+    ref_size = Counter(sizes).most_common(1)[0][0] if sizes else (IMG_W, IMG_H)
+    print(f"  [check] 기준 크기 {ref_size[0]}x{ref_size[1]} (최빈값, {len(sizes)}장)")
 
     for f in files:
         n = int("".join(c for c in f.stem if c.isdigit()) or 0)
@@ -169,6 +198,13 @@ def inspect(images_dir: Path) -> tuple[list[dict], list[int]]:
             fb = _is_fallback(f)
             if fb:
                 row["issues"].append(f"⚠ 폴백이미지 — 실제 그림 아님: {fb}")
+            # ⚠️ 2026-10-11: 빈 공간(인물 없음) 경고 — **자동 탈락시키지 않는다.**
+            #    실측에서 특징량 판별이 불가능했다(밝은 배경은 0.0, 어두운 배경은 0.4 로
+            #    극단적으로 갈림). 좋은 장면을 버릴 위험이 더 크다.
+            #    → 경고만 남기고 재생성 대상에는 넣지 않는다.
+            empty = _looks_empty(f)
+            if empty:
+                print(f"  [check] scene{n}: {empty}")
         except Exception as e:  # noqa: BLE001
             row["issues"].append(f"열기 실패: {type(e).__name__}")
         row["ok"] = not row["issues"]
@@ -218,7 +254,30 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
         #    (_to_monochrome 등) 를 **지역 변수** 로 취급해
         #    UnboundLocalError 가 난다(2026-10-10 실측).
         #    → 모듈 상단으로 import 를 모두 올려 여기선 참조만 한다.
-        if story.get("stock_company") or os.getenv("FABLE_IMG_STOCK", "on").lower() != "off":
+        # ⭐ 2026-10-11: 애니메이션 모드면 **애니메이션으로만** 재생성한다.
+        #   실사 사진으로 재생성하면 화풍이 섞여 영상이 어색해진다(실측).
+        #   ("office corridor" 장면에 'computer chip macro' 사진이 붙은 사고)
+        if os.getenv("FABLE_IMG_ANIME", "on").lower() != "off":
+            try:
+                from src import anime as _anm
+                if _anm.gen_anime_scene(base, dest, seed=seed_base + n * 311,
+                                        mood="quiet",
+                                        character=str(story.get("characters") or "")):
+                    _anm.anime_to_manga(dest, dest)
+                    st = _stats(dest)
+                    if st["sat"] <= SAT_MAX and not _is_fallback(dest):
+                        mark.write_text("1", encoding="utf-8")
+                        print(f"  [regen] scene {n} 애니메이션 재생성 OK "
+                              f"(sat={st['sat']:.1f})")
+                        ok = True
+                    else:
+                        print(f"  [regen] scene {n} 애니메이션 재생성됐으나 기준 미달")
+            except Exception as e:  # noqa: BLE001
+                print(f"  [regen] scene {n} 애니메이션 오류 {type(e).__name__}")
+
+        if not ok and (story.get("stock_company")
+                       or os.getenv("FABLE_IMG_STOCK", "on").lower() != "off") \
+                and os.getenv("FABLE_IMG_ANIME", "on").lower() == "off":
             try:
                 cr = images_dir.parent / "credits.jsonl"
                 used = set()
@@ -236,12 +295,10 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
                     ps.photo_to_sketch(tmp, dest, target_w=IMG_W,
                                        target_h=IMG_H, style="pencil")
                     mark.write_text("1", encoding="utf-8")
-                    tmp.unlink(missing_ok=True)
                     ps.record_credit(cr, credit)
                     print(f"  [regen] scene {n} 실사 재생성 OK ({credit['license'].upper()})")
                     ok = True
                     break
-                tmp.unlink(missing_ok=True)
             except Exception as e:  # noqa: BLE001
                 print(f"  [regen] scene {n} 실사 재생성 오류 {type(e).__name__}"
                       f" → AI 생성으로 폴백")
@@ -284,7 +341,6 @@ def regenerate(images_dir: Path, scenes: list[int], story_path: Path,
         if not ok:
             # 재생성 실패 → 폴백 그라디언트로 대체 (파일이 없으면 생성)
             if not dest.exists() or dest.stat().st_size < SIZE_MIN_BYTES:
-                from src.fablevideo import _fallback_image, _to_monochrome
                 _fallback_image(dest, n - 1)
                 _to_monochrome(dest)
                 mark.write_text("1", encoding="utf-8")
@@ -322,7 +378,9 @@ def main() -> int:
 
     if fails and args.regen:
         print(f"\n=== 실패 {len(fails)}개 장면 재생성 ===")
-        seed_base = int(date.replace("-", "")) % 10000
+        # 숫자만 남긴다 — '2026-10-17-stocks' 처럼 suffix 가 붙어도 안전
+        seed_base = int(re.sub(r"\D", "", str(date))) % 10000 if any(
+            ch.isdigit() for ch in str(date)) else 0
         still = regenerate(images_dir, fails, story_path, seed_base)
         print("\n=== 재생성 후 재검사 ===")
         results2, fails2 = inspect(images_dir)

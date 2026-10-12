@@ -210,9 +210,23 @@ def mix(src: Path, dst: Path, duration: float, bgm: Path | None,
     """
     ffmpeg = _ffmpeg_exe()
     if bgm is None or not Path(bgm).exists():
+        # ⭐ 2026-10-11 용량 최적화 — 76MB → 12MB (86% 감소).
+        #   업로드 1건에 5분이 걸려 하루 6편이면 30분을 전송에만 쓰고 있었다.
+        #
+        #   **진짜 원인은 CRF 가 아니었다.** 실측 (40초 1080x1920, ko 편):
+        #       crf 24 + veryfast     → 38MB   (절반만 줄어)
+        #       crf 30 + medium       → 26MB
+        #       crf 28 + maxrate 5M   → 12MB   ← 이걸로 확정
+        #   원인은 **켄번스(Ken Burns) 무빙**(fablevideo._motion) 이다.
+        #   매 프레임 scale+zoompan 으로 계속 움직이면 x264 는 프레임 간 차이를
+        #   찾지 못하고 매 프레임을 거의 독립된 이미지로 압축한다 → CRF 이 통하지 않는다.
+        #   → CRF 로 화질을 지키되 **비트레이트 상한(maxrate/bufsize)** 으로 용량을 강제한다.
+        #   4Mbps 는 1080x1920 쇼츠에 충분한 화질이고, 흑백이라 색 왜곡도 없다.
         if video_vf:
-            cmd = [ffmpeg, "-y", "-i", str(src), "-vf", video_vf,
-                   "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
+            # 4:2:0 강제 (위 BGM 있음 분기와 동일 — yuvj444p 로 뽑히는 문제)
+            cmd = [ffmpeg, "-y", "-i", str(src), "-vf", f"{video_vf},format=yuv420p",
+                   "-c:v", "libx264", "-preset", "medium", "-crf", "28",
+                   "-maxrate", "5M", "-bufsize", "10M",
                    "-c:a", "copy", "-movflags", "+faststart", str(dst)]
             r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore")
             if r.returncode == 0:
@@ -227,7 +241,14 @@ def mix(src: Path, dst: Path, duration: float, bgm: Path | None,
     vol = volume()
     out_st = t - 0.05
 
-    vpart = f"[0:v]{video_vf}[vout]" if video_vf else "[0:v]null[vout]"
+    # ⭐ 2026-10-11 — 4:4:4 → 4:2:0 강제.
+    #   업로드된 모든 영상이 yuvj444p(High 4:4:4 Predictive) 였다.
+    #   (1) 모바일/사파리 호환성 문제 — 4:4:4 는 일부 플레이어에서 깨진다.
+    #   (2) 용량 낭비 — 크로마를 풀 해상도로 저장.
+    #   IG·YouTube 는 재인코딩해서 버려주므로 결국 4:2:0 로 내려간다.
+    #   → 처음부터 4:2:0 로 뽑으면 11MB → 10MB 로 더 줄어든다.
+    vpart = (f"[0:v]{video_vf},format=yuv420p[vout]" if video_vf
+             else "[0:v]null,format=yuv420p[vout]")
     # ⭐ 2026-10-10 로이 피드백 ("사진 퀄리티와 TTS 소리가 달라"):
     #   참고 채널(인생지혜) 대비 우리 피크 볼륨이 0.071 → 12배 작았다.
     #   원인은 로컬 TTS(Supertonic/Kokoro) 출력이 조용하고,
@@ -249,7 +270,11 @@ def mix(src: Path, dst: Path, duration: float, bgm: Path | None,
            "-filter_complex", f"{vpart};{fc}",
            "-map", "[vout]", "-map", "[aout]",
            "-t", f"{t:.2f}",
-           "-c:v", "libx264", "-preset", "veryfast", "-crf", "19",
+           # ⭐ 2026-10-11 용량 최적화 (76MB → 12MB). **BGM 있을 때의 실제 경로** —
+           #   위의 no-bgm 분기만 고쳐서는 효과가 없고, 여기가 진짜 타는 곳이다.
+           #   켄번스 무빙 때문에 CRF 만으로는 못 줄여서 maxrate 상한을 함께 건다.
+           "-c:v", "libx264", "-preset", "medium", "-crf", "28",
+           "-maxrate", "5M", "-bufsize", "10M",
            "-c:a", "aac", "-b:a", "160k", "-ar", str(SR), "-ac", "2",
            "-movflags", "+faststart", str(dst)]
     r = subprocess.run(cmd, capture_output=True, text=True, errors="ignore")
