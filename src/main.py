@@ -506,6 +506,18 @@ def _run_fable_kind(kind: str, mock: bool = False,
             log_error(DATA, f"fable-video:{kind}:{lg}", str(e)[:400])
             print(f"[run-fable] {lg} 렌더 실패: {e}")
 
+    # ⚠️ 2026-10-12 교훈 (조용한 누락 사고): 렌더가 전멸해도
+    # publish 는 "mp4 없음 — 스킵" 만 찍고 exit 0 으로 끝나
+    # workflow 가 "success" 로 위장했다 (DeepSeek 402 사고).
+    # → 산출 mp4 가 0개면 반드시 죽인다. 실패가 빨간색으로 보여야 한다.
+    made = [lg for lg in fable.LANGS
+            if (sdir / f"fable_{lg}.mp4").exists()
+            and (sdir / f"fable_{lg}.mp4").stat().st_size > 100000]
+    if not made:
+        raise RuntimeError(
+            f"[run-fable] {kind}({sdate}) 렌더 산출 0개 — 파이프라인 실패로 종료 "
+            f"(errors.log 와 DeepSeek 잔액 확인)")
+
     # 3) 발행 — 기존 fable_publish 를 date=sdate 로 재사용한다.
     #    (IG/YT 토큰·중복 방지·크레딧 삽입 로직이 이미 전부 들어 있다)
     if no_publish or mock:
@@ -530,6 +542,14 @@ def run_fable(mock: bool = False, no_publish: bool = False,
         return
     fable_story(mock=mock, date=date)
     fable_video(mock=mock, date=date)
+    # ⚠️ 2026-10-12: 렌더 전멸 시 위장 성공 방지 (kind 경로와 동일한 가드).
+    # fable_video 는 언어별 예외를 삼키므로, 여기서 산출 여부를 확인한다.
+    _sdir = fable.story_dir(DATA, date)
+    _made = [p.name for p in _sdir.glob("fable_*.mp4") if p.stat().st_size > 100000]
+    if not _made:
+        raise RuntimeError(
+            f"[run-fable] fable({_sdir.name}) 렌더 산출 0개 — 파이프라인 실패로 종료 "
+            f"(errors.log 와 DeepSeek 잔액 확인)")
     if not no_publish and not mock:
         fable_publish(date=date)
     elif mock:

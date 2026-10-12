@@ -410,6 +410,7 @@ def generate(system: str, topic_block: str, extra_meta: dict | None = None,
     feedback: list[str] = []
     data: dict = {}
     issues: list[str] = []
+    call_ok = False          # 2026-10-12: 단 한 번이라도 LLM 호출이 성공했는가
 
     for attempt in range(1, max_attempts + 1):
         fb = ""
@@ -419,6 +420,7 @@ def generate(system: str, topic_block: str, extra_meta: dict | None = None,
         msg = build_messages(system, topic_block + fb)
         try:
             data = call_llm(msg)
+            call_ok = True
         except Exception as e:  # noqa: BLE001
             issues = [f"LLM 호출 실패: {str(e)[:180]}"]
             if verbose:
@@ -436,7 +438,17 @@ def generate(system: str, topic_block: str, extra_meta: dict | None = None,
                 print(f"         · {x}")
         feedback = issues
 
-    # ⚠️ 끝까지 실패해도 파이프라인을 죽이지 않는다 — 최선본을 쓴다.
+    # ⚠️ 2026-10-12 교훈 (DeepSeek 잔액 소진 사고):
+    # 호출이 단 한 번도 안 됐으면 data 는 {} 다. 이걸 "최선본"으로
+    # 반환하면 쓰레기 story.json 이 저장되고 렌더만 전멸한 채
+    # workflow 는 exit 0 "성공" 으로 위장한다 (조용한 누락).
+    # → 호출 성공 없으면 반드시 죽인다. 잔액/키/네트워크를 확인하게 한다.
+    if not call_ok:
+        raise RuntimeError(
+            f"LLM 호출 {max_attempts}회 전체 실패 — DeepSeek 잔액/키/네트워크 확인 필요 "
+            f"(마지막 오류: {issues[-1] if issues else '없음'})")
+
+    # 끝까지 규칙 위반이 남아도, **호출은 성공한** 최선본을 쓴다.
     data["naturalness_issues"] = issues
 
     # image_prompt 확정 — hint 를 조립하고 없으면 act 기본값
