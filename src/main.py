@@ -523,8 +523,46 @@ def _run_fable_kind(kind: str, mock: bool = False,
     if no_publish or mock:
         print("[run-fable] 발행 생략 (no-publish / mock)")
         return
+    _guard_quality(story, kind, sdate)
     fable_publish(date=sdate)
     print(f"[run-fable] 장르={kind} 파이프라인 종료")
+
+
+# ⚠️ 2026-10-14 신설 — 폴백 대본의 품질 하한 게이트.
+#
+#   DeepSeek 잔액 0 → 무료 폴백(GPT-OSS 20B)으로 대본을 만든다.
+#   그 결과물은 **대본 "완성"은 되지만 반 이상이 기본 문장으로 채워진다**
+#   (실측: 10장 중 고유 문장 5개).
+#   이런 영상을 YT/IG 에 올리면 채널이 "구린 영상"으로 고정된다.
+#   추천 알고리즘은 内容 품질보다 일관된 저하를 더 강하게惩罚한다.
+#
+#   → 완성만으로는 통과시키지 않는다. **实质性**을 본다.
+#   → 이건 "0편"보다 나은 선택이다. 실패는 Issue 로 눈에 보인다.
+_GUARD_MIN_UNIQUE_RATIO = 0.7   # 10장 중 고유 문장 비율 하한
+
+
+def _guard_quality(story: dict, kind: str, sdate: str) -> None:
+    scenes = story.get("scenes") or []
+    if not scenes:
+        raise RuntimeError(f"[run-fable] {kind}({sdate}) 대본에 scenes 없음")
+    nars = [str((s.get("narration") or {}).get("ko") or "").strip()
+            for s in scenes]
+    nonempty = [x for x in nars if x]
+    uniq = len(set(nonempty))
+    ratio = uniq / max(1, len(nonempty))
+    repaired = bool(story.get("repaired"))
+    print(f"[guard] {kind}: 장면 {len(scenes)} / 고유 문장 {uniq} "
+          f"({ratio:.0%}) / repaired={repaired}")
+
+    if ratio < _GUARD_MIN_UNIQUE_RATIO:
+        raise RuntimeError(
+            f"[run-fable] {kind}({sdate}) 품질 게이트 탈락 — "
+            f"고유 문장 {ratio:.0%} (하한 {_GUARD_MIN_UNIQUE_RATIO:.0%}), "
+            f"repaired={repaired}\n"
+            f"  로그에 '[llm] DeepSeek 402' 가 있으면 platform.deepseek.com 충전.\n"
+            f"  그 전까지는 대본이 반 이상 자동 문장으로 채워져 영상 품질이 무너진다.\n"
+            f"  **발행하지 않고 멈췄다.** 구린 영상을 올리는 것보다 나쁘다."
+        )
 
 
 def run_fable(mock: bool = False, no_publish: bool = False,
@@ -551,6 +589,7 @@ def run_fable(mock: bool = False, no_publish: bool = False,
             f"[run-fable] fable({_sdir.name}) 렌더 산출 0개 — 파이프라인 실패로 종료 "
             f"(errors.log 와 DeepSeek 잔액 확인)")
     if not no_publish and not mock:
+        _guard_quality(story, "fable", date or "today")
         fable_publish(date=date)
     elif mock:
         print("[run-fable] mock 모드 — 발행 생략 (mock 금지 규칙)")

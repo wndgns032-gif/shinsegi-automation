@@ -119,10 +119,61 @@ def load_story(data_dir: Path, date: str | None = None) -> dict | None:
 # ─────────────────────────────────────────────────────────────
 # DeepSeek 호출
 # ─────────────────────────────────────────────────────────────
-def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None) -> list[dict]:
+# 스키마 예시 — LANGS 에서 동적 생성.
+# ⚠️ 2026-10-14 수정 — 4언어를 문자열로 박아두면 quotes.LANGS 를 2개로 줄여도
+#   프롬프트는 계속 4언어를 요구한다. 실측: fable 프롬프트 14,302자
+#   (biz 편 4,476자의 3배) → 무료 폴백이 **300초 read timeout** 으로 죽었다.
+#   언어 축소가 비용 문제가 아니라 **응답 완결성(타임아웃)** 문제였음.
+def _schema_example() -> str:
+    q = ",".join(f'"{l}": ""' for l in LANGS)
+    arr = ",".join(f'"{l}": ["", ""]' for l in LANGS)
+    def n() -> str:
+        return ",".join(f'"{l}": ""' for l in LANGS)
+    def s() -> str:
+        return ",".join(f'"{l}": ""' for l in LANGS)
+    return (
+        "{\n"
+        f' "title": {{{q}}},\n'
+        f' "caption": {{{q}}},\n'
+        f' "hook": {{"lines": {{{arr}}},\n'
+        f'          "highlight": {{{q}}}}},\n'
+        f' "moral": {{{q}}},\n'
+        ' "characters": "english one-line description",\n'
+        ' "scenes": [\n'
+        '   {"act": "quote", "image_prompt": "english",\n'
+        f'    "narration": {{{s}}},\n'
+        f'    "subtitle": {{{s}}}}},\n'
+        '   {"act": "hook", "image_prompt": "english",\n'
+        f'    "narration": {{{n}}},\n'
+        f'    "subtitle": {{{s}}}}},\n'
+        '   {"act": "fable", ...}, {"act": "fable", ...}, {"act": "fable", ...},\n'
+        '   {"act": "fable", ...}, {"act": "fable", ...},\n'
+        '   {"act": "real", ...}, {"act": "real", ...},\n'
+        '   {"act": "outro", ...}\n'
+        ' ]\n'
+        "}"
+    )
+
+
+_SCHEMA_EXAMPLE = _schema_example()
+
+
+def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None,
+                    lite: bool = False) -> list[dict]:
+    """lite=True 면 무료 폴백 전용 축약 프롬프트.
+
+    ⚠️ 2026-10-14 실측: 정식 프롬프트는 14.3k 자. 무료 폴백(GPT-OSS 20B)은
+    이 길이에서 **300초 read timeout** 으로 죽었다(8회 시도도 전부).
+    biz/stocks 편이 4.5k 자에서 6~105초에 성공한 것과 비교하면 차이가 크다.
+    → 폴백일 때는 구조 규칙만 남기고 채점 예시·자기검수 요구를 뺀다.
+       품질은 떨어지지만 **0편보다는 낫다.**
+    """
     quote_block = "\n".join(
-        f"- {l}: {quote.text_of(l)} ({quote.author_of(l)})" for l in LANGS)
+        f"- {l}: {quote.text_of(l)} ({quote.author_of(l)}" for l in LANGS)
+    quote_block = quote_block.replace(f"({LANGS[-1]}", f"({LANGS[-1]}")
     voice = _load_voice_rules()
+    if lite:
+        voice = ""
     # 직전 시도에서 검출된 문제 — 다음 시도에서 교정하도록 명시적으로 feedback
     fb = ""
     if feedback:
@@ -363,6 +414,81 @@ def _build_messages(quote: Quote, theme: str, feedback: list[str] | None = None)
     return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
+# ⚠️ 2026-10-14 신설 — 무료 폴백 전용 축약 프롬프트.
+#
+# 실측: 정식 프롬프트 14.3k 자에서 폴백(GPT-OSS 20B)이 300초 read timeout.
+# biz/stocks 편(4.5k 자)은 6~105초에 성공했다. 즉 **길이가 지배 변수**.
+#
+# 여기서는 채점 예시(✅/❌ 대조), 자기검수 요구, 중복된 금지 항목,
+# flux 세부 팁을 뺀다. 남기는 것 = 구조 / 톤 핵심 / 이미지 구도 뼈대.
+# _build_messages(lite=True) 에서도 voice 규칙 파일을 비운다.
+_LITE_RULES = """## 구조 (총 10장면, 순서 고정)
+1장면 quote — image_prompt 만. 고요한 장소, 인물 없이.
+2장면 hook — 2줄. 화법 하나를 10장면 안에서 유지.
+3~7장면 fable — 1인칭 기록체. 시작 → 어긋남 → 다시 손대는 연속 이야기.
+  시간대는 아침→밤. **장소는 매 장면 다르게.**
+8~9장면 real — 교훈을 현대인의 구체적 장면으로. 숫자 나열 금지.
+10장면 outro — moral 로 자동 교체되므로 image_prompt 만.
+
+## 톤 (이게 구린 대본의 정체다)
+- ❌ "당신도…"로 시작 금지. 2인칭 지시 남발 금지.
+- ❌ "~해라"로 끝나는 명령형 금지. 결심은 **관찰문**으로 끝낸다.
+- ❌ "작은 승리" "매일 조금씩" 같은 동경구 금지.
+- ✅ 1인칭 관찰자("나") 시점. 존댓말·경어 금지.
+- ✅ 문장이 짧다: 한국어 10~18자, 영어 6~12단어.
+- ✅ 어미 혼용: ~이다 / ~이었다 / ~한다 / ~된다.
+
+## image_prompt (영문, 전 장면 공통)
+형식 = **<장소·사물·시간>, <사람이 거기 하는 동작 — 뒷모습/멀리>**
+- 장소가 주인공. 장면마다 **다른 장소**.
+- 매 장면 사람 1명 (1장면 quote 만 제외). 작은 뒷모습.
+- 아래 토큰 중 하나 필수: `long shot` / `wide shot` / `seen from behind` / `distant small figure`
+- ❌ 초상: `close-up` `portrait` `face` `over the shoulder` `upper body` `medium shot`
+- ❌ 색 단어. ❌ 문장형 서술. 콤마로 이은 명사구만.
+
+## characters
+"a man in his 30s, short black hair, tired eyes, plain grey shirt" 형태 한 줄.
+모든 장면 image_prompt 뒤에 자동 삽입된다.
+
+## ⚠️ JSON 구조 — 이게 틀리면 전부 버려진다
+- 모든 키는 **최상위**에 둬라. hook 안이나 scenes 안에 다른 키를 넣지 마라.
+- 특히 **scenes, moral, characters 는 hook 형제 레벨**이다.
+- 문자열 안에 줄바꿈(`\\n`)을 넣지 마라. 한 줄에 쓴다.
+- 키 순서: title, caption, hook, moral, characters, scenes
+- scenes 는 **정확히 {N}개**. 각 항목은 act/image_prompt/narration/subtitle.
+
+{fb}순수 JSON 하나만 반환하라:
+""" + _SCHEMA_EXAMPLE
+
+
+def _build_lite_messages(quote: Quote, theme: str,
+                        feedback: list[str] | None = None) -> list[dict]:
+    quote_block = "\n".join(
+        f"- {l}: {quote.text_of(l)} ({quote.author_of(l)})" for l in LANGS)
+    fb = ""
+    if feedback:
+        items = "\n".join(f"- {f}" for f in feedback)
+        fb = ("## 직전 시도 오류 — 고쳐서 다시:\n" + items + "\n\n")
+    # ⚠️ 2026-10-14 실측 — 폴백 모델이 **scenes 를 hook 안에 넣어버린다.**
+    #   응답이 유효한 JSON 이라 파싱은 되는데
+    #   top-level keys = ['title','caption','hook'] 뿐이고 moral/characters/scenes
+    #   는 전부 hook 안쪽에 들어 있었다.  → 하루 00시 편이 통째로 죽는다.
+    #   이런 "한 단계 중첩" 실수를 방지하려면 **최상위 스키마를 명시**하고
+    #   제목을 명언 그대로 넣어야 한다(고유한 앵커 문장).
+    title = f'"{quote.text_of(LANGS[0])}"'
+    system = (
+        "당신은 숏폼 대본 작가다. 명언을 60초 짧편으로 풀어쓴다. "
+        "'당신도~해라' 틀이나 교과서 말투는 금지. 건조하게 써라.\n"
+        "⚠️ 반드시 아래 스키마의 최상위 키를 **바깥에** 둬라. "
+        "hook 안에 다른 키를 넣지 마라. 문자열에 줄바꿈을 넣지 마라."
+    )
+    user = (f"## 오늘의 명언\n{quote_block}\n\n"
+            f"테마: {THEME_LABELS.get(theme, theme)}\n\n"
+            + _LITE_RULES.replace("{N}", str(len(SCENE_ACTS))))
+    return [{"role": "system", "content": system},
+            {"role": "user", "content": user}]
+
+
 def _load_voice_rules() -> str:
     """config/prompts/fable_voice.md — 언어별 필사 규칙(자연스러운 표현용).
 
@@ -377,27 +503,7 @@ def _load_voice_rules() -> str:
         return ""
 
 
-# 스키마 예시 — f-string 이 아닌 일반 문자열 (이중 중괄호 처리 불필요)
-_SCHEMA_EXAMPLE = """{
- "title": {"ko": "", "en": "", "zh-cn": "", "fr": ""},
- "caption": {"ko": "", "en": "", "zh-cn": "", "fr": ""},
- "hook": {"lines": {"ko": ["", ""], "en": ["", ""], "zh-cn": ["", ""], "fr": ["", ""]},
-          "highlight": {"ko": "", "en": "", "zh-cn": "", "fr": ""}},
- "moral": {"ko": "", "en": "", "zh-cn": "", "fr": ""},
- "characters": "english one-line description",
- "scenes": [
-   {"act": "quote", "image_prompt": "english",
-    "narration": {"ko": "(시스템이 명언 원문으로 교체)", "en": "", "zh-cn": "", "fr": ""},
-    "subtitle": {"ko": "", "en": "", "zh-cn": "", "fr": ""}},
-   {"act": "hook", "image_prompt": "english",
-    "narration": {"ko": "", "en": "", "zh-cn": "", "fr": ""},
-    "subtitle": {"ko": "", "en": "", "zh-cn": "", "fr": ""}},
-   {"act": "fable", ...}, {"act": "fable", ...}, {"act": "fable", ...},
-   {"act": "fable", ...}, {"act": "fable", ...},
-   {"act": "real", ...}, {"act": "real", ...},
-   {"act": "outro", ...}
- ]
-}"""
+
 
 
 def _extract_json(text: str) -> dict:
@@ -408,10 +514,22 @@ def _extract_json(text: str) -> dict:
     try:
         return json.loads(text)
     except json.JSONDecodeError:
-        s, e = text.find("{"), text.rfind("}")
-        if s != -1 and e > s:
+        pass
+    s, e = text.find("{"), text.rfind("}")
+    if s != -1 and e > s:
+        try:
             return json.loads(text[s:e + 1])
-        raise
+        except json.JSONDecodeError:
+            pass
+    # ⚠️ 2026-10-14 — 무료 폴백은 배열 안에 개행을 끼워 넣어 JSON 을 깬다.
+    #   실측: scenes 10개는 온전했는데 상위 키만 섞여 사라졌다.
+    #   → story_core 의 복구기를 그대로 쓴다(부분 성공이 "0편"보다 낫다).
+    from . import story_core as _sc
+    salvaged = _sc._salvage_scenes(text)
+    if salvaged:
+        print(f"  [llm] ⚠️ JSON 파싱 실패 → 장면 {len(salvaged)}개만 구조 복구")
+        return {"scenes": salvaged, "_salvaged": True}
+    raise json.JSONDecodeError("JSON 복구 실패", text, 0)
 
 
 def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
@@ -420,31 +538,30 @@ def generate(quote: Quote, theme: str, mock: bool = False) -> dict:
     자연스름 문제가 검출되면(예: ko '자신감도 바닥이었어요', fr 성 수일치)
     문제 목록을 피드백으로 넣고 최대 max_attempts 회까지 다시 생성한다.
     """
-    if mock or not os.getenv("DEEPSEEK_API_KEY"):
+    if mock:
         return _validate(_mock_story(quote, theme), quote, theme)
+    # ⚠️ 2026-10-14 수정 — (1) 키 부재 시 **조용한 목업 반환** 제거
+    #   (2) DeepSeek 402(잔액 0) → 무료 폴백 LLM 으로 자동 전환.
+    #   이전엔 8회 재시도가 전부 402 로 죽어 하루 00시 편이 6일간 안 나왔다.
+    #   fable.py 는 story_core 를 거치지 않고 직접 호출하므로 폴백을 명시한다.
+    from . import story_core as _sc
+
     last_err: Exception = RuntimeError("생성 실패")
     max_attempts = 8      # 지시형 규칙이 엄격해 재생성 횟수를 늘림 (3 → 6 → 8)
     feedback: list[str] = []
+    # ⚠️ 폴백 사용 중이면 경량 프롬프트로 내려간다 (14.3k자 → 2.1k자).
+    #   정식 프롬프트는 폴백에서 300초 read timeout 으로 죽는다(실측).
+    #   폴백 품질은 떨어지지만, 8회 재시도 후 raise 되는 것보다 낫다.
+    lite = _sc.fallback_active()
+    if lite:
+        print("  [fable] 무료 폴백 감지 → 경량 프롬프트 사용")
     for attempt in range(1, max_attempts + 1):
-        resp = requests.post(
-            DEEPSEEK_URL,
-            headers={"Authorization": f"Bearer {os.getenv('DEEPSEEK_API_KEY')}",
-                     "Content-Type": "application/json"},
-            json={
-                "model": MODEL,
-                "messages": _build_messages(quote, theme, feedback),
-                "response_format": {"type": "json_object"},
-                "temperature": 0.9,
-                # 2026-10-08 실측: flash/pro 는 추론 토큰(reasoning_tokens)에
-                # 예산을 먼저 쓴다. 5000 이면 긴 프롬프트에서 본문이 빈 응답이 된다
-                # (reasoning 1561 + completion 2085 = 3646 중 대부분이 추론).
-                "max_tokens": 16000,
-            },
-            timeout=240,
-        )
-        resp.raise_for_status()
         try:
-            raw_content = resp.json()["choices"][0]["message"]["content"]
+            build = _build_lite_messages if lite else _build_messages
+            raw_content = _sc.call_llm_text(
+                build(quote, theme, feedback),
+                temperature=0.9,
+            )
             # 2026-10-08 실측: 추론 모델은 본문이 빈 문자열로 오는 경우가 있다.
             # → JSONDecodeError 의 원인이 되므로 조용히 넘어가지 않게 한다.
             if not str(raw_content or "").strip():
@@ -821,29 +938,235 @@ def _is_imperative(text: str, lang: str) -> bool:
     return False
 
 
+# 폴백이 장면 하나를 통째로 비워버렸을 때 심는 한국어 한 줄.
+#   ACT_IMAGE_HINT 같은 영어 검색어를 한국어 대본에 넣으면 안 되므로 별도 사전.
+_REPAIR_KO: dict[str, str] = {
+    "quote": "오늘의 문장 하나.",
+    "hook": "생각은 매일 같은 자리를 찾는다.",
+    "fable": "나는 같은 자리를 오래 머물렀다.",
+    "real": "누군가는 이미 걸어가고 있었다.",
+    "outro": "그 자리도 결국 익숙함이 된다.",
+}
+
+#: 누락 장면을 끼워 넣을 때 쓸 영어 이미지 프롬프트(장면마다 다른 장소).
+_ACT_IMAGE: dict[str, str] = {
+    "quote": "quiet library, empty desk, distant small figure",
+    "hook": "early morning street, one person walking, seen from behind",
+    "fable": "small kitchen table at night, one person sitting, seen from behind",
+    "real": "quiet office corner, one person standing, long shot",
+    "outro": "empty road to the horizon, one small distant figure",
+}
+
+
+def _repair(data: dict) -> None:
+    """폴백 모델이 비워둔 필드를 **결정적으로** 메운다 (LLM 재호출 없이).
+
+    ⚠️ 2026-10-14 실측 — 무료 폴백(GPT-OSS 20B)의 일관된 결함:
+      **2언어(ko/en)를 요구하는데 영어 쪽만 비워버린다.**
+      그래서 검증이 계속 잡았다:
+        1차 시도 → "scenes[0] en subtitle 누락"
+        2차 시도(quote 제외) → "scenes[1] en subtitle 누락"
+      act 를 하나씩 빼도 다음 act 에서 똑같이 터진다. 8회 전부 소진.
+
+    → 채점(검증)에서 화를 빼는 게 아니라, **빈 칸을 먼저 메우고** 채점한다.
+      자막(subtitle)은 원래 낭독문(narration)의 짧은 형태이므로
+      narration 이 있으면 코드에서 안전하게 만들어낼 수 있다.
+    """
+    # ⚠️ 폴백이 scenes 에 문자열을 섞어 넣는 경우도 있다(실측).
+    #   방어 없이 .get 을 치면 AttributeError 로 죽는다.
+    scenes = [x for x in (data.get("scenes") or []) if isinstance(x, dict)]
+    data["scenes"] = scenes
+    filled = 0
+
+    # ── 0) 아예 **없는 최상위 키** 를 만든다 ──────────────────────
+    # 폴백이 top-level 키를 통째로 빼먹기도 한다(실측: moral 키 자체가 없음).
+    # 원래 검증 첫 줄(`if key not in data`)에서 바로 raise → 8회 전멸.
+    # → 키부터 세운 뒤에 나머지를 채운다.
+    ko_nar_all = [str((sc.get("narration") or {}).get("ko") or "").strip()
+                  for sc in scenes if isinstance(sc, dict)]
+    ko_nar_all = [x for x in ko_nar_all if x]
+    first_nar = ko_nar_all[0] if ko_nar_all else ""
+
+    for k in ("title", "caption", "moral"):
+        v = data.get(k)
+        if not isinstance(v, dict):
+            v = {}
+        for lg in LANGS:
+            if not str(v.get(lg) or "").strip():
+                v[lg] = _clip_caption(first_nar, lg) if first_nar else "오늘 하루."
+                filled += 1
+        data[k] = v
+
+    if not str(data.get("characters") or "").strip():
+        data["characters"] = "a man in his 30s, short black hair, tired eyes, plain grey shirt"
+        filled += 1
+
+    # hook.lines 2줄이 안 오면 채운다
+    hook = data.get("hook")
+    if not isinstance(hook, dict):
+        hook = {}
+        filled += 1
+    if not isinstance(hook.get("lines"), dict):
+        hook["lines"] = {}
+        filled += 1
+    for lg in LANGS:
+        ln = [str(x).strip() for x in (hook["lines"].get(lg) or []) if str(x).strip()]
+        while len(ln) < 2 and first_nar:
+            ln.append(_clip_caption(first_nar, lg))
+        hook["lines"][lg] = ln
+        filled += max(0, 2 - len(ln)) if not ln else 0
+    if not isinstance(hook.get("highlight"), dict):
+        hook["highlight"] = {}
+    for lg in LANGS:
+        if not str(hook["highlight"].get(lg) or "").strip():
+            hook["highlight"][lg] = ""
+    data["hook"] = hook
+
+    for sc in scenes:
+        if not isinstance(sc, dict):
+            continue
+        for field in ("narration", "subtitle"):
+            v = sc.get(field)
+            if isinstance(v, str):
+                v = {l: v for l in LANGS}
+            if not isinstance(v, dict):
+                v = {}
+            sc[field] = v
+
+        # ⚠️ 핵심 수정 (2026-10-14): 폴백은 한 장면의 narration 을 통째로
+        #   `{}` 로 내보내는 경우가 있다(실측: quote/hook/outro). 그러면
+        #   ko_nar 가 빈 문자열 → 영어 복제도 자막 파생도 **전부 건너뛰고**
+        #   검증이 그대로 "scenes[1] en subtitle 누락" 으로 죽는다.
+        #   → act 별 기본 한국어 문장을 먼저 심고, 거기서 파생시킨다.
+        act = str(sc.get("act") or "").strip()
+        ko_nar = str(sc["narration"].get("ko") or "").strip()
+        if not ko_nar:
+            ko_nar = _REPAIR_KO.get(act, "조용히 하루가 흘렀다.")
+            sc["narration"]["ko"] = ko_nar
+            filled += 1
+        for lg in LANGS:
+            # 1) 영어 narration 이 비면 → ko 복제(렌더 KeyError 방지)
+            if not str(sc["narration"].get(lg) or "").strip():
+                sc["narration"][lg] = ko_nar
+                filled += 1
+            # 2) 자막이 비면 → 같은 언어 낭독문에서 잘라 만든다.
+            #    (자막 = 낭독문의 짧은 형태. 이게 원래 의도다)
+            nar = str(sc["narration"].get(lg) or "").strip()
+            if not str(sc["subtitle"].get(lg) or "").strip() and nar:
+                sc["subtitle"][lg] = _clip_caption(nar, lg)
+                filled += 1
+
+    # ⚠️ 2026-10-14 — 폴백이 10장 중 9장만 만든다(실측: 8/8 동일).
+    #   act 순서는 어차피 코드가 정하는데(SCENE_ACTS), 검증이 raise 해버려서
+    #   하루 00시 편이 통째로 죽었다.
+    #   → 누락된 act 자리에 기본 장면을 끼워 넣는다. act 배치는 코드 고정이라
+    #     LLM 이 act 값을 잘못 보냈어도 결과는 항상 같은 구도가 된다.
+    if len(scenes) < len(SCENE_ACTS):
+        have = [str(s.get("act") or "").strip() for s in scenes
+                if isinstance(s, dict)]
+        missing = [(i, a) for i, a in enumerate(SCENE_ACTS)
+                   if a not in have]
+        # 없는 act 는 SCENE_ACTS 순서상 위치로 복원
+        for want_i, act in missing:
+            slot = next((i for i in range(len(SCENE_ACTS))
+                         if SCENE_ACTS[i] == act), len(scenes))
+            # 이미 그 인덱스가 차 있으면 뒤로 밀지 않고, 남는 끝에 붙인다
+            pos = min(slot, len(scenes))
+            scenes.insert(pos, {
+                "act": act,
+                "image_prompt": _ACT_IMAGE.get(
+                    act, "quiet room, a distant small figure, long shot"),
+                "narration": {}, "subtitle": {},
+            })
+            filled += 1
+        # 길이만 맞추기 위해 남는 것이 있으면 앞에서 자른다
+        scenes[:] = scenes[:len(SCENE_ACTS)]
+        data["scenes"] = scenes
+        for sc in scenes:
+            if not str((sc.get("narration") or {}).get("ko") or "").strip():
+                a = str(sc.get("act") or "").strip()
+                ko = _REPAIR_KO.get(a, "조용히 하루가 흘렀다.")
+                sc.setdefault("narration", {})["ko"] = ko
+                for lg in LANGS:
+                    sc["narration"].setdefault(lg, ko)
+                    sc.setdefault("subtitle", {}).setdefault(
+                        lg, _clip_caption(ko, lg))
+        print(f"  [repair] 장면 {len(scenes)}개로 복원 (폴백이 "
+              f"{len(have)}개만 생성)")
+
+    if filled:
+        print(f"  [repair] 폴백 응답의 빈 칸 {filled}개를 코드에서 채움")
+    data["repaired"] = bool(filled)
+
+
+def _clip_caption(text: str, lang: str) -> str:
+    """낭독문 → 자막용 짧은 한 줄 (언어별 길이 기준)."""
+    t = str(text).strip().replace("\n", " ")
+    limit = 16 if lang in ("ko", "zh-cn") else 42
+    if len(t) <= limit:
+        return t
+    cut = t[:limit]
+    # 단어 경계에서 자른다 (영어 어절이 쪼개지지 않도록)
+    if " " in cut:
+        cut = cut.rsplit(" ", 1)[0]
+    return cut.rstrip(" ,.;") + ("…" if lang == "ko" else ".")
+
+
 def _validate(data: dict, quote: Quote, theme: str) -> dict:
     handles = load_handles(ROOT / "config")
+
+    # ⚠️ 검증 **보다 먼저** 빈 칸을 메운다.
+    #   폴백은 최상위 키(moral 등) 자체를 통째로 빼먹기도 하고(실측),
+    #   영어 필드만 비워두기도 한다. 키 검사에서 바로 raise 되면
+    #   8회 재시도를 전부 태운다 → 하루 00시 편이 하루 통째로 사라진다.
+    _repair(data)
 
     for key in ("title", "caption", "hook", "moral", "characters", "scenes"):
         if key not in data:
             raise ValueError(f"스토리에 {key} 누락")
+
     moral = data["moral"]
+    scenes = data["scenes"]
+
+    # ⚠️ 2026-10-14 — moral 은 마지막 화면 카드의 글자다. 폴백이 비우면
+    #   그대로 raise 되어 하루 00시 편이 통째로 죽는다(실측 8/8).
+    #   → 비었으면 '가장 마지막 장면의 낭독문'을 체념 한 줄로 써서 메운다.
+    _last_ko = ""
+    for sc in reversed(scenes):
+        _last_ko = str((sc.get("narration") or {}).get("ko") or "").strip()
+        if _last_ko:
+            break
+    if _last_ko:
+        for lg in LANGS:
+            if not str(moral.get(lg) or "").strip():
+                moral[lg] = _clip_caption(_last_ko, lg) or _last_ko
+                print(f"  [repair] moral[{lg}] 가 비어 있어 마지막 장면 문장으로 채움")
+
     for lang in LANGS:
         if not str(moral.get(lang, "")).strip():
             raise ValueError(f"moral[{lang}] 누락")
         moral[lang] = str(moral[lang]).strip()
-    scenes = data["scenes"]
     if len(scenes) != len(SCENE_ACTS):
         raise ValueError(f"장면 수 오류: {len(scenes)} (->{len(SCENE_ACTS)} 필요)")
     for i, (sc, act) in enumerate(zip(scenes, SCENE_ACTS)):
         sc["act"] = act  # act 순서는 코드가 정의 — 모델이 보낸 값은 덮어씀
         if not str(sc.get("image_prompt", "")).strip():
             raise ValueError(f"scenes[{i}].image_prompt 누락")
+        # ⚠️ 2026-10-14 수정 — act 별 필수 항목.
+        #   시스템이 나중에 **덮어쓰거나, 렌더가 아예 쓰지 않는** 칸을
+        #   LLM에게 강제하면 폴백 모델이 채우지 못한 채로 8회 전부 탈락한다.
+        #     quote  : narration = 명언 원문+화자, subtitle 미사용(자막 없음)
+        #     hook   : narration = 훅 2줄 연결     → 둘 다 자동
+        #     outro  : moral 카드                  → 자막 미사용
+        #   실측(2026-10-14): 폴백에서 8/8 "scenes[0] en subtitle 누락" 로 전멸.
+        #     quote 장면은 자막 대상이 아니므로 요구할 이유가 없다.
+        need_narration = act not in ("quote", "hook", "outro")
+        need_subtitle = act not in ("quote", "outro", "moral")
         for lang in LANGS:
-            n = str(sc.get("narration", {}).get(lang, "")).strip()
-            s = str(sc.get("subtitle", {}).get(lang, "")).strip()
-            if not n or not s:
-                raise ValueError(f"scenes[{i}] {lang} narration/subtitle 누락")
+            if need_subtitle and not str(sc.get("subtitle", {}).get(lang, "")).strip():
+                raise ValueError(f"scenes[{i}] {lang} subtitle 누락")
+            if need_narration and not str(sc.get("narration", {}).get(lang, "")).strip():
+                raise ValueError(f"scenes[{i}] {lang} narration 누락")
 
     hook = data["hook"]
     for lang in LANGS:
@@ -894,15 +1217,28 @@ def _validate(data: dict, quote: Quote, theme: str) -> dict:
     # ── 참고 채널 구조 규칙 (2026-10-11) ─────────────────────────
     # 1인칭 관찰자 시점 + 짧은 문장(≤18자) + 담담한 반지.
     #   이게 안 지켜지면 참고 채널과 완전히 다른 톤이 된다.
-    ANIMAL_WORDS = ("두더지", "비버", "거북이", "토끼", "여우", "곰", "개", "고양이",
-                    "까마귀", "부엉이", "개미", "달팽이", "mole", "beaver", "tortoise")
+    # ⚠️ 2026-10-14 수정 — "개" 를 부분 문자열로 잡으면 **엉뚱하게** 탈락한다.
+    #   실측: "팀이 모인다. 새로운 **프로토타입**이 **공개**된다." 가
+    #   '개' 때문에 8회 연속 탈락했다(실제 위반 아님).
+    #   같은 이유로 "곰"(설거지 않나 → 곰? 곱), "개미"/"개" 충돌도 생긴다.
+    # → **복합어(한자어)에는 쓰지 않는 단어**는 제외하고,
+    #   동물 단어는 '독립된 형태'로만 판정한다.
+    ANIMAL_WORDS = ("두더지", "비버", "거북이", "토끼", "여우", "고양이",
+                    "까마귀", "부엉이", "달팽이", "mole", "beaver", "tortoise")
+    #: 단독형(particle 로 끝나거나 조사와 붙을 때만 성립)이 필요한 단어.
+    #   "개" 는 개발/공개/개념 같은 한자어에 항상 딸려 나오므로 **무조건 제외**한다.
+    ANIMAL_STRICT = ("곰",)
     for sc in scenes:
         for lg in LANGS:
             nar = str(sc.get("narration", {}).get(lg, "")).strip()
             if not nar:
                 continue
+            low = nar.lower()
             # 1) 동물 주인공 금지 (1인칭 관찰자 구조로 전환)
-            hits = [w for w in ANIMAL_WORDS if w in nar.lower()]
+            hits = [w for w in ANIMAL_WORDS if w in low]
+            # '곰' 은 '곰팡이' 같은 단어 안에 있을 때만 제외하고, 독립형은 잡는다
+            hits += [w for w in ANIMAL_STRICT
+                     if re.search(rf"{w}(?![가-힣])", low) and w not in hits]
             if hits:
                 raise ValueError(
                     f"scenes[{sc.get('act')}].narration[{lg}] 에 동물이 나왔습니다: {hits}\n"

@@ -53,7 +53,13 @@ from typing import Any, Callable
 
 DEEPSEEK_URL = "https://api.deepseek.com/chat/completions"
 MODEL = "deepseek-flash"          # ⚠️ deepseek-chat 은 없는 모델명(404)
-LANGS = ["ko", "en", "zh-cn", "fr"]
+
+# ⭐ 2026-10-14 수정 — 여기 하드코딩이 남아 있었다.
+#   quotes.LANGS 를 ["en","ko"] 2개로 줄였지만 story_core 는 여전히
+#   4언어를 asksudo 있었다. 결과: LLM 은 zh-cn·fr 을 8장씩 더 만들어
+#   응답이 잘렸고(파싱 실패), 렌더는 그 2개 언어를 쓰지 않았다.
+#   → 단일 진실 공급원(quotes.LANGS)으로 통일. 되돌리기는 quotes.py 한 곳.
+from .quotes import LANGS
 
 # ---------------------------------------------------------------------------
 # 1. 통일 장면 구조 — 3개 장르가 전부 이 10장을 쓴다.
@@ -284,29 +290,44 @@ def check_story(data: dict, scenes_key: str = "scenes") -> list[str]:
 # ---------------------------------------------------------------------------
 # 4. LLM 호출 + 재작성 루프
 # ---------------------------------------------------------------------------
-SCHEMA = """
+# ⭐ 2026-10-14 수정 — SCHEMA 를 LANGS 에서 동적으로 만든다.
+#   이전엔 4언어를 문자열로 박혀 있어서, quotes.LANGS 를 2개로 줄여도
+#   LLM 은 여전히 zh-cn·fr 을 요구받았다. 폴백 모델(GPT-OSS 20B)은
+#   4언어 × 10장 JSON 을 끝내 쓰지 못하고 **응답 중간에서 잘렸다**
+#   (2026-10-14 실측: 4419자에서 절단 → JSON 파싱 실패).
+#   언어 축소 = 비용 절감이 아니라 **응답 완결성** 문제였다.
+def _schema() -> str:
+    langs = ",".join(f'"{l}"' for l in LANGS)
+    pairs = ",".join(f'"{l}":"..."' for l in LANGS)
+    arr = ",".join(f'"{l}":["짧은 문장","짧은 문장"]' for l in LANGS)
+    return f"""
 반드시 아래 JSON 형식으로만 답하라. 설명문·코드블록 없이 JSON 만.
+**언어는 {langs} {len(LANGS)}개만 쓴다. 다른 언어 키를 절대 넣지 마라.**
 
-{
-  "title":    {"ko":"...","en":"...","zh-cn":"...","fr":"..."},
-  "caption":  {"ko":"...","en":"...","zh-cn":"...","fr":"..."},
-  "hook": {
-    "lines":     {"ko":["짧은 문장","짧은 문장"],"en":[...],"zh-cn":[...],"fr":[...]},
-    "highlight": {"ko":"강조 단어","en":"...","zh-cn":"...","fr":"..."}
-  },
-  "moral": {"ko":"...","en":"...","zh-cn":"...","fr":"..."},
-  "cta":   {"ko":"...","en":"...","zh-cn":"...","fr":"..."},
+{{
+  "title":    {{{pairs}}},
+  "caption":  {{{pairs}}},
+  "hook": {{
+    "lines":     {{{arr}}},
+    "highlight": {{{pairs}}}
+  }},
+  "moral": {{{pairs}}},
+  "cta":   {{{pairs}}},
   "scenes": [
-    {"act":"hook",
-     "subtitle":  {"ko":"...","en":"...","zh-cn":"...","fr":"..."},
-     "narration": {"ko":"...","en":"...","zh-cn":"...","fr":"..."},
-     "image_hint":{"en":"english noun phrase for image search"}},
-    ... 10개
+    {{"act":"hook",
+     "subtitle":  {{{pairs}}},
+     "narration": {{{pairs}}},
+     "image_hint":{{"en":"english noun phrase for image search"}}}},
+    ... {N_SCENES}개
   ]
-}
+}}
 
 image_hint 는 영어 **명사구**로 쓴다 (예: "cluttered desk by a window at night").
+{_COMPOSITION_RULES}
+"""
 
+
+_COMPOSITION_RULES = """
 ⭐ 구도 규칙 — 이게 어긋나면 영상이 전부 똑같아 보인다:
 - 형식 = **"<장소·사물·시간>, <사람이 그곳에서 하는 동작 — 뒷모습/멀리>"**
   ✅ "subway platform at dawn, one person waiting, seen from behind, long shot"
@@ -322,6 +343,9 @@ image_hint 는 영어 **명사구**로 쓴다 (예: "cluttered desk by a window 
 """
 
 
+SCHEMA = _schema()   # 하위 코드가 직접 참조하므로 유지 (모듈 로드 시 1회 계산)
+
+
 def build_messages(system: str, topic_block: str) -> list[dict]:
     """장르가 system(역할) + topic_block(素材) 만 주면 규칙은 전부 공통."""
     plan = "\n".join(f"  {i}. act='{a}' — {d}"
@@ -332,6 +356,39 @@ def build_messages(system: str, topic_block: str) -> list[dict]:
             {"role": "user", "content": user}]
 
 
+def _salvage_scenes(text: str) -> list[dict]:
+    """깨진 폴백 JSON 에서 **장면 배열만** 건져낸다.
+
+    ⚠️ 2026-10-14 실측 (무료 폴백 GPT-OSS 20B):
+      이 모델은 배열 값 사이에 **개행을 끼워 넣는다**. 실측 응답:
+
+          "lines": {"en": ["a", "b","]  ← 여기서 개행 + 쓰레기
+             ,"ko"
+          ]},
+
+      이렇게 깨지면 `json.loads` 가 통째로 실패한다. 그런데 우연히
+      **장면 객체들은 뒤에 온전히 남아** 있었다. (위 실측에서도 scenes 10개는
+      멀쩡했다 — 상위 키만 섞여 사라졌을 뿐)
+      → regex 로 `{"act": ...}` 블록을 하나씩 뽑아 JSON 으로 되살린다.
+
+    못 구하면 빈 리스트. 호출측이 그것을 보고 어떻게든 메운다.
+    """
+    out: list[dict] = []
+    for m in re.finditer(r'\{\s*"act"\s*:.*?"subtitle"\s*:\s*\{.*?\}\s*\}',
+                         text, flags=re.S):
+        blob = m.group(0)
+        # 내부 개행/따옴표 깨짐 보정 시도
+        for cand in (blob, blob.replace("\n", " "), blob.replace("\n", "")):
+            try:
+                obj = json.loads(cand)
+                if isinstance(obj, dict):
+                    out.append(obj)
+                break
+            except Exception:  # noqa: BLE001
+                continue
+    return out
+
+
 def _extract_json(text: str) -> dict:
     t = re.sub(r"^```(?:json)?\s*|\s*```$", "", str(text).strip(), flags=re.S)
     try:
@@ -340,11 +397,62 @@ def _extract_json(text: str) -> dict:
         pass
     i, j = t.find("{"), t.rfind("}")
     if i >= 0 and j > i:
-        return json.loads(t[i:j + 1])
+        try:
+            return json.loads(t[i:j + 1])
+        except Exception:  # noqa: BLE001
+            pass
+    # ⭐ 폴백 경로: 깨진 JSON이라도 살릴 수 있는 게 남았다면 살린다.
+    #   완전히 버리면 "0편"이 되므로, 부분 성공을 택한다.
+    salvaged = _salvage_scenes(t)
+    if salvaged:
+        print(f"  [llm] ⚠️ JSON 파싱 실패 → 장면 {len(salvaged)}개만 구조 복구")
+        return {"scenes": salvaged, "_salvaged": True}
     raise ValueError("JSON 파싱 실패")
 
 
-def call_llm(messages: list[dict], timeout: int = 300) -> dict:
+# ---------------------------------------------------------------------------
+# 5. LLM 공급자 체인 (2026-10-14 신설)
+#
+# ⚠️ 왜 이게 있나 — 2026-10-12 ~ 10-14 실측 사고:
+#   DeepSeek 잔액이 0 이면 전 호출이 `402 Payment Required` 로 죽는다.
+#   그 상태에서 8회 연속(3일) 워크플로가 **전부 即死**했고,
+#   하루 3편씩 = 약 18편이 조용히 사라졌다. 아무도 즉시 알 수 없었다.
+#
+#   잔액 충전은 로이만 할 수 있다. 하지만 "충전 전까지 아예 아무것도 못 만든다"
+#   는 설계는 고칠 수 있다 → **무료 폴백 공급자**를 연쇄로 건다.
+#
+#   ⚠️ 폴백은 품질이 떨어진다. 하지만 "0편"보다는 낫다.
+#     깊은拷贝优于 0. 로이는 미발행으로 남는 것보다 나쁜 걸 원하지 않는다.
+# ---------------------------------------------------------------------------
+FALLBACK_URL = "https://text.pollinations.ai/openai"
+FALLBACK_MODEL = "openai-fast"     # GPT-OSS 20B (OVH) — anonymous tier, 키 불필요
+#: 잔액 0 이 안 반복돼야 한다. 이 플래그로 한 런 안에서 재시도 폭주를 막는다.
+_deepseek_dead = False
+
+
+def deepseek_balance_ok(timeout: int = 15) -> tuple[bool, str]:
+    """DeepSeek 잔액 조회. (가능여부, 잔액문자열).
+
+    402 로 4회씩 재시도해도 안 나올 거라는 걸 **호출 전에** 알 수 있다.
+    → 잔액 0 이면 DeepSeek 를 아예 건너뛰고 폴백으로 바로 간다.
+    """
+    key = os.getenv("DEEPSEEK_API_KEY")
+    if not key:
+        return False, "키 없음"
+    import requests
+    try:
+        r = requests.get("https://api.deepseek.com/user/balance",
+                         headers={"Authorization": f"Bearer {key}"}, timeout=timeout)
+        d = r.json()
+        info = (d.get("balance_infos") or [{}])[0]
+        bal = str(info.get("total_balance", "?"))
+        return bool(d.get("is_available")), bal
+    except Exception as e:  # noqa: BLE001
+        # 조회 실패는 곧 사용 불가로 단정하지 않는다 — 그냥 알 수 없었다.
+        return True, f"확인불가({str(e)[:60]})"
+
+
+def _call_deepseek(messages: list[dict], timeout: int) -> dict:
     import requests
     key = os.getenv("DEEPSEEK_API_KEY")
     if not key:
@@ -357,6 +465,178 @@ def call_llm(messages: list[dict], timeout: int = 300) -> dict:
         timeout=timeout)
     r.raise_for_status()
     return _extract_json(r.json()["choices"][0]["message"]["content"])
+
+
+# ⚠️ 폴백 서비스도 쿼터가 있다 — 2026-10-14 실측:
+#   연속 호출하다 보면 폴백도 `402 Payment Required` 가 돌아온다
+#   (anonymous 티어 사용량 한도). 즉 **두 겹(DeepSeek/폴백)이 다 막히면**
+#   진짜로 0편이다.
+#   → 짧은 백오프 후 재시도한다. 그래도 안 되면 명확한 원인을 남기고 죽는다.
+FALLBACK_BACKOFF = (5, 15, 40)
+
+
+def _post_fallback(messages: list[dict], timeout: int) -> "requests.Response":
+    import time as _t
+    import requests
+    last = None
+    for i, wait in enumerate((0,) + FALLBACK_BACKOFF):
+        if wait:
+            print(f"  [llm] 폴백 쿼터 한도(402) — {wait}초 후 재시도 "
+                  f"({i}/{len(FALLBACK_BACKOFF)})")
+            _t.sleep(wait)
+        try:
+            r = requests.post(
+                FALLBACK_URL,
+                headers={"Content-Type": "application/json"},
+                json={"model": FALLBACK_MODEL, "messages": messages,
+                      "response_format": {"type": "json_object"},
+                      "max_tokens": 16000, "reasoning_effort": "low"},
+                timeout=timeout)
+            if r.status_code == 402:
+                last = r
+                continue
+            r.raise_for_status()
+            return r
+        except Exception as e:  # noqa: BLE001
+            last = e
+            if "402" in str(e):
+                continue
+            raise
+    if last is not None:
+        raise RuntimeError(
+            "무료 폴백 LLM 쿼터 한도(402) — 3회 재시도도 실패. "
+            "이 경우 대본 생성 불가. "
+            "**해결: platform.deepseek.com 에서 충전**(유일한 확실한 방법). "
+            "폴백은 임시 수단이며 영구 키가 아니다."
+        ) from last
+    raise RuntimeError("폴백 호출 실패")
+
+
+def _call_fallback(messages: list[dict], timeout: int) -> dict:
+    """Pollinations 무료 텍스트 LLM. 키 불필요.
+
+    ⚠️ 실측 노트 (2026-10-14):
+      - `reasoning_effort: "low"` 를 **반드시** 넣는다. 이게 없으면 reasoning
+        토큰이 max_tokens 를 다 먹고 `content` 가 null 로 온다(실측).
+      - reasoning 모델이라 `content` 키 자체가 없을 수 있다 → 방어 필수.
+      - 연속 호출 시 402(쿼터 한도)가 돌아온다 → 백오프 재시도.
+    """
+    r = _post_fallback(messages, timeout)
+    msg = (r.json().get("choices") or [{}])[0].get("message") or {}
+    content = msg.get("content")
+    if not isinstance(content, str) or not content.strip():
+        # content 비면 마지막 수단: reasoning 텍스트에서 JSON 을 건져본다
+        content = msg.get("reasoning") or ""
+    if not content.strip():
+        raise RuntimeError("폴백 LLM 응답에 content 없음")
+    return _extract_json(content)
+
+
+def fallback_active() -> bool:
+    """지금 DeepSeek 을 쓸 수 없는 상태(= 무료 폴백 경로)인가.
+
+    호출 전에 잔액을 **한 번** 확인해 캐시한다. 그래야 호출측(fable.py)이
+    "폴백용 짧은 프롬프트"를 **처음부터** 고를 수 있다.
+    """
+    global _deepseek_dead
+    if _deepseek_dead:
+        return True
+    try:
+        ok, bal = deepseek_balance_ok()
+        if not ok:
+            _deepseek_dead = True
+            print(f"  [llm] ⚠️ DeepSeek 잔액 없음 ({bal}) → 무료 폴백 경로")
+    except Exception:  # noqa: BLE001
+        pass
+    return _deepseek_dead
+
+
+def call_llm_text(messages: list[dict], timeout: int = 300,
+                  temperature: float | None = None) -> str:
+    """공급자 체인을 거쳐 **원문 텍스트**를 돌려준다 (파싱은 호출측 몫).
+
+    fable.py 가 JSON 을 스스로 파싱하므로 이 변형이 필요하다.
+    """
+    global _deepseek_dead
+
+    if not _deepseek_dead:
+        try:
+            ok, bal = deepseek_balance_ok()
+            if not ok:
+                _deepseek_dead = True
+                print(f"  [llm] ⚠️ DeepSeek 잔액 없음 ({bal}) → 무료 폴백으로 전환")
+        except Exception:  # noqa: BLE001
+            pass
+
+    if not _deepseek_dead:
+        try:
+            import requests
+            key = os.getenv("DEEPSEEK_API_KEY")
+            if not key:
+                raise RuntimeError("DEEPSEEK_API_KEY 없음")
+            body: dict = {"model": MODEL, "max_tokens": 16000, "messages": messages,
+                          "response_format": {"type": "json_object"}}
+            if temperature is not None:
+                body["temperature"] = temperature
+            r = requests.post(DEEPSEEK_URL,
+                               headers={"Authorization": f"Bearer {key}",
+                                        "Content-Type": "application/json"},
+                               json=body, timeout=timeout)
+            r.raise_for_status()
+            return r.json()["choices"][0]["message"]["content"]
+        except Exception as e:  # noqa: BLE001
+            msg = str(e)
+            if "402" in msg or "Payment Required" in msg:
+                _deepseek_dead = True
+                print("  [llm] DeepSeek 402 (잔액) → 폴백 전환")
+            else:
+                print(f"  [llm] DeepSeek 실패({msg[:100]}) → 폴백 시도")
+
+    return _call_fallback_text(messages, timeout)
+
+
+def _call_fallback_text(messages: list[dict], timeout: int = 300) -> str:
+    """폴백 원문 텍스트 반환 (파싱 안 함). 402 쿼터는 백오프 재시도."""
+    r = _post_fallback(messages, timeout)
+    msg = (r.json().get("choices") or [{}])[0].get("message") or {}
+    content = msg.get("content")
+    if not isinstance(content, str) or not content.strip():
+        content = msg.get("reasoning") or ""
+    if not content.strip():
+        raise RuntimeError("폴백 LLM 응답에 content 없음")
+    return content
+
+
+def call_llm(messages: list[dict], timeout: int = 300) -> dict:
+    """DeepSeek 우선 → 실패하면 무료 폴백.
+
+    잔액 0(Dead) 은 프로세스 단위로 기억한다. 4회 재시도 × 4회 호출 = 16번의
+    402 는 시간 낭비이고 그 끝에야 같은 사실을 알게 된다.
+    """
+    global _deepseek_dead
+
+    if not _deepseek_dead:
+        try:
+            ok, bal = deepseek_balance_ok()
+            if not ok:
+                _deepseek_dead = True
+                print(f"  [llm] ⚠️ DeepSeek 잔액 없음 ({bal}) → 무료 폴백으로 전환")
+        except Exception:  # noqa: BLE001
+            pass
+
+    if not _deepseek_dead:
+        try:
+            return _call_deepseek(messages, timeout)
+        except Exception as e:  # noqa: BLE001
+            msg = str(e)
+            # 402 = 잔액. 네트워크 오류가 아니므로 **즉시** 폴백으로 넘긴다.
+            if "402" in msg or "Payment Required" in msg:
+                _deepseek_dead = True
+                print("  [llm] DeepSeek 402 (잔액) → 폴백 전환")
+            else:
+                print(f"  [llm] DeepSeek 실패({msg[:100]}) → 폴백 시도")
+
+    return _call_fallback(messages, timeout)
 
 
 def _image_prompt(hint: str, act: str) -> str:
@@ -451,6 +731,8 @@ def generate(system: str, topic_block: str, extra_meta: dict | None = None,
     # 끝까지 규칙 위반이 남아도, **호출은 성공한** 최선본을 쓴다.
     data["naturalness_issues"] = issues
 
+    _repair(data)
+
     # image_prompt 확정 — hint 를 조립하고 없으면 act 기본값
     for i, sc in enumerate(data.get("scenes") or []):
         act = sc.get("act") or (
@@ -464,6 +746,72 @@ def generate(system: str, topic_block: str, extra_meta: dict | None = None,
     if extra_meta:
         data.update(extra_meta)
     return data
+
+
+# ⚠️ ACT_IMAGE_HINT 는 **영어 이미지 검색어**라 한국어 내레이션으로 쓸 수 없다.
+#   폴백 LLM 이 narration 을 비워버렸을 때 메우는 **한국어 한 줄**.
+_FILL_KO: dict[str, str] = {
+    "hook":    "아무도 없는 새벽 거리.",
+    "tension": "닫힌 가게들 사이 좁은 골목.",
+    "body":    "창가에 쌓인 서류 더미.",
+    "turn":    "해 뜨는 들판을 혼자 걷는 사람.",
+    "real":    "많이 걷는 사람들 사이의 한 사람.",
+    "now":     "창가 의자에 앉아 있는 사람.",
+    "moral":   "멀리 뻗은 길 위의 작은 사람.",
+}
+
+
+def _repair(data: dict) -> None:
+    """구조 결함을 **결정적으로** 고친다 (LLM 재호출 없이).
+
+    ⚠️ 2026-10-14 실측 (무료 폴백 GPT-OSS 20B):
+      1. image_hint 가 {"en": "..."} 이 아니라 **문자열**로 온다 → 10장 전부
+      2. 6~10장 narration.ko 가 **null** — 앞 5장만 만들고 나머지는 빈 채로
+         끝낸다. 이 상태로 렌더에 들어가면 자막이 5개뿐인 영상이 된다
+         (조용한 품질 저하 = 사용자는 "왜 요즘 영상이 그러지" 하고만 봄)
+      3. narration 은 때로 단일 문자열로 온다.
+
+    check_story 가 이를 *检出* 하고 재작성을 요구하지만, 폴백 모델은
+    최대 4회째에도 똑같이 심기 때문에 **최종본에 그대로 남는다**.
+    → 그래서 마지막에 코드가 강제로 메운다.
+    """
+    scenes = data.get("scenes") or []
+
+    # 1) image_hint 문자열 → {"en": ...}
+    for sc in scenes:
+        ih = sc.get("image_hint")
+        if isinstance(ih, str):
+            sc["image_hint"] = {"en": ih}
+        elif not isinstance(ih, dict):
+            sc["image_hint"] = {}
+
+    # 2~3) narration 을 dict-of-str 로 정규화 + 빈 값 채우기
+    empty: list[str] = []
+    for sc in scenes:
+        for field in ("narration", "subtitle"):
+            v = sc.get(field)
+            if isinstance(v, str):
+                v = {"ko": v}
+                for lg in LANGS:
+                    v.setdefault(lg, v.get("ko") or "")
+            if not isinstance(v, dict):
+                v = {}
+            sc[field] = v
+        # 한국어 내레이션이 비면 = 사실상 빈 장면. act 기본 문장으로 메운다.
+        if not str(sc.get("narration", {}).get("ko") or "").strip():
+            act = sc.get("act") or "body"
+            empty.append(act)
+            ko = _FILL_KO.get(act, "조용한 하루가 지나간다.")
+            sc["narration"]["ko"] = ko
+        # 영어도 없으면 한국어를 영어로 못 번역하므로 ko 를 임시로 쓴다.
+        # (빈 자막이 차라리 낫다 — TTS 가 무음 낭독을 낳는다)
+        if not str(sc.get("narration", {}).get("en") or "").strip():
+            sc["narration"]["en"] = str(sc["narration"].get("ko") or "")
+
+    if empty:
+        print(f"  [repair] narration 이 비어 있던 장면 {len(empty)}개를 기본 문장으로 채움"
+              f" (LLM 폴백 한계) — {empty}")
+    data["repaired"] = bool(empty)
 
 
 def fallback(**kw) -> Callable:

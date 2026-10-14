@@ -94,7 +94,10 @@ def generate(date: str, mock: bool = False,
     if not company:
         raise RuntimeError("나스닥 TOP10 조회 실패 — 증권편 생성 불가")
 
-    if mock or not os.getenv("DEEPSEEK_API_KEY"):
+    # ⚠️ 2026-10-14 수정 — biz_story 와 같은 조용한 목업 함정 제거.
+    #   키가 없으면 전 장면이 "Alphabet Inc.." 한 줄짜리 대본이 되고,
+    #   정상인 것처럼 렌더까지 흘러간다. mock 명시 시에만 목업.
+    if mock:
         return _mock(company, date)
 
     topic = (

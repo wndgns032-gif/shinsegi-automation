@@ -69,7 +69,11 @@ def generate(date: str, mock: bool = False,
     rng = random.Random(seed) if seed is not None else random.Random()
     theme = _theme_for(date, rng)
 
-    if mock or not os.getenv("DEEPSEEK_API_KEY"):
+    # ⚠️ 2026-10-14 수정 — `not os.getenv(KEY)` 는 **조용한 목업 반환**이었다.
+    #   키가 사라지면 10장 전부가 같은 한 줄("집중 전략.")인 대본이 만들어지고,
+    #   그것이 정상처럼 파이프라인을 끝까지 흘러 영상을 찍는다.
+    #   → 명시적 mock 인 경우에만 목업. 그 외에는 아래 폴백 체인이 붙는다.
+    if mock:
         return _mock(theme, date)
 
     topic = (
