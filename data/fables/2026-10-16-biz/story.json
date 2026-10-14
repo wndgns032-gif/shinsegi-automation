@@ -1,0 +1,197 @@
+{
+ "title": {
+  "en": "Post-Mortem Without Blame",
+  "ko": "실패를 다루는 법"
+ },
+ "caption": {
+  "en": "Observing a moment, not preaching.",
+  "ko": "관찰한 순간, 설교는 없다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "When the plan fell odd.",
+    "When the lift stopped midway.",
+    ""
+   ],
+   "ko": [
+    "계획이 멈춘 순간.",
+    "어두운 기계가 멈췄다.",
+    ""
+   ]
+  },
+  "highlight": {
+   "en": "See the pause, not the fault.",
+   "ko": "중단을 보라, 비난을 보지 마."
+  }
+ },
+ "moral": {
+  "en": "It ends where the work resumes.",
+  "ko": "작업이 다시 시작되는 곳에서 끝난다."
+ },
+ "cta": {
+  "en": "Notice, don't judge.",
+  "ko": "관찰하고 판단하지 마."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The elevator stop",
+    "ko": "엘리베이터 멈춤"
+   },
+   "narration": {
+    "en": "The elevator stops abruptly at the tenth floor.",
+    "ko": "엘리베이터가십층에서 갑자기 멈췄다."
+   },
+   "image_hint": {
+    "en": "elevator lobby at noon, a person waiting, seen from behind, medium shot"
+   },
+   "image_prompt": "elevator lobby at noon, a person waiting, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Waiting for the door",
+    "ko": "문을 기다리다"
+   },
+   "narration": {
+    "en": "The lights flicker softly.",
+    "ko": "불빛이 살짝 깜빡인다."
+   },
+   "image_hint": {
+    "en": "high rise lobby at night, a person waiting, seen from behind, medium shot"
+   },
+   "image_prompt": "high rise lobby at night, a person waiting, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Panel shows error",
+    "ko": "패널에 오류 표시"
+   },
+   "narration": {
+    "en": "An error icon lights up on the panel.",
+    "ko": "패널에 오류 아이콘이 켜졌다."
+   },
+   "image_hint": {
+    "en": "cobwebbed elevator control panel at dawn, a person looking, seen from behind, medium shot"
+   },
+   "image_prompt": "cobwebbed elevator control panel at dawn, a person looking, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Time passes",
+    "ko": "시간 흐른다"
+   },
+   "narration": {
+    "en": "Two minutes, the same bright face.",
+    "ko": "두 분, 같은 밝은 얼굴."
+   },
+   "image_hint": {
+    "en": "elevator lobby at dusk, a person staring, seen from behind, medium shot"
+   },
+   "image_prompt": "elevator lobby at dusk, a person staring, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Repeated alarms",
+    "ko": "반복되는 알람"
+   },
+   "narration": {
+    "en": "The alarm bleeds the same tone again.",
+    "ko": "알람이 같은 톤을 다시 울린다."
+   },
+   "image_hint": {
+    "en": "elevator malfunction screen at dawn, a person listening, seen from behind, medium shot"
+   },
+   "image_prompt": "elevator malfunction screen at dawn, a person listening, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Device screen changes",
+    "ko": "디바이스 화면 변화"
+   },
+   "narration": {
+    "en": "The icon turns yellow, calm.",
+    "ko": "아이콘이 노랗게 바뀐다."
+   },
+   "image_hint": {
+    "en": "elevator control panel at night, a person watching, seen from behind, medium shot"
+   },
+   "image_prompt": "elevator control panel at night, a person watching, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Eureka moment",
+    "ko": "깨달음"
+   },
+   "narration": {
+    "en": "A finger taps the reset button.",
+    "ko": "손가락이 리셋 버튼을 눌렀다."
+   },
+   "image_hint": {
+    "en": "small repair drawer in elevator, hands pressing button, seen from behind, medium shot"
+   },
+   "image_prompt": "small repair drawer in elevator, hands pressing button, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Work resumes",
+    "ko": "작업 재개"
+   },
+   "narration": {
+    "en": "The lift shudders, then escalates.",
+    "ko": "엘리베이터가 떠올라 운행을 시작했다."
+   },
+   "image_hint": {
+    "en": "elevator at bus stop, a person stepping out, seen from behind, medium shot"
+   },
+   "image_prompt": "elevator at bus stop, a person stepping out, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today in the office",
+    "ko": "오늘 사무실에서"
+   },
+   "narration": {
+    "en": "A distant laptop screen flickers on.",
+    "ko": "노트북 화면이 멀리에서 깜빡인다."
+   },
+   "image_hint": {
+    "en": "office cubicle at noon, a person looking at a screen, seen from behind, medium shot"
+   },
+   "image_prompt": "office cubicle at noon, a person looking at a screen, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Conclusion",
+    "ko": "결론"
+   },
+   "narration": {
+    "en": "The mistake is static; the solution moves forward.",
+    "ko": "실수는 정적, 해결은 전진한다."
+   },
+   "image_hint": {
+    "en": "neutral office at dawn, a person thinking, seen from behind, medium shot"
+   },
+   "image_prompt": "neutral office at dawn, a person thinking, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-16-biz",
+ "theme": "biz",
+ "theme_label": "실패를 다루는 법",
+ "quote": {
+  "text": "post-mortem without blame",
+  "author": "성공하는 사람의 마인드"
+ }
+}
