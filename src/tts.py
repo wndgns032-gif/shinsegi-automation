@@ -33,26 +33,33 @@ KOKORO_VOICES = MODELS / "voices-v1.0.bin"
 SUPERTONIC_DIR = MODELS / "supertonic-3"
 
 # ── 음성 프로필: 언어별 (엔진, 음성) 폴백 체인 ──────────────────────────────
-# engine: kokoro | supertonic | edge
+# engine: kokoro | supertonic | edge | gtts
+# ⚠️ 2026-10-14 — 각 언어 마지막에 gtts 를 둔다.
+#   GitHub 러너에서 edge-tts 가 403(WSServerHandshakeError) 을 주고 있었고,
+#   TTS_ENGINE=edge 설정이라 로컬 엔진으로도 못 빠져 렌더 0개 → 하루 편 유실.
 VOICE_PROFILES: dict[str, list[dict]] = {
     # 한국어: 무료 로컬에서 한국어가 되는 건 Supertonic-3 뿐이다 (여성 F1~F5)
     "ko": [
         {"engine": "supertonic", "voice": "F2", "lang": "ko", "speed": 0.95},
         {"engine": "edge", "voice": "ko-KR-SunHiNeural", "rate": "-4%", "pitch": "-2Hz"},
+        {"engine": "gtts", "voice": "ko", "gtts_lang": "ko"},
     ],
     "en": [
         {"engine": "kokoro", "voice": "af_heart", "lang": "en-us", "speed": 0.92},
         {"engine": "supertonic", "voice": "F1", "lang": "en", "speed": 0.95},
         {"engine": "edge", "voice": "en-US-EmmaMultilingualNeural", "rate": "-4%", "pitch": "-2Hz"},
+        {"engine": "gtts", "voice": "en", "gtts_lang": "en"},
     ],
     "zh-cn": [
         {"engine": "kokoro", "voice": "zf_xiaoxiao", "lang": "zh", "speed": 0.92},
         {"engine": "edge", "voice": "zh-CN-XiaoxiaoNeural", "rate": "-4%", "pitch": "-2Hz"},
+        {"engine": "gtts", "voice": "zh-CN", "gtts_lang": "zh-CN"},
     ],
     "fr": [
         {"engine": "supertonic", "voice": "F1", "lang": "fr", "speed": 0.95},
         {"engine": "kokoro", "voice": "ff_siwis", "lang": "fr-fr", "speed": 0.92},
         {"engine": "edge", "voice": "fr-FR-VivienneMultilingualNeural", "rate": "-4%", "pitch": "-2Hz"},
+        {"engine": "gtts", "voice": "fr", "gtts_lang": "fr"},
     ],
 }
 
@@ -233,6 +240,26 @@ def _scratch_dir(out: Path, name: str) -> Path:
     """
     out = Path(out)
     return out.parent / name / out.stem
+
+
+def _synth_gtts(text: str, prof: dict, out: Path, paced: bool = True) -> Path:
+    """Google Translate TTS — 무료 / 키 불필요 / 마지막 폴백.
+
+    ⚠️ 2026-10-14 실측: edge-tts 가 GitHub 러너에서 **403** 을 준다.
+        WSServerHandshakeError: 403,
+        url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1'
+        → TTS_ENGINE=edge 로 걸려 있으면 로컬 엔진으로 못 빠지고 그냥 죽는다.
+        → 렌더 산출 0개 → 하루 편이 통째로 사라진다.
+
+    gTTS 는 HTTPS 라서 403 에 덜 취약하고 ko / en / zh-CN / fr 를 모두 받는다.
+    품질은 edge 보다 낮지만 **영상에 음성이 있는 것**이 더 낫다.
+    """
+    from gtts import gTTS
+
+    out.parent.mkdir(parents=True, exist_ok=True)
+    tl = prof.get("gtts_lang") or prof.get("lang") or "ko"
+    gTTS(text=(text.strip() or "."), lang=tl).save(str(out))
+    return out
 
 
 def _synth_edge(text: str, prof: dict, out: Path, paced: bool = True) -> Path:
@@ -435,9 +462,13 @@ def synth(text: str, lang: str, out_path: Path, voice: str | None = None,
 
     chain = [dict(p) for p in profile_for(lang)]
     # CI/클라우드 환경에서는 로컬 모델(Kokoro/Supertonic)을 강제로 건너뛴다
-    # — 모델 파일이 없고 설치 시간도 아깝다. TTS_ENGINE=edge 면 edge 만 사용.
+    # — 모델 파일이 없고 설치 시간도 아깝다.
+    # ⚠️ 2026-10-14 수정: edge 만 남기면 edge 가 403 이 나�� **아무것도 안 남는다.**
+    #   실측: TTS_ENGINE=edge + edge 403 → "전 엔진 실패" → 렌더 0개 → 하루 편 유실.
+    #   → gtts(HTTPS, 무료)를 **반드시** 남긴다.
     if os.getenv("TTS_ENGINE", "").lower() == "edge":
-        chain = [p for p in chain if p.get("engine") == "edge"] or chain[-1:]
+        chain = [p for p in chain
+                 if p.get("engine") in ("edge", "gtts")] or chain[-1:]
     if voice:  # 특정 음성 지정 시 해당 음성을 체인 맨 앞에
         for p in chain:
             if p["voice"] == voice:
@@ -460,6 +491,8 @@ def synth(text: str, lang: str, out_path: Path, voice: str | None = None,
                 return _paced_synth(text, prof, out_path, _synth_kokoro, paced)
             if engine == "supertonic":
                 return _paced_synth(text, prof, out_path, _synth_supertonic, paced)
+            if engine == "gtts":
+                return _synth_gtts(text, prof, out_path, paced=paced)
             return _synth_edge(text, prof, out_path, paced=paced)
         except Exception as e:  # noqa: BLE001 - 다음 엔진으로 폴백
             errors.append(f"{engine}/{prof['voice']}: {type(e).__name__}: {str(e)[:120]}")

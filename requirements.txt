@@ -14,8 +14,12 @@ openpyxl==3.1.5
 imageio-ffmpeg==0.6.0
 soundfile==0.14.0
 
-# ── TTS (클라우드만 — TTS_ENGINE=edge 로 강제) ──
+# ── TTS (클라우드) ──
+# ⚠️ 2026-10-14: edge-tts 가 GitHub 러너에서 403(WSServerHandshakeError) 을 준다.
+#   gtts(HTTPS, 무료, 키 불필요)를 마지막 폴백으로 추가 — 이게 없으면
+#   TTS 全실패 → 렌더 0개 → 하루 편이 통째로 사라진다.
 edge-tts==7.2.8
+gTTS==2.5.4
 
 # ── YouTube OAuth (google-auth + google-api-python-client) ──
 google-auth==2.40.3
