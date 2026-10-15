@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "One Line of No",
+  "ko": "거절 한 줄"
+ },
+ "caption": {
+  "en": "One line of no clears the whole desk.",
+  "ko": "거절 한 줄이 책상을 비운다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Three papers on his desk.",
+    "Everything else was gone."
+   ],
+   "ko": [
+    "그의 책상엔 서류가 세 장.",
+    "나머지는 다 사라졌다."
+   ]
+  },
+  "highlight": {
+   "en": "three papers",
+   "ko": "세 장"
+  }
+ },
+ "moral": {
+  "en": "Focus isn't choosing. It's erasing.",
+  "ko": "집중은 고르는 일이 아니다. 지우는 일이다."
+ },
+ "cta": {
+  "en": "One thing turned down today, and the rest gets lighter.",
+  "ko": "오늘 거절할 하나를 정해두면 나머지가 가벼워진다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "three papers",
+    "ko": "서류 세 장"
+   },
+   "narration": {
+    "en": "He kept three papers on his desk. Everything else was gone.",
+    "ko": "그의 책상엔 서류가 세 장뿐이었다. 나머지는 다 치웠다."
+   },
+   "image_hint": {
+    "en": "office desk by a window at dusk, one person sorting papers, seen from behind, long shot"
+   },
+   "image_prompt": "office desk by a window at dusk, one person sorting papers, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "my desk",
+    "ko": "내 책상"
+   },
+   "narration": {
+    "en": "My desk was the opposite. Unopened envelopes stacked up.",
+    "ko": "내 책상은 반대였다. 안 뜯은 봉투가 쌓여 있었다."
+   },
+   "image_hint": {
+    "en": "cluttered home office at midnight, small figure buried in paperwork, distant view"
+   },
+   "image_prompt": "cluttered home office at midnight, small figure buried in paperwork, distant view"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "the phone",
+    "ko": "전화 한 통"
+   },
+   "narration": {
+    "en": "The phone rang. He smiled and cut it off. The reason was short.",
+    "ko": "전화가 왔다. 그는 웃으며 잘랐다. 이유는 길지 않았다."
+   },
+   "image_hint": {
+    "en": "morning kitchen counter, one person on the phone, seen from behind, wide shot"
+   },
+   "image_prompt": "morning kitchen counter, one person on the phone, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "everything",
+    "ko": "전부"
+   },
+   "narration": {
+    "en": "I did everything. I left nothing out. None of it landed.",
+    "ko": "나는 다 했다. 하나도 남기지 않았다. 그런데 다 어설펐다."
+   },
+   "image_hint": {
+    "en": "open-plan office in the afternoon, one person carrying papers between desks, distant figure"
+   },
+   "image_prompt": "open-plan office in the afternoon, one person carrying papers between desks, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "a year later",
+    "ko": "일 년 뒤"
+   },
+   "narration": {
+    "en": "A year later, his desk still held three papers. My drawer overflowed.",
+    "ko": "일 년 뒤에도 그의 책상은 세 장이었다. 내 서랍은 넘쳤다."
+   },
+   "image_hint": {
+    "en": "storage room stacked with boxes, one person standing at the door, seen from behind"
+   },
+   "image_prompt": "storage room stacked with boxes, one person standing at the door, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "one thing",
+    "ko": "하나"
+   },
+   "narration": {
+    "en": "He held on to one thing. That one thing brought people.",
+    "ko": "그가 붙잡은 건 하나였다. 그 하나가 사람을 불렀다."
+   },
+   "image_hint": {
+    "en": "small meeting room by a large window, two people across a table, seen from far down the hallway"
+   },
+   "image_prompt": "small meeting room by a large window, two people across a table, seen from far down the hallway"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "sorry",
+    "ko": "미안함"
+   },
+   "narration": {
+    "en": "I couldn't say no. I felt bad. That guilt ate my hours.",
+    "ko": "나는 거절을 못 했다. 미안해서였다. 그 미안함이 시간을 먹었다."
+   },
+   "image_hint": {
+    "en": "apartment hallway at night, one person standing still by the door, seen from behind"
+   },
+   "image_prompt": "apartment hallway at night, one person standing still by the door, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "right now",
+    "ko": "지금"
+   },
+   "narration": {
+    "en": "Another email just came in. The reply box is open.",
+    "ko": "지금 또 메일이 와 있다. 답장 창이 열려 있다."
+   },
+   "image_hint": {
+    "en": "laptop on a cafe table by the window, one person staring at the screen, back to the camera"
+   },
+   "image_prompt": "laptop on a cafe table by the window, one person staring at the screen, back to the camera"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "one line",
+    "ko": "한 줄"
+   },
+   "narration": {
+    "en": "I stopped mid-sentence. Left one line.",
+    "ko": "나는 답장을 쓰다 말았다. 한 줄만 남겼다."
+   },
+   "image_hint": {
+    "en": "dim study at night, one hand pausing over a keyboard, figure seen from behind"
+   },
+   "image_prompt": "dim study at night, one hand pausing over a keyboard, figure seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "erasing",
+    "ko": "지우는 일"
+   },
+   "narration": {
+    "en": "Focus isn't choosing. It's erasing.",
+    "ko": "집중은 고르는 일이 아니다. 지우는 일이다."
+   },
+   "image_hint": {
+    "en": "empty desk by a window in early morning light, one person walking away, distant small figure"
+   },
+   "image_prompt": "empty desk by a window in early morning light, one person walking away, distant small figure"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-15-biz",
+ "theme": "biz",
+ "theme_label": "집중 전략",
+ "quote": {
+  "text": "say no to almost everything",
+  "author": "성공하는 사람의 마인드"
+ }
+}
