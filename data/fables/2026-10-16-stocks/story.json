@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Company Nobody Brags About",
+  "ko": "아무도 자랑하지 않은 회사"
+ },
+ "caption": {
+  "en": "A quiet company, four trillion dollars, and no applause anywhere.",
+  "ko": "조용한 회사, 4조 달러, 그리고 아무 데도 없는 박수."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "There is a quiet company.",
+    "Nobody brags about it."
+   ],
+   "ko": [
+    "조용한 회사 하나가 있다.",
+    "그 이름을 자랑하는 사람은 없다."
+   ]
+  },
+  "highlight": {
+   "en": "4 trillion dollars",
+   "ko": "4조 달러"
+  }
+ },
+ "moral": {
+  "en": "The loud ones leave first. The quiet one stayed.",
+  "ko": "요란한 것은 먼저 떠난다. 남는 쪽은 조용했다."
+ },
+ "cta": {
+  "en": "Next time I'll watch another one from far away.",
+  "ko": "다음엔 다른 회사를 멀리서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "There is a quiet company.",
+    "ko": "조용한 회사 하나가 있다."
+   },
+   "narration": {
+    "en": "The loud ones don't last.",
+    "ko": "요란한 곳은 오래 못 버틴다."
+   },
+   "image_hint": {
+    "en": "glass office tower at dawn, one figure walking past, seen from behind, long shot"
+   },
+   "image_prompt": "glass office tower at dawn, one figure walking past, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "It never advertised.",
+    "ko": "그 회사는 광고를 하지 않았다."
+   },
+   "narration": {
+    "en": "Nobody put its name on a t-shirt.",
+    "ko": "아무도 그 이름을 티셔츠에 새기지 않았다."
+   },
+   "image_hint": {
+    "en": "city crosswalk in the rain, one pedestrian with an umbrella, distant figure"
+   },
+   "image_prompt": "city crosswalk in the rain, one pedestrian with an umbrella, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The same faces entered the lobby.",
+    "ko": "로비에는 같은 얼굴이 매일 들어왔다."
+   },
+   "narration": {
+    "en": "Twenty years of the same badge.",
+    "ko": "출근 도장이 스무 해를 넘겼다."
+   },
+   "image_hint": {
+    "en": "corporate lobby in the morning, one distant figure at the turnstile"
+   },
+   "image_prompt": "corporate lobby in the morning, one distant figure at the turnstile"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The screen on the desk never changed.",
+    "ko": "책상 위 화면은 늘 같았다."
+   },
+   "narration": {
+    "en": "New versions came. The chair stayed.",
+    "ko": "새 버전이 나와도 자리는 그대로였다."
+   },
+   "image_hint": {
+    "en": "open plan office at night, one person at a desk, back to the camera"
+   },
+   "image_prompt": "open plan office at night, one person at a desk, back to the camera"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The same invoice went out every month.",
+    "ko": "매달 같은 청구서가 나갔다."
+   },
+   "narration": {
+    "en": "Nobody bragged about that invoice.",
+    "ko": "아무도 그 청구서를 자랑하지 않았다."
+   },
+   "image_hint": {
+    "en": "basement mailroom, one worker pushing a cart, seen from behind"
+   },
+   "image_prompt": "basement mailroom, one worker pushing a cart, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "But the invoice never stopped.",
+    "ko": "그런데 그 청구서는 멈추지 않았다."
+   },
+   "narration": {
+    "en": "People just clicked renew.",
+    "ko": "사람들은 그냥 갱신 버튼을 눌렀다."
+   },
+   "image_hint": {
+    "en": "server room corridor, one technician walking away, small in frame"
+   },
+   "image_prompt": "server room corridor, one technician walking away, small in frame"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "I stood there a long time.",
+    "ko": "그때 나는 오래 서 있었다."
+   },
+   "narration": {
+    "en": "Staying beat being noticed.",
+    "ko": "눈에 띄는 것보다 남아 있는 것이 셌다."
+   },
+   "image_hint": {
+    "en": "rooftop at dawn, one figure facing a skyline, seen from behind, long shot"
+   },
+   "image_prompt": "rooftop at dawn, one figure facing a skyline, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "That screen is on right now.",
+    "ko": "오늘도 그 화면은 켜져 있다."
+   },
+   "narration": {
+    "en": "Most people don't know it's them.",
+    "ko": "대부분은 그것이 그 회사인 줄 모른다."
+   },
+   "image_hint": {
+    "en": "subway car at rush hour, one commuter looking at a screen, seen from behind"
+   },
+   "image_prompt": "subway car at rush hour, one commuter looking at a screen, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "One page slides across a table.",
+    "ko": "회의실에서 계약서 한 장이 넘어간다."
+   },
+   "narration": {
+    "en": "No applause. Just a signature.",
+    "ko": "박수는 없다. 서명만 있다."
+   },
+   "image_hint": {
+    "en": "meeting room seen from the doorway, one person sliding a document, wide shot"
+   },
+   "image_prompt": "meeting room seen from the doorway, one person sliding a document, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The loud ones leave first.",
+    "ko": "요란한 것은 먼저 떠난다."
+   },
+   "narration": {
+    "en": "The quiet one stayed.",
+    "ko": "남는 쪽은 조용했다."
+   },
+   "image_hint": {
+    "en": "parking garage at night, one car driving out, distant figure, long shot"
+   },
+   "image_prompt": "parking garage at night, one car driving out, distant figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-16-stocks",
+ "theme": "stocks",
+ "symbol": "MSFT",
+ "quote": {
+  "text": "Microsoft Corporation",
+  "author": "NASDAQ MSFT"
+ }
+}
