@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Slow Hand",
+  "ko": "느린 손"
+ },
+ "caption": {
+  "en": "Skill isn't an event. It's what's left where time went.",
+  "ko": "실력은 사건이 아니다. 시간이 지나간 자리에 남는 것이다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "His hands were slow.",
+    "I thought that was a flaw."
+   ],
+   "ko": [
+    "그 사람 손은 느렸다.",
+    "처음엔 흠인 줄 알았다."
+   ]
+  },
+  "highlight": {
+   "en": "slow hands",
+   "ko": "느린 손"
+  }
+ },
+ "moral": {
+  "en": "Skill isn't an event. It's what's left where time went.",
+  "ko": "실력은 사건이 아니다. 시간이 지나간 자리에 남는 것이다."
+ },
+ "cta": {
+  "en": "One scene was enough for today.",
+  "ko": "오늘은 장면 하나로 충분하다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "His hands were slow.",
+    "ko": "그 사람 손은 느렸다"
+   },
+   "narration": {
+    "en": "His hands were slow. I thought that was a flaw.",
+    "ko": "그 사람 손은 느렸다. 처음엔 흠인 줄 알았다."
+   },
+   "image_hint": {
+    "en": "old workshop bench at dawn, one craftsman working, seen from behind, long shot"
+   },
+   "image_prompt": "old workshop bench at dawn, one craftsman working, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Fast from day one.",
+    "ko": "첫날부터 빨랐다"
+   },
+   "narration": {
+    "en": "A new man took the bench beside me. Fast from day one.",
+    "ko": "옆자리에 새 사람이 왔다. 첫날부터 속도가 달랐다."
+   },
+   "image_hint": {
+    "en": "small repair shop interior, two workers at separate benches, distant figures, long shot"
+   },
+   "image_prompt": "small repair shop interior, two workers at separate benches, distant figures, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "He never looked at them.",
+    "ko": "그 사람은 안 봤다"
+   },
+   "narration": {
+    "en": "I memorized the steps. He never looked at them.",
+    "ko": "나는 순서를 외웠다. 그 사람은 순서를 안 봤다."
+   },
+   "image_hint": {
+    "en": "notebook with handwritten steps on a workbench, one person standing over it, seen from behind"
+   },
+   "image_prompt": "notebook with handwritten steps on a workbench, one person standing over it, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Winter came.",
+    "ko": "겨울이 왔다"
+   },
+   "narration": {
+    "en": "Summer went. Winter came. The skin on his hands cracked.",
+    "ko": "여름이 지나고 겨울이 왔다. 그 사람 손등이 갈라졌다."
+   },
+   "image_hint": {
+    "en": "workshop window in winter, frost on the glass, one small figure at a bench in the distance"
+   },
+   "image_prompt": "workshop window in winter, frost on the glass, one small figure at a bench in the distance"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The fast one tired first.",
+    "ko": "빠른 쪽이 먼저 지쳤다"
+   },
+   "narration": {
+    "en": "The fast one tired first. Fixing mistakes ate his hours.",
+    "ko": "빠른 쪽이 먼저 지쳤다. 틀린 걸 되돌리는 시간이 길었다."
+   },
+   "image_hint": {
+    "en": "cluttered workshop floor with discarded parts, one person kneeling, seen from behind, wide shot"
+   },
+   "image_prompt": "cluttered workshop floor with discarded parts, one person kneeling, seen from behind, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The tools went quiet.",
+    "ko": "공구 소리가 멈췄다"
+   },
+   "narration": {
+    "en": "One day the tools went quiet. He was just looking at his hands.",
+    "ko": "어느 날 공구 소리가 멈췄다. 그 사람은 손을 보고 있었다."
+   },
+   "image_hint": {
+    "en": "quiet workshop at noon, one person sitting still with hands on knees, seen from behind"
+   },
+   "image_prompt": "quiet workshop at noon, one person sitting still with hands on knees, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "I looked at mine.",
+    "ko": "내 손을 봤다"
+   },
+   "narration": {
+    "en": "That night I looked at mine. Nothing was written there yet.",
+    "ko": "그날 내 손을 들여다봤다. 아직 아무 표도 없었다."
+   },
+   "image_hint": {
+    "en": "narrow alley outside a shop at night, one distant figure standing under a lamp"
+   },
+   "image_prompt": "narrow alley outside a shop at night, one distant figure standing under a lamp"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Still slow.",
+    "ko": "여전히 느렸다"
+   },
+   "narration": {
+    "en": "Years passed. He was still at the same bench. Still slow.",
+    "ko": "몇 해가 지났다. 그 사람은 같은 자리에 있었다. 속도는 여전히 느렸다."
+   },
+   "image_hint": {
+    "en": "same small shop front at dusk, one figure sweeping the entrance, seen from behind, long shot"
+   },
+   "image_prompt": "same small shop front at dusk, one figure sweeping the entrance, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "A line at the door.",
+    "ko": "문 앞에 줄이 서 있었다"
+   },
+   "narration": {
+    "en": "I walked past his shop yesterday. There was a line at the door.",
+    "ko": "어제 그 가게 앞을 지났다. 문 앞에 줄이 서 있었다."
+   },
+   "image_hint": {
+    "en": "narrow street with a small queue outside a shop, people tiny in the frame, wide shot"
+   },
+   "image_prompt": "narrow street with a small queue outside a shop, people tiny in the frame, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Skill isn't an event.",
+    "ko": "실력은 사건이 아니다"
+   },
+   "narration": {
+    "en": "Skill isn't an event. It's what's left where time went.",
+    "ko": "실력은 사건이 아니다. 시간이 지나간 자리에 남는 것이다."
+   },
+   "image_hint": {
+    "en": "worn tools on a workbench at night, one person turning off a lamp in the distance"
+   },
+   "image_prompt": "worn tools on a workbench at night, one person turning off a lamp in the distance"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-17-biz",
+ "theme": "biz",
+ "theme_label": "시간이 만드는 차이",
+ "quote": {
+  "text": "skill is an accumulation, not an event",
+  "author": "성공하는 사람의 마인드"
+ }
+}
