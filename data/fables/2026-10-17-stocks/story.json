@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "One Box on a Blank Page",
+  "ko": "빈 페이지 위의 상자 하나"
+ },
+ "caption": {
+  "en": "Search ads, YouTube, Cloud — and the empty box it all started from.",
+  "ko": "검색 광고, 유튜브, 클라우드. 그 전부가 시작된 빈 상자 하나."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "One box on a blank screen.",
+    "The rest was empty."
+   ],
+   "ko": [
+    "빈 화면 위에 상자 하나.",
+    "나머지는 비어 있었다."
+   ]
+  },
+  "highlight": {
+   "en": "one blank page",
+   "ko": "빈 페이지 하나"
+  }
+ },
+ "moral": {
+  "en": "What stays is the blank page it started from.",
+  "ko": "남는 건 맨 처음의 빈 페이지였다."
+ },
+ "cta": {
+  "en": "Next company, same distance.",
+  "ko": "다음 회사도 같은 거리에서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "One box",
+    "ko": "상자 하나"
+   },
+   "narration": {
+    "en": "There was one box on the screen.",
+    "ko": "화면에 상자 하나가 있었다."
+   },
+   "image_hint": {
+    "en": "blank search page on a glowing monitor in an empty office at night"
+   },
+   "image_prompt": "blank search page on a glowing monitor in an empty office at night"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "They built gates",
+    "ko": "관문을 세운 쪽"
+   },
+   "narration": {
+    "en": "Other companies stacked up links.",
+    "ko": "다른 회사들은 링크를 쌓았다."
+   },
+   "image_hint": {
+    "en": "crowded portal homepage on an old monitor, office desk, distant figure in the corridor"
+   },
+   "image_prompt": "crowded portal homepage on an old monitor, office desk, distant figure in the corridor"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The old front page",
+    "ko": "그때의 첫 화면"
+   },
+   "narration": {
+    "en": "I remember the front pages back then.",
+    "ko": "나는 그때의 첫 화면을 기억한다."
+   },
+   "image_hint": {
+    "en": "1990s office cubicle, one person at a desk seen from behind, boxy monitors"
+   },
+   "image_prompt": "1990s office cubicle, one person at a desk seen from behind, boxy monitors"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Quiet",
+    "ko": "조용한 쪽"
+   },
+   "narration": {
+    "en": "The box stayed quiet.",
+    "ko": "상자는 조용했다."
+   },
+   "image_hint": {
+    "en": "public library computer row at night, one person typing, seen from behind, long shot"
+   },
+   "image_prompt": "public library computer row at night, one person typing, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Next to the answer",
+    "ko": "답 옆자리"
+   },
+   "narration": {
+    "en": "Ads sat next to the answer.",
+    "ko": "답 옆에 광고가 붙었다."
+   },
+   "image_hint": {
+    "en": "small shop counter with a laptop, one person working, distant figure, warm light"
+   },
+   "image_prompt": "small shop counter with a laptop, one person working, distant figure, warm light"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "No address",
+    "ko": "주소를 안 치는 사람들"
+   },
+   "narration": {
+    "en": "People stopped typing addresses.",
+    "ko": "사람들은 주소를 치지 않았다."
+   },
+   "image_hint": {
+    "en": "bus stop with poster ads at dusk, one person standing, seen from behind, long shot"
+   },
+   "image_prompt": "bus stop with poster ads at dusk, one person standing, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "It spread",
+    "ko": "번지는 쪽"
+   },
+   "narration": {
+    "en": "The box kept growing.",
+    "ko": "그 상자는 점점 커졌다."
+   },
+   "image_hint": {
+    "en": "city street at night with glowing phone screens, one distant figure walking"
+   },
+   "image_prompt": "city street at night with glowing phone screens, one distant figure walking"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "Today the company is a four-trillion-dollar thing.",
+    "ko": "지금 그 회사는 4조 달러짜리다."
+   },
+   "image_hint": {
+    "en": "glass office tower lobby, one small figure crossing, seen from behind, wide shot"
+   },
+   "image_prompt": "glass office tower lobby, one small figure crossing, seen from behind, wide shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning I asked the box something.",
+    "ko": "나도 오늘 아침 그 상자에 물었다."
+   },
+   "image_hint": {
+    "en": "kitchen table at dawn, one person holding a phone, seen from behind"
+   },
+   "image_prompt": "kitchen table at dawn, one person holding a phone, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The blank page",
+    "ko": "빈 페이지"
+   },
+   "narration": {
+    "en": "What was left was one blank page.",
+    "ko": "남는 건 맨 처음의 빈 페이지였다."
+   },
+   "image_hint": {
+    "en": "early morning desk by a window, one person standing far off, blank screen glowing"
+   },
+   "image_prompt": "early morning desk by a window, one person standing far off, blank screen glowing"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-17-stocks",
+ "theme": "stocks",
+ "symbol": "GOOG",
+ "quote": {
+  "text": "Alphabet Inc.",
+  "author": "NASDAQ GOOG"
+ }
+}
