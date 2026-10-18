@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Where the Laughing Stopped",
+  "ko": "웃음이 멈춘 자리"
+ },
+ "caption": {
+  "en": "Tesla didn't just sell cars. It sold the thing people doubted first.",
+  "ko": "테슬라는 차만 판 게 아니다. 사람들이 먼저 의심한 것을 팔았다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "At first they laughed.",
+    "Electric cars, they said."
+   ],
+   "ko": [
+    "처음엔 다들 웃었다.",
+    "차가 전기로 간다고 했다."
+   ]
+  },
+  "highlight": {
+   "en": "they laughed",
+   "ko": "다들 웃었다"
+  }
+ },
+ "moral": {
+  "en": "The road started where the laughing stopped.",
+  "ko": "길은 웃음이 멈춘 자리에서 시작됐다."
+ },
+ "cta": {
+  "en": "Next I'll watch another company from a distance.",
+  "ko": "다음엔 다른 회사를 멀리서 보겠다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "At first, they laughed.",
+    "ko": "처음엔 다들 웃었다."
+   },
+   "narration": {
+    "en": "At first they laughed. Electric cars, they said.",
+    "ko": "처음엔 다들 웃었다. 차가 전기로 간다고 했다."
+   },
+   "image_hint": {
+    "en": "factory parking lot at dawn, one distant figure walking away, long shot"
+   },
+   "image_prompt": "factory parking lot at dawn, one distant figure walking away, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "They couldn't build them.",
+    "ko": "차를 못 만들었다."
+   },
+   "narration": {
+    "en": "The line wouldn't run. So a tent went up in the yard.",
+    "ko": "라인이 돌지 않았다. 마당에 천막을 쳤다."
+   },
+   "image_hint": {
+    "en": "factory yard at night, one person hauling a tarp, seen from behind, long shot"
+   },
+   "image_prompt": "factory yard at night, one person hauling a tarp, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "When the belt stopped, people ran.",
+    "ko": "컨베이어가 멈추면 뛰었다."
+   },
+   "narration": {
+    "en": "When the belt stopped, people ran. All night, that's how it went.",
+    "ko": "컨베이어가 멈추면 사람이 뛰었다. 밤새 그랬다."
+   },
+   "image_hint": {
+    "en": "assembly line floor at night, one worker hurrying past machines, distant figure, wide shot"
+   },
+   "image_prompt": "assembly line floor at night, one worker hurrying past machines, distant figure, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The cars hit the road.",
+    "ko": "차가 도로로 나갔다."
+   },
+   "narration": {
+    "en": "The cars hit the road. A line formed at the charger.",
+    "ko": "차가 도로로 나갔다. 충전기 앞에 줄이 생겼다."
+   },
+   "image_hint": {
+    "en": "highway charging station at dusk, one person plugging in a car, seen from behind, long shot"
+   },
+   "image_prompt": "highway charging station at dusk, one person plugging in a car, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Prices moved. People did the math.",
+    "ko": "값은 자주 흔들렸다."
+   },
+   "narration": {
+    "en": "Prices kept moving. People did the math. Rivals knocked on the same door.",
+    "ko": "값은 자주 흔들렸다. 사람들은 계산기를 두드렸다."
+   },
+   "image_hint": {
+    "en": "car showroom window at night, one person standing outside looking in, from behind, long shot"
+   },
+   "image_prompt": "car showroom window at night, one person standing outside looking in, from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The car kept talking.",
+    "ko": "차는 팔린 뒤에도 말했다."
+   },
+   "narration": {
+    "en": "The car didn't go quiet after the sale. It kept talking.",
+    "ko": "차는 팔린 뒤에도 말을 했다. 기록을 남겼다."
+   },
+   "image_hint": {
+    "en": "parked car interior at night, one person in the driver seat, back to camera, wide shot"
+   },
+   "image_prompt": "parked car interior at night, one person in the driver seat, back to camera, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Plugged-in cars, one block.",
+    "ko": "꽂힌 차들이 한 덩어리였다."
+   },
+   "narration": {
+    "en": "At night the plugged-in cars looked like one block.",
+    "ko": "밤이 되자 꽂힌 차들이 한 덩어리로 보였다."
+   },
+   "image_hint": {
+    "en": "underground parking garage at night, one person walking between charging cars, distant figure, long shot"
+   },
+   "image_prompt": "underground parking garage at night, one person walking between charging cars, distant figure, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Market cap 1.4 trillion.",
+    "ko": "시총 1조 4천억 달러."
+   },
+   "narration": {
+    "en": "Market cap sits near 1.4 trillion. That's not a car count.",
+    "ko": "시총은 1조 4천억 달러다. 차만 세는 숫자가 아니다."
+   },
+   "image_hint": {
+    "en": "office meeting room at dawn, one person at the window looking out, seen from behind, long shot"
+   },
+   "image_prompt": "office meeting room at dawn, one person at the window looking out, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Nobody turns to look.",
+    "ko": "아무도 돌아보지 않는다."
+   },
+   "narration": {
+    "en": "A new car sits in a lot today. Nobody turns.",
+    "ko": "오늘도 주차장에 새 차가 선다. 아무도 돌아보지 않는다."
+   },
+   "image_hint": {
+    "en": "apartment parking lot in the morning, one person walking past a new car, distant figure, long shot"
+   },
+   "image_prompt": "apartment parking lot in the morning, one person walking past a new car, distant figure, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The road started there.",
+    "ko": "길은 거기서 시작됐다."
+   },
+   "narration": {
+    "en": "The road started where the laughing stopped.",
+    "ko": "길은 웃음이 멈춘 자리에서 시작됐다."
+   },
+   "image_hint": {
+    "en": "roadside at sunrise, one person standing by the guardrail, distant figure, long shot"
+   },
+   "image_prompt": "roadside at sunrise, one person standing by the guardrail, distant figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-18-stocks",
+ "theme": "stocks",
+ "symbol": "TSLA",
+ "quote": {
+  "text": "Tesla, Inc.",
+  "author": "NASDAQ TSLA"
+ }
+}
