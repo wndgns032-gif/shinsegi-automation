@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Price Is on the Back",
+  "ko": "값은 뒤에 붙어 있다"
+ },
+ "caption": {
+  "en": "Every offer has a second page. Most people stop at the first.",
+  "ko": "모든 제안에는 뒷장이 있다. 대부분은 앞장에서 멈춘다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I thought it was free.",
+    "The price sat on the back."
+   ],
+   "ko": [
+    "공짜인 줄 알았다.",
+    "값표는 뒤에 있었다."
+   ]
+  },
+  "highlight": {
+   "en": "on the back",
+   "ko": "뒤에 있었다"
+  }
+ },
+ "moral": {
+  "en": "The front page was the offer. The back page was the price.",
+  "ko": "앞장은 조건이었다. 뒷장이 값이었다."
+ },
+ "cta": {
+  "en": "Next time, flip the page over.",
+  "ko": "다음에 손에 쥔 종이, 뒤집어 보면 된다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Nothing is free",
+    "ko": "공짜는 없다"
+   },
+   "narration": {
+    "en": "I didn't know then. The price tag was on the back.",
+    "ko": "나는 그때 몰랐다. 값표는 뒤에 붙어 있었다."
+   },
+   "image_hint": {
+    "en": "conference room with a single document on a long table, distant figure by the window, wide shot"
+   },
+   "image_prompt": "conference room with a single document on a long table, distant figure by the window, wide shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "grow fast, they said",
+    "ko": "빨리 크라고 했다"
+   },
+   "narration": {
+    "en": "A contract landed on the desk. The signing took ten seconds.",
+    "ko": "책상 위에 계약서가 놓였다. 서명은 십 초면 끝났다."
+   },
+   "image_hint": {
+    "en": "startup office late at night, one person signing papers at a desk, seen from behind, long shot"
+   },
+   "image_prompt": "startup office late at night, one person signing papers at a desk, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "the money came first",
+    "ko": "돈이 먼저 왔다"
+   },
+   "narration": {
+    "en": "The office doubled. The meetings tripled.",
+    "ko": "사무실이 두 배로 늘었다. 회의는 세 배가 됐다."
+   },
+   "image_hint": {
+    "en": "open plan office with rows of new empty desks, small figure walking between them, wide shot"
+   },
+   "image_prompt": "open plan office with rows of new empty desks, small figure walking between them, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "then the conditions",
+    "ko": "그다음 조건이 왔다"
+   },
+   "narration": {
+    "en": "The reports grew longer each month. Decisions kept slowing down.",
+    "ko": "보고서가 매달 길어졌다. 결정은 자꾸 늦어졌다."
+   },
+   "image_hint": {
+    "en": "meeting room with a whiteboard full of charts, one person standing far away, long shot"
+   },
+   "image_prompt": "meeting room with a whiteboard full of charts, one person standing far away, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "one chair stayed empty",
+    "ko": "한 자리가 비었다"
+   },
+   "narration": {
+    "en": "One chair sat empty. Nobody filled it.",
+    "ko": "자리 하나가 비었다. 아무도 채우지 않았다."
+   },
+   "image_hint": {
+    "en": "office desk with an empty chair and a cold mug, distant figure at the far end, wide shot"
+   },
+   "image_prompt": "office desk with an empty chair and a cold mug, distant figure at the far end, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "the numbers added up",
+    "ko": "숫자는 맞았다"
+   },
+   "narration": {
+    "en": "Every row balanced. Nothing was left over.",
+    "ko": "표는 전부 맞아떨어졌다. 그런데 아무것도 안 남았다."
+   },
+   "image_hint": {
+    "en": "desk by a window at night with a laptop spreadsheet, one person leaning back, seen from behind"
+   },
+   "image_prompt": "desk by a window at night with a laptop spreadsheet, one person leaning back, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "it was already paid",
+    "ko": "값은 이미 치렀다"
+   },
+   "narration": {
+    "en": "The bill didn't arrive later. It left in small pieces, from the start.",
+    "ko": "값은 나중에 오지 않았다. 처음부터 조금씩 빠져나갔다."
+   },
+   "image_hint": {
+    "en": "office building stairwell at dusk, one person sitting on the steps, seen from behind, long shot"
+   },
+   "image_prompt": "office building stairwell at dusk, one person sitting on the steps, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "both roads charge",
+    "ko": "양쪽 다 값을 받는다"
+   },
+   "narration": {
+    "en": "Fast roads come with tolls. Slow ones come with hours.",
+    "ko": "빠른 길에는 통행료가 붙는다. 느린 길엔 시간이 붙는다."
+   },
+   "image_hint": {
+    "en": "highway rest stop at dusk, one person standing by a car, seen from behind, wide shot"
+   },
+   "image_prompt": "highway rest stop at dusk, one person standing by a car, seen from behind, wide shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "this morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "Someone brought me an offer. I opened the last page first.",
+    "ko": "누군가 제안을 들고 왔다. 나는 뒷장을 먼저 폈다."
+   },
+   "image_hint": {
+    "en": "cafe table by a window in the morning, one person sitting alone, seen from behind, wide shot"
+   },
+   "image_prompt": "cafe table by a window in the morning, one person sitting alone, seen from behind, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "front page, back page",
+    "ko": "앞장과 뒷장"
+   },
+   "narration": {
+    "en": "The front page was the offer. The back page was the price.",
+    "ko": "앞장은 조건이었다. 뒷장이 값이었다."
+   },
+   "image_hint": {
+    "en": "empty desk with a closed contract folder in morning light, one person standing at the window, distant, wide shot"
+   },
+   "image_prompt": "empty desk with a closed contract folder in morning light, one person standing at the window, distant, wide shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-18-biz",
+ "theme": "biz",
+ "theme_label": "대가를 치르는 법",
+ "quote": {
+  "text": "everything has a hidden price",
+  "author": "성공하는 사람의 마인드"
+ }
+}
