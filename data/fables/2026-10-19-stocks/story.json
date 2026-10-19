@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Company That Erased Its Own Name",
+  "ko": "자기 이름을 지운 회사"
+ },
+ "caption": {
+  "en": "One observer, ten scenes, one company.",
+  "ko": "한 사람이 멀리서 본 열 장면."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A company gave up its own name.",
+    "Nobody asked why."
+   ],
+   "ko": [
+    "회사 하나가 자기 이름을 버렸다.",
+    "아무도 이유를 묻지 않았다."
+   ]
+  },
+  "highlight": {
+   "en": "it erased its own name",
+   "ko": "자기 이름을 지웠다"
+  }
+ },
+ "moral": {
+  "en": "The name changed. The habit didn't.",
+  "ko": "이름은 바뀌었다. 습관은 그대로였다."
+ },
+ "cta": {
+  "en": "Another company, watched from a distance.",
+  "ko": "다음 회사도 멀리서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "A company gave up its own name.",
+    "ko": "회사 하나가 자기 이름을 버렸다."
+   },
+   "narration": {
+    "en": "A company gave up its name. The room stayed quiet that day.",
+    "ko": "회사 하나가 자기 이름을 버렸다. 그날 회의실은 조용했다."
+   },
+   "image_hint": {
+    "en": "empty conference room at night, one figure standing by the window, seen from behind, long shot"
+   },
+   "image_prompt": "empty conference room at night, one figure standing by the window, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The advertisers closed their wallets.",
+    "ko": "광고주들이 지갑을 닫았다."
+   },
+   "narration": {
+    "en": "Advertisers closed their wallets. The hallway emptied out.",
+    "ko": "광고주들이 지갑을 닫았다. 복도가 비어 갔다."
+   },
+   "image_hint": {
+    "en": "trading floor with dim screens at night, one person sitting alone, distant figure"
+   },
+   "image_prompt": "trading floor with dim screens at night, one person sitting alone, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Headlines said everyone was leaving.",
+    "ko": "모두 떠난다고들 했다."
+   },
+   "narration": {
+    "en": "Headlines said people were leaving. The app stayed in their hands.",
+    "ko": "사람들이 떠난다는 기사가 쏟아졌다. 손안의 앱은 그대로였다."
+   },
+   "image_hint": {
+    "en": "crowded subway car in the morning, passengers holding phones, one figure in the middle distance"
+   },
+   "image_prompt": "crowded subway car in the morning, passengers holding phones, one figure in the middle distance"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "It bought what it couldn't build.",
+    "ko": "못 만든 것은 사버렸다."
+   },
+   "narration": {
+    "en": "It bought a photo app. Then a messenger. Paid in cash.",
+    "ko": "사진 앱을 샀다. 메시지 앱도 샀다. 현금으로."
+   },
+   "image_hint": {
+    "en": "underground parking garage at dusk, one person walking toward a lit doorway, seen from behind"
+   },
+   "image_prompt": "underground parking garage at dusk, one person walking toward a lit doorway, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A new name, a new world.",
+    "ko": "새 이름, 새 세상."
+   },
+   "narration": {
+    "en": "It changed its name. Drew a new world. Nobody walked in.",
+    "ko": "이름을 바꾸고 새 세상을 그렸다. 아무도 그 문을 열지 않았다."
+   },
+   "image_hint": {
+    "en": "warehouse-sized empty hall with a single chair, one person standing far away in the middle distance"
+   },
+   "image_prompt": "warehouse-sized empty hall with a single chair, one person standing far away in the middle distance"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Then it cut into itself.",
+    "ko": "그다음 해, 살을 깎았다."
+   },
+   "narration": {
+    "en": "The next year it cut into itself. Empty chairs stacked in the hall.",
+    "ko": "그다음 해 회사가 살을 깎았다. 빈 의자가 복도에 쌓였다."
+   },
+   "image_hint": {
+    "en": "office corridor with stacked empty chairs, one person walking away, long shot"
+   },
+   "image_prompt": "office corridor with stacked empty chairs, one person walking away, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The ones who stayed fixed something else.",
+    "ko": "남은 사람들은 딴 걸 만들었다."
+   },
+   "narration": {
+    "en": "The ones who stayed built something quiet. They fixed the machine behind the screen.",
+    "ko": "남은 사람들은 딴 걸 만들었다. 화면 뒤의 기계를 손봤다."
+   },
+   "image_hint": {
+    "en": "open-plan office late at night, one person at a monitor, seen from behind, long shot"
+   },
+   "image_prompt": "open-plan office late at night, one person at a monitor, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Now: 1.81 trillion.",
+    "ko": "지금은 1.81조 달러."
+   },
+   "narration": {
+    "en": "Now it stands at 1.81 trillion. Three years ago nobody would have bet on it.",
+    "ko": "지금은 1.81조 달러다. 삼 년 전엔 아무도 걸지 않았다."
+   },
+   "image_hint": {
+    "en": "city skyline at dawn from a rooftop, one small figure at the railing, seen from behind"
+   },
+   "image_prompt": "city skyline at dawn from a rooftop, one small figure at the railing, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Someone tries the glasses on.",
+    "ko": "누군가 그 안경을 써 본다."
+   },
+   "narration": {
+    "en": "Today someone tries the glasses on. Nobody knows what they see.",
+    "ko": "오늘도 누군가 그 안경을 써 본다. 무엇이 보이는지는 아무도 모른다."
+   },
+   "image_hint": {
+    "en": "bright showroom with glass headsets on a table, one person trying one on, seen from behind"
+   },
+   "image_prompt": "bright showroom with glass headsets on a table, one person trying one on, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The name changed. The habit didn't.",
+    "ko": "이름은 바뀌었다. 습관은 그대로였다."
+   },
+   "narration": {
+    "en": "The name changed. The habit didn't.",
+    "ko": "이름은 바뀌었다. 습관은 그대로였다."
+   },
+   "image_hint": {
+    "en": "quiet street after rain at night, one person walking away under streetlights, long shot"
+   },
+   "image_prompt": "quiet street after rain at night, one person walking away under streetlights, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-19-stocks",
+ "theme": "stocks",
+ "symbol": "META",
+ "quote": {
+  "text": "Meta Platforms, Inc.",
+  "author": "NASDAQ META"
+ }
+}
