@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "What a Loss Leaves Behind",
+  "ko": "잃어버린 자리에 남는 것"
+ },
+ "caption": {
+  "en": "I wrote the date next to each cancelled order. I left the reason blank.",
+  "ko": "취소된 주문 옆에 날짜를 적었다. 이유는 적지 않았다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The third call came in.",
+    "I finally opened the notebook."
+   ],
+   "ko": [
+    "세 번째 취소 전화를 받았다.",
+    "나는 그제야 수첩을 폈다."
+   ]
+  },
+  "highlight": {
+   "en": "opened the notebook",
+   "ko": "수첩을 폈다"
+  }
+ },
+ "moral": {
+  "en": "The loss wasn't an answer. It was a signal of where to look.",
+  "ko": "손실은 답이 아니었다. 물을 곳을 알려주는 신호였다."
+ },
+ "cta": {
+  "en": "Next scene stays short.",
+  "ko": "다음 장면도 이렇게 짧게."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The third call",
+    "ko": "세 번째 취소 전화"
+   },
+   "narration": {
+    "en": "The third call came in. I finally opened the notebook.",
+    "ko": "세 번째 취소 전화를 받았다. 나는 그제야 수첩을 폈다."
+   },
+   "image_hint": {
+    "en": "small office desk at night, one person on the phone, seen from behind, long shot"
+   },
+   "image_prompt": "small office desk at night, one person on the phone, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "No reason given",
+    "ko": "이유를 몰랐다"
+   },
+   "narration": {
+    "en": "I didn't know what went wrong. I figured it was bad luck.",
+    "ko": "무엇이 문제인지 몰랐다. 그냥 운이 나쁜 줄 알았다."
+   },
+   "image_hint": {
+    "en": "empty parking lot at dusk, one person standing by a car, distant figure"
+   },
+   "image_prompt": "empty parking lot at dusk, one person standing by a car, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Only the dates",
+    "ko": "날짜만 적었다"
+   },
+   "narration": {
+    "en": "I wrote the date next to each cancelled order. I left the reason blank.",
+    "ko": "취소된 주문 옆에 날짜를 적었다. 이유는 적지 않았다."
+   },
+   "image_hint": {
+    "en": "kitchen table late at night, one person writing in a ledger, back to the camera"
+   },
+   "image_prompt": "kitchen table late at night, one person writing in a ledger, back to the camera"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The page filled up",
+    "ko": "한 장이 찼다"
+   },
+   "narration": {
+    "en": "Months passed. One page of the notebook filled up.",
+    "ko": "몇 달이 지났다. 수첩 한 장이 다 찼다."
+   },
+   "image_hint": {
+    "en": "warehouse aisle in the afternoon, one worker checking boxes, seen from behind, wide shot"
+   },
+   "image_prompt": "warehouse aisle in the afternoon, one worker checking boxes, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The opposite",
+    "ko": "반대였다"
+   },
+   "narration": {
+    "en": "The ones who haggled stayed. The quiet ones left first.",
+    "ko": "값을 깎던 사람은 끝까지 남았다. 조용하던 사람이 먼저 떠났다."
+   },
+   "image_hint": {
+    "en": "small shop counter in the morning, one customer paying, small figure in the middle distance"
+   },
+   "image_prompt": "small shop counter in the morning, one customer paying, small figure in the middle distance"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "No reason, but an order",
+    "ko": "이유는 없었다"
+   },
+   "narration": {
+    "en": "There was no reason where they left. There was an order to it.",
+    "ko": "떠난 자리에 이유는 없었다. 대신 순서가 남아 있었다."
+   },
+   "image_hint": {
+    "en": "notebook pages spread on a floor, one person kneeling beside them, seen from above and behind, wide shot"
+   },
+   "image_prompt": "notebook pages spread on a floor, one person kneeling beside them, seen from above and behind, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The first call",
+    "ko": "첫 통화"
+   },
+   "narration": {
+    "en": "I went back to the first call. He never asked a single question.",
+    "ko": "나는 첫 통화를 다시 읽었다. 그 사람은 질문이 없었다."
+   },
+   "image_hint": {
+    "en": "quiet living room at dawn, one person sitting on the floor with a phone, back to the camera"
+   },
+   "image_prompt": "quiet living room at dawn, one person sitting on the floor with a phone, back to the camera"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today's quote",
+    "ko": "오늘의 견적서"
+   },
+   "narration": {
+    "en": "I still send quotes. Some boxes stay empty.",
+    "ko": "오늘도 견적서를 보낸다. 답장 없는 칸이 남는다."
+   },
+   "image_hint": {
+    "en": "office window in the afternoon, one person at a laptop, distant figure, wide shot"
+   },
+   "image_prompt": "office window in the afternoon, one person at a laptop, distant figure, wide shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "The empty box",
+    "ko": "지우지 않는 칸"
+   },
+   "narration": {
+    "en": "I don't erase that box. It shows where the next one stops.",
+    "ko": "그 칸을 지우지 않는다. 다음 사람이 어디서 멈추는지 본다."
+   },
+   "image_hint": {
+    "en": "quiet street at night, one person walking away under a streetlight, long shot"
+   },
+   "image_prompt": "quiet street at night, one person walking away under a streetlight, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "What the loss pointed at",
+    "ko": "손실이 가리킨 것"
+   },
+   "narration": {
+    "en": "The loss wasn't an answer. It was a signal of where to look.",
+    "ko": "손실은 답이 아니었다. 물을 곳을 알려주는 신호였다."
+   },
+   "image_hint": {
+    "en": "empty chair by a window at dusk, one person standing in the doorway, seen from behind"
+   },
+   "image_prompt": "empty chair by a window at dusk, one person standing in the doorway, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-19-biz",
+ "theme": "biz",
+ "theme_label": "불확실성을 다루는 법",
+ "quote": {
+  "text": "loss is information",
+  "author": "성공하는 사람의 마인드"
+ }
+}
