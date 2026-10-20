@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Decide Fast, Fix Later",
+  "ko": "고치는 속도보다 정하는 속도"
+ },
+ "caption": {
+  "en": "One kept rewriting the first line. The other put his out and fixed it after.",
+  "ko": "삼 주째 같은 문장을 고치던 사람과, 먼저 내놓고 고친 사람."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "That draft never got past page one.",
+    "His was already different."
+   ],
+   "ko": [
+    "계획서는 첫 장에서 멈췄다.",
+    "그쪽은 이미 달라져 있었다."
+   ]
+  },
+  "highlight": {
+   "en": "page one",
+   "ko": "첫 장"
+  }
+ },
+ "moral": {
+  "en": "The right answer came later. The decision came first.",
+  "ko": "정확한 답은 나중에 왔다. 결정은 먼저였다."
+ },
+ "cta": {
+  "en": "If one line is still unsent, that's today's scene.",
+  "ko": "아직 못 보낸 한 줄이 있다면, 그게 오늘의 장면이다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "page one, unchanged",
+    "ko": "첫 장은 그대로"
+   },
+   "narration": {
+    "en": "I saw that draft three times. Page one never changed.",
+    "ko": "그 계획서를 세 번 봤다. 첫 장은 늘 같았다."
+   },
+   "image_hint": {
+    "en": "open office at night, one person at a desk with papers, seen from behind, long shot"
+   },
+   "image_prompt": "open office at night, one person at a desk with papers, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "one thing left",
+    "ko": "하나가 남았다"
+   },
+   "narration": {
+    "en": "One thing was still off. It was always one thing.",
+    "ko": "고칠 곳이 하나 남아 있었다. 늘 하나였다."
+   },
+   "image_hint": {
+    "en": "small office whiteboard in the afternoon, one person standing far away, distant figure, long shot"
+   },
+   "image_prompt": "small office whiteboard in the afternoon, one person standing far away, distant figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "a different order",
+    "ko": "순서가 달랐다"
+   },
+   "narration": {
+    "en": "The one beside him was different. He put his out, then fixed it.",
+    "ko": "옆자리 사람은 달랐다. 먼저 내놓고 고쳤다."
+   },
+   "image_hint": {
+    "en": "street market at dawn, one person unfolding a table, seen from behind, long shot"
+   },
+   "image_prompt": "street market at dawn, one person unfolding a table, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "a week later",
+    "ko": "일주일 뒤"
+   },
+   "narration": {
+    "en": "A week later, that side looked different.",
+    "ko": "일주일 뒤 그쪽은 달라져 있었다."
+   },
+   "image_hint": {
+    "en": "cafe window in the afternoon, one person turning a worn notebook over, seen from behind, long shot"
+   },
+   "image_prompt": "cafe window in the afternoon, one person turning a worn notebook over, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "still page one",
+    "ko": "여기는 첫 장"
+   },
+   "narration": {
+    "en": "His was still page one. Only the sentence got shorter.",
+    "ko": "여기는 아직 첫 장이었다. 문장만 짧아졌다."
+   },
+   "image_hint": {
+    "en": "narrow desk under a lamp at 2am, one person erasing a line, small figure, long shot"
+   },
+   "image_prompt": "narrow desk under a lamp at 2am, one person erasing a line, small figure, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "hands full",
+    "ko": "손에 들린 것"
+   },
+   "narration": {
+    "en": "I ran into him at lunch. He was carrying the thing.",
+    "ko": "점심에 그를 만났다. 손에 물건이 들려 있었다."
+   },
+   "image_hint": {
+    "en": "busy sidewalk at noon, one person holding a small box, seen from behind, long shot"
+   },
+   "image_prompt": "busy sidewalk at noon, one person holding a small box, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "again different",
+    "ko": "또 달랐다"
+   },
+   "narration": {
+    "en": "The thing looked different again. Better, not finished.",
+    "ko": "그 물건은 어제와 또 달랐다. 끝난 게 아니었다."
+   },
+   "image_hint": {
+    "en": "small workshop in the afternoon, one person bent over a bench, seen from behind, long shot"
+   },
+   "image_prompt": "small workshop in the afternoon, one person bent over a bench, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "mine too",
+    "ko": "내 책상에도"
+   },
+   "narration": {
+    "en": "There's a draft on my desk too. I didn't open it today.",
+    "ko": "내 책상에도 같은 게 있다. 오늘도 펴지 않았다."
+   },
+   "image_hint": {
+    "en": "quiet apartment in the morning, one person standing in a doorway facing a desk, distant figure, long shot"
+   },
+   "image_prompt": "quiet apartment in the morning, one person standing in a doorway facing a desk, distant figure, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "one line",
+    "ko": "한 줄"
+   },
+   "narration": {
+    "en": "I deleted the first line. Then I sent one instead.",
+    "ko": "방금 첫 줄을 지웠다. 대신 한 줄을 보냈다."
+   },
+   "image_hint": {
+    "en": "subway platform in the morning, one person holding a phone, seen from behind, long shot"
+   },
+   "image_prompt": "subway platform in the morning, one person holding a phone, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "decision first",
+    "ko": "결정이 먼저"
+   },
+   "narration": {
+    "en": "The right answer came later. The decision came first.",
+    "ko": "정확한 답은 나중에 왔다. 결정은 먼저였다."
+   },
+   "image_hint": {
+    "en": "rooftop railing at dusk, one person standing still, distant figure, long shot"
+   },
+   "image_prompt": "rooftop railing at dusk, one person standing still, distant figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-20-biz",
+ "theme": "biz",
+ "theme_label": "속도와 실행",
+ "quote": {
+  "text": "decide fast, correct later",
+  "author": "성공하는 사람의 마인드"
+ }
+}
