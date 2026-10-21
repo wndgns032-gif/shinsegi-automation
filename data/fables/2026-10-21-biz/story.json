@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Count of No's",
+  "ko": "거절의 횟수"
+ },
+ "caption": {
+  "en": "He said no to almost everything. That was the whole strategy.",
+  "ko": "그는 거의 모든 것에 아니라고 했다. 그게 전부였다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Three things on his desk.",
+    "A notebook, a pen, a cup."
+   ],
+   "ko": [
+    "그 사람 책상엔 세 가지뿐이었다.",
+    "노트와 펜, 컵 하나."
+   ]
+  },
+  "highlight": {
+   "en": "the count of no's",
+   "ko": "거절의 횟수"
+  }
+ },
+ "moral": {
+  "en": "Focus wasn't a talent. It was a count of no's.",
+  "ko": "집중은 재능이 아니었다. 거절의 횟수였다."
+ },
+ "cta": {
+  "en": "One thing to turn down today.",
+  "ko": "오늘 거절할 것 하나."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Three things. Not thirty.",
+    "ko": "서른 개가 아니라 세 개."
+   },
+   "narration": {
+    "en": "Three things on his desk. A notebook, a pen, a cup.",
+    "ko": "그 사람 책상엔 세 가지뿐이었다. 노트와 펜, 컵 하나."
+   },
+   "image_hint": {
+    "en": "minimal wooden desk by a window in the morning, one person arranging three objects, seen from behind"
+   },
+   "image_prompt": "minimal wooden desk by a window in the morning, one person arranging three objects, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The invites never stopped.",
+    "ko": "초대는 멈추지 않았다."
+   },
+   "narration": {
+    "en": "Invites piled up overnight. He answered almost none of them.",
+    "ko": "초대 메일이 밤새 쌓여 있었다. 그는 거의 답장을 하지 않았다."
+   },
+   "image_hint": {
+    "en": "home office at night, one person at a laptop, seen from behind, long shot"
+   },
+   "image_prompt": "home office at night, one person at a laptop, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Why aren't you coming?",
+    "ko": "왜 안 오냐고."
+   },
+   "narration": {
+    "en": "Someone called to ask why he wasn't there. He laughed and changed the subject.",
+    "ko": "왜 안 오냐는 전화가 걸려 왔다. 그는 웃다가 화제를 돌렸다."
+   },
+   "image_hint": {
+    "en": "office corridor in the afternoon, one person standing by a window with a phone, distant figure"
+   },
+   "image_prompt": "office corridor in the afternoon, one person standing by a window with a phone, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "One thing. Only one.",
+    "ko": "한 가지. 그것뿐."
+   },
+   "narration": {
+    "en": "For a year he held one thing. Everything else stayed where it was.",
+    "ko": "그동안 그는 한 가지만 붙들었다. 나머지는 전부 제자리에 두었다."
+   },
+   "image_hint": {
+    "en": "small studio at dawn, one person working alone at a table, seen from behind"
+   },
+   "image_prompt": "small studio at dawn, one person working alone at a table, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Rude. Strange. Selfish.",
+    "ko": "무례하다, 이상하다."
+   },
+   "narration": {
+    "en": "People called him rude. Some said he was strange.",
+    "ko": "사람들은 그를 무례하다고 말했다. 성격이 이상하다는 말도 돌았다."
+   },
+   "image_hint": {
+    "en": "building rooftop at dusk, one person standing apart from a group, long shot"
+   },
+   "image_prompt": "building rooftop at dusk, one person standing apart from a group, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "It grew. Quietly.",
+    "ko": "조용히 자라고 있었다."
+   },
+   "narration": {
+    "en": "But that one thing started to grow. Nobody noticed it happening.",
+    "ko": "그런데 그 한 가지가 자라기 시작했다. 아무도 그걸 눈치채지 못했다."
+   },
+   "image_hint": {
+    "en": "warehouse workshop late at night, one person sanding a single chair, distant figure"
+   },
+   "image_prompt": "warehouse workshop late at night, one person sanding a single chair, distant figure"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Almost empty.",
+    "ko": "거의 비어 있었다."
+   },
+   "narration": {
+    "en": "I saw his calendar once. It was almost empty.",
+    "ko": "나는 그의 캘린더를 본 적이 있다. 거의 비어 있었다."
+   },
+   "image_hint": {
+    "en": "kitchen counter in the morning, one person flipping a paper calendar, seen from behind"
+   },
+   "image_prompt": "kitchen counter in the morning, one person flipping a paper calendar, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Mine was full.",
+    "ko": "내 것은 꽉 차 있었다."
+   },
+   "narration": {
+    "en": "Mine was full. Nothing on it had finished.",
+    "ko": "돌아보니 내 캘린더는 꽉 차 있었다. 끝난 일은 하나도 없이."
+   },
+   "image_hint": {
+    "en": "crowded meeting room, one person sitting at the end of a long table, seen from behind"
+   },
+   "image_prompt": "crowded meeting room, one person sitting at the end of a long table, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "One thing, canceled.",
+    "ko": "하나를 취소했다."
+   },
+   "narration": {
+    "en": "This morning I canceled one meeting. What was left was quiet.",
+    "ko": "오늘 아침 나는 약속 하나를 취소했다. 남은 자리는 조용했다."
+   },
+   "image_hint": {
+    "en": "empty cafe table by a window in the morning, one person sitting alone, back to the camera"
+   },
+   "image_prompt": "empty cafe table by a window in the morning, one person sitting alone, back to the camera"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Not talent. A count.",
+    "ko": "재능이 아니라 횟수."
+   },
+   "narration": {
+    "en": "Focus wasn't a talent. It was a count of no's.",
+    "ko": "집중은 재능이 아니었다. 거절의 횟수였다."
+   },
+   "image_hint": {
+    "en": "quiet street at sunrise, one person walking away with a bag, long shot"
+   },
+   "image_prompt": "quiet street at sunrise, one person walking away with a bag, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-21-biz",
+ "theme": "biz",
+ "theme_label": "집중 전략",
+ "quote": {
+  "text": "say no to almost everything",
+  "author": "성공하는 사람의 마인드"
+ }
+}
