@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Car That Made No Sound",
+  "ko": "소리 없는 차 한 대"
+ },
+ "caption": {
+  "en": "A quiet car, an empty lot, and the road nobody built before.",
+  "ko": "조용한 차, 빈 주차장, 아무도 깔지 않던 길."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The car was quiet.",
+    "No engine turned over."
+   ],
+   "ko": [
+    "그 차는 조용했다.",
+    "시동 걸리는 소리가 없었다."
+   ]
+  },
+  "highlight": {
+   "en": "no engine sound",
+   "ko": "시동 소리"
+  }
+ },
+ "moral": {
+  "en": "The laughter was short. The road stayed long.",
+  "ko": "웃음은 짧았고, 길은 길었다."
+ },
+ "cta": {
+  "en": "One company a day. Watched from a distance.",
+  "ko": "하루에 한 회사. 멀리서 본 기록."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The car was quiet.",
+    "ko": "그 차는 조용했다."
+   },
+   "narration": {
+    "en": "The car was quiet. No engine turned over.",
+    "ko": "그 차는 조용했다. 시동 걸리는 소리가 없었다."
+   },
+   "image_hint": {
+    "en": "quiet suburban driveway at dawn, one person standing far off, seen from behind, long shot"
+   },
+   "image_prompt": "quiet suburban driveway at dawn, one person standing far off, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "No place to plug in.",
+    "ko": "꽂을 곳이 없었다."
+   },
+   "narration": {
+    "en": "Gas stations were everywhere. There was nowhere to plug in.",
+    "ko": "주유소는 흔했다. 충전할 곳은 없었다."
+   },
+   "image_hint": {
+    "en": "empty roadside at night, one person standing beside a car, seen from behind, long shot"
+   },
+   "image_prompt": "empty roadside at night, one person standing beside a car, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Posts in an empty lot.",
+    "ko": "빈 주차장의 기둥."
+   },
+   "narration": {
+    "en": "They put posts in an empty lot. Alone, at night.",
+    "ko": "빈 주차장에 기둥을 세웠다. 밤에 혼자 세웠다."
+   },
+   "image_hint": {
+    "en": "empty parking lot at night, one person installing a charging post, distant figure, long shot"
+   },
+   "image_prompt": "empty parking lot at night, one person installing a charging post, distant figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The posts multiplied.",
+    "ko": "기둥이 늘었다."
+   },
+   "narration": {
+    "en": "Years went by. The posts grew, quietly.",
+    "ko": "몇 해가 지났다. 기둥은 조용히 늘었다."
+   },
+   "image_hint": {
+    "en": "charging station row at dawn, one person walking past, seen from behind, long shot"
+   },
+   "image_prompt": "charging station row at dawn, one person walking past, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "People shook their heads.",
+    "ko": "사람들은 고개를 저었다."
+   },
+   "narration": {
+    "en": "The car was still expensive. People shook their heads.",
+    "ko": "차는 여전히 비쌌다. 사람들은 고개를 저었다."
+   },
+   "image_hint": {
+    "en": "car dealership window at night, one person looking in, seen from behind, long shot"
+   },
+   "image_prompt": "car dealership window at night, one person looking in, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Something sold before the car.",
+    "ko": "차보다 먼저 팔린 것."
+   },
+   "narration": {
+    "en": "Something sold before the car. A road.",
+    "ko": "차보다 먼저 팔린 게 있었다. 길이었다."
+   },
+   "image_hint": {
+    "en": "open highway at dusk, one person at the roadside, distant figure, long shot"
+   },
+   "image_prompt": "open highway at dusk, one person at the roadside, distant figure, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The road came with the price.",
+    "ko": "값에 길이 붙었다."
+   },
+   "narration": {
+    "en": "The price of one car included a road.",
+    "ko": "차 한 대의 값에 길이 붙었다."
+   },
+   "image_hint": {
+    "en": "quiet residential street at night, one person walking away, small figure, long shot"
+   },
+   "image_prompt": "quiet residential street at night, one person walking away, small figure, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today, 1.53 trillion.",
+    "ko": "오늘, 1조 5천억 달러."
+   },
+   "narration": {
+    "en": "Today that company is worth 1.53 trillion dollars.",
+    "ko": "오늘 이 회사의 몸값은 1조 5천억 달러다."
+   },
+   "image_hint": {
+    "en": "office window overlooking a city at night, one person standing far from the glass, seen from behind, long shot"
+   },
+   "image_prompt": "office window overlooking a city at night, one person standing far from the glass, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Nobody turns around.",
+    "ko": "아무도 돌아보지 않는다."
+   },
+   "narration": {
+    "en": "A car passes on a night street. No sound. Nobody turns around.",
+    "ko": "밤거리를 차 한 대가 지나간다. 소리가 없다. 아무도 돌아보지 않는다."
+   },
+   "image_hint": {
+    "en": "city street at night, one person on the sidewalk, car passing, seen from behind, long shot"
+   },
+   "image_prompt": "city street at night, one person on the sidewalk, car passing, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The road stayed long.",
+    "ko": "길은 길었다."
+   },
+   "narration": {
+    "en": "The laughter was short. The road stayed long.",
+    "ko": "웃음은 짧았고, 길은 길었다."
+   },
+   "image_hint": {
+    "en": "long empty road at sunrise, one person standing small in the distance, seen from behind, long shot"
+   },
+   "image_prompt": "long empty road at sunrise, one person standing small in the distance, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-22-stocks",
+ "theme": "stocks",
+ "symbol": "TSLA",
+ "quote": {
+  "text": "Tesla, Inc.",
+  "author": "NASDAQ TSLA"
+ }
+}
