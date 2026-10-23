@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Company That Sold the Default",
+  "ko": "디폴트를 판 회사"
+ },
+ "caption": {
+  "en": "MSFT — it didn't win by being the best.",
+  "ko": "MSFT — 최고여서 이긴 게 아니다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The best product rarely wins.",
+    "The default usually does."
+   ],
+   "ko": [
+    "가장 좋은 물건이 이기지 않는다.",
+    "그냥 처음 있던 게 이긴다."
+   ]
+  },
+  "highlight": {
+   "en": "default",
+   "ko": "디폴트"
+  }
+ },
+ "moral": {
+  "en": "Nobody chooses the default. That's what makes it one.",
+  "ko": "아무도 디폴트를 고르지 않는다. 그래서 디폴트다."
+ },
+ "cta": {
+  "en": "One company, one structure, every week.",
+  "ko": "회사 하나, 구조 하나, 매주."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The best rarely wins",
+    "ko": "최고가 이기지 않는다"
+   },
+   "narration": {
+    "en": "The best product rarely wins. The default usually does.",
+    "ko": "가장 좋은 물건이 이기지 않는다. 그냥 처음 있던 게 이긴다."
+   },
+   "image_hint": {
+    "en": "empty office hallway at dusk, one person walking away, seen from behind, long shot"
+   },
+   "image_prompt": "empty office hallway at dusk, one person walking away, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Already installed",
+    "ko": "이미 깔려 있었다"
+   },
+   "narration": {
+    "en": "The person at the desk doesn't remember choosing it.",
+    "ko": "책상 앞 사람은 고른 기억이 없다."
+   },
+   "image_hint": {
+    "en": "open-plan office at dawn, one worker at a bright monitor, seen from behind, wide shot"
+   },
+   "image_prompt": "open-plan office at dawn, one worker at a bright monitor, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Sold to companies",
+    "ko": "회사에 팔았다"
+   },
+   "narration": {
+    "en": "They didn't sell to people. They sold to whoever buys for everyone.",
+    "ko": "개인에게 팔지 않았다. 모두를 대신해 사는 사람에게 팔았다."
+   },
+   "image_hint": {
+    "en": "meeting room with a long table, one buyer signing papers, distant figure, wide shot"
+   },
+   "image_prompt": "meeting room with a long table, one buyer signing papers, distant figure, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Still there",
+    "ko": "세월이 지나도"
+   },
+   "narration": {
+    "en": "New laptops came and went. The same window opened.",
+    "ko": "새 노트북이 와도 같은 창이 떴다."
+   },
+   "image_hint": {
+    "en": "row of desks in an office at night, one person packing a bag, seen from behind"
+   },
+   "image_prompt": "row of desks in an office at night, one person packing a bag, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Better tools vanished",
+    "ko": "더 좋은 것들이 사라졌다"
+   },
+   "narration": {
+    "en": "Better tools showed up. They were a choice. Choices get forgotten.",
+    "ko": "더 좋은 도구가 나왔다. 선택지였다. 선택지는 잊힌다."
+   },
+   "image_hint": {
+    "en": "conference hall lobby with banners, one person walking past, small figure, long shot"
+   },
+   "image_prompt": "conference hall lobby with banners, one person walking past, small figure, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Not the software",
+    "ko": "소프트웨어가 아니었다"
+   },
+   "narration": {
+    "en": "They weren't selling features. They were selling not having to decide.",
+    "ko": "기능을 판 게 아니다. 고민 안 해도 되는 걸 팔았다."
+   },
+   "image_hint": {
+    "en": "corridor of a large office building, one figure at the far end, seen from behind, long shot"
+   },
+   "image_prompt": "corridor of a large office building, one figure at the far end, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The contract was the product",
+    "ko": "계약서가 제품이었다"
+   },
+   "narration": {
+    "en": "One signature. Every desk. Nobody asked again.",
+    "ko": "서명 하나. 책상 전부. 다시 묻는 사람은 없었다."
+   },
+   "image_hint": {
+    "en": "empty boardroom at night, one pen on a long table, distant figure at the window"
+   },
+   "image_prompt": "empty boardroom at night, one pen on a long table, distant figure at the window"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Near four trillion",
+    "ko": "4조 달러 근처"
+   },
+   "narration": {
+    "en": "It sits near four trillion now. Nothing dramatic happened on the way.",
+    "ko": "오늘 이 회사의 몸값은 4조 달러 근처다. 극적인 일은 없었다."
+   },
+   "image_hint": {
+    "en": "trading floor at night, one person standing before a wall of screens, seen from behind, long shot"
+   },
+   "image_prompt": "trading floor at night, one person standing before a wall of screens, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Now they rent it back",
+    "ko": "이제는 빌려준다"
+   },
+   "narration": {
+    "en": "The same desks pay by the month now. For the thing they already had.",
+    "ko": "같은 책상이 이제 매달 돈을 낸다. 이미 갖고 있던 것에."
+   },
+   "image_hint": {
+    "en": "server room corridor, one technician walking between racks, seen from behind, wide shot"
+   },
+   "image_prompt": "server room corridor, one technician walking between racks, seen from behind, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Nobody chooses it",
+    "ko": "아무도 고르지 않는다"
+   },
+   "narration": {
+    "en": "Nobody chooses the default. That's what makes it one.",
+    "ko": "아무도 디폴트를 고르지 않는다. 그래서 디폴트다."
+   },
+   "image_hint": {
+    "en": "quiet office at dawn, one empty chair at a lit desk, distant figure in the doorway"
+   },
+   "image_prompt": "quiet office at dawn, one empty chair at a lit desk, distant figure in the doorway"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-23-stocks",
+ "theme": "stocks",
+ "symbol": "MSFT",
+ "quote": {
+  "text": "Microsoft Corporation",
+  "author": "NASDAQ MSFT"
+ }
+}
