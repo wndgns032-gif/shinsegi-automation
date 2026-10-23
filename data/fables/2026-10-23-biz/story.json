@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Only What Piled Up Remains",
+  "ko": "쌓인 것만 남는다"
+ },
+ "caption": {
+  "en": "Nothing grew that day. It had grown anyway.",
+  "ko": "그날 늘어난 건 없었다. 그런데 늘어 있었다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Skill doesn't arrive on one day.",
+    "It just piles up where you sit."
+   ],
+   "ko": [
+    "실력은 어느 날 생기지 않는다.",
+    "그 자리에 쌓여 있을 뿐이다."
+   ]
+  },
+  "highlight": {
+   "en": "piles up",
+   "ko": "쌓여 있을 뿐"
+  }
+ },
+ "moral": {
+  "en": "In the end, only what piled up stayed.",
+  "ko": "결국 남는 건 쌓인 것뿐이었다."
+ },
+ "cta": {
+  "en": "Next one, same seat.",
+  "ko": "다음 장면도 같은 자리에서."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "It doesn't arrive.",
+    "ko": "어느 날 생기지 않는다."
+   },
+   "narration": {
+    "en": "Skill never arrives on a single day. It only piles up where you sit.",
+    "ko": "실력은 어느 날 생기지 않는다. 그 자리에 쌓여 있을 뿐이다."
+   },
+   "image_hint": {
+    "en": "old music room at dawn, dust in the light, one person sitting far from the camera"
+   },
+   "image_prompt": "old music room at dawn, dust in the light, one person sitting far from the camera"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The first night.",
+    "ko": "처음 앉은 밤."
+   },
+   "narration": {
+    "en": "That first night, my hands locked up. Not one bar came out whole.",
+    "ko": "처음 앉은 밤, 손이 굳었다. 한 소절도 이어지지 않았다."
+   },
+   "image_hint": {
+    "en": "practice room at night, one person hunched over a piano, seen from behind, long shot"
+   },
+   "image_prompt": "practice room at night, one person hunched over a piano, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Once a week.",
+    "ko": "일주일에 한 번."
+   },
+   "narration": {
+    "en": "I saw him once a week. Same song, first bars, over and over.",
+    "ko": "나는 그를 일주일에 한 번 봤다. 같은 곡의 앞부분만 쳤다."
+   },
+   "image_hint": {
+    "en": "narrow practice room window in the afternoon, one person standing at a music stand, distant figure"
+   },
+   "image_prompt": "narrow practice room window in the afternoon, one person standing at a music stand, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Paper on the wall.",
+    "ko": "벽에 붙은 종이."
+   },
+   "narration": {
+    "en": "Paper appeared on the wall. No dates. No reasons.",
+    "ko": "벽에 종이가 하나씩 붙었다. 날짜도 이유도 없었다."
+   },
+   "image_hint": {
+    "en": "wall of a small practice room, tape and paper scraps, one person taping a note, seen from behind"
+   },
+   "image_prompt": "wall of a small practice room, tape and paper scraps, one person taping a note, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Someone finished it fast.",
+    "ko": "어떤 사람은 빨랐다."
+   },
+   "narration": {
+    "en": "Someone finished it in three days. He was still on bar one.",
+    "ko": "어떤 사람은 사흘 만에 끝냈다. 그는 아직 첫 소절에 있었다."
+   },
+   "image_hint": {
+    "en": "long hallway outside a practice room, one person walking past a doorway, distant figure"
+   },
+   "image_prompt": "long hallway outside a practice room, one person walking past a doorway, distant figure"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The hands moved first.",
+    "ko": "손이 먼저 움직였다."
+   },
+   "narration": {
+    "en": "One evening his hands moved first. The sound came before the thought.",
+    "ko": "어느 저녁, 손이 먼저 움직였다. 생각하기 전에 소리가 났다."
+   },
+   "image_hint": {
+    "en": "window seat at dusk, one person at a keyboard, small figure in the middle distance"
+   },
+   "image_prompt": "window seat at dusk, one person at a keyboard, small figure in the middle distance"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Not the same person.",
+    "ko": "같은 사람이 아니었다."
+   },
+   "narration": {
+    "en": "I played the old recording again. Same song. Not the same person.",
+    "ko": "예전 녹음을 다시 들었다. 같은 곡인데 소리가 달랐다."
+   },
+   "image_hint": {
+    "en": "desk at night, headphones and an old recorder, one person leaning back, seen from behind"
+   },
+   "image_prompt": "desk at night, headphones and an old recorder, one person leaning back, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "That room is still there.",
+    "ko": "그 방은 아직 거기 있다."
+   },
+   "narration": {
+    "en": "That room is still there. Someone is sitting in it now.",
+    "ko": "그 방은 아직 거기 있다. 지금도 누가 앉아 있다."
+   },
+   "image_hint": {
+    "en": "practice room doorway at night seen from a corridor, one person sitting at the far end, distant figure"
+   },
+   "image_prompt": "practice room doorway at night seen from a corridor, one person sitting at the far end, distant figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "The sound didn't break.",
+    "ko": "소리가 끊기지 않았다."
+   },
+   "narration": {
+    "en": "Tonight I stood at the door. The sound didn't break.",
+    "ko": "오늘 나는 그 문 앞에 섰다. 소리가 끊기지 않았다."
+   },
+   "image_hint": {
+    "en": "corridor outside a practice room in the evening, one person standing at the open door, seen from behind"
+   },
+   "image_prompt": "corridor outside a practice room in the evening, one person standing at the open door, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Only what piled up stayed.",
+    "ko": "쌓인 것만 남았다."
+   },
+   "narration": {
+    "en": "In the end, only what piled up stayed.",
+    "ko": "결국 남는 건 쌓인 것뿐이었다."
+   },
+   "image_hint": {
+    "en": "empty street at dusk, one person walking away, small figure in the middle distance"
+   },
+   "image_prompt": "empty street at dusk, one person walking away, small figure in the middle distance"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-23-biz",
+ "theme": "biz",
+ "theme_label": "시간이 만드는 차이",
+ "quote": {
+  "text": "skill is an accumulation, not an event",
+  "author": "성공하는 사람의 마인드"
+ }
+}
