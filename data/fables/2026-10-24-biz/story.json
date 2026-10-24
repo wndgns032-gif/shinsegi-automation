@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The part not on the price tag",
+  "ko": "값표에 없던 것"
+ },
+ "caption": {
+  "en": "Everything has a hidden price",
+  "ko": "모든 것에는 숨은 값이 있다"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Not everything is on the price tag.",
+    "Some things have a back side."
+   ],
+   "ko": [
+    "값표에는 없는 게 있다.",
+    "모든 것에는 뒷면이 있다."
+   ]
+  },
+  "highlight": {
+   "en": "the part not on the tag",
+   "ko": "값표에 없던 것"
+  }
+ },
+ "moral": {
+  "en": "The price is rarely paid once.",
+  "ko": "값은 한 번에 끝나지 않는다."
+ },
+ "cta": {
+  "en": "More scenes like this are gathered here.",
+  "ko": "비슷한 장면을 여기에 모아둡니다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The part not on the tag",
+    "ko": "값표에 없던 것"
+   },
+   "narration": {
+    "en": "Not everything is on the price tag. Some things have a back side.",
+    "ko": "값표에는 없는 게 있다. 모든 것에는 뒷면이 있다."
+   },
+   "image_hint": {
+    "en": "empty glass office at dusk, one person standing far away, seen from behind, long shot"
+   },
+   "image_prompt": "empty glass office at dusk, one person standing far away, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Ten minutes",
+    "ko": "십 분"
+   },
+   "narration": {
+    "en": "The contract was three pages. The signing took ten minutes.",
+    "ko": "계약서는 세 장이었다. 서명은 십 분이면 끝났다."
+   },
+   "image_hint": {
+    "en": "conference table by a window, one person signing papers, seen from behind, long shot"
+   },
+   "image_prompt": "conference table by a window, one person signing papers, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Last light",
+    "ko": "마지막 불"
+   },
+   "narration": {
+    "en": "My office light was the last to go out. That window was always mine.",
+    "ko": "사무실 불이 마지막에 꺼졌다. 그 자리는 늘 내 자리였다."
+   },
+   "image_hint": {
+    "en": "office hallway at night, one person walking away under fluorescent light, seen from behind, long shot"
+   },
+   "image_prompt": "office hallway at night, one person walking away under fluorescent light, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Weekends",
+    "ko": "주말"
+   },
+   "narration": {
+    "en": "Weekends disappeared from the calendar first. Nobody asked about it.",
+    "ko": "달력에서 주말이 먼저 지워졌다. 아무도 그걸 묻지 않았다."
+   },
+   "image_hint": {
+    "en": "kitchen wall calendar at dawn, one person standing with a cup, distant figure, seen from behind"
+   },
+   "image_prompt": "kitchen wall calendar at dawn, one person standing with a cup, distant figure, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Up and gone",
+    "ko": "올라간 것"
+   },
+   "narration": {
+    "en": "The numbers went up, a little at a time. The contacts thinned out, one by one.",
+    "ko": "숫자는 조금씩 올라갔다. 번호는 하나씩 사라졌다."
+   },
+   "image_hint": {
+    "en": "rooftop at night, one person sitting on a ledge, small figure, long shot"
+   },
+   "image_prompt": "rooftop at night, one person sitting on a ledge, small figure, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "An old number",
+    "ko": "오래된 번호"
+   },
+   "narration": {
+    "en": "An old number came back to me. I turned the screen off without dialing.",
+    "ko": "오래된 번호 하나가 떠올랐다. 누르지 못하고 화면을 껐다."
+   },
+   "image_hint": {
+    "en": "subway platform late at night, one person holding a phone, seen from behind, long shot"
+   },
+   "image_prompt": "subway platform late at night, one person holding a phone, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Not on the receipt",
+    "ko": "영수증에 없는"
+   },
+   "narration": {
+    "en": "I paid in full and got nothing back. It wasn't on the receipt.",
+    "ko": "값은 다 치렀는데 물건이 없었다. 영수증에 없는 항목이었다."
+   },
+   "image_hint": {
+    "en": "parking garage at night, one person standing by a car door, distant figure, long shot"
+   },
+   "image_prompt": "parking garage at night, one person standing by a car door, distant figure, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Right now",
+    "ko": "지금"
+   },
+   "narration": {
+    "en": "Someone is doing that math right now. In an office with the lights off.",
+    "ko": "지금도 누군가 그 계산을 하고 있다. 불 꺼진 사무실에서."
+   },
+   "image_hint": {
+    "en": "glass building at night, one lit window, small figure inside, long shot"
+   },
+   "image_prompt": "glass building at night, one lit window, small figure inside, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning an envelope was at my door. The sender line was blank.",
+    "ko": "오늘 아침 문 앞에 봉투가 놓여 있었다. 보내는 사람 칸은 비어 있었다."
+   },
+   "image_hint": {
+    "en": "apartment door in the morning, one person bending for an envelope, seen from behind, long shot"
+   },
+   "image_prompt": "apartment door in the morning, one person bending for an envelope, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Twice",
+    "ko": "두 번"
+   },
+   "narration": {
+    "en": "The price is rarely paid once.",
+    "ko": "값은 한 번에 끝나지 않는다."
+   },
+   "image_hint": {
+    "en": "empty street at dawn, one person standing still under a streetlight, small figure, long shot"
+   },
+   "image_prompt": "empty street at dawn, one person standing still under a streetlight, small figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-24-biz",
+ "theme": "biz",
+ "theme_label": "대가를 치르는 법",
+ "quote": {
+  "text": "everything has a hidden price",
+  "author": "성공하는 사람의 마인드"
+ }
+}
