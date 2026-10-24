@@ -460,6 +460,18 @@ def synth(text: str, lang: str, out_path: Path, voice: str | None = None,
     out_path = Path(out_path)
     out_path.parent.mkdir(parents=True, exist_ok=True)
 
+    # ⚠️ 2026-10-24 방어: 대본 필드가 리스트 등 비문자열로 흘러들어오면
+    #   아래 text.strip() 에서 AttributeError → 전 엔진 실패 → 편 유실.
+    #   (실측: stocks 2026-10-24) _repair 정규화가 근본 해결이지만,
+    #   어떤 경로로 새어들어와도 여기서 한 번 더 막는다.
+    if not isinstance(text, str):
+        if isinstance(text, list):
+            text = " ".join(str(x).strip() for x in text if str(x).strip())
+        elif text is None:
+            text = ""
+        else:
+            text = str(text)
+
     chain = [dict(p) for p in profile_for(lang)]
     # CI/클라우드 환경에서는 로컬 모델(Kokoro/Supertonic)을 강제로 건너뛴다
     # — 모델 파일이 없고 설치 시간도 아깝다.

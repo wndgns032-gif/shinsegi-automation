@@ -978,11 +978,15 @@ def _repair(data: dict) -> None:
     data["scenes"] = scenes
     filled = 0
 
+    # ⚠️ 2026-10-24: 언어별 문장 필드가 리스트 등 비문자열로 오면 정규화한다.
+    #   (stocks 2026-10-24 사고 — list 값이 tts 까지 흘러 렌더 0개)
+    from .story_core import norm_text
+
     # ── 0) 아예 **없는 최상위 키** 를 만든다 ──────────────────────
     # 폴백이 top-level 키를 통째로 빼먹기도 한다(실측: moral 키 자체가 없음).
     # 원래 검증 첫 줄(`if key not in data`)에서 바로 raise → 8회 전멸.
     # → 키부터 세운 뒤에 나머지를 채운다.
-    ko_nar_all = [str((sc.get("narration") or {}).get("ko") or "").strip()
+    ko_nar_all = [norm_text((sc.get("narration") or {}).get("ko"))
                   for sc in scenes if isinstance(sc, dict)]
     ko_nar_all = [x for x in ko_nar_all if x]
     first_nar = ko_nar_all[0] if ko_nar_all else ""
@@ -992,14 +996,18 @@ def _repair(data: dict) -> None:
         if not isinstance(v, dict):
             v = {}
         for lg in LANGS:
-            if not str(v.get(lg) or "").strip():
-                v[lg] = _clip_caption(first_nar, lg) if first_nar else "오늘 하루."
+            s = norm_text(v.get(lg))
+            if not s:
+                s = _clip_caption(first_nar, lg) if first_nar else "오늘 하루."
                 filled += 1
+            v[lg] = s
         data[k] = v
 
-    if not str(data.get("characters") or "").strip():
-        data["characters"] = "a man in his 30s, short black hair, tired eyes, plain grey shirt"
+    _chars = norm_text(data.get("characters"))
+    if not _chars:
+        _chars = "a man in his 30s, short black hair, tired eyes, plain grey shirt"
         filled += 1
+    data["characters"] = _chars
 
     # hook.lines 2줄이 안 오면 채운다
     hook = data.get("hook")
@@ -1018,8 +1026,7 @@ def _repair(data: dict) -> None:
     if not isinstance(hook.get("highlight"), dict):
         hook["highlight"] = {}
     for lg in LANGS:
-        if not str(hook["highlight"].get(lg) or "").strip():
-            hook["highlight"][lg] = ""
+        hook["highlight"][lg] = norm_text(hook["highlight"].get(lg))
     data["hook"] = hook
 
     for sc in scenes:
@@ -1031,6 +1038,10 @@ def _repair(data: dict) -> None:
                 v = {l: v for l in LANGS}
             if not isinstance(v, dict):
                 v = {}
+            # ⚠️ 2026-10-24: 언어별 값이 리스트/None 이면 문장으로 정규화.
+            #   (list 가 그대로 남으면 tts.synth 가 list.strip() 으로 죽는다)
+            for lg in list(v.keys()):
+                v[lg] = norm_text(v[lg])
             sc[field] = v
 
         # ⚠️ 핵심 수정 (2026-10-14): 폴백은 한 장면의 narration 을 통째로

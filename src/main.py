@@ -582,13 +582,19 @@ def run_fable(mock: bool = False, no_publish: bool = False,
     fable_video(mock=mock, date=date)
     # ⚠️ 2026-10-12: 렌더 전멸 시 위장 성공 방지 (kind 경로와 동일한 가드).
     # fable_video 는 언어별 예외를 삼키므로, 여기서 산출 여부를 확인한다.
-    _sdir = fable.story_dir(DATA, date)
+    # ⚠️ 2026-10-24 수정 (치명): 이 함수 안에서 fable 모듈을 임포트하지 않아
+    #   NameError 가 매일 터졌다 — 렌더는 끝내놓고 **발행 직전에** 죽어서
+    #   10-15~10-24 명언편(자정 슬롯)이 전부 미발행이었다.
+    #   (main.py 는 함수-로컬 임포트 패턴 — 이 함수에만 임포트가 빠져 있었다)
+    from src import fable as _fable
+    _sdir = _fable.story_dir(DATA, date)
     _made = [p.name for p in _sdir.glob("fable_*.mp4") if p.stat().st_size > 100000]
     if not _made:
         raise RuntimeError(
             f"[run-fable] fable({_sdir.name}) 렌더 산출 0개 — 파이프라인 실패로 종료 "
             f"(errors.log 와 DeepSeek 잔액 확인)")
     if not no_publish and not mock:
+        story = _fable.load_story(DATA, date)
         _guard_quality(story, "fable", date or "today")
         fable_publish(date=date)
     elif mock:

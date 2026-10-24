@@ -61,6 +61,26 @@ MODEL = "deepseek-flash"          # ⚠️ deepseek-chat 은 없는 모델명(40
 #   → 단일 진실 공급원(quotes.LANGS)으로 통일. 되돌리기는 quotes.py 한 곳.
 from .quotes import LANGS
 
+
+def norm_text(v) -> str:
+    """LLM/폴백이 이상한 타입으로 내보낸 문장 필드를 깨끗한 str 로 정규화.
+
+    ⚠️ 2026-10-24 실측 (stocks 2026-10-24 렌더 0개 사고):
+      narration.ko 가 **리스트**(["...", "..."])로 오는 경우가 있다.
+      기존 코드의 str(list) 강제는 "['..', '..']" 라는 가비지가 돼서
+      '비어 있지 않다'고 판정되어 그대로 통과했다 → tts.synth 가
+      list.strip() AttributeError → 전 엔진 실패 → 하루 편 통째 유실.
+      → 리스트는 문장으로 합치고, None/bool 은 빈 문자열로 한다.
+    """
+    if isinstance(v, str):
+        return v.strip()
+    if isinstance(v, list):
+        return " ".join(str(x).strip() for x in v if str(x).strip())
+    if v is None or isinstance(v, bool):
+        return ""
+    return str(v).strip()
+
+
 # ---------------------------------------------------------------------------
 # 1. 통일 장면 구조 — 3개 장르가 전부 이 10장을 쓴다.
 #    (기존: fable 10 / biz 9 / stocks 9 → 제각각이라 스타일이 안 맞았다)
@@ -796,6 +816,11 @@ def _repair(data: dict) -> None:
                     v.setdefault(lg, v.get("ko") or "")
             if not isinstance(v, dict):
                 v = {}
+            # ⚠️ 2026-10-24: 언어별 값이 리스트/None 등 비문자열이면
+            #   norm_text 로 문장으로 정규화한다(위 사고 참고).
+            #   None 이 그대로 남아도 tts 가 None.strip() 으로 죽는다.
+            for lg in list(v.keys()):
+                v[lg] = norm_text(v[lg])
             sc[field] = v
         # 한국어 내레이션이 비면 = 사실상 빈 장면. act 기본 문장으로 메운다.
         if not str(sc.get("narration", {}).get("ko") or "").strip():
