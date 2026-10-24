@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-25",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "aurelius-obstacle",
+    "author": {
+      "en": "Marcus Aurelius",
+      "ko": "마르쿠스 아우렐리우스",
+      "zh-cn": "马可·奥勒留",
+      "fr": "Marc Aurèle"
+    },
+    "text": {
+      "en": "The obstacle in the path becomes the path. What stands in the way becomes the way.",
+      "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다.",
+      "zh-cn": "阻碍你的东西，会成为你的路；挡在前方的，就是前进的方向。",
+      "fr": "L'obstacle devient le chemin. Ce qui barre la route devient la route."
+    }
+  },
+  "title": {
+    "en": "The Snag",
+    "ko": "걸리는 자리"
+  },
+  "caption": {
+    "en": "The obstacle is the path. Not a slogan — a shape.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "걸림돌은 길이 된다. 구호가 아니라 형태다.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Putting things off needs no reason.",
+        "Today just wasn't the day."
+      ],
+      "ko": [
+        "미루는 데는 이유가 필요 없다.",
+        "그냥 오늘이 아니었을 뿐이다."
+      ]
+    },
+    "highlight": {
+      "en": "no reason",
+      "ko": "이유"
+    }
+  },
+  "moral": {
+    "en": "The place that snags you is the handle.",
+    "ko": "걸리는 자리가 결국 손잡이가 된다."
+  },
+  "characters": "a man in his 30s, short black hair, worn grey shirt, thin frame",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet stone corridor at dawn, long shadow across the floor, distant small figure walking away, long shot",
+      "narration": {
+        "en": "The obstacle in the path becomes the path. What stands in the way becomes the way. — Marcus Aurelius.",
+        "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다. — 마르쿠스 아우렐리우스.",
+        "zh-cn": "挡在路上的东西，就是路本身。",
+        "fr": "L'obstacle sur le chemin devient le chemin."
+      },
+      "subtitle": {
+        "en": "The obstacle is the path",
+        "ko": "걸림돌이 곧 길",
+        "zh-cn": "障碍即路",
+        "fr": "L'obstacle est le chemin"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "narrow apartment hallway at night, shoes piled by the door, small figure standing still, seen from behind",
+      "narration": {
+        "en": "Putting things off needs no reason. Today just wasn't the day",
+        "ko": "미루는 데는 이유가 필요 없다. 그냥 오늘이 아니었을 뿐이다",
+        "zh-cn": "拖延从来不需要理由。只是今天不合适罢了。",
+        "fr": "Remettre à plus tard n'a pas besoin de raison. Aujourd'hui, ce n'était juste pas le jour."
+      },
+      "subtitle": {
+        "en": "No reason needed",
+        "ko": "이유는 없다",
+        "zh-cn": "不需要理由",
+        "fr": "Pas besoin de raison"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley at dawn, old wooden door ajar, small figure before it, seen from behind",
+      "narration": {
+        "en": "One door at the end of the alley stuck for three days.",
+        "ko": "골목 끝 문 하나가 사흘째 걸려 있었다.",
+        "zh-cn": "巷子尽头那扇门卡了三天。",
+        "fr": "Au bout de la ruelle, une porte bloquait depuis trois jours."
+      },
+      "subtitle": {
+        "en": "Three days stuck",
+        "ko": "사흘째 걸린 문",
+        "zh-cn": "卡了三天的门",
+        "fr": "Trois jours bloquée"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small desk by a window at noon, wood shavings and a plane, faint figure in the middle distance, wide shot",
+      "narration": {
+        "en": "I sat at the desk with a plane in my hand.",
+        "ko": "나는 대패를 들고 책상에 앉았다.",
+        "zh-cn": "我拿着刨子坐到桌前。",
+        "fr": "Je me suis assis au bureau, un rabot à la main."
+      },
+      "subtitle": {
+        "en": "One plane",
+        "ko": "대패 하나",
+        "zh-cn": "一把刨子",
+        "fr": "Un rabot"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "wooden staircase in the afternoon, door frame leaning on the step, distant small figure sitting, long shot",
+      "narration": {
+        "en": "The more I shaved, the more the door leaned.",
+        "ko": "깎을수록 문은 더 비뚤어졌다.",
+        "zh-cn": "越刨，门越歪。",
+        "fr": "Plus je rabotais, plus la porte penchait."
+      },
+      "subtitle": {
+        "en": "It leaned more",
+        "ko": "더 비뚤어졌다",
+        "zh-cn": "门更歪了",
+        "fr": "Elle penchait"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop at dusk, empty bench, distant small figure waiting, wide shot",
+      "narration": {
+        "en": "At the bus stop I thought about the bent edge.",
+        "ko": "정류장에서 그 휜 곳을 떠올렸다.",
+        "zh-cn": "在车站，我想起那道弯。",
+        "fr": "À l'arrêt de bus, j'ai repensé au bord courbé."
+      },
+      "subtitle": {
+        "en": "The bent edge",
+        "ko": "휜 곳",
+        "zh-cn": "那道弯",
+        "fr": "Le bord courbé"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "kitchen at night, one drawer open, small figure reaching inside, seen from behind",
+      "narration": {
+        "en": "In the kitchen I found a handle.",
+        "ko": "부엌에서 손잡이 하나를 찾아냈다.",
+        "zh-cn": "在厨房，我找到一个把手。",
+        "fr": "Dans la cuisine, j'ai trouvé une poignée."
+      },
+      "subtitle": {
+        "en": "A handle",
+        "ko": "손잡이 하나",
+        "zh-cn": "一个把手",
+        "fr": "Une poignée"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "classroom in the morning, empty chairs, distant small figure standing by a desk, long shot",
+      "narration": {
+        "en": "A man who stuttered chewed on his words.",
+        "ko": "더듬는 사람은 말을 오래 곱씹었다.",
+        "zh-cn": "结巴的人把话嚼了很久。",
+        "fr": "Un homme qui bégayait mâchait ses mots."
+      },
+      "subtitle": {
+        "en": "He chewed on them",
+        "ko": "오래 곱씹었다",
+        "zh-cn": "嚼了很久",
+        "fr": "Il mâchait ses mots"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "library shelf at night, one book open on a table, small figure reading far off, wide shot",
+      "narration": {
+        "en": "Those chewed words are his writing now.",
+        "ko": "그 곱씹은 문장이 지금 그의 글이 되었다.",
+        "zh-cn": "那些嚼过的话，成了他的文章。",
+        "fr": "Ces mots mâchés sont devenus ses textes."
+      },
+      "subtitle": {
+        "en": "Now his writing",
+        "ko": "그의 글이 되었다",
+        "zh-cn": "成了他的文章",
+        "fr": "Ses textes"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty bridge over a river at dawn, railing, one distant figure leaning, long shot",
+      "narration": {
+        "en": "The place that snags you is the handle.",
+        "ko": "걸리는 자리가 결국 손잡이가 된다.",
+        "zh-cn": "卡住你的地方，最后成了把手。",
+        "fr": "L'endroit qui accroche devient la poignée."
+      },
+      "subtitle": {
+        "en": "The snag is the handle",
+        "ko": "걸림이 손잡이",
+        "zh-cn": "卡住的地方",
+        "fr": "L'accroc devient poignée"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
