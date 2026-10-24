@@ -1,0 +1,216 @@
+{
+  "date": "2026-10-24",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "jordan-failed-again",
+    "author": {
+      "en": "Michael Jordan",
+      "ko": "마이클 조던",
+      "zh-cn": "迈克尔·乔丹",
+      "fr": "Michael Jordan"
+    },
+    "text": {
+      "en": "I have failed over and over and over again in my life. And that is why I succeed.",
+      "ko": "나는 평생 수없이 실패했다. 그리고 그래서 성공했다.",
+      "zh-cn": "我一生中一次又一次地失败，这正是我成功的原因。",
+      "fr": "J'ai échoué encore et encore dans ma vie. Et c'est pour cela que je réussis."
+    }
+  },
+  "title": {
+    "en": "Unfolded Again",
+    "ko": "다시 편 종이"
+  },
+  "caption": {
+    "en": "The next line lands on the failed one.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "실패한 문장 위에 다음 줄이 놓인다.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I needed to see the end first.",
+        "So I never started."
+      ],
+      "ko": [
+        "끝을 봐야 시작이라고 생각했다.",
+        "그래서 아무것도 시작하지 못했다."
+      ]
+    },
+    "highlight": {
+      "en": "never",
+      "ko": "아무것도"
+    }
+  },
+  "moral": {
+    "en": "The failed line doesn't get erased. The next one lands on it.",
+    "ko": "실패한 문장은 지워지지 않는다. 그 위에 다음 줄이 놓인다."
+  },
+  "characters": "a man in his late 20s, short black hair, thin frame, plain dark jacket",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty basketball court at dawn, dew on asphalt, long shot",
+      "narration": {
+        "en": "I have failed over and over and over again in my life. And that is why I succeed. — Michael Jordan.",
+        "ko": "나는 평생 수없이 실패했다. 그리고 그래서 성공했다. — 마이클 조던.",
+        "zh-cn": "我这辈子失败了一次又一次。正因如此，我才成功。",
+        "fr": "J'ai échoué encore et encore. C'est pour ça que je réussis."
+      },
+      "subtitle": {
+        "en": "Failed over and over",
+        "ko": "수없이 실패, 그래서 성공",
+        "zh-cn": "失败了一次又一次",
+        "fr": "Échoué mille fois"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "bus stop before sunrise, empty bench, distant figure standing, wide shot",
+      "narration": {
+        "en": "I needed to see the end first. So I never started",
+        "ko": "끝을 봐야 시작이라고 생각했다. 그래서 아무것도 시작하지 못했다",
+        "zh-cn": "我以为要先看到结局才算开始。结果什么都没开始。",
+        "fr": "Je croyais qu'il fallait voir la fin d'abord. Du coup, je n'ai jamais commencé."
+      },
+      "subtitle": {
+        "en": "Never started",
+        "ko": "끝을 봐야 시작",
+        "zh-cn": "所以从未开始",
+        "fr": "Je n'ai jamais commencé"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley at dawn, folded paper on wet pavement, small figure walking away, long shot",
+      "narration": {
+        "en": "I picked up a folded paper in the alley.",
+        "ko": "골목에서 접힌 종이를 주웠다.",
+        "zh-cn": "我在巷子里捡到一张折起来的纸。",
+        "fr": "J'ai ramassé un papier plié dans la ruelle."
+      },
+      "subtitle": {
+        "en": "Folded paper",
+        "ko": "골목의 접힌 종이",
+        "zh-cn": "折起来的纸",
+        "fr": "Un papier plié"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cluttered desk by a window, single sheet of paper, seen from behind, long shot",
+      "narration": {
+        "en": "On the desk I wrote one line. Then crossed it out.",
+        "ko": "책상에 펴 놓고 한 줄 썼다. 곧 지웠다.",
+        "zh-cn": "我在桌上写了一行，又划掉。",
+        "fr": "Sur le bureau j'ai écrit une ligne. Puis je l'ai barrée."
+      },
+      "subtitle": {
+        "en": "One line, then crossed out",
+        "ko": "첫 줄, 곧 지움",
+        "zh-cn": "写了一行又划掉",
+        "fr": "Une ligne, puis barrée"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "outdoor stairway at midday, person sitting alone, wide shot",
+      "narration": {
+        "en": "On the stairs I read it again. The sentence felt strange.",
+        "ko": "계단에서 다시 읽었다. 문장이 낯섰다.",
+        "zh-cn": "坐在楼梯上又读了一遍。句子很陌生。",
+        "fr": "Sur les marches, je l'ai relu. La phrase sonnait faux."
+      },
+      "subtitle": {
+        "en": "The sentence felt wrong",
+        "ko": "낯선 문장",
+        "zh-cn": "陌生的句子",
+        "fr": "La phrase sonnait faux"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "city bus interior at dusk, passenger by the window, distant small figure, wide shot",
+      "narration": {
+        "en": "At the bus stop I folded it into my pocket.",
+        "ko": "정류장에서 접어 주머니에 넣었다.",
+        "zh-cn": "在车站我把它折好塞进口袋。",
+        "fr": "À l'arrêt de bus, je l'ai replié dans ma poche."
+      },
+      "subtitle": {
+        "en": "Back in my pocket",
+        "ko": "주머니 속 종이",
+        "zh-cn": "折好放回口袋",
+        "fr": "Replié dans la poche"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen at night, single lamp on, figure by the counter, seen from behind",
+      "narration": {
+        "en": "That night in the kitchen I unfolded it. The crease stayed.",
+        "ko": "밤에 다시 폈다. 접힌 자리가 남았다.",
+        "zh-cn": "夜里在厨房又摊开。折痕还在。",
+        "fr": "Le soir, dans la cuisine, je l'ai rouvert. Le pli restait."
+      },
+      "subtitle": {
+        "en": "The crease stayed",
+        "ko": "남은 접힌 자리",
+        "zh-cn": "折痕还在",
+        "fr": "Le pli restait"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "bedroom drawer open in the evening, folded papers inside, distant figure, wide shot",
+      "narration": {
+        "en": "I opened the drawer. Folded papers filled half of it.",
+        "ko": "서랍엔 접힌 종이가 반쯤 차 있었다.",
+        "zh-cn": "拉开抽屉，折好的纸占了一半。",
+        "fr": "J'ai ouvert le tiroir. Les papiers pliés en remplissaient la moitié."
+      },
+      "subtitle": {
+        "en": "Half a drawer full",
+        "ko": "서랍 반쯤",
+        "zh-cn": "抽屉装了一半",
+        "fr": "Le tiroir à moitié plein"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "rooftop at dusk, open notebook on low wall, small figure standing, wide shot",
+      "narration": {
+        "en": "I still stop at the first line. Then I write from there.",
+        "ko": "지금도 첫 줄에서 멈춘다. 거기서 쓴다.",
+        "zh-cn": "我仍停在第一行。然后从那里写下去。",
+        "fr": "Je m'arrête encore à la première ligne. Puis j'écris de là."
+      },
+      "subtitle": {
+        "en": "I stop, then write",
+        "ko": "멈춘 자리에서 다시",
+        "zh-cn": "停在那里再写",
+        "fr": "Je m'arrête, puis j'écris"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty street at night, one lit window, distant figure walking, long shot",
+      "narration": {
+        "en": "The failed line doesn't get erased. The next one lands on it.",
+        "ko": "실패한 문장은 지워지지 않는다. 그 위에 다음 줄이 놓인다.",
+        "zh-cn": "写坏的句子不会消失。下一行就压在它上面。",
+        "fr": "La phrase ratée ne s'efface pas. La suivante se pose dessus."
+      },
+      "subtitle": {
+        "en": "The next line lands",
+        "ko": "지워지지 않는 문장",
+        "zh-cn": "下一行压在上面",
+        "fr": "La suivante se pose dessus"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
