@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Back Room Nobody Watched",
+  "ko": "아무도 안 보던 뒤편"
+ },
+ "caption": {
+  "en": "Everyone watched the shelves. The company was built in the room behind them.",
+  "ko": "모두가 진열대를 봤다. 회사를 만든 건 그 뒤의 방이었다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Everyone watched the shelves.",
+    "The money came from behind."
+   ],
+   "ko": [
+    "모두가 진열대를 봤다.",
+    "돈은 뒤에서 나왔다."
+   ]
+  },
+  "highlight": {
+   "en": "The money came from behind",
+   "ko": "돈은 뒤에서 나왔다"
+  }
+ },
+ "moral": {
+  "en": "Something quiet sat next to the obvious. That was the part that lasted.",
+  "ko": "눈에 띄는 것 옆에 조용한 게 있었다. 오래 남은 건 그쪽이었다."
+ },
+ "cta": {
+  "en": "The next observation moves to another company.",
+  "ko": "다음 관찰은 다른 회사에서 이어진다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Everyone watched the shelves",
+    "ko": "모두가 진열대를 봤다"
+   },
+   "narration": {
+    "en": "Everyone watched the shelves. The money came from behind.",
+    "ko": "모두가 진열대를 봤다. 돈은 뒤에서 나왔다."
+   },
+   "image_hint": {
+    "en": "warehouse floor at night, one worker walking between tall shelves, seen from behind, long shot"
+   },
+   "image_prompt": "warehouse floor at night, one worker walking between tall shelves, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Nothing stayed",
+    "ko": "남는 게 없었다"
+   },
+   "narration": {
+    "en": "Boxes moved all day. Nothing stayed. Shipping ate the margin.",
+    "ko": "상자를 팔아도 남는 게 없었다. 택배비가 이익을 먹었다."
+   },
+   "image_hint": {
+    "en": "small delivery van on a wet street at dawn, one driver loading boxes, distant figure, wide shot"
+   },
+   "image_prompt": "small delivery van on a wet street at dawn, one driver loading boxes, distant figure, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The roof first",
+    "ko": "지붕부터 올렸다"
+   },
+   "narration": {
+    "en": "So they built the roof first. Warehouses, before anything else.",
+    "ko": "그래서 창고를 먼저 지었다. 지붕부터 올렸다."
+   },
+   "image_hint": {
+    "en": "construction site of a huge warehouse, one figure in a hard hat, small in the frame, wide shot"
+   },
+   "image_prompt": "construction site of a huge warehouse, one figure in a hard hat, small in the frame, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The leftovers",
+    "ko": "남는 계산기"
+   },
+   "narration": {
+    "en": "The warehouses grew. Machines were left over. They rented the leftovers out.",
+    "ko": "창고가 커지자 계산기가 남았다. 남는 계산기를 빌려줬다."
+   },
+   "image_hint": {
+    "en": "server room corridor, one technician walking away, seen from behind, long shot"
+   },
+   "image_prompt": "server room corridor, one technician walking away, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Behind the storefront",
+    "ko": "전산실은 뒤에 있었다"
+   },
+   "narration": {
+    "en": "Nobody looked past the storefront. A computer room sat behind it.",
+    "ko": "사람들은 몰랐다. 쇼핑몰 옆에 전산실이 있었다."
+   },
+   "image_hint": {
+    "en": "shopping mall parking lot at dusk, one person pushing a cart, distant figure, wide shot"
+   },
+   "image_prompt": "shopping mall parking lot at dusk, one person pushing a cart, distant figure, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Most of the profit",
+    "ko": "이익의 대부분"
+   },
+   "narration": {
+    "en": "That room became most of the profit. Quietly. Every quarter.",
+    "ko": "이익의 대부분은 그 방에서 나왔다. 조용히, 계속."
+   },
+   "image_hint": {
+    "en": "office at night lit by blue monitors, one person at a desk, back to camera, wide shot"
+   },
+   "image_prompt": "office at night lit by blue monitors, one person at a desk, back to camera, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A price on words",
+    "ko": "단어마다 값이 붙었다"
+   },
+   "narration": {
+    "en": "Then the search bar. Every word typed got a price.",
+    "ko": "그다음은 검색창이었다. 사람들이 치는 단어마다 값이 붙었다."
+   },
+   "image_hint": {
+    "en": "kitchen table in the morning, one person scrolling a phone, seen from behind, wide shot"
+   },
+   "image_prompt": "kitchen table in the morning, one person scrolling a phone, seen from behind, wide shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "2.68 trillion",
+    "ko": "2.68조 달러"
+   },
+   "narration": {
+    "en": "Today this company is worth 2.68 trillion dollars. A number that started in a warehouse.",
+    "ko": "지금 이 회사는 2.68조 달러다. 창고에서 시작된 숫자다."
+   },
+   "image_hint": {
+    "en": "stock exchange building exterior at dusk, one passerby walking past, distant, low angle wide shot"
+   },
+   "image_prompt": "stock exchange building exterior at dusk, one passerby walking past, distant, low angle wide shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "The lights come on first",
+    "ko": "불이 먼저 켜진다"
+   },
+   "narration": {
+    "en": "The loading dock lights come on first. Still. Before the sun.",
+    "ko": "오늘도 하역장 불이 먼저 켜진다. 해보다 먼저."
+   },
+   "image_hint": {
+    "en": "warehouse loading dock before sunrise, forklift and one worker, small figure, wide shot"
+   },
+   "image_prompt": "warehouse loading dock before sunrise, forklift and one worker, small figure, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The part that lasted",
+    "ko": "오래 남은 쪽"
+   },
+   "narration": {
+    "en": "Something quiet sat beside the obvious. That was the part that lasted.",
+    "ko": "눈에 띄는 것 옆에 조용한 게 있었다. 오래 남은 건 그쪽이었다."
+   },
+   "image_hint": {
+    "en": "empty store aisle at closing time, one figure turning off the lights, seen from behind, long shot"
+   },
+   "image_prompt": "empty store aisle at closing time, one figure turning off the lights, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-25-stocks",
+ "theme": "stocks",
+ "symbol": "AMZN",
+ "quote": {
+  "text": "Amazon.com, Inc.",
+  "author": "NASDAQ AMZN"
+ }
+}
