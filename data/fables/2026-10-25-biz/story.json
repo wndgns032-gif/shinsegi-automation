@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "What Loss Leaves Behind",
+  "ko": "잃은 자리에 남는 것"
+ },
+ "caption": {
+  "en": "One dead deal told me more than any yes.",
+  "ko": "무산된 계약 하나가 알려준 것"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The email never came.",
+    "Four days of waiting."
+   ],
+   "ko": [
+    "그 메일은 끝내 오지 않았다.",
+    "나흘을 기다렸다."
+   ]
+  },
+  "highlight": {
+   "en": "never came",
+   "ko": "끝내"
+  }
+ },
+ "moral": {
+  "en": "Loss leaves information where it sat. That's all it is.",
+  "ko": "잃은 자리에 정보가 남는다. 그게 손실의 쓸모다."
+ },
+ "cta": {
+  "en": "A list of what you lost makes the next call faster.",
+  "ko": "잃은 목록을 적어두면 다음 판단이 조금 빨라진다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "No reply",
+    "ko": "답장 없음"
+   },
+   "narration": {
+    "en": "The email never came. I waited four days.",
+    "ko": "그 메일은 끝내 오지 않았다. 나흘을 기다렸다."
+   },
+   "image_hint": {
+    "en": "small office at night, one person sitting alone, back to the camera, long shot"
+   },
+   "image_prompt": "small office at night, one person sitting alone, back to the camera, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Dark outside",
+    "ko": "창밖은 어두웠다"
+   },
+   "narration": {
+    "en": "The window was already dark. I opened the draft again.",
+    "ko": "창밖은 이미 어두웠다. 나는 초안을 다시 열었다."
+   },
+   "image_hint": {
+    "en": "desk by a window at night, one person facing a laptop, seen from behind, wide shot"
+   },
+   "image_prompt": "desk by a window at night, one person facing a laptop, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Still on the desktop",
+    "ko": "바탕화면에 그대로"
+   },
+   "narration": {
+    "en": "The contract file stayed put. No reason to open it.",
+    "ko": "계약서 파일은 바탕화면에 그대로였다. 열 이유가 없었다."
+   },
+   "image_hint": {
+    "en": "empty meeting room at dusk, one person standing by a chair, small figure in the distance"
+   },
+   "image_prompt": "empty meeting room at dusk, one person standing by a chair, small figure in the distance"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Same question",
+    "ko": "같은 질문"
+   },
+   "narration": {
+    "en": "A month later, another meeting. Same question again.",
+    "ko": "한 달 뒤, 다른 미팅이 잡혔다. 같은 질문을 또 받았다."
+   },
+   "image_hint": {
+    "en": "cafe table in the afternoon, one person sitting alone with papers, seen from behind, long shot"
+   },
+   "image_prompt": "cafe table in the afternoon, one person sitting alone with papers, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The third one",
+    "ko": "세 번째 거절"
+   },
+   "narration": {
+    "en": "Third rejection. The reason read almost the same.",
+    "ko": "거절은 세 번째였다. 이유는 늘 비슷하게 적혀 있었다."
+   },
+   "image_hint": {
+    "en": "office building hallway, one person walking away, distant figure, long shot"
+   },
+   "image_prompt": "office building hallway, one person walking away, distant figure, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "One word, three times",
+    "ko": "같은 단어 셋"
+   },
+   "narration": {
+    "en": "I laid three replies side by side. One word kept showing up.",
+    "ko": "그제야 세 통의 답장을 나란히 놓았다. 같은 단어가 반복됐다."
+   },
+   "image_hint": {
+    "en": "kitchen table at dawn, one person laying papers in a row, back to the camera"
+   },
+   "image_prompt": "kitchen table at dawn, one person laying papers in a row, back to the camera"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Not the deal",
+    "ko": "계약이 아니었다"
+   },
+   "narration": {
+    "en": "What I lost wasn't the deal. It was an assumption.",
+    "ko": "무산된 건 계약이 아니었다. 내 가정이었다."
+   },
+   "image_hint": {
+    "en": "rooftop at dusk, one person standing at the railing, seen from behind, wide shot"
+   },
+   "image_prompt": "rooftop at dusk, one person standing at the railing, seen from behind, wide shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Write the no first",
+    "ko": "거절을 먼저 적는다"
+   },
+   "narration": {
+    "en": "After that, I wrote the no down first.",
+    "ko": "그 뒤로 나는 거절을 먼저 적어 두었다."
+   },
+   "image_hint": {
+    "en": "subway platform in the morning, one person waiting with a notebook, distant figure"
+   },
+   "image_prompt": "subway platform in the morning, one person waiting with a notebook, distant figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Morning reply",
+    "ko": "아침의 답장"
+   },
+   "narration": {
+    "en": "This morning, a short reply came. I didn't stare at it.",
+    "ko": "오늘 아침에도 짧은 답장이 왔다. 나는 오래 보지 않았다."
+   },
+   "image_hint": {
+    "en": "small studio in the morning, one person standing by a whiteboard, back to the camera"
+   },
+   "image_prompt": "small studio in the morning, one person standing by a whiteboard, back to the camera"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Information stays",
+    "ko": "정보가 남는다"
+   },
+   "narration": {
+    "en": "Loss leaves information where it sat. That's all it is.",
+    "ko": "잃은 자리에 정보가 남는다. 그게 손실의 쓸모다."
+   },
+   "image_hint": {
+    "en": "street corner in the rain, one person standing under an awning, small figure, long shot"
+   },
+   "image_prompt": "street corner in the rain, one person standing under an awning, small figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-25-biz",
+ "theme": "biz",
+ "theme_label": "불확실성을 다루는 법",
+ "quote": {
+  "text": "loss is information",
+  "author": "성공하는 사람의 마인드"
+ }
+}
