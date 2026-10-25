@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-26",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "seneca-learn-to-live",
+    "author": {
+      "en": "Seneca",
+      "ko": "세네카",
+      "zh-cn": "塞涅卡",
+      "fr": "Sénèque"
+    },
+    "text": {
+      "en": "As long as you live, keep learning how to live.",
+      "ko": "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다.",
+      "zh-cn": "只要还活着，就要不断学习如何生活。",
+      "fr": "Tant que tu vis, continue d'apprendre à vivre."
+    }
+  },
+  "title": {
+    "en": "Sitting Down Again",
+    "ko": "다시 앉는 자세"
+  },
+  "caption": {
+    "en": "Learning never waited for the end.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "배움은 끝나고 오지 않았다\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I thought learning needed its own hour.",
+        "That belief was the longest preparation of all."
+      ],
+      "ko": [
+        "배움엔 시간을 내야 한다고 믿었다.",
+        "그게 제일 오래 걸린 준비였다."
+      ]
+    },
+    "highlight": {
+      "en": "preparation",
+      "ko": "준비"
+    }
+  },
+  "moral": {
+    "en": "Learning how to live never waited for me to finish.",
+    "ko": "사는 법은 배움이 끝난 뒤에 오는 게 아니었다."
+  },
+  "characters": "a man in his 30s, short black hair, thin frame, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty library at dawn, tall windows, dust in the light, long shot",
+      "narration": {
+        "en": "As long as you live, keep learning how to live. — Seneca.",
+        "ko": "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다. — 세네카."
+      },
+      "subtitle": {
+        "en": "keep learning how to live",
+        "ko": "사는 법을 배우는 일"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "rooftop at sunrise, water tank, laundry line, small figure at the rail, wide shot",
+      "narration": {
+        "en": "I thought learning needed its own hour. That belief was the longest preparation of all",
+        "ko": "배움엔 시간을 내야 한다고 믿었다. 그게 제일 오래 걸린 준비였다"
+      },
+      "subtitle": {
+        "en": "the longest preparation",
+        "ko": "오래 걸린 준비"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley in early morning, shuttered shop, one person walking, seen from behind, long shot",
+      "narration": {
+        "en": "In a morning alley I wrote down someone else's words.",
+        "ko": "아침 골목에서 남의 말을 한 줄 적었다."
+      },
+      "subtitle": {
+        "en": "one line in an alley",
+        "ko": "골목의 한 줄"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cluttered desk by a window, stacked notebooks, figure seated, seen from behind, full body visible",
+      "narration": {
+        "en": "Three days later, the handwriting didn't look like mine.",
+        "ko": "사흘 뒤, 그 글씨가 내 것이 아니었다."
+      },
+      "subtitle": {
+        "en": "not my handwriting",
+        "ko": "내 글씨 아님"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "outdoor stone staircase at dusk, iron railing, small figure sitting, wide shot",
+      "narration": {
+        "en": "I sat on the stairs and crossed one line out.",
+        "ko": "계단에 앉아 한 줄을 지웠다."
+      },
+      "subtitle": {
+        "en": "one line crossed out",
+        "ko": "지운 한 줄"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop by a road at evening, glass shelter, distant figure waiting, long shot",
+      "narration": {
+        "en": "At the bus stop I let three buses pass.",
+        "ko": "정류장에서 버스를 세 번 보냈다."
+      },
+      "subtitle": {
+        "en": "three buses passed",
+        "ko": "세 번 보낸 버스"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen at night, one lamp above the counter, figure standing, seen from behind, wide shot",
+      "narration": {
+        "en": "I turned off the kitchen light and read the line again.",
+        "ko": "부엌 불을 끄고 그 문장을 읽었다."
+      },
+      "subtitle": {
+        "en": "a sentence in the kitchen",
+        "ko": "부엌의 문장"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "corner of a desk in daylight, pile of paper sheets, distant figure at the frame edge, long shot",
+      "narration": {
+        "en": "Paper piled up in the corner of my desk. One day it was all my handwriting.",
+        "ko": "책상 구석에 종이가 한 장씩 쌓였다. 어느 날 그건 내 글씨였다."
+      },
+      "subtitle": {
+        "en": "paper piling up",
+        "ko": "쌓인 종이"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "open drawer in a dim room, notebooks inside, figure standing above, seen from behind, wide shot",
+      "narration": {
+        "en": "That notebook is in a drawer now. Half of it is crossed out.",
+        "ko": "지금 그 수첩은 서랍 안에 있다. 꺼내 보면 절반은 지워져 있다."
+      },
+      "subtitle": {
+        "en": "notebook in a drawer",
+        "ko": "서랍 속 수첩"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "window at dawn, empty chair, figure standing by the glass, seen from behind, long shot",
+      "narration": {
+        "en": "Learning how to live never waited for me to finish.",
+        "ko": "사는 법은 배움이 끝난 뒤에 오는 게 아니었다."
+      },
+      "subtitle": {
+        "en": "sitting down again",
+        "ko": "다시 앉는 자세"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
