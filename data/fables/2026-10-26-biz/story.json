@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Shop That Opened With a Crooked Sign",
+  "ko": "비뚤어진 간판으로 문을 연 가게"
+ },
+ "caption": {
+  "en": "The place next door was still picking a sign.",
+  "ko": "옆 가게는 아직 간판을 고르는 중이었다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The sign was still crooked when he opened.",
+    "That was it."
+   ],
+   "ko": [
+    "간판이 비뚤어진 채 문을 열었다.",
+    "그게 다였다."
+   ]
+  },
+  "highlight": {
+   "en": "crooked sign",
+   "ko": "비뚤어진 간판"
+  }
+ },
+ "moral": {
+  "en": "Starting was never about the size of the decision. It was about how long deciding took.",
+  "ko": "시작은 결정의 크기가 아니었다. 정하는 데 걸린 시간이었다."
+ },
+ "cta": {
+  "en": "One decision you keep putting off sets tomorrow's order.",
+  "ko": "미룬 결정 하나가 내일의 순서를 바꾼다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Crooked sign, end of the alley",
+    "ko": "골목 끝, 비뚤어진 간판"
+   },
+   "narration": {
+    "en": "It was a shop at the end of an alley. He opened with the sign still crooked. That was all.",
+    "ko": "작년 겨울, 골목 끝 가게였다. 간판이 비뚤어진 채 문을 열었다. 그게 다였다."
+   },
+   "image_hint": {
+    "en": "narrow alley at dusk, one person walking past a small storefront with a crooked sign, seen from behind, long shot"
+   },
+   "image_prompt": "narrow alley at dusk, one person walking past a small storefront with a crooked sign, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The shop next door, still dark",
+    "ko": "아직 불 꺼진 옆 가게"
+   },
+   "narration": {
+    "en": "The shop next door had no lights. A paper was taped to the door. It said opening soon.",
+    "ko": "옆 가게는 불이 꺼져 있었다. 문에 종이가 붙어 있었다. 곧 연다고 적혀 있었다."
+   },
+   "image_hint": {
+    "en": "dark shop window at night, one person standing outside reading a paper note on the door, distant figure"
+   },
+   "image_prompt": "dark shop window at night, one person standing outside reading a paper note on the door, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "No customers, still",
+    "ko": "손님이 없어도"
+   },
+   "narration": {
+    "en": "I passed both shops every morning. Almost nobody went in. He moved the chairs around anyway.",
+    "ko": "나는 두 가게를 번갈아 봤다. 손님은 거의 없었다. 주인은 매일 의자를 옮겼다."
+   },
+   "image_hint": {
+    "en": "small restaurant interior in the morning, one person wiping tables and shifting chairs, seen from behind, long shot"
+   },
+   "image_prompt": "small restaurant interior in the morning, one person wiping tables and shifting chairs, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Three months",
+    "ko": "석 달"
+   },
+   "narration": {
+    "en": "Three months went by. The crooked sign hadn't moved. The note next door was fading.",
+    "ko": "석 달이 지났다. 비뚤어진 간판은 그대로였다. 옆 가게 종이는 바래고 있었다."
+   },
+   "image_hint": {
+    "en": "street corner in winter, one person walking past two shopfronts, distant figure, long shot"
+   },
+   "image_prompt": "street corner in winter, one person walking past two shopfronts, distant figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "He didn't buy a new one",
+    "ko": "새로 산 게 아니었다"
+   },
+   "narration": {
+    "en": "Then one morning the sign sat straight. He hadn't bought a new one. He just tightened the screws.",
+    "ko": "어느 날 간판이 반듯해져 있었다. 새로 산 게 아니었다. 다시 조여 붙인 것이었다."
+   },
+   "image_hint": {
+    "en": "shop front in daylight, one person on a ladder fixing a sign, seen from behind, long shot"
+   },
+   "image_prompt": "shop front in daylight, one person on a ladder fixing a sign, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Salty, then fixed",
+    "ko": "짜다는 말 다음 주"
+   },
+   "narration": {
+    "en": "Someone said the broth was salty. By next week it wasn't. The menu board changed quietly too.",
+    "ko": "국물이 짜다는 말이 나왔다. 다음 주에 간이 달라져 있었다. 메뉴판도 조용히 바뀌었다."
+   },
+   "image_hint": {
+    "en": "small kitchen at night, one person stirring a pot, seen from behind, long shot"
+   },
+   "image_prompt": "small kitchen at night, one person stirring a pot, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Decide, then think",
+    "ko": "정하고 나서 생각"
+   },
+   "narration": {
+    "en": "He decided first and thought after. There was no meeting. Wrong things got fixed on the spot.",
+    "ko": "그는 정하고 나서 생각했다. 회의는 없었다. 틀린 건 그 자리에서 고쳤다."
+   },
+   "image_hint": {
+    "en": "restaurant counter in the afternoon, one person writing on a chalkboard menu, distant figure, long shot"
+   },
+   "image_prompt": "restaurant counter in the afternoon, one person writing on a chalkboard menu, distant figure, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "My own desk",
+    "ko": "내 책상"
+   },
+   "narration": {
+    "en": "That's when I looked at my own desk. My plan was still on page one. I wrote that line last winter.",
+    "ko": "나는 그제야 내 책상을 봤다. 계획서는 첫 장에 멈춰 있었다. 작년 겨울에 쓴 문장이었다."
+   },
+   "image_hint": {
+    "en": "desk by a window at night, one person sitting with an open notebook, back to the camera, long shot"
+   },
+   "image_prompt": "desk by a window at night, one person sitting with an open notebook, back to the camera, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "The same line",
+    "ko": "같은 문장"
+   },
+   "narration": {
+    "en": "This morning I read the same line again. The pen was right there. I didn't touch it.",
+    "ko": "오늘 아침에도 그 문장을 읽었다. 펜은 옆에 그대로 있었다. 손은 대지 않았다."
+   },
+   "image_hint": {
+    "en": "kitchen table in the morning, one person holding a pen over an open notebook, seen from behind, long shot"
+   },
+   "image_prompt": "kitchen table in the morning, one person holding a pen over an open notebook, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Not the size of it",
+    "ko": "결정의 크기가 아니라"
+   },
+   "narration": {
+    "en": "Starting was never about the size of the decision. It was about how long deciding took.",
+    "ko": "시작은 결정의 크기가 아니었다. 정하는 데 걸린 시간이었다."
+   },
+   "image_hint": {
+    "en": "empty street at dawn, one person unlocking a shop door, small figure in the middle distance"
+   },
+   "image_prompt": "empty street at dawn, one person unlocking a shop door, small figure in the middle distance"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-26-biz",
+ "theme": "biz",
+ "theme_label": "속도와 실행",
+ "quote": {
+  "text": "decide fast, correct later",
+  "author": "성공하는 사람의 마인드"
+ }
+}
