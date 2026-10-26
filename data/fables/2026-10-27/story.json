@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-27",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "mandela-impossible",
+    "author": {
+      "en": "Nelson Mandela",
+      "ko": "넬슨 만델라",
+      "zh-cn": "纳尔逊·曼德拉",
+      "fr": "Nelson Mandela"
+    },
+    "text": {
+      "en": "It always seems impossible until it is done.",
+      "ko": "이루어질 때까지는 언제나 불가능해 보인다.",
+      "zh-cn": "在事情完成之前，它看起来总是遥不可及。",
+      "fr": "Cela paraît toujours impossible, jusqu'à ce que ce soit fait."
+    }
+  },
+  "title": {
+    "en": "A Name Until It's Done",
+    "ko": "끝나기 전까지의 이름"
+  },
+  "caption": {
+    "en": "One sheet at a time, the corner filled up.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "종이가 한 장씩 쌓인 자리.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I waited until I was ready.",
+        "Ready never came."
+      ],
+      "ko": [
+        "준비가 끝나면 시작하려 했다.",
+        "준비는 끝난 적이 없다."
+      ]
+    },
+    "highlight": {
+      "en": "never came",
+      "ko": "끝난 적이 없다"
+    }
+  },
+  "moral": {
+    "en": "Impossible is only the name things carry until they're done.",
+    "ko": "불가능은 끝나기 전까지 붙어 있던 이름이었다."
+  },
+  "characters": "a man in his 30s, short black hair, plain grey shirt, thin frame",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty stone stairway at dawn, thin mist, one streetlamp still on, wide shot",
+      "narration": {
+        "en": "It always seems impossible until it is done. — Nelson Mandela.",
+        "ko": "이루어질 때까지는 언제나 불가능해 보인다. — 넬슨 만델라."
+      },
+      "subtitle": {
+        "en": "Until it is done",
+        "ko": "이루어질 때까지"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "narrow apartment hallway at night, low shelf with a clock, distant figure standing, long shot",
+      "narration": {
+        "en": "I waited until I was ready. Ready never came",
+        "ko": "준비가 끝나면 시작하려 했다. 준비는 끝난 적이 없다"
+      },
+      "subtitle": {
+        "en": "Ready never came",
+        "ko": "준비는 끝나지 않았다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley in the morning, wet pavement, one person walking away with an envelope, seen from behind, long shot",
+      "narration": {
+        "en": "That morning I carried one envelope down the alley.",
+        "ko": "그날 아침 골목으로 봉투 하나를 들고 나섰다."
+      },
+      "subtitle": {
+        "en": "One envelope",
+        "ko": "봉투 하나"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cluttered desk by a window, stacked papers, cold coffee, one person sitting, seen from behind, wide shot",
+      "narration": {
+        "en": "At my desk I wrote one line and stopped.",
+        "ko": "책상에서 첫 줄을 쓰고 손을 놓았다."
+      },
+      "subtitle": {
+        "en": "One line, then stop",
+        "ko": "첫 줄에서 멈춤"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "outdoor concrete staircase in the afternoon, one person sitting on a step, distant small figure, wide shot",
+      "narration": {
+        "en": "On the stairs I sat down and caught my breath.",
+        "ko": "계단 중간에 앉아 숨을 골랐다."
+      },
+      "subtitle": {
+        "en": "Sitting on a step",
+        "ko": "계단에 앉음"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop by a road in the evening, empty bench, one person walking away, seen from behind, long shot",
+      "narration": {
+        "en": "At the bus stop I let the bus pass and walked.",
+        "ko": "정류장에서 버스를 보내고 걸어갔다."
+      },
+      "subtitle": {
+        "en": "Let the bus go",
+        "ko": "버스는 지나감"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen at night, one glass on the counter, one person standing at the sink, seen from behind, wide shot",
+      "narration": {
+        "en": "In the kitchen I thought about the paper from morning.",
+        "ko": "부엌에서 물을 마시다 아침 종이가 떠올랐다."
+      },
+      "subtitle": {
+        "en": "The paper from morning",
+        "ko": "아침의 종이"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "corner of a wooden desk, pile of loose sheets, one person passing in the background, distant small figure, wide shot",
+      "narration": {
+        "en": "Paper piled in the corner of my desk, one sheet at a time.",
+        "ko": "책상 구석에 종이가 한 장씩 쌓였다."
+      },
+      "subtitle": {
+        "en": "One sheet at a time",
+        "ko": "쌓인 종이"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "desk corner by a window in daylight, neat stack of paper, one person standing far off, seen from behind, long shot",
+      "narration": {
+        "en": "That corner of my desk is not empty now.",
+        "ko": "지금 그 구석은 비어 있지 않다."
+      },
+      "subtitle": {
+        "en": "Not empty now",
+        "ko": "비어 있지 않은 구석"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty road at dawn, long horizon, one small figure walking away, wide shot",
+      "narration": {
+        "en": "Impossible is only the name things carry until they're done.",
+        "ko": "불가능은 끝나기 전까지 붙어 있던 이름이었다."
+      },
+      "subtitle": {
+        "en": "A name until it's done",
+        "ko": "끝나기 전까지의 이름"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
