@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "They Stopped Selling. They Started Billing.",
+  "ko": "팔지 않고, 매달 받는 회사"
+ },
+ "caption": {
+  "en": "A company that once sold a box, once. Now it sends a bill every month.",
+  "ko": "한 번 팔고 끝나던 회사. 지금은 매달 청구서를 보낸다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "It sold a box. Once.",
+    "That was the whole business."
+   ],
+   "ko": [
+    "한 번 팔고 끝나는 장사였다.",
+    "그게 전부였다."
+   ]
+  },
+  "highlight": {
+   "en": "Once",
+   "ko": "한 번"
+  }
+ },
+ "moral": {
+  "en": "A product sells once. A habit bills every month.",
+  "ko": "물건은 한 번 팔린다. 습관은 매달 청구된다."
+ },
+ "cta": {
+  "en": "Whose story next.",
+  "ko": "다음에 볼 회사는 어디일까."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Once, and done",
+    "ko": "한 번 팔면 끝"
+   },
+   "narration": {
+    "en": "It sold a box. Once. That was the whole business.",
+    "ko": "한 번 팔고 끝나는 장사였다. 그게 전부였다."
+   },
+   "image_hint": {
+    "en": "city street at dusk, billboard of a software company, one person walking past, distant figure"
+   },
+   "image_prompt": "city street at dusk, billboard of a software company, one person walking past, distant figure"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Waiting for the next version",
+    "ko": "다음 버전을 기다리는 일"
+   },
+   "narration": {
+    "en": "Money came only with the next version. Nobody waited that long.",
+    "ko": "다음 버전이 나와야 돈이 됐다. 손님은 기다려주지 않았다."
+   },
+   "image_hint": {
+    "en": "warehouse shelf stacked with software boxes, one worker standing far away, seen from behind"
+   },
+   "image_prompt": "warehouse shelf stacked with software boxes, one worker standing far away, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A plastic case on a desk",
+    "ko": "책상 위의 케이스"
+   },
+   "narration": {
+    "en": "A plastic case landed on office desks. Install nights ran long.",
+    "ko": "사무실 책상 위에 케이스가 놓였다. 설치하던 밤은 길었다."
+   },
+   "image_hint": {
+    "en": "office desk at night, one person installing software, seen from behind"
+   },
+   "image_prompt": "office desk at night, one person installing software, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Looking elsewhere",
+    "ko": "다른 곳을 보는 사람들"
+   },
+   "narration": {
+    "en": "One by one, companies looked somewhere else.",
+    "ko": "회사들은 하나둘 다른 곳을 봤다."
+   },
+   "image_hint": {
+    "en": "empty meeting room with an open laptop, one person standing by the window, distant"
+   },
+   "image_prompt": "empty meeting room with an open laptop, one person standing by the window, distant"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The flat line",
+    "ko": "평평해진 선"
+   },
+   "narration": {
+    "en": "The graph went flat. People said it was finished.",
+    "ko": "매출 그래프가 평평해졌다. 끝났다는 말이 돌았다."
+   },
+   "image_hint": {
+    "en": "office printing room, one person holding a flat sales chart, seen from behind"
+   },
+   "image_prompt": "office printing room, one person holding a flat sales chart, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Not sold. Rented.",
+    "ko": "팔지 않는다, 빌린다"
+   },
+   "narration": {
+    "en": "Then the selling changed. Not sold anymore. Rented by the month.",
+    "ko": "그때 판매 방식이 바뀐다. 팔지 않고, 매달 받는다."
+   },
+   "image_hint": {
+    "en": "server room door with a keypad, one person entering, seen from behind, long corridor"
+   },
+   "image_prompt": "server room door with a keypad, one person entering, seen from behind, long corridor"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The renewal date",
+    "ko": "갱신일"
+   },
+   "narration": {
+    "en": "Renewal dates came around quietly. Nobody installed anything.",
+    "ko": "갱신일이 조용히 돌아온다. 아무도 설치하지 않는다."
+   },
+   "image_hint": {
+    "en": "conference room table with a single contract, one person sitting alone, back to the camera"
+   },
+   "image_prompt": "conference room table with a single contract, one person sitting alone, back to the camera"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today",
+    "ko": "지금"
+   },
+   "narration": {
+    "en": "Today this company is worth 3.89 trillion dollars.",
+    "ko": "오늘 이 회사의 값은 3조 8900억 달러다."
+   },
+   "image_hint": {
+    "en": "glass office tower at dusk, one small figure crossing the plaza below, long shot"
+   },
+   "image_prompt": "glass office tower at dusk, one small figure crossing the plaza below, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "A room at the end of the hall",
+    "ko": "복도 끝 방"
+   },
+   "narration": {
+    "en": "Servers line a room at the end of a hall. One person walks past.",
+    "ko": "복도 끝 방에 서버가 늘어선다. 사람 하나가 지나간다."
+   },
+   "image_hint": {
+    "en": "data center hallway, one person walking past server racks, distant figure"
+   },
+   "image_prompt": "data center hallway, one person walking past server racks, distant figure"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Once, or every month",
+    "ko": "한 번, 아니면 매달"
+   },
+   "narration": {
+    "en": "A product sells once. A habit bills every month.",
+    "ko": "물건은 한 번 팔린다. 습관은 매달 청구된다."
+   },
+   "image_hint": {
+    "en": "subway platform at night, one person waiting with a phone, seen from behind"
+   },
+   "image_prompt": "subway platform at night, one person waiting with a phone, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-26-stocks",
+ "theme": "stocks",
+ "symbol": "MSFT",
+ "quote": {
+  "text": "Microsoft Corporation",
+  "author": "NASDAQ MSFT"
+ }
+}
