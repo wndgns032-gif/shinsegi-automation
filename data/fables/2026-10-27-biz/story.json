@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Desk That Stayed Empty",
+  "ko": "비어 있던 책상"
+ },
+ "caption": {
+  "en": "Focus is a list of things you didn't do.",
+  "ko": "집중은 하지 않은 일의 목록이었다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I opened his office door.",
+    "One notebook on the desk."
+   ],
+   "ko": [
+    "선배 사무실 문을 열었다.",
+    "책상 위엔 노트 한 권뿐이었다."
+   ]
+  },
+  "highlight": {
+   "en": "One notebook. Nothing else.",
+   "ko": "노트 한 권. 그게 전부였다."
+  }
+ },
+ "moral": {
+  "en": "Focus was a list of things left undone.",
+  "ko": "집중은 하지 않은 일의 목록이었다."
+ },
+ "cta": {
+  "en": "How many doors you closed today.",
+  "ko": "오늘 내가 닫은 문이 몇 개인지."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "An empty desk",
+    "ko": "비어 있는 책상"
+   },
+   "narration": {
+    "en": "I opened his office door. One notebook on the desk.",
+    "ko": "선배 사무실 문을 열었다. 책상 위엔 노트 한 권뿐이었다."
+   },
+   "image_hint": {
+    "en": "office doorway in the morning, one person standing at the threshold seen from behind, long shot"
+   },
+   "image_prompt": "office doorway in the morning, one person standing at the threshold seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Mine wasn't like that",
+    "ko": "내 자리는 달랐다"
+   },
+   "narration": {
+    "en": "Mine looked different. Paper piled up to the chair.",
+    "ko": "내 책상은 달랐다. 밀린 서류가 의자까지 올라와 있었다."
+   },
+   "image_hint": {
+    "en": "cluttered desk in a small room at night, one person sitting among stacked papers, seen from behind"
+   },
+   "image_prompt": "cluttered desk in a small room at night, one person sitting among stacked papers, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "He let them wait",
+    "ko": "답장을 미뤘다"
+   },
+   "narration": {
+    "en": "Offers came in. He let them sit. Most of them faded away.",
+    "ko": "새 제안이 오면 그는 답장을 미뤘다. 미뤄둔 것들은 대부분 사라졌다."
+   },
+   "image_hint": {
+    "en": "cafe table by a window in the afternoon, one person holding a phone, distant figure across the room"
+   },
+   "image_prompt": "cafe table by a window in the afternoon, one person holding a phone, distant figure across the room"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Months later",
+    "ko": "한참 뒤"
+   },
+   "narration": {
+    "en": "I went back months later. The desk was still empty.",
+    "ko": "한참 뒤에 다시 그 사무실에 갔다. 책상은 여전히 비어 있었다."
+   },
+   "image_hint": {
+    "en": "office corridor in the late afternoon, one person walking away from the camera, distant figure"
+   },
+   "image_prompt": "office corridor in the late afternoon, one person walking away from the camera, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "They read him wrong",
+    "ko": "오해받았다"
+   },
+   "narration": {
+    "en": "People read him wrong. They said he never helped.",
+    "ko": "사람들은 그를 오해했다. 부탁을 잘 안 들어준다고 했다."
+   },
+   "image_hint": {
+    "en": "meeting room doorway after a long day, one person standing alone with a folder, seen from behind"
+   },
+   "image_prompt": "meeting room doorway after a long day, one person standing alone with a folder, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "But it finished",
+    "ko": "끝까지 갔다"
+   },
+   "narration": {
+    "en": "But his work reached the end. Theirs stopped halfway.",
+    "ko": "그런데 그가 맡은 일은 끝까지 갔다. 다른 사람 일은 중간에 멈췄다."
+   },
+   "image_hint": {
+    "en": "small workshop at dusk, one person working at a bench, seen from behind, long shot"
+   },
+   "image_prompt": "small workshop at dusk, one person working at a bench, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "It wasn't rudeness",
+    "ko": "무례가 아니었다"
+   },
+   "narration": {
+    "en": "His no wasn't rudeness. It was order.",
+    "ko": "그의 거절은 무례가 아니었다. 순서였다."
+   },
+   "image_hint": {
+    "en": "stairwell landing at midday, one person pausing on the steps, seen from behind, long shot"
+   },
+   "image_prompt": "stairwell landing at midday, one person pausing on the steps, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "That night",
+    "ko": "그날 밤"
+   },
+   "narration": {
+    "en": "That night I opened my calendar. Not one empty block.",
+    "ko": "나는 그날 밤 일정표를 열었다. 빈칸이 하나도 없었다."
+   },
+   "image_hint": {
+    "en": "kitchen table at night, one person sitting with an open calendar, back to the camera"
+   },
+   "image_prompt": "kitchen table at night, one person sitting with an open calendar, back to the camera"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning I closed an email. Pressed delete, not reply.",
+    "ko": "오늘 아침 메일 하나를 닫았다. 답장 대신 삭제를 눌렀다."
+   },
+   "image_hint": {
+    "en": "small desk by a window at dawn, one person at a laptop seen from behind"
+   },
+   "image_prompt": "small desk by a window at dawn, one person at a laptop seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Not more",
+    "ko": "더 많이가 아니다"
+   },
+   "narration": {
+    "en": "The good ones don't do more. They let most things go.",
+    "ko": "잘하는 사람은 많이 하지 않는다. 대부분을 흘려보낸다."
+   },
+   "image_hint": {
+    "en": "empty desk by a large window in the late afternoon, one person standing and looking out, distant figure"
+   },
+   "image_prompt": "empty desk by a large window in the late afternoon, one person standing and looking out, distant figure"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-27-biz",
+ "theme": "biz",
+ "theme_label": "집중 전략",
+ "quote": {
+  "text": "say no to almost everything",
+  "author": "성공하는 사람의 마인드"
+ }
+}
