@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "They Watched the Store. I Watched the Warehouse.",
+  "ko": "가게를 본 사람, 창고를 본 사람"
+ },
+ "caption": {
+  "en": "Everyone saw a bookstore. A road was being paved underneath.",
+  "ko": "다들 서점을 봤다. 그 아래에서 길이 깔리고 있었다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Everyone watched the store.",
+    "I watched the warehouse."
+   ],
+   "ko": [
+    "다들 가게를 봤다.",
+    "나는 창고를 봤다."
+   ]
+  },
+  "highlight": {
+   "en": "I watched the warehouse",
+   "ko": "나는 창고를 봤다"
+  }
+ },
+ "moral": {
+  "en": "The bright part stood in front. The road was laid behind.",
+  "ko": "화려한 건 앞에 있었다. 길은 뒤에서 깔렸다."
+ },
+ "cta": {
+  "en": "Today I looked at one more company.",
+  "ko": "오늘도 회사 하나를 봤다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Everyone watched the store",
+    "ko": "다들 가게를 봤다"
+   },
+   "narration": {
+    "en": "Everyone watched the store. I watched the boxes.",
+    "ko": "다들 가게를 봤다. 나는 상자를 봤다."
+   },
+   "image_hint": {
+    "en": "empty warehouse aisle at night, one worker walking away with a clipboard, seen from behind, long shot"
+   },
+   "image_prompt": "empty warehouse aisle at night, one worker walking away with a clipboard, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "One desk in a garage",
+    "ko": "차고에 책상 하나"
+   },
+   "narration": {
+    "en": "It sold only books. One desk in a garage.",
+    "ko": "책만 파는 가게였다. 차고에 책상 하나."
+   },
+   "image_hint": {
+    "en": "suburban garage at dusk, one person stacking cardboard boxes, seen from behind, wide shot"
+   },
+   "image_prompt": "suburban garage at dusk, one person stacking cardboard boxes, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "People shook their heads",
+    "ko": "사람들은 고개를 저었다"
+   },
+   "narration": {
+    "en": "Books by mail, they said. People shook their heads.",
+    "ko": "책을 우편으로 산다고. 사람들은 고개를 저었다."
+   },
+   "image_hint": {
+    "en": "small post office counter in the morning, one clerk handing a parcel across, distant view"
+   },
+   "image_prompt": "small post office counter in the morning, one clerk handing a parcel across, distant view"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "It sold other things",
+    "ko": "책이 아닌 것도 팔았다"
+   },
+   "narration": {
+    "en": "Then it sold other things. They called it greed.",
+    "ko": "그다음엔 다른 것도 팔았다. 그걸 욕심이라 불렀다."
+   },
+   "image_hint": {
+    "en": "cluttered storage room with tall shelves, one person carrying a box between aisles, seen from behind"
+   },
+   "image_prompt": "cluttered storage room with tall shelves, one person carrying a box between aisles, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "It built the warehouse first",
+    "ko": "창고부터 지었다"
+   },
+   "narration": {
+    "en": "The company built sheds. Carrying boxes came first.",
+    "ko": "회사는 창고부터 지었다. 상자를 나르는 일이 먼저였다."
+   },
+   "image_hint": {
+    "en": "concrete loading dock before sunrise, one worker pushing a cart, small figure in the middle distance"
+   },
+   "image_prompt": "concrete loading dock before sunrise, one worker pushing a cart, small figure in the middle distance"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The spare servers",
+    "ko": "남는 서버가 아까웠다"
+   },
+   "narration": {
+    "en": "The idle machines bothered them. So they lent them out.",
+    "ko": "노는 서버가 아까웠다. 그걸 남에게 빌려줬다."
+   },
+   "image_hint": {
+    "en": "long server room corridor, one technician walking between racks, seen from behind, distant"
+   },
+   "image_prompt": "long server room corridor, one technician walking between racks, seen from behind, distant"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Everyone walked on it",
+    "ko": "모두가 그 위를 걸었다"
+   },
+   "narration": {
+    "en": "A road nobody asked for. Soon everyone walked on it.",
+    "ko": "아무도 요청하지 않은 길. 어느새 모두가 그 위를 걸었다."
+   },
+   "image_hint": {
+    "en": "highway overpass at dawn, one small figure at the railing looking down, long shot"
+   },
+   "image_prompt": "highway overpass at dawn, one small figure at the railing looking down, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "$2.69 trillion",
+    "ko": "2조 6,900억 달러"
+   },
+   "narration": {
+    "en": "Now it's worth 2.69 trillion. The price is on a screen.",
+    "ko": "지금 몸값은 2조 6,900억 달러. 그 숫자는 화면 위에 있다."
+   },
+   "image_hint": {
+    "en": "glass office window at night, one person standing alone looking at the city, seen from behind"
+   },
+   "image_prompt": "glass office window at night, one person standing alone looking at the city, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Lights on at 4am",
+    "ko": "새벽 네 시, 불이 켜진다"
+   },
+   "narration": {
+    "en": "Lights come on at four. Boxes move down the belt.",
+    "ko": "새벽 네 시에 불이 켜진다. 벨트 위로 상자가 흐른다."
+   },
+   "image_hint": {
+    "en": "distribution center conveyor belt at 4am, one worker in a vest beside the line, seen from behind"
+   },
+   "image_prompt": "distribution center conveyor belt at 4am, one worker in a vest beside the line, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The road was laid behind",
+    "ko": "길은 뒤에서 깔렸다"
+   },
+   "narration": {
+    "en": "The bright part stood in front. The road was laid behind.",
+    "ko": "화려한 건 앞에 있었다. 길은 뒤에서 깔렸다."
+   },
+   "image_hint": {
+    "en": "empty road stretching toward the horizon at dusk, one distant figure walking, extreme long shot"
+   },
+   "image_prompt": "empty road stretching toward the horizon at dusk, one distant figure walking, extreme long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-27-stocks",
+ "theme": "stocks",
+ "symbol": "AMZN",
+ "quote": {
+  "text": "Amazon.com, Inc.",
+  "author": "NASDAQ AMZN"
+ }
+}
