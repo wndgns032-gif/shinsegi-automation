@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "A Car With No Sound",
+  "ko": "소리 없는 차 한 대"
+ },
+ "caption": {
+  "en": "I watched this one from a distance for years.",
+  "ko": "이 회사를 멀리서 몇 년째 본다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The car made no sound.",
+    "That was the first thing."
+   ],
+   "ko": [
+    "엔진 소리가 없었다.",
+    "그게 처음이었다."
+   ]
+  },
+  "highlight": {
+   "en": "no sound",
+   "ko": "소리 없는 차"
+  }
+ },
+ "moral": {
+  "en": "Between what it made and what people expected, that gap was the price.",
+  "ko": "만든 것과 기대받은 것 사이. 그 간격이 이 회사의 값이었다."
+ },
+ "cta": {
+  "en": "I don't buy. I just watch.",
+  "ko": "나는 안 산다. 그냥 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "No sound at the light",
+    "ko": "신호등 앞, 조용한 차"
+   },
+   "narration": {
+    "en": "I saw the car at a stoplight. It made no sound.",
+    "ko": "신호등 앞에서 그 차를 봤다. 소리가 없었다."
+   },
+   "image_hint": {
+    "en": "city crosswalk at dusk, one person waiting at the curb, seen from behind, long shot"
+   },
+   "image_prompt": "city crosswalk at dusk, one person waiting at the curb, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Orders without cars",
+    "ko": "차 없는 예약"
+   },
+   "narration": {
+    "en": "They couldn't build them. The orders just piled up.",
+    "ko": "차를 못 만들었다. 예약만 쌓였다."
+   },
+   "image_hint": {
+    "en": "car showroom at midday, one person standing before a closed glass door, seen from behind, long shot"
+   },
+   "image_prompt": "car showroom at midday, one person standing before a closed glass door, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Money first",
+    "ko": "돈이 먼저 왔다"
+   },
+   "narration": {
+    "en": "The money came first. The cars didn't.",
+    "ko": "예약금은 먼저 받았다. 차는 없었다."
+   },
+   "image_hint": {
+    "en": "empty factory lot at night, one worker standing alone in the distance, wide shot"
+   },
+   "image_prompt": "empty factory lot at night, one worker standing alone in the distance, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Lines went quiet",
+    "ko": "라인이 조용해졌다"
+   },
+   "narration": {
+    "en": "Factories rose one by one. The noisy line went quiet.",
+    "ko": "공장이 하나둘 올라갔다. 삐걱대던 라인이 조용해졌다."
+   },
+   "image_hint": {
+    "en": "factory floor at dawn, small figure walking between machines, seen from behind, long shot"
+   },
+   "image_prompt": "factory floor at dawn, small figure walking between machines, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "More cars, lower price",
+    "ko": "차는 늘고 값은 내리고"
+   },
+   "narration": {
+    "en": "More cars on the road. The price kept falling.",
+    "ko": "길 위의 차가 늘었다. 값은 자꾸 내려갔다."
+   },
+   "image_hint": {
+    "en": "highway at dusk, one car passing, small figure standing on the shoulder, seen from behind"
+   },
+   "image_prompt": "highway at dusk, one car passing, small figure standing on the shoulder, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Thinner per car",
+    "ko": "한 대당 남는 것"
+   },
+   "narration": {
+    "en": "What was left per car got thinner. The company got bigger.",
+    "ko": "차를 팔아 남는 게 줄었다. 그런데 회사는 더 커졌다."
+   },
+   "image_hint": {
+    "en": "conference hall at night, one person standing before a dim stage, seen from behind, long shot"
+   },
+   "image_prompt": "conference hall at night, one person standing before a dim stage, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Something else",
+    "ko": "차가 아닌 것"
+   },
+   "narration": {
+    "en": "People were buying something else. A future not here yet.",
+    "ko": "사람들은 차가 아닌 걸 샀다. 아직 오지 않은 미래를."
+   },
+   "image_hint": {
+    "en": "empty parking lot at night, one person looking up at the sky, distant figure, long shot"
+   },
+   "image_prompt": "empty parking lot at night, one person looking up at the sky, distant figure, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "A strange number",
+    "ko": "이상한 숫자"
+   },
+   "narration": {
+    "en": "1.6 trillion dollars. A strange number for a carmaker.",
+    "ko": "시총 1조 6천억 달러. 차 회사 치고 이상한 숫자였다."
+   },
+   "image_hint": {
+    "en": "office window at night, one person standing with back to camera, city lights outside, long shot"
+   },
+   "image_prompt": "office window at night, one person standing with back to camera, city lights outside, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today's scene",
+    "ko": "오늘의 장면"
+   },
+   "narration": {
+    "en": "The factories run today. The stock moves on its own.",
+    "ko": "공장은 오늘도 돌아간다. 주가는 혼자 뛴다."
+   },
+   "image_hint": {
+    "en": "factory gate in the morning, distant figure walking in, seen from behind, long shot"
+   },
+   "image_prompt": "factory gate in the morning, distant figure walking in, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The gap",
+    "ko": "그 간격"
+   },
+   "narration": {
+    "en": "Between what it made and what was expected. That gap was the price.",
+    "ko": "만든 것과 기대받은 것 사이. 그 간격이 이 회사의 값이었다."
+   },
+   "image_hint": {
+    "en": "rooftop at sunrise, one person standing alone, seen from behind, wide shot"
+   },
+   "image_prompt": "rooftop at sunrise, one person standing alone, seen from behind, wide shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-28-stocks",
+ "theme": "stocks",
+ "symbol": "TSLA",
+ "quote": {
+  "text": "Tesla, Inc.",
+  "author": "NASDAQ TSLA"
+ }
+}
