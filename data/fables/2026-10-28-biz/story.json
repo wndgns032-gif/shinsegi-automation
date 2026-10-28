@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Nobody Said a Name",
+  "ko": "이름을 지운 회의"
+ },
+ "caption": {
+  "en": "A post-mortem where nobody got blamed. The board filled up anyway.",
+  "ko": "아무도 탓하지 않은 회의. 화이트보드는 표로 가득 찼다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Nobody spoke in the meeting room.",
+    "The whiteboard was still blank."
+   ],
+   "ko": [
+    "회의실은 아무도 말하지 않았다.",
+    "화이트보드만 하얗게 남아 있었다."
+   ]
+  },
+  "highlight": {
+   "en": "Nobody spoke.",
+   "ko": "아무도 말하지 않았다"
+  }
+ },
+ "moral": {
+  "en": "A record is what's left when the blame goes.",
+  "ko": "탓이 빠진 자리에 기록이 남는다."
+ },
+ "cta": {
+  "en": "Collecting more of these scenes.",
+  "ko": "이런 장면을 더 모으고 있다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The day after the project died.",
+    "ko": "프로젝트가 끝난 다음 날."
+   },
+   "narration": {
+    "en": "Nobody spoke in the meeting room. The whiteboard was still blank.",
+    "ko": "회의실은 아무도 말하지 않았다. 화이트보드만 하얗게 남아 있었다."
+   },
+   "image_hint": {
+    "en": "empty meeting room at dawn, one person standing by a whiteboard, seen from behind, long shot"
+   },
+   "image_prompt": "empty meeting room at dawn, one person standing by a whiteboard, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Everyone apologized first.",
+    "ko": "다들 자기 잘못부터 꺼냈다."
+   },
+   "narration": {
+    "en": "Everyone blamed themselves first. Sorry didn't fix anything.",
+    "ko": "다들 자기 잘못을 먼저 꺼냈다. 서로 미안하다고만 했다."
+   },
+   "image_hint": {
+    "en": "conference table at night, three people sitting apart, distant figures, wide shot"
+   },
+   "image_prompt": "conference table at night, three people sitting apart, distant figures, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The lead picked up a marker.",
+    "ko": "책임자가 펜을 집었다."
+   },
+   "narration": {
+    "en": "The lead picked up a marker. She wrote a date, not a name.",
+    "ko": "책임자는 펜을 집었다. 이름 대신 날짜를 적었다."
+   },
+   "image_hint": {
+    "en": "small office with a whiteboard, one person writing, seen from behind, long shot"
+   },
+   "image_prompt": "small office with a whiteboard, one person writing, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Three hours went by.",
+    "ko": "세 시간이 지났다."
+   },
+   "narration": {
+    "en": "Three hours passed. The board was covered in rows.",
+    "ko": "세 시간이 지났다. 화이트보드는 표로 가득했다."
+   },
+   "image_hint": {
+    "en": "office window in the late afternoon, one person standing still, small figure, long shot"
+   },
+   "image_prompt": "office window in the late afternoon, one person standing still, small figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "No line said who.",
+    "ko": "누가 그랬는지는 없었다."
+   },
+   "narration": {
+    "en": "No line said who. Just decisions, stacked in rows.",
+    "ko": "누가 그랬는지는 한 줄도 없었다. 결정들만 줄줄이 적혀 있었다."
+   },
+   "image_hint": {
+    "en": "meeting room wall covered in handwritten notes, one person reading, seen from behind, long shot"
+   },
+   "image_prompt": "meeting room wall covered in handwritten notes, one person reading, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Everyone stopped at the third row.",
+    "ko": "세 번째 줄에서 멈췄다."
+   },
+   "narration": {
+    "en": "At the third row, everyone stopped. Three people had skipped the check.",
+    "ko": "세 번째 줄에서 다들 멈췄다. 확인을 건너뛴 건 세 명이었다."
+   },
+   "image_hint": {
+    "en": "meeting room at dusk, two people standing still, distant figures, wide shot"
+   },
+   "image_prompt": "meeting room at dusk, two people standing still, distant figures, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Nobody lowered their head.",
+    "ko": "아무도 고개를 숙이지 않았다."
+   },
+   "narration": {
+    "en": "Nobody lowered their head. Someone turned the page.",
+    "ko": "아무도 고개를 숙이지 않았다. 누군가 다음 장을 넘겼다."
+   },
+   "image_hint": {
+    "en": "conference room in the morning, one person turning a page, seen from behind, long shot"
+   },
+   "image_prompt": "conference room in the morning, one person turning a page, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "I remember a meeting like that.",
+    "ko": "나도 그런 회의를 기억한다."
+   },
+   "narration": {
+    "en": "I remember a meeting like that. Erasing names took me a whole day.",
+    "ko": "나도 그런 회의를 기억한다. 그때는 이름 지우는 데 하루가 걸렸다."
+   },
+   "image_hint": {
+    "en": "desk by a window at night, one person sitting alone, back to the camera, long shot"
+   },
+   "image_prompt": "desk by a window at night, one person sitting alone, back to the camera, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning, one failure on my desk.",
+    "ko": "오늘 아침, 실패가 하나 있다."
+   },
+   "narration": {
+    "en": "This morning there's a failure on my desk. I wrote the date first.",
+    "ko": "오늘 아침 내 책상에 실패가 하나 있다. 나는 그 위에 날짜부터 적었다."
+   },
+   "image_hint": {
+    "en": "kitchen table early in the morning, one person writing in a notebook, seen from behind, long shot"
+   },
+   "image_prompt": "kitchen table early in the morning, one person writing in a notebook, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "A record is what's left.",
+    "ko": "탓이 빠진 자리"
+   },
+   "narration": {
+    "en": "A record is what's left when the blame goes.",
+    "ko": "탓이 빠진 자리에 기록이 남는다."
+   },
+   "image_hint": {
+    "en": "empty room with a whiteboard, one person walking away, distant figure, long shot"
+   },
+   "image_prompt": "empty room with a whiteboard, one person walking away, distant figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-28-biz",
+ "theme": "biz",
+ "theme_label": "실패를 다루는 법",
+ "quote": {
+  "text": "post-mortem without blame",
+  "author": "성공하는 사람의 마인드"
+ }
+}
