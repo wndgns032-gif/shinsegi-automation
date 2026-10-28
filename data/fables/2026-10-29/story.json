@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-29",
+  "theme": "attitude",
+  "theme_label": "인생의 철학과 태도",
+  "quote": {
+    "id": "seneca-not-short",
+    "author": {
+      "en": "Seneca",
+      "ko": "세네카",
+      "zh-cn": "塞涅卡",
+      "fr": "Sénèque"
+    },
+    "text": {
+      "en": "It is not that we have a short time to live, but that we waste much of it.",
+      "ko": "인생이 짧은 게 아니다. 우리가 많은 시간을 흘려보낼 뿐이다.",
+      "zh-cn": "并不是人生太短，而是我们浪费了太多。",
+      "fr": "Ce n'est pas que la vie soit courte, c'est que nous en gaspillons une grande part."
+    }
+  },
+  "title": {
+    "en": "Time Was Never Short",
+    "ko": "짧지 않은 시간"
+  },
+  "caption": {
+    "en": "Seneca on where the hours actually go.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "세네카, 흘려보낸 시간에 대하여.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I'll start tomorrow.",
+        "I've said that a hundred times."
+      ],
+      "ko": [
+        "내일부터 하겠다.",
+        "그 말을 나는 백 번은 했다."
+      ]
+    },
+    "highlight": {
+      "en": "tomorrow",
+      "ko": "내일부터"
+    }
+  },
+  "moral": {
+    "en": "Time was never short. I made it short.",
+    "ko": "시간은 짧지 않았다. 내가 흘려보낸 만큼 짧아졌다."
+  },
+  "characters": "a man in his 30s, short black hair, plain grey shirt, worn canvas bag",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty stone courtyard at dawn, bare tree, long shadows, wide shot",
+      "narration": {
+        "en": "It is not that we have a short time to live, but that we waste much of it. — Seneca.",
+        "ko": "인생이 짧은 게 아니다. 우리가 많은 시간을 흘려보낼 뿐이다. — 세네카."
+      },
+      "subtitle": {
+        "en": "short because we waste it",
+        "ko": "흘려보낸 만큼 짧다"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "narrow apartment hallway, coat on a hook, small figure standing, seen from behind",
+      "narration": {
+        "en": "I'll start tomorrow. I've said that a hundred times",
+        "ko": "내일부터 하겠다. 그 말을 나는 백 번은 했다"
+      },
+      "subtitle": {
+        "en": "a hundred tomorrows",
+        "ko": "백 번의 내일"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "morning alley, paper lying on wet ground, distant small figure, long shot",
+      "narration": {
+        "en": "In a morning alley, I picked up a sheet of paper.",
+        "ko": "골목에서 종이 한 장을 주웠다."
+      },
+      "subtitle": {
+        "en": "paper in the alley",
+        "ko": "골목의 종이"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cluttered desk by a window, morning light, seen from behind",
+      "narration": {
+        "en": "At my desk, I wrote one line on it.",
+        "ko": "책상에 앉아 그 위에 한 줄 적었다."
+      },
+      "subtitle": {
+        "en": "one line",
+        "ko": "한 줄"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "concrete stairwell, worn handrail, small figure sitting, long shot",
+      "narration": {
+        "en": "Three days on, the same line was still there.",
+        "ko": "사흘째 같은 줄이 지워지지 않았다."
+      },
+      "subtitle": {
+        "en": "the line that stayed",
+        "ko": "지워지지 않은 줄"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "roadside bus stop, waiting shelter, distant figure, seen from behind",
+      "narration": {
+        "en": "At the bus stop, I read that line again.",
+        "ko": "정류장에서 그 줄을 다시 읽었다."
+      },
+      "subtitle": {
+        "en": "at the bus stop",
+        "ko": "정류장에서"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "kitchen at night, one lamp over the table, small figure, wide shot",
+      "narration": {
+        "en": "At night in the kitchen, I wrote it again.",
+        "ko": "밤 부엌에서 그 줄을 다시 적었다."
+      },
+      "subtitle": {
+        "en": "kitchen at night",
+        "ko": "부엌의 밤"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "desk corner with stacked papers, evening lamp, distant figure, long shot",
+      "narration": {
+        "en": "In the corner of my desk, the same handwriting piled up.",
+        "ko": "책상 구석에 같은 글씨가 쌓였다."
+      },
+      "subtitle": {
+        "en": "stacked handwriting",
+        "ko": "쌓인 글씨"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "half-open wooden drawer, dim room, small figure, wide shot",
+      "narration": {
+        "en": "That drawer still doesn't close all the way.",
+        "ko": "지금도 그 서랍은 잘 닫히지 않는다."
+      },
+      "subtitle": {
+        "en": "the drawer won't close",
+        "ko": "닫히지 않는 서랍"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "window at first light, curtain moving, distant figure, long shot",
+      "narration": {
+        "en": "Time was never short. I made it short.",
+        "ko": "시간은 짧지 않았다. 내가 흘려보낸 만큼 짧아졌다."
+      },
+      "subtitle": {
+        "en": "we made it short",
+        "ko": "짧아진 시간"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
