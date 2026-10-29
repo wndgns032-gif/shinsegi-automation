@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "They Never Sold the Spot",
+  "ko": "그들은 그 자리를 판 적이 없다"
+ },
+ "caption": {
+  "en": "The product was never the app. It was the pause between two scrolls.",
+  "ko": "앱이 상품이 아니었다. 스크롤과 스크롤 사이의 멈춤이었다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "People came to see their friends.",
+    "The money came from beside them."
+   ],
+   "ko": [
+    "사람들은 친구를 보러 왔다.",
+    "돈은 그 옆에서 나왔다."
+   ]
+  },
+  "highlight": {
+   "en": "beside them",
+   "ko": "그 옆에서"
+  }
+ },
+ "moral": {
+  "en": "Money stays where the eyes stop. They never sold that spot.",
+  "ko": "돈은 시선이 머무는 자리에 남는다. 그들은 그 자리를 판 적이 없다."
+ },
+ "cta": {
+  "en": "One company, one scene, every week.",
+  "ko": "회사 하나, 장면 하나, 매주."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The ones who came for friends",
+    "ko": "친구를 보러 온 사람들"
+   },
+   "narration": {
+    "en": "People came to see their friends. The money came from beside them.",
+    "ko": "사람들은 친구를 보러 왔다. 돈은 그 옆에서 나왔다."
+   },
+   "image_hint": {
+    "en": "city crosswalk at dusk, small figures crossing, seen from behind, long shot"
+   },
+   "image_prompt": "city crosswalk at dusk, small figures crossing, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The screen got louder",
+    "ko": "화면은 조금씩 시끄러워졌다"
+   },
+   "narration": {
+    "en": "The screen got louder, little by little. Ads slid in between.",
+    "ko": "화면은 조금씩 시끄러워졌다. 광고가 그 사이에 끼었다."
+   },
+   "image_hint": {
+    "en": "crowded bus interior at night, one passenger looking down at a phone, seen from behind"
+   },
+   "image_prompt": "crowded bus interior at night, one passenger looking down at a phone, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "They bought the photo app",
+    "ko": "사진 앱을 하나 샀다"
+   },
+   "narration": {
+    "en": "They bought a photo app. Nobody paid. Nobody left.",
+    "ko": "사진 앱을 하나 샀다. 돈은 안 냈지만 떠나지 않았다."
+   },
+   "image_hint": {
+    "en": "office desk in the morning, one person stacking papers, distant view"
+   },
+   "image_prompt": "office desk in the morning, one person stacking papers, distant view"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Then the messenger",
+    "ko": "메신저도 샀다"
+   },
+   "narration": {
+    "en": "Then a messenger app. New name. Same habit.",
+    "ko": "메신저도 샀다. 이름만 바뀌고, 습관은 남았다."
+   },
+   "image_hint": {
+    "en": "apartment balcony at night, one person standing alone, seen from behind, wide shot"
+   },
+   "image_prompt": "apartment balcony at night, one person standing alone, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The glasses lab",
+    "ko": "안경 연구소"
+   },
+   "narration": {
+    "en": "The glasses lab kept losing money. Red numbers, year after year.",
+    "ko": "안경 연구소는 계속 적자였다. 매년 빨간 숫자가 찍혔다."
+   },
+   "image_hint": {
+    "en": "empty lab corridor with fluorescent lights, one figure walking away, long shot"
+   },
+   "image_prompt": "empty lab corridor with fluorescent lights, one figure walking away, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "But the machine ran",
+    "ko": "광고는 멈추지 않았다"
+   },
+   "narration": {
+    "en": "But the ad machine never stopped. It stuck to wherever people were.",
+    "ko": "그런데 광고는 멈추지 않았다. 사람이 있는 곳에 붙어 있었다."
+   },
+   "image_hint": {
+    "en": "factory floor at night, one worker small in the middle distance"
+   },
+   "image_prompt": "factory floor at night, one worker small in the middle distance"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Two different rooms",
+    "ko": "버는 곳과 쓰는 곳"
+   },
+   "narration": {
+    "en": "The earning and the spending lived apart. That gap is what held.",
+    "ko": "돈을 버는 곳과 쓰는 곳이 달랐다. 버틴 이유는 그 한 줄이었다."
+   },
+   "image_hint": {
+    "en": "two open doors in a long hallway, one person standing between them, distant"
+   },
+   "image_prompt": "two open doors in a long hallway, one person standing between them, distant"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "Today the whole thing is worth 1.59 trillion.",
+    "ko": "오늘 이 회사의 몸값은 1.59조 달러다."
+   },
+   "image_hint": {
+    "en": "stock board on a wall, one person watching from far, seen from behind"
+   },
+   "image_prompt": "stock board on a wall, one person watching from far, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Midnight, still scrolling",
+    "ko": "자정, 아직 넘긴다"
+   },
+   "narration": {
+    "en": "Someone is still scrolling at midnight. A line of ad passes over them.",
+    "ko": "누군가는 여전히 밤에 화면을 넘긴다. 그 위로 광고가 한 줄 지나간다."
+   },
+   "image_hint": {
+    "en": "dark bedroom at midnight, one figure under a phone glow, seen from behind"
+   },
+   "image_prompt": "dark bedroom at midnight, one figure under a phone glow, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Where the eyes stop",
+    "ko": "시선이 머무는 자리"
+   },
+   "narration": {
+    "en": "Money stays where the eyes stop. They never sold that spot.",
+    "ko": "돈은 시선이 머무는 자리에 남는다. 그들은 그 자리를 판 적이 없다."
+   },
+   "image_hint": {
+    "en": "quiet street corner at dawn, one small figure walking away, long shot"
+   },
+   "image_prompt": "quiet street corner at dawn, one small figure walking away, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-29-stocks",
+ "theme": "stocks",
+ "symbol": "META",
+ "quote": {
+  "text": "Meta Platforms, Inc.",
+  "author": "NASDAQ META"
+ }
+}
