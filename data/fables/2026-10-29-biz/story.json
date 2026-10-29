@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The Same Spot",
+  "ko": "같은 자리"
+ },
+ "caption": {
+  "en": "Skill doesn't arrive. It settles.",
+  "ko": "실력은 오지 않는다. 쌓일 뿐이다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I watched him for a long time.",
+    "Always the same spot."
+   ],
+   "ko": [
+    "나는 그를 오래 봤다.",
+    "늘 같은 자리였다."
+   ]
+  },
+  "highlight": {
+   "en": "the same spot",
+   "ko": "같은 자리"
+  }
+ },
+ "moral": {
+  "en": "The difference never arrives in one day. It settles quietly.",
+  "ko": "차이는 어느 날 오지 않는다. 조용히 쌓인다."
+ },
+ "cta": {
+  "en": "Another scene tomorrow.",
+  "ko": "내일 또 한 장면."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "the same spot",
+    "ko": "늘 같은 자리"
+   },
+   "narration": {
+    "en": "I watched him for a long time. Always the same spot.",
+    "ko": "나는 그를 오래 봤다. 늘 같은 자리였다."
+   },
+   "image_hint": {
+    "en": "small woodworking shop at dawn, one man standing at a bench, seen from behind, long shot"
+   },
+   "image_prompt": "small woodworking shop at dawn, one man standing at a bench, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "slow hands",
+    "ko": "느린 손"
+   },
+   "narration": {
+    "en": "At first his hands were slow. The plane kept snagging.",
+    "ko": "처음엔 손이 느렸다. 대패가 자꾸 걸렸다."
+   },
+   "image_hint": {
+    "en": "cluttered workshop bench, one person planing a board, distant figure, wide shot"
+   },
+   "image_prompt": "cluttered workshop bench, one person planing a board, distant figure, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "shavings",
+    "ko": "바닥의 부스러기"
+   },
+   "narration": {
+    "en": "Wood shavings piled up on the floor. Nobody swept them.",
+    "ko": "바닥에 나무 부스러기가 쌓였다. 아무도 치우지 않았다."
+   },
+   "image_hint": {
+    "en": "workshop floor covered in wood shavings, one man crouching in the corner, seen from behind"
+   },
+   "image_prompt": "workshop floor covered in wood shavings, one man crouching in the corner, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "winter",
+    "ko": "겨울"
+   },
+   "narration": {
+    "en": "I went back that winter. The sound had changed.",
+    "ko": "겨울에 다시 그 방에 갔다. 소리가 달라져 있었다."
+   },
+   "image_hint": {
+    "en": "snowy street outside a small workshop, one figure walking toward the lit door, distant"
+   },
+   "image_prompt": "snowy street outside a small workshop, one figure walking toward the lit door, distant"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "no customers",
+    "ko": "손님은 없었다"
+   },
+   "narration": {
+    "en": "Customers rarely came. The door stayed open anyway.",
+    "ko": "손님은 거의 없었다. 그래도 문은 열려 있었다."
+   },
+   "image_hint": {
+    "en": "empty shop front at dusk, one man sitting inside by the window, seen from behind, long shot"
+   },
+   "image_prompt": "empty shop front at dusk, one man sitting inside by the window, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "he didn't stop",
+    "ko": "멈추지 않았다"
+   },
+   "narration": {
+    "en": "He never seemed to stop. Same motion, again and again.",
+    "ko": "쉬는 날이 없어 보였다. 같은 동작을 다시 반복했다."
+   },
+   "image_hint": {
+    "en": "workshop at night, one man sanding a board under a lamp, seen from behind, wide shot"
+   },
+   "image_prompt": "workshop at night, one man sanding a board under a lamp, seen from behind, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "while I stood there",
+    "ko": "내가 서 있던 동안"
+   },
+   "narration": {
+    "en": "I stood at the door and watched. My hands were the same as before.",
+    "ko": "나는 그 문 앞에 서서 봤다. 내 손은 그대로였다."
+   },
+   "image_hint": {
+    "en": "doorway of a workshop, one man standing outside looking in, seen from behind, long shot"
+   },
+   "image_prompt": "doorway of a workshop, one man standing outside looking in, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "my desk",
+    "ko": "내 책상"
+   },
+   "narration": {
+    "en": "There's something unfinished on my desk. It's been sitting there for days.",
+    "ko": "내 책상엔 미완성인 게 있다. 며칠째 그대로다."
+   },
+   "image_hint": {
+    "en": "desk by a window in an apartment, one person sitting with an unfinished object, back to the camera"
+   },
+   "image_prompt": "desk by a window in an apartment, one person sitting with an unfinished object, back to the camera"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "this morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning I sharpened a pencil. That was all.",
+    "ko": "오늘 아침 연필을 깎았다. 그게 다였다."
+   },
+   "image_hint": {
+    "en": "kitchen table in the morning, one person sharpening a pencil, seen from behind, long shot"
+   },
+   "image_prompt": "kitchen table in the morning, one person sharpening a pencil, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "the difference",
+    "ko": "차이"
+   },
+   "narration": {
+    "en": "The difference didn't arrive in a day. It was piled on that floor.",
+    "ko": "차이는 하루에 오지 않았다. 그 방 바닥에 쌓여 있었다."
+   },
+   "image_hint": {
+    "en": "empty workshop floor at dusk, one small figure standing near the shavings, long shot"
+   },
+   "image_prompt": "empty workshop floor at dusk, one small figure standing near the shavings, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-29-biz",
+ "theme": "biz",
+ "theme_label": "시간이 만드는 차이",
+ "quote": {
+  "text": "skill is an accumulation, not an event",
+  "author": "성공하는 사람의 마인드"
+ }
+}
