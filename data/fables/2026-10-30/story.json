@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-30",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "aristotle-habit",
+    "author": {
+      "en": "Aristotle",
+      "ko": "아리스토텔레스",
+      "zh-cn": "亚里士多德",
+      "fr": "Aristote"
+    },
+    "text": {
+      "en": "We are what we repeatedly do. Excellence, then, is not an act but a habit.",
+      "ko": "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다.",
+      "zh-cn": "重复做的事造就了我们。卓越不是一次行为，而是一种习惯。",
+      "fr": "Nous sommes ce que nous faisons de façon répétée. L'excellence n'est pas un acte, mais une habitude."
+    }
+  },
+  "title": {
+    "en": "The Hand Remembers First",
+    "ko": "손이 먼저 기억한다"
+  },
+  "caption": {
+    "en": "One line leaves a mark. Ten scenes, one habit.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "한 줄이 남긴 것\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I said I'd start tomorrow.",
+        "I said the same last year."
+      ],
+      "ko": [
+        "내일부터 한다고 했다.",
+        "작년에도 같은 말을 했다."
+      ]
+    },
+    "highlight": {
+      "en": "tomorrow",
+      "ko": "내일"
+    }
+  },
+  "moral": {
+    "en": "Excellence doesn't arrive one day. The hand remembers first.",
+    "ko": "탁월함은 어느 날 찾아오지 않는다. 손이 먼저 기억한다."
+  },
+  "characters": "a woman in her late 20s, short black hair, grey sweatshirt, thin notebook in hand",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty library at dawn, long tables, single chair, wide shot",
+      "narration": {
+        "en": "We are what we repeatedly do. Excellence, then, is not an act but a habit. — Aristotle.",
+        "ko": "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다. — 아리스토텔레스."
+      },
+      "subtitle": {
+        "en": "We are what we repeat",
+        "ko": "반복이 곧 나"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "crowded street crossing in the morning, distant small figure, wide shot",
+      "narration": {
+        "en": "I said I'd start tomorrow. I said the same last year",
+        "ko": "내일부터 한다고 했다. 작년에도 같은 말을 했다"
+      },
+      "subtitle": {
+        "en": "Tomorrow, again",
+        "ko": "또 내일"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley bench at sunrise, open notebook, seen from behind, long shot",
+      "narration": {
+        "en": "I opened the notebook on an alley bench.",
+        "ko": "골목 벤치에서 나는 노트를 폈다."
+      },
+      "subtitle": {
+        "en": "Alley bench",
+        "ko": "골목 벤치"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cluttered desk by a window at noon, half-open drawer, seen from behind, long shot",
+      "narration": {
+        "en": "It slid halfway into the desk drawer.",
+        "ko": "노트는 책상 서랍에 반쯤 들어갔다."
+      },
+      "subtitle": {
+        "en": "Closed drawer",
+        "ko": "닫힌 서랍"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "concrete stairwell at dusk, handrail, small figure sitting, wide shot",
+      "narration": {
+        "en": "One sentence came back on the stairwell.",
+        "ko": "계단참에서 문장 하나가 떠올랐다."
+      },
+      "subtitle": {
+        "en": "A sentence on the stairs",
+        "ko": "계단의 문장"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop at night, glowing sign, distant figure standing, long shot",
+      "narration": {
+        "en": "At the bus stop, I wrote it down.",
+        "ko": "정류장에서 그 문장을 수첩에 적었다."
+      },
+      "subtitle": {
+        "en": "Note at the bus stop",
+        "ko": "정류장 메모"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen late at night, steaming kettle, seen from behind, wide shot",
+      "narration": {
+        "en": "In the kitchen, I closed the notebook.",
+        "ko": "부엌에서 물을 끓이며 노트를 덮었다."
+      },
+      "subtitle": {
+        "en": "Notebook closed",
+        "ko": "덮은 노트"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office desk at night, sticky notes along the monitor, distant figure, wide shot",
+      "narration": {
+        "en": "Notes piled up at the edge of my desk.",
+        "ko": "내 책상 구석에 메모지가 한 장씩 쌓였다."
+      },
+      "subtitle": {
+        "en": "Piling notes",
+        "ko": "쌓인 메모지"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "apartment doorway in daylight, cardboard box of notebooks, seen from behind, long shot",
+      "narration": {
+        "en": "The stack is still there. I know its weight.",
+        "ko": "지금도 그 더미의 두께를 손으로 안다."
+      },
+      "subtitle": {
+        "en": "Still that thick",
+        "ko": "아직 그 두께"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "balcony at night, city lights below, small figure leaning, seen from behind, long shot",
+      "narration": {
+        "en": "Excellence doesn't arrive one day. The hand remembers first.",
+        "ko": "탁월함은 어느 날 찾아오지 않는다. 손이 먼저 기억한다."
+      },
+      "subtitle": {
+        "en": "The hand first",
+        "ko": "손이 먼저"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
