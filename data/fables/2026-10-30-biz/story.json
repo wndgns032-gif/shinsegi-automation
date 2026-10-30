@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Not On The Price Tag",
+  "ko": "값표에 없던 것들"
+ },
+ "caption": {
+  "en": "The free things send invoices too.",
+  "ko": "공짜로 받은 것에도 청구서는 온다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Some things come without a price tag.",
+    "Those cost the most."
+   ],
+   "ko": [
+    "값표가 없는 것들이 있다.",
+    "그것들이 제일 비쌌다."
+   ]
+  },
+  "highlight": {
+   "en": "no price tag",
+   "ko": "값표가 없는 것"
+  }
+ },
+ "moral": {
+  "en": "The bill comes later. It comes anyway.",
+  "ko": "값은 나중에 온다. 다만 반드시 온다."
+ },
+ "cta": {
+  "en": "The ones I took without knowing the price come back first.",
+  "ko": "값을 모르고 받은 것부터 떠오른다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "No price tag",
+    "ko": "값표가 없는 것들"
+   },
+   "narration": {
+    "en": "Some things never had a price tag. Those cost me the most.",
+    "ko": "값표가 없는 것들이 있다. 그것들이 제일 비쌌다."
+   },
+   "image_hint": {
+    "en": "empty office corridor at dawn, one distant figure walking away, long shot"
+   },
+   "image_prompt": "empty office corridor at dawn, one distant figure walking away, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The easy way",
+    "ko": "쉬운 길"
+   },
+   "narration": {
+    "en": "He took the easy way. He paid nothing that day.",
+    "ko": "그는 쉬운 길을 택했다. 그날 아무것도 내지 않았다."
+   },
+   "image_hint": {
+    "en": "subway escalator in the morning, one person riding up, seen from behind, wide shot"
+   },
+   "image_prompt": "subway escalator in the morning, one person riding up, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "End of the hallway",
+    "ko": "복도 끝"
+   },
+   "narration": {
+    "en": "He was smiling at the end of the hall. The papers were in someone else's hands.",
+    "ko": "복도 끝에서 그가 웃고 있었다. 서류는 다른 사람 손에 있었다."
+   },
+   "image_hint": {
+    "en": "office building corridor at night, one person standing by a closed door, seen from behind, long shot"
+   },
+   "image_prompt": "office building corridor at night, one person standing by a closed door, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Months later",
+    "ko": "몇 달 뒤"
+   },
+   "narration": {
+    "en": "Months went by. I saw him in the same hallway. He nodded first.",
+    "ko": "몇 달이 지났다. 같은 복도에서 그를 다시 봤다. 그는 먼저 고개를 숙였다."
+   },
+   "image_hint": {
+    "en": "office parking lot at dusk, small figure walking toward the entrance, distant shot"
+   },
+   "image_prompt": "office parking lot at dusk, small figure walking toward the entrance, distant shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Through the glass",
+    "ko": "유리창"
+   },
+   "narration": {
+    "en": "His shape showed in the meeting room glass. Nobody asked him what it cost.",
+    "ko": "회의실 유리창에 그가 비쳤다. 아무도 그에게 값을 묻지 않았다."
+   },
+   "image_hint": {
+    "en": "hallway outside a glass meeting room, one person sitting alone on a bench, seen from behind"
+   },
+   "image_prompt": "hallway outside a glass meeting room, one person sitting alone on a bench, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Stairwell",
+    "ko": "계단"
+   },
+   "narration": {
+    "en": "He spoke first, for once. The debt kept changing hands.",
+    "ko": "그가 처음으로 말했다. 빚은 자리를 옮겨 다녔다."
+   },
+   "image_hint": {
+    "en": "stairwell between floors, one person leaning on the railing, seen from behind, wide shot"
+   },
+   "image_prompt": "stairwell between floors, one person leaning on the railing, seen from behind, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Postponed",
+    "ko": "미뤄진 것"
+   },
+   "narration": {
+    "en": "The price only got postponed. It never went away.",
+    "ko": "값은 미뤄질 뿐이었다. 사라지지는 않았다."
+   },
+   "image_hint": {
+    "en": "desk by a window at night, one person sitting with papers spread out, back to the camera, long shot"
+   },
+   "image_prompt": "desk by a window at night, one person sitting with papers spread out, back to the camera, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "My side",
+    "ko": "내 쪽"
+   },
+   "narration": {
+    "en": "I counted the things I'd postponed. I ran out of fingers.",
+    "ko": "나는 미뤄둔 것들을 세어봤다. 손가락이 모자랐다."
+   },
+   "image_hint": {
+    "en": "kitchen counter at midnight, one person standing still, seen from behind, wide shot"
+   },
+   "image_prompt": "kitchen counter at midnight, one person standing still, seen from behind, wide shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning he was already there. Doing what nobody asked him to.",
+    "ko": "오늘 아침 그는 먼저 와 있었다. 아무도 시키지 않은 일을 했다."
+   },
+   "image_hint": {
+    "en": "empty office before sunrise, one small figure at a desk with half the lights on, distant shot"
+   },
+   "image_prompt": "empty office before sunrise, one small figure at a desk with half the lights on, distant shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The bill",
+    "ko": "청구서"
+   },
+   "narration": {
+    "en": "The bill comes later. It comes anyway.",
+    "ko": "값은 나중에 온다. 다만 반드시 온다."
+   },
+   "image_hint": {
+    "en": "city street after rain, tiny figure walking away with a bag, long shot"
+   },
+   "image_prompt": "city street after rain, tiny figure walking away with a bag, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-30-biz",
+ "theme": "biz",
+ "theme_label": "대가를 치르는 법",
+ "quote": {
+  "text": "everything has a hidden price",
+  "author": "성공하는 사람의 마인드"
+ }
+}
