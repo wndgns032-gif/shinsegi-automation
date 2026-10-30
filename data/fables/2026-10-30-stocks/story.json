@@ -1,0 +1,201 @@
+{
+ "title": {
+  "en": "The company nobody leaves",
+  "ko": "아무도 떠나지 않는 회사"
+ },
+ "caption": {
+  "en": "Apple didn't win with new things. It won by holding what people already owned.",
+  "ko": "애플은 새것으로 이기지 않았다. 사람들이 이미 가진 것을 놓지 못하게 했다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A new phone dropped.",
+    "Nobody ran."
+   ],
+   "ko": [
+    "새 폰이 나왔다.",
+    "아무도 뛰지 않았다."
+   ]
+  },
+  "highlight": {
+   "en": "Nobody ran.",
+   "ko": "아무도 뛰지 않았다."
+  }
+ },
+ "moral": {
+  "en": [
+   "People rarely throw away what's already theirs.",
+   "That's why it stays."
+  ],
+  "ko": [
+   "사람은 제 것을 쉽게 버리지 않는다.",
+   "그것이 오래 남는 이유다."
+  ]
+ },
+ "cta": {
+  "en": "Next: another company, watched from the same distance.",
+  "ko": "다음 회사도 같은 거리에서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "A new one came out",
+    "ko": "새 폰이 나왔다"
+   },
+   "narration": {
+    "en": "A new phone dropped. Nobody ran.",
+    "ko": "새 폰이 나왔다. 아무도 뛰지 않았다."
+   },
+   "image_hint": {
+    "en": "electronics store window at night, one person standing outside, seen from behind, long shot"
+   },
+   "image_prompt": "electronics store window at night, one person standing outside, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "I didn't go in",
+    "ko": "안으로 들어가지 않았다"
+   },
+   "narration": {
+    "en": "I stood outside a while. I didn't go in.",
+    "ko": "나는 그 앞에 오래 서 있었다. 안으로는 들어가지 않았다."
+   },
+   "image_hint": {
+    "en": "city sidewalk in the rain, one person under an awning, distant figure, wide shot"
+   },
+   "image_prompt": "city sidewalk in the rain, one person under an awning, distant figure, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "What was already here",
+    "ko": "이미 여기 있던 것들"
+   },
+   "narration": {
+    "en": "My photos live here. So do the cables and the watch.",
+    "ko": "내 사진첩은 여기 있다. 충전기도, 손목시계도."
+   },
+   "image_hint": {
+    "en": "kitchen table in the morning, one person sorting cables and earbuds, back to the camera"
+   },
+   "image_prompt": "kitchen table in the morning, one person sorting cables and earbuds, back to the camera"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Five trillion",
+    "ko": "오조 달러"
+   },
+   "narration": {
+    "en": "The company passed five trillion dollars. Nobody was buying. They were staying.",
+    "ko": "회사 값은 오조 달러를 넘었다. 사는 게 아니라, 남아 있는 것이었다."
+   },
+   "image_hint": {
+    "en": "office window at dusk, one small figure standing far from the glass, wide shot"
+   },
+   "image_prompt": "office window at dusk, one small figure standing far from the glass, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Looked the same",
+    "ko": "비슷했다"
+   },
+   "narration": {
+    "en": "The new one looked like last year's. People traded up anyway.",
+    "ko": "새 폰은 작년 폰과 비슷했다. 그래도 다들 바꿨다."
+   },
+   "image_hint": {
+    "en": "phone repair shop counter, one customer waiting, seen from behind, long shot"
+   },
+   "image_prompt": "phone repair shop counter, one customer waiting, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Leaving costs something",
+    "ko": "떠나면 잃는 것"
+   },
+   "narration": {
+    "en": "Leaving meant losing the photos.",
+    "ko": "떠나려면 사진을 버려야 했다."
+   },
+   "image_hint": {
+    "en": "living room sofa at night, one person scrolling, viewed from behind across the room"
+   },
+   "image_prompt": "living room sofa at night, one person scrolling, viewed from behind across the room"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Not the price",
+    "ko": "값이 아니었다"
+   },
+   "narration": {
+    "en": "They weren't counting the price. They were counting what they'd lose.",
+    "ko": "사람들이 계산한 건 값이 아니었다. 버리는 비용이었다."
+   },
+   "image_hint": {
+    "en": "photo print shop aisle, one person holding a stack of prints, back turned, wide shot"
+   },
+   "image_prompt": "photo print shop aisle, one person holding a stack of prints, back turned, wide shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Last night",
+    "ko": "어젯밤"
+   },
+   "narration": {
+    "en": "Last night I put on the watch. The phone was already in my pocket.",
+    "ko": "나도 어젯밤 시계를 찼다. 폰은 이미 주머니에 있었다."
+   },
+   "image_hint": {
+    "en": "bedroom dresser at midnight, one person buckling a watch, seen from behind"
+   },
+   "image_prompt": "bedroom dresser at midnight, one person buckling a watch, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning I left the charger home. That was the whole problem.",
+    "ko": "오늘 아침 충전기를 두고 나왔다. 종일 불안했다. 그것뿐이었다."
+   },
+   "image_hint": {
+    "en": "office desk in the morning, one person patting empty pockets, distant figure through a doorway"
+   },
+   "image_prompt": "office desk in the morning, one person patting empty pockets, distant figure through a doorway"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Why it stays",
+    "ko": "오래 남는 이유"
+   },
+   "narration": {
+    "en": "People rarely throw away what's already theirs. That's why it stays.",
+    "ko": "사람은 제 것을 쉽게 버리지 않는다. 그것이 오래 남는 이유다."
+   },
+   "image_hint": {
+    "en": "train platform at dawn, one person standing alone, small figure in the middle distance"
+   },
+   "image_prompt": "train platform at dawn, one person standing alone, small figure in the middle distance"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-30-stocks",
+ "theme": "stocks",
+ "symbol": "AAPL",
+ "quote": {
+  "text": "Apple Inc.",
+  "author": "NASDAQ AAPL"
+ }
+}
