@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-31",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "earhart-decision",
+    "author": {
+      "en": "Amelia Earhart",
+      "ko": "아멜리아 에어하트",
+      "zh-cn": "阿梅莉亚·埃尔哈特",
+      "fr": "Amelia Earhart"
+    },
+    "text": {
+      "en": "The most difficult thing is the decision to act. The rest is merely tenacity.",
+      "ko": "가장 어려운 건 행동하기로 결심하는 일이다. 그다음은 그저 버티는 것뿐이다.",
+      "zh-cn": "最难的是下定决心去行动，剩下的只是坚持。",
+      "fr": "Le plus difficile, c'est de décider d'agir. Le reste n'est que persévérance."
+    }
+  },
+  "title": {
+    "en": "After the Decision",
+    "ko": "결심 다음"
+  },
+  "caption": {
+    "en": "The hardest part is the first move.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "가장 어려운 건 첫발이었다\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I'll start tomorrow.",
+        "I've said that a hundred times."
+      ],
+      "ko": [
+        "내일부터 하겠다.",
+        "그 말을 나는 백 번 했다."
+      ]
+    },
+    "highlight": {
+      "en": "a hundred times",
+      "ko": "백 번"
+    }
+  },
+  "moral": {
+    "en": "The first step was the heaviest. After that, my feet just kept going.",
+    "ko": "가장 무거운 건 첫발이었다. 그 뒤로는 발이 알아서 갔다."
+  },
+  "characters": "a man in his 30s, short black hair, grey jacket, worn sneakers",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty wooden dock at dawn, calm water, rope on a post, wide shot",
+      "narration": {
+        "en": "The most difficult thing is the decision to act. The rest is merely tenacity. — Amelia Earhart.",
+        "ko": "가장 어려운 건 행동하기로 결심하는 일이다. 그다음은 그저 버티는 것뿐이다. — 아멜리아 에어하트."
+      },
+      "subtitle": {
+        "en": "The decision to act",
+        "ko": "행동하기로 결심하는 일"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "empty crosswalk before dawn, traffic light, distant figure, long shot",
+      "narration": {
+        "en": "I'll start tomorrow. I've said that a hundred times",
+        "ko": "내일부터 하겠다. 그 말을 나는 백 번 했다"
+      },
+      "subtitle": {
+        "en": "Tomorrow, I said",
+        "ko": "내일부터"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley in the morning, shuttered shops, small figure standing still, long shot",
+      "narration": {
+        "en": "I stood at the end of the alley for a while.",
+        "ko": "나는 골목 끝에서 오래 서 있었다."
+      },
+      "subtitle": {
+        "en": "End of the alley",
+        "ko": "골목 끝"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cluttered desk by a window, blank paper, morning light, seen from behind",
+      "narration": {
+        "en": "I left a blank sheet on the desk.",
+        "ko": "책상 위에 빈 종이를 펴 두었다."
+      },
+      "subtitle": {
+        "en": "One blank sheet",
+        "ko": "빈 종이 한 장"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "concrete stairwell, handrail, small figure pausing on a step, wide shot",
+      "narration": {
+        "en": "Halfway up the stairs, I stopped twice.",
+        "ko": "계단을 오르다가 두 번 멈췄다."
+      },
+      "subtitle": {
+        "en": "Two stops",
+        "ko": "두 번의 정지"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop at dusk, empty shelter, distant figure sitting, wide shot",
+      "narration": {
+        "en": "The bus never came. I kept sitting.",
+        "ko": "버스는 오지 않았고 나는 앉아 있었다."
+      },
+      "subtitle": {
+        "en": "The bus that didn't come",
+        "ko": "오지 않은 버스"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen at night, single lamp, figure at the counter, seen from behind",
+      "narration": {
+        "en": "I turned on the kitchen light and wrote one line.",
+        "ko": "부엌 불을 켜 두고 한 줄을 적었다."
+      },
+      "subtitle": {
+        "en": "One line",
+        "ko": "한 줄"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "wooden shelf in a dim room, stacked notebooks, small figure, wide shot",
+      "narration": {
+        "en": "Paper piled up in the corner of my desk.",
+        "ko": "책상 구석에 종이가 한 장씩 쌓였다."
+      },
+      "subtitle": {
+        "en": "Paper, one sheet at a time",
+        "ko": "한 장씩 쌓인 종이"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "window sill, one worn book, light on the floor, distant figure, long shot",
+      "narration": {
+        "en": "There's a new sheet sitting there now.",
+        "ko": "그 자리에 지금 새 종이가 놓여 있다."
+      },
+      "subtitle": {
+        "en": "A new sheet, right now",
+        "ko": "지금 그 자리"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty road at dawn, long straight path, distant small figure walking, long shot",
+      "narration": {
+        "en": "The first step was the heaviest. After that, my feet just kept going.",
+        "ko": "가장 무거운 건 첫발이었다. 그 뒤로는 발이 알아서 갔다."
+      },
+      "subtitle": {
+        "en": "The rest is just walking",
+        "ko": "나머지는 걷는 일"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
