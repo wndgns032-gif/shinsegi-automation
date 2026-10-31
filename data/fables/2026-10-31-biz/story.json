@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "What the Loss Told Me",
+  "ko": "잃은 것이 알려준 것"
+ },
+ "caption": {
+  "en": "The deal fell through. The blank space was the only honest part.",
+  "ko": "계약이 깨진 날. 남은 건 빈칸 하나였다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The envelope came back.",
+    "Nobody had opened it."
+   ],
+   "ko": [
+    "봉투가 돌아왔다.",
+    "아무도 뜯지 않았다."
+   ]
+  },
+  "highlight": {
+   "en": "came back",
+   "ko": "돌아왔다"
+  }
+ },
+ "moral": {
+  "en": "The loss wasn't an answer. It was a mark.",
+  "ko": "손실은 답이 아니었다. 표시였다."
+ },
+ "cta": {
+  "en": "If this sounded familiar, you've already read the sign.",
+  "ko": "익숙하게 들렸다면, 이미 본 표시다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The envelope came back",
+    "ko": "봉투가 돌아왔다"
+   },
+   "narration": {
+    "en": "The envelope came back. Nobody had opened it.",
+    "ko": "봉투가 돌아왔다. 아무도 뜯지 않았다."
+   },
+   "image_hint": {
+    "en": "office lobby at night, one person holding a returned envelope, seen from behind, long shot"
+   },
+   "image_prompt": "office lobby at night, one person holding a returned envelope, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Nobody said anything",
+    "ko": "아무도 말하지 않았다"
+   },
+   "narration": {
+    "en": "Nobody said anything. The papers stayed on the desk.",
+    "ko": "아무도 말하지 않았다. 서류만 책상에 남았다."
+   },
+   "image_hint": {
+    "en": "open-plan office after hours, one person sitting still at a desk, wide shot, back to the camera"
+   },
+   "image_prompt": "open-plan office after hours, one person sitting still at a desk, wide shot, back to the camera"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Same sheet, all night",
+    "ko": "밤새 같은 표"
+   },
+   "narration": {
+    "en": "He read the same sheet all night. The light flickered once.",
+    "ko": "그는 밤새 같은 표를 봤다. 형광등이 한 번 깜빡였다."
+   },
+   "image_hint": {
+    "en": "small office at two in the morning, one person at a desk under fluorescent light, distant figure"
+   },
+   "image_prompt": "small office at two in the morning, one person at a desk under fluorescent light, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A week passed",
+    "ko": "일주일이 지났다"
+   },
+   "narration": {
+    "en": "A week passed. Nothing happened. Rain on the window.",
+    "ko": "일주일이 지났다. 아무 일도 없었다. 창밖엔 비가 왔다."
+   },
+   "image_hint": {
+    "en": "office window on a rainy afternoon, one person standing and looking out, seen from behind"
+   },
+   "image_prompt": "office window on a rainy afternoon, one person standing and looking out, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "One chair stayed empty",
+    "ko": "의자 하나가 비어 있었다"
+   },
+   "narration": {
+    "en": "He explained it again. Only nodding. One chair stayed empty.",
+    "ko": "같은 설명을 다시 했다. 고개만 끄덕였다. 의자 하나가 비어 있었다."
+   },
+   "image_hint": {
+    "en": "meeting room with empty chairs, one person standing mid-sentence, long shot"
+   },
+   "image_prompt": "meeting room with empty chairs, one person standing mid-sentence, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The loss spoke first",
+    "ko": "잃은 게 먼저 알려줬다"
+   },
+   "narration": {
+    "en": "The loss spoke first. It showed where the gap was.",
+    "ko": "잃은 게 먼저 알려줬다. 어디가 비었는지."
+   },
+   "image_hint": {
+    "en": "warehouse at dawn, one person facing empty shelves, back to the camera, wide shot"
+   },
+   "image_prompt": "warehouse at dawn, one person facing empty shelves, back to the camera, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The blank was more accurate",
+    "ko": "빈칸이 더 정확했다"
+   },
+   "narration": {
+    "en": "He folded the sheet. He looked at the blank. The blank was more accurate.",
+    "ko": "그는 표를 접었다. 빈칸을 봤다. 빈칸이 더 정확했다."
+   },
+   "image_hint": {
+    "en": "desk at dawn, one person folding a sheet of paper, small figure, wide shot"
+   },
+   "image_prompt": "desk at dawn, one person folding a sheet of paper, small figure, wide shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "There's a blank on my desk too",
+    "ko": "내 책상에도 빈칸이 있다"
+   },
+   "narration": {
+    "en": "There's a blank on my desk too. I don't erase it.",
+    "ko": "내 책상에도 빈칸이 있다. 지우지 않는다."
+   },
+   "image_hint": {
+    "en": "kitchen table in the early morning, one person sitting with an open notebook, seen from behind"
+   },
+   "image_prompt": "kitchen table in the early morning, one person sitting with an open notebook, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning I opened the old ledger",
+    "ko": "오늘 아침, 지난 장부를 폈다"
+   },
+   "narration": {
+    "en": "This morning I opened the old ledger. My hand stopped.",
+    "ko": "오늘 아침, 지난 장부를 다시 폈다. 손이 멈췄다."
+   },
+   "image_hint": {
+    "en": "subway platform in the morning, one person standing with a folded paper, distant figure, long shot"
+   },
+   "image_prompt": "subway platform in the morning, one person standing with a folded paper, distant figure, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Not an answer. A mark.",
+    "ko": "답이 아니라 표시였다"
+   },
+   "narration": {
+    "en": "The loss wasn't an answer. It was a mark showing where to look.",
+    "ko": "손실은 답이 아니었다. 어디를 봐야 할지 알려준 표시였다."
+   },
+   "image_hint": {
+    "en": "empty road at dawn, one small figure walking away, long shot"
+   },
+   "image_prompt": "empty road at dawn, one small figure walking away, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-31-biz",
+ "theme": "biz",
+ "theme_label": "불확실성을 다루는 법",
+ "quote": {
+  "text": "loss is information",
+  "author": "성공하는 사람의 마인드"
+ }
+}
