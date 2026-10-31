@@ -1,0 +1,232 @@
+{
+  "date": "2026-11-01",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "frankl-the-space",
+    "author": {
+      "en": "Viktor Frankl",
+      "ko": "빅터 프랭클",
+      "zh-cn": "维克多·弗兰克尔",
+      "fr": "Viktor Frankl"
+    },
+    "text": {
+      "en": "Between stimulus and response there is a space. In that space lies our freedom.",
+      "ko": "자극과 반응 사이에는 공간이 있다. 그 공간에 우리의 자유가 있다.",
+      "zh-cn": "在刺激与回应之间存在一段距离，成长与自由的关键正在那里。",
+      "fr": "Entre la stimulation et la réponse, il y a un espace. Dans cet espace se trouve notre liberté."
+    }
+  },
+  "title": {
+    "en": "The Gap",
+    "ko": "그 틈",
+    "zh-cn": "那段空隙",
+    "fr": "Le vide"
+  },
+  "caption": {
+    "en": "Viktor Frankl — the space between stimulus and response\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "빅터 프랭클 — 자극과 반응 사이의 공간\n\n#명언 #오늘의명언 #우화 #위로 #동기부여",
+    "zh-cn": "维克多·弗兰克尔 — 刺激与反应之间的空隙",
+    "fr": "Viktor Frankl — l'espace entre le stimulus et la réponse"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "The words come out first.",
+        "The regret comes after."
+      ],
+      "ko": [
+        "말이 먼저 나온다.",
+        "후회는 그 뒤에 온다."
+      ],
+      "zh-cn": [
+        "话先出口。",
+        "后悔跟在后面。"
+      ],
+      "fr": [
+        "Les mots sortent d'abord.",
+        "Le regret vient après."
+      ]
+    },
+    "highlight": {
+      "en": "regret",
+      "ko": "후회",
+      "zh-cn": "后悔",
+      "fr": "regret"
+    }
+  },
+  "moral": {
+    "en": "The gap was always there. I just never stood in it.",
+    "ko": "그 틈은 늘 거기 있었다. 나는 거기 서 본 적이 없다.",
+    "zh-cn": "那段空隙一直在。我只是从未站进去。",
+    "fr": "Ce vide a toujours été là. Je ne m'y suis jamais tenu."
+  },
+  "characters": "a man in his 30s, short black hair, worn grey jacket, tired eyes",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty corridor at dawn, long shadows on the floor, wide shot",
+      "narration": {
+        "en": "Between stimulus and response there is a space. In that space lies our freedom. — Viktor Frankl.",
+        "ko": "자극과 반응 사이에는 공간이 있다. 그 공간에 우리의 자유가 있다. — 빅터 프랭클.",
+        "zh-cn": "刺激与反应之间，有一段空隙。那段空隙里，有我们的自由。",
+        "fr": "Entre le stimulus et la réponse, il y a un espace. Dans cet espace se trouve notre liberté."
+      },
+      "subtitle": {
+        "en": "The space between",
+        "ko": "자극과 반응 사이",
+        "zh-cn": "刺激与反应之间",
+        "fr": "Entre les deux"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "narrow apartment hallway at night, coat half off, distant figure, long shot",
+      "narration": {
+        "en": "The words come out first. The regret comes after",
+        "ko": "말이 먼저 나온다. 후회는 그 뒤에 온다",
+        "zh-cn": "话先出口。后悔跟在后面。",
+        "fr": "Les mots sortent d'abord. Le regret vient après."
+      },
+      "subtitle": {
+        "en": "Regret comes after",
+        "ko": "후회는 그 뒤에",
+        "zh-cn": "后悔在后面",
+        "fr": "Le regret après"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley at dawn, bicycle leaning on a wall, small figure walking away, wide shot",
+      "narration": {
+        "en": "I slammed the door and walked into the alley.",
+        "ko": "현관문을 세게 닫고 골목으로 나왔다.",
+        "zh-cn": "我用力关上门，走进小巷。",
+        "fr": "J'ai claqué la porte et je suis sorti dans la ruelle."
+      },
+      "subtitle": {
+        "en": "The door slammed",
+        "ko": "문이 세게 닫혔다",
+        "zh-cn": "门重重关上",
+        "fr": "La porte claque"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "stairwell landing in the afternoon, dust in the light, figure sitting on steps, wide shot",
+      "narration": {
+        "en": "I sat on the stairs and deleted the message three times.",
+        "ko": "계단참에 앉아 답장을 세 번 지웠다.",
+        "zh-cn": "我坐在楼梯上，删了三遍回信。",
+        "fr": "Assis sur les marches, j'ai effacé le message trois fois."
+      },
+      "subtitle": {
+        "en": "Three deletions",
+        "ko": "지운 답장",
+        "zh-cn": "删掉的回信",
+        "fr": "Trois effacements"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop at dusk, empty bench, distant figure standing, wide shot",
+      "narration": {
+        "en": "At the bus stop I let two buses go by.",
+        "ko": "정류장에서 버스 두 대를 그냥 보냈다.",
+        "zh-cn": "在车站，我放走了两班车。",
+        "fr": "À l'arrêt, j'ai laissé passer deux bus."
+      },
+      "subtitle": {
+        "en": "Two buses",
+        "ko": "그냥 보낸 버스",
+        "zh-cn": "放走的两班车",
+        "fr": "Deux bus"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen at night, one glass on the counter, figure by the sink, seen from behind",
+      "narration": {
+        "en": "In the kitchen I drank a glass of water before I spoke.",
+        "ko": "부엌에서 물 한 컵을 마시고 말했다.",
+        "zh-cn": "在厨房喝完一杯水，我才开口。",
+        "fr": "Dans la cuisine, j'ai bu un verre d'eau avant de parler."
+      },
+      "subtitle": {
+        "en": "One glass first",
+        "ko": "물 한 컵",
+        "zh-cn": "先喝一杯水",
+        "fr": "Un verre d'abord"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "desk by a window late at night, one apple and a dark lamp, seen from behind",
+      "narration": {
+        "en": "I put an apple on the desk and turned off the light.",
+        "ko": "책상 위에 사과 하나를 놓고 불을 껐다.",
+        "zh-cn": "我在桌上放了一个苹果，关灯。",
+        "fr": "J'ai posé une pomme sur le bureau et éteint la lampe."
+      },
+      "subtitle": {
+        "en": "One apple left",
+        "ko": "사과 하나",
+        "zh-cn": "留下的苹果",
+        "fr": "Une pomme"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office window in the afternoon, blinds half open, figure standing still, seen from behind",
+      "narration": {
+        "en": "Before he answers, he looks out the window.",
+        "ko": "그는 대답 전에 창밖을 본다.",
+        "zh-cn": "回答之前，他看了一眼窗外。",
+        "fr": "Avant de répondre, il regarde par la fenêtre."
+      },
+      "subtitle": {
+        "en": "Before the answer",
+        "ko": "창밖을 한 번",
+        "zh-cn": "回答之前",
+        "fr": "Avant la réponse"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "crowded subway car at rush hour, hands on straps, one figure standing still, wide shot",
+      "narration": {
+        "en": "That gap is in front of me now.",
+        "ko": "지금 내 앞에도 그 틈이 있다.",
+        "zh-cn": "此刻，那段空隙也在眼前。",
+        "fr": "Ce vide est devant moi, maintenant."
+      },
+      "subtitle": {
+        "en": "In front of me now",
+        "ko": "지금 내 앞에도",
+        "zh-cn": "此刻就在眼前",
+        "fr": "Devant moi, là"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "pedestrian bridge over a night road, one distant small figure walking, wide shot",
+      "narration": {
+        "en": "The gap was always there. I just never stood in it.",
+        "ko": "그 틈은 늘 거기 있었다. 나는 거기 서 본 적이 없다.",
+        "zh-cn": "那段空隙一直在。我只是从未站进去。",
+        "fr": "Ce vide a toujours été là. Je ne m'y suis jamais tenu."
+      },
+      "subtitle": {
+        "en": "Never stood in it",
+        "ko": "거기 서 본 적이 없다",
+        "zh-cn": "从未站进去",
+        "fr": "Jamais dedans"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
