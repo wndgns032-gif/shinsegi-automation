@@ -1,0 +1,201 @@
+{
+ "title": {
+  "en": "The Quiet Side of the Crowd",
+  "ko": "사람을 모은 쪽은 조용했다"
+ },
+ "caption": {
+  "en": "A small box beside the feed changed the whole company.",
+  "ko": "화면 옆 작은 칸 하나가 회사를 바꿔놓았다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Money follows crowds.",
+    "Someone saw that first."
+   ],
+   "ko": [
+    "사람이 모이는 곳에 돈이 붙는다.",
+    "그걸 먼저 본 쪽이 이겼다."
+   ]
+  },
+  "highlight": {
+   "en": "crowds",
+   "ko": "사람"
+  }
+ },
+ "moral": {
+  "en": [
+   "The ones who gathered people stayed quiet.",
+   "The noise was always outside."
+  ],
+  "ko": [
+   "사람을 모은 쪽은 조용했다.",
+   "시끄러운 건 늘 바깥이었다."
+  ]
+ },
+ "cta": {
+  "en": "Next company, same seat.",
+  "ko": "다음 회사도 이 자리에서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Money follows crowds.",
+    "ko": "사람이 모이는 곳에 돈이 붙는다."
+   },
+   "narration": {
+    "en": "Money follows crowds. Someone saw it first.",
+    "ko": "사람이 모이는 곳에 돈이 붙는다. 그걸 먼저 본 쪽이 이겼다."
+   },
+   "image_hint": {
+    "en": "city street at dusk from above, one small figure crossing, seen from behind, wide shot"
+   },
+   "image_prompt": "city street at dusk from above, one small figure crossing, seen from behind, wide shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "A dorm room, at night.",
+    "ko": "기숙사 방, 밤."
+   },
+   "narration": {
+    "en": "It started in one room. The servers kept dying.",
+    "ko": "방 하나에서 시작됐다. 서버가 자꾸 죽었다."
+   },
+   "image_hint": {
+    "en": "dorm room at night, one person sitting at a desk, seen from behind, long shot"
+   },
+   "image_prompt": "dorm room at night, one person sitting at a desk, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A small box appeared.",
+    "ko": "작은 칸이 생겼다."
+   },
+   "narration": {
+    "en": "A small box appeared beside the feed. People scrolled past it.",
+    "ko": "화면 옆에 작은 칸이 생겼다. 사람들은 그냥 지나쳤다."
+   },
+   "image_hint": {
+    "en": "open office at midday, one person adjusting a monitor, distant figure"
+   },
+   "image_prompt": "open office at midday, one person adjusting a monitor, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "They bought a photo app.",
+    "ko": "사진 앱을 샀다."
+   },
+   "narration": {
+    "en": "They bought a photo app. Nobody knew the name.",
+    "ko": "사진 한 장 올리는 앱을 샀다. 이름도 낯설었다."
+   },
+   "image_hint": {
+    "en": "street corner at dusk, one person walking with a phone, seen from behind, long shot"
+   },
+   "image_prompt": "street corner at dusk, one person walking with a phone, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "They reached into the air.",
+    "ko": "허공을 짚었다."
+   },
+   "narration": {
+    "en": "They put on glasses and grabbed at air. Even the staff looked confused.",
+    "ko": "안경을 쓰고 허공을 짚었다. 직원들도 고개를 갸우뚱했다."
+   },
+   "image_hint": {
+    "en": "empty conference room, one person standing alone facing a wall screen, distant figure"
+   },
+   "image_prompt": "empty conference room, one person standing alone facing a wall screen, distant figure"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The room went quiet.",
+    "ko": "회의실이 조용해졌다."
+   },
+   "narration": {
+    "en": "The room went quiet. The number halved.",
+    "ko": "회의실이 조용해졌다. 숫자는 반으로 줄었다."
+   },
+   "image_hint": {
+    "en": "glass office corridor at night, one person standing still, seen from behind, long shot"
+   },
+   "image_prompt": "glass office corridor at night, one person standing still, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Everyone was already inside.",
+    "ko": "사람들은 이미 그 안에 있었다."
+   },
+   "narration": {
+    "en": "Everyone was already inside. Nothing new had to be built.",
+    "ko": "사람들은 이미 그 안에 있었다. 새로 만들 게 없었다."
+   },
+   "image_hint": {
+    "en": "subway car at night, one person sitting by the window, back to the camera"
+   },
+   "image_prompt": "subway car at night, one person sitting by the window, back to the camera"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "One and a half trillion.",
+    "ko": "시총 1조 5천억 달러."
+   },
+   "narration": {
+    "en": "One and a half trillion dollars. Made by a line of ads.",
+    "ko": "시총 1조 5천억 달러. 광고 한 줄이 그걸 만들었다."
+   },
+   "image_hint": {
+    "en": "server room corridor, one technician walking away, distant figure"
+   },
+   "image_prompt": "server room corridor, one technician walking away, distant figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning on the train.",
+    "ko": "오늘 아침 지하철."
+   },
+   "narration": {
+    "en": "This morning on the train. Every head was down.",
+    "ko": "오늘 아침 지하철. 모두 고개를 숙이고 있었다."
+   },
+   "image_hint": {
+    "en": "crowded subway platform at rush hour, one person standing still, seen from behind, long shot"
+   },
+   "image_prompt": "crowded subway platform at rush hour, one person standing still, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The noise was always outside.",
+    "ko": "시끄러운 건 늘 바깥이었다."
+   },
+   "narration": {
+    "en": "The ones who gathered people stayed quiet. The noise was always outside.",
+    "ko": "사람을 모은 쪽은 조용했다. 시끄러운 건 늘 바깥이었다."
+   },
+   "image_hint": {
+    "en": "rooftop at dawn, one small figure at the railing, seen from behind, wide shot"
+   },
+   "image_prompt": "rooftop at dawn, one small figure at the railing, seen from behind, wide shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-10-31-stocks",
+ "theme": "stocks",
+ "symbol": "META",
+ "quote": {
+  "text": "Meta Platforms, Inc.",
+  "author": "NASDAQ META"
+ }
+}
