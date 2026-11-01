@@ -1,0 +1,196 @@
+{
+  "date": "2026-11-02",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "confucius-practice",
+    "author": {
+      "en": "Confucius",
+      "ko": "공자",
+      "zh-cn": "孔子",
+      "fr": "Confucius"
+    },
+    "text": {
+      "en": "To learn and then to practice it in due time — is that not a pleasure?",
+      "ko": "배우고 때때로 익히면, 또한 기쁘지 아니한가.",
+      "zh-cn": "学而时习之，不亦说乎。",
+      "fr": "Apprendre, puis mettre en pratique au moment voulu : n'est-ce pas une joie ?"
+    }
+  },
+  "title": {
+    "en": "Learned and Practiced",
+    "ko": "배우고 익힌다는 것"
+  },
+  "caption": {
+    "en": "Reading fades. Doing stays.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "읽은 것은 사라지고, 해본 것만 남는다\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Tomorrow I'll start.",
+        "I've said that a hundred times."
+      ],
+      "ko": [
+        "내일부터 하겠다.",
+        "그 말을 나는 백 번 했다."
+      ]
+    },
+    "highlight": {
+      "en": "a hundred times",
+      "ko": "백 번"
+    }
+  },
+  "moral": {
+    "en": "What I read fades. What I did stays in the hands.",
+    "ko": "읽은 것은 사라졌다. 해본 것만 손에 남았다."
+  },
+  "characters": "a man in his 30s, short black hair, thin frame, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "empty stone courtyard at dawn, low mist, wooden gate, long shot",
+      "narration": {
+        "en": "To learn and then to practice it in due time — is that not a pleasure. — Confucius.",
+        "ko": "배우고 때때로 익히면, 또한 기쁘지 아니한가. — 공자.",
+        "zh-cn": "学而时习之，不亦说乎。"
+      },
+      "subtitle": {
+        "en": "learn, then practice",
+        "ko": "배우고, 익히고",
+        "zh-cn": "学而时习"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "apartment window at dawn, thin curtain, small figure standing, long shot",
+      "narration": {
+        "en": "Tomorrow I'll start. I've said that a hundred times",
+        "ko": "내일부터 하겠다. 그 말을 나는 백 번 했다",
+        "zh-cn": "明天就开始。这句话我说了一百遍。"
+      },
+      "subtitle": {
+        "en": "said a hundred times",
+        "ko": "백 번 한 말",
+        "zh-cn": "第一百遍"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "narrow alley in morning, bicycle against wall, seen from behind, long shot",
+      "narration": {
+        "en": "I opened the book at the end of the alley.",
+        "ko": "골목 끝에서 나는 책을 폈다.",
+        "zh-cn": "巷子尽头，我翻开了那本书。"
+      },
+      "subtitle": {
+        "en": "end of the alley",
+        "ko": "골목 끝",
+        "zh-cn": "巷子尽头"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "desk by a window in daylight, open book, seen from behind, wide shot",
+      "narration": {
+        "en": "Not one line came in. I closed it.",
+        "ko": "한 줄도 눈에 들어오지 않았다.",
+        "zh-cn": "一行也读不进去。我合上了。"
+      },
+      "subtitle": {
+        "en": "not one line",
+        "ko": "한 줄도",
+        "zh-cn": "一行也"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "concrete stairwell, cold light, sitting figure, long shot",
+      "narration": {
+        "en": "I sat on the stairs and did nothing.",
+        "ko": "계단에 앉아 아무것도 하지 않았다.",
+        "zh-cn": "坐在楼梯上，什么也没做。"
+      },
+      "subtitle": {
+        "en": "did nothing",
+        "ko": "아무것도 안 함",
+        "zh-cn": "什么也没做"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bus stop in the afternoon, empty bench, distant figure sitting, wide shot",
+      "narration": {
+        "en": "At the bus stop I took the book out again.",
+        "ko": "정류장에서 그 책을 다시 꺼냈다.",
+        "zh-cn": "在公交站，我又把那本书拿出来。"
+      },
+      "subtitle": {
+        "en": "took it out again",
+        "ko": "다시 꺼낸 책",
+        "zh-cn": "又拿出了书"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "small kitchen at night, one lamp, cup on table, seen from behind, long shot",
+      "narration": {
+        "en": "In the kitchen that night I read the same line.",
+        "ko": "부엌에서 같은 줄을 또 읽었다.",
+        "zh-cn": "那天夜里，在厨房读同一行。"
+      },
+      "subtitle": {
+        "en": "the same line",
+        "ko": "같은 줄",
+        "zh-cn": "同一行"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office desk corner at night, stacked papers, distant small figure, wide shot",
+      "narration": {
+        "en": "Paper piled one sheet a day in the desk corner.",
+        "ko": "책상 구석에 종이가 한 장씩 쌓였다.",
+        "zh-cn": "桌角每天多一张纸。"
+      },
+      "subtitle": {
+        "en": "one sheet a day",
+        "ko": "한 장씩",
+        "zh-cn": "每天一张"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "night window from the street, one light on, distant figure, long shot",
+      "narration": {
+        "en": "I know what sits in that corner now.",
+        "ko": "지금 그 더미가 무엇인지 나는 안다.",
+        "zh-cn": "桌角那堆东西，我现在知道是什么。"
+      },
+      "subtitle": {
+        "en": "that corner, now",
+        "ko": "그 구석, 지금",
+        "zh-cn": "那个角落"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty crossroads at night, one streetlight, distant figure walking, long shot",
+      "narration": {
+        "en": "What I read fades. What I did stays in the hands.",
+        "ko": "읽은 것은 사라졌다. 해본 것만 손에 남았다.",
+        "zh-cn": "读过的会消失。做过的留在手上。"
+      },
+      "subtitle": {
+        "en": "doing stays",
+        "ko": "손에 남은 것",
+        "zh-cn": "留在手上"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
