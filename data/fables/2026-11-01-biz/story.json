@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Three Hours Spent Choosing",
+  "ko": "고르는 데 쓴 세 시간"
+ },
+ "caption": {
+  "en": "Decide late and there is nothing left to fix.",
+  "ko": "결정이 늦으면 고칠 것도 남지 않는다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Same screen, three hours in.",
+    "He was still choosing."
+   ],
+   "ko": [
+    "세 시간째 같은 화면.",
+    "그는 아직 고르는 중이었다."
+   ]
+  },
+  "highlight": {
+   "en": "still choosing",
+   "ko": "고르는 중"
+  }
+ },
+ "moral": {
+  "en": "A wrong call could be fixed. A delayed one left nothing to fix.",
+  "ko": "틀린 결정은 고칠 수 있었다. 미룬 결정은 고칠 게 없었다."
+ },
+ "cta": {
+  "en": "One tab is still open today.",
+  "ko": "오늘도 어딘가에 열린 탭 하나."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Three hours in",
+    "ko": "세 시간째"
+   },
+   "narration": {
+    "en": "He stared at the same screen for three hours. Two options. He couldn't pick one.",
+    "ko": "그는 세 시간째 같은 화면을 봤다. 두 개 중에 하나를 못 골랐다."
+   },
+   "image_hint": {
+    "en": "open-plan office at night, one person sitting at a desk, seen from behind, long shot"
+   },
+   "image_prompt": "open-plan office at night, one person sitting at a desk, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Two columns",
+    "ko": "표 두 개"
+   },
+   "narration": {
+    "en": "He built a spreadsheet. Twenty rows. Half of them still blank.",
+    "ko": "표를 만들었다. 항목은 스무 개였다. 아직 빈칸이 있었다."
+   },
+   "image_hint": {
+    "en": "kitchen table in the morning, one person leaning over papers, distant figure"
+   },
+   "image_prompt": "kitchen table in the morning, one person leaning over papers, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "More advice",
+    "ko": "조언 한 번 더"
+   },
+   "narration": {
+    "en": "He called a friend. Then another. The advice kept growing.",
+    "ko": "지인에게 전화를 걸었다. 조언은 세 번 더 늘었다."
+   },
+   "image_hint": {
+    "en": "apartment balcony at dusk, one person on the phone, back to the camera"
+   },
+   "image_prompt": "apartment balcony at dusk, one person on the phone, back to the camera"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "One week",
+    "ko": "일주일"
+   },
+   "narration": {
+    "en": "A week went by. The spreadsheet got sharper.",
+    "ko": "일주일이 지났다. 표는 더 정교해졌다."
+   },
+   "image_hint": {
+    "en": "cafe window seat in the afternoon, one person typing on a laptop, small figure"
+   },
+   "image_prompt": "cafe window seat in the afternoon, one person typing on a laptop, small figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Gone",
+    "ko": "사라진 자리"
+   },
+   "narration": {
+    "en": "The slot was gone. Someone else had it.",
+    "ko": "그 자리는 사라졌다. 다른 사람이 가져갔다."
+   },
+   "image_hint": {
+    "en": "empty wholesale market at dawn, one person standing still, wide shot"
+   },
+   "image_prompt": "empty wholesale market at dawn, one person standing still, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Theirs",
+    "ko": "그 사람 것"
+   },
+   "narration": {
+    "en": "He saw theirs. Sloppy. But it was already running.",
+    "ko": "그 사람 걸 봤다. 허술했다. 대신 이미 돌아가고 있었다."
+   },
+   "image_hint": {
+    "en": "small print workshop at night, one person at a bench, seen from behind"
+   },
+   "image_prompt": "small print workshop at night, one person at a bench, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Still open",
+    "ko": "아직 열려 있음"
+   },
+   "narration": {
+    "en": "His own file was still open. The cursor blinked.",
+    "ko": "내 표는 아직 열려 있었다. 커서가 깜빡였다."
+   },
+   "image_hint": {
+    "en": "desk by a window at midnight, one person sitting still, back to the camera"
+   },
+   "image_prompt": "desk by a window at midnight, one person sitting still, back to the camera"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Right now",
+    "ko": "지금"
+   },
+   "narration": {
+    "en": "There is a tab like that next to me now. It never closed.",
+    "ko": "지금 내 옆에도 그런 탭이 있다. 닫히지 않았다."
+   },
+   "image_hint": {
+    "en": "office corridor late at night, one person walking away, distant figure"
+   },
+   "image_prompt": "office corridor late at night, one person walking away, distant figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning",
+    "ko": "오늘 아침"
+   },
+   "narration": {
+    "en": "This morning someone hit send. Said they'd fix it after.",
+    "ko": "오늘 아침 누군가 보냈다. 고치겠다고 먼저 말했다."
+   },
+   "image_hint": {
+    "en": "subway platform in the morning, one person holding a phone, seen from behind"
+   },
+   "image_prompt": "subway platform in the morning, one person holding a phone, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Nothing to fix",
+    "ko": "고칠 게 없다"
+   },
+   "narration": {
+    "en": "A wrong call could be fixed. A delayed one left nothing to fix.",
+    "ko": "틀린 결정은 고칠 수 있었다. 미룬 결정은 고칠 게 없었다."
+   },
+   "image_hint": {
+    "en": "rooftop at sunrise, one person standing at the railing, distant figure"
+   },
+   "image_prompt": "rooftop at sunrise, one person standing at the railing, distant figure"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-01-biz",
+ "theme": "biz",
+ "theme_label": "속도와 실행",
+ "quote": {
+  "text": "decide fast, correct later",
+  "author": "성공하는 사람의 마인드"
+ }
+}
