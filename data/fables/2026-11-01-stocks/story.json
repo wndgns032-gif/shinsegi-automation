@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "The company that kept the page blank",
+  "ko": "화면을 비워둔 회사"
+ },
+ "caption": {
+  "en": "One input box, nothing else. Everyone else filled the page.",
+  "ko": "칸 하나, 그게 전부였다. 나머지는 다 채웠다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The internet was loud.",
+    "Their page was almost empty."
+   ],
+   "ko": [
+    "인터넷은 시끄러웠다.",
+    "그 페이지는 비어 있었다."
+   ]
+  },
+  "highlight": {
+   "en": "one box",
+   "ko": "칸 하나"
+  }
+ },
+ "moral": {
+  "en": "Leaving it blank wasn't laziness. It was the hardest choice.",
+  "ko": "비워두는 건 게을러서가 아니었다. 가장 어려운 선택이었다."
+ },
+ "cta": {
+  "en": "Next time I'll watch another company from a distance.",
+  "ko": "다음엔 또 다른 회사를 멀리서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "1998. A blank page.",
+    "ko": "1998년. 빈 화면."
+   },
+   "narration": {
+    "en": "The internet was loud. Their page was almost empty.",
+    "ko": "인터넷은 시끄러웠다. 그 페이지는 비어 있었다."
+   },
+   "image_hint": {
+    "en": "dim office with an old monitor showing an empty white page, one person far away, seen from behind, long shot"
+   },
+   "image_prompt": "dim office with an old monitor showing an empty white page, one person far away, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Everyone else stacked links.",
+    "ko": "다들 링크를 쌓았다."
+   },
+   "narration": {
+    "en": "Other sites stacked links. Banners, lists, noise. I thought the blank one was broken.",
+    "ko": "다른 사이트는 링크를 쌓았다. 배너도, 목록도, 잡동사니도. 나는 그 빈 화면이 고장인 줄 알았다."
+   },
+   "image_hint": {
+    "en": "cluttered desk with a busy web portal on screen, one person leaning back in the dark, distant figure"
+   },
+   "image_prompt": "cluttered desk with a busy web portal on screen, one person leaning back in the dark, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "One word. Enter.",
+    "ko": "단어 하나. 엔터."
+   },
+   "narration": {
+    "en": "I typed one word. The answer came in half a second. That was all it did.",
+    "ko": "단어를 하나 넣었다. 답이 반 초 만에 나왔다. 그게 전부였다."
+   },
+   "image_hint": {
+    "en": "small dorm room at night, one person typing at a desk, seen from behind, long shot"
+   },
+   "image_prompt": "small dorm room at night, one person typing at a desk, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Then a small line appeared.",
+    "ko": "그 옆에 작은 줄이 생겼다."
+   },
+   "narration": {
+    "en": "Years passed. A small line appeared beside the answer. It was an ad. It didn't look like one.",
+    "ko": "몇 년이 지났다. 답 옆에 작은 줄이 붙었다. 광고였다. 티가 안 났다."
+   },
+   "image_hint": {
+    "en": "office corridor with server racks, one person walking away, distant figure, long shot"
+   },
+   "image_prompt": "office corridor with server racks, one person walking away, distant figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Maps, video, mail. Same method.",
+    "ko": "지도도 영상도 같은 방식."
+   },
+   "narration": {
+    "en": "Maps and video started the same way. Empty first. Then one thing.",
+    "ko": "지도도 영상도 같은 방식이었다. 먼저 비우고, 하나만 남겼다."
+   },
+   "image_hint": {
+    "en": "warehouse of stacked cardboard boxes, one person standing in the middle distance, seen from behind"
+   },
+   "image_prompt": "warehouse of stacked cardboard boxes, one person standing in the middle distance, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Empty space scared everyone.",
+    "ko": "빈 공간이 무서웠다."
+   },
+   "narration": {
+    "en": "Everyone was scared of empty space. They kept it.",
+    "ko": "다들 빈 공간이 무서웠다. 저쪽은 그걸 남겨뒀다."
+   },
+   "image_hint": {
+    "en": "library aisle with mostly empty shelves, one person standing still, seen from behind"
+   },
+   "image_prompt": "library aisle with mostly empty shelves, one person standing still, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The money was beside the answer.",
+    "ko": "돈은 답 옆에 있었다."
+   },
+   "narration": {
+    "en": "The money wasn't the answer. It was that one line next to it.",
+    "ko": "돈이 된 건 답이 아니었다. 답 옆의 그 한 줄이었다."
+   },
+   "image_hint": {
+    "en": "conference room at dusk with an empty table, one person by the window, back to the camera"
+   },
+   "image_prompt": "conference room at dusk with an empty table, one person by the window, back to the camera"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Now it's over three trillion.",
+    "ko": "지금은 3조 달러."
+   },
+   "narration": {
+    "en": "Now it's worth over three trillion. And the first screen is still blank.",
+    "ko": "지금 값은 3조 달러가 넘는다. 그리고 첫 화면은 아직 비어 있다."
+   },
+   "image_hint": {
+    "en": "city skyline at dawn seen from a rooftop, one small figure at the railing, long shot"
+   },
+   "image_prompt": "city skyline at dawn seen from a rooftop, one small figure at the railing, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "This morning, that box again.",
+    "ko": "오늘 아침, 그 칸."
+   },
+   "narration": {
+    "en": "This morning I pressed that box again. Still white.",
+    "ko": "오늘 아침, 그 칸을 다시 눌렀다. 여전히 하얬다."
+   },
+   "image_hint": {
+    "en": "morning kitchen table with a phone, one person reaching for it, seen from behind"
+   },
+   "image_prompt": "morning kitchen table with a phone, one person reaching for it, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The hardest choice.",
+    "ko": "가장 어려운 선택."
+   },
+   "narration": {
+    "en": "Leaving it blank wasn't laziness. It was the hardest choice.",
+    "ko": "비워두는 건 게을러서가 아니었다. 가장 어려운 선택이었다."
+   },
+   "image_hint": {
+    "en": "quiet parking lot at night, one person standing alone, distant figure, long shot"
+   },
+   "image_prompt": "quiet parking lot at night, one person standing alone, distant figure, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-01-stocks",
+ "theme": "stocks",
+ "symbol": "GOOG",
+ "quote": {
+  "text": "Alphabet Inc.",
+  "author": "NASDAQ GOOG"
+ }
+}
