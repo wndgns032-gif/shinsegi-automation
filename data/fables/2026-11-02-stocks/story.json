@@ -1,0 +1,196 @@
+{
+ "type": "json_object",
+ "title": {
+  "en": "He Paved a Road",
+  "ko": "차고에서 길을 깔았다"
+ },
+ "caption": {
+  "en": "It began as a garage selling only books. Now it runs the road that goods travel on.",
+  "ko": "책만 팔던 차고에서 시작했다. 지금은 물건이 지나가는 길을 운영한다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "At first, only books.",
+    "That was all."
+   ],
+   "ko": [
+    "처음엔 책만 팔았다.",
+    "그게 전부였다."
+   ]
+  },
+  "highlight": {
+   "en": "a garage selling books",
+   "ko": "책만 팔던 차고"
+  }
+ },
+ "moral": {
+  "en": "Not a store that sold things. A road that things travel on.",
+  "ko": "물건을 판 가게가 아니다. 물건이 지나가는 길을 지었다."
+ },
+ "cta": {
+  "en": "I'll keep watching from a distance.",
+  "ko": "나는 계속 멀리서 본다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Only books",
+    "ko": "책뿐이었다"
+   },
+   "narration": {
+    "en": "At first, only books. That was all.",
+    "ko": "처음엔 책만 팔았다. 그게 전부였다."
+   },
+   "image_hint": {
+    "en": "empty garage at dawn, one person standing at the open door, seen from behind, long shot"
+   },
+   "image_prompt": "empty garage at dawn, one person standing at the open door, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "No desk",
+    "ko": "책상이 없었다"
+   },
+   "narration": {
+    "en": "There was no desk in the garage. He used a door.",
+    "ko": "차고에 책상이 없었다. 문짝을 떼어 얹었다."
+   },
+   "image_hint": {
+    "en": "garage workshop at night, one person lifting a wooden door onto sawhorses, seen from behind, wide shot"
+   },
+   "image_prompt": "garage workshop at night, one person lifting a wooden door onto sawhorses, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A wall",
+    "ko": "벽 하나"
+   },
+   "narration": {
+    "en": "A store could hold ten thousand titles. He stared at that wall.",
+    "ko": "동네 서점엔 만 권이 한계였다. 그는 그 벽을 봤다."
+   },
+   "image_hint": {
+    "en": "small bookstore aisle at night, one person standing between tall shelves, distant figure, long shot"
+   },
+   "image_prompt": "small bookstore aisle at night, one person standing between tall shelves, distant figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The list grew",
+    "ko": "목록이 길어졌다"
+   },
+   "narration": {
+    "en": "The list grew every night. Books first. Then everything else.",
+    "ko": "목록은 매일 길어졌다. 책에서 시작해, 책이 아닌 것들로."
+   },
+   "image_hint": {
+    "en": "home office late at night, one person at a desk stacked with paper, seen from behind, wide shot"
+   },
+   "image_prompt": "home office late at night, one person at a desk stacked with paper, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Boxes piled up",
+    "ko": "상자가 쌓였다"
+   },
+   "narration": {
+    "en": "Orders came faster than boxes left. Pallets blocked the aisle.",
+    "ko": "주문이 몰리자 배송이 밀렸다. 상자 더미가 복도를 막았다."
+   },
+   "image_hint": {
+    "en": "warehouse loading dock at dusk, one person walking between tall stacks of boxes, distant figure, long shot"
+   },
+   "image_prompt": "warehouse loading dock at dusk, one person walking between tall stacks of boxes, distant figure, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Leftover servers",
+    "ko": "남는 서버"
+   },
+   "narration": {
+    "en": "There were servers left over. He sold those too.",
+    "ko": "남는 서버가 있었다. 그는 그것도 내놨다."
+   },
+   "image_hint": {
+    "en": "server room corridor, one person standing still among racks, seen from behind, long shot"
+   },
+   "image_prompt": "server room corridor, one person standing still among racks, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Beside the box",
+    "ko": "상자 옆에서"
+   },
+   "narration": {
+    "en": "The profit didn't come from boxes. It came from beside them.",
+    "ko": "이윤은 상자에서 오지 않았다. 상자 옆에서 왔다."
+   },
+   "image_hint": {
+    "en": "conference room at night, one person at the window above a lit city, distant figure, wide shot"
+   },
+   "image_prompt": "conference room at night, one person at the window above a lit city, distant figure, wide shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "The number",
+    "ko": "숫자"
+   },
+   "narration": {
+    "en": "Two point six trillion. The number came later.",
+    "ko": "2.6조 달러. 그 숫자는 나중에 붙었다."
+   },
+   "image_hint": {
+    "en": "rooftop at night, one person looking down at a glowing city grid, seen from behind, long shot"
+   },
+   "image_prompt": "rooftop at night, one person looking down at a glowing city grid, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Nobody walks",
+    "ko": "아무도 걷지 않는다"
+   },
+   "narration": {
+    "en": "Few people walk the floor now. Conveyors do the walking.",
+    "ko": "창고엔 사람이 몇 명 없다. 컨베이어가 대신 걷는다."
+   },
+   "image_hint": {
+    "en": "fulfillment center floor, one person standing small among conveyor belts, distant figure, wide shot"
+   },
+   "image_prompt": "fulfillment center floor, one person standing small among conveyor belts, distant figure, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The road",
+    "ko": "길"
+   },
+   "narration": {
+    "en": "Not a store that sold things. A road that things travel on.",
+    "ko": "물건을 판 가게가 아니다. 물건이 지나가는 길을 지었다."
+   },
+   "image_hint": {
+    "en": "empty highway at dawn, one small figure walking along the shoulder, seen from behind, long shot"
+   },
+   "image_prompt": "empty highway at dawn, one small figure walking along the shoulder, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-02-stocks",
+ "theme": "stocks",
+ "symbol": "AMZN",
+ "quote": {
+  "text": "Amazon.com, Inc.",
+  "author": "NASDAQ AMZN"
+ }
+}
