@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-04",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "aurelius-obstacle",
+    "author": {
+      "en": "Marcus Aurelius",
+      "ko": "마르쿠스 아우렐리우스",
+      "zh-cn": "马可·奥勒留",
+      "fr": "Marc Aurèle"
+    },
+    "text": {
+      "en": "The obstacle in the path becomes the path. What stands in the way becomes the way.",
+      "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다.",
+      "zh-cn": "阻碍你的东西，会成为你的路；挡在前方的，就是前进的方向。",
+      "fr": "L'obstacle devient le chemin. Ce qui barre la route devient la route."
+    }
+  },
+  "title": {
+    "en": "Obstacles as Path",
+    "ko": "고난이 길이 된다"
+  },
+  "caption": {
+    "en": "The weight of the road turns into the road itself.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "도로의 무게가 바로 길이 된다.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I walked into the empty field at dawn.",
+        "The earth felt like a stage for silent resolve."
+      ],
+      "ko": [
+        "아침에 비어 있는 들판에 걸어갔다.",
+        "땅은 침묵 속 결심의 무대처럼 느껴졌다."
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "The obstacle becomes the path.",
+    "ko": "고난이 길이 된다."
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "Quiet dawn, misty valley, long shot",
+      "narration": {
+        "en": "The obstacle in the path becomes the path. What stands in the way becomes the way. — Marcus Aurelius.",
+        "ko": "앞을 막는 것이 곧 길이 된다. 걸림돌이 곧 디딤돌이다. — 마르쿠스 아우렐리우스."
+      },
+      "subtitle": {
+        "en": "Obstacles are paths",
+        "ko": "고난은 길이다"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "Sandy beach, sunrise, distant small figure",
+      "narration": {
+        "en": "I walked into the empty field at dawn. The earth felt like a stage for silent resolve",
+        "ko": "아침에 비어 있는 들판에 걸어갔다. 땅은 침묵 속 결심의 무대처럼 느껴졌다"
+      },
+      "subtitle": {
+        "en": "Morning resolve",
+        "ko": "아침의 결심"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Cobblestone street, midday, seen from behind",
+      "narration": {
+        "en": "I bent the path with effort.",
+        "ko": "나는 노력으로 길을 구부렸다."
+      },
+      "subtitle": {
+        "en": "First attempt",
+        "ko": "첫 번째 시도"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Forest trail, afternoon, long shot",
+      "narration": {
+        "en": "Mist drifted, blocking progress.",
+        "ko": "안개가 몰려 앞길을 가로막았다."
+      },
+      "subtitle": {
+        "en": "Blockage",
+        "ko": "장애"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Mountain ridge, dusk, seen from behind",
+      "narration": {
+        "en": "I climbed over the stone barrier.",
+        "ko": "나는 돌장벽을 넘어섰다."
+      },
+      "subtitle": {
+        "en": "Confrontation",
+        "ko": "직면"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Riverbank, twilight, distant small figure",
+      "narration": {
+        "en": "The current pulled me, yet I steered.",
+        "ko": "물결이 당겼지만 나는 조종했다."
+      },
+      "subtitle": {
+        "en": "Navigating currents",
+        "ko": "흐름을 헤쳐나감"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Snowy plateau, night, long shot",
+      "narration": {
+        "en": "Cold clutched my breath, but I remembered purpose.",
+        "ko": "추위가 숨을 사로잡았지만, 나는 목적을 기억했다."
+      },
+      "subtitle": {
+        "en": "Endurance",
+        "ko": "인내"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Apartment room, early morning, seen from behind",
+      "narration": {
+        "en": "I launched the app update after a glitch.",
+        "ko": "나는 버그를 건드린 뒤 앱을 업데이트했다."
+      },
+      "subtitle": {
+        "en": "Tech setback",
+        "ko": "기술 장애"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Office meeting, late afternoon, distant small figure",
+      "narration": {
+        "en": "The client questioned the design choice.",
+        "ko": "고객이 디자인 선택을 물었다."
+      },
+      "subtitle": {
+        "en": "Critical feedback",
+        "ko": "비판적 의견"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "Starlit sky, midnight, long shot",
+      "narration": {
+        "en": "The obstacle becomes the path.",
+        "ko": "고난이 길이 된다."
+      },
+      "subtitle": {
+        "en": "Moral",
+        "ko": "교훈"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
