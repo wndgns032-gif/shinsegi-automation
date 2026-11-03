@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "Fading Silhouette",
+  "ko": "희미한 실루엣"
+ },
+ "caption": {
+  "en": "A silent observer watches how one brand weaves its presence into everyday life.",
+  "ko": "한 브랜드가 일상에 자리를 잡는 과정을 들여다본다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "No words, just a stare that waits."
+   ],
+   "ko": [
+    "말 없이, 기다리는 시선만 있다."
+   ]
+  },
+  "highlight": {
+   "en": "A lone figure amidst the bustle.",
+   "ko": "분주한 가운데 홀로 서 있는 인물."
+  }
+ },
+ "moral": {
+  "en": "It is not noise that builds a legacy, but the shape it carves in silence.",
+  "ko": "소리가 아닌, 고요 속에 꿰뚫어 만든 형태가 이어진다."
+ },
+ "cta": {
+  "en": "—",
+  "ko": "—"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Shadow at the mall",
+    "ko": "쇼핑몰 속 그늘"
+   },
+   "narration": {
+    "en": "The display catches light, a single hand presses a screen.",
+    "ko": "전시 창이 빛을 얻고 손이 스크린을 두드린다."
+   },
+   "image_hint": {
+    "en": "mall lobby at dusk, a distant figure holding a tablet, seen from behind"
+   },
+   "image_prompt": "mall lobby at dusk, a distant figure holding a tablet, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Backstage turmoil",
+    "ko": "비하인드 갈등"
+   },
+   "narration": {
+    "en": "A workshop, dozens of engineers, none agreeing on a logo shape.",
+    "ko": "공방, 수십 명 엔지니어, 로고 모양에 의견 차이."
+   },
+   "image_hint": {
+    "en": "factory floor, several workers debating over a board, seen from behind"
+   },
+   "image_prompt": "factory floor, several workers debating over a board, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First prototype meeting",
+    "ko": "첫 프로토타입 회의"
+   },
+   "narration": {
+    "en": "A cramped meeting room, a whiteboard filled with sketches.",
+    "ko": "좁은 회의실, 스케치가 가득한 화이트보드."
+   },
+   "image_hint": {
+    "en": "conference room interior, small figure not in frame, explanation by hand"
+   },
+   "image_prompt": "conference room interior, small figure not in frame, explanation by hand"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Time passes, tests fail",
+    "ko": "시간 흐름, 실패 반복"
+   },
+   "narration": {
+    "en": "Night shift, a single screen flickers, a letter is rewritten.",
+    "ko": "야간 근무, 화면이 깜빡이며 편지 다시 적는다."
+   },
+   "image_hint": {
+    "en": "office at night, lone worker at desk, seen from behind"
+   },
+   "image_prompt": "office at night, lone worker at desk, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Repetition of realities",
+    "ko": "현실의 반복"
+   },
+   "narration": {
+    "en": "A new device, an empty shelf, a dust particle on a glass panel.",
+    "ko": "새 기기, 빈 선반, 유리 패널에 쌓인 먼지."
+   },
+   "image_hint": {
+    "en": "product showcase, small figure near shelf, not in sight"
+   },
+   "image_prompt": "product showcase, small figure near shelf, not in sight"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A new rhythm",
+    "ko": "새로운 리듬"
+   },
+   "narration": {
+    "en": "The camera pans to a field of solar panels humming quietly.",
+    "ko": "카메라가 햇빛을 받는 일조 패널을 따라간다."
+   },
+   "image_hint": {
+    "en": "solar farm, distant figure walking, seen from behind"
+   },
+   "image_prompt": "solar farm, distant figure walking, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Quiet revelation",
+    "ko": "고요한 깨달음"
+   },
+   "narration": {
+    "en": "A heartbeat, a single user sighs, the device glows with a new color.",
+    "ko": "심장이 뛰고, 사용자가 한숨, 화면이 새 색으로 번쩍인다."
+   },
+   "image_hint": {
+    "en": "living room balcony at dawn, lone figure at window, seen from behind"
+   },
+   "image_prompt": "living room balcony at dawn, lone figure at window, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Present moment",
+    "ko": "현재 순간"
+   },
+   "narration": {
+    "en": "A bustling street, children laughing, a hand offered a bright device.",
+    "ko": "분주한 거리, 아이들이 웃고, 손에 빛나는 기기 제공."
+   },
+   "image_hint": {
+    "en": "city street midday, small figure handing a device, seen from behind"
+   },
+   "image_prompt": "city street midday, small figure handing a device, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s beat",
+    "ko": "오늘의 리듬"
+   },
+   "narration": {
+    "en": "An office, a muted notification, a person steps back to look at the screen.",
+    "ko": "사무실, 무음 알림, 사람이 뒤로 물러나 화면을 본다."
+   },
+   "image_hint": {
+    "en": "open office space, small figure at table, seen from behind"
+   },
+   "image_prompt": "open office space, small figure at table, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quiet end",
+    "ko": "고요한 결말"
+   },
+   "narration": {
+    "en": "Even without applause, the line remains steady.",
+    "ko": "박수가 없지만, 라인은 꾸준히 이어진다."
+   },
+   "image_hint": {
+    "en": "empty street at twilight, lone figure walking forward, seen from behind"
+   },
+   "image_prompt": "empty street at twilight, lone figure walking forward, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-03-stocks",
+ "theme": "stocks",
+ "symbol": "AAPL",
+ "quote": {
+  "text": "Apple Inc.",
+  "author": "NASDAQ AAPL"
+ }
+}
