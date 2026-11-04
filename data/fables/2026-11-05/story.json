@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-05",
+  "theme": "attitude",
+  "theme_label": "인생의 철학과 태도",
+  "quote": {
+    "id": "exupery-essential",
+    "author": {
+      "en": "Antoine de Saint-Exupéry",
+      "ko": "생텍쥐페리",
+      "zh-cn": "圣埃克苏佩里",
+      "fr": "Antoine de Saint-Exupéry"
+    },
+    "text": {
+      "en": "What is essential is invisible to the eye.",
+      "ko": "가장 중요한 것은 눈에 보이지 않는다.",
+      "zh-cn": "真正重要的东西，用眼睛是看不见的。",
+      "fr": "L'essentiel est invisible pour les yeux."
+    }
+  },
+  "title": {
+    "en": "Vibrant Silence",
+    "ko": "보이지 않는 핵심"
+  },
+  "caption": {
+    "en": "Essence unseen, yet felt\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "눈에 보이지 않는 것, 숨겨진 실체\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Morning light touches water",
+        "It whispers what eyes miss"
+      ],
+      "ko": [
+        "아침 빛이 물결을 감싸",
+        "눈이 못보는 걸 속삭인다"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "See beyond sight",
+    "ko": "시야를 넘어 보라"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "morning mist, quiet harbor, long shot",
+      "narration": {
+        "en": "What is essential is invisible to the eye. — Antoine de Saint-Exupéry.",
+        "ko": "가장 중요한 것은 눈에 보이지 않는다. — 생텍쥐페리."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "gray dawn, empty park, distant small figure",
+      "narration": {
+        "en": "Morning light touches water. It whispers what eyes miss",
+        "ko": "아침 빛이 물결을 감싸. 눈이 못보는 걸 속삭인다"
+      },
+      "subtitle": {
+        "en": "Morning slips into stillness",
+        "ko": "아침은 고요로 물든다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "morning office, seen from behind",
+      "narration": {
+        "en": "I stare at endless screens",
+        "ko": "나는 끝없는 스크린을 바라본다"
+      },
+      "subtitle": {
+        "en": "I stare at endless screens",
+        "ko": "나는 끝없는 스크린을 바라본다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "lunch cafeteria, wide shot",
+      "narration": {
+        "en": "Food tastes dull, vibrations fade",
+        "ko": "음식은 무미건조해 진동이 사라진다"
+      },
+      "subtitle": {
+        "en": "Food tastes dull, vibrations fade",
+        "ko": "음식은 무미건조해 진동이…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "afternoon street, long shot",
+      "narration": {
+        "en": "Cars blur, voices echo in wind",
+        "ko": "차가 흐릿해지고 목소리가 바람에 메아리친다"
+      },
+      "subtitle": {
+        "en": "Cars blur, voices echo in wind",
+        "ko": "차가 흐릿해지고 목소리가…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "evening home, seen from behind",
+      "narration": {
+        "en": "Lights dim, footsteps echo in silence",
+        "ko": "불이 흐려지고 발소리가 고요에 울린다"
+      },
+      "subtitle": {
+        "en": "Lights dim, footsteps echo in silence",
+        "ko": "불이 흐려지고 발소리가…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "night bedroom, distant small figure",
+      "narration": {
+        "en": "Dreams glide over the bed",
+        "ko": "꿈은 침대 위로 미끄러진다"
+      },
+      "subtitle": {
+        "en": "Dreams glide over the bed",
+        "ko": "꿈은 침대 위로 미끄러진다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "city subway, wide shot",
+      "narration": {
+        "en": "Crowds scream, yet I feel stillness",
+        "ko": "인적이 북적이지만 나는 정지감을 느낀다"
+      },
+      "subtitle": {
+        "en": "Crowds scream, yet I feel stillness",
+        "ko": "인적이 북적이지만 나는…"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "rooftop garden, long shot",
+      "narration": {
+        "en": "Raindrops on leaves converse quietly",
+        "ko": "비방울이 잎에 부드럽게 속삭인다"
+      },
+      "subtitle": {
+        "en": "Raindrops on leaves converse quietly",
+        "ko": "비방울이 잎에 부드럽게…"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "starlit sky, quiet garden, distant small figure",
+      "narration": {
+        "en": "See beyond sight",
+        "ko": "시야를 넘어 보라"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
