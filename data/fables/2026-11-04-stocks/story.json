@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Walmart’s Quiet Path",
+  "ko": "월마트의 차분한 길"
+ },
+ "caption": {
+  "en": "A distant observer watches a giant’s everyday walk.",
+  "ko": "멀리서 바라본 거인들의 일상"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A sunlit aisle, a cart making its way.",
+    "The same aisle, a clock ticking silently."
+   ],
+   "ko": [
+    "햇살 듬뿍 비추는 진열대, 카트가 움직인다.",
+    "같은 진열대, 시계가 조용히 두드린다."
+   ]
+  },
+  "highlight": {
+   "en": "A single moment reveals many answers.",
+   "ko": "한 순간이 많은 답을 드러낸다."
+  }
+ },
+ "moral": {
+  "en": "Growth hides in steady steps.",
+  "ko": "성장은 꾸준한 발걸음에 숨겨져 있다."
+ },
+ "cta": {
+  "en": "Stay ahead, observe, then act.",
+  "ko": "앞서 나가려면 관찰하고, 그 다음 행동하라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "First glance",
+    "ko": "첫눈에"
+   },
+   "narration": {
+    "en": "I stand behind the entrance, watching the flow.",
+    "ko": "나는 입구 뒤에서 흐름을 바라본다."
+   },
+   "image_hint": {
+    "en": "warehouse entrance at dawn, a distant figure watching, seen from behind"
+   },
+   "image_prompt": "warehouse entrance at dawn, a distant figure watching, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The standstill",
+    "ko": "정지"
+   },
+   "narration": {
+    "en": "Customers pile, shelves whisper crowded tales.",
+    "ko": "고객이 넘치고, 진열대는 숨 가쁜 이야기 속삭인다."
+   },
+   "image_hint": {
+    "en": "busy supermarket aisle at noon, a small figure among many shoppers, seen from behind"
+   },
+   "image_prompt": "busy supermarket aisle at noon, a small figure among many shoppers, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The Roots",
+    "ko": "근원"
+   },
+   "narration": {
+    "en": "A manager checks stock, lines resetting quietly.",
+    "ko": "관리자가 재고를 확인하며 줄을 정리한다."
+   },
+   "image_hint": {
+    "en": "inventory room at dusk, a distant figure counting items, seen from behind"
+   },
+   "image_prompt": "inventory room at dusk, a distant figure counting items, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The Expansion",
+    "ko": "확장"
+   },
+   "narration": {
+    "en": "Patio corners replace old shelves year by year.",
+    "ko": "파티오 코너가 오래된 선반을 교체한다."
+   },
+   "image_hint": {
+    "en": "outdoor patio extension at dusk, a lone figure arranging displays, seen from behind"
+   },
+   "image_prompt": "outdoor patio extension at dusk, a lone figure arranging displays, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The Shuffle",
+    "ko": "흐름"
+   },
+   "narration": {
+    "en": "Cashiers reboot systems, inventory blinks anew.",
+    "ko": "점원들이 시스템을 재시작하고, 재고가 새로 빛난다."
+   },
+   "image_hint": {
+    "en": "checkout area at night, a distant figure monitoring screens, seen from behind"
+   },
+   "image_prompt": "checkout area at night, a distant figure monitoring screens, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The Pivot",
+    "ko": "전환"
+   },
+   "narration": {
+    "en": "A delivery truck arrives, unloading fresh bulk.",
+    "ko": "배달 트럭이 도착해 대량을 내려놓는다."
+   },
+   "image_hint": {
+    "en": "delivery dock at dawn, a small figure unloading crates, seen from behind"
+   },
+   "image_prompt": "delivery dock at dawn, a small figure unloading crates, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The Insight",
+    "ko": "통찰"
+   },
+   "narration": {
+    "en": "I notice the same flag fluttering across stores worldwide.",
+    "ko": "나는 같은 깃발이 전 세계 매장에서 흔들리는 것을 본다."
+   },
+   "image_hint": {
+    "en": "flag on store roof at sunset, a distant figure watching from a balcony, seen from behind"
+   },
+   "image_prompt": "flag on store roof at sunset, a distant figure watching from a balcony, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Present Moment",
+    "ko": "현재"
+   },
+   "narration": {
+    "en": "Now the store hums, customers laugh, stock replenishes.",
+    "ko": "지금 매장은 윙윙거리며, 고객이 웃고, 재고가 보충된다."
+   },
+   "image_hint": {
+    "en": "inside mall corridor at midday, a distant figure walking, seen from behind"
+   },
+   "image_prompt": "inside mall corridor at midday, a distant figure walking, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "A child grabs a toy, a cashier smiles politely.",
+    "ko": "아이 한 명이 장난감을 집고, 점원이 예의바르게 미소 짓는다."
+   },
+   "image_hint": {
+    "en": "checkout counter at dawn, a small figure handing a receipt, seen from behind"
+   },
+   "image_prompt": "checkout counter at dawn, a small figure handing a receipt, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Final Whisper",
+    "ko": "마지막 속삭임"
+   },
+   "narration": {
+    "en": "I leave, knowing pace is the secret note.",
+    "ko": "나는 가며 속도가 비밀 멜로디임을 안다."
+   },
+   "image_hint": {
+    "en": "exit door at dusk, a distant figure walking away, seen from behind"
+   },
+   "image_prompt": "exit door at dusk, a distant figure walking away, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-04-stocks",
+ "theme": "stocks",
+ "symbol": "WMT",
+ "quote": {
+  "text": "Walmart Inc.",
+  "author": "NASDAQ WMT"
+ }
+}
