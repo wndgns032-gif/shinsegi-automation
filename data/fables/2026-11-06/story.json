@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-06",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "seneca-learn-to-live",
+    "author": {
+      "en": "Seneca",
+      "ko": "세네카",
+      "zh-cn": "塞涅卡",
+      "fr": "Sénèque"
+    },
+    "text": {
+      "en": "As long as you live, keep learning how to live.",
+      "ko": "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다.",
+      "zh-cn": "只要还活着，就要不断学习如何生活。",
+      "fr": "Tant que tu vis, continue d'apprendre à vivre."
+    }
+  },
+  "title": {
+    "en": "Keep Learning to Live",
+    "ko": "살면서 배우는 삶"
+  },
+  "caption": {
+    "en": "The quiet discipline of knowledge.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "지식의 조용한 규율.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Each day unfurls a lesson.",
+        "What tomorrow's pages will hold?"
+      ],
+      "ko": [
+        "하루마다 교훈이 펼쳐진다.",
+        "내일의 페이지는 뭘 가질까?"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Contemplation shapes humanity.",
+    "ko": "관찰이 인간을 만든다."
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "morning light, quiet library, distant small figure",
+      "narration": {
+        "ko": "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다. — 세네카.",
+        "en": "As long as you live, keep learning how to live. — Seneca."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "town square, evening, distant small figure",
+      "narration": {
+        "ko": "하루마다 교훈이 펼쳐진다. 내일의 페이지는 뭘 가질까",
+        "en": "Each day unfurls a lesson. What tomorrow's pages will hold"
+      },
+      "subtitle": {
+        "en": "생각은 매일 같은 자리를 찾는다.",
+        "ko": "생각은 매일 같은 자리를…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "coastal cliffs, sunrise, distant small figure",
+      "narration": {
+        "ko": "아침바다에서 나를 찾아 온 낡은 책을 펼쳤다.",
+        "en": "아침바다에서 나를 찾아 온 낡은 책을 펼쳤다."
+      },
+      "subtitle": {
+        "ko": "책이 내 파도를 맞았다.",
+        "en": "아침바다에서 나를 찾아 온 낡은 책을 펼쳤다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "city park, noon, distant small figure",
+      "narration": {
+        "ko": "광장에 앉아 그림을 날리며 반복된 질문을 던졌다.",
+        "en": "광장에 앉아 그림을 날리며 반복된 질문을 던졌다."
+      },
+      "subtitle": {
+        "ko": "나는 그 자체를 넘겼다.",
+        "en": "광장에 앉아 그림을 날리며 반복된 질문을 던졌다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "railway station, dusk, distant small figure",
+      "narration": {
+        "ko": "길에서 떠나는 사람이 늘흐른 나를 놓쳤다.",
+        "en": "길에서 떠나는 사람이 늘흐른 나를 놓쳤다."
+      },
+      "subtitle": {
+        "ko": "바로 그 순간, 시간이 멈췄다.",
+        "en": "길에서 떠나는 사람이 늘흐른 나를 놓쳤다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "mountain hut, night, distant small figure",
+      "narration": {
+        "ko": "밤하늘을 바라보며 별을 세었다.",
+        "en": "밤하늘을 바라보며 별을 세었다."
+      },
+      "subtitle": {
+        "ko": "별은 내가 틀렸다는 증거였다.",
+        "en": "밤하늘을 바라보며 별을 세었다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "subway tunnel, morning, distant small figure",
+      "narration": {
+        "ko": "수하물 없이 가만히 드나들었다.",
+        "en": "수하물 없이 가만히 드나들었다."
+      },
+      "subtitle": {
+        "ko": "언제나 새로운 시작은 무거운 짐을 옮긴다.",
+        "en": "수하물 없이 가만히 드나들었다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "kitchen at night, close to a laptop, distant small figure",
+      "narration": {
+        "ko": "노트북 한 켠에 강의 영상이 흐른다.",
+        "en": "노트북 한 켠에 강의 영상이 흐른다."
+      },
+      "subtitle": {
+        "ko": "집에서 시작되는 지식의 흐름.",
+        "en": "노트북 한 켠에 강의 영상이 흐른다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office lobby, evening, distant small figure",
+      "narration": {
+        "ko": "회의실 문이 닫히고 뒷 문으로 이어진다.",
+        "en": "회의실 문이 닫히고 뒷 문으로 이어진다."
+      },
+      "subtitle": {
+        "ko": "사람의 외부와 내부가 이어지는 공간.",
+        "en": "회의실 문이 닫히고 뒷 문으로 이어진다."
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "reflective pool, twilight, distant small figure",
+      "narration": {
+        "ko": "관찰이 인간을 만든다.",
+        "en": "Contemplation shapes humanity."
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
