@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "Silicon Pulse",
+  "ko": "시그니콘의 맥박"
+ },
+ "caption": {
+  "en": "A distant eye watches a factory that breeds tomorrow.",
+  "ko": "멀리서 목격하는 공장, 내일을 만든다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A humming wall of chips glows late night."
+   ],
+   "ko": [
+    "밤의 배터리처럼 빛나는 칩터널을 바라보다"
+   ]
+  },
+  "highlight": {
+   "en": "도는 금이 가고, 길은 닫혔다.",
+   "ko": "울음보다 더 큰 소리, 정지선"
+  }
+ },
+ "moral": {
+  "en": "Progress whispers through silence.",
+  "ko": "진보는 고요 속에서 속삭인다."
+ },
+ "cta": {
+  "en": "",
+  "ko": ""
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Late night glow",
+    "ko": "밤의 빛"
+   },
+   "narration": {
+    "en": "A humming wall of chips glows late night.",
+    "ko": "밤에 전류가 흐른다."
+   },
+   "image_hint": {
+    "en": "factory floor at midnight, one engineer working alone, seen from behind, long shot"
+   },
+   "image_prompt": "factory floor at midnight, one engineer working alone, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Turning point",
+    "ko": "전환"
+   },
+   "narration": {
+    "en": "I watched a bus stop, one person waiting, unseen.",
+    "ko": "나무 아래, 한명, 바라보지 않는다."
+   },
+   "image_hint": {
+    "en": "bus stop at dusk, one person standing, distant figure, medium shot"
+   },
+   "image_prompt": "bus stop at dusk, one person standing, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First spark",
+    "ko": "첫 장등"
+   },
+   "narration": {
+    "en": "The first chip hissed into life.",
+    "ko": "첫 칩이 살아났다."
+   },
+   "image_hint": {
+    "en": "PCB board under microscope, one technician adjusting, seen from behind, close shot"
+   },
+   "image_prompt": "PCB board under microscope, one technician adjusting, seen from behind, close shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Scaling up",
+    "ko": "확대"
+   },
+   "narration": {
+    "en": "Lines spread across a factory floor.",
+    "ko": "라인이 전부를 덮었다."
+   },
+   "image_hint": {
+    "en": "assembly line at dawn, one worker moving, seen from behind, long shot"
+   },
+   "image_prompt": "assembly line at dawn, one worker moving, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Static barrier",
+    "ko": "정지선"
+   },
+   "narration": {
+    "en": "A flood of data stalled, one gate closed.",
+    "ko": "데이터가 끊겼다."
+   },
+   "image_hint": {
+    "en": "server room at night, one technician sighing, small figure in the middle distance"
+   },
+   "image_prompt": "server room at night, one technician sighing, small figure in the middle distance"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Reckoning",
+    "ko": "판결"
+   },
+   "narration": {
+    "en": "The gate cracked, a beam of light flickered.",
+    "ko": "깨지가 빛났다."
+   },
+   "image_hint": {
+    "en": "control panel at dusk, one technician touching, seen from behind, medium shot"
+   },
+   "image_prompt": "control panel at dusk, one technician touching, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Silence breaks",
+    "ko": "쉼이 깬다"
+   },
+   "narration": {
+    "en": "Light poured through every pin, silent scream.",
+    "ko": "빛이 가득했다."
+   },
+   "image_hint": {
+    "en": "CPU chip under torch, one technician watching, seen from behind, close shot"
+   },
+   "image_prompt": "CPU chip under torch, one technician watching, seen from behind, close shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Present day",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "I walk through a showroom, endless screens.",
+    "ko": "추억이 스크린에 튀었다."
+   },
+   "image_hint": {
+    "en": "electronics showroom at noon, one person looking at screens, small figure in the middle distance"
+   },
+   "image_prompt": "electronics showroom at noon, one person looking at screens, small figure in the middle distance"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s work",
+    "ko": "오늘의 일"
+   },
+   "narration": {
+    "en": "A coder types, the code spirals like DNA.",
+    "ko": "코드가 땅을 파듯 포개졌다."
+   },
+   "image_hint": {
+    "en": "office desk at night, one programmer typing, seen from behind, long shot"
+   },
+   "image_prompt": "office desk at night, one programmer typing, seen from behind, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Final thought",
+    "ko": "마지막 사유"
+   },
+   "narration": {
+    "en": "Progress whispers through silence.",
+    "ko": "진보는 고요 속에서 속삭인다."
+   },
+   "image_hint": {
+    "en": "quiet laboratory at dawn, one researcher staring at a screen, small figure in the middle distance"
+   },
+   "image_prompt": "quiet laboratory at dawn, one researcher staring at a screen, small figure in the middle distance"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-05-stocks",
+ "theme": "stocks",
+ "symbol": "NVDA",
+ "quote": {
+  "text": "NVIDIA Corporation",
+  "author": "NASDAQ NVDA"
+ }
+}
