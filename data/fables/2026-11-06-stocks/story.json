@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Google, an unseen tide",
+  "ko": "구글, 보이지 않는 파도"
+ },
+ "caption": {
+  "en": "How a company turned an idea into a world wide web",
+  "ko": "한 아이디어가 전 세계 인터넷을 만든 이야기"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The first window opened",
+    "curiosity whispered"
+   ],
+   "ko": [
+    "첫 창이 열렸다",
+    "호기심이 속삭였다"
+   ]
+  },
+  "highlight": {
+   "en": "Spectators saw a tiny search bar in a vast room.",
+   "ko": "관람객들은 광활한 방에 작은 검색창을 목격했다."
+  }
+ },
+ "moral": {
+  "en": "Innovation is a quiet conversation.",
+  "ko": "혁신은 차분한 대화이다."
+ },
+ "cta": {
+  "en": "Observe quietly, learn quietly.",
+  "ko": "조용히 관찰하고, 조용히 배워라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Quiet beginnings",
+    "ko": "조용한 시작"
+   },
+   "narration": {
+    "en": "In a small office, a computer screen glowed.",
+    "ko": "작은 사무실에서 컴퓨터 화면이 빛났다."
+   },
+   "image_hint": {
+    "en": "office room at night, a man typing alone, seen from behind, medium shot"
+   },
+   "image_prompt": "office room at night, a man typing alone, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Burden of doubt",
+    "ko": "의심의 무게"
+   },
+   "narration": {
+    "en": "The first search result appeared gray and uncertain.",
+    "ko": "첫 검색 결과가 회색이고 불확실했다."
+   },
+   "image_hint": {
+    "en": "search engine results page, no cursor, close up"
+   },
+   "image_prompt": "search engine results page, no cursor"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First click feels heavy",
+    "ko": "첫 클릭이 무겁다"
+   },
+   "narration": {
+    "en": "A finger hovered over the button, hesitated, then pressed.",
+    "ko": "손가락이 버튼 위에 머물며 주저했다. 눌렀다."
+   },
+   "image_hint": {
+    "en": "keyboard in bright office, hand hovering, seen from above"
+   },
+   "image_prompt": "keyboard in bright office, hand hovering, seen from above"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A small server room",
+    "ko": "작은 서버실"
+   },
+   "narration": {
+    "en": "Rows of humming machines reported endless traffic.",
+    "ko": "무시무시한 작업이 끝없는 트래픽을 보냈다."
+   },
+   "image_hint": {
+    "en": "data center hall, racks lining the walls, distant figure in the corner"
+   },
+   "image_prompt": "data center hall, racks lining the walls, distant figure in the corner"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Rise of video noise",
+    "ko": "비디오 소음의 상승"
+   },
+   "narration": {
+    "en": "Short clips filled the screen, each seeking attention.",
+    "ko": "짧은 클립이 화면을 채웠고, 모두 주목을 모았다."
+   },
+   "image_hint": {
+    "en": "living room at daytime, TV wall full of ads, view from side"
+   },
+   "image_prompt": "living room at daytime, TV wall full of ads, view from side"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Unexpected synergy",
+    "ko": "예상치 못한 동화"
+   },
+   "narration": {
+    "en": "A cloud service whispered to the algorithms.",
+    "ko": "클라우드 서비스가 알고리즘에 속삭였다."
+   },
+   "image_hint": {
+    "en": "cloud data center at dawn, a soft glow, small figure working"
+   },
+   "image_prompt": "cloud data center at dawn, a soft glow, small figure working"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Steady streams flow",
+    "ko": "안정된 흐름"
+   },
+   "narration": {
+    "en": "Ads, maps, and drives formed a seamless train.",
+    "ko": "광고, 지도, 드라이브가 끊임없는 열차를 만들었다."
+   },
+   "image_hint": {
+    "en": "train station at dusk, long line of passengers, far view"
+   },
+   "image_prompt": "train station at dusk, long line of passengers, far view"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "All the world looks up",
+    "ko": "세상은 모두 위를 바라본다"
+   },
+   "narration": {
+    "en": "From kitchens to lecture halls, people typed questions.",
+    "ko": "부엌에서 강의실까지, 사람들이 질문을 입력했다."
+   },
+   "image_hint": {
+    "en": "classroom with projector, students in silence, back view"
+   },
+   "image_prompt": "classroom with projector, students in silence, back view"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "A single query echoes",
+    "ko": "한 쿼리가 울린다"
+   },
+   "narration": {
+    "en": "In a café, a student searches, and answers spill out.",
+    "ko": "카페에서 학생이 검색하고, 답이 쏟아졌다."
+   },
+   "image_hint": {
+    "en": "cafe interior during afternoon, one person at table, front view"
+   },
+   "image_prompt": "cafe interior during afternoon, one person at table, front view"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quiet work, quiet impact",
+    "ko": "조용한 일, 조용한 영향"
+   },
+   "narration": {
+    "en": "The company grew, not from shouting, but from listening.",
+    "ko": "그 회사는 외치기보단 듣는 것에서 성장했다."
+   },
+   "image_hint": {
+    "en": "silenced room, dusty books on a shelf, clouds outside"
+   },
+   "image_prompt": "silenced room, dusty books on a shelf, clouds outside"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-06-stocks",
+ "theme": "stocks",
+ "symbol": "GOOG",
+ "quote": {
+  "text": "Alphabet Inc.",
+  "author": "NASDAQ GOOG"
+ }
+}
