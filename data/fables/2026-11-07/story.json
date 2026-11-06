@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-07",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "mandela-impossible",
+    "author": {
+      "en": "Nelson Mandela",
+      "ko": "넬슨 만델라",
+      "zh-cn": "纳尔逊·曼德拉",
+      "fr": "Nelson Mandela"
+    },
+    "text": {
+      "en": "It always seems impossible until it is done.",
+      "ko": "이루어질 때까지는 언제나 불가능해 보인다.",
+      "zh-cn": "在事情完成之前，它看起来总是遥不可及。",
+      "fr": "Cela paraît toujours impossible, jusqu'à ce que ce soit fait."
+    }
+  },
+  "title": {
+    "en": "When Impossible is Conquered",
+    "ko": "불가능이 정복될 때"
+  },
+  "caption": {
+    "en": "Challenge, Courage, Triumph\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "도전·용기·승리\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "The mountain looms at dawn",
+        "I step toward it"
+      ],
+      "ko": [
+        "산이 새벽에 드러난다",
+        "나는 도전한다"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Confronting the impossible begins with an act",
+    "ko": "불가능을 마주하는 것은 한 걸음으로 시작된다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "Quiet mountain summit, sunrise, long shot",
+      "narration": {
+        "en": "It always seems impossible until it is done. — Nelson Mandela.",
+        "ko": "이루어질 때까지는 언제나 불가능해 보인다. — 넬슨 만델라."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "Quiet forest clearing, early morning, seen from behind",
+      "narration": {
+        "en": "The mountain looms at dawn. I step toward it",
+        "ko": "산이 새벽에 드러난다. 나는 도전한다"
+      },
+      "subtitle": {
+        "en": "생각은 매일 같은 자리를 찾는다.",
+        "ko": "생각은 매일 같은 자리를…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Industrial alley at noon, distant small figure",
+      "narration": {
+        "en": "I walk into the crowd",
+        "ko": "나는 인적이 붝은 골목에 들어간다"
+      },
+      "subtitle": {
+        "en": "Uneasy stride",
+        "ko": "불안한 보폭"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Old library at 3 pm, wide shot",
+      "narration": {
+        "en": "The stack feels heavy",
+        "ko": "책장의 무게가 느껴진다"
+      },
+      "subtitle": {
+        "en": "Weight of knowledge",
+        "ko": "지식의 무게"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Desert road at dusk, long shot",
+      "narration": {
+        "en": "Wind rattles my resolve",
+        "ko": "바람이 의지를 흔든다"
+      },
+      "subtitle": {
+        "en": "Swirling doubt",
+        "ko": "불안이 휘몰아친다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Rained field at midnight, seen from behind",
+      "narration": {
+        "en": "I retrace steps",
+        "ko": "나는 발걸음을 되돌린다"
+      },
+      "subtitle": {
+        "en": "Backtracked",
+        "ko": "다시 돌아감"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "City rooftop at dawn, distant small figure",
+      "narration": {
+        "en": "The view steadies me",
+        "ko": "전망이 나를 안정시킨다"
+      },
+      "subtitle": {
+        "en": "Clarity emerges",
+        "ko": "명확성이 드러난다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Office cubicle at 9 am, wide shot",
+      "narration": {
+        "en": "I submit the proposal",
+        "ko": "나는 제안을 제출한다"
+      },
+      "subtitle": {
+        "en": "Submission",
+        "ko": "제출"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Public speaking hall at 5 pm, seen from behind",
+      "narration": {
+        "en": "I speak before the crowd",
+        "ko": "나는 군중 앞에서 말한다"
+      },
+      "subtitle": {
+        "en": "Presentation",
+        "ko": "발표"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "Sunset over the horizon, long shot",
+      "narration": {
+        "en": "Confronting the impossible begins with an act",
+        "ko": "불가능을 마주하는 것은 한 걸음으로 시작된다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
