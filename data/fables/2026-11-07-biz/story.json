@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "Speed & Execution",
+  "ko": "속도와 실행"
+ },
+ "caption": {
+  "en": "A day of decisions, a life of action",
+  "ko": "결정의 하루, 실행의 삶"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The clock ticked, palms damp."
+   ],
+   "ko": [
+    "시계가 똑딱거렸다, 손바닥이 습했다."
+   ]
+  },
+  "highlight": {
+   "en": "First clicks, no pause.",
+   "ko": "첫 클릭, 멈춤 없는."
+  }
+ },
+ "moral": {
+  "en": "Decide now, fix later.",
+  "ko": "지금 결정하고, 나중에 고쳐라."
+ },
+ "cta": {
+  "en": "Reflect, don't instruct.",
+  "ko": "고려하라, 설교하지 마라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Start",
+    "ko": "시작"
+   },
+   "narration": {
+    "en": "Desk at dawn, one finger poised over a button.",
+    "ko": "새벽 사무실, 한 손가락이 버튼 위에 있었습니다."
+   },
+   "image_hint": {
+    "en": "office desk at dawn, one person at the computer, seen from behind"
+   },
+   "image_prompt": "office desk at dawn, one person at the computer, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Stall",
+    "ko": "정체"
+   },
+   "narration": {
+    "en": "Screen freezes, a coffee cup slides off.",
+    "ko": "화면이 멈추고, 커피 컵이 넘어갔습니다."
+   },
+   "image_hint": {
+    "en": "cozy office corner, coffee cup tipped over, distant figure"
+   },
+   "image_prompt": "cozy office corner, coffee cup tipped over, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First Launch",
+    "ko": "첫 실행"
+   },
+   "narration": {
+    "en": "A click, the banner flies live.",
+    "ko": "클릭 하나, 배너가 실시간으로 나왔습니다."
+   },
+   "image_hint": {
+    "en": "high tech office, screen displaying live banner, small figure"
+   },
+   "image_prompt": "high tech office, screen displaying live banner, small figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Time Elapses",
+    "ko": "시간 흐름"
+   },
+   "narration": {
+    "en": "Minutes tick, traffic on the feed climbs.",
+    "ko": "분이 흐르고, 피드에 트래픽이 늘었습니다."
+   },
+   "image_hint": {
+    "en": "city street at noon, large digital billboard, distant figure"
+   },
+   "image_prompt": "city street at noon, large digital billboard, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Iteration",
+    "ko": "반복"
+   },
+   "narration": {
+    "en": "Three edits, each red line on the timeline.",
+    "ko": "세 번의 수정, 타임라인에 빨간 선이 찍혔습니다."
+   },
+   "image_hint": {
+    "en": "creative studio, editing table, one person smacking keys, seen from behind"
+   },
+   "image_prompt": "creative studio, editing table, one person smacking keys, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Insight",
+    "ko": "통찰"
+   },
+   "narration": {
+    "en": "A spontaneous pause, finger hovers above delete.",
+    "ko": "갑자기 손가락이 삭제 위에 멈췄습니다."
+   },
+   "image_hint": {
+    "en": "night office, lone screen glow, small figure holding back"
+   },
+   "image_prompt": "night office, lone screen glow, small figure holding back"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Realization",
+    "ko": "깨달음"
+   },
+   "narration": {
+    "en": "The next click, a new line of code.",
+    "ko": "다음 클릭에서 새로운 코드가 추가되었습니다."
+   },
+   "image_hint": {
+    "en": "computer lab, code scrolling, single person typing, seen from behind"
+   },
+   "image_prompt": "computer lab, code scrolling, single person typing, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Present",
+    "ko": "현재"
+   },
+   "narration": {
+    "en": "The banner loops, orders pour in.",
+    "ko": "배너가 반복되고 주문이 쏟아졌습니다."
+   },
+   "image_hint": {
+    "en": "ecommerce warehouse, packages moving, distant figure"
+   },
+   "image_prompt": "ecommerce warehouse, packages moving, distant figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "From the street, a hand taps a screen, fast decision.",
+    "ko": "거리에서 손이 화면을 탭하며 빠른 결정을 했습니다."
+   },
+   "image_hint": {
+    "en": "street market, handheld device, small figure tapping"
+   },
+   "image_prompt": "street market, handheld device, small figure tapping"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Close",
+    "ko": "마무리"
+   },
+   "narration": {
+    "en": "It’s fine to misstep, just move forward.",
+    "ko": "실수해도 괜찮다, 그냥 앞으로 나아가라."
+   },
+   "image_hint": {
+    "en": "quiet rooftop at sunset, silhouette of a person walking away, seen from behind"
+   },
+   "image_prompt": "quiet rooftop at sunset, silhouette of a person walking away, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-07-biz",
+ "theme": "biz",
+ "theme_label": "속도와 실행",
+ "quote": {
+  "text": "decide fast, correct later",
+  "author": "성공하는 사람의 마인드"
+ }
+}
