@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Behind Silicon Dreams",
+  "ko": "실리콘 꿈의 뒤편"
+ },
+ "caption": {
+  "en": "A distant observer watches the rise of a chip giant.",
+  "ko": "시계는 멀리서 반도체 거인 상승을 관찰한다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Wait, does the next line break?",
+    "Hang on!"
+   ],
+   "ko": [
+    "잠깐, 다음 줄이 깨질까?",
+    "잠깐!"
+   ]
+  },
+  "highlight": {
+   "en": "When silence becomes a signal",
+   "ko": "쉼이 신호가 되는 순간"
+  }
+ },
+ "moral": {
+  "en": "Complexity balances on simple lines.",
+  "ko": "복잡함은 단순한 선 위에서 균형을 잡는다."
+ },
+ "cta": {
+  "en": "Reflect on the quiet gears in your life.",
+  "ko": "당신 삶의 조용한 기어를 반성해라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Factory dawn",
+    "ko": "공장 새벽"
+   },
+   "narration": {
+    "en": "Daybreak over the plant, only a few lights glow.",
+    "ko": "공장 위 새벽, 몇 개의 조명만 빛난다."
+   },
+   "image_hint": {
+    "en": "factory at dawn, one person walking by, seen from behind, long shot"
+   },
+   "image_prompt": "factory at dawn, one person walking by, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "First blockage",
+    "ko": "첫 번째 장애"
+   },
+   "narration": {
+    "en": "Assembly line stalls, a worker stare at a fault log.",
+    "ko": "조립 라인이 멈춰, 직원이 결함 로그를 바라본다."
+   },
+   "image_hint": {
+    "en": "factory floor at midday, one person looking at a screen, seen from behind, small figure"
+   },
+   "image_prompt": "factory floor at midday, one person looking at a screen, seen from behind, small figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Small adjustments",
+    "ko": "작은 조정"
+   },
+   "narration": {
+    "en": "A technician tweaks a chip, tiny hand over circuit.",
+    "ko": "기술자가 칩을 조정, 작은 손으로 회로를 만지는 모습."
+   },
+   "image_hint": {
+    "en": "mechanical workshop at afternoon, one person adjusting tools, seen from behind, medium shot"
+   },
+   "image_prompt": "mechanical workshop at afternoon, one person adjusting tools, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Sales pool",
+    "ko": "매출 호수"
+   },
+   "narration": {
+    "en": "Boardroom quiet, a graph rises, no applause.",
+    "ko": "이사회실 조용, 그래프는 상승하지만 박수는 없다."
+   },
+   "image_hint": {
+    "en": "meeting room at evening, one person pointing at chart, seen from behind, tall shot"
+   },
+   "image_prompt": "meeting room at evening, one person pointing at chart, seen from behind, tall shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Learning loop",
+    "ko": "학습 루프"
+   },
+   "narration": {
+    "en": "Blueprints spread across a table, every corner studied.",
+    "ko": "설계도책이 테이블에 펼쳐져, 각 구석이 연구된다."
+   },
+   "image_hint": {
+    "en": "office desk at night, one person reading a blueprint, seen from behind, close shot"
+   },
+   "image_prompt": "office desk at night, one person reading a blueprint, seen from behind, close shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Breakthrough",
+    "ko": "돌파구"
+   },
+   "narration": {
+    "en": "A flash of light, a new chip prototype hums to life.",
+    "ko": "불꽃이 번쩍, 새로운 칩 프로토타입이 생동한다."
+   },
+   "image_hint": {
+    "en": "electrical lab at starlight, one person watching a glowing chip, seen from behind, long shot"
+   },
+   "image_prompt": "electrical lab at starlight, one person watching a glowing chip, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Momentum",
+    "ko": "가속"
+   },
+   "narration": {
+    "en": "Orders pile up, screens display endless data streams.",
+    "ko": "주문이 쌓여, 화면은 끝없는 데이터 흐름을 보여준다."
+   },
+   "image_hint": {
+    "en": "data center at twilight, one person monitoring screens, seen from behind, medium shot"
+   },
+   "image_prompt": "data center at twilight, one person monitoring screens, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Current scene",
+    "ko": "현재 장면"
+   },
+   "narration": {
+    "en": "A server rack hums, a cable threads unseen pathways.",
+    "ko": "서버 랙이 윙윙거리며 케이블이 보이지 않는 길을 통과한다."
+   },
+   "image_hint": {
+    "en": "server room at dusk, one person arranging cables, seen from behind, small figure"
+   },
+   "image_prompt": "server room at dusk, one person arranging cables, seen from behind, small figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s beat",
+    "ko": "오늘의 리듬"
+   },
+   "narration": {
+    "en": "A cashier scans a product, its price glows LED.",
+    "ko": "캐셔가 제품을 스캔, 가격이 LED로 빛난다."
+   },
+   "image_hint": {
+    "en": "retail checkout at noon, one person scanning, seen from behind, medium shot"
+   },
+   "image_prompt": "retail checkout at noon, one person scanning, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Reflection",
+    "ko": "성찰"
+   },
+   "narration": {
+    "en": "The humming wires connect loops of work and pause.",
+    "ko": "울려 움직이는 전선이 일과 휴식의 루프를 연결한다."
+   },
+   "image_hint": {
+    "en": "quiet office at night, one person typing, seen from behind, long shot"
+   },
+   "image_prompt": "quiet office at night, one person typing, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-07-stocks",
+ "theme": "stocks",
+ "symbol": "AVGO",
+ "quote": {
+  "text": "Broadcom Inc.",
+  "author": "NASDAQ AVGO"
+ }
+}
