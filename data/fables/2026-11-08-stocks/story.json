@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "Meta's Long Walk",
+  "ko": "메타의 긴 걸음"
+ },
+ "caption": {
+  "en": "A quiet observation of a tech giant's path.",
+  "ko": "테크 거인의 길을 조용히 관찰한다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I watch from the edge of the city."
+   ],
+   "ko": [
+    "나는 도시 옆에서 빛을 관찰한다."
+   ]
+  },
+  "highlight": {
+   "en": "Not a story of numbers, but of persistence.",
+   "ko": "숫자가 아니라 끈기의 기록이다."
+  }
+ },
+ "moral": {
+  "en": "Growth is a series of restless steps.",
+  "ko": "성장은 끊임없는 발걸음이다."
+ },
+ "cta": {
+  "en": "—",
+  "ko": "—"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "First Glimpse",
+    "ko": "첫번저"
+   },
+   "narration": {
+    "en": "I notice a billboard, flickering late at night.",
+    "ko": "나는 밤늦게 깜빡이는 비디오 전광판을 본다."
+   },
+   "image_hint": {
+    "en": "late night street, a distant billboard with flickering lights, seen from behind"
+   },
+   "image_prompt": "late night street, a distant billboard with flickering lights, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Initial Clash",
+    "ko": "초기 충돌"
+   },
+   "narration": {
+    "en": "Rows of ads compete for attention, each vying for a click.",
+    "ko": "광고가 서로 경쟁한다, 클릭을 위해 싸우는 듯."
+   },
+   "image_hint": {
+    "en": "mountain of billboards, a lone figure looking up, seen from behind"
+   },
+   "image_prompt": "mountain of billboards, a lone figure looking up, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First Move",
+    "ko": "첫 움직임"
+   },
+   "narration": {
+    "en": "A new app launches, calling friends to join a hub.",
+    "ko": "새 앱이 출시된다, 친구들을 초대한다."
+   },
+   "image_hint": {
+    "en": "open office, a small group of people looking at a laptop screen, seen from behind"
+   },
+   "image_prompt": "open office, a small group of people looking at a laptop screen, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Time Passes",
+    "ko": "시간이 흐르다"
+   },
+   "narration": {
+    "en": "Weeks turn into months, lines of code grow thicker.",
+    "ko": "주가 생라 쓰러지다, 코드가 더 굵어지다."
+   },
+   "image_hint": {
+    "en": "Rising stairs, a single person climbing slowly, seen from behind"
+   },
+   "image_prompt": "Rising stairs, a single person climbing slowly, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Repetition",
+    "ko": "반복"
+   },
+   "narration": {
+    "en": "Users scroll endlessly, lost in feeds.",
+    "ko": "사용자들은 끊임없이 스크롤한다."
+   },
+   "image_hint": {
+    "en": "living room, a figure scrolling on a phone, seen from behind"
+   },
+   "image_prompt": "living room, a figure scrolling on a phone, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "New Vision",
+    "ko": "새 비전"
+   },
+   "narration": {
+    "en": "A headset lights up, offering a new reality.",
+    "ko": "헤드셋이 켜진다, 새로운 현실이 피어나다."
+   },
+   "image_hint": {
+    "en": "futuristic room, a solitary person adjusting a headset, seen from behind"
+   },
+   "image_prompt": "futuristic room, a solitary person adjusting a headset, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Insight",
+    "ko": "통찰"
+   },
+   "narration": {
+    "en": "The headset reflects a city full of unseen stories.",
+    "ko": "헤드셋은 보이지 않는 도시를 반영한다."
+   },
+   "image_hint": {
+    "en": "city at dusk, reflection in a glass building, seen from behind"
+   },
+   "image_prompt": "city at dusk, reflection in a glass building, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Now",
+    "ko": "지금"
+   },
+   "narration": {
+    "en": "In the market, people buy and sell futures of this vision.",
+    "ko": "주식 시장에서 이 비전을 사고파는 사람들."
+   },
+   "image_hint": {
+    "en": "stock exchange, a distant figure watching screens, seen from behind"
+   },
+   "image_prompt": "stock exchange, a distant figure watching screens, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "A new ad cycle begins, but the pattern stays the same.",
+    "ko": "새로운 광고 주기가 시작되지만 패턴은 같다."
+   },
+   "image_hint": {
+    "en": "night cityscape, a billboard with fresh ad, seen from behind"
+   },
+   "image_prompt": "night cityscape, a billboard with fresh ad, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quiet Conclusion",
+    "ko": "조용한 결론"
+   },
+   "narration": {
+    "en": "Growth remains a steady line of effort.",
+    "ko": "성장은 꾸준한 노력이 모여 만든 선이다."
+   },
+   "image_hint": {
+    "en": "empty road at dawn, a lone figure walking forward, seen from behind"
+   },
+   "image_prompt": "empty road at dawn, a lone figure walking forward, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-08-stocks",
+ "theme": "stocks",
+ "symbol": "META",
+ "quote": {
+  "text": "Meta Platforms, Inc.",
+  "author": "NASDAQ META"
+ }
+}
