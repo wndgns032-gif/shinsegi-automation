@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-09",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "confucius-know",
+    "author": {
+      "en": "Confucius",
+      "ko": "공자",
+      "zh-cn": "孔子",
+      "fr": "Confucius"
+    },
+    "text": {
+      "en": "To know what you know and to know what you do not know — that is knowledge.",
+      "ko": "아는 것을 안다 하고, 모르는 것을 모른다 하는 것, 그것이 아는 것이다.",
+      "zh-cn": "知之为知之，不知为不知，是知也。",
+      "fr": "Savoir que l'on sait ce que l'on sait, et que l'on ignore ce que l'on ignore : voilà la vraie connaissance."
+    }
+  },
+  "title": {
+    "en": "Knowing What You Know",
+    "ko": "아는 것을 안다"
+  },
+  "caption": {
+    "en": "A day of reflection\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "한 날의 성찰\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Sunrise hit the quiet office",
+        "I typed the first line quietly"
+      ],
+      "ko": [
+        "함께 찾는 길",
+        "조용히 덧붙인다"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Observation is the true travel through knowledge",
+    "ko": "관찰이 진정한 지식의 여행이다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet office long shot",
+      "narration": {
+        "en": "To know what you know and to know what you do not know — that is knowledge. — Confucius.",
+        "ko": "아는 것을 안다 하고, 모르는 것을 모른다 하는 것, 그것이 아는 것이다. — 공자."
+      },
+      "subtitle": {
+        "en": "Confucius",
+        "ko": "공자"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "rainy rooftop distant small figure",
+      "narration": {
+        "en": "Sunrise hit the quiet office. I typed the first line quietly",
+        "ko": "함께 찾는 길. 조용히 덧붙인다"
+      },
+      "subtitle": {
+        "en": "Morning light breaks bold",
+        "ko": "아침 빛이 뚜렷이 비춘다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "library wide shot seen from behind",
+      "narration": {
+        "en": "I shelved books",
+        "ko": "책을 정리한다"
+      },
+      "subtitle": {
+        "en": "Let me note",
+        "ko": "알아 두리라"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cafe quiet closeup seen from behind",
+      "narration": {
+        "en": "Question disguised as a joke",
+        "ko": "비웃음으로 물음"
+      },
+      "subtitle": {
+        "en": "Question disguised as a joke",
+        "ko": "비웃음으로 물음"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "office desk long shot distant small figure",
+      "narration": {
+        "en": "I answered blind",
+        "ko": "베풀어 답한다"
+      },
+      "subtitle": {
+        "en": "I answered blind",
+        "ko": "베풀어 답한다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "park bench wide shot seen from behind",
+      "narration": {
+        "en": "Mist was thick with doubt",
+        "ko": "의심이 등자를 짓는다"
+      },
+      "subtitle": {
+        "en": "Mist was thick with doubt",
+        "ko": "의심이 등자를 짓는다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "night alley distant small figure",
+      "narration": {
+        "en": "I corrected own error",
+        "ko": "수정하며 사리다"
+      },
+      "subtitle": {
+        "en": "I corrected own error",
+        "ko": "수정하며 사리다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office late night wide shot seen from behind",
+      "narration": {
+        "en": "I write an apology email",
+        "ko": "사과 메일을 올린다"
+      },
+      "subtitle": {
+        "en": "I write an apology email",
+        "ko": "사과 메일을 올린다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "meeting room bright long shot",
+      "narration": {
+        "en": "The team thanks the correction",
+        "ko": "팀이 감사를 전한다"
+      },
+      "subtitle": {
+        "en": "The team thanks the correction",
+        "ko": "팀이 감사를 전한다"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty hallway long shot",
+      "narration": {
+        "en": "Observation is the true travel through knowledge",
+        "ko": "관찰이 진정한 지식의 여행이다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
