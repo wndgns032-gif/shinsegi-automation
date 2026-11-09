@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Time Builds Skill",
+  "ko": "시간이 만드는 차이"
+ },
+ "caption": {
+  "en": "Observe a single moment.",
+  "ko": "한 장면을 관찰하라."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The clock ticked.",
+    "A hand turned the dial."
+   ],
+   "ko": [
+    "시계가 똑똑했다.",
+    "손이 바늘을 돌렸다."
+   ]
+  },
+  "highlight": {
+   "en": "Small motions weave strength.",
+   "ko": "작은 움직임이 힘을 짜낸다."
+  }
+ },
+ "moral": {
+  "en": "Skill is an accumulation, not an event.",
+  "ko": "능력은 누적이다, 사건은 아니다."
+ },
+ "cta": {
+  "en": "Share your own tiny step.",
+  "ko": "당신의 작은 걸음이 궁금하다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "First glance",
+    "ko": "첫 시선"
+   },
+   "narration": {
+    "en": "The office door closed softly.",
+    "ko": "사무실 문이 부드럽게 닫혔다."
+   },
+   "image_hint": {
+    "en": "office hallway at morning, one person walking away, seen from behind, medium shot"
+   },
+   "image_prompt": "office hallway at morning, one person walking away, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Frozen moment",
+    "ko": "동결된 순간"
+   },
+   "narration": {
+    "en": "Hands hovered over a spreadsheet.",
+    "ko": "손들이 스프레드시트 위에 떠 있었다."
+   },
+   "image_hint": {
+    "en": "cubicle desk at noon, one person staring at screen, seen from behind, mid shot"
+   },
+   "image_prompt": "cubicle desk at noon, one person staring at screen, seen from behind, mid shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First attempt",
+    "ko": "첫 번째 시도"
+   },
+   "narration": {
+    "en": "A formula was typed.",
+    "ko": "하나의 수식이 입력되었다."
+   },
+   "image_hint": {
+    "en": "computer desk at afternoon, one person typing at keyboard, seen from behind, close to desk"
+   },
+   "image_prompt": "computer desk at afternoon, one person typing at keyboard, seen from behind, close to desk"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Second try",
+    "ko": "두 번째 시도"
+   },
+   "narration": {
+    "en": "The same formula, adjusted.",
+    "ko": "같은 수식이 조정되었다."
+   },
+   "image_hint": {
+    "en": "office conference table at dusk, one person writing on whiteboard, seen from behind, long shot"
+   },
+   "image_prompt": "office conference table at dusk, one person writing on whiteboard, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Repetition",
+    "ko": "반복"
+   },
+   "narration": {
+    "en": "Every night, the same line appeared.",
+    "ko": "매일 밤 같은 줄이 나타났다."
+   },
+   "image_hint": {
+    "en": "small kitchen at night, one person writing on notepad, seen from behind, close to counter"
+   },
+   "image_prompt": "small kitchen at night, one person writing on notepad, seen from behind, close to counter"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Noticeable change",
+    "ko": "감지된 변화"
+   },
+   "narration": {
+    "en": "Colors shifted, words flowed smoother.",
+    "ko": "색이 변했고 단어가 부드러웠다."
+   },
+   "image_hint": {
+    "en": "coffee shop at afternoon, one person sipping, seen from behind, far shot"
+   },
+   "image_prompt": "coffee shop at afternoon, one person sipping, seen from behind, far shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Pattern revealed",
+    "ko": "패턴이 드러나다"
+   },
+   "narration": {
+    "en": "The rhythm felt natural.",
+    "ko": "리듬이 자연스러워졌다."
+   },
+   "image_hint": {
+    "en": "train platform at night, one person watching, seen from behind, medium shot"
+   },
+   "image_prompt": "train platform at night, one person watching, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Now",
+    "ko": "지금"
+   },
+   "narration": {
+    "en": "A new file opens, zero errors.",
+    "ko": "새 파일이 열렸고 오류는 없었다."
+   },
+   "image_hint": {
+    "en": "open office at sunrise, one person with laptop, seen from behind, long shot"
+   },
+   "image_prompt": "open office at sunrise, one person with laptop, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "A colleague asks for help.",
+    "ko": "동료가 도움을 요청했다."
+   },
+   "image_hint": {
+    "en": "meeting room at noon, one person explaining, seen from behind, medium shot"
+   },
+   "image_prompt": "meeting room at noon, one person explaining, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Conclusion",
+    "ko": "결론"
+   },
+   "narration": {
+    "en": "Skill is built, not born.",
+    "ko": "기술은 생겨나는 것이 아니라 쌓아 올리는 것이다."
+   },
+   "image_hint": {
+    "en": "city skyline at dusk, one person looking alleyway, seen from behind, wide shot"
+   },
+   "image_prompt": "city skyline at dusk, one person looking alleyway, seen from behind, wide shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-10-biz",
+ "theme": "biz",
+ "theme_label": "시간이 만드는 차이",
+ "quote": {
+  "text": "skill is an accumulation, not an event",
+  "author": "성공하는 사람의 마인드"
+ }
+}
