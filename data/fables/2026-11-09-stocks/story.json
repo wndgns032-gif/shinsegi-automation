@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Walmart: Small Moves, Big Stretch",
+  "ko": "월마트: 작은 움직임, 큰 지평"
+ },
+ "caption": {
+  "en": "Seeing Walmart grow without hype, just real street scenes.",
+  "ko": "월마트의 성장을 과장 없이, 실제 거리 장면으로 보여요."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "It opens at sunrise, no rush.",
+    "Alone in the back of a vast aisle."
+   ],
+   "ko": [
+    "일출에 문을 열고, 서두르지 않다.",
+    "넓은 과일 코너 뒤에서 혼자 있다."
+   ]
+  },
+  "highlight": {
+   "en": "A quiet start.",
+   "ko": "조용한 시작."
+  }
+ },
+ "moral": {
+  "en": "Growth is a curve, not a cliff.",
+  "ko": "성장은 절벽이 아니라 곡선이다."
+ },
+ "cta": {
+  "en": "Keep watching. No promises, just scenes.",
+  "ko": "계속 보세요. 약속 없이, 장면만."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Quiet morning",
+    "ko": "아침의 정적"
+   },
+   "narration": {
+    "en": "An empty mall, a single cashier waiting.",
+    "ko": "허공 가득 마트, 한 명의 캐셔가 기다린다."
+   },
+   "image_hint": {
+    "en": "shopping mall entrance at dawn"
+   },
+   "image_prompt": "shopping mall entrance at dawn"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "First customer",
+    "ko": "첫 고객"
+   },
+   "narration": {
+    "en": "A lone shopper, bags in hand, hesitates.",
+    "ko": "한 명의 쇼핑객, 가방을 들고 망설인다."
+   },
+   "image_hint": {
+    "en": "large supermarket aisle at midday"
+   },
+   "image_prompt": "large supermarket aisle at midday"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "New shelves",
+    "ko": "새 선반"
+   },
+   "narration": {
+    "en": "Workers place fresh stock, humming softly.",
+    "ko": "작업자들이 새 물건을 올려놓는다, 부드러운 허밍 속."
+   },
+   "image_hint": {
+    "en": "warehouse loading dock at noon"
+   },
+   "image_prompt": "warehouse loading dock at noon"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Week passes",
+    "ko": "주가 지나"
+   },
+   "narration": {
+    "en": "The same aisle, now hosting a queue.",
+    "ko": "같은 과일 코너, 이제 줄이 길어졌다."
+   },
+   "image_hint": {
+    "en": "convenience store aisle at late afternoon"
+   },
+   "image_prompt": "convenience store aisle at late afternoon"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Night shift",
+    "ko": "야간 근무"
+   },
+   "narration": {
+    "en": "Lights dim, a single employee attends a late order.",
+    "ko": "불이 사그라지고, 한 명이 밤 주문을 처리한다."
+   },
+   "image_hint": {
+    "en": "grocery store at night, dim lights"
+   },
+   "image_prompt": "grocery store at night, dim lights"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Hidden strategy",
+    "ko": "숨은 전략"
+   },
+   "narration": {
+    "en": "A manager surveys the floor, eyes scanning.",
+    "ko": "매니저가 바닥을 살피며 눈을 돌린다."
+   },
+   "image_hint": {
+    "en": "store manager overlooking shop from high shelf"
+   },
+   "image_prompt": "store manager overlooking shop from high shelf"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Decide",
+    "ko": "결정"
+   },
+   "narration": {
+    "en": "A new aisle opens, altering order flow.",
+    "ko": "새 선반이 열려 흐름이 바뀐다."
+   },
+   "image_hint": {
+    "en": "new aisle being installed in supermarket"
+   },
+   "image_prompt": "new aisle being installed in supermarket"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today’s rush",
+    "ko": "오늘의 급증"
+   },
+   "narration": {
+    "en": "A family, groceries piled, scans at self-check.",
+    "ko": "가족이 물건을 늘어 놓고 셀프 체크아웃."
+   },
+   "image_hint": {
+    "en": "self checkout kiosk, family hand scanning item"
+   },
+   "image_prompt": "self checkout kiosk, family hand scanning item"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Digital touch",
+    "ko": "디지털 터치"
+   },
+   "narration": {
+    "en": "A handheld scanner glides over a barcode.",
+    "ko": "휴대용 스캐너가 바코드를 스캔한다."
+   },
+   "image_hint": {
+    "en": "hand holding barcode scanner, shelf background"
+   },
+   "image_prompt": "hand holding barcode scanner, shelf background"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quiet conclusion",
+    "ko": "정적 결론"
+   },
+   "narration": {
+    "en": "The lights dim, the aisle empties, history writes quietly.",
+    "ko": "불이 끄고, 과일 코너가 비워진다, 역사도 조용히 기록된다."
+   },
+   "image_hint": {
+    "en": "empty supermarket aisle at dusk"
+   },
+   "image_prompt": "empty supermarket aisle at dusk"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-09-stocks",
+ "theme": "stocks",
+ "symbol": "WMT",
+ "quote": {
+  "text": "Walmart Inc.",
+  "author": "NASDAQ WMT"
+ }
+}
