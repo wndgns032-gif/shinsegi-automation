@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Where a Chip Became an Architect",
+  "ko": "칩이 건축가가 된 순간"
+ },
+ "caption": {
+  "en": "Watching a company redefine computation.",
+  "ko": "연산을 재정의한 기업을 관찰하다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Silicon dreams rise silently.",
+    "Gates existed in a box before a spark."
+   ],
+   "ko": [
+    "실리콘은 서늘하게 꿈을 키운다.",
+    "문이 박스 안에서 번뜩이기 전였다."
+   ]
+  },
+  "highlight": {
+   "en": "The temperature of a room, the hum of fans.",
+   "ko": "온도와 팬 소리 하나."
+  }
+ },
+ "moral": {
+  "en": "Control is silent, power is loud.",
+  "ko": "통제는 침묵, 힘은 소리."
+ },
+ "cta": {
+  "en": "Notice the quiet before the storm.",
+  "ko": "폭풍 앞의 고요를 기억하라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "At the Edge of Dream",
+    "ko": "꿈의 가장자리"
+   },
+   "narration": {
+    "en": "I watched a tiny chip glow behind glass.",
+    "ko": "나는 유리 뒤에서 반짝이는 작은 칩을 바라보았다."
+   },
+   "image_hint": {
+    "en": "laboratory bench at dusk, one person observing equipment, seen from behind, long shot"
+   },
+   "image_prompt": "laboratory bench at dusk, one person observing equipment, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Stall in the Lab",
+    "ko": "실험실의 정지"
+   },
+   "narration": {
+    "en": "No progress, only clumps of code.",
+    "ko": "진전이 없고 코드만 묻어 있었다."
+   },
+   "image_hint": {
+    "en": "dark lab room, long cables, small figure at console, medium shot"
+   },
+   "image_prompt": "dark lab room, long cables, small figure at console"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First Surge",
+    "ko": "첫 번째 급등"
+   },
+   "narration": {
+    "en": "A new architecture shimmered across silicon.",
+    "ko": "새로운 구조가 실리콘 위에 반짝였다."
+   },
+   "image_hint": {
+    "en": "circuit board with glowing traces, distant figure watching from window, long shot"
+   },
+   "image_prompt": "circuit board with glowing traces, distant figure watching from window, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Year Passes",
+    "ko": "연이 흐른다"
+   },
+   "narration": {
+    "en": "Lines of code grew like vines.",
+    "ko": "코드가 덩굴처럼 자라났다."
+   },
+   "image_hint": {
+    "en": "open office at noon, large screen displaying graphs, far figure typing, medium shot"
+   },
+   "image_prompt": "open office at noon, large screen displaying graphs, far figure typing"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Divergence",
+    "ko": "분기점"
+   },
+   "narration": {
+    "en": "Silicon no longer sold perfection.",
+    "ko": "실리콘은 이제 완벽만 팔지 않았다."
+   },
+   "image_hint": {
+    "en": "warehouse with stacked chips, small figure in the back, long shot"
+   },
+   "image_prompt": "warehouse with stacked chips, small figure in the back, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Light in the Dark",
+    "ko": "어둠 속 빛"
+   },
+   "narration": {
+    "en": "A quiet test booted a world processor.",
+    "ko": "조용한 테스트가 세계 프로세서를 깨웠다."
+   },
+   "image_hint": {
+    "en": "dim server room, empty desk, distant figure turning a switch, long shot"
+   },
+   "image_prompt": "dim server room, empty desk, distant figure turning a switch, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Revelation",
+    "ko": "깨달음"
+   },
+   "narration": {
+    "en": "The chip whispered in data, not in words.",
+    "ko": "칩은 데이터로 속삭였다, 말로는 아니라."
+   },
+   "image_hint": {
+    "en": "blackboard with equations, single student scribbling, seen from behind, medium shot"
+   },
+   "image_prompt": "blackboard with equations, single student scribbling, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Global Grid",
+    "ko": "전 세계의 그리드"
+   },
+   "narration": {
+    "en": "Factories hum across continents.",
+    "ko": "공장은 대륙을 넘어 울렸다."
+   },
+   "image_hint": {
+    "en": "factory floor at sunrise, workers assembling boards, distant figure overseeing, long shot"
+   },
+   "image_prompt": "factory floor at sunrise, workers assembling boards, distant figure overseeing, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "A classroom fills with students learning AI.",
+    "ko": "AI를 배우는 학생들이 교실을 물렸다."
+   },
+   "image_hint": {
+    "en": "classroom at day, wide screen showing neural network, small figure at desk, medium shot"
+   },
+   "image_prompt": "classroom at day, wide screen showing neural network, small figure at desk"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Silent Mastery",
+    "ko": "침묵의 숙련"
+   },
+   "narration": {
+    "en": "Silence built power, not the other way.",
+    "ko": "침묵이 힘을 만들었고, 그 반대는 아니었다."
+   },
+   "image_hint": {
+    "en": "empty workshop at night, lone lamp, distant figure erasing a design, long shot"
+   },
+   "image_prompt": "empty workshop at night, lone lamp, distant figure erasing a design, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-10-stocks",
+ "theme": "stocks",
+ "symbol": "NVDA",
+ "quote": {
+  "text": "NVIDIA Corporation",
+  "author": "NASDAQ NVDA"
+ }
+}
