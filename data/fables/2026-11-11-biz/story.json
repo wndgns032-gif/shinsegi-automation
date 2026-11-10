@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Paying the Price",
+  "ko": "비용을 치르다"
+ },
+ "caption": {
+  "en": "A glimpse into a hidden cost",
+  "ko": "숨은 대가를 엿보다"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "The phone rang again.",
+    "He still stared at the screen."
+   ],
+   "ko": [
+    "전화가 울렸다.",
+    "그는 화면을 응시했다."
+   ]
+  },
+  "highlight": {
+   "en": "The call cuts the day in half",
+   "ko": "그 전화가 하루를 반으로 끊는다"
+  }
+ },
+ "moral": {
+  "en": "는 끝이다.",
+  "ko": "는 끝이다."
+ },
+ "cta": {
+  "en": "N/A",
+  "ko": "N/A"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Uncertain pause",
+    "ko": "불안한 정지"
+   },
+   "narration": {
+    "en": "The phone rang again.",
+    "ko": "전화가 울렸다."
+   },
+   "image_hint": {
+    "en": "office cubicle at dawn, one person alone, seen from behind, medium shot"
+   },
+   "image_prompt": "office cubicle at dawn, one person alone, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Stubborn waiting",
+    "ko": "고집스런 대기"
+   },
+   "narration": {
+    "en": "He still stared at the screen.",
+    "ko": "그는 화면을 응시했다."
+   },
+   "image_hint": {
+    "en": "downtown street at night, distant figure plans ahead, seen from behind, long shot"
+   },
+   "image_prompt": "downtown street at night, distant figure plans ahead, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The Mess Collects",
+    "ko": "혼돈이 쌓이다"
+   },
+   "narration": {
+    "en": "Letters pile on the desk.",
+    "ko": "편지가 책상 위에 쌓여 있다."
+   },
+   "image_hint": {
+    "en": "congested office desk at noon, small figure arranging papers, seen from behind, medium shot"
+   },
+   "image_prompt": "congested office desk at noon, small figure arranging papers, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Time Slips",
+    "ko": "시간이 흐르다"
+   },
+   "narration": {
+    "en": "Morning turns to evening.",
+    "ko": "아침은 저녁이 된다."
+   },
+   "image_hint": {
+    "en": "seminar room at twilight, distant figure watching clock, seen from behind, wide shot"
+   },
+   "image_prompt": "seminar room at twilight, distant figure watching clock, seen from behind, wide shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Repetition lingers",
+    "ko": "반복이 남는다"
+   },
+   "narration": {
+    "en": "The same note repeats.",
+    "ko": "같은 메모가 반복된다."
+   },
+   "image_hint": {
+    "en": "conference hall at dusk, small figure writing, seen from behind, medium shot"
+   },
+   "image_prompt": "conference hall at dusk, small figure writing, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A Window Opens",
+    "ko": "창문이 열리다"
+   },
+   "narration": {
+    "en": "A window yawns wide.",
+    "ko": "창문이 거대하게 열렸다."
+   },
+   "image_hint": {
+    "en": "high-rise balcony at sunset, distant figure looking out, seen from behind, long shot"
+   },
+   "image_prompt": "high-rise balcony at sunset, distant figure looking out, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Seeing Ourselves",
+    "ko": "자신을 보다"
+   },
+   "narration": {
+    "en": "He watches his own face in glass.",
+    "ko": "거울에 비친 자신의 얼굴을 본다."
+   },
+   "image_hint": {
+    "en": "glass office corridor at midday, small figure mirroring, seen from behind, medium shot"
+   },
+   "image_prompt": "glass office corridor at midday, small figure mirroring, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Immediate Cost",
+    "ko": "즉시 지불"
+   },
+   "narration": {
+    "en": "The bill arrives at the desk.",
+    "ko": "계산서가 책상에 도착했다."
+   },
+   "image_hint": {
+    "en": "kitchen counter at noon, small figure holding envelope, seen from behind, medium shot"
+   },
+   "image_prompt": "kitchen counter at noon, small figure holding envelope, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Decision Time",
+    "ko": "결정의 순간"
+   },
+   "narration": {
+    "en": "He folds the bill and tucks it in.",
+    "ko": "그는 계산서를 접고 넣는다."
+   },
+   "image_hint": {
+    "en": "living room at night, distant figure placing envelope, seen from behind, wide shot"
+   },
+   "image_prompt": "living room at night, distant figure placing envelope, seen from behind, wide shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The Quiet Realization",
+    "ko": "조용한 깨달음"
+   },
+   "narration": {
+    "en": "비용을 내는 것은 영원히 끝나지 않는다.",
+    "ko": "비용을 내는 것은 영원히 끝나지 않는다."
+   },
+   "image_hint": {
+    "en": "empty hallway at dawn, small figure walking away, seen from behind, long shot"
+   },
+   "image_prompt": "empty hallway at dawn, small figure walking away, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-11-biz",
+ "theme": "biz",
+ "theme_label": "대가를 치르는 법",
+ "quote": {
+  "text": "everything has a hidden price",
+  "author": "성공하는 사람의 마인드"
+ }
+}
