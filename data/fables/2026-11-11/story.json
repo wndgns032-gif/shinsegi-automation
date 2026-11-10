@@ -1,0 +1,180 @@
+{
+  "date": "2026-11-11",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "camus-invincible-summer",
+    "author": {
+      "en": "Albert Camus",
+      "ko": "알베르 카뮈",
+      "zh-cn": "阿尔贝·加缪",
+      "fr": "Albert Camus"
+    },
+    "text": {
+      "en": "In the midst of winter, I found there was, within me, an invincible summer.",
+      "ko": "겨울 한가운데서, 나는 내 안에 이길 수 없는 여름이 있다는 걸 알았다.",
+      "zh-cn": "在隆冬，我终于知道，我身上有一个不可战胜的夏天。",
+      "fr": "Au milieu de l'hiver, j'ai découvert en moi un invincible été."
+    }
+  },
+  "title": {
+    "en": "Invincible Summer in Winter",
+    "ko": "겨울 속 불멸의 여름"
+  },
+  "caption": {
+    "en": "Camus reminds that resilience lies inside.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "카뮈는 내면의 인내를 상기시킨다.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I unfolded an empty hour each night",
+        "Browsing foreboding shadows"
+      ],
+      "ko": [
+        "겨울 한가운데서, 나는 내…",
+        "겨울 한가운데서, 나는 내…"
+      ]
+    },
+    "ko": [
+      "나는 눈부신 밤마다 침묵을 훑었고",
+      "시야를 모호한 어둠으로 비추었다"
+    ],
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "내면의 빛이 고요한 길을 비춘다",
+    "ko": "내면의 빛이 고요한 길을 비춘다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "mountain ridge at dawn, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "In the midst of winter, I found there was, within me, an invincible summer. — Albert Camus.",
+        "ko": "겨울 한가운데서, 나는 내 안에 이길 수 없는 여름이 있다는 걸 알았다. — 알베르 카뮈."
+      },
+      "subtitle": {
+        "en": "In the midst of winter, I found there.",
+        "ko": "겨울 한가운데서, 나는 내…"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "deserted path at dusk, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "I unfolded an empty hour each night. Browsing foreboding shadows",
+        "ko": "겨울 한가운데서, 나는 내. 겨울 한가운데서, 나는 내"
+      },
+      "subtitle": {
+        "en": "I unfolded an empty hour each night",
+        "ko": "나는 눈부신 밤마다 침묵을…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "rustic kitchen at early morning, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "Wake, the kettle hums",
+        "ko": "시리도록 한 아침, 냄비가 부는 소리"
+      },
+      "subtitle": {
+        "en": "Wake, the kettle hums",
+        "ko": "시리도록 한 아침, 냄비가…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "old pier at noon, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "The tide pulls the world away",
+        "ko": "거센 파도가 세상을 빼앗는 듯"
+      },
+      "subtitle": {
+        "en": "The tide pulls the world away",
+        "ko": "거센 파도가 세상을 빼앗는 듯"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "snowy cabin at early evening, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "Breeze rattles the shutters",
+        "ko": "바람이 창가를 흔들며"
+      },
+      "subtitle": {
+        "en": "Breeze rattles the shutters",
+        "ko": "바람이 창가를 흔들며"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "crowded subway at night, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "Faces blur, time ticks",
+        "ko": "얼굴이 흐려지고 시계가 땀을 흘리며"
+      },
+      "subtitle": {
+        "en": "Faces blur, time ticks",
+        "ko": "얼굴이 흐려지고 시계가 땀을…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "quiet rooftop at dawn, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "Sunrise touches my weary bones",
+        "ko": "일출이 피곤한 뼈를 감싸며"
+      },
+      "subtitle": {
+        "en": "Sunrise touches my weary bones",
+        "ko": "일출이 피곤한 뼈를 감싸며"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "modern office at midday, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "I pause to acknowledge the storm inside",
+        "ko": "나는 내면의 폭풍을 인정하며 잠시 멈춘다"
+      },
+      "subtitle": {
+        "en": "I pause to acknowledge the storm inside",
+        "ko": "나는 내면의 폭풍을 인정하며…"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "city street at night, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "Stairs echo my soft resilience",
+        "ko": "계단이 부드러운 인내를 메아리 친다"
+      },
+      "subtitle": {
+        "en": "Stairs echo my soft resilience",
+        "ko": "계단이 부드러운 인내를…"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "sunlit hill at sunrise, long shot, a man in his 30s, short black hair, tired eyes, plain grey shirt",
+      "narration": {
+        "en": "내면의 빛이 고요한 길을 비춘다",
+        "ko": "내면의 빛이 고요한 길을 비춘다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
