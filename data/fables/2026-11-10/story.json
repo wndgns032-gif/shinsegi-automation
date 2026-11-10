@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-10",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "jordan-failed-again",
+    "author": {
+      "en": "Michael Jordan",
+      "ko": "마이클 조던",
+      "zh-cn": "迈克尔·乔丹",
+      "fr": "Michael Jordan"
+    },
+    "text": {
+      "en": "I have failed over and over and over again in my life. And that is why I succeed.",
+      "ko": "나는 평생 수없이 실패했다. 그리고 그래서 성공했다.",
+      "zh-cn": "我一生中一次又一次地失败，这正是我成功的原因。",
+      "fr": "J'ai échoué encore et encore dans ma vie. Et c'est pour cela que je réussis."
+    }
+  },
+  "title": {
+    "en": "Failure Fuels Success",
+    "ko": "실패가 성공을 부른다"
+  },
+  "caption": {
+    "en": "My failures walked me to the court of triumph\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "나의 실패가 승리의 코트를 만들었다\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I rise beside a quiet forest",
+        "I watch a lone shadow lift"
+      ],
+      "ko": [
+        "고요한 숲 옆에서 일어섰다",
+        "거친 그림자 하나를 올려본다"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Success is a trajectory built on failure",
+    "ko": "성공은 실패 위에 세워지는 궤도다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet forest, seen from behind",
+      "narration": {
+        "en": "I have failed over and over and over again in my life. And that is why I succeed. — Michael Jordan.",
+        "ko": "나는 평생 수없이 실패했다. 그리고 그래서 성공했다. — 마이클 조던."
+      },
+      "subtitle": {
+        "en": "Fails echo.",
+        "ko": "실패가 울린다."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "city alley at dawn, distant small figure",
+      "narration": {
+        "en": "I rise beside a quiet forest. I watch a lone shadow lift",
+        "ko": "고요한 숲 옆에서 일어섰다. 거친 그림자 하나를 올려본다"
+      },
+      "subtitle": {
+        "en": "Morning breathes hope.",
+        "ko": "아침이 희망을 숨쉰다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "subway platform, long shot",
+      "narration": {
+        "en": "Bus comes. I step off. I fall onto the track.",
+        "ko": "버스가 왔다. 내려선다. 선로에 넘어진다."
+      },
+      "subtitle": {
+        "en": "Step forward, fall backwards.",
+        "ko": "버스가 왔다. 내려선다…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "old library, wide shot",
+      "narration": {
+        "en": "I read a book. I tripped over a page.",
+        "ko": "책을 읽었다. 한 장에 걸렸다."
+      },
+      "subtitle": {
+        "en": "Knowledge tripples.",
+        "ko": "책을 읽었다. 한 장에…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "mountain trail, seen from behind",
+      "narration": {
+        "en": "I hike uphill. I trip on a rock.",
+        "ko": "오르막길을 오르고. 바위에 걸린다."
+      },
+      "subtitle": {
+        "en": "Climb, stumble, climb.",
+        "ko": "오르막길을 오르고. 바위에…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "kitchen at night, distant small figure",
+      "narration": {
+        "en": "I cook. The flame blows away the sauce.",
+        "ko": "요리를 한다. 불꽃이 소스를 날려버린다."
+      },
+      "subtitle": {
+        "en": "Heat reshapes.",
+        "ko": "요리를 한다. 불꽃이 소스를…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "beach at sunset, long shot",
+      "narration": {
+        "en": "I paddle. The tide pulls me back.",
+        "ko": "노를 흔든다. 조수가 끌어당긴다."
+      },
+      "subtitle": {
+        "en": "Listen to the pull.",
+        "ko": "노를 흔든다. 조수가…"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office break room, wide shot",
+      "narration": {
+        "en": "I missed a deadline. I encoded a new plan.",
+        "ko": "마감이 놓쳤다. 새 계획을 코딩했다."
+      },
+      "subtitle": {
+        "en": "Plan pivots.",
+        "ko": "마감이 놓쳤다. 새 계획을…"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "gym locker room, seen from behind",
+      "narration": {
+        "en": "I failed a lift. I trained harder.",
+        "ko": "리프트를 놓쳤다. 더 힘을 키웠다."
+      },
+      "subtitle": {
+        "en": "Strength rebuilds.",
+        "ko": "리프트를 놓쳤다. 더 힘을…"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "night sky ridge, distant small figure",
+      "narration": {
+        "en": "Success is a trajectory built on failure",
+        "ko": "성공은 실패 위에 세워지는 궤도다"
+      },
+      "subtitle": {
+        "en": "Stars witness.",
+        "ko": "별이 증인이다."
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
