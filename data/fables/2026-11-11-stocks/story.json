@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Google’s Quiet Sprint",
+  "ko": "구글의 조용한 스프린트"
+ },
+ "caption": {
+  "en": "Observe how a search engine grew into a tech giant without shouting.",
+  "ko": "검색 엔진이 어떻게 조용히 거대 기업으로 성장했는지 엿보다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I saw a server room humming in the dawn.",
+    "No banners, just lights."
+   ],
+   "ko": [
+    "새벽에 메마른 서버실을 보았다.",
+    "배너 없이, 빛만 있었다."
+   ]
+  },
+  "highlight": {
+   "en": "A silence that carried data.",
+   "ko": "데이터를 품은 침묵."
+  }
+ },
+ "moral": {
+  "en": "Growth is not a roar, but a steady pulse.",
+  "ko": "성장은 울음소리가 아니라 꾸준한 맥박이다."
+ },
+ "cta": {
+  "en": "Observe.",
+  "ko": "관찰하라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "First glimpse",
+    "ko": "첫눈에"
+   },
+   "narration": {
+    "en": "Servers glow beneath a floor of glass.",
+    "ko": "서버가 유리 바닥 아래에서 빛난다."
+   },
+   "image_hint": {
+    "en": "server room at dawn, small figure in the middle distance"
+   },
+   "image_prompt": "server room at dawn, small figure in the middle distance"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "An empty street",
+    "ko": "빈 거리"
+   },
+   "narration": {
+    "en": "People pass, unaware of the billboard blank in the corner.",
+    "ko": "사람들이 지나가지만 구석의 빈 광고판을 모른다."
+   },
+   "image_hint": {
+    "en": "city street at noon, small figure walking, seen from behind"
+   },
+   "image_prompt": "city street at noon, small figure walking, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Early morning search",
+    "ko": "아침의 검색"
+   },
+   "narration": {
+    "en": "A browser tab opens, a query types, results flash.",
+    "ko": "브라우저 탭이 열리고, 검색어가 입력되고, 결과가 플래시처럼 나오고."
+   },
+   "image_hint": {
+    "en": "computer desk at sunrise, small figure typing, seen from behind"
+   },
+   "image_prompt": "computer desk at sunrise, small figure typing, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Three years later",
+    "ko": "세 년 후"
+   },
+   "narration": {
+    "en": "A paint-swapped office shows new colors, new screens humming.",
+    "ko": "색칠된 사무실이 새로운 색과 컴퓨터 불빛을 보여준다."
+   },
+   "image_hint": {
+    "en": "modern office lobby at dusk, small figure sitting, seen from behind"
+   },
+   "image_prompt": "modern office lobby at dusk, small figure sitting, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The ads ripple",
+    "ko": "광고가 파동처럼"
+   },
+   "narration": {
+    "en": "Billboards flicker with words that appear when needed.",
+    "ko": "필요할 때 나타나는 단어들로 광고판이 깜빡인다."
+   },
+   "image_hint": {
+    "en": "digital billboard at night, small figure walking, seen from behind"
+   },
+   "image_prompt": "digital billboard at night, small figure walking, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A new window opens",
+    "ko": "새 창이 열리다"
+   },
+   "narration": {
+    "en": "The cloud surface glints, hinting expansion beyond the screen.",
+    "ko": "클라우드 표면이 반짝이며 스크린을 넘어선 확장을 암시한다."
+   },
+   "image_hint": {
+    "en": "cloud server rack at twilight, small figure gazing, seen from behind"
+   },
+   "image_prompt": "cloud server rack at twilight, small figure gazing, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Video shares a story",
+    "ko": "영상이 이야기를 전하다"
+   },
+   "narration": {
+    "en": "A kid records a tutorial, uploads; algorithms watch and learn.",
+    "ko": "아이 하나가 튜토리얼을 녹화해 올리고, 알고리즘이 관찰하고 배운다."
+   },
+   "image_hint": {
+    "en": "home studio at afternoon, small figure recording, seen from behind"
+   },
+   "image_prompt": "home studio at afternoon, small figure recording, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today’s server",
+    "ko": "오늘날 서버"
+   },
+   "narration": {
+    "en": "Thousands of nodes pulse, providing answers to millions.",
+    "ko": "수천 개의 노드는 펄스를 쳐서 수백만 명에게 답을 제공한다."
+   },
+   "image_hint": {
+    "en": "data center at night, small figure behind glass doors, seen from behind"
+   },
+   "image_prompt": "data center at night, small figure behind glass doors, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "One user’s feed",
+    "ko": "한 사용자의 피드"
+   },
+   "narration": {
+    "en": "From search, to videos, to cloud files, a single interface holds it all.",
+    "ko": "검색, 동영상, 클라우드 파일, 한 인터페이스에 담긴다."
+   },
+   "image_hint": {
+    "en": "smartphone screen at evening, small figure scrolling, seen from behind"
+   },
+   "image_prompt": "smartphone screen at evening, small figure scrolling, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quietly big",
+    "ko": "조용히 큰"
+   },
+   "narration": {
+    "en": "Behind every banner lies a hidden network; yet no shout is heard.",
+    "ko": "모든 배너 뒤에는 숨은 네트워크가 있지만, 항아리 소리는 들리지 않는다."
+   },
+   "image_hint": {
+    "en": "abstract office skyline at sunrise, small figure standing, seen from behind"
+   },
+   "image_prompt": "abstract office skyline at sunrise, small figure standing, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-11-stocks",
+ "theme": "stocks",
+ "symbol": "GOOG",
+ "quote": {
+  "text": "Alphabet Inc.",
+  "author": "NASDAQ GOOG"
+ }
+}
