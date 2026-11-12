@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "The Quiet Edge of Amazon",
+  "ko": "아마존의 고요한 선"
+ },
+ "caption": {
+  "en": "Observing a giant in motion",
+  "ko": "거인의 움직임을 관찰하며"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Markets swing, people breathe."
+   ],
+   "ko": [
+    "시장은 흔들리고, 사람은 숨을 쉬네."
+   ],
+   "highlight": {
+    "en": "Watch the world without shouting.",
+    "ko": "소리 없이 세상을 살펴보라."
+   }
+  }
+ },
+ "moral": {
+  "en": "Progress hides in plain sight.",
+  "ko": "진보는 평범한 안쪽에 있다."
+ },
+ "cta": {
+  "en": "Reflect quietly on what you see.",
+  "ko": "조용히 보는 것을 반추하라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Sudden silence in a bustling city",
+    "ko": "분주한 도시에 갑작스러운 정적"
+   },
+   "narration": {
+    "en": "Neon flickers beside a lone streetlamp.",
+    "ko": "네온이 붐비는 거리 라디아에 깜빡인다."
+   },
+   "image_hint": {
+    "en": "busy city street at dusk, small figure in the middle distance, seen from behind"
+   },
+   "image_prompt": "busy city street at dusk, small figure in the middle distance, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "A closed warehouse door",
+    "ko": "닫힌 창고문"
+   },
+   "narration": {
+    "en": "Dust motes drift across a torn sign.",
+    "ko": "먼지 입자가 찢어진 표지판을 가로지른다."
+   },
+   "image_hint": {
+    "en": "storage warehouse interior at night, single person staring at a faded sign, distant figure"
+   },
+   "image_prompt": "storage warehouse interior at night, single person staring at a faded sign, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Order carts in line",
+    "ko": "줄을 서는 주문 차량"
+   },
+   "narration": {
+    "en": "Pinion wheels turn, steady and patient.",
+    "ko": "기어가 천천히 돌며 인내심을 품는다."
+   },
+   "image_hint": {
+    "en": "delivery trucks parked on a warehouse lot, small figure walking between, seen from behind"
+   },
+   "image_prompt": "delivery trucks parked on a warehouse lot, small figure walking between, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Clock ticks in a server room",
+    "ko": "서버실에서 타는 시계"
+   },
+   "narration": {
+    "en": "Beeping alerts echo, unnoticed.",
+    "ko": "경보음이 울려도 귀에 들려오지 않는다."
+   },
+   "image_hint": {
+    "en": "data center floor, rows of servers, lone technician in the background, distant figure"
+   },
+   "image_prompt": "data center floor, rows of servers, lone technician in the background, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Packaging forest",
+    "ko": "포장 숲"
+   },
+   "narration": {
+    "en": "Stacks tower, white paper breathes.",
+    "ko": "스택이 솟아오르며 흰 종이 숨을 쉰다."
+   },
+   "image_hint": {
+    "en": "warehouse aisle full of boxed items, single figure moving slowly, seen from behind"
+   },
+   "image_prompt": "warehouse aisle full of boxed items, single figure moving slowly, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A hidden window",
+    "ko": "숨은 창문"
+   },
+   "narration": {
+    "en": "Light spills into the gray corridor.",
+    "ko": "빛이 회색 복도로 뻗어간다."
+   },
+   "image_hint": {
+    "en": "narrow hallway with a small window, light streaming in, distant figure"
+   },
+   "image_prompt": "narrow hallway with a small window, light streaming in, distant figure"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Data flowing unseen",
+    "ko": "보이지 않는 데이터 흐름"
+   },
+   "narration": {
+    "en": "Electric veins pulse across the board.",
+    "ko": "전기 가닥이 보드 위에서 튕긴다."
+   },
+   "image_hint": {
+    "en": "computer motherboard close-up with visible cables, small figure observing, seen from behind"
+   },
+   "image_prompt": "small figure observing, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Marketplace buzz",
+    "ko": "마켓플레이스의 소란"
+   },
+   "narration": {
+    "en": "Customers click, ships depart silently.",
+    "ko": "고객이 클릭하면 선박이 조용히 출발한다."
+   },
+   "image_hint": {
+    "en": "shopping website interface on a laptop, focus on cursor movement, small figure behind screen"
+   },
+   "image_prompt": "focus on cursor movement, small figure behind screen"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s prompt",
+    "ko": "오늘의 사전"
+   },
+   "narration": {
+    "en": "A single button glows in the dark.",
+    "ko": "어두운 곳에 한 개의 버튼이 빛난다."
+   },
+   "image_hint": {
+    "en": "desktop mouse cursor on a dark background, small figure reaching for it, seen from behind"
+   },
+   "image_prompt": "desktop mouse cursor on a dark background, small figure reaching for it, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Stillness speaks",
+    "ko": "고요를 말한다"
+   },
+   "narration": {
+    "en": "Growth remembers the quiet edges.",
+    "ko": "성장은 조용한 가장자리를 기억한다."
+   },
+   "image_hint": {
+    "en": "quiet office floor at twilight, lone figure sitting at a desk, distant figure"
+   },
+   "image_prompt": "quiet office floor at twilight, lone figure sitting at a desk, distant figure"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-12-stocks",
+ "theme": "stocks",
+ "symbol": "AMZN",
+ "quote": {
+  "text": "Amazon.com, Inc.",
+  "author": "NASDAQ AMZN"
+ }
+}
