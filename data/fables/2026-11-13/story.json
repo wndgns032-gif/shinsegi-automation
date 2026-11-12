@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-13",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "edison-10000ways",
+    "author": {
+      "en": "Thomas Edison",
+      "ko": "토마스 에디슨",
+      "zh-cn": "托马斯·爱迪生",
+      "fr": "Thomas Edison"
+    },
+    "text": {
+      "en": "I have not failed. I have just found ten thousand ways that will not work.",
+      "ko": "나는 실패한 게 아니다. 작동하지 않는 방법을 만 가지 찾았을 뿐이다.",
+      "zh-cn": "我没有失败，我只是发现了一万种行不通的方法。",
+      "fr": "Je n'ai pas échoué. J'ai simplement trouvé dix mille façons qui ne fonctionnent pas."
+    }
+  },
+  "title": {
+    "en": "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다.",
+    "ko": "나는 계속 시도한 날이…"
+  },
+  "caption": {
+    "en": "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "나는 계속 시도한 날이…\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다.",
+        "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다."
+      ],
+      "ko": [
+        "나는 계속 시도한 날이…",
+        "나는 계속 시도한 날이…"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다.",
+    "ko": "나는 계속 시도한 날이…"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "night city skyline, distant small figure",
+      "narration": {
+        "en": "I have not failed. I have just found ten thousand ways that will not work. — Thomas Edison.",
+        "ko": "나는 실패한 게 아니다. 작동하지 않는 방법을 만 가지 찾았을 뿐이다. — 토마스 에디슨."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "morning kitchen, seen from behind",
+      "narration": {
+        "en": "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다. 나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다",
+        "ko": "나는 계속 시도한 날이. 나는 계속 시도한 날이"
+      },
+      "subtitle": {
+        "en": "The day I kept trying felt like an endless loop.",
+        "ko": "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "afternoon park bench, distant small figure",
+      "narration": {
+        "en": "I planted seeds in the park.",
+        "ko": "나는 공원에 씨앗을 심었다."
+      },
+      "subtitle": {
+        "en": "I planted seeds in the park.",
+        "ko": "나는 공원에 씨앗을 심었다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "evening cafe window, seen from behind",
+      "narration": {
+        "en": "The coffee bitter, the plan failed.",
+        "ko": "커피는 쓴맛, 계획은 실패했다."
+      },
+      "subtitle": {
+        "en": "The coffee bitter, the plan failed.",
+        "ko": "커피는 쓴맛, 계획은 실패했다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "night office desk, seen from behind",
+      "narration": {
+        "en": "I rewrote the code until dawn.",
+        "ko": "나는 새벽까지 코드를 다시 썼다."
+      },
+      "subtitle": {
+        "en": "I rewrote the code until dawn.",
+        "ko": "나는 새벽까지 코드를 다시 썼다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "dawn library study, long shot",
+      "narration": {
+        "en": "Books whispered new ideas.",
+        "ko": "책은 새로운 아이디어를 속삭였다."
+      },
+      "subtitle": {
+        "en": "Books whispered new ideas.",
+        "ko": "책은 새로운 아이디어를 속삭였다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "night beach shore, seen from behind",
+      "narration": {
+        "en": "The waves carried my doubts away.",
+        "ko": "파도는 나의 의구심을 씻어냈다."
+      },
+      "subtitle": {
+        "en": "The waves carried my doubts away.",
+        "ko": "파도는 나의 의구심을 씻어냈다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "morning office space, distant small figure",
+      "narration": {
+        "en": "I deleted the buggy file.",
+        "ko": "나는 버그 파일을 삭제했다."
+      },
+      "subtitle": {
+        "en": "I deleted the buggy file.",
+        "ko": "나는 버그 파일을 삭제했다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "evening studio studio, seen from behind",
+      "narration": {
+        "en": "I streamed my experiment live.",
+        "ko": "나는 실험을 라이브로 방송했다."
+      },
+      "subtitle": {
+        "en": "I streamed my experiment live.",
+        "ko": "나는 실험을 라이브로 방송했다."
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "midnight mountain peak, long shot",
+      "narration": {
+        "en": "나는 계속 시도한 날이 끝없는 반복처럼 느껴졌다.",
+        "ko": "나는 계속 시도한 날이…"
+      },
+      "subtitle": {
+        "en": "생각은 여전히 이어진다.",
+        "ko": "생각은 여전히 이어진다."
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
