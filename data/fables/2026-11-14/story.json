@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-14",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "laotzu-thousand-miles",
+    "author": {
+      "en": "Lao Tzu",
+      "ko": "노자",
+      "zh-cn": "老子",
+      "fr": "Lao Tseu"
+    },
+    "text": {
+      "en": "A journey of a thousand miles begins with a single step.",
+      "ko": "천 리 길도 한 걸음에서 시작된다.",
+      "zh-cn": "千里之行，始于足下。",
+      "fr": "Un voyage de mille lieues commence toujours par un premier pas."
+    }
+  },
+  "title": {
+    "en": "천 리 길도 한 걸음에서 시작된다.",
+    "ko": "천 리 길도 한 걸음에서…"
+  },
+  "caption": {
+    "en": "천 리 길도 한 걸음에서 시작된다.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "천 리 길도 한 걸음에서…\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "천 리 길도 한 걸음에서 시작된다.",
+        "천 리 길도 한 걸음에서 시작된다."
+      ],
+      "ko": [
+        "천 리 길도 한 걸음에서…",
+        "천 리 길도 한 걸음에서…"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "천 리 길도 한 걸음에서 시작된다.",
+    "ko": "천 리 길도 한 걸음에서…"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "mountain ridge, distant small figure",
+      "narration": {
+        "en": "A journey of a thousand miles begins with a single step. — Lao Tzu.",
+        "ko": "천 리 길도 한 걸음에서 시작된다. — 노자."
+      },
+      "subtitle": {
+        "en": "quote",
+        "ko": "인용문"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "seaside cliff, seen from behind",
+      "narration": {
+        "en": "천 리 길도 한 걸음에서 시작된다. 천 리 길도 한 걸음에서 시작된다",
+        "ko": "천 리 길도 한 걸음에서. 천 리 길도 한 걸음에서"
+      },
+      "subtitle": {
+        "en": "hook",
+        "ko": "가사"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "city alleyway, distant small figure",
+      "narration": {
+        "en": "아침, 나는 길가를 걷는다.",
+        "ko": "아침, 길가를 걷는다."
+      },
+      "subtitle": {
+        "en": "fable",
+        "ko": "우화"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "subway tunnel, long shot",
+      "narration": {
+        "en": "불안이 한 줄리 선다.",
+        "ko": "불안이 한 줄리 선다."
+      },
+      "subtitle": {
+        "en": "fable",
+        "ko": "우화"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "office cubicle, wide shot",
+      "narration": {
+        "en": "하루가 끝날 때, 문을 잠그는 게 두렵다.",
+        "ko": "하루가 끝날 때, 문을 잠그는 게 두렵다."
+      },
+      "subtitle": {
+        "en": "fable",
+        "ko": "우화"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "park bench, seen from behind",
+      "narration": {
+        "en": "밤, 벤치에 앉아 달을 바라본다.",
+        "ko": "밤, 벤치에 앉아 달을 바라본다."
+      },
+      "subtitle": {
+        "en": "fable",
+        "ko": "우화"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "mountaintop, long shot",
+      "narration": {
+        "en": "새벽, 꼭대기에서 주위를 잇는다.",
+        "ko": "새벽, 꼭대기에서 주위를 잇는다."
+      },
+      "subtitle": {
+        "en": "fable",
+        "ko": "우화"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "cafe counter, distant small figure",
+      "narration": {
+        "en": "나는 커피를 마시며 내일 계획을 세운다.",
+        "ko": "커피를 마시며 내일 계획을 세운다."
+      },
+      "subtitle": {
+        "en": "real",
+        "ko": "현실"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "train platform, wide shot",
+      "narration": {
+        "en": "버스에 몸을 실어 담배보다 길 앞에 서 있다.",
+        "ko": "버스에 몸을 실어 담배보다 길 앞에 서 있다."
+      },
+      "subtitle": {
+        "en": "real",
+        "ko": "현실"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "dawn sky, seen from behind",
+      "narration": {
+        "en": "천 리 길도 한 걸음에서 시작된다.",
+        "ko": "천 리 길도 한 걸음에서…"
+      },
+      "subtitle": {
+        "en": "moral",
+        "ko": "교훈"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
