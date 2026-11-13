@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "What Makes a Legend",
+  "ko": "영웅이 되는 이유"
+ },
+ "caption": {
+  "en": "A distant observer watches the rise of a giant. No charts, no numbers, just scenes.",
+  "ko": "멀리서 보는 자, 거인의 성장. 그래프는 없고, 숫자는 없고, 장면 하나하나가 말한다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I saw a light flicker behind a curtain.",
+    "The flicker was steady, not a spark."
+   ],
+   "ko": [
+    "나는 커튼 뒤에서 불빛이 반짝이는 것을 보았다.",
+    "그 불빛은 튀는 빛이 아니라 꺼지지 않았다."
+   ]
+  },
+  "highlight": {
+   "en": "A single glow in a dark room.",
+   "ko": "어두운 방 안의 한 줄기 빛."
+  }
+ },
+ "moral": {
+  "en": "The steady light stayed, even when the world changed.",
+  "ko": "세상이 변해도 끊임없이 이어진 빛이 있었다."
+ },
+ "cta": {
+  "en": "Keep watching, not shouting.",
+  "ko": "지켜보라, 소리치지 말고."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Covert signal",
+    "ko": "비밀신호"
+   },
+   "narration": {
+    "en": "I watched a small screen blink on a dusty office.",
+    "ko": "먼지 묻은 사무실에서 작은 화면이 깜빡이는 걸 보았다."
+   },
+   "image_hint": {
+    "en": "office hallway at dusk, small figure standing by a window, seen from behind"
+   },
+   "image_prompt": "office hallway at dusk, small figure standing by a window, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Empty cubicle",
+    "ko": "빈 사원"
+   },
+   "narration": {
+    "en": "Rows of desks, no one moved for hours.",
+    "ko": "테이블 줄줄, 아무도 회전하지 않았다."
+   },
+   "image_hint": {
+    "en": "open-plan office at noon, lonely desk, distant figure at work, seen from behind"
+   },
+   "image_prompt": "open-plan office at noon, lonely desk, distant figure at work, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First search",
+    "ko": "첫 검색"
+   },
+   "narration": {
+    "en": "A swipe across glass, words appear.",
+    "ko": "유리 위를 스와이프, 글자들이 드러난다."
+   },
+   "image_hint": {
+    "en": "computer desk at sunrise, one person typing, seen from behind"
+   },
+   "image_prompt": "computer desk at sunrise, one person typing, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Night bus",
+    "ko": "밤철 버스"
+   },
+   "narration": {
+    "en": "A rider scrolls, eyes glued to the screen.",
+    "ko": "한 승준이 스크롤, 눈은 화면에 매달렸다."
+   },
+   "image_hint": {
+    "en": "tunnel bus interior at night, distant figure looking at a phone, seen from behind"
+   },
+   "image_prompt": "tunnel bus interior at night, distant figure looking at a phone, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Repetition",
+    "ko": "반복"
+   },
+   "narration": {
+    "en": "Clicks kept, algorithms thirsted for patterns.",
+    "ko": "클릭이 계속, 알고리즘은 패턴을 갈망했다."
+   },
+   "image_hint": {
+    "en": "data center at dawn, one engineer monitoring servers, seen from behind"
+   },
+   "image_prompt": "data center at dawn, one engineer monitoring servers, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Glitches spark",
+    "ko": "불량이 번개처럼"
+   },
+   "narration": {
+    "en": "Sudden glitch, a new route appears.",
+    "ko": "갑작스런 결함, 새로운 경로가 보였다."
+   },
+   "image_hint": {
+    "en": "office breakroom at midday, a person looking at a flickering screen, seen from behind"
+   },
+   "image_prompt": "office breakroom at midday, a person looking at a flickering screen, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Midnight breakthrough",
+    "ko": "한밤의 깨달음"
+   },
+   "narration": {
+    "en": "Outside, lights flare, a new ad pops.",
+    "ko": "밖에서 불이 번쩍, 새로운 광고가 뜬다."
+   },
+   "image_hint": {
+    "en": "city skyline at midnight, distant figure in a window, seen from behind"
+   },
+   "image_prompt": "city skyline at midnight, distant figure in a window, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Real world",
+    "ko": "현실"
+   },
+   "narration": {
+    "en": "A headline, a video, viewers in a cafe.",
+    "ko": "헤드라인, 영상, 카페에 있는 시청자."
+   },
+   "image_hint": {
+    "en": "cafe interior at noon, small customer watching a tablet, seen from behind"
+   },
+   "image_prompt": "cafe interior at noon, small customer watching a tablet, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today's pulse",
+    "ko": "오늘의 맥박"
+   },
+   "narration": {
+    "en": "A child watches a tutorial, eyes wide.",
+    "ko": "한 아이가 튜토리얼을 보며 눈을 번쩍 뜬다."
+   },
+   "image_hint": {
+    "en": "playroom at afternoon, small child staring at a tablet, seen from behind"
+   },
+   "image_prompt": "playroom at afternoon, small child staring at a tablet, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "It stays steady",
+    "ko": "계속된다"
+   },
+   "narration": {
+    "en": "So the glow never disappeared.",
+    "ko": "그래서 그 빛은 사라지지 않았다."
+   },
+   "image_hint": {
+    "en": "night office lobby, dull lights, small figure waiting, seen from behind"
+   },
+   "image_prompt": "night office lobby, dull lights, small figure waiting, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-13-stocks",
+ "theme": "stocks",
+ "symbol": "GOOG",
+ "quote": {
+  "text": "Alphabet Inc.",
+  "author": "NASDAQ GOOG"
+ }
+}
