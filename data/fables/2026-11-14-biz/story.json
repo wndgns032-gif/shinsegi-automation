@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "Say No to Almost Everything",
+  "ko": "거절로 집중을 높이다"
+ },
+ "caption": {
+  "en": "Observe a single moment that shows the power of saying no",
+  "ko": "하나의 장면으로 보이는 거절이 집중을 높이는 것"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "She paused before the email blast"
+   ],
+   "ko": [
+    "나는 그 순간을 보았다."
+   ],
+   "highlight": {
+    "en": "In a quiet office, a hand hovered over the send key",
+    "ko": "작은 책상에서 그 손가락이 보내기 버튼을 건드리겠다"
+   }
+  }
+ },
+ "moral": {
+  "en": "Choosing to stop is the first step toward doing",
+  "ko": "멈추는 선택이 먼저다"
+ },
+ "cta": {
+  "en": "Whispering a new habit into your days",
+  "ko": "새로운 습관을 속삭이듯 안고 가라"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "A simple decision",
+    "ko": "한 순간의 결정"
+   },
+   "narration": {
+    "en": "She hovered over the send key",
+    "ko": "나는 그瞬間을 보았다."
+   },
+   "image_hint": {
+    "en": "office desk, a hand hovering over a key, seen from behind, long shot"
+   },
+   "image_prompt": "office desk, a hand hovering over a key, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The inbox floods",
+    "ko": "수신함이 폭풍"
+   },
+   "narration": {
+    "en": "Hundreds of emails piled like junk",
+    "ko": "나는 메일이 쌓여 있는 장면을 보았다."
+   },
+   "image_hint": {
+    "en": "computer screen, email inbox filled, distant figure, close to the screen"
+   },
+   "image_prompt": "computer screen, email inbox filled, distant figure, close to the screen"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "She opens one",
+    "ko": "한 통을 열다"
+   },
+   "narration": {
+    "en": "Snippet shows a press conference",
+    "ko": "나는 그 화면을 보았다."
+   },
+   "image_hint": {
+    "en": "computer screen, text overlay, back to the camera, long shot"
+   },
+   "image_prompt": "computer screen, text overlay, back to the camera, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Notice the demand",
+    "ko": "요구를 인식"
+   },
+   "narration": {
+    "en": "A client calls for an instant reply",
+    "ko": "나는 전화를 보았다."
+   },
+   "image_hint": {
+    "en": "office space, ringing phone, small figure in the distance, medium shot"
+   },
+   "image_prompt": "office space, ringing phone, small figure in the distance"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Time slips",
+    "ko": "시간이 흐릅니다"
+   },
+   "narration": {
+    "en": "Minutes turn into hours",
+    "ko": "나는 시간을 보았다."
+   },
+   "image_hint": {
+    "en": "clock display, minutes ticking, distant figure, wide shot"
+   },
+   "image_prompt": "clock display, minutes ticking, distant figure, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Comparison appears",
+    "ko": "비교가 나온다"
+   },
+   "narration": {
+    "en": "She recalls meetings that went nowhere",
+    "ko": "나는 회의를 보았다."
+   },
+   "image_hint": {
+    "en": "meeting room, empty chairs, small figure sitting, long shot"
+   },
+   "image_prompt": "meeting room, empty chairs, small figure sitting, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A pattern reveals",
+    "ko": "패턴이 드러난다"
+   },
+   "narration": {
+    "en": "Three nights of empty drafts",
+    "ko": "나는 서류를 보았다."
+   },
+   "image_hint": {
+    "en": "file cabinet, unopened folders, distant figure, medium shot"
+   },
+   "image_prompt": "file cabinet, unopened folders, distant figure"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Reality hits",
+    "ko": "현실이 스러진다"
+   },
+   "narration": {
+    "en": "She sends a single reply",
+    "ko": "나는 메일을 보았다."
+   },
+   "image_hint": {
+    "en": "laptop screen, one email sent, small figure in the middle, long shot"
+   },
+   "image_prompt": "laptop screen, one email sent, small figure in the middle, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today, she says no",
+    "ko": "오늘, 그녀는 거절한다"
+   },
+   "narration": {
+    "en": "Declines an urgent bonus project",
+    "ko": "나는 부무을 보았다."
+   },
+   "image_hint": {
+    "en": "office hallway, she walking away, seen from behind, medium shot"
+   },
+   "image_prompt": "office hallway, she walking away, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Final thought",
+    "ko": "마지막 생각"
+   },
+   "narration": {
+    "en": "Less noise, more focus",
+    "ko": "나는 집중을 보았다."
+   },
+   "image_hint": {
+    "en": "quiet office, single desk, empty chair, distant view, long shot"
+   },
+   "image_prompt": "quiet office, single desk, empty chair, distant view, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-14-biz",
+ "theme": "biz",
+ "theme_label": "집중 전략",
+ "quote": {
+  "text": "say no to almost everything",
+  "author": "성공하는 사람의 마인드"
+ }
+}
