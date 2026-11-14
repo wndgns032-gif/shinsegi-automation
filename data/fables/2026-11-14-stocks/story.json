@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "From a Tower of Packages to a Cloud of Dreams",
+  "ko": "포장지의 탑에서 구름까지"
+ },
+ "caption": {
+  "en": "A silent observer watches the shape of success unfold",
+  "ko": "조용히 지켜보는 관찰자가 성공의 형상을 담아본다"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Warehouse lights flicker at midnight.",
+    "Back office whispers grow louder."
+   ],
+   "ko": [
+    "창고의 불빛이 자정에 깜빡인다.",
+    "백오피스의 속삭임이 점점 커진다."
+   ]
+  },
+  "highlight": {
+   "en": "What drives a people‑searching beast?",
+   "ko": "사람을 찾는 괴물은 무엇이 주입되는가?"
+  }
+ },
+ "moral": {
+  "en": "That the cycle of impulse and execution is endless.",
+  "ko": "행과 결과의 순환이 끊임없다는 것이다."
+ },
+ "cta": {
+  "en": "Watch the story in the next frame",
+  "ko": "다음 장면에서 이야기를 보라"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Midnight whir",
+    "ko": "자정의 윙윙거림"
+   },
+   "narration": {
+    "en": "Warehouse lights flicker at midnight.",
+    "ko": "창고의 불빛이 자정에 깜빡인다."
+   },
+   "image_hint": {
+    "en": "warehouse at night, one worker drafting a shipment list, seen from behind, close to the floor"
+   },
+   "image_prompt": "warehouse at night, one worker drafting a shipment list, seen from behind, close to the floor"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "First snarl",
+    "ko": "첫 번째 으르렁함"
+   },
+   "narration": {
+    "en": "No order to compete with the next day.",
+    "ko": "다음 날을 더욱 복잡하게 만드는 주문이 없다."
+   },
+   "image_hint": {
+    "en": "delivery van at dawn, small figure loading boxes, seen from behind, long shot"
+   },
+   "image_prompt": "delivery van at dawn, small figure loading boxes, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Cutting costs",
+    "ko": "비용 절감"
+   },
+   "narration": {
+    "en": "Warehouse floor now half the size of before.",
+    "ko": "창고 바닥이 이전보다 반쯤 줄었다."
+   },
+   "image_hint": {
+    "en": "office at midday, one person sorting through invoices, seen from behind, medium shot"
+   },
+   "image_prompt": "office at midday, one person sorting through invoices, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Web clicks",
+    "ko": "웹 클릭"
+   },
+   "narration": {
+    "en": "Customers whisper through a glowing screen.",
+    "ko": "고객은 빛나는 화면을 통해 속삭인다."
+   },
+   "image_hint": {
+    "en": "empty café at night, one person scrolling on a laptop, seen from behind, close up"
+   },
+   "image_prompt": "empty café at night, one person scrolling on a laptop, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Rejection loop",
+    "ko": "거부 루프"
+   },
+   "narration": {
+    "en": "New algorithms still miss the right package.",
+    "ko": "새로운 알고리즘도 여전히 맞지 않는다."
+   },
+   "image_hint": {
+    "en": "data center at dusk, one server rack humming, seen from behind, wide shot"
+   },
+   "image_prompt": "data center at dusk, one server rack humming, seen from behind, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Spark",
+    "ko": "불꽃"
+   },
+   "narration": {
+    "en": "Flipping a box reveals a whole list of doors.",
+    "ko": "박스를 뒤집으면 많은 문이 드러난다."
+   },
+   "image_hint": {
+    "en": "warehouse aisle at noon, one worker lifting a box, seen from behind, shallow depth"
+   },
+   "image_prompt": "warehouse aisle at noon, one worker lifting a box, seen from behind, shallow depth"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Reweaving",
+    "ko": "재구성"
+   },
+   "narration": {
+    "en": "Each click becomes a path to another cloud.",
+    "ko": "각 클릭이 또 다른 구름으로 가는 길이 된다."
+   },
+   "image_hint": {
+    "en": "suburban street at twilight, one person walking, seen from behind, full frame"
+   },
+   "image_prompt": "suburban street at twilight, one person walking, seen from behind, full frame"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "The humming mall",
+    "ko": "지루하게 흐르는 쇼핑몰"
+   },
+   "narration": {
+    "en": "Lights pulse in a hall of endless offers.",
+    "ko": "빛이 끊임없는 제안의 복도에서 맴돈다."
+   },
+   "image_hint": {
+    "en": "shopping mall corridor at midday, one shopper scanning a bar code, seen from behind, medium shot"
+   },
+   "image_prompt": "shopping mall corridor at midday, one shopper scanning a bar code, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Order in the river",
+    "ko": "강물 속 주문"
+   },
+   "narration": {
+    "en": "A silent request climbs a delivery drone.",
+    "ko": "조용한 요구가 배송 드론을 타고 올라간다."
+   },
+   "image_hint": {
+    "en": "drone over city at dawn, small figure on the street watching, seen from behind, distance shot"
+   },
+   "image_prompt": "drone over city at dawn, small figure on the street watching, seen from behind, distance shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Cycle endure",
+    "ko": "순환이 이어진다"
+   },
+   "narration": {
+    "en": "The flow of touch and touchback never stops.",
+    "ko": "터치와 반터치의 흐름은 끊임없이 이어진다."
+   },
+   "image_hint": {
+    "en": "riverbank at sunset, one person walking along, seen from behind, long shot"
+   },
+   "image_prompt": "riverbank at sunset, one person walking along, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-14-stocks",
+ "theme": "stocks",
+ "symbol": "AMZN",
+ "quote": {
+  "text": "Amazon.com, Inc.",
+  "author": "NASDAQ AMZN"
+ }
+}
