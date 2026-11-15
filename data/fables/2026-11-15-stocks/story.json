@@ -1,0 +1,185 @@
+{
+ "title": {
+  "en": "The Quiet Giant",
+  "ko": "조용한 거인"
+ },
+ "caption": {
+  "en": "A distant observer watches how one store becomes a lifeline for millions.",
+  "ko": "멀리서 관찰한 눈으로, 수백만의 삶을 바꾸는 한 상점의 이야기를 기록한다."
+ },
+ "hook": {
+  "lines": {
+   "en": "a subtle rhythm that draws people in",
+   "ko": "빛이 사라지는 분홍빛 설거지 같은 일상"
+  }
+ },
+ "moral": {
+  "en": "Expansion of service, not ego.",
+  "ko": "서비스 확장, 자만이 아니라."
+ },
+ "cta": {
+  "en": "Notice the ordinary. That's where giants grow.",
+  "ko": "평범함을 주목하라. 그곳이 거인이 자라나는 곳이다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "The city wakes in the scent of opportunity",
+    "ko": "도시는 기회의 향기로 깨어난다."
+   },
+   "narration": {
+    "en": "A cashier scans a barcode, the beep echoing softly. The customer nods and smiles, then passes the till.",
+    "ko": "지불대금이 부드럽게 충전된다. 손님은 고개를 끄덕이며 미소를 짓고 전화를 넘어간다."
+   },
+   "image_hint": {
+    "en": "busy supermarket aisle, a cashier scanning items, seen from behind, medium shot"
+   },
+   "image_prompt": "busy supermarket aisle, a cashier scanning items, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Yet the clock never sleeps",
+    "ko": "하지만 시계는 잠들지 않는다."
+   },
+   "narration": {
+    "en": "At 3 a.m., a lone clerk flips a sign from CLOSED to OPEN.",
+    "ko": "아홉 시, 한 명의 점원이 닫음 표지에 열림을 바꾸고 있다."
+   },
+   "image_hint": {
+    "en": "late-night store entrance, lone clerk flipping sign, seen from behind"
+   },
+   "image_prompt": "late-night store entrance, lone clerk flipping sign, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A traveling vendor arrives",
+    "ko": "바쁜 시장계가 도착했다."
+   },
+   "narration": {
+    "en": "A foreign trader pushes a wooden cart through a humming crowd.",
+    "ko": "종이 봉투를 든 상인이 분주한 사람들을 헤치고 통과한다."
+   },
+   "image_hint": {
+    "en": "busy street corner, vendor with wooden cart, seen from behind"
+   },
+   "image_prompt": "busy street corner, vendor with wooden cart, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "He sells more than goods",
+    "ko": "그는 물건 이상을 팔아준다."
+   },
+   "narration": {
+    "en": "Customers linger, exchange stories, fill their baskets with hope and cash.",
+    "ko": "손님들은 물건을 채우며 희망과 돈을 이야기 한다."
+   },
+   "image_hint": {
+    "en": "market stalls, customers picking items, seen from behind"
+   },
+   "image_prompt": "market stalls, customers picking items, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The offer expands",
+    "ko": "제안이 넓어진다."
+   },
+   "narration": {
+    "en": "A manager watches a local farmer bring fresh produce into the aisles.",
+    "ko": "관리자는 현지 농부가 신선한 과일을 진열대에 올리는 걸 본다."
+   },
+   "image_hint": {
+    "en": "store aisle, farmer arranging produce, seen from behind"
+   },
+   "image_prompt": "store aisle, farmer arranging produce, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Patterns start to echo",
+    "ko": "패턴이 메아리 낸다."
+   },
+   "narration": {
+    "en": "An algorithm on a screen starts recommending items based on previous purchases.",
+    "ko": "기존 구매를 기반으로 항목을 추천하는 알고리즘이 켜졌다."
+   },
+   "image_hint": {
+    "en": "store checkout machine, glowing screen, seen from behind"
+   },
+   "image_prompt": "store checkout machine, glowing screen, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "A child watches, curious",
+    "ko": "아이도 호기심을 보인다."
+   },
+   "narration": {
+    "en": "She asks why the prices are low, her father explains efficiency and scale.",
+    "ko": "저렴한 가격에 대해 묻고 아버지는 효율과 규모를 설명한다."
+   },
+   "image_hint": {
+    "en": "child observing shelves, father explaining, seen from behind"
+   },
+   "image_prompt": "child observing shelves, father explaining, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today, the carousel of shelves spins faster",
+    "ko": "오늘, 진열대는 빠르게 회전한다."
+   },
+   "narration": {
+    "en": "Employees shuffle items, customers queue, a delivery truck arrives, a drone delivers a parcel.",
+    "ko": "기사와 고객이 서 있으며, 배달 트럭과 드론이 물건을 가져온다."
+   },
+   "image_hint": {
+    "en": "delivery truck unloading, drone dropping parcel, seen from behind"
+   },
+   "image_prompt": "delivery truck unloading, drone dropping parcel, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "In the early morning, it’s still the same rhythm",
+    "ko": "새벽이면 같은 리듬이 흐른다."
+   },
+   "narration": {
+    "en": "A cartful of groceries is left at a curb, a toddler touches a shelf, an older woman nods approvingly.",
+    "ko": "거리 곳간에 가방이 두었고, 어린아이가 선반에 손을 대며, 노인이 고개를 끄덕인다."
+   },
+   "image_hint": {
+    "en": "city curbside, groceries, toddler, old woman, seen from behind"
+   },
+   "image_prompt": "city curbside, groceries, toddler, old woman, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Grounded in service and care",
+    "ko": "서비스와 배려를 기반으로"
+   },
+   "narration": {
+    "en": "I stood back and listened. There was no hype, no flash. Just lives intersecting, day after day.",
+    "ko": "뒤를 물러서고 들었더니, 장황한 설명은 없었다. 단지 하루가 또 하루 돌아갔다."
+   },
+   "image_hint": {
+    "en": "quiet breakfast table, a steaming mug of coffee, seen from behind"
+   },
+   "image_prompt": "quiet breakfast table, a steaming mug of coffee, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-15-stocks",
+ "theme": "stocks",
+ "symbol": "WMT",
+ "quote": {
+  "text": "Walmart Inc.",
+  "author": "NASDAQ WMT"
+ }
+}
