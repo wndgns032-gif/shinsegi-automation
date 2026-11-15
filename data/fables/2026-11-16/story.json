@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-16",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "confucius-practice",
+    "author": {
+      "en": "Confucius",
+      "ko": "공자",
+      "zh-cn": "孔子",
+      "fr": "Confucius"
+    },
+    "text": {
+      "en": "To learn and then to practice it in due time — is that not a pleasure?",
+      "ko": "배우고 때때로 익히면, 또한 기쁘지 아니한가.",
+      "zh-cn": "学而时习之，不亦说乎。",
+      "fr": "Apprendre, puis mettre en pratique au moment voulu : n'est-ce pas une joie ?"
+    }
+  },
+  "title": {
+    "en": "Learning and Growth",
+    "ko": "배움과 성장"
+  },
+  "caption": {
+    "en": "A brief meditation on Confucian pleasure in practice\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "공자 말에 담긴 학습의 기쁨\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Learning is a quiet story",
+        "Practice turns it into stroll"
+      ],
+      "ko": [
+        "배움은 고요한 이야기",
+        "연습이 우주를 바꾼다"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": "연습"
+    }
+  },
+  "moral": {
+    "en": "Observing persistence brings peace",
+    "ko": "지속을 바라보면 평온이 온다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet temple courtyard, long shot",
+      "narration": {
+        "en": "To learn and then to practice it in due time — is that not a pleasure. — Confucius.",
+        "ko": "배우고 때때로 익히면, 또한 기쁘지 아니한가. — 공자."
+      },
+      "subtitle": {
+        "en": "To learn and then to practice it in due.",
+        "ko": "배우고 때때로 익히면, 또한…"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "early dawn misty lake, distant small figure",
+      "narration": {
+        "en": "Learning is a quiet story. Practice turns it into stroll",
+        "ko": "배움은 고요한 이야기. 연습이 우주를 바꾼다"
+      },
+      "subtitle": {
+        "en": "Learning is a quiet story",
+        "ko": "배움은 고요한 이야기"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bright school classroom, seen from behind",
+      "narration": {
+        "en": "오늘 아침, 정우는 스케치북을 펼친다",
+        "ko": "오늘 아침, 정우는 스케치북을 펼친다"
+      },
+      "subtitle": {
+        "en": "날아오른 수염빛 물결",
+        "ko": "날아오른 수염빛 물결"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cafeteria table, wide shot",
+      "narration": {
+        "en": "점심 사이, 그는 복장 차이를 성찰한다",
+        "ko": "점심 사이, 그는 복장 차이를 성찰한다"
+      },
+      "subtitle": {
+        "en": "점심 사이, 그는 복장 차이를 성찰한다",
+        "ko": "점심 사이, 그는 복장…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "city park bench, seen from behind",
+      "narration": {
+        "en": "저녁이 찾아오면, 그는 새벽 꿈을 떠올린다",
+        "ko": "저녁이 찾아오면, 그는 새벽 꿈을 떠올린다"
+      },
+      "subtitle": {
+        "en": "저녁이 찾아오면, 그는 새벽 꿈을 떠올린다",
+        "ko": "저녁이 찾아오면, 그는 새벽…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "quiet library aisle, long shot",
+      "narration": {
+        "en": "하루 마무리, 그는 문장을 고안한다",
+        "ko": "하루 마무리, 그는 문장을 고안한다"
+      },
+      "subtitle": {
+        "en": "하루 마무리, 그는 문장을 고안한다",
+        "ko": "하루 마무리, 그는 문장을…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "night study desk, distant small figure",
+      "narration": {
+        "en": "밤, 조수는 조각을 익힌다",
+        "ko": "밤, 조수는 조각을 익힌다"
+      },
+      "subtitle": {
+        "en": "밤, 조수는 조각을 익힌다",
+        "ko": "밤, 조수는 조각을 익힌다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "city subway platform, wide shot",
+      "narration": {
+        "en": "함께 문을 닫은 뒤, 그는 숨을 돌린다",
+        "ko": "함께 문을 닫은 뒤, 그는 숨을 돌린다"
+      },
+      "subtitle": {
+        "en": "함께 문을 닫은 뒤, 그는 숨을 돌린다",
+        "ko": "함께 문을 닫은 뒤, 그는…"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office break room, seen from behind",
+      "narration": {
+        "en": "회의를 마치며, 그는 마이크를 내려놓는다",
+        "ko": "회의를 마치며, 그는 마이크를 내려놓는다"
+      },
+      "subtitle": {
+        "en": "회의를 마치며, 그는 마이크를 내려놓는다",
+        "ko": "회의를 마치며, 그는…"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "silhouette of sunrise over hills, long shot",
+      "narration": {
+        "en": "Observing persistence brings peace",
+        "ko": "지속을 바라보면 평온이 온다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
