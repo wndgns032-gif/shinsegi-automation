@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-17",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "jobs-stay-hungry",
+    "author": {
+      "en": "Steve Jobs",
+      "ko": "스티브 잡스",
+      "zh-cn": "史蒂夫·乔布斯",
+      "fr": "Steve Jobs"
+    },
+    "text": {
+      "en": "Stay hungry. Stay foolish.",
+      "ko": "늘 갈망하고, 늘 우직하게.",
+      "zh-cn": "求知若饥，虚心若愚。",
+      "fr": "Reste affamé. Reste insensé."
+    }
+  },
+  "title": {
+    "en": "Stay Hungry, Stay Foolish",
+    "ko": "늘 갈망하고, 늘 우직하게"
+  },
+  "caption": {
+    "en": "A day of relentless persistence\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "끊임없는 끈기의 하루\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "The sun nudged me awake",
+        "A new task waited"
+      ],
+      "ko": [
+        "늘 갈망하고, 늘 우직하게…",
+        "늘 갈망하고, 늘 우직하게…"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Observing the river shows that progress flows",
+    "ko": "물결을 관찰하면 진행이 흐른다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "Quiet meadow, sunrise, distant small figure",
+      "narration": {
+        "en": "Stay hungry. Stay foolish. — Steve Jobs.",
+        "ko": "늘 갈망하고, 늘 우직하게. — 스티브 잡스."
+      },
+      "subtitle": {
+        "en": "\"인간은 끊임없이 배워도 된다.\"",
+        "ko": "\"인간은 끊임없이 배워도 된다.\""
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "City sidewalk, morning, seen from behind",
+      "narration": {
+        "en": "The sun nudged me awake. A new task waited",
+        "ko": "늘 갈망하고, 늘 우직하게. 늘 갈망하고, 늘 우직하게"
+      },
+      "subtitle": {
+        "en": "The day began quietly",
+        "ko": "하루는 조용히 시작되었다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Small office, dawn, distant small figure",
+      "narration": {
+        "en": "First step: draft a list",
+        "ko": "첫 번째 단계: 목록을 만들었다"
+      },
+      "subtitle": {
+        "en": "It felt mechanical",
+        "ko": "기계적이었다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Warehouse, afternoon, long shot",
+      "narration": {
+        "en": "Midday: find a client",
+        "ko": "오후: 고객을 찾았다"
+      },
+      "subtitle": {
+        "en": "Excitement returned",
+        "ko": "흥분이 돌아왔다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Gym, evening, seen from behind",
+      "narration": {
+        "en": "Evening: lift five more kilos",
+        "ko": "저녁: 다섯 킬로 증가시켰다"
+      },
+      "subtitle": {
+        "en": "Weight pressed against resolve",
+        "ko": "무게가 결심을 눌렀다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Night sky, midnight, long shot",
+      "narration": {
+        "en": "Night: stare at stars, doubt surfaces",
+        "ko": "밤: 별을 바라보며 의심이 표면에 드러났다"
+      },
+      "subtitle": {
+        "en": "Fear whispered like wind",
+        "ko": "두려움이 바람처럼 속삭였다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Park bench, dawn, seen from behind",
+      "narration": {
+        "en": "Dawn: I chase reflections",
+        "ko": "새벽: 나는 반사물을 쫓는다"
+      },
+      "subtitle": {
+        "en": "I found the goal again",
+        "ko": "목표를 다시 찾았다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Conference room, mid-morning, distant small figure",
+      "narration": {
+        "en": "A manager asks about progress",
+        "ko": "매니저가 진행 상황을 묻는다"
+      },
+      "subtitle": {
+        "en": "I report that the river flows",
+        "ko": "나는 물이 흐른다고 보고한다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Coffee shop, late afternoon, long shot",
+      "narration": {
+        "en": "A friend chats over beans",
+        "ko": "친구가 콩을 마시며 이야기한다"
+      },
+      "subtitle": {
+        "en": "I sip, listening to the flow",
+        "ko": "나는 물결을 마시며 듣는다"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "Mountain peak, sunset, seen from behind",
+      "narration": {
+        "en": "Observing the river shows that progress flows",
+        "ko": "물결을 관찰하면 진행이 흐른다"
+      },
+      "subtitle": {
+        "en": "I am part of the stream",
+        "ko": "나는 강의 일부다"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
