@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Where Tesla Found its Road",
+  "ko": "테슬라가 길을 찾은 순간"
+ },
+ "caption": {
+  "en": "A silent observer watches how a company moved forward.",
+  "ko": "관찰자가 기업을 눈여겨 본다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A lone figure watches a factory at dawn",
+    "A quiet room holds a cracked screen"
+   ],
+   "ko": [
+    "별빛이 흐트러진 공장 밖, 손끝에 서는 한 사람",
+    "불투명한 화면 앞, 눈을 비추는 스태프"
+   ]
+  },
+  "highlight": {
+   "en": "The beginning was not sales, but a spark.",
+   "ko": "시작은 매출이 아니라 불꽃이었다."
+  }
+ },
+ "moral": {
+  "en": "Progress comes from seeing the quiet beside the roar.",
+  "ko": "진보는 북소리 뒤의 잠잠함을 보는 것이다."
+ },
+ "cta": {
+  "en": "Reflect on your own quiet origins.",
+  "ko": "당신의 조용한 시작을 곰곰이 생각해 보세요."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Dawn, factory",
+    "ko": "새벽, 공장"
+   },
+   "narration": {
+    "en": "The first light flickers over rows of chassis.",
+    "ko": "첫 빛이 차체를 따라 흐른다."
+   },
+   "image_hint": {
+    "en": "factory at dawn, one person standing still, seen from behind, distant figure"
+   },
+   "image_prompt": "factory at dawn, one person standing still, seen from behind, distant figure"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Office, night",
+    "ko": "사무실, 밤"
+   },
+   "narration": {
+    "en": "A desk piled with sketches, no coffee in sight.",
+    "ko": "그림이 쌓인 책상, 커피 한 잔도 없다."
+   },
+   "image_hint": {
+    "en": "office at night, one person staring at a sketch, seen from behind, small figure"
+   },
+   "image_prompt": "office at night, one person staring at a sketch, seen from behind, small figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Prototype test",
+    "ko": "프로토타입 시험"
+   },
+   "narration": {
+    "en": "The car rolls quietly, a blue circuit hums.",
+    "ko": "차가 조용히 미끄러지고, 파란 회로가 속삭인다."
+   },
+   "image_hint": {
+    "en": "test track at dusk, one car moving, seen from behind, distant figure"
+   },
+   "image_prompt": "test track at dusk, one car moving, seen from behind, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Review meeting",
+    "ko": "회의"
+   },
+   "narration": {
+    "en": "Faces blur under a flickering lamp, time waits.",
+    "ko": "점멸하는 전등 아래, 인물이 흐려지고 시간은 멈춘다."
+   },
+   "image_hint": {
+    "en": "conference room at dusk, one person listening, seen from behind, small figure"
+   },
+   "image_prompt": "conference room at dusk, one person listening, seen from behind, small figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Supply glitch",
+    "ko": "공급망 고장"
+   },
+   "narration": {
+    "en": "A conveyor stops; parts stall, silence thickens.",
+    "ko": "컨베이어가 멈추고 부품이 정체되며 소음이 흐려진다."
+   },
+   "image_hint": {
+    "en": "assembly line at evening, one worker watching, seen from behind, distant figure"
+   },
+   "image_prompt": "assembly line at evening, one worker watching, seen from behind, distant figure"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Innovation spark",
+    "ko": "혁신 불꽃"
+   },
+   "narration": {
+    "en": "A tiny chip flickers, lights up a new idea.",
+    "ko": "작은 칩이 점멸하며 새로운 아이디어를 밝힌다."
+   },
+   "image_hint": {
+    "en": "electronics lab at night, one person holding a chip, seen from behind, small figure"
+   },
+   "image_prompt": "electronics lab at night, one person holding a chip, seen from behind, small figure"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Clear path",
+    "ko": "명확한 길"
+   },
+   "narration": {
+    "en": "The wheel spins; a new route opens under the stars.",
+    "ko": "바퀴가 돌며 별빛 아래 새로운 길이 열린다."
+   },
+   "image_hint": {
+    "en": "open road at night, one car driving, seen from behind, distant figure"
+   },
+   "image_prompt": "open road at night, one car driving, seen from behind, distant figure"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Launch day",
+    "ko": "출시일"
+   },
+   "narration": {
+    "en": "The showroom gleams; the crowd waits, eyes bright.",
+    "ko": "전시관이 반짝이며 관객이 빛나는 눈으로 기다린다."
+   },
+   "image_hint": {
+    "en": "showroom at noon, one person showcasing a car, seen from behind, small figure"
+   },
+   "image_prompt": "showroom at noon, one person showcasing a car, seen from behind, small figure"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Mass streets",
+    "ko": "도시 거리"
+   },
+   "narration": {
+    "en": "Cars glide silently through traffic, a hum of progress.",
+    "ko": "자동차가 교통을 우아히 지나는 동안 진보의 속삭임이 흐른다."
+   },
+   "image_hint": {
+    "en": "urban street at daytime, one electric car passing, seen from behind, distant figure"
+   },
+   "image_prompt": "urban street at daytime, one electric car passing, seen from behind, distant figure"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Endnote",
+    "ko": "마지막"
+   },
+   "narration": {
+    "en": "It was never about speed, but the steady hum of continuity.",
+    "ko": "속도보다 지속적인 소리의 균형이 결국이었다."
+   },
+   "image_hint": {
+    "en": "quiet courtyard at dusk, one person watching the sunset, seen from behind, small figure"
+   },
+   "image_prompt": "quiet courtyard at dusk, one person watching the sunset, seen from behind, small figure"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-18-stocks",
+ "theme": "stocks",
+ "symbol": "TSLA",
+ "quote": {
+  "text": "Tesla, Inc.",
+  "author": "NASDAQ TSLA"
+ }
+}
