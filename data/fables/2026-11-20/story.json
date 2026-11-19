@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-20",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "seneca-learn-to-live",
+    "author": {
+      "en": "Seneca",
+      "ko": "세네카",
+      "zh-cn": "塞涅卡",
+      "fr": "Sénèque"
+    },
+    "text": {
+      "en": "As long as you live, keep learning how to live.",
+      "ko": "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다.",
+      "zh-cn": "只要还活着，就要不断学习如何生活。",
+      "fr": "Tant que tu vis, continue d'apprendre à vivre."
+    }
+  },
+  "title": {
+    "en": "Until You Die",
+    "ko": "생애 흐름"
+  },
+  "caption": {
+    "en": "Rise, Fall, Repeat\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "오르다, 무너지다, 반복\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Steady like a train.",
+        "Echoes of learning"
+      ],
+      "ko": [
+        "사람이 발을 들이",
+        "사람이 발을 들이"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Learning never ends",
+    "ko": "학습은 끝나지 않는다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet library, distant small figure",
+      "narration": {
+        "en": "As long as you live, keep learning how to live. — Seneca.",
+        "ko": "사는 동안에는, 사는 법을 배우는 일도 계속해야 한다. — 세네카."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "mountain trail, seen from behind",
+      "narration": {
+        "en": "Steady like a train. Echoes of learning",
+        "ko": "사람이 발을 들이. 사람이 발을 들이"
+      },
+      "subtitle": {
+        "en": "Wheel moves",
+        "ko": "바퀴 굴러"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "coffee shop, long shot",
+      "narration": {
+        "en": "Morning. Book on desk",
+        "ko": "아침. 책이 쌓여"
+      },
+      "subtitle": {
+        "en": "First page",
+        "ko": "첫 페이지"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "office cubicle, wide shot",
+      "narration": {
+        "en": "Midday. Meeting furthest",
+        "ko": "중간. 회의 끝"
+      },
+      "subtitle": {
+        "en": "Slide flips",
+        "ko": "슬라이드 넘어"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "park bench, seen from behind",
+      "narration": {
+        "en": "Afternoon. Tree’s shadow",
+        "ko": "오후. 그늘"
+      },
+      "subtitle": {
+        "en": "Leaves whisper",
+        "ko": "잎새 속삭임"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "kitchen, distant small figure",
+      "narration": {
+        "en": "Evening. Fries sizzling",
+        "ko": "저녁. 튀김 익음"
+      },
+      "subtitle": {
+        "en": "Sizzle stops",
+        "ko": "음이 멈춤"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "bedroom, long shot",
+      "narration": {
+        "en": "Night. Pillow soft",
+        "ko": "밤. 베개 납작"
+      },
+      "subtitle": {
+        "en": "Dreams form",
+        "ko": "꿈 구체화"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "smartphone, wide shot",
+      "narration": {
+        "en": "User scrolls headlines",
+        "ko": "사용자가 헤드라인 스크롤"
+      },
+      "subtitle": {
+        "en": "Scroll, scroll",
+        "ko": "스크롤, 스크롤"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "bus stop, seen from behind",
+      "narration": {
+        "en": "Passenger remembers lecture",
+        "ko": "열차 정류. 강의 기억"
+      },
+      "subtitle": {
+        "en": "Thought drifts",
+        "ko": "생각 흐름"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "sunset horizon, distant small figure",
+      "narration": {
+        "en": "Learning never ends",
+        "ko": "학습은 끝나지 않는다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
