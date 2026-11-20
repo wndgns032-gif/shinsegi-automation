@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-21",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "mandela-impossible",
+    "author": {
+      "en": "Nelson Mandela",
+      "ko": "넬슨 만델라",
+      "zh-cn": "纳尔逊·曼德拉",
+      "fr": "Nelson Mandela"
+    },
+    "text": {
+      "en": "It always seems impossible until it is done.",
+      "ko": "이루어질 때까지는 언제나 불가능해 보인다.",
+      "zh-cn": "在事情完成之前，它看起来总是遥不可及。",
+      "fr": "Cela paraît toujours impossible, jusqu'à ce que ce soit fait."
+    }
+  },
+  "title": {
+    "en": "It always seems impossible until it is done.",
+    "ko": "이루어질 때까지는 언제나 불가능해 보인다."
+  },
+  "caption": {
+    "en": "Challenge and courage.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "도전과 용기.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Morning mist clouds the alley.",
+        "Night sky hums in a distant train station."
+      ],
+      "ko": [
+        "아침 이슬이 골목을 뒤덮는다.",
+        "밤 별빛이 먼 기차역에서 울린다."
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Observation reveals the path to completion.",
+    "ko": "관찰이 완성을 향한 길을 밝힌다."
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "Quiet empty room, long shot",
+      "narration": {
+        "en": "It always seems impossible until it is done. — Nelson Mandela.",
+        "ko": "이루어질 때까지는 언제나 불가능해 보인다. — 넬슨 만델라."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "Abandoned alley at dawn, seen from behind",
+      "narration": {
+        "en": "Morning mist clouds the alley. Night sky hums in a distant train station",
+        "ko": "아침 이슬이 골목을 뒤덮는다. 밤 별빛이 먼 기차역에서 울린다"
+      },
+      "subtitle": {
+        "en": "I walk alone.",
+        "ko": "나는 홀로 걷는다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Rooftop garden at noon, distant small figure",
+      "narration": {
+        "en": "I plant a seed.",
+        "ko": "나는 씨앗을 심는다."
+      },
+      "subtitle": {
+        "en": "I plant a seed.",
+        "ko": "나는 씨앗을 심는다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Construction site at afternoon, long shot",
+      "narration": {
+        "en": "The beam shifts, blocking light.",
+        "ko": "빔이 흔들리며 빛을 가린다."
+      },
+      "subtitle": {
+        "en": "The beam shifts, blocking light.",
+        "ko": "빔이 흔들리며 빛을 가린다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Subway tunnel at late afternoon, seen from behind",
+      "narration": {
+        "en": "I realize the path is wrong.",
+        "ko": "나는 길이 틀렸음을 깨닫는다."
+      },
+      "subtitle": {
+        "en": "I realize the path is wrong.",
+        "ko": "나는 길이 틀렸음을 깨닫는다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Factory floor at dusk, distant small figure",
+      "narration": {
+        "en": "I correct the beam.",
+        "ko": "나는 빔을 고친다."
+      },
+      "subtitle": {
+        "en": "I correct the beam.",
+        "ko": "나는 빔을 고친다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "Library workshop at sunset, long shot",
+      "narration": {
+        "en": "The seed sprouts brighter.",
+        "ko": "씨앗이 더욱 빛난다."
+      },
+      "subtitle": {
+        "en": "The seed sprouts brighter.",
+        "ko": "씨앗이 더욱 빛난다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Urban office at night, seen from behind",
+      "narration": {
+        "en": "I meet a colleague.",
+        "ko": "나는 동료를 만난다."
+      },
+      "subtitle": {
+        "en": "I meet a colleague.",
+        "ko": "나는 동료를 만난다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "Quiet rooftop garden at midnight, distant small figure",
+      "narration": {
+        "en": "I share the garden.",
+        "ko": "나는 정원을 나눈다."
+      },
+      "subtitle": {
+        "en": "I share the garden.",
+        "ko": "나는 정원을 나눈다."
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "Empty hall at dawn, wide shot",
+      "narration": {
+        "en": "Observation reveals the path to completion.",
+        "ko": "관찰이 완성을 향한 길을 밝힌다."
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
