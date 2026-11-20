@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Meta's Quiet Leap",
+  "ko": "메타의 침묵한 도약"
+ },
+ "caption": {
+  "en": "Observing a company that grew from a chatroom to a world of AI.",
+  "ko": "채팅방에서 AI의 세계로 성장한 회사를 관찰한다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I watched a lone laptop glow",
+    "in the tunnel of endless feeds."
+   ],
+   "ko": [
+    "점프를 기다리는 노트북",
+    "끝없는 피드 속에서 빛났다."
+   ]
+  },
+  "highlight": {
+   "en": "What did it build from that glow?",
+   "ko": "그 빛에서 무엇을 만들었을까?"
+  }
+ },
+ "moral": {
+  "en": "Momentum is not a sprint, it is a series of still lights that keep turning.",
+  "ko": "속도는 단거리 달리기가 아니라 끊임없이 켜지는 정지된 빛의 연속이다."
+ },
+ "cta": {
+  "en": "Listen to the silence between updates.",
+  "ko": "업데이트 사이의 침묵을 귀 기울여라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Lonely screen in a dark office",
+    "ko": "어두운 사무실의 외로운 화면"
+   },
+   "narration": {
+    "en": "I saw a screen glow softly.",
+    "ko": "나는 화면이 부드럽게 빛나는 것을 보았다."
+   },
+   "image_hint": {
+    "en": "office at night, one person working on a laptop, seen from behind, long shot"
+   },
+   "image_prompt": "office at night, one person working on a laptop, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Followers count stalls",
+    "ko": "팔로워 수가 정체된다"
+   },
+   "narration": {
+    "en": "The numbers froze, no new faces.",
+    "ko": "숫자는 멈추었고 새 얼굴은 없었다."
+   },
+   "image_hint": {
+    "en": "office hallway at dusk, one person scrolling, distant figure, long shot"
+   },
+   "image_prompt": "office hallway at dusk, one person scrolling, distant figure, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The first ad bill",
+    "ko": "첫 광고배너"
+   },
+   "narration": {
+    "en": "A banner popped up, bright and cheap.",
+    "ko": "배너가 튀어나왔고 밝으며 싸웠다."
+   },
+   "image_hint": {
+    "en": "cafeteria at noon, one person looking at phone, seen from behind, medium shot"
+   },
+   "image_prompt": "cafeteria at noon, one person looking at phone, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Year on year funding",
+    "ko": "연속 재정"
+   },
+   "narration": {
+    "en": "Capital poured in, talent joined.",
+    "ko": "자본이 들었고 인재가 합류했다."
+   },
+   "image_hint": {
+    "en": "mountain base camp at sunrise, one person with backpack, seen from behind, long shot"
+   },
+   "image_prompt": "mountain base camp at sunrise, one person with backpack, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First VR headset trial",
+    "ko": "첫 VR 헤드셋 시연"
+   },
+   "narration": {
+    "en": "A headset flew over a desk, soft blue light.",
+    "ko": "헤드셋이 책상 위를 날아갔고 부드러운 파란 빛을 발했다."
+   },
+   "image_hint": {
+    "en": "lab at night, one person aiming goggles, seen from behind, medium shot"
+   },
+   "image_prompt": "lab at night, one person aiming goggles, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Skynet notice",
+    "ko": "스카이넷 알림"
+   },
+   "narration": {
+    "en": "Emails pinged, AI code bloomed.",
+    "ko": "이메일이 울리고 AI 코드는 번개처럼 피었다."
+   },
+   "image_hint": {
+    "en": "warehouse at dawn, one person looking at screens, seen from behind, long shot"
+   },
+   "image_prompt": "warehouse at dawn, one person looking at screens, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Silent shift",
+    "ko": "조용한 전환"
+   },
+   "narration": {
+    "en": "Tasks reshaped; ads became data.”",
+    "ko": "작업은 재구성되었고 광고는 데이터가 됐다."
+   },
+   "image_hint": {
+    "en": "grocery store at dusk, one person pushing cart, seen from behind, long shot"
+   },
+   "image_prompt": "grocery store at dusk, one person pushing cart, seen from behind, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Modern office today",
+    "ko": "오늘날의 현대 사무실"
+   },
+   "narration": {
+    "en": "Screens far, glasses hover, voices muted.",
+    "ko": "화면은 멀고 안경은 떠다니며 목소리는 사라졌다."
+   },
+   "image_hint": {
+    "en": "office at noon, one person wearing AR glasses, seen from behind, medium shot"
+   },
+   "image_prompt": "office at noon, one person wearing AR glasses, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Midnight market feed",
+    "ko": "자정 시장 피드"
+   },
+   "narration": {
+    "en": "A feed scrolls, one ad mats the eye.",
+    "ko": "피드가 스크롤되고 한 광고가 눈을 찌른다."
+   },
+   "image_hint": {
+    "en": "street market at midnight, one person watching phone, distant figure, long shot"
+   },
+   "image_prompt": "street market at midnight, one person watching phone, distant figure, long shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quiet persistence",
+    "ko": "조용한 끈기"
+   },
+   "narration": {
+    "en": "Stillness invites the next spark.",
+    "ko": "정적은 다음 불꽃을 부른다."
+   },
+   "image_hint": {
+    "en": "forest at twilight, one person standing, seen from behind, long shot"
+   },
+   "image_prompt": "forest at twilight, one person standing, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-20-stocks",
+ "theme": "stocks",
+ "symbol": "META",
+ "quote": {
+  "text": "Meta Platforms, Inc.",
+  "author": "NASDAQ META"
+ }
+}
