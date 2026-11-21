@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-22",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "nietzsche-stronger",
+    "author": {
+      "en": "Friedrich Nietzsche",
+      "ko": "프리드리히 니체",
+      "zh-cn": "尼采",
+      "fr": "Friedrich Nietzsche"
+    },
+    "text": {
+      "en": "What does not kill me makes me stronger.",
+      "ko": "나를 죽이지 못하는 것은 나를 더 강하게 만든다.",
+      "zh-cn": "凡杀不死我的，必使我更强大。",
+      "fr": "Ce qui ne me tue pas me rend plus fort."
+    }
+  },
+  "title": {
+    "en": "Stronger Through Adversity",
+    "ko": "고난과 역경"
+  },
+  "caption": {
+    "en": "A quiet, everyday journey of resilience.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "조용한 일상 속 회복력의 여정\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Morning light hits the wall.",
+        "Forest of doubt grows."
+      ],
+      "ko": [
+        "아침빛이 벽을 스치고.",
+        "두려움의 숲이 자라네"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Survivors sculpt strength",
+    "ko": "생존자는 강인함을 조각한다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet garden, long shot",
+      "narration": {
+        "en": "What does not kill me makes me stronger. — Friedrich Nietzsche.",
+        "ko": "나를 죽이지 못하는 것은 나를 더 강하게 만든다. — 프리드리히 니체."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "mountain overlook, distant small figure",
+      "narration": {
+        "en": "Morning light hits the wall. Forest of doubt grows",
+        "ko": "아침빛이 벽을 스치고. 두려움의 숲이 자라네"
+      },
+      "subtitle": {
+        "en": "Peace begins here",
+        "ko": "평화는 여기서 시작된다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "city street, long shot",
+      "narration": {
+        "en": "I walk bruised.",
+        "ko": "나는 상처를 안고 걷는다."
+      },
+      "subtitle": {
+        "en": "I walk bruised.",
+        "ko": "나는 상처를 안고 걷는다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "subway tunnels, distant small figure",
+      "narration": {
+        "en": "The darkness swallows hope.",
+        "ko": "어둠은 희망을 삼킨다."
+      },
+      "subtitle": {
+        "en": "The darkness swallows hope.",
+        "ko": "어둠은 희망을 삼킨다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "office cubicle, seen from behind",
+      "narration": {
+        "en": "I read pages of failure.",
+        "ko": "나는 실패의 페이지를 읽는다."
+      },
+      "subtitle": {
+        "en": "I read pages of failure.",
+        "ko": "나는 실패의 페이지를 읽는다."
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "karaoke room, wide shot",
+      "narration": {
+        "en": "I sing to a solitary crowd.",
+        "ko": "나는 외로운 관중에게 노래한다."
+      },
+      "subtitle": {
+        "en": "I sing to a solitary crowd.",
+        "ko": "나는 외로운 관중에게…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "rainy alley, long shot",
+      "narration": {
+        "en": "Water washes memory.",
+        "ko": "물은 기억을 씻는다."
+      },
+      "subtitle": {
+        "en": "Water washes memory.",
+        "ko": "물은 기억을 씻는다."
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "coffee shop, seen from behind",
+      "narration": {
+        "en": "Remote work sparks doubt.",
+        "ko": "원격 근무가 의심을 깨우친다."
+      },
+      "subtitle": {
+        "en": "But a screen fades",
+        "ko": "그러나 화면은 흐려진다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "park bench, wide shot",
+      "narration": {
+        "en": "A stranger nods once.",
+        "ko": "익명의 사람은 한 번 고개를 끄덕인다."
+      },
+      "subtitle": {
+        "en": "Small weathered grace",
+        "ko": "작은 흔들리는 자비"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty stage, long shot",
+      "narration": {
+        "en": "Survivors sculpt strength",
+        "ko": "생존자는 강인함을 조각한다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
