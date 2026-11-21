@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Meta Platforms, Inc.",
+  "ko": "메타 플랫폼스, Inc."
+ },
+ "caption": {
+  "en": "Observing a giant trading in strangers’ stories",
+  "ko": "낯선 사람들의 이야기를 거래하는 거인의 관찰"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A city flickers digital, rain on glass",
+    "The editor’s finger flicks a notification"
+   ],
+   "ko": [
+    "도시는 디지털로 반짝인다, 창에 빗물",
+    "편집자 손가락이 알림을 건드린다"
+   ]
+  },
+  "highlight": {
+   "en": "The bell rang at midnight",
+   "ko": "벨이 자정에 울렸다"
+  }
+ },
+ "moral": {
+  "en": "Stories are just data until we give them meaning",
+  "ko": "이야기는 의미를 주기 전엔 데이터에 불과하다"
+ },
+ "cta": {
+  "en": "watch the next chapter",
+  "ko": "다음 장을 시청하십시오"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Midnight stack",
+    "ko": "자정 쌓임"
+   },
+   "narration": {
+    "en": "Walls covered in piled screens",
+    "ko": "벽엔 쌓인 화면이 가득"
+   },
+   "image_hint": {
+    "en": "office hallway at night, one lone figure leaving, seen from behind, long shot"
+   },
+   "image_prompt": "office hallway at night, one lone figure leaving, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Silent download",
+    "ko": "옴·다운로드"
+   },
+   "narration": {
+    "en": "No sound, only screens humming",
+    "ko": "소음 없이 화면이 메아리"
+   },
+   "image_hint": {
+    "en": "closed office, one person hovering over a keyboard, seen from behind, close shot"
+   },
+   "image_prompt": "closed office, one person hovering over a keyboard, seen from behind, close shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First tap",
+    "ko": "첫 터치"
+   },
+   "narration": {
+    "en": "A tap opens a whirlpool of ads",
+    "ko": "터치가 광고의 소용돌이 열음"
+   },
+   "image_hint": {
+    "en": "office desk at dawn, one person tapping a tablet, seen from behind, medium shot"
+   },
+   "image_prompt": "office desk at dawn, one person tapping a tablet, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Later, a blue whale",
+    "ko": "나중, 파란 고래"
+   },
+   "narration": {
+    "en": "A blue whale slides into a login",
+    "ko": "파란 고래가 로그인 유입"
+   },
+   "image_hint": {
+    "en": "conference room at noon, one person typing, seen from behind, long shot"
+   },
+   "image_prompt": "conference room at noon, one person typing, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Noise in data",
+    "ko": "데이터 소음"
+   },
+   "narration": {
+    "en": "Stocks rise, silence in headlines",
+    "ko": "주식은 오르고 헤드라인은 침묵"
+   },
+   "image_hint": {
+    "en": "city skyline at dusk, one person watching a ticker, seen from behind, medium shot"
+   },
+   "image_prompt": "city skyline at dusk, one person watching a ticker, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "VR headset",
+    "ko": "VR 헤드셋"
+   },
+   "narration": {
+    "en": "A headset lifts, a world expands",
+    "ko": "헤드셋이 올라가 세계가 확대"
+   },
+   "image_hint": {
+    "en": "lab at night, one person putting on a headset, seen from behind, long shot"
+   },
+   "image_prompt": "lab at night, one person putting on a headset, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Patterns bloom",
+    "ko": "패턴이 피어"
+   },
+   "narration": {
+    "en": "Patterns UX blooms in a sea of noise",
+    "ko": "소음 속 UX 패턴이 피어남"
+   },
+   "image_hint": {
+    "en": "research lab at dawn, one person sketching on a wall, seen from behind, close shot"
+   },
+   "image_prompt": "research lab at dawn, one person sketching on a wall, seen from behind, close shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Reality lab day",
+    "ko": "현실 라보 날"
+   },
+   "narration": {
+    "en": "Real people laugh, data breathes",
+    "ko": "현실인 웃음, 데이터 숨김"
+   },
+   "image_hint": {
+    "en": "open office at midday, one person listening to a colleague, seen from behind, medium shot"
+   },
+   "image_prompt": "open office at midday, one person listening to a colleague, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s feed",
+    "ko": "오늘의 피드"
+   },
+   "narration": {
+    "en": "One post unfolds, one reply echoes",
+    "ko": "한 게시물 펼쳐져 한 답글 울음"
+   },
+   "image_hint": {
+    "en": "coffee shop at afternoon, one person scrolling on phone, seen from behind, close shot"
+   },
+   "image_prompt": "coffee shop at afternoon, one person scrolling on phone, seen from behind, close shot"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Stillness of bar",
+    "ko": "바의 고요"
+   },
+   "narration": {
+    "en": "Bar remains, unnoticed",
+    "ko": "바는 변함없이, 눈에 없슴"
+   },
+   "image_hint": {
+    "en": "bar at night, one person sipping, seen from behind, long shot"
+   },
+   "image_prompt": "bar at night, one person sipping, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-21-stocks",
+ "theme": "stocks",
+ "symbol": "META",
+ "quote": {
+  "text": "Meta Platforms, Inc.",
+  "author": "NASDAQ META"
+ }
+}
