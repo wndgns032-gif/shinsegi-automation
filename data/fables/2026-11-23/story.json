@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-23",
+  "theme": "growth",
+  "theme_label": "배움과 성장",
+  "quote": {
+    "id": "aristotle-habit",
+    "author": {
+      "en": "Aristotle",
+      "ko": "아리스토텔레스",
+      "zh-cn": "亚里士多德",
+      "fr": "Aristote"
+    },
+    "text": {
+      "en": "We are what we repeatedly do. Excellence, then, is not an act but a habit.",
+      "ko": "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다.",
+      "zh-cn": "重复做的事造就了我们。卓越不是一次行为，而是一种习惯。",
+      "fr": "Nous sommes ce que nous faisons de façon répétée. L'excellence n'est pas un acte, mais une habitude."
+    }
+  },
+  "title": {
+    "en": "Habit and Growth",
+    "ko": "습관과 성장"
+  },
+  "caption": {
+    "en": "내 일상, 내 성장\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "내 일상, 내 성장\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Morning, the light pours",
+        "Evening, the silence whispers"
+      ],
+      "ko": [
+        "아침, 빛이 쏟아지라",
+        "밤, 정적이 속삭이니"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Habits shape who we become",
+    "ko": "습관이 우리를 만든다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "silent library, distant small figure",
+      "narration": {
+        "en": "We are what we repeatedly do. Excellence, then, is not an act but a habit. — Aristotle.",
+        "ko": "우리가 반복해서 하는 것이 곧 우리 자신이다. 탁월함은 행동이 아니라 습관이다. — 아리스토텔레스."
+      },
+      "subtitle": {
+        "en": "We are what we repeatedly do. Excellence.",
+        "ko": "우리가 반복해서 하는 것이…"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "early morning coffee cup, long shot",
+      "narration": {
+        "en": "Morning, the light pours. Evening, the silence whispers",
+        "ko": "아침, 빛이 쏟아지라. 밤, 정적이 속삭이니"
+      },
+      "subtitle": {
+        "en": "Morning, the light pours",
+        "ko": "아침, 빛이 쏟아지라"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "office desk, seen from behind",
+      "narration": {
+        "en": "나는 서두른다",
+        "ko": "나는 서두른다"
+      },
+      "subtitle": {
+        "en": "나는 서두른다",
+        "ko": "나는 서두른다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "training gym, wide shot",
+      "narration": {
+        "en": "힘겨운 훈련을 멈춘다",
+        "ko": "힘겨운 훈련을 멈춘다"
+      },
+      "subtitle": {
+        "en": "힘겨운 훈련을 멈춘다",
+        "ko": "힘겨운 훈련을 멈춘다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "quiet study room, distant small figure",
+      "narration": {
+        "en": "책을 다시 펴고 읽는다",
+        "ko": "책을 다시 펴고 읽는다"
+      },
+      "subtitle": {
+        "en": "책을 다시 펴고 읽는다",
+        "ko": "책을 다시 펴고 읽는다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "city park, seen from behind",
+      "narration": {
+        "en": "산책하며 생각한다",
+        "ko": "산책하며 생각한다"
+      },
+      "subtitle": {
+        "en": "산책하며 생각한다",
+        "ko": "산책하며 생각한다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "nighttime bedroom, long shot",
+      "narration": {
+        "en": "잠자기 전 일기를 적는다",
+        "ko": "잠자기 전 일기를 적는다"
+      },
+      "subtitle": {
+        "en": "잠자기 전 일기를 적는다",
+        "ko": "잠자기 전 일기를 적는다"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "corporate meeting, wide shot",
+      "narration": {
+        "en": "팀 회의에서 아이디어를 적용했다",
+        "ko": "팀 회의에서 아이디어를 적용했다"
+      },
+      "subtitle": {
+        "en": "팀 회의에서 아이디어를 적용했다",
+        "ko": "팀 회의에서 아이디어를…"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "community kitchen, seen from behind",
+      "narration": {
+        "en": "봉사활동에서 반복적인 도움을 줬다",
+        "ko": "봉사활동에서 반복적인 도움을 줬다"
+      },
+      "subtitle": {
+        "en": "봉사활동에서 반복적인 도움을 줬다",
+        "ko": "봉사활동에서 반복적인 도움을…"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "sunset beach, distant small figure",
+      "narration": {
+        "en": "Habits shape who we become",
+        "ko": "습관이 우리를 만든다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
