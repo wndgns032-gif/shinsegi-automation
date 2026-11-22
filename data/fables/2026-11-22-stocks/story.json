@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Electric Ember",
+  "ko": "전기 화염"
+ },
+ "caption": {
+  "en": "Witnessing a silent revolution",
+  "ko": "조용한 혁명을 목격"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Silence marks the shift.",
+    "The road lights awaken."
+   ],
+   "ko": [
+    "침묵이 변화를 고른다.",
+    "길가의 불빛이 일어나기 시작한다."
+   ]
+  },
+  "highlight": {
+   "en": "A lone car glides silently in midnight traffic.",
+   "ko": "한 대의 차가 한밤중에 조용히 달린다."
+  }
+ },
+ "moral": {
+  "en": "Change waits for no one.",
+  "ko": "변화는 누구도 기다리지 않는다."
+ },
+ "cta": {
+  "en": "Share your quiet moments.",
+  "ko": "조용한 순간을 공유해보세요."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Midnight street",
+    "ko": "한밤길"
+   },
+   "narration": {
+    "en": "I watch a single figure move.",
+    "ko": "나는 한 사람의 이동을 본다."
+   },
+   "image_hint": {
+    "en": "midnight street at night, a lone figure walking, seen from behind, long shot"
+   },
+   "image_prompt": "midnight street at night, a lone figure walking, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Gridlock dissolved",
+    "ko": "혼잡이 풀리다"
+   },
+   "narration": {
+    "en": "Cars halt, glass sparkles.",
+    "ko": "차가 멈추고 유리가 반짝인다."
+   },
+   "image_hint": {
+    "en": "traffic jam at night, cars idling, small figure in middle distance, seen from behind"
+   },
+   "image_prompt": "traffic jam at night, cars idling, small figure in middle distance, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First test drive",
+    "ko": "첫 시승"
+   },
+   "narration": {
+    "en": "A quiet acceleration, no exhaust.",
+    "ko": "엔진 소리 없이 가속한다."
+   },
+   "image_hint": {
+    "en": "parking lot at dawn, a car starting, seen from behind, long shot"
+   },
+   "image_prompt": "parking lot at dawn, a car starting, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Days of dust",
+    "ko": "모래가 머문 날"
+   },
+   "narration": {
+    "en": "Wheels spin, dust settles.",
+    "ko": "바퀴가 돌고 먼지가 낀다."
+   },
+   "image_hint": {
+    "en": "factory floor at day, machinery humming, small figure at far corner"
+   },
+   "image_prompt": "factory floor at day, machinery humming, small figure at far corner"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Delayed launch",
+    "ko": "출시 지연"
+   },
+   "narration": {
+    "en": "Plans wait, deadlines loom.",
+    "ko": "계획이 기다리고 마감이 다가온다."
+   },
+   "image_hint": {
+    "en": "office hallway at dusk, papers stacked, distant figure in background"
+   },
+   "image_prompt": "office hallway at dusk, papers stacked, distant figure in background"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Prototype sparks",
+    "ko": "시제품이 뿜어져 나오다"
+   },
+   "narration": {
+    "en": "A blink of light, a new path.",
+    "ko": "불빛이 번쩍이며 길이 열린다."
+   },
+   "image_hint": {
+    "en": "prototype testing bay at night, lights flicker, small figure observing"
+   },
+   "image_prompt": "prototype testing bay at night, lights flicker, small figure observing"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Momentum builds",
+    "ko": "속도가 쌓인다"
+   },
+   "narration": {
+    "en": "Supply lines tighten, hopes rise.",
+    "ko": "공급 라인이 끈적이고 희망이 솟는다."
+   },
+   "image_hint": {
+    "en": "warehouse at evening, forklifts operating, man in focus on rearview"
+   },
+   "image_prompt": "warehouse at evening, forklifts operating, man in focus on rearview"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Global launch",
+    "ko": "세계 출시"
+   },
+   "narration": {
+    "en": "Rows of cars line the streets.",
+    "ko": "차들이 거리마다 줄을 맞춘다."
+   },
+   "image_hint": {
+    "en": "city boulevard at noon, electric cars parked, a small figure looking up"
+   },
+   "image_prompt": "city boulevard at noon, electric cars parked, a small figure looking up"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s showroom",
+    "ko": "오늘의 전시"
+   },
+   "narration": {
+    "en": "Hands touch slick panels.",
+    "ko": "손이 매끄러운 패널에 닿는다."
+   },
+   "image_hint": {
+    "en": "showroom interior at day, sleek cars displayed, customer exploring"
+   },
+   "image_prompt": "showroom interior at day, sleek cars displayed, customer exploring"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Quiet evolution",
+    "ko": "조용한 진화"
+   },
+   "narration": {
+    "en": "Progress thrives in the hush.",
+    "ko": "진보는 침묵 속에서 번영한다."
+   },
+   "image_hint": {
+    "en": "empty parking lot at sunrise, a lone car parked, viewed from afar"
+   },
+   "image_prompt": "empty parking lot at sunrise, a lone car parked, viewed from afar"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-22-stocks",
+ "theme": "stocks",
+ "symbol": "TSLA",
+ "quote": {
+  "text": "Tesla, Inc.",
+  "author": "NASDAQ TSLA"
+ }
+}
