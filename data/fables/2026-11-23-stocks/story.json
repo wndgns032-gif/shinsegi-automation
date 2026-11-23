@@ -1,0 +1,193 @@
+{
+ "title": {
+  "en": "Amazon's Quiet Crawl",
+  "ko": "아마존의 조용한 기어옮김"
+ },
+ "caption": {
+  "en": "Observing a giant from afar",
+  "ko": "멀리서 보는 거대한 기업"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "From a peak, I watched the rain"
+   ],
+   "ko": [
+    "높은 곳에서 비를 바라보며"
+   ]
+  },
+  "highlight": {
+   "en": "The market's pulse was a distant thud.",
+   "ko": "시장의 맥박은 멀리서 울리는 북두."
+  }
+ },
+ "moral": {
+  "en": "Grooves deepen where patience paints the path.",
+  "ko": "인내가 선로를 그리면 파이프는 깊어진다."
+ },
+ "cta": {
+  "en": "Notice the small steps.",
+  "ko": "작은 걸음을 살펴보라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Atop a quiet hill",
+    "ko": "고요한 언덕 위에서"
+   },
+   "narration": {
+    "en": "I watched the rain fall into silence.",
+    "ko": "비가 무게 없이 고요히 떨어지는 걸 봤다."
+   },
+   "image_hint": {
+    "en": "hilltop at dusk, lone observer in the distance, seen from behind, long shot"
+   },
+   "image_prompt": "hilltop at dusk, lone observer in the distance, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "First transaction",
+    "ko": "첫 번째 거래"
+   },
+   "narration": {
+    "en": "A blinking cursor, a sleepy button pressed.",
+    "ko": "깜빡이는 커서, 겨우 누른 버튼."
+   },
+   "image_hint": {
+    "en": "office desk at night, lone figure typing, seen from behind, medium shot"
+   },
+   "image_prompt": "office desk at night, lone figure typing, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Growing shelves",
+    "ko": "늘어나는 진열"
+   },
+   "narration": {
+    "en": "Stacks expand, sky crawls into aisles.",
+    "ko": "정리된 서가, 하늘이 진열을 가로지른다."
+   },
+   "image_hint": {
+    "en": "warehouse aisle, long line of shelves, distant figure, seen from behind, long shot"
+   },
+   "image_prompt": "warehouse aisle, long line of shelves, distant figure, seen from behind, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Laws of supply",
+    "ko": "공급의 법칙"
+   },
+   "narration": {
+    "en": "Demand rises, trucks vanish into fog.",
+    "ko": "수요는 올랐고, 트럭은 안개에 사라졌다."
+   },
+   "image_hint": {
+    "en": "truck yard at dawn, solitary truck loading, seen from behind, mid shot"
+   },
+   "image_prompt": "truck yard at dawn, solitary truck loading, seen from behind, mid shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Echo in silence",
+    "ko": "침묵의 메아리"
+   },
+   "narration": {
+    "en": "Footsteps echo, empty corridors breathe.",
+    "ko": "발걸음이 메아리, 빈 복도 숨쉰다."
+   },
+   "image_hint": {
+    "en": "empty corridor, single light fixture, small figure walking, seen from behind, long shot"
+   },
+   "image_prompt": "empty corridor, single light fixture, small figure walking, seen from behind, long shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "First glitch",
+    "ko": "첫 번째 결함"
+   },
+   "narration": {
+    "en": "A glitch flickers, screens freeze mid-vision.",
+    "ko": "불쾌한 깨짐, 화면이 멈춘다."
+   },
+   "image_hint": {
+    "en": "large screen wall, glitch ripple, distant figure frozen, seen from behind, wide shot"
+   },
+   "image_prompt": "large screen wall, glitch ripple, distant figure frozen, seen from behind, wide shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Return to flow",
+    "ko": "흐름으로 복귀"
+   },
+   "narration": {
+    "en": "Restored, the line flows like water again.",
+    "ko": "복구되자 흐름이 물처럼 흐른다."
+   },
+   "image_hint": {
+    "en": "riverbank, water flowing, lone figure watching, seen from behind, medium shot"
+   },
+   "image_prompt": "riverbank, water flowing, lone figure watching, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Cloud front",
+    "ko": "클라우드 전면"
+   },
+   "narration": {
+    "en": "Data streams like clouds over a cityscape.",
+    "ko": "데이터가 도시 위 구름처럼 떠 있다."
+   },
+   "image_hint": {
+    "en": "city skyline at sunset, data cables bright, distant figure in office, seen from behind, long shot"
+   },
+   "image_prompt": "city skyline at sunset, data cables bright, distant figure in office, seen from behind, long shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today",
+    "ko": "오늘"
+   },
+   "narration": {
+    "en": "The screen glows, a new package arrives.",
+    "ko": "화면이 빛나며 새 물건이 도착했다."
+   },
+   "image_hint": {
+    "en": "elevator lobby at day, package box on counter, small figure entering, seen from behind, medium shot"
+   },
+   "image_prompt": "elevator lobby at day, package box on counter, small figure entering, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Silence",
+    "ko": "침묵"
+   },
+   "narration": {
+    "en": "Quiet surfaces hold the strongest echoes.",
+    "ko": "정적 표면이 가장 강한 메아리를 품는다."
+   },
+   "image_hint": {
+    "en": "still lake at dawn, lone figure standing, seen from behind, long shot"
+   },
+   "image_prompt": "still lake at dawn, lone figure standing, seen from behind, long shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-23-stocks",
+ "theme": "stocks",
+ "symbol": "AMZN",
+ "quote": {
+  "text": "Amazon.com, Inc.",
+  "author": "NASDAQ AMZN"
+ }
+}
