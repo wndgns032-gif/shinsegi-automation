@@ -1,0 +1,192 @@
+{
+ "title": {
+  "en": "Silicon Saga",
+  "ko": "반도체 사가"
+ },
+ "caption": {
+  "en": "A silent observer watches a chip giant rise.",
+  "ko": "눈앞에서 반도체 거인이 성장하는 것을 지켜본다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "I stood in the server room humming.",
+    "I watched silicon mirrors glow."
+   ],
+   "ko": "미지의 흐름이 숨어 있다."
+  },
+  "highlight": {
+   "en": "There was only the hum of progress",
+   "ko": "진행은 저런 박음이었지"
+  }
+ },
+ "moral": {
+  "en": "A chip is only a chip until it thinks.",
+  "ko": "칩은 생각하기 전까지만 알고 있었다."
+ },
+ "cta": {
+  "en": "Consider the quiet power behind every curve.",
+  "ko": "모든 곡선 뒤에 있는 조용한 힘을 생각해 보라."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "First glimpse",
+    "ko": "첫눈에"
+   },
+   "narration": {
+    "en": "I stood in the server room humming.",
+    "ko": "서버룸에서 멈춰 서서 울음소리를 들었다."
+   },
+   "image_hint": {
+    "en": "backyard of a high-tech server room, one person standing, seen from behind, medium shot"
+   },
+   "image_prompt": "backyard of a high-tech server room, one person standing, seen from behind"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "Silence before noise",
+    "ko": "소음 앞의 침묵"
+   },
+   "narration": {
+    "en": "The screens stayed black.",
+    "ko": "스크린은 검은색이었다."
+   },
+   "image_hint": {
+    "en": "office at night, a lone desk lamp, one person in front, distant figure"
+   },
+   "image_prompt": "office at night, a lone desk lamp, one person in front, distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "First hard drive",
+    "ko": "첫 번째 하드 드라이브"
+   },
+   "narration": {
+    "en": "A cable struck the floor, a drop of solder.",
+    "ko": "케이블이 바닥에 번쩍 반짝였다."
+   },
+   "image_hint": {
+    "en": "warehouse floor, a spilled solder, one worker present, seen from behind"
+   },
+   "image_prompt": "warehouse floor, a spilled solder, one worker present, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Weeks later",
+    "ko": "몇 주 지나"
+   },
+   "narration": {
+    "en": "The machine roared aloud again.",
+    "ko": "기계가 다시 새성했다."
+   },
+   "image_hint": {
+    "en": "factory corridor, a robot arm moving, a distant figure"
+   },
+   "image_prompt": "factory corridor, a robot arm moving, a distant figure"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Noise grew",
+    "ko": "음량이 커졌다"
+   },
+   "narration": {
+    "en": "The hum stretched across rooms.",
+    "ko": "울음이 방을 가로질렀다."
+   },
+   "image_hint": {
+    "en": "parking lot at dusk, a car engine revving, a small figure in front"
+   },
+   "image_prompt": "parking lot at dusk, a car engine revving, a small figure in front"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Failure hit half",
+    "ko": "실패는 절반"
+   },
+   "narration": {
+    "en": "A chip fried, a fire sparked.",
+    "ko": "칩이 변색, 불꽃이 솟았네."
+   },
+   "image_hint": {
+    "en": "fire department scene, a firefighter with hose, seen from behind"
+   },
+   "image_prompt": "fire department scene, a firefighter with hose, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Redesign started",
+    "ko": "재설계 시작"
+   },
+   "narration": {
+    "en": "New wafers lay, clean and thin.",
+    "ko": "새 웨이퍼가 늘어났다."
+   },
+   "image_hint": {
+    "en": "clean room, a wafer on pedestal, distant figure"
+   },
+   "image_prompt": "clean room, a wafer on pedestal, distant figure"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Today’s circuit",
+    "ko": "오늘의 회로"
+   },
+   "narration": {
+    "en": "GPU cores pulse in quiet sync.",
+    "ko": "GPU 코어가 조용히 울렁거린다."
+   },
+   "image_hint": {
+    "en": "data center, a rack of servers, a small figure in front"
+   },
+   "image_prompt": "data center, a rack of servers, a small figure in front"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Live mode",
+    "ko": "실시간 모드"
+   },
+   "narration": {
+    "en": "The room hums with a single name.",
+    "ko": "방은 한 이름으로 번쩍번쩍."
+   },
+   "image_hint": {
+    "en": "nighttime street, a neon sign flashing, a person walking, seen from behind"
+   },
+   "image_prompt": "nighttime street, a neon sign flashing, a person walking, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "Final thought",
+    "ko": "마지막 사유"
+   },
+   "narration": {
+    "en": "A chip is only a chip until it thinks.",
+    "ko": "칩은 생각하기 전까지만 알고 있었다."
+   },
+   "image_hint": {
+    "en": "library at dawn, a book open, one reader, seen from behind"
+   },
+   "image_prompt": "library at dawn, a book open, one reader, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-24-stocks",
+ "theme": "stocks",
+ "symbol": "NVDA",
+ "quote": {
+  "text": "NVIDIA Corporation",
+  "author": "NASDAQ NVDA"
+ }
+}
