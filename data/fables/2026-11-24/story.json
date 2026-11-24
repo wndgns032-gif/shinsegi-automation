@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-24",
+  "theme": "courage",
+  "theme_label": "도전과 용기",
+  "quote": {
+    "id": "roosevelt-where-you-are",
+    "author": {
+      "en": "Theodore Roosevelt",
+      "ko": "시어도어 루스벨트",
+      "zh-cn": "西奥多·罗斯福",
+      "fr": "Theodore Roosevelt"
+    },
+    "text": {
+      "en": "Do what you can, with what you have, where you are.",
+      "ko": "있는 자리에서, 가진 것으로, 할 수 있는 일을 하라.",
+      "zh-cn": "在你所在的地方，用你拥有的东西，做你力所能及的事。",
+      "fr": "Fais ce que tu peux, avec ce que tu as, là où tu es."
+    }
+  },
+  "title": {
+    "en": "Do What You Can",
+    "ko": "있는 자리에서, 가진 것으로, 할 수 있는 일을 하라"
+  },
+  "caption": {
+    "en": "A day’s choices shape tomorrow\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "오늘의 선택이 내일을 만든다\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "I stand at dawn, map in hand",
+        "Radiance cool, task heavy"
+      ],
+      "ko": [
+        "아침 묘, 나침반 들고",
+        "찬란함 숨, 업무 무거워"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Observing what is, one moves forward",
+    "ko": "있는 것을 관찰하며, 앞으로 나선다"
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "quiet meadow, a lone person stretching back—long shot",
+      "narration": {
+        "en": "Do what you can, with what you have, where you are. — Theodore Roosevelt.",
+        "ko": "있는 자리에서, 가진 것으로, 할 수 있는 일을 하라. — 시어도어 루스벨트."
+      },
+      "subtitle": {
+        "en": "오늘의 문장 하나.",
+        "ko": "오늘의 문장 하나."
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "city plaza, a solitary figure listening—wide shot",
+      "narration": {
+        "en": "I stand at dawn, map in hand. Radiance cool, task heavy",
+        "ko": "아침 묘, 나침반 들고. 찬란함 숨, 업무 무거워"
+      },
+      "subtitle": {
+        "en": "Faces turn, sound wanes",
+        "ko": "얼굴이 돌고 소리가 사라진다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "suburban apartment, the man sleeping—seen from behind",
+      "narration": {
+        "en": "Early caffeine, ambition gleams",
+        "ko": "아침 커피, 야망 빛난다"
+      },
+      "subtitle": {
+        "en": "Early caffeine, ambition gleams",
+        "ko": "아침 커피, 야망 빛난다"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "busy cafe, he sits alone, sketchbook—distant small figure",
+      "narration": {
+        "en": "Ideas drift, canvas static",
+        "ko": "아이디어 드리프트, 캔버스 정지"
+      },
+      "subtitle": {
+        "en": "Ideas drift, canvas static",
+        "ko": "아이디어 드리프트, 캔버스…"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "hushed library, his hand trembling—wide shot",
+      "narration": {
+        "en": "Fear grips, page turns slow",
+        "ko": "공포 끈어, 페이지 느리게"
+      },
+      "subtitle": {
+        "en": "Fear grips, page turns slow",
+        "ko": "공포 끈어, 페이지 느리게"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "night balcony, rain drops—long shot",
+      "narration": {
+        "en": "Midnight resolve, breath steady",
+        "ko": "한밤 고정, 숨 가라앉힘"
+      },
+      "subtitle": {
+        "en": "Midnight resolve, breath steady",
+        "ko": "한밤 고정, 숨 가라앉힘"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "morn cafe, coffee steams—seen from behind",
+      "narration": {
+        "en": "Task lies, effort aligns",
+        "ko": "과제 존재, 노력 정렬"
+      },
+      "subtitle": {
+        "en": "Task lies, effort aligns",
+        "ko": "과제 존재, 노력 정렬"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "office desk, fluorescent glare—wide shot",
+      "narration": {
+        "en": "Files stack, deadlines loom",
+        "ko": "파일 쌓이고 마감이 가까워"
+      },
+      "subtitle": {
+        "en": "Files stack, deadlines loom",
+        "ko": "파일 쌓이고 마감이 가까워"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "gym floor, weights clang—long shot",
+      "narration": {
+        "en": "Muscles ache, rhythm steady",
+        "ko": "근육 아픈, 리듬 고정"
+      },
+      "subtitle": {
+        "en": "Muscles ache, rhythm steady",
+        "ko": "근육 아픈, 리듬 고정"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "mountain ridge, sunrise ahead—will already be shining",
+      "narration": {
+        "en": "Observing what is, one moves forward",
+        "ko": "있는 것을 관찰하며, 앞으로 나선다"
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
