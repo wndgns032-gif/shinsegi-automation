@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-25",
+  "theme": "hardship",
+  "theme_label": "고난과 역경",
+  "quote": {
+    "id": "epictetus-not-things",
+    "author": {
+      "en": "Epictetus",
+      "ko": "에픽테토스",
+      "zh-cn": "爱比克泰德",
+      "fr": "Épictète"
+    },
+    "text": {
+      "en": "People are disturbed not by things, but by the views they take of them.",
+      "ko": "사람을 흔드는 것은 일이 아니라, 그 일을 보는 나의 판단이다.",
+      "zh-cn": "让人不安的不是事情本身，而是我们对它的看法。",
+      "fr": "Ce qui trouble les hommes, ce ne sont pas les choses, mais le jugement qu'ils portent sur elles."
+    }
+  },
+  "title": {
+    "en": "Disruption of View",
+    "ko": "시각의 파괴"
+  },
+  "caption": {
+    "en": "Disturbance stems from perception, not events.\n\n#fable #quotes #quoteoftheday #wisdom #motivation",
+    "ko": "일이 아니라 보는 눈이 흔든다.\n\n#명언 #오늘의명언 #우화 #위로 #동기부여"
+  },
+  "hook": {
+    "lines": {
+      "en": [
+        "Ripples begin on still water",
+        "They grow long before the wind arrives"
+      ],
+      "ko": [
+        "정적 물결이 고요히 일어나",
+        "바람이 오기 전 길게 펼친다"
+      ]
+    },
+    "highlight": {
+      "en": "",
+      "ko": ""
+    }
+  },
+  "moral": {
+    "en": "Observation persists beyond the storm.",
+    "ko": "관찰은 폭풍을 넘어 지속된다."
+  },
+  "characters": "a man in his 30s, short black hair, tired eyes, plain grey shirt",
+  "cta": {
+    "en": "Follow @shinsegi.en — a new story every day",
+    "ko": "매일 새로운 이야기 @shinsegi.kr"
+  },
+  "scenes": [
+    {
+      "act": "quote",
+      "image_prompt": "ancient courtyard, distant small figure",
+      "narration": {
+        "en": "People are disturbed not by things, but by the views they take of them. — Epictetus.",
+        "ko": "사람을 흔드는 것은 일이 아니라, 그 일을 보는 나의 판단이다. — 에픽테토스."
+      },
+      "subtitle": {
+        "en": "Epictetus",
+        "ko": "에픽테토스"
+      }
+    },
+    {
+      "act": "hook",
+      "image_prompt": "foggy riverbank, seen from behind",
+      "narration": {
+        "en": "Ripples begin on still water. They grow long before the wind arrives",
+        "ko": "정적 물결이 고요히 일어나. 바람이 오기 전 길게 펼친다"
+      },
+      "subtitle": {
+        "en": "Morning solitude",
+        "ko": "아침 고독"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "mountain trail, long shot",
+      "narration": {
+        "en": "I set foot on the ridge",
+        "ko": "언덕을 걸어 나섰다"
+      },
+      "subtitle": {
+        "en": "First step",
+        "ko": "첫 발"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "rain-soaked forest, wide shot",
+      "narration": {
+        "en": "Thunder breaks my path",
+        "ko": "뇌우가 길을 갈라 장난삼아"
+      },
+      "subtitle": {
+        "en": "Distortion",
+        "ko": "왜곡"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "cloudy valley, distant small figure",
+      "narration": {
+        "en": "I pause, doubt spreads",
+        "ko": "잠시 멈추며 의심이 퍼진다"
+      },
+      "subtitle": {
+        "en": "Moment of doubt",
+        "ko": "의심의 순간"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "desert dune, seen from behind",
+      "narration": {
+        "en": "I breathe sand into my lungs",
+        "ko": "모래를 숨에 채워 끓인다"
+      },
+      "subtitle": {
+        "en": "Heat of resolve",
+        "ko": "결연의 온도"
+      }
+    },
+    {
+      "act": "fable",
+      "image_prompt": "nightlit lake, long shot",
+      "narration": {
+        "en": "I stare at the dark water",
+        "ko": "어두운 물을 바라본다"
+      },
+      "subtitle": {
+        "en": "Endless reflection",
+        "ko": "끝없는 반사"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "busy office, wide shot",
+      "narration": {
+        "en": "A deadline looms, emails flood",
+        "ko": "마감이 쫓아오고 메일이 쏟아진다"
+      },
+      "subtitle": {
+        "en": "Workday strain",
+        "ko": "근무 스트레스"
+      }
+    },
+    {
+      "act": "real",
+      "image_prompt": "night cityscape, seen from behind",
+      "narration": {
+        "en": "I walk alone, neon glinting",
+        "ko": "혼자 걸으며 네온불빛이 반짝인다"
+      },
+      "subtitle": {
+        "en": "Urban night",
+        "ko": "도시의 밤"
+      }
+    },
+    {
+      "act": "outro",
+      "image_prompt": "empty courtyard, distant small figure",
+      "narration": {
+        "ko": "관찰은 폭풍을 넘어 지속된다.",
+        "en": "Observation persists beyond the storm."
+      },
+      "subtitle": {
+        "en": "그 자리도 결국 익숙함이 된다.",
+        "ko": "그 자리도 결국 익숙함이…"
+      }
+    }
+  ],
+  "naturalness_issues": []
+}
