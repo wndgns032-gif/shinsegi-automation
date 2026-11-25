@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "How One Search Engine Became a World",
+  "ko": "검색 엔진이 어떻게 세상을 바꿨는가"
+ },
+ "caption": {
+  "en": "Observations from afar",
+  "ko": "멀리서 바라본 관찰"
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "Every click tells a story.",
+    "But some clicks echo worldwide."
+   ],
+   "ko": [
+    "모든 클릭은 이야기를 말한다.",
+    "하지만 일부 클릭은 세계를 울린다."
+   ]
+  },
+  "highlight": {
+   "en": "I watched a single beam of light travel across the globe.",
+   "ko": "나는 한 줄의 빛이 전 세계를 가로지르는 것을 봤다."
+  }
+ },
+ "moral": {
+  "en": "History is written in the quiet clicks of many hands.",
+  "ko": "역사는 많은 손길의 조용한 클릭 속에 적힌다."
+ },
+ "cta": {
+  "en": "—",
+  "ko": "—"
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "Scrolling at dawn",
+    "ko": "새벽에 스크롤하기"
+   },
+   "narration": {
+    "en": "I saw a desk lit by a small lamp, one hand typing a query, back to the camera.",
+    "ko": "작은 램프가 비추는 책상을 보았다. 한 손이 검색어를 타이핑하고, 카메라 뒤쪽으로 시선이 가 있었다."
+   },
+   "image_hint": {
+    "en": "home office at dawn, a person typing, seen from behind, long shot"
+   },
+   "image_prompt": "home office at dawn, a person typing, seen from behind, long shot"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "The first rejection",
+    "ko": "첫 번째 거절"
+   },
+   "narration": {
+    "en": "I watched a screen flash red, a headline missing a link, a finger tap and nothing changed.",
+    "ko": "화면이 빨갛게 반짝이고, 링크가 없던 헤드라인을 보며 손가락이 튕겼으나 아무 일도 일어나지 않았다."
+   },
+   "image_hint": {
+    "en": "computer screen at office, a finger tapping, seen from behind, close shot"
+   },
+   "image_prompt": "computer screen at office, a finger tapping, seen from behind, close shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Search born",
+    "ko": "검색의 탄생"
+   },
+   "narration": {
+    "en": "A new window opened, results bloomed, a cursor hovered, waiting to be clicked.",
+    "ko": "새 창이 열리면서 결과들이 피어났고, 커서가 뜬금없이 기다렸다."
+   },
+   "image_hint": {
+    "en": "search engine results page, a cursor hovering, seen from lamp's light, medium shot"
+   },
+   "image_prompt": "search engine results page, a cursor hovering, seen from lamp's light"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Growth at night",
+    "ko": "밤에 성장하기"
+   },
+   "narration": {
+    "en": "I saw servers whirring, numbers scrolling, a city skyline reflected in glass, humming quietly.",
+    "ko": "서버가 윙윙거리고, 수치가 스크롤되며, 반짝이는 유리창에 도시 스카이라인이 고요히 반영된다."
+   },
+   "image_hint": {
+    "en": "data center at night, servers humming, seen from a distant window, long shot"
+   },
+   "image_prompt": "data center at night, servers humming, seen from a distant window, long shot"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Policy shift",
+    "ko": "정책 변화"
+   },
+   "narration": {
+    "en": "A screen flickered, a new banner appeared, a pop‑up asking permissions, people hesitated.",
+    "ko": "화면이 깜빡이며 새로운 배너가 뜨고, 허가를 묻는 팝업이 등장해 사람들은 머뭇거렸다."
+   },
+   "image_hint": {
+    "en": "mobile phone at midday, a pop-up asking permissions, seen from behind, close shot"
+   },
+   "image_prompt": "mobile phone at midday, a pop-up asking permissions, seen from behind, close shot"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Innovation sparked",
+    "ko": "혁신이 촉발"
+   },
+   "narration": {
+    "en": "A sandbox opened, code streamed, a new feature named “AI suggestion” whispered into the interface.",
+    "ko": "샌드박스가 열리며 코드가 흐르고, “AI 제안”이라는 새 기능이 인터페이스에 속삭인다."
+   },
+   "image_hint": {
+    "en": "developer workstation at sunset, code editor visible, seen from behind, medium shot"
+   },
+   "image_prompt": "developer workstation at sunset, code editor visible, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Economy reshaped",
+    "ko": "경제 재구성"
+   },
+   "narration": {
+    "en": "Billboards lit up, advertisers adjusted words, a dollar sign floated over an ad, silent yet powerful.",
+    "ko": "빌보드가 빛나며 광고주가 문구를 바꾸고, 광고 위에 달러 표시가 부드럽게 떠올라 무언의 힘을 느끼게 한다."
+   },
+   "image_hint": {
+    "en": "city street at dusk, billboards lit, seen from a distance, long shot"
+   },
+   "image_prompt": "city street at dusk, billboards lit, seen from a distance, long shot"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "Cloud dawn",
+    "ko": "클라우드의 새벽"
+   },
+   "narration": {
+    "en": "I stood on a rooftop, clouds swirling like data packets, a server farm humming below.",
+    "ko": "마당 위에 서서 구름이 데이터 패킷처럼 소용돌이치고, 아래에 서버 팜이 윙윙거리며 전개된다."
+   },
+   "image_hint": {
+    "en": "rooftop at sunrise, clouds swirling, seen from a distance, wide shot"
+   },
+   "image_prompt": "rooftop at sunrise, clouds swirling, seen from a distance, wide shot"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today’s touch",
+    "ko": "오늘의 터치"
+   },
+   "narration": {
+    "en": "A child tapped, a search appeared, a video played, the loop of learning resumed.",
+    "ko": "아이가 탭을 쳐서 검색이 뜨고, 비디오가 재생되며 학습의 순환이 재개된다."
+   },
+   "image_hint": {
+    "en": "playroom at noon, a child touching a tablet, seen from behind, medium shot"
+   },
+   "image_prompt": "playroom at noon, a child touching a tablet, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "A quiet badge of progress",
+    "ko": "진보의 조용한 메달"
+   },
+   "narration": {
+    "en": "Progress wears no flags, only countless small requests answered one by one.",
+    "ko": "진보는 깃발을 쓰지 않는다. 오직 무수한 작은 요청을 하나씩 충족시키는 것만이 있다."
+   },
+   "image_hint": {
+    "en": "ancient library at twilight, books stacked, seen from a distance, wide shot"
+   },
+   "image_prompt": "ancient library at twilight, books stacked, seen from a distance, wide shot"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-25-stocks",
+ "theme": "stocks",
+ "symbol": "GOOGL",
+ "quote": {
+  "text": "Alphabet Inc.",
+  "author": "NASDAQ GOOGL"
+ }
+}
