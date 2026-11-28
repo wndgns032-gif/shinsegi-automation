@@ -1,0 +1,195 @@
+{
+ "title": {
+  "en": "Apple: The Device That Became a Habit",
+  "ko": "애플: 기기가 습관이 된 순간"
+ },
+ "caption": {
+  "en": "I watched a device become part of the day.",
+  "ko": "기기가 하루의 일부가 되는 모습을 지켜봤다."
+ },
+ "hook": {
+  "lines": {
+   "en": [
+    "A phone can be replaced.",
+    "Leaving the whole system is harder."
+   ],
+   "ko": [
+    "휴대폰은 바꿀 수 있다.",
+    "익숙한 세계는 쉽게 못 떠난다."
+   ]
+  },
+  "highlight": {
+   "en": "Leaving the whole system",
+   "ko": "익숙한 세계"
+  }
+ },
+ "moral": {
+  "en": "The device was only the beginning.",
+  "ko": "기기는 시작에 불과했다."
+ },
+ "cta": {
+  "en": "One company, observed from afar.",
+  "ko": "멀리서 한 회사를 바라봤다."
+ },
+ "scenes": [
+  {
+   "act": "hook",
+   "subtitle": {
+    "en": "A phone can be replaced.",
+    "ko": "휴대폰은 바꿀 수 있다."
+   },
+   "narration": {
+    "en": "But a familiar world is harder to leave.",
+    "ko": "익숙한 세계는 쉽게 못 떠난다."
+   },
+   "image_hint": {
+    "en": "dark electronics shop window, illuminated phones on display"
+   },
+   "image_prompt": "dark electronics shop window, illuminated phones on display"
+  },
+  {
+   "act": "tension",
+   "subtitle": {
+    "en": "One device wasn't enough.",
+    "ko": "기기 하나로는 부족했다."
+   },
+   "narration": {
+    "en": "I saw the same question at each counter.",
+    "ko": "매장마다 같은 고민이 보였다."
+   },
+   "image_hint": {
+    "en": "busy electronics store, distant customer comparing devices, seen from behind"
+   },
+   "image_prompt": "busy electronics store, distant customer comparing devices, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "Then the phone went everywhere.",
+    "ko": "휴대폰은 어디든 따라갔다."
+   },
+   "narration": {
+    "en": "It came out at the bus stop.",
+    "ko": "버스 정류장에서 꺼내 들었다."
+   },
+   "image_hint": {
+    "en": "rainy bus stop at dusk, one person checking a phone, seen from behind"
+   },
+   "image_prompt": "rainy bus stop at dusk, one person checking a phone, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "A laptop joined the desk.",
+    "ko": "책상에는 노트북이 놓였다."
+   },
+   "narration": {
+    "en": "The same files waited at home.",
+    "ko": "집에서도 같은 파일이 기다렸다."
+   },
+   "image_hint": {
+    "en": "quiet home office in morning light, distant person opening a laptop, seen from behind"
+   },
+   "image_prompt": "quiet home office in morning light, distant person opening a laptop, seen from behind"
+  },
+  {
+   "act": "body",
+   "subtitle": {
+    "en": "The watch appeared on a wrist.",
+    "ko": "손목에는 시계가 더해졌다."
+   },
+   "narration": {
+    "en": "AirPods followed into the street.",
+    "ko": "에어팟은 거리까지 따라왔다."
+   },
+   "image_hint": {
+    "en": "city crosswalk at rush hour, one person walking with earbuds, seen from behind"
+   },
+   "image_prompt": "city crosswalk at rush hour, one person walking with earbuds, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "The pieces started talking.",
+    "ko": "기기들이 서로 이어졌다."
+   },
+   "narration": {
+    "en": "A message crossed from phone to laptop.",
+    "ko": "메시지가 폰에서 맥으로 건너갔다."
+   },
+   "image_hint": {
+    "en": "university library aisle, distant person moving between shelves with a laptop, seen from behind"
+   },
+   "image_prompt": "university library aisle, distant person moving between shelves with a laptop, seen from behind"
+  },
+  {
+   "act": "turn",
+   "subtitle": {
+    "en": "Convenience became familiarity.",
+    "ko": "편리함은 익숙함이 됐다."
+   },
+   "narration": {
+    "en": "Purchases, music, and backups stayed close.",
+    "ko": "결제와 음악도 곁에 남았다."
+   },
+   "image_hint": {
+    "en": "airport lounge at evening, one person using a phone beside luggage, seen from behind"
+   },
+   "image_prompt": "airport lounge at evening, one person using a phone beside luggage, seen from behind"
+  },
+  {
+   "act": "real",
+   "subtitle": {
+    "en": "The market noticed the bond.",
+    "ko": "시장은 그 결속을 봤다."
+   },
+   "narration": {
+    "en": "Apple's market value: $5.21 trillion.",
+    "ko": "애플 시가총액은 5.21조 달러였다."
+   },
+   "image_hint": {
+    "en": "financial district plaza at midday, distant investor reading a phone, seen from behind"
+   },
+   "image_prompt": "financial district plaza at midday, distant investor reading a phone, seen from behind"
+  },
+  {
+   "act": "now",
+   "subtitle": {
+    "en": "Today, the routine remains.",
+    "ko": "오늘도 습관은 이어진다."
+   },
+   "narration": {
+    "en": "At a cafe, one tap opens the familiar screen.",
+    "ko": "카페에서 한 번 눌러 익숙한 화면을 연다."
+   },
+   "image_hint": {
+    "en": "small neighborhood cafe at noon, distant customer tapping a phone at a table, seen from behind"
+   },
+   "image_prompt": "small neighborhood cafe at noon, distant customer tapping a phone at a table, seen from behind"
+  },
+  {
+   "act": "moral",
+   "subtitle": {
+    "en": "The device was only the beginning.",
+    "ko": "기기는 시작에 불과했다."
+   },
+   "narration": {
+    "en": "The lasting product was the world around it.",
+    "ko": "오래 남은 상품은 그 주위의 세계였다."
+   },
+   "image_hint": {
+    "en": "quiet apartment balcony at sunset, one person looking at a glowing phone, seen from behind"
+   },
+   "image_prompt": "quiet apartment balcony at sunset, one person looking at a glowing phone, seen from behind"
+  }
+ ],
+ "naturalness_issues": [],
+ "repaired": false,
+ "date": "2026-11-28-stocks",
+ "theme": "stocks",
+ "symbol": "AAPL",
+ "quote": {
+  "text": "Apple Inc.",
+  "author": "NASDAQ AAPL"
+ }
+}
